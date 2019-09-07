@@ -1,0 +1,12 @@
+.col-1-of-2 {
+    display: grid;
+    grid-template-columns: 50% auto;
+    grid-gap: 3rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+    grid-gap: 0rem;
+
+    }
+  }

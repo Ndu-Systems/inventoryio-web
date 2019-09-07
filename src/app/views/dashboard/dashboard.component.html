@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="container">
+    <router-outlet></router-outlet>
+    <div class="message" *ngIf="showMessage">
+      <div class="image">
+        <img [src]="img" alt="">
+      </div>
+      <div class="body">
+        <h3 *ngFor="let h of heading">
+          {{h}}
+        </h3>
+        <p *ngFor="let message of messages">
+          {{message}}
+        </p>
+      </div>
+      <div class="action">
+        <a (click)="clearMessages()" [routerLink]="link">{{linkname}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
