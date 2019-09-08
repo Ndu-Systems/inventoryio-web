@@ -1,4 +1,4 @@
-<div class="main col-1-of-2">
+<div class="main col-1-of-2" *ngIf="!count">
   <div class="back">
     <a [routerLink]="backto">
       <img src="assets/images/left-arrow.svg" alt="">
@@ -8,5 +8,28 @@
     <h1>
       {{heading}}
     </h1>
+    <span class="circe"></span>
   </div>
 </div>
+
+
+<div class="main main col-1-of-2 with-counts" *ngIf="count">
+    <div class="back">
+      <a [routerLink]="backto">
+        <img src="assets/images/left-arrow.svg" alt="">
+      </a>
+    </div>
+    <div class="heading">
+      <h1>
+        {{heading}}
+      </h1>
+    </div>
+    <div class="count">
+      <h1>
+          {{count}}
+          <span>{{countLabel}}</span>
+      </h1>
+      <span class="circe"></span>
+
+    </div>
+  </div>

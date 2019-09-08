@@ -26,7 +26,6 @@ export class CompanyService {
 
   addCompany(data: Company) {
     return this.http.post<any>(`${this.url}/api/company/add-company.php`, data).subscribe(resp => {
-      alert(JSON.stringify(resp));
       const company: Company = resp;
       localStorage.setItem('currentCompany', JSON.stringify(company));
       this.currentCompanySubject.next(company);

@@ -29,7 +29,6 @@ export class AccountService {
 
   addUser(data: User) {
     return this.http.post<any>(`${this.url}/api/user/add-user.php`, data).subscribe(resp => {
-      alert(JSON.stringify(resp));
       const user: User = resp;
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
@@ -40,7 +39,6 @@ export class AccountService {
 
   updateUser(user: User) {
     return this.http.post<any>(`${this.url}/api/user/update-user.php`, user).subscribe(resp => {
-      alert(JSON.stringify(resp));
       const user: User = resp;
       alert(JSON.stringify(resp));
       localStorage.setItem('currentUser', JSON.stringify(user));
@@ -52,7 +50,6 @@ export class AccountService {
 
   login(credentials: { email: any; password: any; }) {
     return this.http.post<any>(`${this.url}/api/user/login.php`, credentials).subscribe(resp => {
-      alert(JSON.stringify(resp));
       const user: User = resp;
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);

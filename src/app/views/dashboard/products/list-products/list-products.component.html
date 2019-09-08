@@ -1,0 +1,43 @@
+<div class="main">
+  <app-banner [heading]="heading" [backto]="backto" [count]="count" [countLabel]="countLabel"></app-banner>
+
+  <div class="body">
+    <div class="cards">
+      <span *ngFor="let item of products">
+        <div class="card">
+         <div class="left-col">
+         <span class="label">Product Name</span>
+         <span class="value">{{item.Name}}</span>
+         </div>
+         <div class="rigt-col">
+            <span class="label">Brand</span>
+            <span class="value">--</span>
+         </div>
+
+         <div class="left-col">
+            <span class="label">Category</span>
+            <span class="value">--</span>
+            </div>
+
+            <div class="rigt-col">
+               <span class="label">Quantity</span>
+               <span class="value">{{item.Quantity}}</span>
+            </div>
+
+            
+         <div class="left-col">
+            <span class="label">Cost</span>
+            <span class="value">{{item.UnitCost | currency:'R'}}</span>
+            </div>
+
+            <div class="rigt-col">
+               <span class="label">Unit Price</span>
+               <span class="value">{{item.UnitPrice | currency:'R'}}</span>
+            </div>
+
+
+        </div>
+      </span>
+    </div>
+  </div>
+</div>

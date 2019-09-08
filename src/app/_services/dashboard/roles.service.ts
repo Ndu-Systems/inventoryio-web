@@ -26,7 +26,6 @@ export class RolesService {
 
   addRole(data: Role) {
     return this.http.post<any>(`${this.url}/api/roles/add-role.php`, data).subscribe(resp => {
-      alert(JSON.stringify(resp));
       const role: Role[] = resp;
       localStorage.setItem('currentRole', JSON.stringify(role));
       this.currentRoleSubject.next(role);
@@ -37,7 +36,6 @@ export class RolesService {
 
   getRoles(companyId) {
     return this.http.get<any>(`${this.url}/api/roles/get-roles.php?CompanyId=${companyId}`).subscribe(resp => {
-      alert(JSON.stringify(resp));
       const role: Role[] = resp;
       localStorage.setItem('currentRole', JSON.stringify(role));
       this.currentRoleSubject.next(role);

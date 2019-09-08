@@ -16,7 +16,7 @@ export class MessageService {
         body: [`Your simplified  inventory
                   management with real-time
                   updates, please complete your profile to get started.`],
-        canShow: true,
+        canShow: false,
         class: 'success',
         img: 'assets/images/undraw_Hello_qnas.png',
         link: '/dashboard/add-company',

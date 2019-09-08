@@ -1,0 +1,14 @@
+<div class="main">
+  <div class="cards">
+    <span *ngFor="let data of actions">
+      <div class="card" (click)="openAction(data.link)">
+        <div class="icon">
+          <img [src]="data.image" alt="">
+        </div>
+        <div class="data">
+          <h1>{{data.name}}</h1>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>

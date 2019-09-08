@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BannerComponent implements OnInit {
 @Input() heading;
 @Input() backto;
+@Input() count?;
+@Input() countLabel?;
   constructor() { }
 
   ngOnInit() {
