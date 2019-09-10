@@ -5,3 +5,5 @@ export * from './roles.model';
 export * from './user.stat.model';
 export * from './user.actions.model';
 export * from './product.model';
+export * from './brand.model';
+export * from './caterory.model';

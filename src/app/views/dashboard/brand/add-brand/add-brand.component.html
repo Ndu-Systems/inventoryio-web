@@ -1,0 +1,32 @@
+<div class="main">
+    <app-banner [heading]="heading" [backto]="backto"></app-banner>
+  
+    <div class="body">
+  
+      <div class="form">
+        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
+  
+          <div class="group">
+            <input type="text" formControlName="Name" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Name</label>
+            <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+              Product Name is requried
+            </div>
+          </div>
+  
+        
+  
+      
+  
+  
+          <div class="group">
+            <input type="submit" value="Add brand" class="btn" [disabled]="!rForm.valid" />
+          </div>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+  

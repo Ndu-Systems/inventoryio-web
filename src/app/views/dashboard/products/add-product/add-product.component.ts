@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductService, AccountService, RolesService } from 'src/app/_services';
-import { User, Product } from 'src/app/_models';
+import { ProductService, AccountService, RolesService, CateroryService, BrandService } from 'src/app/_services';
+import { User, Product, Brand, Caterory } from 'src/app/_models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
@@ -14,13 +15,18 @@ export class AddProductComponent implements OnInit {
   backto = '/dashboard';
   rForm: FormGroup;
   error: string;
+  brands$: Observable<Brand[]>;
+  catergories$: Observable<Caterory[]>;
 
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
     private productService: ProductService,
+    private brandService: BrandService,
+    private cateroryService: CateroryService,
   ) {
+
   }
 
   ngOnInit() {
@@ -29,6 +35,8 @@ export class AddProductComponent implements OnInit {
     if (!user) {
       this.routeTo.navigate(['sign-in']);
     }
+    this.brandService.getBrands(user.CompanyId);
+    this.cateroryService.getCateries(user.CompanyId);
     this.rForm = this.fb.group({
       Name: ['', Validators.required],
       BrandId: [''],
@@ -47,6 +55,9 @@ export class AddProductComponent implements OnInit {
     }
     );
 
+
+    this.brands$ = this.brandService.currentsBrand;
+    this.catergories$ = this.cateroryService.currentCaterory;
   }
   get getFormValues() {
     return this.rForm.controls;

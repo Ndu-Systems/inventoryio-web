@@ -19,19 +19,29 @@
         <div class="group">
           <select formControlName="BrandId">
             <option value="">No Brand</option>
+            <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
+
           </select>
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Brand</label>
+          <div class="add">
+            <a routerLink="/dashboard/add-brand">+</a>
+          </div>
         </div>
 
         <div class="group">
           <select formControlName="CatergoryId">
             <option value="">No Caterory</option>
+            <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CatergoryId">{{catergory.Name}}
+            </option>
           </select>
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Caterory</label>
+          <div class="add">
+            <a routerLink="/dashboard/add-catergory">+</a>
+          </div>
         </div>
 
 

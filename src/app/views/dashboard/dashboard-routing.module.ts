@@ -10,6 +10,8 @@ import { AddProductComponent } from './products/add-product/add-product.componen
 import { ListProductsComponent } from './products/list-products/list-products.component';
 import { SearchProductPipe } from 'src/app/_pipes/search-product.pipe';
 import { ScannerComponent } from './shared/scanner/scanner.component';
+import { AddCatergoryComponent } from './catergory/add-catergory/add-catergory.component';
+import { AddBrandComponent } from './brand/add-brand/add-brand.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -18,6 +20,8 @@ const routes: Routes = [
       { path: 'add-company', component: AddCompanyComponent },
       { path: 'add-product', component: AddProductComponent },
       { path: 'list-product', component: ListProductsComponent },
+      { path: 'add-catergory', component: AddCatergoryComponent },
+      { path: 'add-brand', component: AddBrandComponent },
     ]
   },
 ];
@@ -32,6 +36,8 @@ export const declarations = [
   AddProductComponent,
   ListProductsComponent,
   ScannerComponent,
+  AddCatergoryComponent,
+  AddBrandComponent,
 
   // pipes
   SearchProductPipe
