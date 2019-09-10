@@ -1,0 +1,11 @@
+<p>
+  scanner works!
+</p>
+<zxing-scanner 
+[formats]="allowedFormats"
+[torch]="torch"
+(scanSuccess)="onCodeResult($event)"
+(scanError)="scanErrorHandler($event)"
+(scanComplete)="scanCompleteHandler($event)"
+>
+</zxing-scanner>

@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
-import { stat } from 'fs';
 
 @Injectable({
   providedIn: 'root'

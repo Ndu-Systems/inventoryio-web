@@ -8,6 +8,8 @@ import { UserStatComponent } from './dashboard-home/user-stat/user-stat.componen
 import { UserActionsComponent } from './dashboard-home/user-actions/user-actions.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { ListProductsComponent } from './products/list-products/list-products.component';
+import { SearchProductPipe } from 'src/app/_pipes/search-product.pipe';
+import { ScannerComponent } from './shared/scanner/scanner.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -28,7 +30,11 @@ export const declarations = [
   UserStatComponent,
   UserActionsComponent,
   AddProductComponent,
-  ListProductsComponent
+  ListProductsComponent,
+  ScannerComponent,
+
+  // pipes
+  SearchProductPipe
 ];
 
 @NgModule({

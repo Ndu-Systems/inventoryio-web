@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  API_URL: 'http://inventoryio.co.za/api'
+  API_URL: 'https://www.inventoryio.co.za/api'
 
 };

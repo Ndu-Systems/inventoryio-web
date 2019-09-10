@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/_services';
+import { ProductService, AccountService } from 'src/app/_services';
 import { Product } from 'src/app/_models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-products',
@@ -10,15 +11,26 @@ import { Product } from 'src/app/_models';
 export class ListProductsComponent implements OnInit {
   heading = 'My Products';
   backto = '/dashboard';
-  count = '55';
+  count = 0;
   countLabel = 'Total Products';
+  search: string;
 
   products: Product[];
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private accountService: AccountService
+  ) { }
 
   ngOnInit() {
+    const user = this.accountService.currentUserValue;
+    if (!user.CompanyId) { this.router.navigate(['sign-in']); }
     this.products = this.productService.allProductsValue;
+    this.count = this.products.length || 0;
+    this.productService.getProducts(user.CompanyId);
   }
-
+  add() {
+    this.router.navigate(['/dashboard/add-product']);
+  }
 }
