@@ -3,17 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { SignInComponent } from './accounts/sign-in/sign-in.component';
 import { SignUpComponent } from './accounts/sign-up/sign-up.component';
+import { IndexComponent } from './index/index.component';
+import { HomePageComponent } from './index/home-page/home-page.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent },
+      { path: 'index',component:IndexComponent },
+      { path: 'home-page',component:HomePageComponent}
     ]
   }
 ];
 
-export const declarations = [SignInComponent, HomeComponent, SignUpComponent];
+export const declarations = [SignInComponent, HomeComponent, SignUpComponent,IndexComponent,HomePageComponent];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
