@@ -15,7 +15,7 @@ export class CateroryService {
   constructor(
     private http: HttpClient
   ) {
-    this.currentCaterorySubject = new BehaviorSubject<Caterory[]>(JSON.parse(localStorage.getItem('currentCaterory')));
+    this.currentCaterorySubject = new BehaviorSubject<Caterory[]>(JSON.parse(localStorage.getItem('currentCatergories')) || []);
     this.currentCaterory = this.currentCaterorySubject.asObservable();
     this.url = environment.API_URL;
   }
@@ -40,7 +40,7 @@ export class CateroryService {
   getCateries(companyId) {
     return this.http.get<any>(`${this.url}/api/catergory/get-catergories.php?CompanyId=${companyId}`).subscribe(resp => {
       const caterory: Caterory[] = resp;
-      localStorage.setItem('currentCaterory', JSON.stringify(caterory));
+      localStorage.setItem('currentCatergories', JSON.stringify(caterory));
       this.currentCaterorySubject.next(caterory);
     }, error => {
       alert(JSON.stringify(error));

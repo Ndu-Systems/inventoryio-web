@@ -67,7 +67,7 @@ export class ProductService {
   }
 
   getProducts(companyId) {
-    return this.http.get<any>(`${this.url}/api/product/get-products.php?CompanyId=${companyId}`).subscribe(resp => {
+    return this.http.get<any>(`${this.url}/api/product/get-detailed-products.php?CompanyId=${companyId}`).subscribe(resp => {
       const products: Product[] = resp;
       localStorage.setItem('allProducts', JSON.stringify(products));
       this.currentProductsSubject.next(products);

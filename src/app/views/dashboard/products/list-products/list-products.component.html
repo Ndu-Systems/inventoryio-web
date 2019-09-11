@@ -12,7 +12,7 @@
     </div>
     <div class="cards">
       <span *ngFor="let item of products | searchproduct: search">
-        <div class="card">
+        <!-- <div class="card">
 
           <div class="left-col">
             <span class="label">Product Name</span>
@@ -20,7 +20,8 @@
           </div>
           <div class="rigt-col">
             <span class="label">Category</span>
-            <span class="value">--</span>
+            <span *ngIf="item.Catergory" class="value">{{item.Catergory}}</span>
+            <span *ngIf="!item.Catergory" class="value">--</span>
           </div>
 
           <div class="left-col">
@@ -54,7 +55,43 @@
 
 
 
+        </div> -->
+
+        <div class="card-betta">
+          <span class="status" ></span>
+          <div class="top-row">
+            <p class="stock">In Stock- {{item.Quantity}}</p>
+            <p>
+              <span>Price</span>
+              {{item.UnitPrice | currency:'R'}}
+            </p>
+          </div>
+          <div class="name">
+            <h1>
+              {{item.Name}}
+            </h1>
+          </div>
+          <div class="grid">
+            <div class="image">
+              <img [src]="img" alt="">
+            </div>
+            <div class="details">
+              <p *ngIf="item.Brand"> 
+                <span>Brand</span> {{item.Brand}}
+              </p>
+              <p  *ngIf="item.Catergory">
+                <span>Catergory</span> {{item.Catergory}}
+              </p>
+              <p  *ngIf="item.UnitCost">
+                <span>Cost</span> {{item.UnitCost | currency:'R'}}
+              </p>
+              <p >
+                <span>Margin</span> 22%
+              </p>
+            </div>
+          </div>
         </div>
+
       </span>
     </div>
   </div>

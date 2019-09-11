@@ -16,7 +16,7 @@ export class BrandService {
   constructor(
     private http: HttpClient
   ) {
-    this.currentBrandsSubject = new BehaviorSubject<Brand[]>(JSON.parse(localStorage.getItem('currentBrand')));
+    this.currentBrandsSubject = new BehaviorSubject<Brand[]>(JSON.parse(localStorage.getItem('currentBrands')) || []);
     this.currentsBrand = this.currentBrandsSubject.asObservable();
     this.url = environment.API_URL;
   }

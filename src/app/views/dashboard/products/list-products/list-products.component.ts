@@ -14,7 +14,8 @@ export class ListProductsComponent implements OnInit {
   count = 0;
   countLabel = 'Total Products';
   search: string;
-
+  //img = 'http://localhost:8200/inventoryiodb-api/images/ph.png';
+  img = 'http://localhost:8200/inventoryiodb-api/images/car.jpg';
   products: Product[];
 
   constructor(
