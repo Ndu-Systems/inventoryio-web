@@ -34,4 +34,7 @@ export class ListProductsComponent implements OnInit {
   add() {
     this.router.navigate(['/dashboard/add-product']);
   }
+  details(product: Product) {
+    this.router.navigate([`/dashboard/product-details/${product.ProductId}`]);
+  }
 }

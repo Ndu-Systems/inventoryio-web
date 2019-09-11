@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule, declarations } from './dashboard-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ZXingScannerModule
+    ZXingScannerModule,
+    FileUploadModule
 
   ],
   declarations: [...declarations]
