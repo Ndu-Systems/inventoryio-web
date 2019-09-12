@@ -15,4 +15,6 @@ export interface Product {
     ModifyDate: string;
     ModifyUserId: string;
     StatusId: string;
+    Catergory?: string;
+    Brand?: string;
 }

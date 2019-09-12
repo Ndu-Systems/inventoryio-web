@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { User, Image } from 'src/app/_models';
 import { DocumentsService, AccountService, UploadService } from 'src/app/_services';
-import { Image, User } from 'src/app/_models';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-upload-images',
-  templateUrl: './upload-images.component.html',
-  styleUrls: ['./upload-images.component.scss']
+  selector: 'app-upload-product-image',
+  templateUrl: './upload-product-image.component.html',
+  styleUrls: ['./upload-product-image.component.css']
 })
-export class UploadImagesComponent implements OnInit {
+export class UploadProductImageComponent implements OnInit {
+
+  heading = 'Upload';
+  backto = '/dashboard/add-product';
   file: File;
   message: string;
   success: string;
@@ -17,17 +20,24 @@ export class UploadImagesComponent implements OnInit {
   InvestmentId: any;
 
   user: User;
+  productId: any;
 
   constructor(
     private documentsService: DocumentsService,
     private accountService: AccountService,
     private uploadService: UploadService,
-    private routeTo: Router
-  ) { }
+    private routeTo: Router,
+    private activatedRoute: ActivatedRoute,
+  ) {
+    this.activatedRoute.params.subscribe(r => {
+      this.productId = r.id;
+      this.backto = `/dashboard/product-details/${this.productId}`;
+    });
+  }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    if (! this.user) {
+    if (!this.user) {
       this.routeTo.navigate(['sign-in']);
     }
   }
@@ -47,13 +57,14 @@ export class UploadImagesComponent implements OnInit {
   saveImage(url) {
     const data: Image = {
       CompanyId: this.user.CompanyId,
-      OtherId: 'mmm',
+      OtherId: this.productId,
       Url: `${environment.API_URL}/api/upload/${url}`,
       CreateUserId: this.user.UserId,
       ModifyUserId: this.user.UserId,
       StatusId: 1
     };
     this.uploadService.addImage(data);
+    this.routeTo.navigate([this.backto]);
   }
 
 }
