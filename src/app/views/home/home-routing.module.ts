@@ -9,15 +9,14 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
+      { path: '', component: IndexComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent },
-      { path: 'index',component:IndexComponent },
-      { path: 'home-page',component:HomePageComponent}
     ]
   }
 ];
 
-export const declarations = [SignInComponent, HomeComponent, SignUpComponent,IndexComponent,HomePageComponent];
+export const declarations = [SignInComponent, HomeComponent, SignUpComponent, IndexComponent, HomePageComponent];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
