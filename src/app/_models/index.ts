@@ -7,3 +7,4 @@ export * from './user.actions.model';
 export * from './product.model';
 export * from './brand.model';
 export * from './caterory.model';
+export * from './image.model';

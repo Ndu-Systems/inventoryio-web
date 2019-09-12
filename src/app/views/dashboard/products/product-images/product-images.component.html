@@ -2,12 +2,15 @@
   <h1>
     Product Images
   </h1>
-  <div class="images">
-    <img [src]="img" alt="">
-    <img [src]="img" alt="">
+  <div class="images" *ngFor="let image of images$|async">
+    <img [src]="image.Url" alt="">
   </div>
-  <div class="images">
-    <img [src]="img" alt="">
-    <img [src]="img" alt="">
+
+
+  <div class="add">
+    <a (click)="add()">Add Image</a>
   </div>
 </div>
+
+
+<app-upload-images *ngIf="upload"></app-upload-images>

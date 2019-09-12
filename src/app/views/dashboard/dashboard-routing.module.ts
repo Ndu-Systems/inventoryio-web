@@ -15,6 +15,7 @@ import { AddBrandComponent } from './brand/add-brand/add-brand.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { UploadImagesComponent } from './products/upload-images/upload-images.component';
 import { ProductImagesComponent } from './products/product-images/product-images.component';
+import { UploadProductImageComponent } from './products/upload-product-image/upload-product-image.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'add-product', component: AddProductComponent },
       { path: 'list-product', component: ListProductsComponent },
       { path: 'product-details/:id', component: ProductDetailsComponent },
+      { path: 'upload-product-image/:id', component: UploadProductImageComponent },
       { path: 'add-catergory', component: AddCatergoryComponent },
       { path: 'add-brand', component: AddBrandComponent },
     ]
@@ -45,6 +47,7 @@ export const declarations = [
   AddBrandComponent,
   UploadImagesComponent,
   ProductImagesComponent,
+  UploadProductImageComponent,
 
   // pipes
   SearchProductPipe

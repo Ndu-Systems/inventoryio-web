@@ -73,7 +73,8 @@
           </div>
           <div class="grid">
             <div class="image">
-              <img [src]="img" alt="">
+              <img [src]="item.Url" alt=""  *ngIf="item.Url">
+              <img src="assets/placeholders/picture.svg" *ngIf="!item.Url" alt="">
             </div>
             <div class="details">
               <p *ngIf="item.Brand"> 

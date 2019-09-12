@@ -3,95 +3,95 @@
 
   <div class="body">
 
- <div class="card">
-  <div class="form">
-    <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
+    <div class="card">
+      <div class="form">
+        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
 
-      <div class="group">
-        <input type="text" formControlName="Name" required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Name</label>
-        <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
-          Product Name is requried
-        </div>
+          <div class="group">
+            <input type="text" formControlName="Name" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Name</label>
+            <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+              Product Name is requried
+            </div>
+          </div>
+
+          <div class="group">
+            <select formControlName="BrandId">
+              <option value="">No Brand</option>
+              <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
+
+            </select>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Brand</label>
+            <div class="add">
+              <a routerLink="/dashboard/add-brand">+</a>
+            </div>
+          </div>
+
+          <div class="group">
+            <select formControlName="CatergoryId">
+              <option value="">No Caterory</option>
+              <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CatergoryId">{{catergory.Name}}
+              </option>
+            </select>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Caterory</label>
+            <div class="add">
+              <a routerLink="/dashboard/add-catergory">+</a>
+            </div>
+          </div>
+
+
+          <div class="group">
+            <input type="text" formControlName="Description" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Description</label>
+          </div>
+
+          <div class="group">
+            <input type="text" formControlName="UnitPrice" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Unit Price</label>
+          </div>
+
+          <div class="group">
+            <input type="text" formControlName="UnitCost" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Unit Cost</label>
+          </div>
+
+          <div class="group">
+            <input type="text" formControlName="SKU" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>SKU</label>
+
+          </div>
+
+          <div class="group">
+            <input type="text" formControlName="Code" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Barcode</label>
+
+          </div>
+
+          <div class="group">
+            <input type="submit" value="Update Product" class="btn" [disabled]="!rForm.valid" />
+          </div>
+        </form>
       </div>
+    </div>
 
-      <div class="group">
-        <select formControlName="BrandId">
-          <option value="">No Brand</option>
-          <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
-
-        </select>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Brand</label>
-        <div class="add">
-          <a routerLink="/dashboard/add-brand">+</a>
-        </div>
-      </div>
-
-      <div class="group">
-        <select formControlName="CatergoryId">
-          <option value="">No Caterory</option>
-          <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CatergoryId">{{catergory.Name}}
-          </option>
-        </select>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Caterory</label>
-        <div class="add">
-          <a routerLink="/dashboard/add-catergory">+</a>
-        </div>
-      </div>
-
-
-      <div class="group">
-        <input type="text" formControlName="Description" required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Description</label>
-      </div>
-
-      <div class="group">
-        <input type="text" formControlName="UnitPrice" required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Unit Price</label>
-      </div>
-
-      <div class="group">
-        <input type="text" formControlName="UnitCost" required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Unit Cost</label>
-      </div>
-
-      <div class="group">
-        <input type="text" formControlName="SKU" required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>SKU</label>
-
-      </div>
-
-      <div class="group">
-        <input type="text" formControlName="Code" required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Barcode</label>
-
-      </div>
-
-      <div class="group">
-        <input type="submit" value="Update Product" class="btn" [disabled]="!rForm.valid" />
-      </div>
-    </form>
-  </div>
- </div>
-
- <div class="card">
-<app-product-images></app-product-images>
- </div>
+    <div class="card">
+      <app-product-images [productId]="productId"></app-product-images>
+    </div>
   </div>
 </div>
