@@ -33,7 +33,6 @@
         background: #FFFFFF;
         border-radius: 15px;
         text-align: center;
-  
         -webkit-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
         -moz-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
         box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
@@ -113,11 +112,6 @@
     padding-left: 3rem;
     margin-bottom: 4rem;
   
-    :hover {
-      -webkit-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
-      -moz-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
-      box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
-    }
   
     .card {
       background: #FFFFFF;
@@ -128,10 +122,17 @@
       align-content: center;
       margin: 0%;
       margin-left: 4rem;
+      
+    &:hover {
+      -webkit-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
+      -moz-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
+      box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
+    }
   
       img {
         width: 20%;
         padding-top: 2rem;
+      
       }
   
       h2 {
