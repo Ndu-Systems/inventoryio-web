@@ -1,3 +1,4 @@
+
 .main-container {
   background-image: url(../../../assets/images/backgroundhome.svg);
   background-size: cover;
@@ -5,11 +6,11 @@
 
   @media only screen and (max-width: 600px) {
     background-image: url(../../../assets/images/mobilehome.svg);
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
+    background-position: top right;
   }
 }
-
 .nav {
   display: grid;
   grid-template-columns: 20% auto;
@@ -19,35 +20,29 @@
     justify-content: center;
     text-align: center;
     margin-left: 7rem;
-
     @media only screen and (max-width: 600px) {
-      float: left;
-      margin: 0%;
-      width: 100%;
+     display: none;
     }
-
     img {
       width: 25%;
-
-      @media only screen and (max-width: 600px) {
-        width: 70%;
-      }
     }
-
     h1 {
       text-align: center;
       color: #104CE5;
       margin-top: 0%;
       font-size: 1rem;
-
-      @media only screen and (max-width: 600px) {
-        font-size: .6rem;
-
-      }
-
       span {
         color: #2E344C;
       }
+    }
+  }
+
+  .logo-mobile{
+    display: none;
+    @media only screen and (max-width: 600px) {
+      display: grid;
+      margin-top: -15px;
+      margin-left: -3px;
     }
   }
 
