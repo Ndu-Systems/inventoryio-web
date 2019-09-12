@@ -1,0 +1,30 @@
+.main {
+    // background: #fff;
+
+    .body {
+      padding: 1rem;
+      padding-top: 0;
+  
+      .card {
+        background: #fff;
+        display: block;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        border-radius: .5rem;
+      }
+    }
+  }
+  
+  .add {
+    background: #0337BB;
+    float: right;
+    border: none;
+    padding: .5rem;
+    font-weight: 800;
+  
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  

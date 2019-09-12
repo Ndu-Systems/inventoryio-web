@@ -14,6 +14,7 @@ import { AddCatergoryComponent } from './catergory/add-catergory/add-catergory.c
 import { AddBrandComponent } from './brand/add-brand/add-brand.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { UploadImagesComponent } from './products/upload-images/upload-images.component';
+import { ProductImagesComponent } from './products/product-images/product-images.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -43,6 +44,7 @@ export const declarations = [
   AddCatergoryComponent,
   AddBrandComponent,
   UploadImagesComponent,
+  ProductImagesComponent,
 
   // pipes
   SearchProductPipe
