@@ -19,7 +19,7 @@ export class UserActionsComponent implements OnInit {
       this.actions.push({
         name: 'Sell',
         image: 'assets/images/actions/sell.svg',
-        link: ''
+        link: 'dashboard/sell'
       },
         {
           name: 'Purchase order',

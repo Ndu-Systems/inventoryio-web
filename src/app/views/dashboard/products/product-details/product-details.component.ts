@@ -14,6 +14,7 @@ export class ProductDetailsComponent implements OnInit {
 
   heading = 'Manage Product';
   backto = '/dashboard/list-product';
+  user: User;
   rForm: FormGroup;
   error: string;
   brands$: Observable<Brand[]>;
@@ -32,17 +33,26 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    const user: User = this.accountService.currentUserValue;
-    if (!user) {
+    this.user = this.accountService.currentUserValue;
+    if (!this.user) {
       this.routeTo.navigate(['sign-in']);
     }
 
     this.productService.product.subscribe(state => {
       this.productId = state.ProductId;
       this.product = state;
+      this.initForm();
+
     });
-    this.brandService.getBrands(user.CompanyId);
-    this.cateroryService.getCateries(user.CompanyId);
+    this.brandService.getBrands(this.user.CompanyId);
+    this.cateroryService.getCateries(this.user.CompanyId);
+
+    this.initForm();
+
+    this.brands$ = this.brandService.currentsBrand;
+    this.catergories$ = this.cateroryService.currentCaterory;
+  }
+  initForm() {
     this.rForm = this.fb.group({
       Name: [this.product.Name, Validators.required],
       BrandId: [this.product.BrandId],
@@ -54,16 +64,12 @@ export class ProductDetailsComponent implements OnInit {
       SKU: [this.product.SKU],
       Quantity: [this.product.Quantity],
       LowStock: [this.product.LowStock],
-      CompanyId: [user.CompanyId, Validators.required],
-      CreateUserId: [user.UserId, Validators.required],
+      CompanyId: [this.user.CompanyId, Validators.required],
+      CreateUserId: [this.user.UserId, Validators.required],
       StatusId: [1, Validators.required],
-      ModifyUserId: [user.UserId, Validators.required],
+      ModifyUserId: [this.user.UserId, Validators.required],
     }
     );
-
-
-    this.brands$ = this.brandService.currentsBrand;
-    this.catergories$ = this.cateroryService.currentCaterory;
   }
   get getFormValues() {
     return this.rForm.controls;

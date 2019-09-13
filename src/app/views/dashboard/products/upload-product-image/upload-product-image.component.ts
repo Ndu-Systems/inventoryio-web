@@ -31,7 +31,7 @@ export class UploadProductImageComponent implements OnInit {
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.productId = r.id;
-      this.backto = `/dashboard/product-details/${this.productId}`;
+      this.backto = `/dashboard/product-details`;
     });
   }
 

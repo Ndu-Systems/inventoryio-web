@@ -30,16 +30,10 @@ export class ProductService {
     this.url = environment.API_URL;
   }
 
-  public get allProductsValue(): Product[] {
-    if (this._products.value) {
-      return this._products.value;
-    }
-    this._products.next(JSON.parse(localStorage.getItem('products')));
-    return this._products.value;
-  }
+
   // state
   appendState(product: Product) {
-    let state = this.allProductsValue;
+    let state = this._products.value;
     const existingProduct = state.filter(x => x.ProductId === product.ProductId);
     if (existingProduct.length > 0) {
       state = state.filter(x => x.ProductId !== product.ProductId);
@@ -71,7 +65,7 @@ export class ProductService {
   getProducts(companyId) {
     return this.http.get<any>(`${this.url}/api/product/get-detailed-products.php?CompanyId=${companyId}`).subscribe(resp => {
       const products: Product[] = resp;
-      localStorage.setItem('allProducts', JSON.stringify(products));
+      localStorage.setItem('products', JSON.stringify(products));
       this._products.next(products);
     }, error => {
       alert(JSON.stringify(error));
