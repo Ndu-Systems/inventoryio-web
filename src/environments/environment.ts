@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8200/inventoryiodb-api'
+  API_URL: 'http://localhost:8200/inventoryio-api'
 };
 
 /*
