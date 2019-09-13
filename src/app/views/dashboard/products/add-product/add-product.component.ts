@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductService, AccountService, RolesService, CateroryService, BrandService, BannerService } from 'src/app/_services';
+import { ProductService, AccountService, RolesService, CateroryService, BrandService, BannerService, UploadService } from 'src/app/_services';
 import { User, Product, Brand, Caterory } from 'src/app/_models';
 import { Observable } from 'rxjs';
 
@@ -25,7 +25,8 @@ export class AddProductComponent implements OnInit {
     private productService: ProductService,
     private brandService: BrandService,
     private cateroryService: CateroryService,
-    private bannerService: BannerService
+    private bannerService: BannerService,
+    private uploadService: UploadService
   ) {
     this.bannerService.updateState({
       heading: 'Add Products',
@@ -66,9 +67,11 @@ export class AddProductComponent implements OnInit {
   get getFormValues() {
     return this.rForm.controls;
   }
-  add(product: Product) {
+  onSubmit(product: Product) {
     this.productService.addProduct(product);
     this.routeTo.navigate([`/dashboard/product-details`]);
+    this.uploadService.apendState(null);
+
   }
   addbrand() {
     this.bannerService.updateState({

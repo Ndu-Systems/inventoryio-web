@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService, AccountService, BannerService } from 'src/app/_services';
-import { Product } from 'src/app/_models';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Product } from 'src/app/_models';
+import { ProductService, AccountService, BannerService } from 'src/app/_services';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-list-products',
-  templateUrl: './list-products.component.html',
-  styleUrls: ['./list-products.component.scss']
+  selector: 'app-sell',
+  templateUrl: './sell.component.html',
+  styleUrls: ['./sell.component.scss']
 })
-export class ListProductsComponent implements OnInit {
+export class SellComponent implements OnInit {
 
   search: string;
   products$: Observable<Product[]>;
@@ -44,6 +44,6 @@ export class ListProductsComponent implements OnInit {
   }
   details(product: Product) {
     this.productService.updateCurrentProduct(product);
-    this.router.navigate([`/dashboard/product-details`]);
+   // this.router.navigate([`/dashboard/product-details`]);
   }
 }

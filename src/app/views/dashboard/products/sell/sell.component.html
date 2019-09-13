@@ -1,0 +1,61 @@
+<div class="main">
+  <app-banner></app-banner>
+
+  <div class="body">
+
+    <div class="page-actions">
+      <div class="search">
+        <input type="text" [(ngModel)]="search" placeholder="Filter products">
+      </div>
+      <div class="add">
+        <button (click)="add()">Add Prod.</button>
+      </div>
+    </div>
+    <div class="cards" *ngIf="products$  | async as products">
+      <span *ngFor="let item of products | searchproduct: search">
+     <div class="card-betta" (click)="details(item)">
+          <span class="status" ></span>
+          <div class="top-row">
+            <p class="stock">In Stock- {{item.Quantity}}</p>
+            <p>
+              <span>Price</span>
+              {{item.UnitPrice | currency:'R'}}
+            </p>
+          </div>
+          <div class="name">
+            <h1>
+              {{item.Name}}
+            </h1>
+          </div>
+          <div class="grid">
+            <div class="image">
+              <img [src]="item.Url" alt=""  *ngIf="item.Url">
+              <img src="assets/placeholders/picture.svg"  class="placeholder" *ngIf="!item.Url" alt="">
+            </div>
+            <div class="details">
+              <p *ngIf="item.Brand"> 
+                <span>Brand</span> {{item.Brand}}
+              </p>
+              <p  *ngIf="item.Catergory">
+                <span>Catergory</span> {{item.Catergory}}
+              </p>
+              <p  *ngIf="item.UnitCost">
+                <span>Cost</span> {{item.UnitCost | currency:'R'}}
+              </p>
+              <p >
+                <span>Margin</span> 22%
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </span>
+    </div>
+  </div>
+
+</div>
+<div class="sell">
+<h1>
+  Hey
+</h1>
+</div>
