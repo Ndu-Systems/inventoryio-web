@@ -7,3 +7,4 @@ export * from './dashboard/caterory.service';
 export * from './dashboard/brand.service';
 export * from './dashboard/documents.service';
 export * from './dashboard/upload.service';
+export * from './dashboard/banner.service';

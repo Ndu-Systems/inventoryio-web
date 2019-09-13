@@ -1,5 +1,5 @@
 <div class="main">
-  <app-banner [heading]="heading" [backto]="backto"></app-banner>
+  <app-banner></app-banner>
 
   <div class="body">
 
@@ -26,7 +26,7 @@
           <span class="bar"></span>
           <label>Brand</label>
           <div class="add">
-            <a routerLink="/dashboard/add-brand">+</a>
+            <a (click)="addcatergory()">+</a>
           </div>
         </div>
 
@@ -40,7 +40,7 @@
           <span class="bar"></span>
           <label>Caterory</label>
           <div class="add">
-            <a routerLink="/dashboard/add-catergory">+</a>
+            <a (click)="addcatergory()">+</a>
           </div>
         </div>
 

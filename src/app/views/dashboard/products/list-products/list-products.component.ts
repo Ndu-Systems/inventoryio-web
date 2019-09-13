@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService, AccountService } from 'src/app/_services';
 import { Product } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-products',
@@ -11,12 +12,10 @@ import { Router } from '@angular/router';
 export class ListProductsComponent implements OnInit {
   heading = 'My Products';
   backto = '/dashboard';
-  count = 0;
   countLabel = 'Total Products';
   search: string;
-  //img = 'http://localhost:8200/inventoryiodb-api/images/ph.png';
   img = 'http://localhost:8200/inventoryiodb-api/images/car.jpg';
-  products: Product[];
+  products$: Observable<Product[]>;
 
   constructor(
     private productService: ProductService,
@@ -27,14 +26,14 @@ export class ListProductsComponent implements OnInit {
   ngOnInit() {
     const user = this.accountService.currentUserValue;
     if (!user.CompanyId) { this.router.navigate(['sign-in']); }
-    this.products = this.productService.allProductsValue;
-    this.count = this.products.length || 0;
+    this.products$ = this.productService.products;
     this.productService.getProducts(user.CompanyId);
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
   }
   details(product: Product) {
-    this.router.navigate([`/dashboard/product-details/${product.ProductId}`]);
+    this.productService.updateCurrentProduct(product);
+    this.router.navigate([`/dashboard/product-details`]);
   }
 }

@@ -26,13 +26,8 @@ export class ProductDetailsComponent implements OnInit {
     private accountService: AccountService,
     private productService: ProductService,
     private brandService: BrandService,
-    private cateroryService: CateroryService,
-    private activatedRoute: ActivatedRoute,
+    private cateroryService: CateroryService
   ) {
-    this.activatedRoute.params.subscribe(r => {
-      this.productId = r.id;
-    });
-    this.product = this.productService.allProductsValue.find(x => x.ProductId === this.productId);
   }
 
   ngOnInit() {
@@ -41,6 +36,11 @@ export class ProductDetailsComponent implements OnInit {
     if (!user) {
       this.routeTo.navigate(['sign-in']);
     }
+
+    this.productService.product.subscribe(state => {
+      this.productId = state.ProductId;
+      this.product = state;
+    });
     this.brandService.getBrands(user.CompanyId);
     this.cateroryService.getCateries(user.CompanyId);
     this.rForm = this.fb.group({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductService, AccountService, RolesService, CateroryService, BrandService } from 'src/app/_services';
+import { ProductService, AccountService, RolesService, CateroryService, BrandService, BannerService } from 'src/app/_services';
 import { User, Product, Brand, Caterory } from 'src/app/_models';
 import { Observable } from 'rxjs';
 
@@ -25,8 +25,12 @@ export class AddProductComponent implements OnInit {
     private productService: ProductService,
     private brandService: BrandService,
     private cateroryService: CateroryService,
+    private bannerService: BannerService
   ) {
-
+    this.bannerService.updateState({
+      heading: 'Add Products',
+      backto: '/dashboard'
+    });
   }
 
   ngOnInit() {
@@ -64,7 +68,23 @@ export class AddProductComponent implements OnInit {
   }
   add(product: Product) {
     this.productService.addProduct(product);
-    this.routeTo.navigate(['/dashboard/list-product']);
+    this.routeTo.navigate([`/dashboard/product-details`]);
+  }
+  addbrand() {
+    this.bannerService.updateState({
+      heading: 'Add Brand',
+      backto: '/dashboard/add-product'
+    });
+    this.routeTo.navigate(['/dashboard/add-brand']);
+
   }
 
+  addcatergory() {
+    this.bannerService.updateState({
+      heading: 'Add Catergory',
+      backto: '/dashboard/add-product'
+    });
+    this.routeTo.navigate(['/dashboard/add-catergory']);
+
+  }
 }

@@ -9,33 +9,33 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductService {
 
-  private currentProductsSubject: BehaviorSubject<Product[]>;
-  public currentProducts: Observable<Product[]>;
+  private _products: BehaviorSubject<Product[]>;
+  public products: Observable<Product[]>;
 
   // current product working with
-  private currentProductSubject: BehaviorSubject<Product>;
-  public currentProduct: Observable<Product>;
+  private _product: BehaviorSubject<Product>;
+  public product: Observable<Product>;
 
   url: string;
   constructor(
     private http: HttpClient
   ) {
-    this.currentProductsSubject = new BehaviorSubject<Product[]>(JSON.parse(localStorage.getItem('allProducts')));
-    this.currentProducts = this.currentProductsSubject.asObservable();
+    this._products = new BehaviorSubject<Product[]>(JSON.parse(localStorage.getItem('products')));
+    this.products = this._products.asObservable();
 
     // Selected product
-    this.currentProductSubject = new BehaviorSubject<Product>(null);
-    this.currentProduct = this.currentProductSubject.asObservable();
+    this._product = new BehaviorSubject<Product>(JSON.parse(localStorage.getItem('product')));
+    this.product = this._product.asObservable();
 
     this.url = environment.API_URL;
   }
 
   public get allProductsValue(): Product[] {
-    if (this.currentProductsSubject.value) {
-      return this.currentProductsSubject.value;
+    if (this._products.value) {
+      return this._products.value;
     }
-    this.currentProductsSubject.next(JSON.parse(localStorage.getItem('allProducts')));
-    return this.currentProductsSubject.value;
+    this._products.next(JSON.parse(localStorage.getItem('products')));
+    return this._products.value;
   }
   // state
   appendState(product: Product) {
@@ -47,11 +47,13 @@ export class ProductService {
     } else {
       state.push(product);
     }
-    this.currentProductsSubject.next(state);
+    this._products.next(state);
   }
   // state
   updateCurrentProduct(product: Product) {
-    this.currentProductSubject.next(product);
+    this._product.next(product);
+    localStorage.setItem('product', JSON.stringify(product));
+
   }
 
   addProduct(data: Product) {
@@ -70,10 +72,9 @@ export class ProductService {
     return this.http.get<any>(`${this.url}/api/product/get-detailed-products.php?CompanyId=${companyId}`).subscribe(resp => {
       const products: Product[] = resp;
       localStorage.setItem('allProducts', JSON.stringify(products));
-      this.currentProductsSubject.next(products);
+      this._products.next(products);
     }, error => {
       alert(JSON.stringify(error));
     });
   }
-
 }

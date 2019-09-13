@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'add-company', component: AddCompanyComponent },
       { path: 'add-product', component: AddProductComponent },
       { path: 'list-product', component: ListProductsComponent },
-      { path: 'product-details/:id', component: ProductDetailsComponent },
+      { path: 'product-details', component: ProductDetailsComponent },
       { path: 'upload-product-image/:id', component: UploadProductImageComponent },
       { path: 'add-catergory', component: AddCatergoryComponent },
       { path: 'add-brand', component: AddBrandComponent },

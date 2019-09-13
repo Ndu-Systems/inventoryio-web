@@ -1,5 +1,5 @@
 <div class="main">
-  <app-banner [heading]="heading" [backto]="backto" [count]="count" [countLabel]="countLabel"></app-banner>
+  <app-banner></app-banner>
 
   <div class="body">
     <div class="page-actions">
@@ -10,54 +10,9 @@
         <button (click)="add()">Add Prod.</button>
       </div>
     </div>
-    <div class="cards">
+    <div class="cards" *ngIf="products$  | async as products">
       <span *ngFor="let item of products | searchproduct: search">
-        <!-- <div class="card">
-
-          <div class="left-col">
-            <span class="label">Product Name</span>
-            <span class="value">{{item.Name}}</span>
-          </div>
-          <div class="rigt-col">
-            <span class="label">Category</span>
-            <span *ngIf="item.Catergory" class="value">{{item.Catergory}}</span>
-            <span *ngIf="!item.Catergory" class="value">--</span>
-          </div>
-
-          <div class="left-col">
-            <span class="label">Cost</span>
-            <span class="value">{{item.UnitCost | currency:'R'}}</span>
-          </div>
-          <div class="rigt-col">
-            <span class="label">Unit Price</span>
-            <span class="value">{{item.UnitPrice | currency:'R'}}</span>
-          </div>
-
-          <div class="left-col">
-            <span class="label">Margin</span>
-            <span class="value"> 10%</span>
-          </div>
-          <div class="rigt-col">
-            <span class="label">In Stock</span>
-            <span class="value">{{item.Quantity}}</span>
-          </div>
-
-          <div class="left-col">
-            <span class="label">Re Order At</span>
-            <span class="value">{{item.LowStock}}</span>
-          </div>
-          <div class="rigt-col">
-            <div class="action-btn">
-              <img src="assets/images/actions/more-btn.svg" alt="">
-            </div>
-          </div>
-
-
-
-
-        </div> -->
-
-        <div class="card-betta" (click)="details(item)">
+     <div class="card-betta" (click)="details(item)">
           <span class="status" ></span>
           <div class="top-row">
             <p class="stock">In Stock- {{item.Quantity}}</p>

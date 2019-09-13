@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BannerService } from 'src/app/_services';
+import { Observable } from 'rxjs';
+import { Banner } from 'src/app/_models';
 
 @Component({
   selector: 'app-banner',
@@ -6,13 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent implements OnInit {
-@Input() heading;
-@Input() backto;
-@Input() count?;
-@Input() countLabel?;
-  constructor() { }
+  banner$: Observable<Banner>;
+
+  constructor(private bannerService: BannerService) { }
 
   ngOnInit() {
+    this.banner$ = this.bannerService.currentsBanner;
   }
 
 }
