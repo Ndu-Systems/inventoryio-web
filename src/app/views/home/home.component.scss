@@ -1,20 +1,10 @@
 
-.main-container {
-  background-image: url(../../../assets/images/backgroundhome.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  @media only screen and (max-width: 600px) {
-    background-image: url(../../../assets/images/mobilehome.svg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: top right;
-  }
-}
 .nav {
   display: grid;
   grid-template-columns: 20% auto;
   padding: 2rem;
+  position: absolute;
+  width: 100%;
 
   .logo {
     justify-content: center;
