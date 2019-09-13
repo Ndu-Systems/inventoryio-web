@@ -6,5 +6,6 @@ export interface SellModel {
 export interface Item {
     name: string;
     price: number;
+    sub?: number;
     quantity: number;
 }

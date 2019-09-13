@@ -1,3 +1,10 @@
-<p>
-  sale-sammary works!
-</p>
+<div class="cards" *ngIf="sale$ | async as sale">
+  <span *ngIf=sale.items>
+    <div class="card" *ngFor="let item of sale.items">
+      <p>
+        {{item.name}} X {{item.quantity}}
+        <span>  {{item.sub| currency:'R'}} </span>
+      </p>
+    </div>
+  </span>
+</div>

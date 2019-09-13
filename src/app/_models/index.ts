@@ -9,3 +9,4 @@ export * from './brand.model';
 export * from './caterory.model';
 export * from './image.model';
 export * from './banner.model';
+export * from './sale.model';

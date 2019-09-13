@@ -1,25 +1,42 @@
 import { Injectable } from '@angular/core';
-import { SellModel } from 'src/app/_models/sale.model';
+import { SellModel, Item } from 'src/app/_models/sale.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SaleService {
-  private currentSellModelsSubject: BehaviorSubject<SellModel>;
-  public currentsSellModel: Observable<SellModel>;
+  private _sell: BehaviorSubject<SellModel>;
+  public sell: Observable<SellModel>;
   constructor(
   ) {
-    this.currentSellModelsSubject = new BehaviorSubject<SellModel>(JSON.parse(localStorage.getItem('SellModelValue')));
-    this.currentsSellModel = this.currentSellModelsSubject.asObservable();
+    this._sell = new BehaviorSubject<SellModel>(JSON.parse(localStorage.getItem('sell')));
+    this.sell = this._sell.asObservable();
   }
 
   public get currentSellModelValue(): SellModel {
-    return this.currentSellModelsSubject.value;
+    return this._sell.value;
   }
   updateState(data: SellModel) {
-    this.currentSellModelsSubject.next(data);
-    localStorage.setItem('SellModelValue', JSON.stringify(data));
+    this._sell.next(data);
+    localStorage.setItem('sell', JSON.stringify(data));
+  }
+
+  doSellLogic(item: Item) {
+    const sale = this.currentSellModelValue;
+    if (!sale) {
+      this.updateState({
+        items: [],
+        total: 0
+      });
+    }
+    const checkIfOtemExist = sale.items.filter(x => x.name === item.name);
+    if (!checkIfOtemExist.length) {
+      sale.items.push(item);
+    } else {
+      checkIfOtemExist[0].quantity++;
+      checkIfOtemExist[0].sub = checkIfOtemExist[0].quantity * checkIfOtemExist[0].price;
+    }
   }
 
 }

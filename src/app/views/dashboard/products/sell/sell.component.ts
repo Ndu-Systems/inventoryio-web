@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/_models';
-import { ProductService, AccountService, BannerService } from 'src/app/_services';
+import { ProductService, AccountService, BannerService, SaleService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,8 @@ export class SellComponent implements OnInit {
     private productService: ProductService,
     private router: Router,
     private accountService: AccountService,
-    private bannerService: BannerService
+    private bannerService: BannerService,
+    private saleService: SaleService
 
   ) { }
 
@@ -44,6 +45,6 @@ export class SellComponent implements OnInit {
   }
   details(product: Product) {
     this.productService.updateCurrentProduct(product);
-   // this.router.navigate([`/dashboard/product-details`]);
+    this.saleService.doSellLogic({ name: product.Name, price: Number(product.UnitPrice), quantity: 1 });
   }
 }

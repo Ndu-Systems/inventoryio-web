@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { SaleService } from 'src/app/_services';
+import { Observable } from 'rxjs';
+import { SellModel } from 'src/app/_models';
 
 @Component({
   selector: 'app-sale-sammary',
   templateUrl: './sale-sammary.component.html',
-  styleUrls: ['./sale-sammary.component.css']
+  styleUrls: ['./sale-sammary.component.scss']
 })
 export class SaleSammaryComponent implements OnInit {
-
-  constructor() { }
+  sale$: Observable<SellModel>;
+  constructor(private saleService: SaleService) { }
 
   ngOnInit() {
+    this.sale$ = this.saleService.sell;
+    this.saleService.sell.subscribe(state => {
+     // alert(state);
+    })
   }
 
 }
