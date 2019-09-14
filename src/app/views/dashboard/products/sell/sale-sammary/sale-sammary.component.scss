@@ -17,6 +17,7 @@
         height: 2rem;
         padding-top: .3rem;
         font-weight: 700;
+        cursor: pointer;
     }
 
     .name-price {
@@ -45,10 +46,12 @@
 
         .reduce {
           background: #FBAB28;
+          cursor: pointer;
         }
 
         .add {
           background: #69A832;
+          cursor: pointer;
         }
 
         input {

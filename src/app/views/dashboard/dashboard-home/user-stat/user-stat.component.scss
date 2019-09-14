@@ -9,7 +9,7 @@
     .card {
       display: grid;
       grid-template-columns: 30% auto;
-
+      cursor: pointer;
 
       &:nth-child(1){
           border-right: 1px solid #4466BD;
