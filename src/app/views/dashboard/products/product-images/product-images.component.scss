@@ -6,7 +6,7 @@
   }
 
   .images {
-  
+
 
     img {
       width: 100%;
@@ -14,14 +14,35 @@
       border: 1px solid #000;
     }
   }
-  .add{
-      padding: 1rem;
-      a{
-          color: #fff;
-          background: #0337BB;
-          padding: .4rem 1rem;
-          float: right;
 
-      }
+  .add {
+    padding: 1rem;
+
+    a {
+      color: #fff;
+      background: #0337BB;
+      padding: .4rem 1rem;
+      float: right;
+
+    }
   }
 }
+
+
+
+@media only screen and (min-width: 1254px) {
+
+
+  .main {
+    .images {
+      text-align: left;
+      img {
+        width: auto;
+        height: 20vh;
+        // float: left;
+      }
+    }
+
+  }
+}
+
