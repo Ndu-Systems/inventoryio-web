@@ -1,5 +1,52 @@
-.section{
-    .heading{
-        margin-top: 5rem;;
-    }
+.sign-in-background{
+    background-image: url(../../../../../assets/images/sign-in-background.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: top right;
 }
+.section{
+    display: grid;
+    grid-template-columns: 40% 30%;
+    margin-left: 40%;
+padding-bottom: 5rem;
+    padding-top: 15rem;
+    // margin-left: 20rem;
+    // // .heading{
+    //     background: grey;
+    // }
+}
+.form{
+    text-align: right;
+    h1{
+        width: 80%;
+        font-size: 1.5rem;
+        margin: auto;
+        margin-top: 2rem;
+        color: #656D88;
+    }
+    background: #ffffff;
+    width: 100%;
+    margin:auto;
+    margin-top: -3rem;
+    border-radius: 15px;
+    padding: 2rem;
+  
+
+    // background: red;
+   
+}
+.image{
+    
+    text-align: center;
+    float: left;
+    margin: 0%;
+    // background: rgb(52, 250, 33);
+
+    }
+    img{
+        width: 65%;
+        text-align: center;
+        margin-top: 5rem;
+    }
+    
+    
