@@ -1,36 +1,44 @@
 .main {
   .nav-bar {
-    position: fixed;
-    left: 2rem;
-    top: 2rem;
-    width: 10vw;
-    height: 80vh;
-    background: white;
-    border-radius: 0;
-    z-index: 9999;
-    ul{
-      list-style: none;
-      width: 100%;
-      padding: 2rem;
-    }
-
-    li {
-      margin: 2rem 0;
-      a {
-        font-size: 18px;
+   display: none;
+  }
+}
+@media only screen and (min-width: 1254px) {
+  .main {
+    .nav-bar {
+      display: block;
+      position: fixed;
+      left: 2rem;
+      top: 2rem;
+      width: 10vw;
+      height: 80vh;
+      background: white;
+      border-radius: 0;
+      z-index: 9999;
+      ul{
+        list-style: none;
+        width: 100%;
+        padding: 2rem;
       }
 
+      li {
+        margin: 2rem 0;
+        a {
+          font-size: 18px;
+        }
 
-    }
-    .profile {
-      position: absolute;
-      bottom: 2rem;
-      border-top: solid 1px #3742FA;
-      a {
-        color: #2E344C;
-        opacity: 0.5;
+
       }
-    }
+      .profile {
+        position: absolute;
+        bottom: 2rem;
+        border-top: solid 1px #3742FA;
+        a {
+          color: #2E344C;
+          opacity: 0.5;
+        }
+      }
 
+    }
   }
 }
