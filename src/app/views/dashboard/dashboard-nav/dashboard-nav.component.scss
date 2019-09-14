@@ -11,7 +11,7 @@
     display: block;
     position: fixed;
     left: 2rem;
-    bottom: 3px;
+    bottom: 2rem;
     z-index: 9999;
 
 
@@ -32,8 +32,7 @@
 
       li {
         float: left;
-        margin: 0 13px;
-
+        margin: 0 7px;
         a {
           margin-top: 0;
           color: white;
@@ -51,6 +50,200 @@
 
 }
 
+// iphone se     height: 32px;
+@media only screen and (width: 320px) {
+  .main {
+    .nav-bar-mobile {
+
+      left: 1rem;
+      ul {
+        padding-top: 0;
+        padding-left: 0;
+        list-style: none;
+        width: 90vw;
+        height: 12vh;
+        padding: 1rem 0;
+        background: white;
+        li {
+          float: left;
+          margin: 0 7px;
+          a {
+            margin-top: 0;
+            color: white;
+            font-size: 25px;
+            font-weight: 300;
+            text-transform: capitalize;
+
+            img {
+              height: 32px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+@media only screen and (width: 360px) {
+  .main {
+    .nav-bar-mobile {
+      left: 0.5rem;
+      ul {
+        padding-top: 0;
+        padding-left: 0;
+        list-style: none;
+        width: 90vw;
+        height: 10vh;
+        padding: 1rem 0;
+        background: white;
+        li {
+          float: left;
+          margin: 0 8px;
+          a {
+            margin-top: 0;
+            color: white;
+            font-size: 25px;
+            font-weight: 300;
+            text-transform: capitalize;
+
+            img {
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+@media only screen and (width: 375px) {
+  .main {
+    .nav-bar-mobile {
+
+      ul {
+        padding-top: 0;
+        padding-left: 0;
+        list-style: none;
+        width: 90vw;
+        height: 10vh;
+        padding: 1rem 0;
+        background: white;
+        li {
+          float: left;
+          margin: 0 10px;
+          a {
+            margin-top: 0;
+            color: white;
+            font-size: 25px;
+            font-weight: 300;
+            text-transform: capitalize;
+
+            img {
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+@media only screen and (width: 411px) {
+  .main {
+    .nav-bar-mobile {
+      left: 0.8rem;
+      ul {
+        padding-top: 0;
+        padding-left: 0;
+        list-style: none;
+        width: 90vw;
+        height: 10vh;
+        padding: 1rem 0;
+        background: white;
+        li {
+          float: left;
+          margin: 0 12px;
+          a {
+            margin-top: 0;
+            color: white;
+            font-size: 25px;
+            font-weight: 300;
+            text-transform: capitalize;
+
+            img {
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+@media only screen and (width: 414px) {
+  .main {
+    .nav-bar-mobile {
+
+      ul {
+        padding-top: 0;
+        padding-left: 0;
+        list-style: none;
+        width: 90vw;
+        height: 10vh;
+        padding: 1rem 0;
+        background: white;
+        li {
+          float: left;
+          margin: 0 12px;
+          a {
+            margin-top: 0;
+            color: white;
+            font-size: 25px;
+            font-weight: 300;
+            text-transform: capitalize;
+
+            img {
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+@media only screen and (height: 812px) {
+  .main {
+    .nav-bar-mobile {
+      left: 25px;
+      ul {
+        padding-top: 0;
+        padding-left: 0;
+        list-style: none;
+        width: 90vw;
+        height: 7vh;
+        padding: 1rem 0;
+        background: white;
+        li {
+          float: left;
+          margin: 0 10px;
+          a {
+            margin-top: 0;
+            color: white;
+            font-size: 25px;
+            font-weight: 300;
+            text-transform: capitalize;
+
+            img {
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
 @media only screen and (min-width: 1254px) {
   .main {
     .logo {

@@ -11,6 +11,7 @@ import { AccountService } from 'src/app/_services';
 export class DashboardNavComponent implements OnInit {
   models: NavModel[];
   profileModels: NavModel[];
+  profileMobileModels: NavModel[];
   constructor(
     private accountService: AccountService,
     private routeTo: Router
@@ -62,7 +63,15 @@ export class DashboardNavComponent implements OnInit {
       },
       {
         Name: 'sign out',
+        Link: '/'
+      }
+    ];
+
+    this.profileMobileModels = []=[
+      {
+        Name: 'sign out',
         Link: '/',
+        Icon: 'sign-out'
       }
     ];
   }
