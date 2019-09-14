@@ -67,3 +67,65 @@
     }
   }
 }
+
+
+
+@media only screen and (min-width: 1254px) {
+
+  .col-1-of-2 {
+    padding: 2rem 18rem;
+    .heading {
+      h1{
+        margin-top: 7%;
+      }
+      .circe {
+        display: none;
+      }
+    }
+
+  }
+
+.with-counts {
+  grid-template-columns: 10% 50% auto;
+  padding: 2rem 18rem;
+
+  .back {
+    text-align-last: left;
+
+    a {
+      margin-top: 2.5rem;
+      display: block;
+    }
+  }
+
+  .heading {
+    h1 {
+      margin-top: 5%;
+    }
+  }
+
+  .count {
+      .circe{
+        background: #3f51b569;
+        height: 15rem;
+        width: 15rem;
+        border-radius: 100%;
+        // position: absolute;
+        // top: -6rem;
+        // right: -4rem;
+      }
+    h1 {
+      text-align: left;
+      float: right;
+      position: relative;
+      z-index: 1;
+
+      span {
+        display: block;
+        font-size: .8rem;
+        font-weight: 400;
+      }
+    }
+  }
+}
+}
