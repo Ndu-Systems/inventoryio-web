@@ -17,6 +17,8 @@ import { UploadImagesComponent } from './products/upload-images/upload-images.co
 import { ProductImagesComponent } from './products/product-images/product-images.component';
 import { UploadProductImageComponent } from './products/upload-product-image/upload-product-image.component';
 import { SellComponent } from './products/sell/sell.component';
+import { DashboardNavComponent } from './dashboard-nav';
+import { SaleSammaryComponent } from './products/sell/sale-sammary/sale-sammary.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -51,6 +53,8 @@ export const declarations = [
   ProductImagesComponent,
   UploadProductImageComponent,
   SellComponent,
+  DashboardNavComponent,
+  SaleSammaryComponent,
 
   // pipes
   SearchProductPipe

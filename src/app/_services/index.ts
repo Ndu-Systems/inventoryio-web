@@ -8,3 +8,4 @@ export * from './dashboard/brand.service';
 export * from './dashboard/documents.service';
 export * from './dashboard/upload.service';
 export * from './dashboard/banner.service';
+export * from './dashboard/sale.service';
