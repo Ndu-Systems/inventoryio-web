@@ -136,13 +136,13 @@
   background: #104CE5;
   position: absolute;
   right: 0;
-  top: 41rem;
+  top: 40rem;
   width: 45%;
   z-index: 10;
   border-top-left-radius: .8rem;
   border-bottom-left-radius: .8rem;
   color: #fff;
-  height: 5rem;
+  height: 10rem;
   padding-top: 1rem;
 
   h4 {
@@ -156,5 +156,10 @@
       color: #C1C1C1;
       font-size: .8rem;
     }
+  }
+
+  .warn {
+    background: #FBAB28;
+    margin: .5rem 0;
   }
 }
