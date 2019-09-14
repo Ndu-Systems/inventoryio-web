@@ -31,6 +31,9 @@ export class SaleSammaryComponent implements OnInit {
     item.quantity--;
     this.saleService.doSellLogic(item);
   }
+  close(item: Item) {
+    this.saleService.removeItem(item);
+  }
   blur(item: Item) {
     if (item.quantity <= 0) {
       this.saleService.removeItem(item);

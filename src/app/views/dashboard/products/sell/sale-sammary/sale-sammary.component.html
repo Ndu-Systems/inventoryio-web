@@ -1,19 +1,20 @@
 <div class="cards" *ngIf="sale$ | async as sale">
   <span *ngIf=sale.items>
     <div class="card" *ngFor="let item of sale.items">
+      <div class="close" (click)="close(item)">x</div>
       <div class="name-price">
         <p class="name"> {{item.name}}</p>
         <p class="price">{{item.subTotal| currency:'R'}} </p>
       </div>
       <div class="qnty">
         <div class="input">
-          <button (click)="add(item)">+</button>
+          <button class="reduce" (click)="reduce(item)">-</button>
         </div>
         <div class="input">
           <input type="number" min="0" [(ngModel)]="item.quantity" (blur)="blur(item)" placeholder="Filter products">
         </div>
-        <div class="input">
-          <button (click)="reduce(item)">-</button>
+        <div  class="input">
+            <button class="add" (click)="add(item)">+</button>
         </div>
       </div>
     </div>

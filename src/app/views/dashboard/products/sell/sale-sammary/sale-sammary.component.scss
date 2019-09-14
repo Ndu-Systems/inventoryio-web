@@ -1,21 +1,62 @@
 .cards {
   .card {
+
     margin: 1rem 0;
-    display: grid;
-    grid-template-columns: 45% 30% auto;
+    padding-bottom: 0;
     background: #fff;
+    position: relative;
+
+    .close {
+        position: absolute;
+        right: 2px;
+        top: -12px;
+        background: #EF5374;
+        color: #fff;
+        border-radius: 10rem;
+        width: 2rem;
+        height: 2rem;
+        padding-top: .3rem;
+        font-weight: 700;
+    }
 
     .name-price {
+        padding: .5rem;
+        text-align: left;
       .name {
         color: #104CE5;
       }
-      .price{
-          color: #000;
+
+      .price {
+        color: #000;
       }
     }
-    .qnty{
-        display: grid;
-        grid-template-columns: 20% 60% auto;
+
+    .qnty {
+      display: grid;
+      grid-template-columns: 30% 40% 30%;
+
+      .input {
+        button {
+          color: #fff;
+          border: none;
+          padding: .5rem 1rem;
+          width: 100%;
+        }
+
+        .reduce {
+          background: #FBAB28;
+        }
+
+        .add {
+          background: #69A832;
+        }
+
+        input {
+          text-align: center;
+          padding: 0;
+          border: none;
+        }
+      }
     }
   }
 }

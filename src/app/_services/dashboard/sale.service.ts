@@ -18,6 +18,7 @@ export class SaleService {
     return this._sell.value;
   }
   updateState(data: SellModel) {
+    this.calculateTotal();
     this._sell.next(data);
     localStorage.setItem('sell', JSON.stringify(data));
   }
@@ -34,17 +35,30 @@ export class SaleService {
     if (!checkIfOtemExist) {
       item.subTotal = item.price;
       sale.items.push(item);
-      // checkIfOtemExist[0].subTotal =  item.price;
     } else {
       checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
     }
+    this.updateState(sale);
+
   }
   removeItem(item: Item) {
     if (this.currentSellModelValue) {
       const sale = this.currentSellModelValue;
       const itemToRemove = sale.items.indexOf(item);
       sale.items.splice(itemToRemove, 1);
-      this._sell.next(sale);
+      this.updateState(sale);
+    }
+  }
+  calculateTotal() {
+    if (this.currentSellModelValue) {
+      let total = 0;
+      const sale = this.currentSellModelValue;
+      sale.items.forEach(item => {
+        total += item.subTotal;
+      });
+      sale.total = total;
+      this.updateState(sale);
+
     }
   }
 
