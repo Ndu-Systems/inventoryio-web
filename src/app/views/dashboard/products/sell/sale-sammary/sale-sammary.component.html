@@ -10,7 +10,7 @@
           <button (click)="add(item)">+</button>
         </div>
         <div class="input">
-          <input type="text" [(ngModel)]="item.quantity" placeholder="Filter products">
+          <input type="number" min="0" [(ngModel)]="item.quantity" (blur)="blur(item)" placeholder="Filter products">
         </div>
         <div class="input">
           <button (click)="reduce(item)">-</button>
