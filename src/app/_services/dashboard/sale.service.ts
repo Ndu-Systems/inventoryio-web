@@ -18,9 +18,19 @@ export class SaleService {
     return this._sell.value;
   }
   updateState(data: SellModel) {
-    this.calculateTotal();
-    this._sell.next(data);
-    localStorage.setItem('sell', JSON.stringify(data));
+    if (data) {
+      this.calculateTotal();
+      this._sell.next(data);
+      localStorage.setItem('sell', JSON.stringify(data));
+    }
+
+  }
+
+  clearState() {
+    this.updateState({
+      items: [],
+      total: 0
+    });
   }
 
   doSellLogic(item: Item) {
@@ -57,8 +67,6 @@ export class SaleService {
         total += item.subTotal;
       });
       sale.total = total;
-      this.updateState(sale);
-
     }
   }
 
