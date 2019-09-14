@@ -1,0 +1,33 @@
+.main {
+  background: #fff;
+}
+
+@media only screen and (min-width: 1254px) {
+  .main {
+    background:transparent;
+
+    .body {
+      display: grid;
+      padding: 1rem;
+      width: 50vw;
+      margin: 0 auto;
+
+    background: #fff;
+      .card {
+        margin: 1rem;
+
+
+        .main {
+          .images {
+            img {
+              height: 50vh;
+              width: 100vw;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-upload-product-image',
   templateUrl: './upload-product-image.component.html',
-  styleUrls: ['./upload-product-image.component.css']
+  styleUrls: ['./upload-product-image.component.scss']
 })
 export class UploadProductImageComponent implements OnInit {
 

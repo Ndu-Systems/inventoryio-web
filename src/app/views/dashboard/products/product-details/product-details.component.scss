@@ -10,6 +10,7 @@
       display: block;
       padding: 1.5rem;
       margin-top: 2rem;
+      margin-bottom: 4rem;
       border-radius: .5rem;
     }
   }
@@ -30,6 +31,23 @@
 
 
 @media only screen and (min-width: 1254px) {
+  .main {
+    // background: #fff;
+
+    .body {
+      padding: 1rem;
+      padding-top: 0;
+
+      .card {
+        background: #fff;
+        display: block;
+        padding: 0.5rem;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+        border-radius: .5rem;
+      }
+    }
+  }
   .body {
     display: grid;
     grid-template-columns: 50% auto;
@@ -38,6 +56,21 @@
 
     .card {
       margin: 1rem;
+
+      margin-top: 0;
+      .main {
+        .card {
+          margin-top: 0;
+        }
+        .images {
+          img {
+            height: 50vh;
+            width: 100vw;
+          }
+        }
+      }
     }
   }
+
+
 }
