@@ -24,12 +24,31 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'dashboard',
         Link: '/dashboard',
+        Icon: 'dashboard'
 
       },
       {
         Name: 'products',
         Link: '/dashboard/list-product',
+        Icon: 'products'
 
+      },
+      {
+        Name: 'sell',
+        Link: '/dashboard/sell',
+        Icon: 'sell'
+      }
+      ,
+      {
+        Name: 'settings',
+        Link: '/dashboard',
+        Icon: 'settings'
+      }
+      ,
+      {
+        Name: 'profile',
+        Link: '/dashboard',
+        Icon: 'profile'
       }
     ];
   }
@@ -40,14 +59,14 @@ export class DashboardNavComponent implements OnInit {
         Link: '/dashboard',
       },
       {
-        Name: 'logout',
+        Name: 'sign out',
         Link: '/',
       }
     ];
   }
 
   linkEvent(profileItem: NavModel) {
-    if (profileItem.Name === 'logout') {
+    if (profileItem.Link === '/') {
       this.accountService.logout();
     }
   }
