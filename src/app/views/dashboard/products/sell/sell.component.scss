@@ -1,7 +1,7 @@
 .cards {
     max-height: 70vh;
     overflow-y: scroll;
-    width: 80%;
+    width: 55%;
   
     .card {
       display: grid;
@@ -72,7 +72,7 @@
   
       .top-row {
         display: grid;
-        grid-template-columns: 40% auto;
+        grid-template-columns: 100%;
   
         .stock {
           color: #67DF5A;
@@ -115,12 +115,12 @@
   
 
   .sell{
-    background: #0337BB;
+    background: #ecf0f1;
     position: absolute;
     right: 0;
-    top: 16rem;
+    top: 14rem;
     height:30rem;
-    width: 35%;
+    width: 45%;
     z-index: 10;
     border-top-left-radius: .8rem;
     border-bottom-left-radius: .8rem;

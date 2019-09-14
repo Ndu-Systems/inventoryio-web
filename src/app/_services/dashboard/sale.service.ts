@@ -30,12 +30,21 @@ export class SaleService {
         total: 0
       });
     }
-    const checkIfOtemExist = sale.items.filter(x => x.name === item.name);
-    if (!checkIfOtemExist.length) {
+    const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId);
+    if (!checkIfOtemExist) {
+      item.subTotal = item.price;
       sale.items.push(item);
+      // checkIfOtemExist[0].subTotal =  item.price;
     } else {
-      checkIfOtemExist[0].quantity++;
-      checkIfOtemExist[0].sub = checkIfOtemExist[0].quantity * checkIfOtemExist[0].price;
+      checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
+    }
+  }
+  removeItem(item: Item) {
+    if (this.currentSellModelValue) {
+      const sale = this.currentSellModelValue;
+      const itemToRemove = sale.items.indexOf(item);
+      sale.items.splice(itemToRemove, 1);
+      this._sell.next(sale);
     }
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from 'src/app/_models';
+import { Product, SellModel } from 'src/app/_models';
 import { ProductService, AccountService, BannerService, SaleService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class SellComponent implements OnInit {
 
   search: string;
   products$: Observable<Product[]>;
-
+  sale: SellModel;
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -39,12 +39,24 @@ export class SellComponent implements OnInit {
         });
       }
     });
+    this.saleService.sell.subscribe(state => {
+      this.sale = state;
+    });
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
   }
-  details(product: Product) {
+  doSell(product: Product) {
+    if (this.sale) {
+      const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
+      if (item) {
+        item.quantity++;
+        this.saleService.doSellLogic(item);
+        return;
+      }
+    }
+
     this.productService.updateCurrentProduct(product);
-    this.saleService.doSellLogic({ name: product.Name, price: Number(product.UnitPrice), quantity: 1 });
+    this.saleService.doSellLogic({ prodcuId: product.ProductId, name: product.Name, price: Number(product.UnitPrice), quantity: 1 });
   }
 }

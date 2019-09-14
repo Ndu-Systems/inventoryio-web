@@ -1,10 +1,21 @@
 <div class="cards" *ngIf="sale$ | async as sale">
   <span *ngIf=sale.items>
     <div class="card" *ngFor="let item of sale.items">
-      <p>
-        {{item.name}} X {{item.quantity}}
-        <span>  {{item.sub| currency:'R'}} </span>
-      </p>
+      <div class="name-price">
+        <p class="name"> {{item.name}}</p>
+        <p class="price">{{item.subTotal| currency:'R'}} </p>
+      </div>
+      <div class="qnty">
+        <div class="input">
+          <button (click)="add(item)">+</button>
+        </div>
+        <div class="input">
+          <input type="text" [(ngModel)]="item.quantity" placeholder="Filter products">
+        </div>
+        <div class="input">
+          <button (click)="reduce(item)">-</button>
+        </div>
+      </div>
     </div>
   </span>
 </div>
