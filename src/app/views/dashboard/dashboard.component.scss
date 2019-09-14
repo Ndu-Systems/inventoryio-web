@@ -1,50 +1,68 @@
 .main {
-    //   background-image: url(../../../assets/images/bg.svg);
-    //   background-repeat: no-repeat;
-    //   background-size: 100%;
-  
-    // padding: 5rem;
-  
-    @media only screen and (max-width: 600px) {
-      padding: 0;
-    }
-  
-    .container {
-      background: #E7EBEC;
-      margin: 0 auto;
-      text-align: center;
+  //   background-image: url(../../../assets/images/bg.svg);
+  //   background-repeat: no-repeat;
+  //   background-size: 100%;
+
+  // padding: 5rem;
+
+  .container {
+    background: #E7EBEC;
+    margin: 0 auto;
+    text-align: center;
     //   padding: 3rem;
-      width: 90%;
-      position: relative;
-      // height: 48rem;
-  
-      -webkit-box-shadow: 10px 22px 54px -49px rgba(0, 0, 0, 1);
-      -moz-box-shadow: 10px 22px 54px -49px rgba(0, 0, 0, 1);
-      box-shadow: 10px 22px 54px -49px rgba(0, 0, 0, 1);
-      @media only screen and (max-width: 600px) {
-        width: 100%;
-        box-shadow: none;
-      }
+    width: 90%;
+    position: relative;
+    // height: 48rem;
+
+    -webkit-box-shadow: 10px 22px 54px -49px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 10px 22px 54px -49px rgba(0, 0, 0, 1);
+    box-shadow: 10px 22px 54px -49px rgba(0, 0, 0, 1);
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      box-shadow: none;
+    }
+
+  }
+}
+
+
+.message {
+  background: #fff;
+  position: absolute;
+  padding: 3rem;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  .image {}
+
+  .body {}
+}
+
+
+// responsiveness
+
+
+
+@media only screen and (min-width: 1254px) {
+  .main {
+
+
+    .container {
+
+      width:100%;
+      width: 100%;
+      height: 98vh;
+      box-shadow: none;
+
+    }
+    .cards {
+      display: grid;
+    grid-template-columns: 30% 30% auto;
 
     }
   }
-  
 
-
-
-
-.message{
-    background: #fff;
-    position: absolute;
-    padding: 3rem;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    .image{
-  
-    }
-    .body{
-      
-    }
-  }
+}
