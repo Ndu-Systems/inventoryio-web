@@ -13,8 +13,8 @@
     </div>
     <div class="cards" *ngIf="products$  | async as products">
       <span *ngFor="let item of products | searchproduct: search">
-     <div class="card-betta" (click)="doSell(item)">
-          <span class="status" ></span>
+        <div class="card-betta" (click)="doSell(item)">
+          <span class="status"></span>
           <div class="top-row">
             <p class="stock">In Stock- {{item.Quantity}}</p>
             <p>
@@ -29,20 +29,20 @@
           </div>
           <div class="grid">
             <div class="image">
-              <img [src]="item.Url" alt=""  *ngIf="item.Url">
-              <img src="assets/placeholders/picture.svg"  class="placeholder" *ngIf="!item.Url" alt="">
+              <img [src]="item.Url" alt="" *ngIf="item.Url">
+              <img src="assets/placeholders/picture.svg" class="placeholder" *ngIf="!item.Url" alt="">
             </div>
             <div class="details">
-              <p *ngIf="item.Brand"> 
+              <p *ngIf="item.Brand">
                 <span>Brand</span> {{item.Brand}}
               </p>
-              <p  *ngIf="item.Catergory">
+              <p *ngIf="item.Catergory">
                 <span>Catergory</span> {{item.Catergory}}
               </p>
-              <p  *ngIf="item.UnitCost">
+              <p *ngIf="item.UnitCost">
                 <span>Cost</span> {{item.UnitCost | currency:'R'}}
               </p>
-              <p >
+              <p>
                 <span>Margin</span> 22%
               </p>
             </div>
@@ -55,5 +55,13 @@
 
 </div>
 <div class="sell">
- <app-sale-sammary></app-sale-sammary>
+  <app-sale-sammary></app-sale-sammary>
+</div>
+
+<div class="sell total">
+  <h4>
+    {{sale.total | currency:'R'}}
+<span>Total</span>
+  </h4>
+  <button class="btn">Save qoute</button>
 </div>
