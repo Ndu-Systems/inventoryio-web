@@ -1,54 +1,49 @@
-<div class="section">
-  <div class="logo">
-    <img src="assets/images/logo.svg" alt="">
-  </div>
+<div class="sign-in-background">
+  <div class="section">
+    <!-- <div class="heading">
+      <h1>
+        Log In
+      </h1>
+    </div> -->
+    <div class="form">
+      <h1>Sign In To Your Account</h1>
+      <form [formGroup]="rForm" (ngSubmit)="Login()">
 
-  <div class="heading">
-    <h1>
-      Log In
-    </h1>
-  </div>
-
-  <div class="form">
-    <form [formGroup]="rForm" (ngSubmit)="Login()">
-
-      <div class="group">
-        <input type="text"  formControlName="Email"    required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Email</label>
-        <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
-          Email is requried
+        <div class="group">
+          <input type="text" formControlName="Email" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Email</label>
+          <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
+            Email is requried
+          </div>
         </div>
-      </div>
-
-
-      <div class="group">
-        <input type="password"  formControlName="Password"   required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Password</label>
-        <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
-          Password is requried
+        <div class="group">
+          <input type="password" formControlName="Password" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Password</label>
+          <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+            Password is requried
+          </div>
         </div>
-      </div>
-      <div class="reset-pass">
+        <div class="reset-pass">
           <a routerLink="/forgot-password">Forgot password</a>
         </div>
+        <div class="group">
+          <input type="submit" value="sign in" class="btn" [disabled]="!rForm.valid" />
+        </div>
+      </form>
+      <div class="actions">
 
-      <div class="group">
-        <input type="submit" value="sign in" class="btn" [disabled]="!rForm.valid" />
+        <div class="sign-up">
+          Don't have an account? <a routerLink="/sign-up">Sign up</a>
+        </div>
       </div>
+    </div>
 
-    </form>
-
-  </div>
-
-  <div class="actions">
-   
-    <div class="sign-up">
-      Don't have an account? <a routerLink="/sign-up">Sign up</a>
+    <div class="image">
+      <img src="../../../../../assets/images/sign-in-img.svg" alt="">
     </div>
   </div>
-
 </div>
