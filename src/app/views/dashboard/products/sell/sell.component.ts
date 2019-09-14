@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from 'src/app/_models';
-import { ProductService, AccountService, BannerService } from 'src/app/_services';
+import { Product, SellModel } from 'src/app/_models';
+import { ProductService, AccountService, BannerService, SaleService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,12 +13,13 @@ export class SellComponent implements OnInit {
 
   search: string;
   products$: Observable<Product[]>;
-
+  sale: SellModel;
   constructor(
     private productService: ProductService,
     private router: Router,
     private accountService: AccountService,
-    private bannerService: BannerService
+    private bannerService: BannerService,
+    private saleService: SaleService
 
   ) { }
 
@@ -38,12 +39,26 @@ export class SellComponent implements OnInit {
         });
       }
     });
+    this.saleService.sell.subscribe(state => {
+      this.sale = state;
+    });
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
   }
-  details(product: Product) {
+  doSell(product: Product) {
+    if (this.sale) {
+      const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
+      if (item) {
+        item.quantity++;
+        this.saleService.doSellLogic(item);
+        return;
+      }
+    }
+
     this.productService.updateCurrentProduct(product);
-   // this.router.navigate([`/dashboard/product-details`]);
+    this.saleService.doSellLogic({ prodcuId: product.ProductId, name: product.Name, price: Number(product.UnitPrice), quantity: 1 });
   }
+
+
 }
