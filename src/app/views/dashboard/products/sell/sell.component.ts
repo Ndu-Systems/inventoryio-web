@@ -59,6 +59,8 @@ export class SellComponent implements OnInit {
     this.productService.updateCurrentProduct(product);
     this.saleService.doSellLogic({ prodcuId: product.ProductId, name: product.Name, price: Number(product.UnitPrice), quantity: 1 });
   }
-
+  clear() {
+    this.saleService.clearState();
+  }
 
 }

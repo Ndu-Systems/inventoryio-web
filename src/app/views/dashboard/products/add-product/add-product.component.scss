@@ -1,5 +1,6 @@
 .main {
   background: #fff;
+
   .body {
     padding: 1rem;
     padding-top: 0;
@@ -25,5 +26,26 @@
   a {
     color: #fff;
     text-decoration: none;
+    display: block;
+  }
+}
+
+
+
+@media only screen and (min-width: 1254px) {
+  .main {
+    background: transparent;
+  }
+
+  .body {
+    display: grid;
+    width: 30vw;
+
+    margin: 0 auto;
+    background: #fff;
+
+    .card {
+      margin: 1rem;
+    }
   }
 }

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AccountService {
-  
+
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -62,6 +62,7 @@ export class AccountService {
 
   logout() {
     // remove user from local storage to log user out
+
     localStorage.clear();
     this.currentUserSubject.next(null);
   }

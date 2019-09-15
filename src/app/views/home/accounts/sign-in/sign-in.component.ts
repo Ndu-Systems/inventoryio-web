@@ -31,6 +31,7 @@ export class SignInComponent implements OnInit {
       ),
       Password: ['1111', Validators.required]
     });
+
   }
 
   get getFormValues() {
@@ -39,7 +40,7 @@ export class SignInComponent implements OnInit {
   Login() {
     const email = this.getFormValues.Email.value;
     const password = this.getFormValues.Password.value;
-   this.accountService.login({email, password});
+    this.accountService.login({email, password});
 
   }
 

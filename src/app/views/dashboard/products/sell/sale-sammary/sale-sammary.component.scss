@@ -17,10 +17,11 @@
         height: 2rem;
         padding-top: .3rem;
         font-weight: 700;
+        cursor: pointer;
     }
 
     .name-price {
-        padding: .5rem;
+        padding: 0 .5rem;
         text-align: left;
       .name {
         color: #104CE5;
@@ -45,10 +46,12 @@
 
         .reduce {
           background: #FBAB28;
+          cursor: pointer;
         }
 
         .add {
           background: #69A832;
+          cursor: pointer;
         }
 
         input {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NavModel } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
@@ -10,8 +11,10 @@ import { AccountService } from 'src/app/_services';
 export class DashboardNavComponent implements OnInit {
   models: NavModel[];
   profileModels: NavModel[];
+  profileMobileModels: NavModel[];
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private routeTo: Router
   ) { }
 
   ngOnInit() {
@@ -24,12 +27,31 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'dashboard',
         Link: '/dashboard',
+        Icon: 'dashboard'
 
       },
       {
         Name: 'products',
         Link: '/dashboard/list-product',
+        Icon: 'products'
 
+      },
+      {
+        Name: 'sell',
+        Link: '/dashboard/sell',
+        Icon: 'sell'
+      }
+      ,
+      {
+        Name: 'settings',
+        Link: '/dashboard',
+        Icon: 'settings'
+      }
+      ,
+      {
+        Name: 'profile',
+        Link: '/dashboard',
+        Icon: 'profile'
       }
     ];
   }
@@ -40,16 +62,28 @@ export class DashboardNavComponent implements OnInit {
         Link: '/dashboard',
       },
       {
-        Name: 'logout',
+        Name: 'sign out',
+        Link: '/'
+      }
+    ];
+
+    this.profileMobileModels = []=[
+      {
+        Name: 'sign out',
         Link: '/',
+        Icon: 'sign-out'
       }
     ];
   }
 
   linkEvent(profileItem: NavModel) {
-    if (profileItem.Name === 'logout') {
+    if (profileItem.Link === '/') {
       this.accountService.logout();
     }
+  }
+
+  navigateHome() {
+    this.routeTo.navigate(['/dashboard']);
   }
 
 }
