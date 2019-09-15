@@ -1,5 +1,8 @@
 <div class="sign-in-background">
   <div class="section">
+    <div class="mobile-fingerprint-img">
+      <img src="../../../../../assets/images/figerprint.svg" alt="">
+    </div>
     <!-- <div class="heading">
       <h1>
         Log In
@@ -8,11 +11,10 @@
     <div class="form">
       <h1>Sign In To Your Account</h1>
       <form [formGroup]="rForm" (ngSubmit)="Login()">
-
         <div class="group">
           <input type="text" formControlName="Email" required="required" />
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <!-- <span class="highlight">test</span> -->
+          <!-- <span class="bar"></span> -->
           <label>Email</label>
           <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
             Email is requried
@@ -20,8 +22,8 @@
         </div>
         <div class="group">
           <input type="password" formControlName="Password" required="required" />
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <!-- <span class="highlight"></span>
+          <span class="bar"></span> -->
           <label>Password</label>
           <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
             Password is requried
@@ -35,13 +37,11 @@
         </div>
       </form>
       <div class="actions">
-
         <div class="sign-up">
-          Don't have an account? <a routerLink="/sign-up">Sign up</a>
+         Not A Member? <a routerLink="/sign-up">Sign Up For Free</a>
         </div>
       </div>
     </div>
-
     <div class="image">
       <img src="../../../../../assets/images/sign-in-img.svg" alt="">
     </div>
