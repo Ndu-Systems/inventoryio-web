@@ -1,83 +1,83 @@
-<div class="section">
-  <div class="logo">
+<div class="sign-up-background">
+  <div class="section">
+    <!-- <div class="logo">
     <img src="assets/images/logo.svg" alt="">
-  </div>
-
-  <div class="heading">
+  </div> -->
+    <!-- <div class="heading">
     <h1>
       Sign Up
     </h1>
+  </div> -->
+  <div class="mobile-image">
+    <img src="../../../../../assets/images/sign-mobile-img.svg" alt="">
   </div>
-
-  <div class="form">
-    <div class="wrapper">
-      <form [formGroup]="rForm" (ngSubmit)="signUp()">
-
-        <div class="group">
-          <input type="text"  formControlName="fullname"  required="required"/>
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Full Name</label>
-        </div>
-        <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
+    <div class="form">
+      <div class="wrapper">
+        <form [formGroup]="rForm" (ngSubmit)="signUp()">
+          <h1>Sign Up For Your Free Account</h1>
+          <div class="group">
+            <input type="text" formControlName="fullname" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Full Name</label>
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
             Full Name is requried
           </div>
+          <div class="group">
+            <input type="text" formControlName="cell" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Cell Phone Number</label>
 
-
-        <div class="group">
-          <input type="text" formControlName="cell" required="required" />
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Cell Phone Number</label>
-         
-        </div>
-        <div class="alert" *ngIf="!rForm.controls['cell'].valid  && rForm.controls['cell'].touched">
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['cell'].valid  && rForm.controls['cell'].touched">
             Cell Phone Number is requried
           </div>
 
-        <div class="group">
-          <input type="text" formControlName="email" required="required" />
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Email Address</label>
-          <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
-            A vailid email is requried
+          <div class="group">
+            <input type="text" formControlName="email" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email Address</label>
+            <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
+              A vailid email is requried
+            </div>
           </div>
-        </div>
 
-        <div class="group">
-          <input type="password"  formControlName="password"  required="required" autocomplete="new-password"/>
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Password</label>
-          <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
-            Password is requried
+          <div class="group">
+            <input type="password" formControlName="password" required="required" autocomplete="new-password" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Password</label>
+            <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
+              Password is requried
+            </div>
           </div>
-        </div>
 
-        <div class="group">
-          <input type="password" formControlName="passwordConfirm" required="required" />
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Confirm Password</label>
-          <div class="alert" *ngIf="!rForm.controls['passwordConfirm'].valid  && rForm.controls['passwordConfirm'].touched">
-            Confirm Password is requried
+          <div class="group">
+            <input type="password" formControlName="passwordConfirm" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Confirm Password</label>
+            <div class="alert"
+              *ngIf="!rForm.controls['passwordConfirm'].valid  && rForm.controls['passwordConfirm'].touched">
+              Confirm Password is requried
+            </div>
           </div>
-        </div>
-
-        <div class="group">
-          <input type="submit" value="sign up" class="btn" [disabled]="!rForm.valid" />
-        </div>
-     
-      </form>
+          <div class="group">
+            <input type="submit" value="Sign Up For Free" class="btn" [disabled]="!rForm.valid" />
+          </div>
+          <div class="actions">
+            <div class="sign-up">
+                Already A Member?<a routerLink="/sign-in">Sign In To Your Account</a>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+    <div class="image">
+        <img src="../../../../../assets/images/sign-up-img.svg" alt="">
+      </div>
   </div>
-
-  <div class="actions">
-
-    <div class="sign-up">
-      Already have an account? <a routerLink="/sign-in">Sign In</a>
-    </div>
-  </div>
-
 </div>
