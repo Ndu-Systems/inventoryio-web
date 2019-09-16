@@ -18,22 +18,26 @@ export class UserStatComponent implements OnInit {
       this.stat.push({
         name: 'Users',
         value: '1',
-        image: 'assets/images/stat-users.svg'
+        image: 'assets/images/stat-users.svg',
+        link: 'dashboard/list-users'
       });
       this.stat.push({
         name: 'Stores',
         value: '1',
-        image: 'assets/images/stat-store.svg'
+        image: 'assets/images/stat-store.svg',
+        link: 'dashboard/list-stores'
       });
       this.stat.push({
         name: 'Orders',
         value: '1',
-        image: 'assets/images/state-orders.svg'
+        image: 'assets/images/state-orders.svg',
+        link: 'dashboard/list-orders'
       });
       this.stat.push({
-        name: 'Stock in hand',
+        name: 'Products',
         value: '1',
-        image: 'assets/images/stat-stock-and-hand.svg'
+        image: 'assets/images/stat-stock-and-hand.svg',
+        link: 'dashboard/list-products'
       });
     }
   }

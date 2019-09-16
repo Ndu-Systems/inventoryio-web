@@ -61,8 +61,6 @@ export class AccountService {
   }
 
   logout() {
-    // remove user from local storage to log user out
-    debugger
     localStorage.clear();
     this.currentUserSubject.next(null);
   }
