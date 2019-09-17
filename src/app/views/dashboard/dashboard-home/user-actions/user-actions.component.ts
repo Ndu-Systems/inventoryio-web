@@ -21,11 +21,11 @@ export class UserActionsComponent implements OnInit {
         image: 'assets/images/actions/sell.svg',
         link: 'dashboard/sell'
       },
-        {
-          name: 'Purchase order',
-          image: 'assets/images/actions/puchaseorder.svg',
-          link: ''
-        },
+        // {
+        //   name: 'Purchase order',
+        //   image: 'assets/images/actions/puchaseorder.svg',
+        //   link: ''
+        // },
         {
           name: 'Add Products',
           image: 'assets/images/actions/addproduct.svg',
@@ -36,16 +36,16 @@ export class UserActionsComponent implements OnInit {
           image: 'assets/images/actions/listproducts.svg',
           link: 'dashboard/list-product'
         },
-        {
-          name: 'Attributes',
-          image: 'assets/images/actions/attributes.svg',
-          link: ''
-        },
-        {
-          name: 'Reports',
-          image: 'assets/images/actions/reports.svg',
-          link: 'dashboard/add-company'
-        }
+        // {
+        //   name: 'Attributes',
+        //   image: 'assets/images/actions/attributes.svg',
+        //   link: ''
+        // },
+        // {
+        //   name: 'Reports',
+        //   image: 'assets/images/actions/reports.svg',
+        //   link: 'dashboard/add-company'
+        // }
       );
     }
   }

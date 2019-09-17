@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, SellModel } from 'src/app/_models';
-import { ProductService, AccountService, BannerService, SaleService } from 'src/app/_services';
+import { Product, SellModel, Orders, User } from 'src/app/_models';
+import { ProductService, AccountService, BannerService, SaleService, OrdersService } from 'src/app/_services';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-sell',
@@ -14,20 +15,23 @@ export class SellComponent implements OnInit {
   search: string;
   products$: Observable<Product[]>;
   sale: SellModel;
+  user: User;
   constructor(
     private productService: ProductService,
     private router: Router,
     private accountService: AccountService,
     private bannerService: BannerService,
-    private saleService: SaleService
+    private saleService: SaleService,
+    private messageService: MessageService,
+    private ordersService: OrdersService
 
   ) { }
 
   ngOnInit() {
-    const user = this.accountService.currentUserValue;
-    if (!user.CompanyId) { this.router.navigate(['sign-in']); }
+    this.user = this.accountService.currentUserValue;
+    if (!this.user.CompanyId) { this.router.navigate(['sign-in']); }
     this.products$ = this.productService.products;
-    this.productService.getProducts(user.CompanyId);
+    this.productService.getProducts(this.user.CompanyId);
 
     this.productService.products.subscribe(state => {
       if (state) {
@@ -62,5 +66,39 @@ export class SellComponent implements OnInit {
   clear() {
     this.saleService.clearState();
   }
+  onSubmit() {
+    if (!this.sale.total) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Empty cart',
+        detail: 'Add items in the cart to continue'
+      });
+      return false;
+    }
+    this.ordersService.updateOrderState(null);
+    const order: Orders = {
+      CompanyId: this.user.CompanyId,
+      ParntersId: '',
+      OrderType: 'Sell',
+      Total: this.sale.total,
+      CreateUserId: this.user.UserId,
+      ModifyUserId: this.user.UserId,
+      StatusId: 1
+    };
+    console.log(order);
+    console.log('items', this.sale.items);
+
+    this.ordersService.addOrder(order, this.sale.items);
+    // this.addOrdersProduct();
+
+  }
+  // addOrdersProduct() {
+  //   this.ordersService.order.subscribe(state => {
+  //     if (state) {
+  //       alert(state.OrdersId);
+  //       this.ordersService.updateOrderState(null);
+  //     }
+  //   });
+  // }
 
 }

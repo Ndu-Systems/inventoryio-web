@@ -9,3 +9,4 @@ export * from './dashboard/documents.service';
 export * from './dashboard/upload.service';
 export * from './dashboard/banner.service';
 export * from './dashboard/sale.service';
+export * from './dashboard/orders.service';

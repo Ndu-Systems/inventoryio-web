@@ -1,5 +1,5 @@
 .cards {
-  max-height: 70vh;
+  max-height: 66vh;
   overflow-y: scroll;
 
   .card {
@@ -51,7 +51,7 @@
     background: #fff;
     border-radius: 0;
     // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
+    cursor: pointer;
     p {
       text-align: left;
       margin: .3rem 0;
@@ -109,13 +109,14 @@
 
   .action-btn {
     text-align: right;
+
   }
 }
 
 @media only screen and (min-width: 1254px) {
 
   .cards {
-    max-height: 78vh;
+    height: 70vh;
     max-width: 67vw;
     margin: 0 auto;
     overflow-y: scroll;
@@ -184,5 +185,10 @@
     padding: 1rem;
     z-index: 10;
     width: 70vw;
+    .add {
+      button {
+        cursor: pointer;
+      }
+    }
   }
 }

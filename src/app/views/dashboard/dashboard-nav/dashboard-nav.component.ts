@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NavModel } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
@@ -10,8 +11,10 @@ import { AccountService } from 'src/app/_services';
 export class DashboardNavComponent implements OnInit {
   models: NavModel[];
   profileModels: NavModel[];
+  profileMobileModels: NavModel[];
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private routeTo: Router
   ) { }
 
   ngOnInit() {
@@ -60,7 +63,15 @@ export class DashboardNavComponent implements OnInit {
       },
       {
         Name: 'sign out',
+        Link: '/'
+      }
+    ];
+
+    this.profileMobileModels = []=[
+      {
+        Name: 'sign out',
         Link: '/',
+        Icon: 'sign-out'
       }
     ];
   }
@@ -69,6 +80,10 @@ export class DashboardNavComponent implements OnInit {
     if (profileItem.Link === '/') {
       this.accountService.logout();
     }
+  }
+
+  navigateHome() {
+    this.routeTo.navigate(['/dashboard']);
   }
 
 }

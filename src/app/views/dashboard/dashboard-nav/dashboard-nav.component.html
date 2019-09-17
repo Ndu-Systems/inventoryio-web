@@ -1,16 +1,26 @@
 <div class="main">
+  <div class="logo" (click)="navigateHome()">
+    <img src="assets/images/white-icon.png" alt="logo">
+  </div>
   <div class="nav-bar">
+
     <ul>
       <li *ngFor="let item of models"><a [routerLink]="item.Link">{{item.Name}}</a></li>
     </ul>
     <ul class="profile">
-      <li *ngFor="let profileItem of profileModels"><a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)">{{profileItem.Name}}</a></li>
+      <li *ngFor="let profileItem of profileModels"><a [routerLink]="profileItem.Link"
+          (click)="linkEvent(profileItem)">{{profileItem.Name}}</a></li>
     </ul>
   </div>
   <div class="nav-bar-mobile">
     <ul>
-      <li *ngFor="let item of models"><a [routerLink]="item.Link"><img
-            src="../../../assets/images/navigation/{{item.Icon}}.svg" alt=""></a></li>
+      <li *ngFor="let item of models"><a [routerLink]="item.Link"><img src="assets/images/navigation/{{item.Icon}}.svg"
+            alt=""></a></li>
+      <li *ngFor="let profileItem of profileMobileModels">
+        <a [routerLink]="profileItem.Link">
+          <img src="assets/images/navigation/{{profileItem.Icon}}.svg" alt="">
+        </a></li>
     </ul>
+
   </div>
 </div>

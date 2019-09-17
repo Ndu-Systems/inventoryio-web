@@ -5,7 +5,7 @@
 
     <div class="page-actions">
       <div class="search">
-        <input type="text" [(ngModel)]="search" placeholder="Filter products">
+        <input type="text" [(ngModel)]="search" placeholder="search products">
       </div>
       <div class="add">
         <button (click)="add()">Add Prod.</button>
@@ -63,6 +63,6 @@
     {{sale?.total | currency:'R'}}
 <span>Total</span>
   </h4>
-  <button class="btn">Save qoute</button>
+  <button class="btn" (click)="onSubmit()">Save qoute</button>
   <button class="btn warn" (click)="clear()">Clear form</button>
 </div>
