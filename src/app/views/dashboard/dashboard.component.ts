@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit {
       return;
     }
     this.preloadData();
+    this.checkIfUserHaveAcompany();
   }
   preloadData() {
     if (this.user.CompanyId) {
@@ -53,5 +54,20 @@ export class DashboardComponent implements OnInit {
   }
   clearMessages() {
     this.messageService.clear();
+  }
+  checkIfUserHaveAcompany() {
+    if (!this.user.CompanyId) {
+      this.messageService.setMessage({
+        heading: [`Hey John`, `Welcome to inventory-io!`],
+        body: [`Your simplified  inventory
+                  management with real-time
+                  updates, please complete your profile to get started.`],
+        canShow: true,
+        class: 'success',
+        img: 'assets/images/undraw_Hello_qnas.png',
+        link: '/dashboard/add-company',
+        linkname: 'Complete my profile',
+      });
+    }
   }
 }
