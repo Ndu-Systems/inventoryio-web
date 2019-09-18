@@ -24,7 +24,7 @@ export class ListOrdersComponent implements OnInit {
 
   ngOnInit() {
     const user = this.accountService.currentUserValue;
-    if (!user.CompanyId) { this.router.navigate(['sign-in']); }
+    if (!user.UserId) { this.router.navigate(['sign-in']); }
     this.orders$ = this.ordersService.orders;
 
     this.bannerService.updateState({

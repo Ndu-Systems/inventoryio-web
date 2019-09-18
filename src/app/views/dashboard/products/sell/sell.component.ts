@@ -29,7 +29,7 @@ export class SellComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    if (!this.user.CompanyId) { this.router.navigate(['sign-in']); }
+    if (!this.user.UserId) { this.router.navigate(['sign-in']); }
     this.products$ = this.productService.products;
     this.productService.getProducts(this.user.CompanyId);
 

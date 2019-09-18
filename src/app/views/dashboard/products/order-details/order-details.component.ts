@@ -25,7 +25,7 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit() {
     const user = this.accountService.currentUserValue;
-    if (!user.CompanyId) { this.router.navigate(['sign-in']); }
+    if (!user.UserId) { this.router.navigate(['sign-in']); }
     this.order$ = this.ordersService.order;
     this.products$ = this.ordersService.orderProducts;
 

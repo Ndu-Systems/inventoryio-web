@@ -29,12 +29,12 @@ export class AccountService {
 
   updateUserState(user: User) {
     this._user.next(user);
-    localStorage.clear();
     localStorage.setItem('user', JSON.stringify(user));
   }
   addUser(data: User) {
     return this.http.post<any>(`${this.url}/api/user/add-user.php`, data).subscribe(resp => {
       const user: User = resp;
+      localStorage.clear();
       this.updateUserState(user);
       user.CompanyId = 'n/a';
       this.router.navigate(['dashboard']);
@@ -46,7 +46,7 @@ export class AccountService {
   updateUser(user: User) {
     return this.http.post<any>(`${this.url}/api/user/update-user.php`, user).subscribe(resp => {
       const user: User = resp;
-      this.updateUser(user);
+      this.updateUserState(user);
     }, error => {
       alert(JSON.stringify(error));
     });
@@ -55,7 +55,8 @@ export class AccountService {
   login(credentials: { email: any; password: any; }) {
     return this.http.post<any>(`${this.url}/api/user/login.php`, credentials).subscribe(resp => {
       const user: User = resp;
-      this.updateUser(user);
+      localStorage.clear();
+      this.updateUserState(user);
       this.router.navigate(['dashboard']);
 
     }, error => {
@@ -64,8 +65,6 @@ export class AccountService {
   }
 
   logout() {
-    // remove user from local storage to log user out
-
     localStorage.clear();
     this.updateUserState(null);
   }

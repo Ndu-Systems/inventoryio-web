@@ -47,7 +47,9 @@ export class DashboardComponent implements OnInit {
     this.preloadData();
   }
   preloadData() {
-    this.productService.getProducts(this.user.CompanyId);
+    if (this.user.CompanyId) {
+      this.productService.getProducts(this.user.CompanyId);
+    }
   }
   clearMessages() {
     this.messageService.clear();
