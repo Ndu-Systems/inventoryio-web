@@ -89,16 +89,6 @@ export class SellComponent implements OnInit {
     console.log('items', this.sale.items);
 
     this.ordersService.addOrder(order, this.sale.items);
-    // this.addOrdersProduct();
-
+    this.router.navigate(['/dashboard/list-orders']);
   }
-  // addOrdersProduct() {
-  //   this.ordersService.order.subscribe(state => {
-  //     if (state) {
-  //       alert(state.OrdersId);
-  //       this.ordersService.updateOrderState(null);
-  //     }
-  //   });
-  // }
-
 }

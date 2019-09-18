@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserStat, User } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-stat',
@@ -10,7 +11,7 @@ import { AccountService } from 'src/app/_services';
 export class UserStatComponent implements OnInit {
   stat: UserStat[] = [];
   user: User;
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
@@ -41,5 +42,8 @@ export class UserStatComponent implements OnInit {
       });
     }
   }
-
+  goto(link) {
+    if (!link) { return false; }
+    this.router.navigate([link]);
+  }
 }

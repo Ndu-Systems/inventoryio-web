@@ -28,6 +28,7 @@ import { AddStoreComponent } from './company/add-store/add-store.component';
 import { SalesReportComponent } from './products/sales-report/sales-report.component';
 import { ListOrdersComponent } from './products/list-orders/list-orders.component';
 import { BrandComponent } from './brand';
+import { OrderDetailsComponent } from './products/order-details/order-details.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -48,6 +49,7 @@ const routes: Routes = [
       { path: 'sell', component: SellComponent },
       { path: 'sales-report', component: SalesReportComponent },
       { path: 'list-orders', component: ListOrdersComponent },
+      { path: 'order-details', component: OrderDetailsComponent },
     ]
   },
 ];
@@ -79,6 +81,7 @@ export const declarations = [
   ListStoresComponent,
   SalesReportComponent,
   ListOrdersComponent,
+  OrderDetailsComponent,
   BrandComponent,
 
   // pipes

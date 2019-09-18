@@ -13,6 +13,8 @@ export class OrdersService {
   public orders: Observable<Orders[]>;
   private _order: BehaviorSubject<Orders>;
   public order: Observable<Orders>;
+  private _orderProducts: BehaviorSubject<OrderProducts[]>;
+  public orderProducts: Observable<OrderProducts[]>;
   url: string;
   constructor(
     private http: HttpClient
@@ -21,6 +23,8 @@ export class OrdersService {
     this.orders = this._orders.asObservable();
     this._order = new BehaviorSubject<Orders>(JSON.parse(localStorage.getItem('order')));
     this.order = this._order.asObservable();
+    this._orderProducts = new BehaviorSubject<OrderProducts[]>(JSON.parse(localStorage.getItem('order_products')) || []);
+    this.orderProducts = this._orderProducts.asObservable();
     this.url = environment.API_URL;
   }
 
@@ -37,6 +41,11 @@ export class OrdersService {
     this._order.next(order);
     localStorage.setItem('order', JSON.stringify(order));
   }
+  updateOrderProductsState(products: OrderProducts[]) {
+    this._orderProducts.next(products);
+    localStorage.setItem('order_products', JSON.stringify(products));
+  }
+
   addOrder(data: Orders, items: Item[]) {
     return this.http.post<any>(`${this.url}/api/orders/add-orders.php`, data).subscribe(resp => {
       const order: Orders = resp;
@@ -55,6 +64,7 @@ export class OrdersService {
       const productItem: OrderProducts = {
         OrderId: orderId,
         ProductId: item.prodcuId,
+        ProductName: item.name,
         Quantity: item.quantity,
         subTotal: item.subTotal,
         CreateUserId: userId,
@@ -65,9 +75,7 @@ export class OrdersService {
     });
     const data = { products: productItems };
     return this.http.post<any>(`${this.url}/api/order_products/add-order_product-range.php`, data).subscribe(resp => {
-      alert(JSON.stringify(resp));
-      // this.apendState(order);
-      // this.updateOrderState(order);
+      this.getProductsForAnOrder(orderId);
     }, error => {
       alert(JSON.stringify(error));
     });
@@ -78,6 +86,14 @@ export class OrdersService {
       const orders: Orders[] = resp;
       localStorage.setItem('orders', JSON.stringify(orders));
       this._orders.next(orders);
+    }, error => {
+      alert(JSON.stringify(error));
+    });
+  }
+  getProductsForAnOrder(orderId: string) {
+    return this.http.get<any>(`${this.url}/api/order_products/get-order_products.php?OrderId=${orderId}`).subscribe(resp => {
+      const products: OrderProducts[] = resp;
+      this.updateOrderProductsState(products);
     }, error => {
       alert(JSON.stringify(error));
     });

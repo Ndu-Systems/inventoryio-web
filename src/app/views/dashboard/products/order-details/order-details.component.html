@@ -10,8 +10,8 @@
           <button (click)="add()">Add order</button>
         </div>
       </div>
-      <div class="cards" *ngIf="orders$  | async as orders">
-        <span   *ngFor="let item of orders | searchproduct: search">
+      <div class="cards" *ngIf="products$  | async as products">
+        <span   *ngFor="let item of products | searchproduct: search">
        <div class="card-betta" (click)="details(item)">
             <span class="status" ></span>
     
@@ -19,7 +19,7 @@
             
               <div class="details">
                 <p>
-                  <span>Type</span> {{item.OrderType}}
+                  <span>Product</span> {{item.ProductName}}
                 </p>
                 <p>
                   <span>Total</span> {{item.Total}}

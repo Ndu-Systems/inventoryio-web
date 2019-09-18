@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderProducts, Product, Orders } from 'src/app/_models';
-import { OrdersService, AccountService, BannerService } from 'src/app/_services';
 import { Observable } from 'rxjs';
+import { Orders, OrderProducts } from 'src/app/_models';
+import { OrdersService, AccountService, BannerService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-list-orders',
-  templateUrl: './list-orders.component.html',
-  styleUrls: ['./list-orders.component.scss']
+  selector: 'app-order-details',
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.scss']
 })
-export class ListOrdersComponent implements OnInit {
+export class OrderDetailsComponent implements OnInit {
 
   search: string;
-  orders$: Observable<Orders[]>;
+  order$: Observable<Orders>;
+  products$: Observable<OrderProducts[]>;
 
   constructor(
     private ordersService: OrdersService,
@@ -25,11 +26,12 @@ export class ListOrdersComponent implements OnInit {
   ngOnInit() {
     const user = this.accountService.currentUserValue;
     if (!user.CompanyId) { this.router.navigate(['sign-in']); }
-    this.orders$ = this.ordersService.orders;
+    this.order$ = this.ordersService.order;
+    this.products$ = this.ordersService.orderProducts;
 
     this.bannerService.updateState({
-      heading: 'Orders',
-      backto: '/dashboard',
+      heading: 'Order details',
+      backto: '/dashboard/list-orders',
     });
     this.ordersService.getOrders(user.CompanyId);
   }
