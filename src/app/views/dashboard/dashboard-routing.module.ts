@@ -29,6 +29,7 @@ import { SalesReportComponent } from './products/sales-report/sales-report.compo
 import { ListOrdersComponent } from './products/list-orders/list-orders.component';
 import { BrandComponent } from './brand';
 import { OrderDetailsComponent } from './products/order-details/order-details.component';
+import { UpdateCompanyComponent } from './company/update-company/update-company.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -83,6 +84,7 @@ export const declarations = [
   ListOrdersComponent,
   OrderDetailsComponent,
   BrandComponent,
+  UpdateCompanyComponent,
 
   // pipes
   SearchProductPipe

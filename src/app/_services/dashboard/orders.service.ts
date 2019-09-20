@@ -32,7 +32,7 @@ export class OrdersService {
     return this._orders.value;
   }
   apendState(orders: Orders) {
-    const state = this.currentOrdersValue;
+    const state = this.currentOrdersValue || [];
     state.push(orders);
     this._orders.next(state);
     localStorage.setItem('orders', JSON.stringify(state));
@@ -65,6 +65,7 @@ export class OrdersService {
         OrderId: orderId,
         ProductId: item.prodcuId,
         ProductName: item.name,
+        UnitPrice: item.price,
         Quantity: item.quantity,
         subTotal: item.subTotal,
         CreateUserId: userId,

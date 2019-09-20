@@ -87,8 +87,11 @@ export class SellComponent implements OnInit {
     };
     console.log(order);
     console.log('items', this.sale.items);
-
     this.ordersService.addOrder(order, this.sale.items);
+    // clear state
+    this.saleService.clearState();
+    this.ordersService.updateOrderState(null);
+    this.ordersService.updateOrderProductsState(null);
     this.router.navigate(['/dashboard/list-orders']);
   }
 }

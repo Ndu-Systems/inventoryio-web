@@ -3,6 +3,7 @@ export interface OrderProducts {
     OrderId: string;
     ProductId: string;
     ProductName: string;
+    UnitPrice: number;
     Quantity: number;
     subTotal: number;
     CreateDate?: string;
