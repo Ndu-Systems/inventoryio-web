@@ -30,6 +30,7 @@ import { ListOrdersComponent } from './products/list-orders/list-orders.componen
 import { BrandComponent } from './brand';
 import { OrderDetailsComponent } from './products/order-details/order-details.component';
 import { UpdateCompanyComponent } from './company/update-company/update-company.component';
+import { InvoiceComponent } from './products/invoice/invoice.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -85,6 +86,7 @@ export const declarations = [
   OrderDetailsComponent,
   BrandComponent,
   UpdateCompanyComponent,
+  InvoiceComponent,
 
   // pipes
   SearchProductPipe
