@@ -11,17 +11,7 @@ export class MessageService {
   public currentMessage: Observable<Message>;
   constructor() {
     this.currentMessageSubject = new BehaviorSubject<Message>(
-      {
-        heading: [`Hey John`, `Welcome to inventory-io!`],
-        body: [`Your simplified  inventory
-                  management with real-time
-                  updates, please complete your profile to get started.`],
-        canShow: false,
-        class: 'success',
-        img: 'assets/images/undraw_Hello_qnas.png',
-        link: '/dashboard/add-company',
-        linkname: 'Complete my profile',
-      }
+     null
     );
     this.currentMessage = this.currentMessageSubject.asObservable();
   }

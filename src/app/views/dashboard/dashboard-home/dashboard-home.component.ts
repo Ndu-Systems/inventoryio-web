@@ -44,6 +44,7 @@ export class DashboardHomeComponent implements OnInit {
       this.router.navigate(['sign-in']);
       return;
     }
+    debugger;
     this.preloadData();
     this.checkIfUserHaveAcompany();
   }
