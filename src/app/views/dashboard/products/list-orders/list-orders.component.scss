@@ -112,84 +112,84 @@
   
     }
   }
-  
+
+
   @media only screen and (min-width: 1254px) {
-  
-    .cards {
-      height: 70vh;
-      max-width: 67vw;
-      margin: 0 auto;
-      overflow-y: scroll;
+
+  .cards {
+    height: 70vh;
+    max-width: 67vw;
+    margin: 0 auto;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% auto;
+
+    .card {
       display: grid;
-      grid-template-columns: 33.33% 33.33% auto;
-  
-      .card {
-        display: grid;
-        grid-template-columns: 50% auto;
-        padding: 1rem;
-        margin: 2rem;
-        background: #fff;
-        border-radius: .5rem;
-        box-shadow: 0;
-        width: 60%;
-        height: 100vh;
-  
-        .left-col {
-          margin-bottom: 1rem;
-  
-          span {
-            text-align: left;
-          }
-        }
-  
-  
-        .rigt-col {
-          margin-bottom: 1rem;
-  
-          span {
-            text-align: right;
-          }
-        }
-  
+      grid-template-columns: 50% auto;
+      padding: 1rem;
+      margin: 2rem;
+      background: #fff;
+      border-radius: .5rem;
+      box-shadow: 0;
+      width: 60%;
+      height: 100vh;
+
+      .left-col {
+        margin-bottom: 1rem;
+
         span {
-          display: block;
-        }
-  
-        .label {
-          color: #C1C1C1;
-          font-weight: 500;
-  
-        }
-  
-        .value {
-          color: #000;
-          font-weight: 500;
+          text-align: left;
         }
       }
-  
-    }
-  
-    .cards .card-betta {
-      height: 30vh;
-      width: 20vw;
-      box-shadow: none;
-      border-radius: 0;
-    }
-  
-    .page-actions {
-      display: grid;
-      grid-template-columns: 70% auto;
-      margin: 0 auto;
-      margin-top: -3.4rem;
-      position: relative;
-      padding: 1rem;
-      z-index: 10;
-      width: 70vw;
-      .add {
-        button {
-          cursor: pointer;
+
+
+      .rigt-col {
+        margin-bottom: 1rem;
+
+        span {
+          text-align: right;
         }
+      }
+
+      span {
+        display: block;
+      }
+
+      .label {
+        color: #C1C1C1;
+        font-weight: 500;
+
+      }
+
+      .value {
+        color: #000;
+        font-weight: 500;
+      }
+    }
+
+  }
+
+  .cards .card-betta {
+    height: 30vh;
+    width: 20vw;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .page-actions {
+    display: grid;
+    grid-template-columns: 70% auto;
+    margin: 0 auto;
+    margin-top: -3.4rem;
+    position: relative;
+    padding: 1rem;
+    z-index: 10;
+    width: 70vw;
+    .add {
+      button {
+        cursor: pointer;
       }
     }
   }
-  
+}

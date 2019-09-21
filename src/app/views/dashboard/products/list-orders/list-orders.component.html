@@ -13,7 +13,6 @@
       <div class="cards" *ngIf="orders$  | async as orders">
         <span   *ngFor="let item of orders | searchproduct: search">
        <div class="card-betta" (click)="details(item)">
-            <span class="status" ></span>
     
             <div class="grid">
             
