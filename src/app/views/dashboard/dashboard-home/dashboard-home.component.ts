@@ -50,7 +50,6 @@ export class DashboardHomeComponent implements OnInit {
       link: '/dashboard/add-company',
       linkname: 'Complete my profile',
     });
-    alert(JSON.stringify(this.messageService.get));
 
   }
 
