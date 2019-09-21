@@ -1,13 +1,7 @@
-<svg id="myshops" xmlns="http://www.w3.org/2000/svg" width="2288.785" height="1877.783" viewBox="0 0 2288.785 1877.783">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #104ce5;
-      
-      }
-    </style>
-  </defs>
-  <g id="Group_383" data-name="Group 383" transform="translate(0 0)">
-    <path id="Path_814" data-name="Path 814" class="cls-1" d="M2161.57.011H127.219V234.864H2161.57V.011Zm127.216,1173.75V938.9L2161.57,352.3H127.219L0,938.9v234.85H127.219V1877.8H1398.828V1173.761h508.587V1877.8H2161.57V1173.761Zm-1144.4,469.177H381.371V1173.761H1144.4v469.177Z" transform="translate(0 -0.011)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1277.906" height="1056.95" viewBox="0 0 1277.906 1056.95">
+  <g id="myshops" transform="translate(-4.658 -6.361)">
+    <g id="Group_394" data-name="Group 394" transform="translate(19.658 21.361)">
+      <path id="Path_826" data-name="Path 826" d="M1178.545.011H69.363v128.44H1178.545V.011Zm69.361,641.918V513.487l-69.361-320.812H69.363L0,513.487V641.925H69.363v385.036H762.678V641.929h277.295v385.033h138.572V641.929ZM623.951,898.519H207.933V641.929H623.955v256.59Z" transform="translate(0 -0.011)" fill="none" stroke="#104ce5" stroke-width="30" fill-rule="evenodd"/>
+    </g>
   </g>
 </svg>
