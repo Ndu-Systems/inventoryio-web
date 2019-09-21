@@ -15,7 +15,7 @@ export class UserActionsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    if (Number(this.user.RoleId) === 1) {
+    if (true) {
       this.actions.push({
         name: 'Sell',
         image: 'assets/images/actions/sell.svg',
