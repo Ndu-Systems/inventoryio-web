@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService, ProductService, AccountService } from 'src/app/_services';
-import { User } from 'src/app/_models';
+import { User, Message } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,7 @@ export class DashboardComponent implements OnInit {
   link: string;
   linkname: string;
   heading: string[];
+  message$: Observable<Message>;
 
   user: User;
   constructor(
@@ -25,20 +27,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.messageService.currentMessage.subscribe(data => {
-      debugger
-      if (data) {
-        this.showMessage = data.canShow;
-        this.messages = data.body;
-        this.class = data.class;
-        this.img = data.img;
-        this.link = data.link;
-        this.linkname = data.linkname;
-        this.heading = data.heading;
-      }
-
-    });
-
+    this.message$ = this.messageService.messages;
     this.user = this.accountService.currentUserValue;
     if (!this.user) {
       this.router.navigate(['sign-in']);
@@ -47,8 +36,10 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  clearMessages() {
+  clearMessages(url) {
     this.messageService.clear();
+    this.router.navigate([url]);
+
   }
 
 }

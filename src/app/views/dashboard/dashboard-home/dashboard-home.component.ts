@@ -9,14 +9,6 @@ import { User } from 'src/app/_models';
   styleUrls: ['./dashboard-home.component.scss']
 })
 export class DashboardHomeComponent implements OnInit {
-  showMessage: boolean;
-  messages: string[];
-  class: string;
-  img: string;
-  link: string;
-  linkname: string;
-  heading: string[];
-
   user: User;
   constructor(
     private messageService: MessageService,
@@ -26,27 +18,17 @@ export class DashboardHomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.messageService.currentMessage.subscribe(data => {
-      if (data) {
-        this.showMessage = data.canShow;
-        this.messages = data.body;
-        this.class = data.class;
-        this.img = data.img;
-        this.link = data.link;
-        this.linkname = data.linkname;
-        this.heading = data.heading;
-      }
-
-    });
 
     this.user = this.accountService.currentUserValue;
     if (!this.user) {
       this.router.navigate(['sign-in']);
       return;
     }
-    debugger;
+    if (!this.user.CompanyId) {
+      // debugger
+      this.createCompanyPopuP();
+    }
     this.preloadData();
-    this.checkIfUserHaveAcompany();
   }
   preloadData() {
     if (this.user.CompanyId) {
@@ -56,20 +38,20 @@ export class DashboardHomeComponent implements OnInit {
   clearMessages() {
     this.messageService.clear();
   }
-  checkIfUserHaveAcompany() {
-    if (!this.user.CompanyId) {
-      this.messageService.setMessage({
-        heading: [`Hey John`, `Welcome to inventory-io!`],
-        body: [`Your simplified  inventory
-                  management with real-time
-                  updates, please complete your profile to get started.`],
-        canShow: true,
-        class: 'success',
-        img: 'assets/images/undraw_Hello_qnas.png',
-        link: '/dashboard/add-company',
-        linkname: 'Complete my profile',
-      });
-    }
+  createCompanyPopuP() {
+    this.messageService.setMessage({
+      heading: [`Hey John`, `Welcome to inventory-io!`],
+      body: [`Your simplified  inventory
+                management with real-time
+                updates, please complete your profile to get started.`],
+      canShow: true,
+      class: 'success',
+      img: 'assets/images/undraw_Hello_qnas.png',
+      link: '/dashboard/add-company',
+      linkname: 'Complete my profile',
+    });
+    alert(JSON.stringify(this.messageService.get));
+
   }
 
 }

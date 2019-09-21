@@ -7,20 +7,22 @@ import { Message } from 'src/app/_models';
 })
 export class MessageService {
 
-  private currentMessageSubject: BehaviorSubject<Message>;
-  public currentMessage: Observable<Message>;
+  private _messages: BehaviorSubject<Message>;
+  public messages: Observable<Message>;
   constructor() {
-    this.currentMessageSubject = new BehaviorSubject<Message>(
-     null
+    this._messages = new BehaviorSubject<Message>(
+      null
     );
-    this.currentMessage = this.currentMessageSubject.asObservable();
+    this.messages = this._messages.asObservable();
   }
-
+  public get get() {
+    return this._messages.value;
+  }
   setMessage(message: Message) {
-    this.currentMessageSubject.next(message);
+    this._messages.next(message);
   }
   clear() {
-    this.currentMessageSubject.next({
+    this._messages.next({
       body: [],
       canShow: false,
       class: '',
