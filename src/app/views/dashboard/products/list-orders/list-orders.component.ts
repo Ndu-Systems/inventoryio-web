@@ -41,5 +41,23 @@ export class ListOrdersComponent implements OnInit {
     this.ordersService.getProductsForAnOrder(order.OrdersId);
     this.router.navigate([`/dashboard/order-details`]);
   }
+  onPay(order: Orders) {
+    if ((order.Total - order.Paid < 0)) {
+      this.payAll(order);
+      order.Disable = true;
+    //  order.Paid = order.Due;
+      return;
+    }
+    order.Due = order.Total - order.Paid;
+    console.log(order);
 
+  }
+  payAll(order: Orders) {
+    if (!order.Due) {
+      order.Due = order.Total;
+    }
+    order.Disable = false;
+    order.Paid = order.Due;
+    order.Due = 0;
+  }
 }
