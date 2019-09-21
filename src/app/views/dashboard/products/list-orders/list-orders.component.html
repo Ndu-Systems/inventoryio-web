@@ -1,0 +1,40 @@
+<div class="main">
+    <app-banner></app-banner>
+  
+    <div class="body">
+      <div class="page-actions">
+        <div class="search">
+          <input type="text" [(ngModel)]="search" placeholder="search orders">
+        </div>
+        <div class="add">
+          <button (click)="add()">Add order</button>
+        </div>
+      </div>
+      <div class="cards" *ngIf="orders$  | async as orders">
+        <span   *ngFor="let item of orders | searchproduct: search">
+       <div class="card-betta" (click)="details(item)">
+    
+            <div class="grid">
+            
+              <div class="details">
+                <p>
+                  <span>Type</span> {{item.OrderType}}
+                </p>
+                <p>
+                  <span>Total</span> {{item.Total}}
+                </p>
+                <p>
+                  <span>Date</span> {{item.CreateDate | date}}
+                </p>
+                <p>
+                  <span>Time</span> {{item.CreateDate | date:'shortTime'}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </span>
+  
+      </div>
+  
+    </div>
+  

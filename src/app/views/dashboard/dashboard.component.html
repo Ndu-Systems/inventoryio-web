@@ -2,24 +2,31 @@
     <app-dashboard-nav></app-dashboard-nav>
   <div class="container">
     <router-outlet></router-outlet>
-    <div class="message" *ngIf="showMessage">
-      <div class="image">
-        <img [src]="img" alt="">
-      </div>
-      <div class="body">
-        <h3 *ngFor="let h of heading">
-          {{h}}
-        </h3>
-        <p *ngFor="let message of messages">
-          {{message}}
-        </p>
-      </div>
-      <div class="action">
-        <a (click)="clearMessages()" [routerLink]="link">{{linkname}}</a>
-      </div>
+    <div *ngIf="message$|async as message">
+      {{message | json}}
+    <span class="message" *ngIf="message.canShow">
+
+        <div class="image">
+            <img [src]="message.img" alt="">
+          </div>
+          <div class="body">
+            <h3 *ngFor="let h of message.heading">
+              {{h}}
+            </h3>
+            <p *ngFor="let text of message.messages">
+              {{text}}
+            </p>
+          </div>
+          <div class="action">
+            <a (click)="clearMessages(message.link)">{{message.linkname}}</a>
+          </div>
+    </span>
+
     </div>
   </div>
 </div>
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
 
 
 

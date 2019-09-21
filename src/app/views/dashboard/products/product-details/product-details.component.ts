@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Brand, Caterory, User, Product } from 'src/app/_models';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AccountService, ProductService, BrandService, CateroryService } from 'src/app/_services';
 
 @Component({
@@ -47,7 +47,7 @@ export class ProductDetailsComponent implements OnInit {
     this.brandService.getBrands(this.user.CompanyId);
     this.cateroryService.getCateries(this.user.CompanyId);
 
-    this.initForm();
+   // this.initForm();
 
     this.brands$ = this.brandService.currentsBrand;
     this.catergories$ = this.cateroryService.currentCaterory;

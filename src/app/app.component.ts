@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PwaService } from './_services';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'inventoryio';
+  constructor(public pwaService: PwaService) {
+
+  }
+  installPwa(): void {
+    this.pwaService.promptEvent.prompt();
+  }
 }

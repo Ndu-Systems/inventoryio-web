@@ -1,12 +1,15 @@
 <div class="main">
   <div class="cards">
-    <div class="card" *ngFor="let data of stat">
-      <div class="icon">
-        <img [src]="data.image" alt="">
-      </div>
-      <div class="data">
-        <h1>{{data.value}}<span>{{data.name}}</span></h1>
-      </div>
-    </div>
+    <span  *ngFor="let data of stat">
+        <div class="card" (click)="goto(data.link)">
+            <div class="icon">
+              <img [src]="data.image" alt="">
+            </div>
+            <div class="data">
+              <h1>{{data.value}}<span>{{data.name}}</span></h1>
+            </div>
+          </div>
+    </span>
+  
   </div>
 </div>

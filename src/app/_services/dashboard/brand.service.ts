@@ -25,7 +25,7 @@ export class BrandService {
     return this.currentBrandsSubject.value;
   }
 apendState(data: Brand) {
-const state = this.currentBrandValue;
+const state = this.currentBrandValue || [];
 state.push(data);
 this.currentBrandsSubject.next(state);
 }

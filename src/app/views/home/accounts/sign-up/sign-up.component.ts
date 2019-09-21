@@ -21,6 +21,7 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.accountService.updateUserState(null);
     this.rForm = this.fb.group({
       email: new FormControl(
         '',
@@ -36,12 +37,6 @@ export class SignUpComponent implements OnInit {
       CompanyId: [''],
     });
 
-    //
-    this.accountService.currentUser.subscribe(val => {
-      if (val && val.UserId) {
-        this.routeTo.navigate(['dashboard']);
-      }
-    });
   }
 
   get getFormValues() {

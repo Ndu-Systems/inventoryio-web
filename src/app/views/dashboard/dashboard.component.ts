@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService, ProductService, AccountService } from 'src/app/_services';
-import { User } from 'src/app/_models';
+import { User, Message } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,46 +10,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  showMessage: boolean;
+  showMessage;
   messages: string[];
   class: string;
   img: string;
   link: string;
   linkname: string;
   heading: string[];
+  message$: Observable<Message>;
 
   user: User;
   constructor(
     private messageService: MessageService,
-    private productService: ProductService,
     private accountService: AccountService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    this.messageService.currentMessage.subscribe(data => {
-      if (data) {
-        this.showMessage = data.canShow;
-        this.messages = data.body;
-        this.class = data.class;
-        this.img = data.img;
-        this.link = data.link;
-        this.linkname = data.linkname;
-        this.heading = data.heading;
-      }
-
-    });
-
+    this.message$ = this.messageService.messages;
     this.user = this.accountService.currentUserValue;
     if (!this.user) {
       this.router.navigate(['sign-in']);
+      return;
     }
-    this.preloadData();
+
   }
-  preloadData() {
-    this.productService.getProducts(this.user.CompanyId);
-  }
-  clearMessages() {
+
+  clearMessages(url) {
     this.messageService.clear();
+    this.router.navigate([url]);
+
   }
+
 }

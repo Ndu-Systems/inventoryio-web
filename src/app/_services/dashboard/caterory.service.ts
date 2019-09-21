@@ -24,7 +24,7 @@ export class CateroryService {
     return this.currentCaterorySubject.value;
   }
   apendState(data: Caterory) {
-    const state = this.currentCateroryValue;
+    const state = this.currentCateroryValue || [];
     state.push(data);
     this.currentCaterorySubject.next(state);
   }

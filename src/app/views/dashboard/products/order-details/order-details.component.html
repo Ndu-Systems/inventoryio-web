@@ -1,0 +1,45 @@
+<div class="main">
+  <app-banner></app-banner>
+
+  <div class="body">
+    <div class="page-actions">
+      <div class="search">
+        <input type="text" [(ngModel)]="search" placeholder="search orders">
+      </div>
+      <div class="add">
+        <button (click)="captureScreen()">Add order</button>
+      </div>
+    </div>
+    <div class="cards" *ngIf="products$  | async as products">
+      <span *ngFor="let item of products | searchproduct: search">
+        <div class="card" (click)="details(item)">
+          <h1 class="name">
+            {{item.ProductName}} <span class="price"> {{item.subTotal  | currency:'R'}} </span>
+          </h1>
+          <p>
+            {{item.Quantity}} x {{item.UnitPrice  | currency:'R'}} <br>
+          </p>
+        </div>
+
+
+      </span>
+      <div class="card separate" *ngIf="total">
+        <h1>Sub Total: <span class="value">  {{total | currency:'R'}} </span></h1>
+        <h1>Tax {{companyTax * 100}}%:  <span class="value"> {{total*companyTax | currency:'R'}}</span> </h1>
+        <h1>Total :  <span class="value"> {{ finalTotal | currency:'R'}}</span> </h1>
+      </div>
+
+    </div>
+
+
+
+    <div>
+
+    </div>
+
+
+  </div>
+
+  <div class="print">
+    <app-invoice></app-invoice>
+  </div>

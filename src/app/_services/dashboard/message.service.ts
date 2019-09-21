@@ -7,30 +7,22 @@ import { Message } from 'src/app/_models';
 })
 export class MessageService {
 
-  private currentMessageSubject: BehaviorSubject<Message>;
-  public currentMessage: Observable<Message>;
+  private _messages: BehaviorSubject<Message>;
+  public messages: Observable<Message>;
   constructor() {
-    this.currentMessageSubject = new BehaviorSubject<Message>(
-      {
-        heading: [`Hey John`, `Welcome to inventory-io!`],
-        body: [`Your simplified  inventory
-                  management with real-time
-                  updates, please complete your profile to get started.`],
-        canShow: false,
-        class: 'success',
-        img: 'assets/images/undraw_Hello_qnas.png',
-        link: '/dashboard/add-company',
-        linkname: 'Complete my profile',
-      }
+    this._messages = new BehaviorSubject<Message>(
+      null
     );
-    this.currentMessage = this.currentMessageSubject.asObservable();
+    this.messages = this._messages.asObservable();
   }
-
+  public get get() {
+    return this._messages.value;
+  }
   setMessage(message: Message) {
-    this.currentMessageSubject.next(message);
+    this._messages.next(message);
   }
   clear() {
-    this.currentMessageSubject.next({
+    this._messages.next({
       body: [],
       canShow: false,
       class: '',

@@ -32,6 +32,9 @@ export class UploadService {
     state.push(data);
     this.currentImagesSubject.next(state);
   }
+  clearState() {
+    this.currentImagesSubject.next(null);
+  }
   addImage(data: Image) {
     return this.http.post<any>(`${this.url}/api/image/add-image.php`, data).subscribe(resp => {
       const image: Image = resp;

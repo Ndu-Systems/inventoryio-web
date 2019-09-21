@@ -11,27 +11,33 @@ import { Router } from '@angular/router';
 export class AccountService {
 
 
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private _user: BehaviorSubject<User>;
+  public user: Observable<User>;
   url: string;
   constructor(
     private http: HttpClient,
     private router: Router,
   ) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+    this._user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+    this.user = this._user.asObservable();
     this.url = environment.API_URL;
   }
 
   public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+    return this._user.value;
   }
 
+  updateUserState(user: User) {
+    this._user.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
+  }
   addUser(data: User) {
     return this.http.post<any>(`${this.url}/api/user/add-user.php`, data).subscribe(resp => {
       const user: User = resp;
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
+      localStorage.clear();
+      this.updateUserState(user);
+      user.CompanyId = 'n/a';
+      this.router.navigate(['dashboard']);
     }, error => {
       alert(JSON.stringify(error));
     });
@@ -40,9 +46,7 @@ export class AccountService {
   updateUser(user: User) {
     return this.http.post<any>(`${this.url}/api/user/update-user.php`, user).subscribe(resp => {
       const user: User = resp;
-      alert(JSON.stringify(resp));
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
+      this.updateUserState(user);
     }, error => {
       alert(JSON.stringify(error));
     });
@@ -51,8 +55,8 @@ export class AccountService {
   login(credentials: { email: any; password: any; }) {
     return this.http.post<any>(`${this.url}/api/user/login.php`, credentials).subscribe(resp => {
       const user: User = resp;
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
+      localStorage.clear();
+      this.updateUserState(user);
       this.router.navigate(['dashboard']);
 
     }, error => {
@@ -61,10 +65,8 @@ export class AccountService {
   }
 
   logout() {
-    // remove user from local storage to log user out
-
     localStorage.clear();
-    this.currentUserSubject.next(null);
+    this.updateUserState(null);
   }
 
 }

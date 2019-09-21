@@ -20,7 +20,7 @@ export class ProductService {
   constructor(
     private http: HttpClient
   ) {
-    this._products = new BehaviorSubject<Product[]>(JSON.parse(localStorage.getItem('products')));
+    this._products = new BehaviorSubject<Product[]>(JSON.parse(localStorage.getItem('products')) || []);
     this.products = this._products.asObservable();
 
     // Selected product

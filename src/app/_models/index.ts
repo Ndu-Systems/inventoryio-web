@@ -11,3 +11,5 @@ export * from './image.model';
 export * from './banner.model';
 export * from './nav-bar.model';
 export * from './sale.model';
+export * from './orders.model';
+export * from './order.products.model';
