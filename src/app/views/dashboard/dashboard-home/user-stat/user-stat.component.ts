@@ -15,7 +15,7 @@ export class UserStatComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    if (Number(this.user.RoleId) === 1) {
+    if (true) {
       this.stat.push({
         name: 'Users',
         value: '1',
