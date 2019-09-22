@@ -43,8 +43,8 @@ export class DashboardNavComponent implements OnInit {
       }
       ,
       {
-        Name: 'settings',
-        Link: '/dashboard',
+        Name: 'configuration',
+        Link: '/dashboard/configurations',
         Icon: 'settings'
       }
       ,

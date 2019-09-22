@@ -3,3 +3,4 @@ export interface UserActions {
     link: string;
     image: string;
 }
+
