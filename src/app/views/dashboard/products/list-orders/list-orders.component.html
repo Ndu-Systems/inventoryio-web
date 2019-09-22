@@ -18,6 +18,10 @@
 
             <div class="details">
               <p>
+                <span>Client</span> <a> John Doe </a>
+                <!-- {{item?.ClientName}} -->
+              </p>
+              <p>
                 <span>Order Number</span> {{item.OrderId}}
               </p>
               <p>
@@ -29,7 +33,8 @@
 
               <div class="input-type">
                 <span>Amount Paid</span>
-                <input type="text" [(ngModel)]="item.Paid" (ngModelChange)="onPay(item)" placeholder="Pay here" [disabled]="item.Disable">
+                <input type="text" [(ngModel)]="item.Paid" (ngModelChange)="onPay(item)" placeholder="Pay here"
+                  [disabled]="item.Disable">
               </div>
               <p (click)="payAll(item)" class="due">
                 <span>Due</span> {{item.Due  | currency:'R'}}
@@ -42,6 +47,7 @@
               </p>
               <p class="more">
                 <a (click)="details(item)">More</a>
+                <a (click)="save(item)" *ngIf="item.Touched" class="save">Save changes</a>
               </p>
             </div>
           </div>
@@ -52,3 +58,4 @@
     </div>
 
   </div>
+</div>

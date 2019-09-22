@@ -58,6 +58,17 @@ export class OrdersService {
     });
   }
 
+  uptadeOrder(data: Orders) {
+    return this.http.post<any>(`${this.url}/api/orders/update-order.php`, data).subscribe(resp => {
+      const order: Orders = resp;
+      if (!order) { return false; }
+      this.apendState(order);
+      this.updateOrderState(order);
+    }, error => {
+      alert(JSON.stringify(error));
+    });
+  }
+
   addOrderProducts(items: Item[], orderId: string, userId) {
     const productItems: OrderProducts[] = [];
     items.forEach(item => {

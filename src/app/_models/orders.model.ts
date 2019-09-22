@@ -12,7 +12,9 @@ export interface Orders {
     ModifyDate?: string;
     ModifyUserId: string;
     StatusId: number;
+    // local
     Disable?:boolean;
+    Touched?:boolean;
 
 
 }
