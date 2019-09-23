@@ -1,12 +1,18 @@
+
 .main{
   background: #E4E4E4;
-  padding : 2rem;
   margin: 0%;
+  @media only screen and (max-width: 600px) {
+  }
 }
 footer{
   background: #F5F6FA;
   padding: 4rem;
   padding-bottom: 10rem;
+  @media only screen and (max-width: 600px){
+    padding: 0%;
+   
+  }
   
   h1{
     color: #3F3D56;
@@ -17,6 +23,14 @@ footer{
     padding-bottom: 1rem;
     margin-bottom: 4rem;
     text-align: center;
+    @media only screen and (max-width: 600px){
+      width: 90%;
+      margin: 0%;
+      font-size: 1rem;
+      margin: auto;
+      margin-bottom: 2rem;
+
+    }
   }
   .textbox{
     display: flex;
@@ -27,11 +41,18 @@ footer{
     -webkit-box-shadow: 1px 1px 5px 3px rgba(0,0,0,0.19);
       -moz-box-shadow: 1px 1px 5px 3px rgba(0,0,0,0.19);
       box-shadow: 1px 1px 5px 3px rgba(0,0,0,0.19);
+      @media only screen and (max-width: 600px){
+        width: 90%;
+        margin-bottom: 3rem;
+      }
     ::placeholder {
       font-size: .7rem; 
       color: #656D88;
       letter-spacing: .1rem;
       text-transform: none;
+      @media only screen and (max-width: 600px){
+        font-size: .6rem;
+      }
   }
   input[type=text] {
     border: none;
@@ -42,5 +63,10 @@ footer{
   border-radius: 0 1rem 1rem 0 ;
   text-transform: none;
   font-size: 1rem;
+  @media only screen and (max-width: 600px){
+    width: 80%;
+    font-size: .8rem;
+  }
   }
 }}
+
