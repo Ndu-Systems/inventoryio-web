@@ -43,8 +43,6 @@
   </div>
 </div> -->
 
-
-
 <div class="main-container">
     <div class="tob-bar">
       <div class="logo">
@@ -56,13 +54,28 @@
           <li><span class="sign-in-link"> <a routerLink ="sign-in">Sign in</a></span> </li>
           <li><span class="sign-up-for-free">   <a routerLink ="sign-up">sign up for free</a> </span></li>
         </div>
+        <div class="mobile-nav" *ngIf="showMobileNav">
+          <div class="close"  (click)="toggleNav()">
+            <img src="../../../../assets/images/close-mobilemenu.svg" alt="">
+          </div>
+          <li><span class="blue"><a routerLink ="">Home</a>  </span></li>
+          <!-- <li> <span class="blue"><a routerLink ="">About</a>  </span></li> -->
+          <li><span class="sign-in-link"> <a routerLink ="sign-in">Sign in</a></span> </li>
+          <li><span class="sign-up-for-free">   <a routerLink ="sign-up">sign up for free</a> </span></li>
+        </div>
+        <div class="ham-icon" (click)="toggleNav()">
+            <img src="../../../../assets/images/ham.svg" alt="">
+        </div>
     </div>
+   
     <div class="content">
+        <div class="mobile-house">
+            <img src="../../../../assets/images/housemobile.svg" alt="">
+          </div>
       <h1>Experience the free package offer <br>
          for your inventory flow</h1>
       <button>Start My Free 60-day Premium Trial</button>
     </div>
-
     <div class="cards">
       <div class="card">
         <img src="../../../../assets/images/trolley-S1Mjb37PH.svg "  alt="rocket">
