@@ -3,6 +3,7 @@ import { OrderProducts, Product, Orders } from 'src/app/_models';
 import { OrdersService, AccountService, BannerService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-list-orders',
@@ -12,13 +13,15 @@ import { Router } from '@angular/router';
 export class ListOrdersComponent implements OnInit {
 
   search: string;
+  paying: boolean;
   orders$: Observable<Orders[]>;
 
   constructor(
     private ordersService: OrdersService,
     private router: Router,
     private accountService: AccountService,
-    private bannerService: BannerService
+    private bannerService: BannerService,
+    private messageService: MessageService,
 
   ) { }
 
@@ -42,26 +45,40 @@ export class ListOrdersComponent implements OnInit {
     this.router.navigate([`/dashboard/order-details`]);
   }
   onPay(order: Orders) {
-    order.Touched = true;
-    if ((order.Total - order.Paid < 0)) {
-      this.payAll(order);
+    if ((order.Total - order.Payment < 0) || Number(order.Due) < 0) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Sorry!',
+        detail: 'Payment more that total amount'
+      });
       order.Disable = true;
-      //  order.Paid = order.Due;
-      return;
+    } else {
+      order.Disable = false;
+      order.Due = order.Total - order.Payment;
+      order.Due =  order.Due - order.Paid;
+      console.log(order);
     }
-    order.Due = order.Total - order.Paid;
-    console.log(order);
+
 
   }
   payAll(order: Orders) {
-    if (!order.Due) {
-      order.Due = order.Total;
-    }
     order.Disable = false;
-    order.Paid = order.Due;
-    order.Due = 0;
+    order.Payment = order.Due;
+    // order.Due = 0;
+    this.pay(order);
   }
-  save(item) {
-    this.ordersService.uptadeOrder(item);
+  updateOrder(order: Orders) {
+    order.Paid = Number(order.Paid) + Number(order.Payment);
+    order.Due = Number(order.Total) - Number(order.Paid);
+    this.ordersService.uptadeOrder(order);
+    this.pay(order);
+  }
+  pay(order: Orders) {
+    // if (order.Paying) {
+    //   order.Due = order.Total - order.Paid;
+    // }
+    order.Paying = !order.Paying;
+
+    // order.Due = order.Total - order.Paid;
   }
 }
