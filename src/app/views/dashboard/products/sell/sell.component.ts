@@ -77,10 +77,13 @@ export class SellComponent implements OnInit {
     }
     this.ordersService.updateOrderState(null);
     const order: Orders = {
+      OrderId: this.getOrder(),
       CompanyId: this.user.CompanyId,
       ParntersId: '',
       OrderType: 'Sell',
       Total: this.sale.total,
+      Paid: 0,
+      Due: this.sale.total,
       CreateUserId: this.user.UserId,
       ModifyUserId: this.user.UserId,
       StatusId: 1
@@ -93,5 +96,9 @@ export class SellComponent implements OnInit {
     this.ordersService.updateOrderState(null);
     this.ordersService.updateOrderProductsState(null);
     this.router.navigate(['/dashboard/list-orders']);
+  }
+  getOrder(): string {
+    const orderNumber = `O22`;
+    return orderNumber;
   }
 }

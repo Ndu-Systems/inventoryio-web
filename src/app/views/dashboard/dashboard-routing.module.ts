@@ -31,6 +31,9 @@ import { BrandComponent } from './brand';
 import { OrderDetailsComponent } from './products/order-details/order-details.component';
 import { UpdateCompanyComponent } from './company/update-company/update-company.component';
 import { InvoiceComponent } from './products/invoice/invoice.component';
+import { ConfigurationHomeComponent } from './configuration-home';
+import { ActionsComponent } from './shared';
+import { RolesComponent, RoleCardListComponent } from './roles';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -52,6 +55,9 @@ const routes: Routes = [
       { path: 'sales-report', component: SalesReportComponent },
       { path: 'list-orders', component: ListOrdersComponent },
       { path: 'order-details', component: OrderDetailsComponent },
+      { path: 'configurations', component: ConfigurationHomeComponent },
+      { path: 'roles', component: RolesComponent }
+
     ]
   },
 ];
@@ -87,7 +93,11 @@ export const declarations = [
   BrandComponent,
   UpdateCompanyComponent,
   InvoiceComponent,
-
+  ConfigurationHomeComponent,
+  ActionsComponent,
+  ListRolesComponent,
+  RolesComponent,
+  RoleCardListComponent,
   // pipes
   SearchProductPipe
 ];

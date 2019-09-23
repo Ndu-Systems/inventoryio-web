@@ -1,40 +1,61 @@
 <div class="main">
-    <app-banner></app-banner>
-  
-    <div class="body">
-      <div class="page-actions">
-        <div class="search">
-          <input type="text" [(ngModel)]="search" placeholder="search orders">
-        </div>
-        <div class="add">
-          <button (click)="add()">Add order</button>
-        </div>
+  <app-banner></app-banner>
+
+  <div class="body">
+    <div class="page-actions">
+      <div class="search">
+        <input type="text" [(ngModel)]="search" placeholder="search orders">
       </div>
-      <div class="cards" *ngIf="orders$  | async as orders">
-        <span   *ngFor="let item of orders | searchproduct: search">
-       <div class="card-betta" (click)="details(item)">
-    
-            <div class="grid">
-            
-              <div class="details">
-                <p>
-                  <span>Type</span> {{item.OrderType}}
-                </p>
-                <p>
-                  <span>Total</span> {{item.Total}}
-                </p>
-                <p>
-                  <span>Date</span> {{item.CreateDate | date}}
-                </p>
-                <p>
-                  <span>Time</span> {{item.CreateDate | date:'shortTime'}}
-                </p>
+      <div class="add">
+        <button (click)="add()">Add order</button>
+      </div>
+    </div>
+    <div class="cards" *ngIf="orders$  | async as orders">
+      <span *ngFor="let item of orders | searchproduct: search">
+        <div class="card-betta">
+
+          <div class="grid">
+
+            <div class="details">
+              <p>
+                <span>Client</span> <a> John Doe </a>
+                <!-- {{item?.ClientName}} -->
+              </p>
+              <p>
+                <span>Order Number</span> {{item.OrderId}}
+              </p>
+              <p>
+                <span>Type</span> {{item.OrderType}}
+              </p>
+              <p>
+                <span>Total</span> {{item.Total  | currency:'R'}}
+              </p>
+
+              <div class="input-type">
+                <span>Amount Paid</span>
+                <input type="text" [(ngModel)]="item.Paid" (ngModelChange)="onPay(item)" placeholder="Pay here"
+                  [disabled]="item.Disable">
               </div>
+              <p (click)="payAll(item)" class="due">
+                <span>Due</span> {{item.Due  | currency:'R'}}
+              </p>
+              <p>
+                <span>Date</span> {{item.CreateDate | date}}
+              </p>
+              <p>
+                <span>Time</span> {{item.CreateDate | date:'shortTime'}}
+              </p>
+              <p class="more">
+                <a (click)="details(item)">More</a>
+                <a (click)="save(item)" *ngIf="item.Touched" class="save">Save changes</a>
+              </p>
             </div>
           </div>
-        </span>
-  
-      </div>
-  
+        </div>
+
+      </span>
+
     </div>
-  
+
+  </div>
+</div>
