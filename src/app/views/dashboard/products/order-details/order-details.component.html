@@ -6,9 +6,9 @@
       <div class="search">
         <input type="text" [(ngModel)]="search" placeholder="search orders">
       </div>
-      <div class="add">
-        <button (click)="captureScreen()">Add order</button>
-      </div>
+      <!-- <div class="add">
+        <button>Add order</button>
+      </div> -->
     </div>
     <div class="cards" *ngIf="products$  | async as products">
       <div class="items">

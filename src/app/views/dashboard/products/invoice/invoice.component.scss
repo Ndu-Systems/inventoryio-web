@@ -1,0 +1,94 @@
+.invoice {
+  background: #fff;
+  width: 60%;
+  margin: 2rem auto;
+  padding: 3rem;
+
+  h1 {
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  p {
+    span {
+      display: block;
+    }
+
+    text-align: left;
+  }
+
+  .client-company {
+    display: grid;
+    grid-template-columns: 72% auto;
+
+    h1 {
+      text-align: center;
+    }
+
+    .company {
+
+      h1 {
+        font-size: 1rem;
+        text-align: left;
+        font-weight: 600;
+        margin-left: 2rem;
+
+        span {
+          color: #000;
+          margin-left: .2rem;
+          font-weight: 400;
+
+        }
+      }
+      h1.main{
+        font-weight: 500;
+        font-size: 2rem;
+      }
+    }
+
+    .client {
+      text-align: center;
+
+      h1 {
+        text-align: left;
+      }
+    }
+  }
+
+  .table {
+      th, td{
+          text-align: left;
+      }
+    table {
+        margin-top: 3rem;
+      width: 100%;
+      td{
+          border-bottom: 1px solid #E5E5E5;
+          padding: 1rem 0;
+      }
+      td.name{
+          font-weight: 600;
+          text-align: left;
+      }
+    }
+  }
+
+  .total{
+      margin-top: 3rem;
+    .data{
+        span{
+            display: block;
+        }
+        text-align: left;
+        .total{
+          font-size: 1.6rem;
+          font-weight: 500;
+        }
+        .tax{
+          font-size: 1rem;
+        }
+      }
+  }
+
+}
