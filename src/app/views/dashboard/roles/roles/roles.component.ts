@@ -19,5 +19,7 @@ export class RolesComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  add(){
+    alert('#TODO');
+  }
 }

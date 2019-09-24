@@ -35,7 +35,7 @@ export class OrderDetailsComponent implements OnInit {
     this.products$ = this.ordersService.orderProducts;
 
     this.bannerService.updateState({
-      heading: 'Order details',
+      heading: 'Order Items',
       backto: '/dashboard/list-orders',
     });
     this.ordersService.order.subscribe(state => {
