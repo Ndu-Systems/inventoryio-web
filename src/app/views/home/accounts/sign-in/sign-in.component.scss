@@ -1,23 +1,26 @@
+.mobile-background {
+    @media only screen and (max-width: 600px) {
+        background: #FFFFFF;
+    }
+}
 
 .sign-in-background {
     background-image: url(../../../../../assets/images/sign-in-background.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top right;
-    
     @media only screen and (max-width: 600px) {
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-attachment: top right;
+        // background-size: 100%;
     }
 }
+
 .section {
     display: grid;
     grid-template-columns: 50% 30%;
     margin-left: 30%;
     padding-top: 8rem;
-    
+
     @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
         margin: 0%;
@@ -30,10 +33,9 @@
             width: 100%;
             justify-content: center;
             display: grid;
-            padding-top: 10rem;
-
+            margin-top: 7rem;
             img {
-                width: 80%;
+                width: 90%;
                 padding: 0%;
                 margin: 0%;
             }
@@ -56,6 +58,7 @@
             width: 90%;
             margin-top: 10%;
         }
+
         h1 {
             width: 80%;
             font-size: 1.5rem;
@@ -63,7 +66,7 @@
             margin-top: 1.5rem;
             color: #656D88;
             text-align: center;
-          
+
 
             @media only screen and (max-width: 600px) {
                 font-size: 1.1rem;
@@ -82,6 +85,7 @@
             border: none;
             width: 80%;
             margin-top: 4rem;
+
             @media only screen and (max-width: 600px) {
                 width: 80%;
             }
@@ -96,28 +100,33 @@
                 width: 100%;
                 margin: 0;
             }
+
             label {
                 color: #656D88;
                 font-weight: 600;
                 font-size: 1rem;
             }
         }
+
         .reset-pass {
             width: 80%;
             margin: auto;
             text-align: center;
             margin-top: 3rem;
             margin-bottom: 1rem;
+
             @media only screen and (max-width: 600px) {
                 width: 100%;
                 margin-bottom: 1rem;
                 margin-top: 1.5rem;
             }
+
             a {
                 padding-top: 2rem;
                 padding: 5rem;
                 font-weight: 500;
                 color: #656D88;
+
                 @media only screen and (max-width: 600px) {
                     padding: 0%;
                 }
@@ -129,16 +138,18 @@
             width: 80%;
             margin: auto;
             margin-bottom: 2rem;
-         
+
 
             @media only screen and (max-width: 600px) {
                 width: 100%;
                 font-size: .8rem;
             }
+
             a {
                 font-size: 1.3rem;
                 font-weight: 600;
                 margin-left: .5rem;
+
                 @media only screen and (max-width: 600px) {
                     font-size: 1rem;
                     font-weight: 800;
@@ -165,55 +176,118 @@
             display: none;
         }
     }
+
     img {
         width: 80%;
         text-align: center;
         margin-top: 5rem;
     }
 }
-
 .tob-bar {
     display: grid;
     grid-template-columns: 28% auto;
-  
+    @media only screen and (max-width: 600px){
+        display: flex;
+}
     .logo {
-      margin: 0 5rem;
-      margin-top: 1rem;
-      padding-top: 1.5rem;
-      text-align: right;
-   
-    }
-    .nav {
-      display: flex;
-      padding: 2rem;
-      width: 50%;
-      margin: auto;
-      margin-right: 7rem;
-  
-      li {
-        list-style-type: none;
-        padding: 0 2rem;
-        font-weight: 500;
-        color: #ffffff;
+        margin: 0 5rem;
+        margin-top: 1rem;
+        padding-top: 1.5rem;
         text-align: right;
-  
-        .sign-up-for-free {
-          background: #FFFFFF;
-          color: #104CE5;
-          border-radius: 5px;
-          padding: .4rem;
-          padding-right: 1.4rem;
-          padding-left: 1.4rem;
-  
+        @media only screen and (max-width: 600px) {
+            width: 100%;
+            margin: 0%;
+            padding: 0%;
+            img {
+                width: 100%; 
+                margin-top: 1rem;
+                margin-left: 2rem;
+            }
+        }
+    }
+    .ham-icon {
+        @media only screen and (max-width: 600px) {
+         width: 85%;
+          padding: 0%;
+          img {
+            width: 55%;
+            margin-top: 2rem;   
+          }
+        }
+      }
+
+    .nav {
+        display: flex;
+        padding: 2rem;
+        width: 50%;
+        margin: auto;
+        margin-right: 7rem;
+
+        li {
+            list-style-type: none;
+            padding: 0 2rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-align: right;
+            @media only screen and (max-width: 600px) {
+                display: none;
+            }
+            .sign-up-for-free {
+                background: #FFFFFF;
+                color: #104CE5;
+                border-radius: 5px;
+                padding: .4rem;
+                padding-right: 1.4rem;
+                padding-left: 1.4rem;
+
+                .sign-up-for-free a {
+                    color: #FFFFFF;
+                }
+            }
+            .sign-in-link a,
+            .blue a {
+                color: #ffffff;
+            }
+        }
+    }
+    .mobile-nav {
+        @media only screen and (max-width: 600px) {}
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        background: #104CE5;
+        height: 100%;
+        width: 100%;
+        z-index: 100%;
+        color: #ffffff;
+        li {
+          text-align: center;
+          padding: 3rem;
+          list-style-type: none;
+          .sign-up-for-free {
+            background: #FFFFFF;
+          }
           .sign-up-for-free a {
+            background: #FFFFFF;
+            color: #104CE5;
+            border-radius: 5px;
+            padding: .4rem;
+            padding-right: 1.4rem;
+            padding-left: 1.4rem;
+          }
+          a {
             color: #FFFFFF;
           }
         }
-  
-        .sign-in-link a,
-        .blue a {
-          color: #ffffff;
+        .close {
+          @media only screen and (max-width: 600px) {
+            display: grid;
+            text-align: right;
+            padding: 2rem;
+            img {
+              width: 7%;
+            }
+          }
         }
       }
-    }
-  }
+}

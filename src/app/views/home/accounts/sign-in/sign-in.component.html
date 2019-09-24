@@ -1,61 +1,74 @@
-<div class="sign-in-background">
+<div class="mobile-background">
+  <div class="sign-in-background">
     <div class="tob-bar">
-        <div class="logo">
-          <img src="../../../../assets/images/logo.svg" alt="">
-        </div>
-        <div class="nav">
-            <li><span class="blue"><a routerLink ="">Home</a>  </span></li>
-            <!-- <li> <span class="blue"><a routerLink ="">About</a>  </span></li> -->
-            <li><span class="sign-in-link"> <a routerLink ="sign-in">Sign in</a></span> </li>
-            <li><span class="sign-up-for-free">   <a routerLink ="sign-up">sign up for free</a> </span></li>
-          </div>
+      <div class="logo">
+        <img src="../../../../assets/images/logo.svg" alt="">
       </div>
-    
-  <div class="section">
-    <div class="mobile-fingerprint-img">
-      <img src="../../../../../assets/images/figerprint.svg" alt="">
+      <div class="nav">
+        <li><span class="blue"><a routerLink="">Home</a> </span></li>
+        <!-- <li> <span class="blue"><a routerLink ="">About</a>  </span></li> -->
+        <li><span class="sign-in-link"> <a routerLink="sign-in">Sign in</a></span> </li>
+        <li><span class="sign-up-for-free"> <a routerLink="sign-up">sign up for free</a> </span></li>
+      </div>
+      <div class="mobile-nav" *ngIf="showMobileNav">
+        <div class="close" (click)="toggleNav()">
+          <img src="../../../../assets/images/close-mobilemenu.svg" alt="">
+        </div>
+        <li><span class="blue"><a routerLink="">Home</a> </span></li>
+        <!-- <li> <span class="blue"><a routerLink ="">About</a>  </span></li> -->
+        <li><span class="sign-in-link"> <a routerLink="sign-in">Sign in</a></span> </li>
+        <li><span class="sign-up-for-free"> <a routerLink="sign-up">sign up for free</a> </span></li>
+      </div>
+      <div class="ham-icon" (click)="toggleNav()">
+        <img src="../../../../../assets/images/ham.svg" alt="">
+      </div>
     </div>
-    <!-- <div class="heading">
+    <div class="section">
+      <div class="mobile-fingerprint-img">
+        <img src="../../../../../assets/images/figerprint.svg" alt="">
+      </div>
+      <!-- <div class="heading">
       <h1>
         Log In
       </h1>
     </div> -->
-    <div class="form">
-      <h1>Sign In To Your Account</h1>
-      <form [formGroup]="rForm" (ngSubmit)="Login()">
-        <div class="group">
-          <input type="text" formControlName="Email" required="required" />
-          <!-- <span class="highlight">test</span> -->
-          <!-- <span class="bar"></span> -->
-          <label>Email</label>
-          <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
-            Email is requried
+      <div class="form">
+        <h1>Sign In To Your Account</h1>
+        <form [formGroup]="rForm" (ngSubmit)="Login()">
+          <div class="group">
+            <input type="text" formControlName="Email" required="required" />
+            <!-- <span class="highlight">test</span> -->
+            <!-- <span class="bar"></span> -->
+            <label>Email</label>
+            <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
+              Email is requried
+            </div>
           </div>
-        </div>
-        <div class="group">
-          <input type="password" formControlName="Password" required="required" />
-          <!-- <span class="highlight"></span>
+          <div class="group">
+            <input type="password" formControlName="Password" required="required" />
+            <!-- <span class="highlight"></span>
           <span class="bar"></span> -->
-          <label>Password</label>
-          <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
-            Password is requried
+            <label>Password</label>
+            <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+              Password is requried
+            </div>
           </div>
-        </div>
-        <div class="reset-pass">
-          <a routerLink="/forgot-password">Forgot password</a>
-        </div>
-        <div class="group">
-          <input type="submit" value="sign in" class="btn" [disabled]="!rForm.valid" />
-        </div>
-      </form>
-      <div class="actions">
-        <div class="sign-up">
-         Not A Member? <a routerLink="/sign-up">Sign Up For Free</a>
+          <div class="reset-pass">
+            <a routerLink="/forgot-password">Forgot password</a>
+          </div>
+          <div class="group">
+            <input type="submit" value="sign in" class="btn" [disabled]="!rForm.valid" />
+          </div>
+        </form>
+        <div class="actions">
+          <div class="sign-up">
+            Not A Member? <a routerLink="/sign-up">Sign Up For Free</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="image">
-      <img src="../../../../../assets/images/sign-in-img.svg" alt="">
+      <div class="image">
+        <img src="../../../../../assets/images/sign-in-img.svg" alt="">
+      </div>
     </div>
   </div>
 </div>

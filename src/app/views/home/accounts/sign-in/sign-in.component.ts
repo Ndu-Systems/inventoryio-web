@@ -10,7 +10,7 @@ import { AccountService } from 'src/app/_services';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-
+  showMobileNav
   rForm: FormGroup;
   error: string;
   constructor(
@@ -18,6 +18,9 @@ export class SignInComponent implements OnInit {
     private routeTo: Router,
     private accountService: AccountService,
   ) {
+  }
+  toggleNav(){
+    this.showMobileNav = !this.showMobileNav
   }
 
   ngOnInit() {
