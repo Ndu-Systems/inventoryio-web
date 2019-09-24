@@ -41,18 +41,6 @@ export class DashboardNavComponent implements OnInit {
         Link: '/dashboard/sell',
         Icon: 'sell'
       }
-      ,
-      {
-        Name: 'configuration',
-        Link: '/dashboard/configurations',
-        Icon: 'settings'
-      }
-      ,
-      {
-        Name: 'profile',
-        Link: '/dashboard',
-        Icon: 'profile'
-      }
     ];
   }
   populateProfileNav() {
@@ -62,12 +50,13 @@ export class DashboardNavComponent implements OnInit {
         Link: '/dashboard',
       },
       {
-        Name: 'sign out',
-        Link: '/'
+        Name: 'configuration',
+        Link: '/dashboard/configurations',
+        Icon: 'settings'
       }
     ];
 
-    this.profileMobileModels = []=[
+    this.profileMobileModels = [] = [
       {
         Name: 'sign out',
         Link: '/',
