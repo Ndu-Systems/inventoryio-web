@@ -1,47 +1,62 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Role } from 'src/app/_models/roles.model';
 import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Role } from 'src/app/_models';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolesService {
+  private _roles = new BehaviorSubject<Role[]>([]);
+  private url = environment.API_URL;
+  private dataStore: {
+    roles: Role[]
+  } = { roles: [] };
+  readonly roles = this._roles.asObservable();
 
-  private currentRoleSubject: BehaviorSubject<Role[]>;
-  public currentRole: Observable<Role[]>;
-  url: string;
-  constructor(
-    private http: HttpClient
-  ) {
-    this.currentRoleSubject = new BehaviorSubject<Role[]>(JSON.parse(localStorage.getItem('currentRole')));
-    this.currentRole = this.currentRoleSubject.asObservable();
-    this.url = environment.API_URL;
+  constructor(private http: HttpClient) { }
+  getAllRoles(companyId: string) {
+    this.http.get<Role[]>(`${this.url}/api/roles/get-roles.php?CompanyId=${companyId}`)
+      .subscribe(data => {
+        this.dataStore.roles = data;
+        this._roles.next(Object.assign({}, this.dataStore).roles);
+      }, error => console.log('Could not load roles.'));
   }
 
-  public get currentRoleValue(): Role[] {
-    return this.currentRoleSubject.value;
+  getById(companyId, roleId) {
+    this.http.get<Role>(`${this.url}/api/roles/get-roles-id.php?CompanyId=${companyId}&&RoleId=${roleId}`)
+      .subscribe(data => {
+        let notFound = true;
+        this.dataStore.roles.forEach((item, index) => {
+          if (item.RoleId === data.RoleId) {
+            this.dataStore.roles[index] = data;
+            notFound = false;
+          }
+        });
+        if (notFound) {
+          this.dataStore.roles.push(data);
+        }
+      }, error => console.log('could not load role.'));
   }
 
-  addRole(data: Role) {
-    return this.http.post<any>(`${this.url}/api/roles/add-role.php`, data).subscribe(resp => {
-      const role: Role[] = resp;
-      localStorage.setItem('currentRole', JSON.stringify(role));
-      this.currentRoleSubject.next(role);
-    }, error => {
-      alert(JSON.stringify(error));
-    });
+  addRole(role: Role) {
+    this.http.post<Role>(`${this.url}/api/roles/add-role.php?`, JSON.stringify(role))
+      .subscribe(data => {
+        this.dataStore.roles.push(data);
+        this._roles.next(Object.assign({}, this.dataStore).roles);
+      }, error => console.log('could create role.'));
   }
 
-  getRoles(companyId) {
-    return this.http.get<any>(`${this.url}/api/roles/get-roles.php?CompanyId=${companyId}`).subscribe(resp => {
-      const role: Role[] = resp;
-      localStorage.setItem('currentRole', JSON.stringify(role));
-      this.currentRoleSubject.next(role);
-    }, error => {
-      alert(JSON.stringify(error));
-    });
+  updateRole(role: Role) {
+    this.http.put<Role>(`${this.url}/api/roles/update-roles.php?`, JSON.stringify(role))
+      .subscribe(data => {
+        this.dataStore.roles.forEach((item, index) => {
+          if (item.RoleId === data.RoleId) {
+            this.dataStore.roles[index] = data;
+          }
+        });
+        this._roles.next(Object.assign({}, this.dataStore).roles);
+      }, error => console.log('could not update todo'));
   }
-
 }

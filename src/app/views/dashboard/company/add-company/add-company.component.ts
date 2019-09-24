@@ -48,14 +48,14 @@ export class AddCompanyComponent implements OnInit {
     this.companyService.currentCompany.subscribe(data => {
       if (data) {
         this.addCompanyTo();
-        this.rolesService.getRoles(data.CompanyId);
+        // this.rolesService.getRoles(data.CompanyId);
       }
     });
 
     // get roles
-    this.rolesService.currentRole.subscribe(data => {
-      this.roles = data;
-    });
+    // this.rolesService.currentRole.subscribe(data => {
+    //   this.roles = data;
+    // });
   }
   get getFormValues() {
     return this.rForm.controls;
