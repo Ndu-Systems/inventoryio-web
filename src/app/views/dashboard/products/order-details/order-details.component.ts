@@ -18,6 +18,7 @@ export class OrderDetailsComponent implements OnInit {
   total: number;
   companyTax = 0.1;
   finalTotal: number;
+  showPrint:boolean;
 
   constructor(
     private ordersService: OrdersService,
@@ -52,4 +53,7 @@ export class OrderDetailsComponent implements OnInit {
     this.ordersService.getProductsForAnOrder(order.OrdersId);
     this.router.navigate([`/dashboard/order-details`]);
   } 
+  print(){
+    this.router.navigate(['/dashboard/print-invoice']);
+  }
 }

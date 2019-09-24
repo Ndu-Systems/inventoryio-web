@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { OrderProducts } from 'src/app/_models';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice',
@@ -18,7 +19,7 @@ export class InvoiceComponent implements OnInit {
   InvoiceNumber: string;
 
 
-  constructor(private ordersService: OrdersService,
+  constructor(private ordersService: OrdersService, private router: Router
   ) { }
 
   ngOnInit() {
@@ -44,5 +45,8 @@ export class InvoiceComponent implements OnInit {
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
       pdf.save(`${this.InvoiceNumber} INVOICE.pdf`);
     });
+  }
+  cancel() {
+    this.router.navigate(['/dashboard/order-details']);
   }
 }

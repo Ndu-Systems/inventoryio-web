@@ -57,6 +57,7 @@ const routes: Routes = [
       { path: 'stores', component: StoresComponent },
       { path: 'add-store', component: AddStoreComponent },
       { path: 'users', component: ListUsersComponent },
+      { path: 'print-invoice', component: InvoiceComponent },
 
     ]
   },
