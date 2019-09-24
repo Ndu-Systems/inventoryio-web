@@ -1,10 +1,10 @@
 export interface Role {
-    RoleId: string;
+    RoleId?: string;
     CompanyId: string;
     Name: string;
-    CreateDate: string;
+    CreateDate?: string;
     CreateUserId: string;
-    ModifyDate: string;
+    ModifyDate?: string;
     ModifyUserId: string;
-    StatusId: string;
+    StatusId: number;
 }

@@ -1,0 +1,51 @@
+.main {
+  background: #fff;
+
+  .body {
+    padding: 1rem;
+    padding-top: 0;
+
+    .section {
+      background: #fff;
+      display: block;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: .5rem;
+      border: 1px solid #C1C1C1;
+    }
+  }
+}
+
+.add {
+  background: #0337BB;
+  float: right;
+  border: none;
+  padding: .5rem;
+  font-weight: 800;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+}
+
+
+
+@media only screen and (min-width: 1254px) {
+  .main {
+    background: transparent;
+  }
+
+  .body {
+    display: grid;
+    width: 30vw;
+
+    margin: 0 auto;
+    background: #fff;
+
+    .card {
+      margin: 1rem;
+    }
+  }
+}

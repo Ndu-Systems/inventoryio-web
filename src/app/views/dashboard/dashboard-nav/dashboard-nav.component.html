@@ -10,6 +10,9 @@
     <ul class="profile">
       <li *ngFor="let profileItem of profileModels"><a [routerLink]="profileItem.Link"
           (click)="linkEvent(profileItem)">{{profileItem.Name}}</a></li>
+          <li class="signOut">
+            <a routerLink="/">sign out</a>
+          </li>
     </ul>
   </div>
   <div class="nav-bar-mobile">
@@ -20,6 +23,7 @@
         <a [routerLink]="profileItem.Link">
           <img src="assets/images/navigation/{{profileItem.Icon}}.svg" alt="">
         </a></li>
+
     </ul>
 
   </div>

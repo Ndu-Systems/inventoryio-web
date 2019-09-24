@@ -1,0 +1,14 @@
+<div class="main">
+  <app-banner></app-banner>
+  <div class="body">
+    <div class="page-actions">
+      <div class="search">
+        <input type="text" [(ngModel)]="search" placeholder="search store by name, address">
+      </div>
+      <div class="add">
+        <button (click)="add()">Add A Store</button>
+      </div>
+    </div>
+    <app-store-card-list [stores]="stores"></app-store-card-list>
+  </div>
+</div>

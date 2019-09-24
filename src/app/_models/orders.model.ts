@@ -15,6 +15,8 @@ export interface Orders {
     // local
     Disable?:boolean;
     Touched?:boolean;
+    Paying?:boolean;
+    Payment?:number;
 
 
 }

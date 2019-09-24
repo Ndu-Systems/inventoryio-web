@@ -1,109 +1,27 @@
-.cards {
-  max-height: 66vh;
-  overflow-y: scroll;
-
-  .card {
-    padding:.1rem 1rem;
-    margin: 0 1rem;
-    background: #fff;
-    text-align-last: left;
-    border-bottom: 1px solid #e7ebec;
-    h1{
-      font-size: 1rem;
-    }
-    .price {
-      color: #413586;
+.body {
+  width: 85%;
+  float: right;
+  .items{
+    .item{
+      grid-template-columns: repeat(3,30%);
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: 100%;
+      }
+      .data{
+        .total{
+          font-size: 1.3rem;
+          font-weight: 500;
+        }
+        .tax{
+          font-size: .8rem;
+        }
+      }
     }
   }
-  .separate{
-    margin-top: .5rem;
-    h1{
-      font-weight: 500;
-    }
-    span.value{
-      font-weight: 300;
-      padding-left: 1rem;
-    }
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    float: none;
   }
 }
 
-
-@media only screen and (min-width: 1254px) {
-
-  .cards {
-    height: 70vh;
-    max-width: 67vw;
-    margin: 0 auto;
-    overflow-y: scroll;
-    display: grid;
-    grid-template-columns: 100%;
-
-    .card {
-      display: grid;
-      grid-template-columns:repeat(3, 33%);
-      padding: 1rem;
-      margin: 0 2rem;
-      background: #fff;
-      border-radius: .5rem;
-      box-shadow: 0;
-      width: 90%;
-      // height: 100vh;
-
-      .left-col {
-        margin-bottom: 1rem;
-
-        span {
-          text-align: left;
-        }
-      }
-
-
-      .rigt-col {
-        margin-bottom: 1rem;
-
-        span {
-          text-align: right;
-        }
-      }
-
-      span {
-        display: block;
-      }
-
-      .label {
-        color: #C1C1C1;
-        font-weight: 500;
-
-      }
-
-      .value {
-        color: #000;
-        font-weight: 500;
-      }
-    }
-
-  }
-
-  .cards .card-betta {
-    height: 30vh;
-    width: 20vw;
-    box-shadow: none;
-    border-radius: 0;
-  }
-
-  .page-actions {
-    display: grid;
-    grid-template-columns: 70% auto;
-    margin: 0 auto;
-    margin-top: -3.4rem;
-    position: relative;
-    padding: 1rem;
-    z-index: 10;
-    width: 70vw;
-    .add {
-      button {
-        cursor: pointer;
-      }
-    }
-  }
-}

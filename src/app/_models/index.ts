@@ -13,3 +13,5 @@ export * from './nav-bar.model';
 export * from './sale.model';
 export * from './orders.model';
 export * from './order.products.model';
+export * from './store.model';
+
