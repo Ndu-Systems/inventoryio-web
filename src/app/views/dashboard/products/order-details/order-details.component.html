@@ -33,18 +33,18 @@
 
         <div class="item spaccing">
           <div class="data">
-            <span class="value">
-              Sub Total:{{total | currency:'R'}}
+            <span class="value total">
+             Total:{{total | currency:'R'}}
             </span>
-            <span class="value">
-              Tax {{companyTax * 100}}%: {{total | currency:'R'}}
+            <span class="value tax">
+              Tax paid {{companyTax * 100}}%: {{total*companyTax | currency:'R'}}
             </span>
-            <span class="value">
+            <!-- <span class="value">
               Sub Total:{{total | currency:'R'}}
             </span>
             <span class="value">
               Total:{{ finalTotal | currency:'R'}}
-            </span>
+            </span> -->
           </div>
         </div>
 

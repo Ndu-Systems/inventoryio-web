@@ -38,7 +38,5 @@ export class RolesComponent implements OnInit {
   add() {
     this.routeTo.navigate(['dashboard/add-role']);
   }
-  add(){
-    alert('#TODO');
-  }
+
 }
