@@ -8,8 +8,8 @@ export interface User {
     CompanyId: string;
     RoleId: number;
     CreateDate?: string;
-    CreateUserId: string;
+    CreateUserId?: string;
     ModifyDate?: string;
-    ModifyUserId: string;
+    ModifyUserId?: string;
     StatusId: number;
 }

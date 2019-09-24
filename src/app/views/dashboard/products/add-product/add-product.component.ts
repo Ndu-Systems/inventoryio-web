@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductService, AccountService, RolesService, CateroryService, BrandService, BannerService, UploadService } from 'src/app/_services';
+import { ProductService, AccountService, CateroryService, BrandService, BannerService, UploadService } from 'src/app/_services';
 import { User, Product, Brand, Caterory } from 'src/app/_models';
 import { Observable } from 'rxjs';
 

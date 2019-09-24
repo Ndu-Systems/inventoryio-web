@@ -1,14 +1,14 @@
 <div class="main">
     <div class="cards">
-      <span *ngFor="let i of [1,1,1,1]">
-        <div class="card" (click)="openAction(data.link)">
+      <span *ngFor="let item of roles | async">
+        <div class="card">
           <div class="icon">
             <!-- <img [src]="data.image" alt="role image"> -->
             <img src="../../../../../../assets/images/actions/role.svg" alt="role image">
           </div>
           <div class="data">
-            <h1 class="main">manager</h1>
-            <h1 class="spec">0 users</h1>
+            <h1 class="main">{{item.Name}}</h1>
+            <!-- <h1 class="spec">0 users</h1> -->
           </div>
         </div>
       </span>

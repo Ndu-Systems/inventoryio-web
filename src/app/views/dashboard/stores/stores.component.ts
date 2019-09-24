@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { BannerService, StoresService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/_models';
-import { BannerService, AccountService } from 'src/app/_services';
+import { Store, User } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/_services/dashboard/users.service';
 
 @Component({
-  selector: 'app-list-users',
-  templateUrl: './list-users.component.html',
-  styleUrls: ['./list-users.component.scss']
+  selector: 'app-stores',
+  templateUrl: './stores.component.html',
+  styleUrls: ['./stores.component.scss']
 })
-export class ListUsersComponent implements OnInit {
+export class StoresComponent implements OnInit {
   search: string;
-  users: Observable<User[]>;
+  stores: Observable<Store[]>;
+
   constructor(
     private bannerService: BannerService,
-    private userService: UsersService,
+    private storeService: StoresService,
     private accountService: AccountService,
     private routeTo: Router
   ) { }
@@ -26,12 +26,17 @@ export class ListUsersComponent implements OnInit {
       this.accountService.logout();
       this.routeTo.navigate(['sign-in']);
     }
+
     this.bannerService.updateState({
-      heading: 'Manage Users',
+      heading: 'Manage Stores',
       backto: '/dashboard/configurations'
     });
-    this.users = this.userService.users;
-    this.userService.getAllUsers(user.CompanyId);
+    this.stores = this.storeService.stores;
+    this.storeService.getAllStores(user.CompanyId);
+  }
+
+  add() {
+    this.routeTo.navigate(['dashboard/add-store']);
   }
 
 }
