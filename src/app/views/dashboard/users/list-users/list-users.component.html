@@ -1,3 +1,14 @@
-<p>
-  list-users works!
-</p>
+ <div class="main">
+   <app-banner></app-banner>
+   <div class="body">
+     <div class="page-actions">
+       <div class="search">
+         <input type="text" [(ngModel)]="search" placeholder="search users by name, address">
+       </div>
+       <div class="add">
+         <button (click)="add()">Add A User</button>
+       </div>
+     </div>
+     <app-user-card-list [users]="users"></app-user-card-list>
+   </div>
+ </div>

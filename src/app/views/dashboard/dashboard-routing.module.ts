@@ -32,6 +32,7 @@ import { ConfigurationHomeComponent } from './configuration-home';
 import { ActionsComponent } from './shared';
 import { RolesComponent, RoleCardListComponent, AddRoleComponent } from './roles';
 import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './stores';
+import { UserCardListComponent } from './users';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -55,6 +56,7 @@ const routes: Routes = [
       { path: 'add-role', component: AddRoleComponent },
       { path: 'stores', component: StoresComponent },
       { path: 'add-store', component: AddStoreComponent },
+      { path: 'users', component: ListUsersComponent },
 
     ]
   },
@@ -95,6 +97,7 @@ export const declarations = [
   StoresComponent,
   StoreCardListComponent,
   AddStoreComponent,
+  UserCardListComponent,
   // pipes
   SearchProductPipe
 ];

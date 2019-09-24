@@ -29,20 +29,20 @@ export class ConfigurationHomeComponent implements OnInit {
       image: 'assets/images/actions/shop.svg',
       link: 'dashboard/stores'
     },
-    {
-      name: 'manage clients',
-      image: 'assets/images/actions/clients.svg',
-      link: 'dashboard/configurations'
-    },
-    {
-      name: 'manage suppliers',
-      image: 'assets/images/actions/inventory.svg',
-      link: 'dashboard/configurations'
-    },
+    // {
+    //   name: 'manage clients',
+    //   image: 'assets/images/actions/clients.svg',
+    //   link: 'dashboard/configurations'
+    // },
+    // {
+    //   name: 'manage suppliers',
+    //   image: 'assets/images/actions/inventory.svg',
+    //   link: 'dashboard/configurations'
+    // },
     {
       name: 'manage staff',
       image: 'assets/images/actions/staff.svg',
-      link: 'dashboard/configurations'
+      link: 'dashboard/users'
     });
     this.actions2.push({
       name: 'manage roles',
