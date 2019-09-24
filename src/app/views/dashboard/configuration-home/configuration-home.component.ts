@@ -27,7 +27,7 @@ export class ConfigurationHomeComponent implements OnInit {
     this.actions.push({
       name: 'manage stores',
       image: 'assets/images/actions/shop.svg',
-      link: 'dashboard/configurations'
+      link: 'dashboard/stores'
     },
     {
       name: 'manage clients',

@@ -1,0 +1,86 @@
+.main {
+  padding: 1rem;
+  margin-top: -3.2rem;
+
+  .cards {
+    display: grid;
+    grid-template-columns: 50% auto;
+
+    .action-title {
+      font-size: 20px;
+      color: #7B8C98;
+    }
+
+    .card {
+      background: #fff;
+      text-align: center;
+      height: 12rem;
+      width: 12rem;
+      margin: 1rem;
+      border: 1px solid #E5E5E5;
+      cursor: pointer;
+
+      .icon {
+        img {
+          width: 19.1px;
+          margin: 0.5rem;
+          float: left;
+        }
+      }
+
+
+      .data {
+
+        // background: rgb(34, 182, 34);
+        text-align: center;
+
+        h1 {
+          color: #0337BB;
+          display: block;
+          font-size: .8rem;
+          font-weight: 600;
+          text-align: center;
+          width: 100%;
+          margin-top: 1.5rem;
+          text-transform: capitalize;
+
+          &.main {
+            font-size: 15px;
+            margin-top: 2rem;
+            color: #2F2E41;
+          }
+
+          &.spec {
+            margin-top: 0;
+            color: #455E6D;
+            float: left;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 1254px) {
+  .main {
+    margin: 0 auto;
+    width: 40%;
+
+    .container {
+
+      width: 100%;
+
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-gap: 2rem;
+
+
+    }
+  }
+
+}
