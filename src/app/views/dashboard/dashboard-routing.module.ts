@@ -20,8 +20,7 @@ import { UploadProductImageComponent } from './products/upload-product-image/upl
 import { SellComponent } from './products/sell/sell.component';
 import { DashboardNavComponent } from './dashboard-nav';
 import { SaleSammaryComponent } from './products/sell/sale-sammary/sale-sammary.component';
-import { AddUserComponent } from './users/add-user/add-user.component';
-import { ListUsersComponent } from './users/list-users/list-users.component';
+ import { ListUsersComponent } from './users/list-users/list-users.component';
 import { SalesReportComponent } from './products/sales-report/sales-report.component';
 import { ListOrdersComponent } from './products/list-orders/list-orders.component';
 import { BrandComponent } from './brand';
@@ -32,7 +31,7 @@ import { ConfigurationHomeComponent } from './configuration-home';
 import { ActionsComponent } from './shared';
 import { RolesComponent, RoleCardListComponent, AddRoleComponent } from './roles';
 import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './stores';
-import { UserCardListComponent } from './users';
+import { UserCardListComponent, AddUserComponent } from './users';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,

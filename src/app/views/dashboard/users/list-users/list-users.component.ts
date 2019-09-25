@@ -34,4 +34,8 @@ export class ListUsersComponent implements OnInit {
     this.userService.getAllUsers(user.CompanyId);
   }
 
+  add() {
+    this.routeTo.navigate(['dashboard/add-user']);
+  }
+
 }
