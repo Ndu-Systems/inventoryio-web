@@ -49,7 +49,7 @@
             <span *ngIf="item.Paying">
               <input type="number" [max]="item.Total" class="input" [(ngModel)]="item.Payment"
                 (ngModelChange)="onPay(item)" placeholder="Enter amount paid">
-              <button class="action btn-save" [disabled]="item.Disable" (click)="updateOrder(item)">Save</button>
+              <button class="action btn-save" [disabled]="item.Disable || !item.Payment" (click)="updateOrder(item)">Save</button>
               <button class="action btn-cancel" (click)="pay(item)">Cancel</button>
             </span>
           </div>

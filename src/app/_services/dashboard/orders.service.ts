@@ -35,7 +35,6 @@ export class OrdersService {
     const state = this.currentOrdersValue || [];
     const item = state.find(x => x.OrdersId === orders.OrdersId);
     if (item) {
-      alert(state.indexOf(item));
       state[state.indexOf(item)] = item;
       return;
     }

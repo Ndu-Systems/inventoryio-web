@@ -65,6 +65,20 @@
         </div>
 
         <div class="group">
+          <input type="number" formControlName="Quantity" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Quantity</label>
+        </div>
+
+        <div class="group">
+          <input type="number" min="0" formControlName="LowStock" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Low Stock Alert</label>
+        </div>
+
+        <div class="group">
           <input type="text" formControlName="SKU" required="required" />
           <span class="highlight"></span>
           <span class="bar"></span>
@@ -72,13 +86,13 @@
 
         </div>
 
-        <div class="group">
+        <!-- <div class="group">
           <input type="text" formControlName="Code" required="required" />
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Barcode</label>
 
-        </div>
+        </div> -->
 
         <div class="group">
           <input type="submit" value="Add Product" class="btn" [disabled]="!rForm.valid" />
