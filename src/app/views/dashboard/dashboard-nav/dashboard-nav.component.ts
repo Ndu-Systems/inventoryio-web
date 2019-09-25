@@ -12,6 +12,7 @@ export class DashboardNavComponent implements OnInit {
   models: NavModel[];
   profileModels: NavModel[];
   profileMobileModels: NavModel[];
+  showNav: boolean;
   constructor(
     private accountService: AccountService,
     private routeTo: Router
@@ -73,6 +74,9 @@ export class DashboardNavComponent implements OnInit {
 
   navigateHome() {
     this.routeTo.navigate(['/dashboard']);
+  }
+  toggleNav() {
+    this.showNav = !this.showNav;
   }
 
 }
