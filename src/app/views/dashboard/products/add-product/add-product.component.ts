@@ -61,8 +61,8 @@ export class AddProductComponent implements OnInit {
     );
 
 
-    this.brands$ = this.brandService.currentsBrand;
-    this.catergories$ = this.cateroryService.currentCaterory;
+    this.brands$ = this.brandService.brands;
+    this.catergories$ = this.cateroryService.categories;
   }
   get getFormValues() {
     return this.rForm.controls;

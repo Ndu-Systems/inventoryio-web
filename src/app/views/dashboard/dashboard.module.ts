@@ -6,6 +6,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/components/common/messageservice';
+import {ToggleButtonModule} from 'primeng/togglebutton';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
     ReactiveFormsModule,
     ZXingScannerModule,
     FileUploadModule,
-    ToastModule
+    ToastModule,
+    ToggleButtonModule
 
   ],
   declarations: [...declarations],

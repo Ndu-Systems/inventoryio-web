@@ -33,6 +33,8 @@ import { ActionsComponent } from './shared';
 import { RolesComponent, RoleCardListComponent, AddRoleComponent } from './roles';
 import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './stores';
 import { UserCardListComponent } from './users';
+import { ListCategoriesComponent } from './catergory/list-categories/list-categories.component';
+import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -58,6 +60,8 @@ const routes: Routes = [
       { path: 'add-store', component: AddStoreComponent },
       { path: 'users', component: ListUsersComponent },
       { path: 'print-invoice', component: InvoiceComponent },
+      { path: 'list-categories', component: ListCategoriesComponent },
+      { path: 'list-brands', component: ListBrandsComponent },
 
     ]
   },
@@ -99,6 +103,8 @@ export const declarations = [
   StoreCardListComponent,
   AddStoreComponent,
   UserCardListComponent,
+  ListCategoriesComponent,
+  ListBrandsComponent,
   // pipes
   SearchProductPipe
 ];

@@ -49,8 +49,8 @@ export class ProductDetailsComponent implements OnInit {
 
    // this.initForm();
 
-    this.brands$ = this.brandService.currentsBrand;
-    this.catergories$ = this.cateroryService.currentCaterory;
+    this.brands$ = this.brandService.brands;
+    this.catergories$ = this.cateroryService.categories;
   }
   initForm() {
     this.rForm = this.fb.group({

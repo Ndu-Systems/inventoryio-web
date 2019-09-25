@@ -10,25 +10,32 @@ import { Brand } from 'src/app/_models';
 export class BrandService {
 
 
-  private currentBrandsSubject: BehaviorSubject<Brand[]>;
-  public currentsBrand: Observable<Brand[]>;
+  private _brands: BehaviorSubject<Brand[]>;
+  public brands: Observable<Brand[]>;
   url: string;
   constructor(
     private http: HttpClient
   ) {
-    this.currentBrandsSubject = new BehaviorSubject<Brand[]>(JSON.parse(localStorage.getItem('currentBrands')) || []);
-    this.currentsBrand = this.currentBrandsSubject.asObservable();
+    this._brands = new BehaviorSubject<Brand[]>(JSON.parse(localStorage.getItem('brands')) || []);
+    this.brands = this._brands.asObservable();
     this.url = environment.API_URL;
   }
 
   public get currentBrandValue(): Brand[] {
-    return this.currentBrandsSubject.value;
+    return this._brands.value;
   }
-apendState(data: Brand) {
-const state = this.currentBrandValue || [];
-state.push(data);
-this.currentBrandsSubject.next(state);
-}
+  apendState(data: Brand) {
+    const state = this.currentBrandValue || [];
+    state.push(data);
+    this._brands.next(state);
+    localStorage.setItem('brands', JSON.stringify(state));
+
+  }
+  updateState(data: Brand[]) {
+    this._brands.next(data);
+    localStorage.setItem('brands', JSON.stringify(data));
+
+  }
   addBrand(data: Brand) {
     return this.http.post<any>(`${this.url}/api/brand/add-brand.php`, data).subscribe(resp => {
       const brand: Brand = resp;
@@ -40,9 +47,8 @@ this.currentBrandsSubject.next(state);
 
   getBrands(companyId) {
     return this.http.get<any>(`${this.url}/api/brand/get-brands.php?CompanyId=${companyId}`).subscribe(resp => {
-      const Brands: Brand[] = resp;
-      localStorage.setItem('currentBrands', JSON.stringify(Brands));
-      this.currentBrandsSubject.next(Brands);
+      const brands: Brand[] = resp;
+      this.updateState(brands);
     }, error => {
       alert(JSON.stringify(error));
     });
