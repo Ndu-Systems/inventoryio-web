@@ -49,10 +49,10 @@
         <img src="../../../../assets/images/logo.svg" alt="">
       </div>
       <div class="nav">
-          <li><span class="blue"><a routerLink ="">Home</a>  </span></li>
+          <li><span class="blue"><a routerLink ="/">Home</a>  </span></li>
           <!-- <li> <span class="blue"><a routerLink ="">About</a>  </span></li> -->
           <li><span class="sign-in-link"> <a routerLink ="sign-in">Sign in</a></span> </li>
-          <li><span class="sign-up-for-free">   <a routerLink ="sign-up">sign up for free</a> </span></li>
+          <li><span class="sign-up-for-free"><a routerLink ="/sign-up">sign up for free</a> </span></li>
         </div>
         <div class="mobile-nav" *ngIf="showMobileNav">
           <div class="close"  (click)="toggleNav()">
@@ -60,14 +60,13 @@
           </div>
           <li><span class="blue"><a routerLink ="">Home</a>  </span></li>
           <!-- <li> <span class="blue"><a routerLink ="">About</a>  </span></li> -->
-          <li><span class="sign-in-link"> <a routerLink ="sign-in">Sign in</a></span> </li>
-          <li><span class="sign-up-for-free">   <a routerLink ="sign-up">sign up for free</a> </span></li>
+          <li><span class="sign-in-link"><a routerLink ="/sign-in">Sign in</a></span> </li>
+          <li><span class="sign-up-for-free">   <a routerLink ="/sign-up">sign up for free</a> </span></li>
         </div>
         <div class="ham-icon" (click)="toggleNav()">
             <img src="../../../../assets/images/ham.svg" alt="">
         </div>
     </div>
-   
     <div class="content">
         <div class="mobile-house">
             <img src="../../../../assets/images/housemobile.svg" alt="">
@@ -88,7 +87,7 @@
         <p> Access your regular suppliers based on your business relashionship</p>
       </div>
       <div class="card">
-        <span class="sell"> <img src="../../../../assets/images/selling.svg" alt="geadsets"></span>
+        <span class="sell"><img src="../../../../assets/images/selling.svg" alt="geadsets"></span>
         <h2>Selling</h2>
         <p> Precess and manages your sales with inventory-io </p>
       </div>

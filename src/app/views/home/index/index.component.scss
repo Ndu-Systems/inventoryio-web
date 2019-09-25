@@ -36,7 +36,6 @@ body {
     }
   }
 }
-
 .tob-bar {
   display: grid;
   grid-template-columns: 28% auto;
@@ -178,8 +177,8 @@ body {
       color: #104CE5;
       background: #FFFFFF;
       padding: 1rem;
-      font-weight: 500;
       margin-left: 1.2rem;
+      text-transform: none;
     }
     &:hover {
       -webkit-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
