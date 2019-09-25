@@ -13,7 +13,7 @@
       </div>
       <div class="cards-betta" *ngIf="categories$  | async as categories">
         <span *ngFor="let item of categories | searchproduct: search">
-          <div class="card" (click)="details(item)">    
+          <div class="card">    
             <div class="image">
               <img src="assets/images/maintenance.svg" alt="">
             </div>
