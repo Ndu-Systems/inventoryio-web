@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ListBrandsComponent implements OnInit {
   brands$: Observable<Brand[]>;
+  search;
   constructor(private brandService: BrandService,
               private accountService: AccountService,
               private router: Router,
@@ -29,6 +30,10 @@ export class ListBrandsComponent implements OnInit {
       backto: '/dashboard',
     });
     this.brandService.getBrands(user.CompanyId);
+  }
+
+  add() {
+    this.router.navigate(['/dashboard/add-brand']);
   }
 
 }

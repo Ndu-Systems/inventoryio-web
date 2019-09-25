@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-categories.component.css']
 })
 export class ListCategoriesComponent implements OnInit {
-
+  search;
   categories$: Observable<Caterory[]>;
   constructor(private categorieservice: CateroryService,
               private accountService: AccountService,
@@ -30,5 +30,8 @@ export class ListCategoriesComponent implements OnInit {
       backto: '/dashboard',
     });
     this.categorieservice.getCateries(user.CompanyId);
+  }
+  add() {
+    this.router.navigate(['/dashboard/add-catergory']);
   }
 }
