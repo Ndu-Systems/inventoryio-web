@@ -6,11 +6,14 @@
 }
 .sign-in-background {
     background-image: url(../../../../../assets/images/sign-in-background.svg);
-    background-size: 80%;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: top right;
+    height: 100vh;
     @media only screen and (max-width: 600px) {
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
+        padding: 0%;
+      
     }
 }
 .section {
@@ -18,23 +21,21 @@
     grid-template-columns: 50% 30%;
     margin-left: 30%;
     padding-top: 8rem;
-
     @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
         margin: 0%;
         padding: 0%;
     }
-
     .mobile-fingerprint-img {
         display: none;
         @media only screen and (max-width: 600px) {
-            width: 100%;
-            justify-content: center;
-            display: grid;
-            margin-top: 7rem;
+            width: 45%;
+            display: block;
+            margin:auto;
+            margin-top: 10rem;
+            text-align: center;
             img {
-                width: 90%;
-                padding: 0%;
+                width: 40%;
                 margin: 0%;
             }
         }
@@ -47,15 +48,15 @@
         margin: auto;
         border-radius: 15px;
         padding: 2rem;
-        margin-bottom: 7rem;
+        margin-bottom: 8rem;
         margin-top: 8rem;
         -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-
         @media only screen and (max-width: 600px) {
             width: 90%;
             margin-top: 10%;
+            margin-bottom: 0%;
         }
 
         h1 {
@@ -171,123 +172,16 @@
     }
 
     .image {
-        margin-top: 8rem;
+        height: 50%;
+        margin-top: 10rem;
+        justify-content: center;
         @media only screen and (max-width: 600px) {
             display: none;
         }
     }
-
     img {
         width: 80%;
         text-align: center;
-        margin-top: 5rem;
+       
     }
-}
-.tob-bar {
-    display: grid;
-    grid-template-columns: 28% auto;
-    @media only screen and (max-width: 600px){
-        display: flex;
-}
-    .logo {
-        margin: 0 5rem;
-        margin-top: 1rem;
-        padding-top: 1.5rem;
-        text-align: right;
-        @media only screen and (max-width: 600px) {
-            width: 100%;
-            margin: 0%;
-            padding: 0%;
-            img {
-                width: 100%; 
-                margin-top: 1rem;
-                margin-left: 2rem;
-            }
-        }
-    }
-    .ham-icon {
-        @media only screen and (max-width: 600px) {
-         width: 85%;
-          padding: 0%;
-          img {
-            width: 55%;
-            margin-top: 2rem;   
-          }
-        }
-      }
-
-    .nav {
-        display: flex;
-        padding: 2rem;
-        width: 50%;
-        margin: auto;
-        margin-right: 7rem;
-
-        li {
-            list-style-type: none;
-            padding: 0 2rem;
-            font-weight: 500;
-            color: #ffffff;
-            text-align: right;
-            @media only screen and (max-width: 600px) {
-                display: none;
-            }
-            .sign-up-for-free {
-                background: #FFFFFF;
-                color: #104CE5;
-                border-radius: 5px;
-                padding: .4rem;
-                padding-right: 1.4rem;
-                padding-left: 1.4rem;
-
-                .sign-up-for-free a {
-                    color: #FFFFFF;
-                }
-            }
-            .sign-in-link a,
-            .blue a {
-                color: #ffffff;
-            }
-        }
-    }
-    .mobile-nav {
-        @media only screen and (max-width: 600px) {}
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        background: #104CE5;
-        height: 100%;
-        width: 100%;
-        z-index: 1;
-        color: #ffffff;
-        li {
-          text-align: center;
-          padding: 3rem;
-          list-style-type: none;
-          .sign-up-for-free {
-            background: #FFFFFF;
-          }
-          .sign-up-for-free a {
-            background: #FFFFFF;
-            color: #104CE5;
-            border-radius: 5px;
-            padding: .4rem;
-            padding-right: 1.4rem;
-            padding-left: 1.4rem;
-          }
-          a {
-            color: #FFFFFF;
-          }
-        }
-        .close {
-          @media only screen and (max-width: 600px) {
-            display: grid;
-            text-align: right;
-            padding: 2rem;
-            img {
-              width: 7%;
-            }
-          }
-        }
-      }
 }

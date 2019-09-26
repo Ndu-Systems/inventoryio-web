@@ -5,70 +5,7 @@
   }
 }
 
-footer{
-  background: #F5F6FA;
-  padding: 4rem;
-  padding-bottom: 10rem;
-  @media only screen and (max-width: 600px){
-    padding: 0%;
-   
-  }
-  
-  h1{
-    color: #3F3D56;
-    margin-top: 0%;
-    width: 40%;
-    margin: auto;
-    border-bottom: .2rem solid #104CE5;
-    padding-bottom: 1rem;
-    margin-bottom: 4rem;
-    text-align: center;
-    @media only screen and (max-width: 600px){
-      width: 90%;
-      margin: 0%;
-      font-size: 1rem;
-      margin: auto;
-      margin-bottom: 2rem;
 
-    }
-  }
-  .textbox{
-    display: flex;
-    width: 40%;
-    margin: auto;
-    border-radius: 1rem;
-    background: #ffff;
-    -webkit-box-shadow: 1px 1px 5px 3px rgba(0,0,0,0.19);
-      -moz-box-shadow: 1px 1px 5px 3px rgba(0,0,0,0.19);
-      box-shadow: 1px 1px 5px 3px rgba(0,0,0,0.19);
-      @media only screen and (max-width: 600px){
-        width: 90%;
-        margin-bottom: 3rem;
-      }
-    ::placeholder {
-      font-size: .7rem; 
-      color: #656D88;
-      letter-spacing: .1rem;
-      text-transform: none;
-      @media only screen and (max-width: 600px){
-        font-size: .6rem;
-      }
-  }
-  input[type=text] {
-    border: none;
-    padding: 1rem;
-  }
-  button{
-  width: 50%;
-  border-radius: 0 1rem 1rem 0 ;
-  text-transform: none;
-  font-size: 1rem;
-  @media only screen and (max-width: 600px){
-    width: 80%;
-    font-size: .8rem;
-  }
-  }
-}}
 
 .tob-bar {
   display: grid;
@@ -172,7 +109,7 @@ footer{
     display: grid;
     cursor: pointer;
     margin-top: 2rem;
-    margin-left: 12rem;
+    margin-left: 13rem;
     padding: 0%;
 
     img {
