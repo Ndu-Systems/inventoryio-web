@@ -2,7 +2,7 @@
   <app-banner></app-banner>
 
   <div class="body">
-    
+
   <div class="form">
     <form [formGroup]="rForm" (ngSubmit)="add(rForm.value)">
 
@@ -12,7 +12,7 @@
         <span class="bar"></span>
         <label>Company Name</label>
         <div class="alert" *ngIf="!rForm.controls['Name'].valid">
-          Company Name is requried
+          Company Name is required
         </div>
       </div>
 
@@ -23,7 +23,7 @@
         <span class="bar"></span>
         <label>Company  Address</label>
         <div class="alert" *ngIf="!rForm.controls['Address'].valid">
-          Company  Address is requried
+          Company  Address is required
         </div>
       </div>
 
@@ -42,7 +42,7 @@
         <span class="bar"></span>
         <label>Telephone Number</label>
         <div class="alert" *ngIf="!rForm.controls['TelephoneNumber'].valid">
-          Telephone Number is requried
+          Telephone Number is required
         </div>
       </div>
 

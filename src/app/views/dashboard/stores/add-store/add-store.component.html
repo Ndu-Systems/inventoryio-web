@@ -3,14 +3,13 @@
   <div class="body">
     <div class="form">
       <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
-
         <div class="group">
           <input type="text" formControlName="Name" required="required" />
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Name</label>
           <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
-            Store Name is requried
+            Store Name is required
           </div>
         </div>
         <div class="group">
@@ -19,7 +18,7 @@
           <span class="bar"></span>
           <label>Telephone Number</label>
           <div class="alert" *ngIf="!rForm.controls['TelephoneNumber'].valid && rForm.controls['TelephoneNumber'].touched">
-            Telephone Number is requried
+            Telephone Number is required
           </div>
         </div>
         <div class="group">
@@ -28,7 +27,7 @@
           <span class="bar"></span>
           <label>Address</label>
           <div class="alert" *ngIf="!rForm.controls['Address'].valid && rForm.controls['Address'].touched">
-            Store Name is requried
+            Store Name is required
           </div>
         </div>
         <div class="group">

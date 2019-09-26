@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BannerService, StoresService, AccountService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { User, Store } from 'src/app/_models';
+import { ACTIVE_STATUS } from '../../shared';
 
 @Component({
   selector: 'app-add-store',
@@ -32,7 +33,7 @@ export class AddStoreComponent implements OnInit {
       Address: ['not set'],
       CreateUserId: [user.UserId, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
-      StatusId: [1, Validators.required]
+      StatusId: [ACTIVE_STATUS, Validators.required]
     });
     this.bannerService.updateState({
       heading: 'Add a store',
