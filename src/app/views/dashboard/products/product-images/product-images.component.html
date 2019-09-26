@@ -4,6 +4,9 @@
   </h1>
   <div class="images" *ngFor="let image of images$|async">
     <img [src]="image?.Url" alt="">
+    <div class="close">
+      <button class="btn"  (click)="remove(image)" >Remove</button>
+    </div>
   </div>
 
 
@@ -11,6 +14,3 @@
     <a (click)="add()">Add Image</a>
   </div>
 </div>
-
-
-<app-upload-images *ngIf="upload"></app-upload-images>

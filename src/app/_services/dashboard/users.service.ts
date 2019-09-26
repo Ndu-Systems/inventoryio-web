@@ -56,6 +56,9 @@ export class UsersService {
             this.dataStore.users[index] = data;
           }
         });
+        this.dataStore.users.sort((x, y) => {
+          return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+        });
         this._users.next(Object.assign({}, this.dataStore).users);
       }, error => console.log('Could not update a user'));
   }

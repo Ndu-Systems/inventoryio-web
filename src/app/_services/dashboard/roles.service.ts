@@ -56,6 +56,9 @@ export class RolesService {
             this.dataStore.roles[index] = data;
           }
         });
+        this.dataStore.roles.sort((x, y) => {
+          return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+        });
         this._roles.next(Object.assign({}, this.dataStore).roles);
       }, error => console.log('could not update todo'));
   }

@@ -39,6 +39,7 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     this.productService.product.subscribe(state => {
+      if (!state) { return false; }
       this.productId = state.ProductId;
       this.product = state;
       this.initForm();
@@ -47,7 +48,7 @@ export class ProductDetailsComponent implements OnInit {
     this.brandService.getBrands(this.user.CompanyId);
     this.cateroryService.getCateries(this.user.CompanyId);
 
-   // this.initForm();
+    // this.initForm();
 
     this.brands$ = this.brandService.brands;
     this.catergories$ = this.cateroryService.categories;
