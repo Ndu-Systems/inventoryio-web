@@ -24,15 +24,16 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.accountService.logout();
     this.rForm = this.fb.group({
       Email: new FormControl(
-       'ndu@mail.com',
+       null,
         Validators.compose([
           Validators.required,
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])
       ),
-      Password: ['1111', Validators.required]
+      Password: [null, Validators.required]
     });
 
   }

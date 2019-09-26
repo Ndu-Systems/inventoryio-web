@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BannerService, UsersService, AccountService } from 'src/app/_services';
+import { BannerService, UsersService, AccountService} from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { User } from 'src/app/_models';
 import { DEFAULT_PASSWORD, ACTIVE_STATUS } from '../../shared';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddUserComponent implements OnInit {
   rForm: FormGroup;
+  userAdded: User;
   constructor(
     private fb: FormBuilder,
     private bannerService: BannerService,
@@ -46,8 +47,9 @@ export class AddUserComponent implements OnInit {
   }
 
   onSubmit(user: User) {
-     this.userService.addUser(user);
-     this.routeTo.navigate(['dashboard/users']);
+    this.userService.addUser(user);
+    this.routeTo.navigate(['dashboard/users']);
+
   }
 
 }

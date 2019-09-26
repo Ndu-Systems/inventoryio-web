@@ -20,7 +20,7 @@ import { UploadProductImageComponent } from './products/upload-product-image/upl
 import { SellComponent } from './products/sell/sell.component';
 import { DashboardNavComponent } from './dashboard-nav';
 import { SaleSammaryComponent } from './products/sell/sale-sammary/sale-sammary.component';
- import { ListUsersComponent } from './users/list-users/list-users.component';
+import { ListUsersComponent } from './users/list-users/list-users.component';
 import { SalesReportComponent } from './products/sales-report/sales-report.component';
 import { ListOrdersComponent } from './products/list-orders/list-orders.component';
 import { BrandComponent } from './brand';
@@ -34,6 +34,7 @@ import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './st
 import { ListCategoriesComponent } from './catergory/list-categories/list-categories.component';
 import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
 import { UserCardListComponent, AddUserComponent, UserFormComponent } from './users';
+import { UserProfileComponent, UserProfileDetailsComponent, UserProfileResetPasswordComponent } from './user-profile';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -61,6 +62,7 @@ const routes: Routes = [
       { path: 'print-invoice', component: InvoiceComponent },
       { path: 'list-categories', component: ListCategoriesComponent },
       { path: 'list-brands', component: ListBrandsComponent },
+      { path: 'reset-password', component: UserProfileResetPasswordComponent },
 
     ]
   },
@@ -105,6 +107,10 @@ export const declarations = [
   ListCategoriesComponent,
   ListBrandsComponent,
   UserFormComponent,
+  UserProfileComponent,
+  UserProfileDetailsComponent,
+  UserProfileResetPasswordComponent,
+
   // pipes
   SearchProductPipe
 ];
