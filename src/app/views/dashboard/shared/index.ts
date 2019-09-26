@@ -2,5 +2,7 @@
 export * from './actions';
 export * from './banner';
 export * from './scanner';
+export * from './config';
+
 // end:ng42.barrel
 

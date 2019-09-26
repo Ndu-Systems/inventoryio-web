@@ -33,7 +33,7 @@ import { RolesComponent, RoleCardListComponent, AddRoleComponent } from './roles
 import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './stores';
 import { ListCategoriesComponent } from './catergory/list-categories/list-categories.component';
 import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
-import { UserCardListComponent, AddUserComponent } from './users';
+import { UserCardListComponent, AddUserComponent, UserFormComponent } from './users';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -104,6 +104,7 @@ export const declarations = [
   UserCardListComponent,
   ListCategoriesComponent,
   ListBrandsComponent,
+  UserFormComponent,
   // pipes
   SearchProductPipe
 ];

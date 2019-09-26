@@ -11,5 +11,7 @@ export * from './roles.service';
 export * from './sale.service';
 export * from './stores.service';
 export * from './upload.service';
+export * from './users.service';
+
 // end:ng42.barrel
 

@@ -1,0 +1,60 @@
+.main {
+  background: #fff;
+
+  .body {
+    padding: 1rem;
+    padding-top: 0;
+
+    .section {
+      background: #fff;
+      display: block;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: .5rem;
+      border: 1px solid #C1C1C1;
+    }
+  }
+}
+
+.col-1-of-2 {
+  grid-template-columns: 100%;
+}
+
+.add {
+  background: #0337BB;
+  float: right;
+  border: none;
+  padding: .5rem;
+  font-weight: 800;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1254px) {
+  .main {
+    background: transparent;
+  }
+  .col-1-of-2 {
+    grid-template-columns: 50% 50%;
+  }
+
+  .body {
+    display: grid;
+    width: 75vw;
+    margin: 0 auto;
+    .card {
+      margin: 1rem;
+    }
+
+    .form {
+      background: white;
+      padding: 2rem;
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+}

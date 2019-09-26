@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/_models';
-import { BannerService, AccountService } from 'src/app/_services';
+import { BannerService, AccountService, UsersService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/_services/dashboard/users.service';
 
 @Component({
   selector: 'app-list-users',
