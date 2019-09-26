@@ -1,20 +1,18 @@
+
 .mobile-background {
     @media only screen and (max-width: 600px) {
         background: #FFFFFF;
     }
 }
-
 .sign-in-background {
     background-image: url(../../../../../assets/images/sign-in-background.svg);
-    background-size: cover;
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position: top right;
     @media only screen and (max-width: 600px) {
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-        // background-size: 100%;
     }
 }
-
 .section {
     display: grid;
     grid-template-columns: 50% 30%;
@@ -50,6 +48,7 @@
         border-radius: 15px;
         padding: 2rem;
         margin-bottom: 7rem;
+        margin-top: 8rem;
         -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
@@ -172,6 +171,7 @@
     }
 
     .image {
+        margin-top: 8rem;
         @media only screen and (max-width: 600px) {
             display: none;
         }

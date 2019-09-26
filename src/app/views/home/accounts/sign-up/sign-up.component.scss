@@ -1,9 +1,8 @@
 .sign-up-background {
-    background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-    background-size: 100%;
+    background-image: url(../../../../../assets/images/sign-in-background.svg);
+    background-size: 80%;
     background-repeat: no-repeat;
-    background-attachment: top right;
-    
+    background-position: top right;
     @media only screen and (max-width: 600px) {
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
         background-size: 100%;

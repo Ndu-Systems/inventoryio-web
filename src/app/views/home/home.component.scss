@@ -1,10 +1,10 @@
 
 .main{
   background: #E4E4E4;
-  margin: 0%;
   @media only screen and (max-width: 600px) {
   }
 }
+
 footer{
   background: #F5F6FA;
   padding: 4rem;
@@ -70,3 +70,113 @@ footer{
   }
 }}
 
+.tob-bar {
+  display: grid;
+  grid-template-columns: 28% auto;
+  position: absolute;
+  width: 100%;
+  margin-top: 0%;
+  .logo {
+    margin: 0 5rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    text-align: right;
+   
+    @media only screen and (max-width: 600px) {
+      margin: 0%;
+      padding: 0%;
+      margin-top: 1rem;
+
+      img {
+        width: 85%;
+      }
+    }
+  }
+
+  .nav {
+    display: flex;
+    padding: 2rem;
+    width: 50%;
+    margin: auto;
+    margin-right: 7rem;
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
+
+    li {
+      list-style-type: none;
+      padding: 0 2rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-align: right;
+      .sign-up-for-free {
+        background: #FFFFFF;
+        border-radius: 5px;
+        padding: .4rem;
+        padding-right: 1.4rem;
+        padding-left: 1.4rem;
+         a {
+          color: #104CE5;
+        }
+      }
+       a {
+        color: #ffffff;
+      }
+    }
+  }
+  .mobile-nav {
+    @media only screen and (max-width: 600px) {}
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background: #104CE5;
+    height: 100%;
+    width: 100%;
+    z-index: 100%;
+    color: #ffffff;
+    li {
+      text-align: center;
+      padding: 3rem;
+      list-style-type: none;
+      .sign-up-for-free {
+        background: #FFFFFF;
+      }
+      .sign-up-for-free a {
+        background: #FFFFFF;
+        color: #104CE5;
+        border-radius: 5px;
+        padding: .4rem;
+        padding-right: 1.4rem;
+        padding-left: 1.4rem;
+      }
+      a {
+        color: #FFFFFF;
+      }
+    }
+    .close {
+      @media only screen and (max-width: 600px) {
+        display: grid;
+        text-align: right;
+        padding: 2rem;
+        img {
+          width: 7%;
+        }
+      }
+    }
+  }
+}
+
+.ham-icon {
+  display: none;
+  @media only screen and (max-width: 600px) {
+    display: grid;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-left: 12rem;
+    padding: 0%;
+
+    img {
+      width: 40%;
+    }
+  }
+}
