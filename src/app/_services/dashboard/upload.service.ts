@@ -10,19 +10,20 @@ import { environment } from 'src/environments/environment';
 export class UploadService {
 
 
-  private currentImagesSubject: BehaviorSubject<Image[]>;
-  public currentsImage: Observable<Image[]>;
+
+  private _images: BehaviorSubject<Image[]>;
+  public images: Observable<Image[]>;
   url: string;
   constructor(
     private http: HttpClient
   ) {
-    this.currentImagesSubject = new BehaviorSubject<Image[]>(JSON.parse(localStorage.getItem('currentImages')) || []);
-    this.currentsImage = this.currentImagesSubject.asObservable();
+    this._images = new BehaviorSubject<Image[]>(JSON.parse(localStorage.getItem('images')) || []);
+    this.images = this._images.asObservable();
     this.url = environment.API_URL;
   }
 
   public get currentImageValue(): Image[] {
-    return this.currentImagesSubject.value;
+    return this._images.value;
   }
   apendState(data: Image) {
     let state = this.currentImageValue;
@@ -30,10 +31,15 @@ export class UploadService {
       state = [];
     }
     state.push(data);
-    this.currentImagesSubject.next(state);
+    this.updateState(state);
+  }
+  updateState(data: Image[]) {
+    this._images.next(data);
+    localStorage.setItem('images', JSON.stringify(data));
+
   }
   clearState() {
-    this.currentImagesSubject.next(null);
+    this.updateState(null);
   }
   addImage(data: Image) {
     return this.http.post<any>(`${this.url}/api/image/add-image.php`, data).subscribe(resp => {
@@ -43,12 +49,19 @@ export class UploadService {
       alert(JSON.stringify(error));
     });
   }
+  update(data: Image) {
+    return this.http.post<any>(`${this.url}/api/image/update-image.php`, data).subscribe(resp => {
+      const image: Image = resp;
+      this.apendState(image);
+    }, error => {
+      alert(JSON.stringify(error));
+    });
+  }
 
   getImages(otherId) {
     return this.http.get<any>(`${this.url}/api/image/get-image.php?OtherId=${otherId}`).subscribe(resp => {
-      const Images: Image[] = resp;
-      localStorage.setItem('currentImages', JSON.stringify(Images));
-      this.currentImagesSubject.next(Images);
+      const images: Image[] = resp;
+      this.updateState(images);
     }, error => {
       alert(JSON.stringify(error));
     });

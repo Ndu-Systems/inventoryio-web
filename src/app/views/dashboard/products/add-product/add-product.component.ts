@@ -63,12 +63,13 @@ export class AddProductComponent implements OnInit {
 
     this.brands$ = this.brandService.brands;
     this.catergories$ = this.cateroryService.categories;
+    this.uploadService.clearState();
+
   }
   get getFormValues() {
     return this.rForm.controls;
   }
   onSubmit(product: Product) {
-    this.uploadService.clearState();
     this.productService.addProduct(product);
     this.routeTo.navigate([`/dashboard/product-details`]);
 

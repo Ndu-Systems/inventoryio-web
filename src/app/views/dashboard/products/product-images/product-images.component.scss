@@ -6,12 +6,22 @@
   }
 
   .images {
+    position: relative;
 
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      .btn{
+        border: 1px solid #bdc3c7;
+        background: #f39c12;
+      }
+    }
 
     img {
       width: 100%;
       margin: .6rem;
-      border: 1px solid #000;
+      border: 1px solid #bdc3c7;
     }
   }
 
@@ -36,6 +46,7 @@
   .main {
     .images {
       text-align: left;
+
       img {
         width: auto;
         height: 20vh;
@@ -45,4 +56,3 @@
 
   }
 }
-

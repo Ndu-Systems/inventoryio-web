@@ -56,6 +56,9 @@ export class StoresService {
             this.dataStore.stores[index] = data;
           }
         });
+        this.dataStore.stores.sort((x, y) => {
+          return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+        });
         this._stores.next(Object.assign({}, this.dataStore).stores);
       }, error => console.log('Could not update store'));
   }
