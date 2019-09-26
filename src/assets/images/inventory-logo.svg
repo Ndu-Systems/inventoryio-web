@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="690" viewBox="0 0 900 690">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.093" y1="0.676" x2="0.892" y2="-0.538" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#375db9"/>
+      <stop offset="1" stop-color="#04216d"/>
+    </linearGradient>
+  </defs>
+  <g id="inventory-logo" transform="translate(-515 -207)">
+    <g id="logo" transform="translate(-4 155)">
+      <g id="Group_2" data-name="Group 2" transform="translate(742.295 112.825)">
+        <path id="Path_3" data-name="Path 3" d="M80.178,0H317.947a80.178,80.178,0,0,1,0,160.356H80.178A80.178,80.178,0,0,1,80.178,0Z" transform="matrix(0.454, 0.891, -0.891, 0.454, 143.091, 2.886)" fill="#375db9"/>
+        <rect id="Rectangle_5" data-name="Rectangle 5" width="218.108" height="161.585" rx="80.792" transform="matrix(0.454, 0.891, -0.891, 0.454, 143.973, 2.773)" fill="url(#linear-gradient)"/>
+        <rect id="Rectangle_4" data-name="Rectangle 4" width="392.595" height="157.284" rx="78.642" transform="translate(413.443 61.456) rotate(113)" fill="#375db9"/>
+      </g>
+      <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(687 52)" fill="none" stroke="#375db9" stroke-width="27">
+        <circle cx="262" cy="262" r="262" stroke="none"/>
+        <circle cx="262" cy="262" r="248.5" fill="none"/>
+      </g>
+    </g>
+    <text id="Inventoryio" transform="translate(515 855)" fill="#375db9" font-size="128" font-family="Montserrat-Bold, Montserrat" font-weight="700" letter-spacing="0.073em"><tspan x="0" y="0">Inventory</tspan><tspan y="0" fill="#fff" font-size="167">io</tspan></text>
+  </g>
+</svg>

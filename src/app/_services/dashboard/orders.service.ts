@@ -31,15 +31,17 @@ export class OrdersService {
   public get currentOrdersValue(): Orders[] {
     return this._orders.value;
   }
-  apendState(orders: Orders) {
+  apendState(order: Orders) {
     const state = this.currentOrdersValue || [];
-    const item = state.find(x => x.OrdersId === orders.OrdersId);
+    const item = state.find(x => x.OrdersId === order.OrdersId);
     if (item) {
-      alert(state.indexOf(item));
       state[state.indexOf(item)] = item;
       return;
     }
-    state.push(orders);
+    state.push(order);
+    state.sort((x, y) => {
+      return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+    });
     this._orders.next(state);
     localStorage.setItem('orders', JSON.stringify(state));
   }

@@ -9,24 +9,24 @@ import { Caterory } from 'src/app/_models';
 })
 export class CateroryService {
 
-  private currentCaterorySubject: BehaviorSubject<Caterory[]>;
-  public currentCaterory: Observable<Caterory[]>;
+  private _categories: BehaviorSubject<Caterory[]>;
+  public categories: Observable<Caterory[]>;
   url: string;
   constructor(
     private http: HttpClient
   ) {
-    this.currentCaterorySubject = new BehaviorSubject<Caterory[]>(JSON.parse(localStorage.getItem('currentCatergories')) || []);
-    this.currentCaterory = this.currentCaterorySubject.asObservable();
+    this._categories = new BehaviorSubject<Caterory[]>(JSON.parse(localStorage.getItem('categories')) || []);
+    this.categories = this._categories.asObservable();
     this.url = environment.API_URL;
   }
 
-  public get currentCateroryValue(): Caterory[] {
-    return this.currentCaterorySubject.value;
+  public get categoriesValue(): Caterory[] {
+    return this._categories.value;
   }
   apendState(data: Caterory) {
-    const state = this.currentCateroryValue || [];
+    const state = this.categoriesValue || [];
     state.push(data);
-    this.currentCaterorySubject.next(state);
+    this._categories.next(state);
   }
   addCaterory(data: Caterory) {
     return this.http.post<any>(`${this.url}/api/catergory/add-catergory.php`, data).subscribe(resp => {
@@ -40,8 +40,8 @@ export class CateroryService {
   getCateries(companyId) {
     return this.http.get<any>(`${this.url}/api/catergory/get-catergories.php?CompanyId=${companyId}`).subscribe(resp => {
       const caterory: Caterory[] = resp;
-      localStorage.setItem('currentCatergories', JSON.stringify(caterory));
-      this.currentCaterorySubject.next(caterory);
+      localStorage.setItem('categories', JSON.stringify(caterory));
+      this._categories.next(caterory);
     }, error => {
       alert(JSON.stringify(error));
     });

@@ -46,13 +46,13 @@ export class AddProductComponent implements OnInit {
       Name: ['', Validators.required],
       BrandId: [''],
       CatergoryId: [''],
-      Description: [''],
+      Description: [' '],
       UnitPrice: [''],
       UnitCost: [''],
       Code: [''],
       SKU: [''],
-      Quantity: [''],
-      LowStock: [''],
+      Quantity: [1],
+      LowStock: [0],
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
@@ -61,14 +61,15 @@ export class AddProductComponent implements OnInit {
     );
 
 
-    this.brands$ = this.brandService.currentsBrand;
-    this.catergories$ = this.cateroryService.currentCaterory;
+    this.brands$ = this.brandService.brands;
+    this.catergories$ = this.cateroryService.categories;
+    this.uploadService.clearState();
+
   }
   get getFormValues() {
     return this.rForm.controls;
   }
   onSubmit(product: Product) {
-    this.uploadService.clearState();
     this.productService.addProduct(product);
     this.routeTo.navigate([`/dashboard/product-details`]);
 

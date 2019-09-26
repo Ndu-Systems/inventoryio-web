@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService, MessageService, ProductService } from 'src/app/_services';
+import { AccountService, MessageService, ProductService, BannerService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models';
+import { DEFAULT_PASSWORD } from '../shared';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -14,6 +15,7 @@ export class DashboardHomeComponent implements OnInit {
     private messageService: MessageService,
     private productService: ProductService,
     private accountService: AccountService,
+    private bannerService: BannerService,
     private router: Router,
   ) { }
 
@@ -23,6 +25,13 @@ export class DashboardHomeComponent implements OnInit {
     if (!this.user) {
       this.router.navigate(['sign-in']);
       return;
+    }
+    if (this.user.Password === DEFAULT_PASSWORD && this.user.CompanyId) {
+      this.router.navigate(['dashboard/reset-password']);
+      this.bannerService.updateState({
+        heading: 'Reset Password',
+        backto: '/sign-in'
+      });
     }
     if (!this.user.CompanyId) {
       // debugger

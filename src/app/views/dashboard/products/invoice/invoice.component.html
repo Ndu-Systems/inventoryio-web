@@ -1,97 +1,106 @@
 <div class="print">
+  <div class="banner">
+    <div class="image">
+      <img src="../../../../../assets/images/white-icon.png" alt="">
+    </div>
+    <h1>
+        Preview invoice
+    </h1>
+    
+  </div>
 
-<div class="invoice" id="contentToConvert">
-<input type="text" class="input-heading" value="CUSTOMER INVOICE">
+  <div class="invoice" id="contentToConvert">
+    <input type="text" class="input-heading" value="CUSTOMER INVOICE">
 
-  <div class="client-company">
-    <div class="company">
-      <h1 class="main">
-        BILLED BY:
-      </h1>
-      <h1>
-      <span>
-          Ndu Systems PTY LTD 
-          <!-- <br>
+    <div class="client-company">
+      <div class="company">
+        <h1 class="main">
+          BILLED BY:
+        </h1>
+        <h1>
+          <span>
+            Ndu Systems PTY LTD
+            <!-- <br>
           155 The willams Four ways <br>
           Gauteng  -->
-      </span>
-      </h1>
-      <h1>
-        INVOICE # <span>{{InvoiceNumber}}</span>
-      </h1>
-      <h1>
-        INVOICE DATE <span>{{InvoiceDate  | date:'medium'}}</span>
-      </h1>
-      <h1>
-        DUE DATE <span>INV78787</span>
-      </h1>
-    </div>
+          </span>
+        </h1>
+        <h1>
+          INVOICE # <span>{{InvoiceNumber}}</span>
+        </h1>
+        <h1>
+          INVOICE DATE <span>{{InvoiceDate  | date:'medium'}}</span>
+        </h1>
+        <h1>
+          DUE DATE <span>INV78787</span>
+        </h1>
+      </div>
 
-    <div class="client">
-      <h1>
-        BILLED TO :
-      </h1>
-      <p>
-        <span>Trueworths SA</span>
-        <span>270 St CBD</span>
-        <span>Durban 4000</span>
-        <span>0118454574</span>
-      </p>
-    </div>
+      <div class="client">
+        <h1>
+          BILLED TO :
+        </h1>
+        <p>
+          <span>Trueworths SA</span>
+          <span>270 St CBD</span>
+          <span>Durban 4000</span>
+          <span>0118454574</span>
+        </p>
+      </div>
 
-  </div>
-  <div class="table">
-    <table *ngIf="products$  | async as products">
-      <thead>
-        <tr>
-          <th>
-            Product
-          </th>
-          <th>
-            QNTY
-          </th>
-          <th>
-            Unit Price
-          </th>
-          <th>
-            Total
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of products">
-          <td class="name">
-           {{item.ProductName}}
-          </td>
-          <td>
-            {{item.UnitPrice  | currency:'R'}}
-          </td>
-          <td>
-            {{item.Quantity}}
-          </td>
-          <td>
-            {{item.subTotal  | currency:'R'}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="total">
-    <div class="data">
+    </div>
+    <div class="table">
+      <table *ngIf="products$  | async as products">
+        <thead>
+          <tr>
+            <th>
+              Product
+            </th>
+            <th>
+              QNTY
+            </th>
+            <th>
+              Unit Price
+            </th>
+            <th>
+              Total
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of products">
+            <td class="name">
+              {{item.ProductName}}
+            </td>
+            <td>
+              {{item.Quantity}}
+            </td>
+            <td>
+              {{item.UnitPrice  | currency:'R'}}
+            </td>
+
+            <td>
+              {{item.subTotal  | currency:'R'}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="total">
+      <div class="data">
         <span class="value total">
-            Total: {{total | currency:'R'}}
-           </span>
-           <span class="value tax">
-             Tax paid {{companyTax * 100}}%: {{total*companyTax | currency:'R'}}
-           </span>
-          </div>
+          Total: {{total | currency:'R'}}
+        </span>
+        <span class="value tax">
+          Tax paid {{companyTax * 100}}%: {{total*companyTax | currency:'R'}}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button (click)="captureScreen()" class="btn">Print</button>
+    <button (click)="cancel()" class="btn cancel">Cancel</button>
+
   </div>
 </div>
-
-<div class="actions">
-  <button  (click)="captureScreen()" class="btn">Print</button>
-  <button  (click)="cancel()" class="btn cancel">Cancel</button>
-
-</div>
-</div>
-

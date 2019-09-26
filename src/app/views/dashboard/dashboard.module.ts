@@ -6,8 +6,10 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,10 +18,12 @@ import { MessageService } from 'primeng/components/common/messageservice';
     ReactiveFormsModule,
     ZXingScannerModule,
     FileUploadModule,
-    ToastModule
+    ToastModule,
+    ToggleButtonModule,
+    ConfirmDialogModule
 
   ],
   declarations: [...declarations],
-  providers: [MessageService]
+  providers: [MessageService, ConfirmationService]
 })
 export class DashboardModule { }

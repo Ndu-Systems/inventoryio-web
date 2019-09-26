@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService, BannerService } from 'src/app/_services';
 
 @Component({
   selector: 'app-index',
@@ -6,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  showMobileNav
-  constructor() { }
+  showMobileNav;
+  constructor(
+    private accountService: AccountService,
+    private bannerService: BannerService,
+  ) { }
 
   ngOnInit() {
+    this.accountService.logout();
+    this.bannerService.resetBannerState();
   }
-  toggleNav(){
+  toggleNav() {
     this.showMobileNav = !this.showMobileNav
   }
 }

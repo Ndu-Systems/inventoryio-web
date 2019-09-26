@@ -21,4 +21,8 @@ export class BannerService {
     this.currentBannersSubject.next(data);
     localStorage.setItem('bannerValue', JSON.stringify(data));
   }
+
+  resetBannerState() {
+    this.currentBannersSubject.next(null);
+  }
 }

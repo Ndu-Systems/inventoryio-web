@@ -1,53 +1,71 @@
 .main {
-  .nav-bar {
-    display: none;
+
+  .burger-menu {
+    position: absolute;
+    right: 2rem;
+    top: 0.5rem;
+    z-index: 500;
+    height: 1rem;
+  }
+
+  .nav-bar-mobile {
+    display: block;
+    position: fixed;
+    width: 50vw;
+    height: 100%;
+    background: white;
+    border-radius: 0;
+    z-index: 9999;
+    .go-back {
+      margin: 14px 7px;
+    }
+    .inventory-logo {
+      height: 43px;
+      margin: 0 4rem;
+    }
+
+    ul {
+      list-style: none;
+      width: 100%;
+      padding: 2rem;
+
+    }
+
+    li {
+      margin: 2rem 0;
+
+      a {
+        font-size: 18px;
+      }
+    }
+
+    .profile {
+      position: absolute;
+      bottom: 2rem;
+      border-top: solid 1px #3742FA;
+
+      a {
+        color: #116fbf;
+
+      }
+
+      .signOut {
+        a {
+          color: #2E344C;
+          opacity: 0.5;
+        }
+      }
+    }
+
   }
 
   .logo {
     display: none;
   }
 
-  .nav-bar-mobile {
-    display: block;
-    position: fixed;
-    left: 2rem;
-    bottom: 2rem;
-    z-index: 9999;
-
-
-    ul {
-      padding-top: 0;
-      padding-left: 0;
-      list-style: none;
-      width: 90vw;
-      height: 7vh;
-      padding: 1rem 0;
-      background: white;
-
-
-      -webkit-box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.21);
-      -moz-box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.21);
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.21);
-      border-radius: 15px;
-
-      li {
-        float: left;
-        margin: 0 7px;
-        a {
-          margin-top: 0;
-          color: white;
-          font-size: 25px;
-          font-weight: 300;
-          text-transform: capitalize;
-
-          img {
-            height: 40px;
-          }
-        }
-      }
-    }
+  .nav-bar {
+    display: none;
   }
-
 }
 
 // iphone se     height: 32px;
@@ -56,6 +74,7 @@
     .nav-bar-mobile {
 
       left: 1rem;
+
       ul {
         padding-top: 0;
         padding-left: 0;
@@ -64,9 +83,11 @@
         height: 12vh;
         padding: 1rem 0;
         background: white;
+
         li {
           float: left;
           margin: 0 7px;
+
           a {
             margin-top: 0;
             color: white;
@@ -84,166 +105,32 @@
   }
 
 }
+
 @media only screen and (width: 360px) {
-  .main {
-    .nav-bar-mobile {
-      left: 0.5rem;
-      ul {
-        padding-top: 0;
-        padding-left: 0;
-        list-style: none;
-        width: 90vw;
-        height: 10vh;
-        padding: 1rem 0;
-        background: white;
-        li {
-          float: left;
-          margin: 0 8px;
-          a {
-            margin-top: 0;
-            color: white;
-            font-size: 25px;
-            font-weight: 300;
-            text-transform: capitalize;
-
-            img {
-              height: 35px;
-            }
-          }
-        }
-      }
-    }
-  }
+  .main {}
 
 }
+
 @media only screen and (width: 375px) {
-  .main {
-    .nav-bar-mobile {
-
-      ul {
-        padding-top: 0;
-        padding-left: 0;
-        list-style: none;
-        width: 90vw;
-        height: 10vh;
-        padding: 1rem 0;
-        background: white;
-        li {
-          float: left;
-          margin: 0 10px;
-          a {
-            margin-top: 0;
-            color: white;
-            font-size: 25px;
-            font-weight: 300;
-            text-transform: capitalize;
-
-            img {
-              height: 35px;
-            }
-          }
-        }
-      }
-    }
-  }
+  .main {}
 
 }
+
 @media only screen and (width: 411px) {
-  .main {
-    .nav-bar-mobile {
-      left: 0.8rem;
-      ul {
-        padding-top: 0;
-        padding-left: 0;
-        list-style: none;
-        width: 90vw;
-        height: 10vh;
-        padding: 1rem 0;
-        background: white;
-        li {
-          float: left;
-          margin: 0 12px;
-          a {
-            margin-top: 0;
-            color: white;
-            font-size: 25px;
-            font-weight: 300;
-            text-transform: capitalize;
-
-            img {
-              height: 35px;
-            }
-          }
-        }
-      }
-    }
-  }
+  .main {}
 
 }
+
 @media only screen and (width: 414px) {
-  .main {
-    .nav-bar-mobile {
-
-      ul {
-        padding-top: 0;
-        padding-left: 0;
-        list-style: none;
-        width: 90vw;
-        height: 10vh;
-        padding: 1rem 0;
-        background: white;
-        li {
-          float: left;
-          margin: 0 12px;
-          a {
-            margin-top: 0;
-            color: white;
-            font-size: 25px;
-            font-weight: 300;
-            text-transform: capitalize;
-
-            img {
-              height: 35px;
-            }
-          }
-        }
-      }
-    }
-  }
+  .main {}
 
 }
+
 @media only screen and (height: 812px) {
-  .main {
-    .nav-bar-mobile {
-      left: 25px;
-      ul {
-        padding-top: 0;
-        padding-left: 0;
-        list-style: none;
-        width: 90vw;
-        height: 7vh;
-        padding: 1rem 0;
-        background: white;
-        li {
-          float: left;
-          margin: 0 10px;
-          a {
-            margin-top: 0;
-            color: white;
-            font-size: 25px;
-            font-weight: 300;
-            text-transform: capitalize;
-
-            img {
-              height: 35px;
-            }
-          }
-        }
-      }
-    }
-  }
+  .main {}
 
 }
+
 @media only screen and (min-width: 1254px) {
   .main {
     .logo {
@@ -253,6 +140,7 @@
       left: 4rem;
       top: 2rem;
       cursor: pointer;
+
       img {
         height: 10vh;
       }
@@ -282,8 +170,6 @@
         a {
           font-size: 18px;
         }
-
-
       }
 
       .profile {
@@ -295,6 +181,7 @@
           color: #116fbf;
 
         }
+
         .signOut {
           a {
             color: #2E344C;
@@ -305,9 +192,8 @@
 
     }
 
-    .nav-bar-mobile {
+    .nav-bar-mobile, .burger-menu {
       display: none;
     }
-
   }
 }

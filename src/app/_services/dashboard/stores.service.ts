@@ -24,7 +24,7 @@ export class StoresService {
       }, error => console.log('Could not load stores'));
   }
 
-  getById(companyId, storeId) {
+  getById(companyId: string, storeId: string) {
     this.http.get<Store>(`${this.url}/api/stores/get-stores-id.php?StoreId=${storeId}&&CompanyId=${companyId}`)
       .subscribe(data => {
         let notFound = true;
@@ -56,7 +56,18 @@ export class StoresService {
             this.dataStore.stores[index] = data;
           }
         });
+        this.dataStore.stores.sort((x, y) => {
+          return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+        });
         this._stores.next(Object.assign({}, this.dataStore).stores);
       }, error => console.log('Could not update store'));
+  }
+
+  getStoresForUser(userId: string) {
+    this.http.get<Store[]>(`${this.url}/api/stores/get-stores-userid.php?UserId=${userId}`)
+      .subscribe(data => {
+        this.dataStore.stores = data;
+        this._stores.next(Object.assign({}, this.dataStore).stores);
+      }, error => console.log('Could not load stores for user'));
   }
 }
