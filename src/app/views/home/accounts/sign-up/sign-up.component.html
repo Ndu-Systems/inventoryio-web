@@ -1,29 +1,76 @@
 <div class="sign-up-background">
   <div class="section">
-    <div class="mobile-image">
-      <img src="../../../../../assets/images/sign-mobile-img.svg" alt="">
-    </div>
-    <form action="/action_page.php">
-      <div class="container">
-        <h1>Sign Up For Your Free Account</h1>
-        <!-- <label type="text">Email</label>  -->
-        <input type="text" placeholder="Full Name" name="fname" required>
-        <!-- <label for="psw">Password</label> -->
-        <input type="text" placeholder="cellphone Number" name="cellphone" required>
-        <!-- <label for="psw-repeat"><b>Repeat Password</b></label> -->
-        <input type="text" placeholder="Email address" name="Email" required>
-        <input type="password" placeholder="Password" name="psw" required>
-        <input type="password" placeholder="confirm password" name="psw-repeat" required>
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-        <button type="submit" class="registerbtn">Sign Up For Free</button>
-        <div class="container-signin">
-          <p>Already A Member?<a routerLink="/sign-in">Sign In To Your Account</a></p>
-        </div>
+
+  <div class="mobile-image">
+    <img src="../../../../../assets/images/sign-mobile-img.svg" alt="">
+  </div>
+    <div class="form">
+      <div class="wrapper">
+        <form [formGroup]="rForm" (ngSubmit)="signUp()">
+          <h1>Sign Up For Your Free Account</h1>
+          <div class="group">
+            <input type="text" formControlName="fullname" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Full Name</label>
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
+            Full Name is required
+          </div>
+          <div class="group">
+            <input type="text" formControlName="cell" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Cell Phone Number</label>
+
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['cell'].valid  && rForm.controls['cell'].touched">
+            Cell Phone Number is required
+          </div>
+
+          <div class="group">
+            <input type="text" formControlName="email" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email Address</label>
+            <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
+              A vailid email is required
+            </div>
+          </div>
+
+          <div class="group">
+            <input type="password" formControlName="password" required="required" autocomplete="new-password" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Password</label>
+            <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
+              Password is required
+            </div>
+          </div>
+
+          <div class="group">
+            <input type="password" formControlName="passwordConfirm" required="required" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Confirm Password</label>
+            <div class="alert"
+              *ngIf="!rForm.controls['passwordConfirm'].valid  && rForm.controls['passwordConfirm'].touched">
+              Confirm Password is required
+            </div>
+          </div>
+          <div class="group">
+            <input type="submit" value="Sign Up For Free" class="btn" [disabled]="!rForm.valid" />
+          </div>
+          <div class="actions">
+            <div class="sign-up">
+                Already A Member?<a routerLink="/sign-in">Sign In To Your Account</a>
+            </div>
+          </div>
+        </form>
       </div>
-      
-    </form>
-    <div class="image">
-      <img src="../../../../../assets/images/sign-up-img.svg" alt="">
     </div>
+    <div class="image">
+        <img src="../../../../../assets/images/sign-up-img.svg" alt="">
+      </div>
   </div>
 </div>
