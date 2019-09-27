@@ -16,7 +16,7 @@ export class InvoiceComponent implements OnInit {
   companyTax = 0.1;
   total = 0;
   InvoiceDate: string;
-  InvoiceNumber: string;
+  InvoiceNumber: number;
 
 
   constructor(private ordersService: OrdersService, private router: Router

@@ -3,6 +3,7 @@ import { User, Image } from 'src/app/_models';
 import { DocumentsService, AccountService, UploadService } from 'src/app/_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-upload-product-image',
@@ -28,6 +29,7 @@ export class UploadProductImageComponent implements OnInit {
     private uploadService: UploadService,
     private routeTo: Router,
     private activatedRoute: ActivatedRoute,
+    private messageService: MessageService,
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.productId = r.id;
@@ -64,6 +66,11 @@ export class UploadProductImageComponent implements OnInit {
       StatusId: 1
     };
     this.uploadService.addImage(data);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'Image  uploaded '
+    });
     this.routeTo.navigate([this.backto]);
   }
 

@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: 28% auto;
   position: absolute;
-  width: 100%;
+  width: 99%;
   margin-top: 0%;
   @media only screen and (max-width: 600px){
   }
@@ -21,7 +21,7 @@
       padding: 0%;
       margin-top: 1rem;
       img {
-        width: 85%;
+        width: 60%;
       }
     }
   }
@@ -71,8 +71,8 @@
       color: #ffffff;
       li {
         text-align: center;
-        padding: 1rem;
         list-style-type: none;
+       
         .sign-up-for-free {
           background: #FFFFFF;
         }
@@ -86,6 +86,7 @@
         }
         a {
           color: #FFFFFF;
+         
         }
       }
     }
@@ -93,7 +94,6 @@
       display: none;
       @media only screen and (max-width: 600px) {
       display: grid;
-       background: yellowgreen;
        width: 100%;
        justify-content: right;
        padding-top: 2rem;

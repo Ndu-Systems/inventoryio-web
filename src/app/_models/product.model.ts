@@ -1,5 +1,7 @@
 export interface Product {
+    CompanyId?: string;
     ProductId: string;
+    SupplierId?: string;
     BrandId: string;
     CatergoryId: string;
     Name: string;

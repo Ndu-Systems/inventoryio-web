@@ -77,7 +77,6 @@ export class SellComponent implements OnInit {
     }
     this.ordersService.updateOrderState(null);
     const order: Orders = {
-      OrderId: this.getOrder(),
       CompanyId: this.user.CompanyId,
       ParntersId: '',
       OrderType: 'Sell',
@@ -97,8 +96,5 @@ export class SellComponent implements OnInit {
     this.ordersService.updateOrderProductsState(null);
     this.router.navigate(['/dashboard/list-orders']);
   }
-  getOrder(): string {
-    const orderNumber = `O22`;
-    return orderNumber;
-  }
+ 
 }
