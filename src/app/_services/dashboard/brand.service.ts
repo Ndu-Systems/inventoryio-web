@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Brand } from 'src/app/_models';
+import { SpinnerService } from './spinner.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class BrandService {
   public brands: Observable<Brand[]>;
   url: string;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private spinnerService: SpinnerService,
   ) {
     this._brands = new BehaviorSubject<Brand[]>(JSON.parse(localStorage.getItem('brands')) || []);
     this.brands = this._brands.asObservable();
@@ -37,11 +39,16 @@ export class BrandService {
 
   }
   addBrand(data: Brand) {
+    this.spinnerService.show();
     return this.http.post<any>(`${this.url}/api/brand/add-brand.php`, data).subscribe(resp => {
+      this.spinnerService.hide();
+
       const brand: Brand = resp;
       this.apendState(brand);
     }, error => {
       alert(JSON.stringify(error));
+      this.spinnerService.hide();
+
     });
   }
 
