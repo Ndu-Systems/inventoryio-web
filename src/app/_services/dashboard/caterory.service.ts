@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Caterory } from 'src/app/_models';
+import { SplashService } from '../splash.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class CateroryService {
   public categories: Observable<Caterory[]>;
   url: string;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private splashService: SplashService,
   ) {
     this._categories = new BehaviorSubject<Caterory[]>(JSON.parse(localStorage.getItem('categories')) || []);
     this.categories = this._categories.asObservable();
@@ -33,7 +35,10 @@ export class CateroryService {
       const caterory: Caterory = resp;
       this.apendState(caterory);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`
+      });
     });
   }
 
@@ -43,7 +48,10 @@ export class CateroryService {
       localStorage.setItem('categories', JSON.stringify(caterory));
       this._categories.next(caterory);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`
+      });
     });
   }
 

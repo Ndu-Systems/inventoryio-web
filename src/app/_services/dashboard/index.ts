@@ -12,6 +12,7 @@ export * from './sale.service';
 export * from './stores.service';
 export * from './upload.service';
 export * from './users.service';
+export * from './spinner.service';
 
 // end:ng42.barrel
 

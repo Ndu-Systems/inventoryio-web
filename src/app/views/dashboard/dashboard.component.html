@@ -31,6 +31,10 @@
     <app-spinner *ngIf="spinner"></app-spinner>
 </div>
 
+<div *ngIf="splash$ | async as splash">
+    <app-splash *ngIf="splash.show"></app-splash>
+</div>
+
 
 
 

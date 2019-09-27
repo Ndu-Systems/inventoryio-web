@@ -36,6 +36,7 @@ import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
 import { UserCardListComponent, AddUserComponent, UserFormComponent } from './users';
 import { UserProfileComponent, UserProfileDetailsComponent, UserProfileResetPasswordComponent } from './user-profile';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { SplashComponent } from './shared/splash/splash.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -112,6 +113,7 @@ export const declarations = [
   UserProfileDetailsComponent,
   UserProfileResetPasswordComponent,
   SpinnerComponent,
+  SplashComponent,
 
   // pipes
   SearchProductPipe
