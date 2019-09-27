@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Brand } from 'src/app/_models';
 import { SpinnerService } from './spinner.service';
+import { SplashService } from '../splash.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class BrandService {
   constructor(
     private http: HttpClient,
     private spinnerService: SpinnerService,
+    private splashService: SplashService,
   ) {
     this._brands = new BehaviorSubject<Brand[]>(JSON.parse(localStorage.getItem('brands')) || []);
     this.brands = this._brands.asObservable();
@@ -46,8 +48,12 @@ export class BrandService {
       const brand: Brand = resp;
       this.apendState(brand);
     }, error => {
-      alert(JSON.stringify(error));
+      // alert(JSON.stringify(error));
       this.spinnerService.hide();
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `sorry it looks like you're on a slow connection.`
+      });
 
     });
   }
@@ -57,7 +63,11 @@ export class BrandService {
       const brands: Brand[] = resp;
       this.updateState(brands);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`
+      });
+
     });
   }
 

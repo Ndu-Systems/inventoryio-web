@@ -1,0 +1,21 @@
+<div class="main">
+
+
+  <div class="card"  *ngIf="splash$ | async as splash">
+
+    <div class="logo">
+      <!-- <img src="assets/images/success.svg" alt=""> -->
+      <img src="assets/images/error.svg" alt="">
+    </div>
+    <h1>
+       {{ splash.heading}}
+    </h1>
+    <p>
+      {{splash.message}}
+    </p>
+    <div class="action">
+      <button class="btn error" (click)="close()">Continue</button>
+    </div>
+  </div>
+
+</div>

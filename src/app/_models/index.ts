@@ -14,4 +14,5 @@ export * from './sale.model';
 export * from './orders.model';
 export * from './order.products.model';
 export * from './store.model';
+export * from './splash.model';
 
