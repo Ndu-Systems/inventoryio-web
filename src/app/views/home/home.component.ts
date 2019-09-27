@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
   toggleNav() {
-    this.showMobileNav = !this.showMobileNav
+    this.showMobileNav = !this.showMobileNav;
   }
 }
 

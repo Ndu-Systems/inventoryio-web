@@ -5,18 +5,18 @@ import { SignInComponent } from './accounts/sign-in/sign-in.component';
 import { SignUpComponent } from './accounts/sign-up/sign-up.component';
 import { IndexComponent } from './index/index.component';
 import { HomePageComponent } from './index/home-page/home-page.component';
+import { FeaturesComponent } from './index/features/features.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
       { path: '', component: IndexComponent },
       { path: 'sign-in', component: SignInComponent },
-      { path: 'sign-up', component: SignUpComponent },
-    ]
+      { path: 'sign-up', component: SignUpComponent },    ]
   }
 ];
 
-export const declarations = [SignInComponent, HomeComponent, SignUpComponent, IndexComponent, HomePageComponent];
+export const declarations = [SignInComponent, HomeComponent, SignUpComponent, IndexComponent, HomePageComponent,FeaturesComponent];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
