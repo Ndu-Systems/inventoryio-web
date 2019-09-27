@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="tob-bar">
+  <div class="top-bar">
     <div class="logo">
     <a routerLink="/"><img src="../../../../assets/images/logo.svg" alt=""></a> 
     </div>
@@ -18,9 +18,9 @@
       <li><a routerLink="/sign-in">Sign in </a></li>
       <li><span class="sign-up-for-free"> <a routerLink="/sign-up">sign up for free</a> </span></li>
     </div>
-    <div class="ham-icon" (click)= "toggleNav()">
+    <div class="ham-icon"(click)="toggleNav()">
       <img src="../../../assets/images/ham.svg" alt="">
-    </div>
+  </div>
   </div>
   <router-outlet></router-outlet>
  
