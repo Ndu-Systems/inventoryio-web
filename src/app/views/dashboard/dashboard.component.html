@@ -27,6 +27,9 @@
 </div>
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
 <p-confirmDialog></p-confirmDialog>
+<div *ngIf="spinner$ | async as spinner">
+    <app-spinner *ngIf="spinner"></app-spinner>
+</div>
 
 
 

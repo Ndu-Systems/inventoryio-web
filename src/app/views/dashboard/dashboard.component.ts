@@ -3,6 +3,7 @@ import { MessageService, ProductService, AccountService } from 'src/app/_service
 import { User, Message } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SpinnerService } from 'src/app/_services/dashboard/spinner.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,16 +19,19 @@ export class DashboardComponent implements OnInit {
   linkname: string;
   heading: string[];
   message$: Observable<Message>;
+  spinner$: Observable<boolean>;
 
   user: User;
   constructor(
     private messageService: MessageService,
     private accountService: AccountService,
     private router: Router,
+    private spinnerService: SpinnerService
   ) { }
 
   ngOnInit() {
     this.message$ = this.messageService.messages;
+    this.spinner$ = this.spinnerService.spinner;
     this.user = this.accountService.currentUserValue;
     if (!this.user) {
       this.router.navigate(['sign-in']);
