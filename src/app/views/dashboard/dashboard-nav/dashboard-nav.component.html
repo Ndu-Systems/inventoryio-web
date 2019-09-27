@@ -2,6 +2,12 @@
   <div class="logo" (click)="navigateHome()">
     <img src="assets/images/white-icon.png" alt="logo">
   </div>
+  <!-- <div class="profile">
+    <img src="../../../../assets/images/user.svg" alt="logo">
+    <h1>
+      Ndumiso
+    </h1>
+  </div> -->
   <div class="nav-bar">
     <ul>
       <li *ngFor="let item of models"><a [routerLink]="item.Link">{{item.Name}}</a></li>

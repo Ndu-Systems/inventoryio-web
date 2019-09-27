@@ -1,6 +1,6 @@
 export interface Orders {
     OrdersId?: string;
-    OrderId?: string;
+    OrderId?: number;
     CompanyId: string;
     ParntersId: string;
     OrderType: string;

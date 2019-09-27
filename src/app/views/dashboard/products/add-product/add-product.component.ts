@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ProductService, AccountService, CateroryService, BrandService, BannerService, UploadService } from 'src/app/_services';
 import { User, Product, Brand, Caterory } from 'src/app/_models';
 import { Observable } from 'rxjs';
+import { MessageService } from 'primeng/api';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-add-product',
@@ -17,6 +19,7 @@ export class AddProductComponent implements OnInit {
   error: string;
   brands$: Observable<Brand[]>;
   catergories$: Observable<Caterory[]>;
+  prodcut: Product;
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +29,8 @@ export class AddProductComponent implements OnInit {
     private brandService: BrandService,
     private cateroryService: CateroryService,
     private bannerService: BannerService,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private messageService: MessageService
   ) {
     this.bannerService.updateState({
       heading: 'Add Products',
@@ -42,17 +46,43 @@ export class AddProductComponent implements OnInit {
     }
     this.brandService.getBrands(user.CompanyId);
     this.cateroryService.getCateries(user.CompanyId);
+
+    this.productService.product.subscribe(prod => {
+      this.prodcut = prod;
+    });
+    if (!this.prodcut || this.prodcut.ProductId) {
+      this.prodcut = {
+        ProductId: '',
+        BrandId: '',
+        CatergoryId: '',
+        CompanyId: '',
+        SupplierId: '',
+        Name: '',
+        Description: '',
+        UnitPrice: '',
+        UnitCost: '',
+        Code: '',
+        SKU: '',
+        Quantity: '',
+        LowStock: '',
+        CreateDate: '',
+        CreateUserId: '',
+        ModifyDate: '',
+        ModifyUserId: '',
+        StatusId: ''
+      };
+    }
     this.rForm = this.fb.group({
-      Name: ['', Validators.required],
-      BrandId: [''],
-      CatergoryId: [''],
-      Description: [' '],
-      UnitPrice: [''],
-      UnitCost: [''],
-      Code: [''],
-      SKU: [''],
-      Quantity: [1],
-      LowStock: [0],
+      Name: [this.prodcut.Name || '', Validators.required],
+      BrandId: [this.prodcut.BrandId || ''],
+      CatergoryId: [this.prodcut.CatergoryId || ''],
+      Description: [this.prodcut.Description || ' '],
+      UnitPrice: [this.prodcut.UnitPrice || ''],
+      UnitCost: [this.prodcut.UnitCost || ''],
+      Code: [this.prodcut.Code || ''],
+      SKU: [this.prodcut.SKU || ''],
+      Quantity: [this.prodcut.Quantity || 1],
+      LowStock: [this.prodcut.LowStock || 0],
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
@@ -71,23 +101,30 @@ export class AddProductComponent implements OnInit {
   }
   onSubmit(product: Product) {
     this.productService.addProduct(product);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'product created '
+    });
     this.routeTo.navigate([`/dashboard/product-details`]);
 
   }
-  addbrand() {
+  addbrand(data: Product) {
     this.bannerService.updateState({
       heading: 'Add Brand',
       backto: '/dashboard/add-product'
     });
+    this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-brand']);
 
   }
 
-  addcatergory() {
+  addcatergory(data: Product) {
     this.bannerService.updateState({
       heading: 'Add Catergory',
       backto: '/dashboard/add-product'
     });
+    this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-catergory']);
 
   }
