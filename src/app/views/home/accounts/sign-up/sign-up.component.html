@@ -1,17 +1,16 @@
-<div class="sign-up-background">
-  <div class="section">
-
-  <div class="mobile-image">
-    <img src="../../../../../assets/images/sign-mobile-img.svg" alt="">
-  </div>
-    <div class="form">
-      <div class="wrapper">
+<div class="mobile-background">
+  <div class="sign-in-background">
+    <div class="section">
+      <div class="mobile-fingerprint-img">
+        <img src="../../../../../assets/images/figerprint.svg" alt="">
+      </div>
+      <div class="form">
         <form [formGroup]="rForm" (ngSubmit)="signUp()">
           <h1>Sign Up For Your Free Account</h1>
           <div class="group">
             <input type="text" formControlName="fullname" required="required" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
+
+
             <label>Full Name</label>
           </div>
           <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
@@ -19,8 +18,8 @@
           </div>
           <div class="group">
             <input type="text" formControlName="cell" required="required" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
+
+
             <label>Cell Phone Number</label>
 
           </div>
@@ -30,47 +29,55 @@
 
           <div class="group">
             <input type="text" formControlName="email" required="required" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
+
+
             <label>Email Address</label>
-            <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
-              A vailid email is required
-            </div>
+
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
+            A vailid email is required
           </div>
 
           <div class="group">
             <input type="password" formControlName="password" required="required" autocomplete="new-password" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
+
+
             <label>Password</label>
-            <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
-              Password is required
-            </div>
+
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
+            Password is required
           </div>
 
           <div class="group">
             <input type="password" formControlName="passwordConfirm" required="required" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
+
+
             <label>Confirm Password</label>
-            <div class="alert"
-              *ngIf="!rForm.controls['passwordConfirm'].valid  && rForm.controls['passwordConfirm'].touched">
-              Confirm Password is required
-            </div>
+
           </div>
+          <div class="alert"
+            *ngIf="!rForm.controls['passwordConfirm'].valid  && rForm.controls['passwordConfirm'].touched">
+            Confirm Password is required
+          </div>
+          <div class="actions">
+          
+          </div>
+          <br>
           <div class="group">
             <input type="submit" value="Sign Up For Free" class="btn" [disabled]="!rForm.valid" />
           </div>
-          <div class="actions">
-            <div class="sign-up">
-                Already A Member?<a routerLink="/sign-in">Sign In To Your Account</a>
-            </div>
-          </div>
+
         </form>
+        <div class="actions">
+          <div class="sign-up">
+            Already A Member?<a routerLink="/sign-in">Sign In.</a>
+          </div>
+        </div>
+      </div>
+      <div class="image">
+        <img src="../../../../../assets/images/sign-in-img.svg" alt="">
       </div>
     </div>
-    <div class="image">
-        <img src="../../../../../assets/images/sign-up-img.svg" alt="">
-      </div>
   </div>
 </div>

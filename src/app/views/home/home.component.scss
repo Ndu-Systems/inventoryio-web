@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: 28% auto;
   position: absolute;
-  width: 100%;
+  width: 99%;
   margin-top: 0%;
   @media only screen and (max-width: 600px){
   }
@@ -21,7 +21,7 @@
       padding: 0%;
       margin-top: 1rem;
       img {
-        width: 85%;
+        width: 60%;
       }
     }
   }
