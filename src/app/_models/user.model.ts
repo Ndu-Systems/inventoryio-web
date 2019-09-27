@@ -11,6 +11,8 @@ export interface User {
   CreateUserId?: string;
   ModifyDate?: string;
   ModifyUserId?: string;
+  NewPassword?: string;
+  ConfirmPassword?: string;
   StatusId: number;
 }
 

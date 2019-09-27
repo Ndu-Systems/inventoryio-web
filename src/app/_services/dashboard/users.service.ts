@@ -1,9 +1,8 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { User, UserRoleModel, UserStoreModel } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +13,7 @@ export class UsersService {
     users: User[]
   } = { users: [] };
   readonly users = this._users.asObservable();
+
   constructor(private http: HttpClient) { }
 
   getAllUsers(companyId: string) {
@@ -47,6 +47,8 @@ export class UsersService {
         this._users.next(Object.assign({}, this.dataStore).users);
       }, error => console.log('Could not add a store'));
   }
+
+
 
   updateUser(user: User) {
     this.http.put<User>(`${this.url}/api/user/update-user.php`, JSON.stringify(user))
@@ -89,10 +91,10 @@ export class UsersService {
 
   addUserStore(userStore: UserStoreModel) {
     this.http.post<User[]>(`${this.url}/api/user/add-user-store.php`, JSON.stringify(userStore))
-    .subscribe(data => {
-      this.dataStore.users = data;
-      this._users.next(Object.assign({}, this.dataStore).users);
-    }, error => console.log('Could not add a user to a store'));
+      .subscribe(data => {
+        this.dataStore.users = data;
+        this._users.next(Object.assign({}, this.dataStore).users);
+      }, error => console.log('Could not add a user to a store'));
   }
 
 
