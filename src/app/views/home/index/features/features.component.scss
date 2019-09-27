@@ -1,0 +1,48 @@
+.section-2-content{
+    background: #fff;
+    h1{
+        color: #3F3D56;
+        border-bottom: .2rem solid #0337BB;
+        width: 20%;
+        margin: auto;
+        text-align: center;
+        padding: 1.2rem;
+        padding-top: 4rem;
+    }
+    .profile{
+        display: grid;
+        grid-template-columns: 50% auto;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+        grid-gap: 5rem;
+        padding: 2rem;
+        h4{
+            color: #0337BB;
+        }
+    }
+
+
+    .cards{
+        display: grid;
+        width: 80%;
+        margin: auto;
+        justify-content: center;
+        margin-top: 4rem;
+        .card{
+            display: grid;
+            grid-template-columns: 50% auto;
+            margin: 1rem;
+            padding: 2rem;
+            -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.68);
+            -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.68);
+            box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.68);
+          
+
+            img{
+              
+                width: 20%;
+            }
+        }
+    }
+}
