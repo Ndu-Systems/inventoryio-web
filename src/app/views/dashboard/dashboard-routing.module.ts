@@ -37,6 +37,8 @@ import { UserCardListComponent, AddUserComponent, UserFormComponent } from './us
 import { UserProfileComponent, UserProfileDetailsComponent, UserProfileResetPasswordComponent } from './user-profile';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SplashComponent } from './shared/splash/splash.component';
+import { PermissionsComponent, PermissionCardListComponent } from './permissions';
+import { AddPermissionComponent } from './permissions/add-permission';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -65,7 +67,8 @@ const routes: Routes = [
       { path: 'list-categories', component: ListCategoriesComponent },
       { path: 'list-brands', component: ListBrandsComponent },
       { path: 'reset-password', component: UserProfileResetPasswordComponent },
-
+      { path: 'permissions', component: PermissionsComponent },
+      { path: 'add-permission', component: AddPermissionComponent }
     ]
   },
 ];
@@ -114,7 +117,9 @@ export const declarations = [
   UserProfileResetPasswordComponent,
   SpinnerComponent,
   SplashComponent,
-
+  PermissionsComponent,
+  PermissionCardListComponent,
+  AddPermissionComponent,
   // pipes
   SearchProductPipe
 ];

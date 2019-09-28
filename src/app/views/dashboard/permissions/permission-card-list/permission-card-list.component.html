@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="cards" *ngIf="permissions">
+    <span *ngFor="let item of permissions">
+      <div class="card">
+        <div class="icon">
+            <img src="assets/images/actions/permission.svg" alt="permission image">
+        </div>
+        <div class="data">
+          <h1 class="main">{{item.friendlyName}}</h1>
+            <!-- <h1 class="spec">0 roles</h1> -->
+            <h1 class="spec">{{item.desc}}</h1>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
