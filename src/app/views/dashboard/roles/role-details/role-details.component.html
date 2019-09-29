@@ -3,6 +3,7 @@
   <div class="body">
     <div class="cards">
       <span *ngIf="(role | async); let role">
+      <!-- <span *ngIf="true"> -->
         <div class="card col-1-of-2">
           <div class="icon">
             <!-- <img [src]="data.image" alt="role image"> -->
@@ -10,12 +11,16 @@
           </div>
           <div class="data">
             <h1 class="main">{{role.Name}}</h1>
-            <h1 class="spec">{{role.CreateDate | date:'mediumDate'}}</h1>
+            <h1 class="spec">{{role.CreateDate | date:'short'}}</h1>
           </div>
         </div>
         <button type="text" value="" class="btn archive">Archive this role</button>
       </span>
     </div>
-    <p>role permissions staff</p>
+    <div class="role-permissions" *ngIf="(role | async); let role">
+      <app-list-role-permissions
+        [roleId]="role.RoleId"
+      ></app-list-role-permissions>
+    </div>
   </div>
 </div>

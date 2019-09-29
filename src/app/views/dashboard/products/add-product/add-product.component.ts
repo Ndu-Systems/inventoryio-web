@@ -63,7 +63,7 @@ export class AddProductComponent implements OnInit {
         UnitCost: '',
         Code: '',
         SKU: '',
-        Quantity: '',
+        Quantity: 0,
         LowStock: '',
         CreateDate: '',
         CreateUserId: '',

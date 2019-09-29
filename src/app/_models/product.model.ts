@@ -10,7 +10,7 @@ export interface Product {
     UnitCost: string;
     Code: string;
     SKU: string;
-    Quantity: string;
+    Quantity: number;
     LowStock: string;
     CreateDate: string;
     CreateUserId: string;
@@ -19,4 +19,6 @@ export interface Product {
     StatusId: string;
     Catergory?: string;
     Brand?: string;
+    QuantityAvailable?: number;
+
 }

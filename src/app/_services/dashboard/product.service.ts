@@ -37,14 +37,30 @@ export class ProductService {
   // state
   appendState(product: Product) {
     let state = this._products.value;
-    const existingProduct = state.filter(x => x.ProductId === product.ProductId);
-    if (existingProduct.length > 0) {
+    const existingProduct = state.find(x => x.ProductId === product.ProductId);
+    if (existingProduct) {
       state = state.filter(x => x.ProductId !== product.ProductId);
       state.push(product);
     } else {
       state.push(product);
     }
+    // sort
+    state.sort((x, y) => {
+      return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+    });
     this._products.next(state);
+    localStorage.setItem('products', JSON.stringify(state));
+
+  }
+
+  updateState(products: Product[]) {
+    // sort
+    products.sort((x, y) => {
+      return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+    });
+    this._products.next(products);
+    localStorage.setItem('products', JSON.stringify(products));
+
   }
   // state
   updateCurrentProduct(product: Product) {
@@ -81,12 +97,25 @@ export class ProductService {
       this.spinnerService.hide();
     });
   }
+  updateProductRange(products: Product[]) {
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/product/update-products-range.php`, { products }).subscribe(resp => {
+      if (resp) {
+        this.getProducts(products[0].CompanyId);
+        this.spinnerService.hide();
+
+      }
+    }, error => {
+      alert(JSON.stringify(error));
+      this.spinnerService.hide();
+
+    });
+  }
 
   getProducts(companyId) {
     return this.http.get<any>(`${this.url}/api/product/get-detailed-products.php?CompanyId=${companyId}`).subscribe(resp => {
       const products: Product[] = resp;
-      localStorage.setItem('products', JSON.stringify(products));
-      this._products.next(products);
+      this.updateState(products);
     }, error => {
       alert(JSON.stringify(error));
     });

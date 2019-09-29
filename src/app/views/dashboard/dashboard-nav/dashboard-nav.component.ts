@@ -38,18 +38,6 @@ export class DashboardNavComponent implements OnInit {
 
       },
       {
-        Name: 'brands',
-        Link: '/dashboard/list-brands',
-        Icon: 'products'
-
-      },
-      {
-        Name: 'categories',
-        Link: '/dashboard/list-categories',
-        Icon: 'products'
-
-      },
-      {
         Name: 'sell',
         Link: '/dashboard/sell',
         Icon: 'sell'

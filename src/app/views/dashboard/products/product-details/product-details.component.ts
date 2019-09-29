@@ -80,7 +80,6 @@ export class ProductDetailsComponent implements OnInit {
   }
   update(product: Product) {
     this.productService.updateProduct(product);
-    // this.routeTo.navigate(['/dashboard/list-product']);
     this.messageService.add({
       severity: 'success',
       summary: 'Success!',
