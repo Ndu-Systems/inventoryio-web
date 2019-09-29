@@ -68,6 +68,7 @@ export class SellComponent implements OnInit {
       if (item) {
         item.quantity++;
         product.QuantityAvailable = product.Quantity - item.quantity;
+        this.productService.appendState(product);
         this.saleService.doSellLogic(item);
         return;
       }
