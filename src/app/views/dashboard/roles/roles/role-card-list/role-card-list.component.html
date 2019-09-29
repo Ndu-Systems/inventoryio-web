@@ -1,10 +1,10 @@
 <div class="main">
     <div class="cards">
       <span *ngFor="let item of roles | async">
-        <div class="card">
+        <div class="card" (click)="getRoleDetails(item)">
           <div class="icon">
             <!-- <img [src]="data.image" alt="role image"> -->
-            <img src="../../../../../../assets/images/actions/role.svg" alt="role image">
+            <img src="assets/images/actions/role.svg" alt="role image">
           </div>
           <div class="data">
             <h1 class="main">{{item.Name}}</h1>
@@ -12,5 +12,6 @@
           </div>
         </div>
       </span>
+
     </div>
   </div>

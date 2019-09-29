@@ -1,0 +1,14 @@
+<div class="main">
+  <app-banner></app-banner>
+  <div class="body">
+    <div class="page-actions">
+      <div class="search">
+        <input type="text" [(ngModel)]="search" placeholder="search permission by name">
+      </div>
+      <div class="add">
+        <button (click)="add()">Add A Permission</button>
+      </div>
+    </div>
+    <app-permission-card-list [permissions]="companyPermissions"></app-permission-card-list>
+  </div>
+</div>

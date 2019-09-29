@@ -1,0 +1,136 @@
+.main {
+
+  .body {
+    padding: 1rem;
+    padding-top: 0;
+
+    .section {
+      background: #fff;
+      display: block;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: .5rem;
+      border: 1px solid #C1C1C1;
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 100%;
+
+    .action-title {
+      font-size: 20px;
+      color: #7B8C98;
+    }
+
+    .card {
+      background: #fff;
+      text-align: center;
+      height: 9rem;
+      width: 9rem;
+      margin: 1rem;
+      border: 1px solid #E5E5E5;
+      cursor: pointer;
+
+      .icon {
+        img {
+          width: 19.1px;
+          margin: 0.5rem;
+          float: left;
+        }
+      }
+
+
+      .data {
+
+        // background: rgb(34, 182, 34);
+        text-align: center;
+
+        h1 {
+          color: #0337BB;
+          display: block;
+          font-size: .8rem;
+          font-weight: 600;
+          text-align: center;
+          width: 100%;
+          margin-top: 1.5rem;
+          text-transform: capitalize;
+
+          &.main {
+            font-size: 18px;
+            margin-top: 2rem;
+            color: #2F2E41;
+          }
+
+          &.spec {
+            margin-top: 0;
+            color: #455E6D;
+            float: left;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+.add {
+  background: #0337BB;
+  float: right;
+  border: none;
+  padding: .5rem;
+  font-weight: 800;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+}
+
+
+
+@media only screen and (min-width: 1254px) {
+  .main {
+    background: transparent;
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 50% auto;
+    width: 75vw;
+    margin: 0 auto;
+
+    .cards {
+      .card {
+        margin: 1rem auto;
+        width: 519px;
+        height: 251px;
+        &.col-1-of-2{
+          grid-template-columns: 20% auto;
+        }
+        .data {
+          padding: 0 2rem;
+          h1 {
+            text-align: left;
+          }
+        }
+        .icon {
+          border-top: solid 2px #0337BB;
+          img {
+            width: 67.61px;
+            margin: 0.5rem;
+            float: left;
+          }
+        }
+      }
+      .archive {
+        text-align: center;
+        width: 75%;
+        margin: 0 auto;
+        background: #ED5575;
+      }
+    }
+
+  }
+}

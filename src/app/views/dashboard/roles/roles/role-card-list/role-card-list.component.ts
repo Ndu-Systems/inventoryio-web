@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Role } from 'src/app/_models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-role-card-list',
@@ -9,9 +10,13 @@ import { Role } from 'src/app/_models';
 })
 export class RoleCardListComponent implements OnInit {
   @Input() roles: Observable<Role[]>;
-  constructor() { }
+  constructor(
+    private routeTo: Router
+  ) { }
 
   ngOnInit() {
   }
-
+  getRoleDetails(role: Role) {
+     this.routeTo.navigate([`/dashboard/role-details/${role.RoleId}`]);
+  }
 }
