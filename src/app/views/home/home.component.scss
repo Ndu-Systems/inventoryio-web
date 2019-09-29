@@ -1,25 +1,39 @@
 .main {
   background: #E4E4E4;
-  @media only screen and (max-width: 600px) {
-  }
+
+  @media only screen and (max-width: 600px) {}
 }
+
 .top-bar {
   display: grid;
-  grid-template-columns: 28% auto;
+  grid-template-columns: 50% auto;
   position: absolute;
-  width: 99%;
-  margin-top: 0%;
-  @media only screen and (max-width: 600px){
+  width: 80%;
+  margin: auto;
+  right: 10%;
+  padding-right: 0%;
+
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    right: 10%;
+    padding-right: 0%;
+
   }
+
   .logo {
     margin: 0 5rem;
     margin-top: 1rem;
     padding-top: 1.5rem;
-    text-align: right;
+    text-align: left;
+    padding-left: 3.2rem;
+
     @media only screen and (max-width: 600px) {
       margin: 0%;
       padding: 0%;
       margin-top: 1rem;
+
       img {
         width: 60%;
       }
@@ -29,24 +43,29 @@
   .nav {
     display: flex;
     padding: 2rem;
-    width: 50%;
+    width: 70%;
     margin: auto;
-    margin-right: 7rem;
+    justify-content: right;
+    margin-right: 0%;
+
     @media only screen and (max-width: 600px) {
       display: none;
     }
+
     li {
       list-style-type: none;
       padding: 0 2rem;
       font-weight: 500;
       color: #ffffff;
       text-align: right;
+
       .sign-up-for-free {
         background: #FFFFFF;
         border-radius: 5px;
         padding: .4rem;
         padding-right: 1.4rem;
         padding-left: 1.4rem;
+
         a {
           color: #104CE5;
         }
@@ -57,24 +76,28 @@
       }
     }
   }
+
   .mobile-nav {
     display: none;
     @media only screen and (max-width: 600px) {
       display: grid;
       top: 0%;
       left: 0%;
-      position: absolute;
+      position: fixed;
       background: #104CE5;
       height: 100vh;
       width: 100%;
       z-index: 1;
       color: #ffffff;
+
       li {
         text-align: center;
         list-style-type: none;
+
         .sign-up-for-free {
           background: #FFFFFF;
         }
+
         .sign-up-for-free a {
           background: #FFFFFF;
           color: #104CE5;
@@ -83,21 +106,22 @@
           padding-right: 1.4rem;
           padding-left: 1.4rem;
         }
+
         a {
           color: #FFFFFF;
-         
         }
       }
     }
+
     .close {
-      display: none;
+
+      // display: none;
       @media only screen and (max-width: 600px) {
-      display: grid;
-       width: 100%;
-       justify-content: right;
-       padding-top: 2rem;
-       padding-bottom: 0%;
-       
+        display: grid;
+        width: 100%;
+        justify-content: right;
+        padding-top: 2rem;
+        padding-bottom: 0%;
         img {
           width: 25%;
         }
@@ -115,7 +139,7 @@
     margin-left: 13rem;
     padding: 0%;
     img {
-      width: 45%;
+      width: 100%;
     }
   }
 }

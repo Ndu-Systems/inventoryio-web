@@ -1,3 +1,17 @@
-<p>
-  add-role-permission works!
-</p>
+<div class="main">
+    <div class="body">
+      <div class="form" *ngIf="companyPermissions">
+        <form [formGroup]="rForm"  (ngSubmit)="onSubmit(rForm.value)">
+          <div class="group">
+            <select formControlName="Name">
+              <option value="">Select Permission</option>
+              <option *ngFor="let item of companyPermissions" class="select-option" [value]="item.key">{{item.friendlyName}}</option>
+            </select>
+          </div>
+          <div class="group">
+            <input type="submit" value="Add Permission" class="btn" [disabled]="!rForm.valid" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

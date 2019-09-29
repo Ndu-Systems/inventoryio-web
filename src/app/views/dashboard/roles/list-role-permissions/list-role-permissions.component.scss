@@ -86,7 +86,9 @@
   }
 }
 
-
+.page-actions {
+  display: none;
+}
 
 @media only screen and (min-width: 1254px) {
   .main {
@@ -96,50 +98,64 @@
   .body {
     display: grid;
     margin: 0 auto;
+
     .page-actions {
       width: 100%;
+      display: block;
       margin-top: 0rem;
       grid-template-columns: 50% auto;
       border-bottom: solid 2px white;
+
       .heading {
         font-size: 20px;
         color: #455E6D;
         font-weight: 500;
         text-transform: capitalize;
       }
+
       .add {
         background: transparent;
+
         button {
           text-transform: capitalize;
         }
       }
     }
+
     .cards {
       grid-template-columns: 50% auto;
+
       .card {
         margin: 10px auto;
         width: 240px;
         height: 147px;
         float: left;
-        &.col-1-of-2{
+
+        &.col-1-of-2 {
           grid-template-columns: 20% auto;
         }
+
         .data {
           padding: 0 1rem;
+
           h1 {
             text-align: left;
           }
+
           .main {
             font-size: 13px;
             font-weight: 600;
           }
+
           .spec {
             font-size: 10px;
             color: #455E6D;
           }
         }
+
         .icon {
           border-top: solid 2px #0337BB;
+
           img {
             width: 20px;
             margin: 0.5rem;
@@ -147,15 +163,22 @@
           }
         }
       }
-      .not-found {
 
-      }
       .archive {
         text-align: center;
         width: 75%;
         margin: 0 auto;
         background: #ED5575;
       }
+    }
+
+    p.not-found {
+
+      padding: 1rem;
+      font-size: 1.2rem;
+      text-transform: capitalize;
+      font-weight: 400;
+      color: #ED5575;
     }
 
   }

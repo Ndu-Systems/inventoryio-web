@@ -3,7 +3,7 @@
   .body {
     padding: 1rem;
     padding-top: 0;
-
+    grid-template-columns: 50% auto;
     .section {
       background: #fff;
       display: block;

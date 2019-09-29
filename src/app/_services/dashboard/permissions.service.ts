@@ -1,6 +1,6 @@
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Permission } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
 
@@ -65,6 +65,8 @@ export class PermissionsService {
     }, error => console.log('Could not update permission'));
   }
 
-
+  getCompanyPermissions(companyId: string): Observable<Permission[]> {
+    return this.http.get<Permission[]>(`${this.url}/api/permissions/get-permissions.php?CompanyId=${companyId}`);
+   }
 
 }

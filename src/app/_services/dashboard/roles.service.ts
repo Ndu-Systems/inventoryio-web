@@ -2,7 +2,7 @@ import { Permission } from './../../_models/permission.model';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Role } from 'src/app/_models';
+import { Role, RolePermission } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -66,14 +66,19 @@ export class RolesService {
 
   getRolesForUser(userId: string) {
     this.http.get<Role[]>(`${this.url}/api/roles/get-roles-userid.php?UserId=${userId}`)
-    .subscribe(data => {
-      this.dataStore.roles = data;
-      this._roles.next(Object.assign({}, this.dataStore).roles);
-    }, error => console.log('Could not load roles  for user'));
+      .subscribe(data => {
+        this.dataStore.roles = data;
+        this._roles.next(Object.assign({}, this.dataStore).roles);
+      }, error => console.log('Could not load roles  for user'));
   }
 
   getRolePermissions(roleId: string): Observable<Permission[]> {
-   return this.http.get<Permission[]>(`${this.url}/api/roles/get-role-permissions.php?RoleId=${roleId}`);
+    return this.http.get<Permission[]>(`${this.url}/api/roles/get-role-permissions.php?RoleId=${roleId}`);
   }
+
+  addRolePermissions(rolePermission: RolePermission) {
+
+  }
+
 
 }
