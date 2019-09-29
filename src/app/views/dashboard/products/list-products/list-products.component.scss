@@ -67,17 +67,18 @@
       left: 5%;
       height: .3rem;
       width: 30%;
-      background: #67DF5A;
+      // background: #67DF5A;
       display: block;
     }
 
+ 
     .top-row {
       display: grid;
       grid-template-columns: 40% auto;
 
       .stock {
-        color: #67DF5A;
-        font-weight: 500;
+        // color: #67DF5A;
+        font-weight: 700;
       }
     }
 

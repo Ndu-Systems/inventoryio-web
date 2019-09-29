@@ -14,11 +14,9 @@
     <div class="cards" *ngIf="products$  | async as products">
       <span *ngFor="let item of products | searchproduct: search">
         <div class="card-betta" (click)="doSell(item)">
-          <span class="status"></span>
           <div class="top-row">
-            <p class="stock">In Stock- 
-              <!-- <span *ngIf="item.QuantityAvailable >= 0" class="items-count">{{item.QuantityAvailable}} /</span> -->
-               {{item.Quantity}}</p>
+            <p [ngClass]="item.Class">In Stock- {{item.Quantity}}</p>
+
             <p>
               <span>Price</span>
               {{item.UnitPrice | currency:'R'}}
@@ -45,7 +43,10 @@
                 <span>Cost</span> {{item.UnitCost | currency:'R'}}
               </p>
               <p>
-                <span>Margin</span> 22%
+                <span>Margin</span> {{item.Margin}}%
+              </p>
+              <p>
+                <span>Profit</span> {{item.Profit | currency:'R'}}
               </p>
             </div>
           </div>
@@ -63,7 +64,7 @@
 <div class="sell total">
   <h4>
     {{sale?.total | currency:'R'}}
-<span>Total</span>
+    <span>Total</span>
   </h4>
   <button class="btn" (click)="onSubmit()">Save qoute</button>
   <button class="btn warn" (click)="clear()">Clear form</button>
