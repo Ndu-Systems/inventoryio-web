@@ -56,9 +56,18 @@ export class SellComponent implements OnInit {
   }
   doSell(product: Product) {
     if (this.sale) {
+      if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Stock Alert.',
+          detail: `You run out of ${product.Name}`
+        });
+        return false;
+      }
       const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
       if (item) {
         item.quantity++;
+        product.QuantityAvailable = product.Quantity - item.quantity;
         this.saleService.doSellLogic(item);
         return;
       }
