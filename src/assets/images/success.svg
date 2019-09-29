@@ -6,12 +6,12 @@
       <path id="Path_239" data-name="Path 239" d="M83.64,22.621s-19.579-2.9-38.64,0" transform="translate(-37.281 -13.598)" fill="#0337bb"/>
       <path id="Path_240" data-name="Path 240" d="M51.712,37.078a7.725,7.725,0,0,1-1.151-15.362c19.98-3.043,40.084-.139,40.934-.008A7.725,7.725,0,0,1,89.24,36.993c-.185-.023-18.729-2.665-36.361-.008A7.493,7.493,0,0,1,51.712,37.078Z" transform="translate(-44 -20.332)" fill="#0337bb"/>
     </g>
-    <g id="Ellipse_45" data-name="Ellipse 45" transform="translate(854 381)" fill="#67df5a" stroke="#26b999" stroke-width="17">
+    <g id="Ellipse_45" data-name="Ellipse 45" transform="translate(854 381)" fill="#67df5a" stroke="#67df5a" stroke-width="17">
       <ellipse cx="145.5" cy="142.5" rx="145.5" ry="142.5" stroke="none"/>
       <ellipse cx="145.5" cy="142.5" rx="137" ry="134" fill="none"/>
     </g>
     <g id="Group_113" data-name="Group 113" transform="translate(869.526 392.529)">
-      <ellipse id="Ellipse_44" data-name="Ellipse 44" cx="131" cy="130.5" rx="131" ry="130.5" transform="translate(-0.526 0.471)" fill="#26b999"/>
+      <ellipse id="Ellipse_44" data-name="Ellipse 44" cx="131" cy="130.5" rx="131" ry="130.5" transform="translate(-0.526 0.471)" fill="#67df5a"/>
       <path id="Path_243" data-name="Path 243" d="M161.629,39.451A10.853,10.853,0,0,0,146.5,42.168L85.682,129.549,42.763,94.314a10.865,10.865,0,1,0-13.781,16.8L81,153.817a10.9,10.9,0,0,0,6.89,2.467,11.548,11.548,0,0,0,1.489-.1,10.925,10.925,0,0,0,7.434-4.554l67.535-97.042A10.889,10.889,0,0,0,161.629,39.451Z" transform="translate(40.354 27.512)" fill="#fff"/>
     </g>
   </g>

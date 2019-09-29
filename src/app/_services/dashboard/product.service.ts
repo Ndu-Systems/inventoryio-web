@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
+import { SpinnerService } from '.';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,9 @@ export class ProductService {
 
   url: string;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private spinnerService: SpinnerService
+
   ) {
     this._products = new BehaviorSubject<Product[]>(JSON.parse(localStorage.getItem('products')) || []);
     this.products = this._products.asObservable();
@@ -51,14 +54,31 @@ export class ProductService {
   }
 
   addProduct(data: Product) {
+    this.spinnerService.show();
     return this.http.post<any>(`${this.url}/api/product/add-product.php`, data).subscribe(resp => {
       const product: Product = resp;
       if (product.ProductId) {
         this.appendState(product);
         this.updateCurrentProduct(product);
       }
+      this.spinnerService.hide();
     }, error => {
       alert(JSON.stringify(error));
+      this.spinnerService.hide();
+    });
+  }
+  updateProduct(data: Product) {
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/product/update-product.php`, data).subscribe(resp => {
+      const product: Product = resp;
+      if (product.ProductId) {
+        this.appendState(product);
+        this.updateCurrentProduct(product);
+      }
+      this.spinnerService.hide();
+    }, error => {
+      alert(JSON.stringify(error));
+      this.spinnerService.hide();
     });
   }
 

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Brand, Caterory, User, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { AccountService, ProductService, BrandService, CateroryService } from 'src/app/_services';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-product-details',
@@ -27,7 +28,8 @@ export class ProductDetailsComponent implements OnInit {
     private accountService: AccountService,
     private productService: ProductService,
     private brandService: BrandService,
-    private cateroryService: CateroryService
+    private cateroryService: CateroryService,
+    private messageService: MessageService,
   ) {
   }
 
@@ -55,6 +57,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   initForm() {
     this.rForm = this.fb.group({
+      ProductId: [this.product.ProductId, Validators.required],
       Name: [this.product.Name, Validators.required],
       BrandId: [this.product.BrandId],
       CatergoryId: [this.product.CatergoryId],
@@ -75,9 +78,14 @@ export class ProductDetailsComponent implements OnInit {
   get getFormValues() {
     return this.rForm.controls;
   }
-  add(product: Product) {
-    this.productService.addProduct(product);
-    this.routeTo.navigate(['/dashboard/list-product']);
+  update(product: Product) {
+    this.productService.updateProduct(product);
+    // this.routeTo.navigate(['/dashboard/list-product']);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'Product updated! '
+    });
   }
 
 }

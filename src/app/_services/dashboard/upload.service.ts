@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Image } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
+import { SpinnerService } from './spinner.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class UploadService {
   public images: Observable<Image[]>;
   url: string;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private spinnerService: SpinnerService
   ) {
     this._images = new BehaviorSubject<Image[]>(JSON.parse(localStorage.getItem('images')) || []);
     this.images = this._images.asObservable();
@@ -42,10 +44,14 @@ export class UploadService {
     this.updateState(null);
   }
   addImage(data: Image) {
+    this.spinnerService.show();
     return this.http.post<any>(`${this.url}/api/image/add-image.php`, data).subscribe(resp => {
       const image: Image = resp;
       this.apendState(image);
+      this.spinnerService.hide();
+
     }, error => {
+      this.spinnerService.hide();
       alert(JSON.stringify(error));
     });
   }

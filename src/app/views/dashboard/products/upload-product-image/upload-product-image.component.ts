@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User, Image } from 'src/app/_models';
-import { DocumentsService, AccountService, UploadService } from 'src/app/_services';
+import { DocumentsService, AccountService, UploadService, SpinnerService } from 'src/app/_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from 'primeng/api';
@@ -30,6 +30,7 @@ export class UploadProductImageComponent implements OnInit {
     private routeTo: Router,
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
+    private spinnerService: SpinnerService
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.productId = r.id;
@@ -51,8 +52,11 @@ export class UploadProductImageComponent implements OnInit {
       this.message = 'Please select the files!';
       return false;
     }
+    this.spinnerService.show();
     this.documentsService.uploadFile(this.file).subscribe(response => {
       this.saveImage(response);
+      this.spinnerService.show();
+
     });
   }
 

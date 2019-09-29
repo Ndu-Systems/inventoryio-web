@@ -5,7 +5,7 @@
 
     <div class="card">
       <div class="form">
-        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
+        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="update(rForm.value)">
 
           <div class="group">
             <input type="text" formControlName="Name" required="required" />

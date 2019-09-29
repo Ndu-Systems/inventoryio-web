@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Brand, Caterory, User, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { AccountService, ProductService, BrandService, CateroryService } from 'src/app/_services';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-catergory',
@@ -24,6 +25,7 @@ export class AddCatergoryComponent implements OnInit {
     private routeTo: Router,
     private accountService: AccountService,
     private cateroryService: CateroryService,
+    private messageService: MessageService,
   ) {
 
   }
@@ -46,6 +48,11 @@ export class AddCatergoryComponent implements OnInit {
 
   add(caterory: Caterory) {
     this.cateroryService.addCaterory(caterory);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'brand  created '
+    });
     this.routeTo.navigate(['/dashboard/add-product']);
   }
 

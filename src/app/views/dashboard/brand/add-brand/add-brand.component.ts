@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Brand, Caterory, User } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { AccountService, ProductService, BrandService, CateroryService } from 'src/app/_services';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-brand',
@@ -24,6 +25,7 @@ export class AddBrandComponent implements OnInit {
     private routeTo: Router,
     private accountService: AccountService,
     private brandService: BrandService,
+    private messageService: MessageService,
   ) {
 
   }
@@ -46,6 +48,11 @@ export class AddBrandComponent implements OnInit {
 
   add(brand: Brand) {
     this.brandService.addBrand(brand);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'brand  created '
+    });
     this.routeTo.navigate(['/dashboard/add-product']);
   }
 
