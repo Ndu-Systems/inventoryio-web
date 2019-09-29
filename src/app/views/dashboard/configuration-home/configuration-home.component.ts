@@ -49,11 +49,11 @@ export class ConfigurationHomeComponent implements OnInit {
       image: 'assets/images/actions/role.svg',
       link: 'dashboard/roles'
     },
-    // {
-    //   name: 'permissions',
-    //   image: 'assets/images/actions/permission.svg',
-    //   link: 'dashboard/configurations'
-    // }
+    {
+      name: 'permissions',
+      image: 'assets/images/actions/permission.svg',
+      link: 'dashboard/permissions'
+    }
     );
   }
 }

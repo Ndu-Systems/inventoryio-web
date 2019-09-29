@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,27 +14,27 @@ export class SignInComponent implements OnInit {
   showMobileNav
   rForm: FormGroup;
   error: string;
+  email = environment.ACCOUNT_TEST_EMAIL;
+  password = environment.ACCOUNT_TEST_PASSWORD;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
   ) {
   }
-  toggleNav(){
-    this.showMobileNav = !this.showMobileNav
-  }
+
 
   ngOnInit() {
     this.accountService.logout();
     this.rForm = this.fb.group({
       Email: new FormControl(
-       null,
+        this.email,
         Validators.compose([
           Validators.required,
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])
       ),
-      Password: [null, Validators.required]
+      Password: [this.password, Validators.required]
     });
 
   }
@@ -44,8 +45,12 @@ export class SignInComponent implements OnInit {
   Login() {
     const email = this.getFormValues.Email.value;
     const password = this.getFormValues.Password.value;
-    this.accountService.login({email, password});
+    this.accountService.login({ email, password });
 
+  }
+
+  toggleNav() {
+    this.showMobileNav = !this.showMobileNav
   }
 
 }

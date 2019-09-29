@@ -13,6 +13,6 @@ export * from './stores.service';
 export * from './upload.service';
 export * from './users.service';
 export * from './spinner.service';
-
-// end:ng42.barrel
+export * from './permissions.service';
+ // end:ng42.barrel
 
