@@ -29,7 +29,7 @@ import { UpdateCompanyComponent } from './company/update-company/update-company.
 import { InvoiceComponent } from './products/invoice/invoice.component';
 import { ConfigurationHomeComponent } from './configuration-home';
 import { ActionsComponent } from './shared';
-import { RolesComponent, RoleCardListComponent, AddRoleComponent } from './roles';
+import { RolesComponent, RoleCardListComponent, AddRoleComponent, RoleDetailsComponent, AddRolePermissionComponent, ListRolePermissionsComponent } from './roles';
 import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './stores';
 import { ListCategoriesComponent } from './catergory/list-categories/list-categories.component';
 import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
@@ -68,7 +68,8 @@ const routes: Routes = [
       { path: 'list-brands', component: ListBrandsComponent },
       { path: 'reset-password', component: UserProfileResetPasswordComponent },
       { path: 'permissions', component: PermissionsComponent },
-      { path: 'add-permission', component: AddPermissionComponent }
+      { path: 'add-permission', component: AddPermissionComponent },
+      { path: 'role-details/:id', component: RoleDetailsComponent },
     ]
   },
 ];
@@ -120,6 +121,9 @@ export const declarations = [
   PermissionsComponent,
   PermissionCardListComponent,
   AddPermissionComponent,
+  RoleDetailsComponent,
+  AddRolePermissionComponent,
+  ListRolePermissionsComponent,
   // pipes
   SearchProductPipe
 ];
