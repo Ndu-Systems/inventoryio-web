@@ -62,7 +62,6 @@ body {
     -webkit-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
-
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin: auto;
@@ -103,10 +102,8 @@ body {
   margin: auto;
   margin-top: 15rem;
   justify-content: center;
-  width: 90%;
-  // padding-left: 3rem;
+  width: 80%;
   margin-bottom: 4rem;
-
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
     width: 100%;
@@ -114,13 +111,12 @@ body {
     background: #F5F6FA;
     margin-top: 2rem;
   }
-
   .card {
     background: #FFFFFF;
     cursor: pointer;
     align-content: center;
-    margin: 2rem;
-    padding: 2rem;
+    margin: 4rem;
+    padding: 1rem;
 
     @media only screen and (max-width: 600px) {
       width: 80%;
@@ -132,33 +128,31 @@ body {
       -webkit-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
       -moz-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
       box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
+      border-bottom: #104CE5 solid 5px;
 
     }
 
     img {
-      width: 25%;
+      width: 30%;
       margin-top: 3rem;
       transform: scaleX(-1);
-
     }
 
     span img {
       transform: scaleX(1);
-
     }
 
     h2 {
       font-size: 1.2rem;
       color: #2E344C;
       text-transform: capitalize;
-
     }
-
     p {
       font-size: 1rem;
       margin-bottom: 2rem;
     }
   }
+  
 }
 
 
@@ -166,7 +160,6 @@ footer {
   background: #F5F6FA;
   padding: 4rem;
   padding-bottom: 10rem;
-
   @media only screen and (max-width: 600px) {
     padding: 0%;
 
@@ -181,14 +174,13 @@ footer {
     padding-bottom: 1rem;
     margin-bottom: 4rem;
     text-align: center;
-
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin: 0%;
       font-size: 1rem;
       margin: auto;
       margin-bottom: 2rem;
-
+      border-bottom: .1rem solid #104CE5;
     }
   }
 
@@ -205,6 +197,8 @@ footer {
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin-bottom: 3rem;
+    
+      
     }
 
     ::placeholder {
@@ -212,26 +206,31 @@ footer {
       color: #656D88;
       letter-spacing: .1rem;
       text-transform: none;
-
-      @media only screen and (max-width: 600px) {
+ @media only screen and (max-width: 600px) {
         font-size: .6rem;
+        text-align: center;
+        letter-spacing: 0ch;
+       
       }
     }
 
     input[type=text] {
       border: none;
       padding: 1rem;
+      @media only screen and (max-width: 600px){
+        padding: 0%;
+      }
     }
 
     button {
-      width: 50%;
+      width: 40%;
       border-radius: 0 1rem 1rem 0;
       text-transform: none;
       font-size: 1rem;
-
       @media only screen and (max-width: 600px) {
-        width: 80%;
+        width: 50%;
         font-size: .8rem;
+       
       }
     }
   }
