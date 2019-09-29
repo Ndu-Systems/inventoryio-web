@@ -19,4 +19,6 @@ export interface Product {
     StatusId: string;
     Catergory?: string;
     Brand?: string;
+    QuantityAvailable?: number;
+
 }

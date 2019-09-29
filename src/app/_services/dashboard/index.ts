@@ -6,7 +6,6 @@ export * from './company.service';
 export * from './documents.service';
 export * from './message.service';
 export * from './orders.service';
-export * from './product.service';
 export * from './roles.service';
 export * from './sale.service';
 export * from './stores.service';
