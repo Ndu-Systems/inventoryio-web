@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, SellModel, Orders, User } from 'src/app/_models';
+import { Product, SellModel, Orders, User, Item } from 'src/app/_models';
 import { ProductService, AccountService, BannerService, SaleService, OrdersService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -16,6 +16,7 @@ export class SellComponent implements OnInit {
   products$: Observable<Product[]>;
   sale: SellModel;
   user: User;
+  products: Product[];
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -31,6 +32,9 @@ export class SellComponent implements OnInit {
     this.user = this.accountService.currentUserValue;
     if (!this.user.UserId) { this.router.navigate(['sign-in']); }
     this.products$ = this.productService.products;
+    this.productService.products.subscribe(data => {
+      this.products = data;
+    });
     this.productService.getProducts(this.user.CompanyId);
 
     this.productService.products.subscribe(state => {
@@ -90,11 +94,22 @@ export class SellComponent implements OnInit {
     console.log(order);
     console.log('items', this.sale.items);
     this.ordersService.addOrder(order, this.sale.items);
+    this.updateProductsRange(this.sale.items);
     // clear state
     this.saleService.clearState();
     this.ordersService.updateOrderState(null);
     this.ordersService.updateOrderProductsState(null);
     this.router.navigate(['/dashboard/list-orders']);
   }
- 
+
+  updateProductsRange(items: Item[]) {
+    const products: Product[] = [];
+    items.forEach(item => {
+      const product = this.products.find(x => x.ProductId === item.prodcuId);
+      product.Quantity = Number(product.Quantity) - Number(item.quantity);
+      products.push(product);
+    });
+    this.productService.updateProductRange(products);
+  }
+
 }
