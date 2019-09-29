@@ -7,4 +7,5 @@ export interface Brand {
     ModifyDate: string;
     ModifyUserId: string;
     StatusId: string;
+    Status?: boolean;
 }
