@@ -36,7 +36,7 @@ export class AddPermissionComponent implements OnInit {
     }
     this.rForm = this.fb.group({
       Name: [null, Validators.required],
-      CompanyId:[user.CompanyId],
+      CompanyId: [user.CompanyId],
       CreateUserId: [user.UserId, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
