@@ -8,19 +8,25 @@
         <button (click)="add()">add a permission</button>
       </div>
     </div>
-    <div class="cards" *ngIf="permissions">
-      <span *ngFor="let item of permissions">
-        <div class="card col-1-of-2">
-          <div class="icon">
-            <img src="assets/images/actions/permission.svg" alt="permission image">
-          </div>
-          <div class="data">
-             <h1 class="main">{{item.friendlyName}}</h1>
+    <div>
+      <div class="cards" *ngIf="permissions && !showAdd">
+        <span *ngFor="let item of permissions">
+          <div class="card col-1-of-2" *ngIf="item">
+            <div class="icon">
+              <img src="assets/images/actions/permission.svg" alt="permission image">
+            </div>
+            <div class="data">
+              <h1 class="main">{{item.friendlyName}}</h1>
               <!-- <h1 class="spec">0 roles</h1> -->
-              <!-- <h1 class="spec">{{item.desc}}</h1> -->
+              <h1 class="spec">{{item.desc}}</h1>
+            </div>
           </div>
-        </div>
-      </span>
+          <p class="not-found">
+            no permissions returned
+          </p>
+        </span>
+      </div>
     </div>
+
   </div>
 </div>
