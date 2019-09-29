@@ -1,4 +1,4 @@
-import { RolesService } from 'src/app/_services';
+import { RolesService, PermissionsService } from 'src/app/_services';
 import { Injectable } from '@angular/core';
 import { SystemPermissionModel, Permission } from 'src/app/_models';
 import { ProductPermissions, OrderPermissions, ConfigurationPermissions } from 'src/app/views/dashboard/shared';
@@ -9,6 +9,7 @@ import { ProductPermissions, OrderPermissions, ConfigurationPermissions } from '
 export class SharedService {
   permissions: Permission[] = [];
   constructor(
+    private permissionService: PermissionsService,
     private roleService: RolesService
   ) { }
 
@@ -30,13 +31,12 @@ export class SharedService {
   }
 
   loadRolePermissions(roleId: string): SystemPermissionModel[] {
-
     const productPermissions = this.loadSystemPermissions();
-    let permissionsForRole: SystemPermissionModel[] = [];
+    const permissionsForRole: SystemPermissionModel[] = [];
     this.roleService.getRolePermissions(roleId).subscribe(response => {
       this.permissions = response;
       productPermissions.forEach((item, index) => {
-        if(this.permissions){
+        if (this.permissions) {
           this.permissions.forEach((x, y) => {
             if (item.key.toLowerCase() === x.Name) {
               permissionsForRole.push(item);
@@ -46,6 +46,23 @@ export class SharedService {
       });
     });
     return permissionsForRole;
+  }
+
+  loadCompanyPermissions(companyId): SystemPermissionModel[] {
+    const permissionsForCompany = this.loadSystemPermissions();
+    this.permissionService.getCompanyPermissions(companyId).subscribe(response => {
+      this.permissions = response;
+      permissionsForCompany.forEach((item, index) => {
+        if (this.permissions) {
+          this.permissions.forEach((x, y) => {
+            if (item.key.toLowerCase() === x.Name) {
+              permissionsForCompany.push(item);
+            }
+          });
+        }
+      });
+    });
+    return permissionsForCompany;
   }
 
   loadProductPermissions(): SystemPermissionModel[] {

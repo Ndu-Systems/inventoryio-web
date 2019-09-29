@@ -1,15 +1,15 @@
 <div class="main">
-  <div class="body">
+  <div class="body" *ngIf="!showAdd">
     <div class="page-actions">
       <h1 class="heading">
         Role permissions
       </h1>
       <div class="add">
-        <button (click)="add()">add a permission</button>
+        <button (click)="showAddForm()">add a permission</button>
       </div>
     </div>
     <div>
-      <div class="cards" *ngIf="permissions && !showAdd">
+      <div class="cards" *ngIf="permissions.length > 0; else notFound">
         <span *ngFor="let item of permissions">
           <div class="card col-1-of-2" *ngIf="item">
             <div class="icon">
@@ -17,16 +17,24 @@
             </div>
             <div class="data">
               <h1 class="main">{{item.friendlyName}}</h1>
-              <!-- <h1 class="spec">0 roles</h1> -->
               <h1 class="spec">{{item.desc}}</h1>
             </div>
           </div>
-          <p class="not-found">
-            no permissions returned
-          </p>
+
         </span>
       </div>
+      <ng-template #notFound>
+        <p class="not-found">
+          no permissions for this role
+        </p>
+      </ng-template>
     </div>
-
+  </div>
+  <div *ngIf="showAdd">
+    <app-add-role-permission
+    (toggle)="toggleTodo($event)"
+    [roleId]="roleId"
+    >
+    </app-add-role-permission>
   </div>
 </div>
