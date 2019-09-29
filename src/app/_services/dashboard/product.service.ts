@@ -81,6 +81,20 @@ export class ProductService {
       this.spinnerService.hide();
     });
   }
+  updateProductRange(products: Product[]) {
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/product/update-products-range.php`, {products}).subscribe(resp => {
+      if (resp) {
+       this.getProducts(products[0].CompanyId);
+       this.spinnerService.hide();
+
+      }
+    }, error => {
+      alert(JSON.stringify(error));
+      this.spinnerService.hide();
+
+    });
+  }
 
   getProducts(companyId) {
     return this.http.get<any>(`${this.url}/api/product/get-detailed-products.php?CompanyId=${companyId}`).subscribe(resp => {
