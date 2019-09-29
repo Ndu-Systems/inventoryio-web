@@ -1,3 +1,26 @@
-<p>
-  list-role-permissions works!
-</p>
+<div class="main">
+  <div class="body">
+    <div class="page-actions">
+      <h1 class="heading">
+        Role permissions
+      </h1>
+      <div class="add">
+        <button (click)="add()">add a permission</button>
+      </div>
+    </div>
+    <div class="cards" *ngIf="permissions">
+      <span *ngFor="let item of permissions">
+        <div class="card col-1-of-2">
+          <div class="icon">
+            <img src="assets/images/actions/permission.svg" alt="permission image">
+          </div>
+          <div class="data">
+             <h1 class="main">{{item.friendlyName}}</h1>
+              <!-- <h1 class="spec">0 roles</h1> -->
+              <!-- <h1 class="spec">{{item.desc}}</h1> -->
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>

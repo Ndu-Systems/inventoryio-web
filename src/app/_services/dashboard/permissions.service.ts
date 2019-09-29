@@ -64,4 +64,7 @@ export class PermissionsService {
        this._permissions.next(Object.assign({}, this.dataStore).permissions);
     }, error => console.log('Could not update permission'));
   }
+
+
+
 }
