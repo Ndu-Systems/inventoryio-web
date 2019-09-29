@@ -19,6 +19,8 @@
           </div>
           <div class="group">
             <input type="password" formControlName="Password" required="required" />
+            <label>Password</label>
+
             <!-- <span class="highlight"></span>
           <span class="bar"></span> -->
       
@@ -28,7 +30,6 @@
           <div class="reset-pass">
             <a routerLink="/forgot-password">Forgot password</a>
           </div>
-          <label>Password</label>
         
           <div class="group">
             <input type="submit" value="sign in" class="btn" [disabled]="!rForm.valid" />
