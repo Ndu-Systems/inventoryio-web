@@ -1,13 +1,16 @@
+import { RolesService } from 'src/app/_services';
 import { Injectable } from '@angular/core';
-import { SystemPermissionModel } from 'src/app/_models';
+import { SystemPermissionModel, Permission } from 'src/app/_models';
 import { ProductPermissions, OrderPermissions, ConfigurationPermissions } from 'src/app/views/dashboard/shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-
-  constructor() { }
+  permissions: Permission[] = [];
+  constructor(
+    private roleService: RolesService
+  ) { }
 
   loadSystemPermissions(): SystemPermissionModel[] {
     const systemPermissions: SystemPermissionModel[] = [];
@@ -24,6 +27,25 @@ export class SharedService {
       systemPermissions.push(item);
     });
     return systemPermissions;
+  }
+
+  loadRolePermissions(roleId: string): SystemPermissionModel[] {
+
+    const productPermissions = this.loadSystemPermissions();
+    let permissionsForRole: SystemPermissionModel[] = [];
+    this.roleService.getRolePermissions(roleId).subscribe(response => {
+      this.permissions = response;
+      productPermissions.forEach((item, index) => {
+        if(this.permissions){
+          this.permissions.forEach((x, y) => {
+            if (item.key.toLowerCase() === x.Name) {
+              permissionsForRole.push(item);
+            }
+          });
+        }
+      });
+    });
+    return permissionsForRole;
   }
 
   loadProductPermissions(): SystemPermissionModel[] {
@@ -73,7 +95,7 @@ export class SharedService {
     return ordersPermissions;
   }
 
-   loadConfigurationPermissions(): SystemPermissionModel[] {
+  loadConfigurationPermissions(): SystemPermissionModel[] {
     const configurationPermissions: SystemPermissionModel[] = [
       {
         key: ConfigurationPermissions.CAN_CONFIGURE.key,
