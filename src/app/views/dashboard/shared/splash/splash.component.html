@@ -4,8 +4,10 @@
   <div class="card"  *ngIf="splash$ | async as splash">
 
     <div class="logo">
-      <!-- <img src="assets/images/success.svg" alt=""> -->
-      <img src="assets/images/error.svg" alt="">
+      <img *ngIf="splash.class == 'success'" src="assets/images/success.svg" alt="">
+      <img *ngIf="splash.class == 'error'" src="assets/images/error.svg" alt="">
+      <img *ngIf="splash.class == 'warn'" src="assets/images/warn.svg" alt="">
+      <img *ngIf="splash.class == 'info'" src="assets/images/info.svg" alt="">
     </div>
     <h1>
        {{ splash.heading}}
@@ -14,7 +16,10 @@
       {{splash.message}}
     </p>
     <div class="action">
-      <button class="btn error" (click)="close()">Continue</button>
+      <button *ngIf="splash.class == 'success'" class="btn" (click)="close()">Continue</button>
+      <button *ngIf="splash.class == 'error'" class="btn error" (click)="close()">Continue</button>
+      <button *ngIf="splash.class == 'warn'" class="btn warn" (click)="close()">Continue</button>
+      <button *ngIf="splash.class == 'info'" class="btn info" (click)="close()">Continue</button>
     </div>
   </div>
 

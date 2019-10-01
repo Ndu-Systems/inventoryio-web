@@ -41,9 +41,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
 
     const user: User = this.accountService.currentUserValue;
-    if (!user) {
-      this.routeTo.navigate(['sign-in']);
-    }
+    this.accountService.checkSession();
     this.brandService.getBrands(user.CompanyId);
     this.cateroryService.getCateries(user.CompanyId);
 

@@ -84,4 +84,15 @@ export class AccountService {
     this.updateUserState(null);
   }
 
+  checkSession() {
+    const user: User = this.currentUserValue;
+    if (!user) {
+      this.router.navigate(['sign-in']);
+    }
+
+    if (user.CompanyId.length <= 5) {
+      this.router.navigate(['dashboard/add-company']);
+    }
+  }
+
 }

@@ -30,7 +30,7 @@ export class SellComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    if (!this.user.UserId) { this.router.navigate(['sign-in']); }
+    this.accountService.checkSession();
     this.products$ = this.productService.products;
     this.productService.products.subscribe(data => {
       this.products = data;

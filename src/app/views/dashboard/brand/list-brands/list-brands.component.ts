@@ -23,8 +23,7 @@ export class ListBrandsComponent implements OnInit {
   ngOnInit() {
     this.brands$ = this.brandService.brands;
     const user = this.accountService.currentUserValue;
-    if (!user.UserId) { this.router.navigate(['sign-in']); }
-
+    this.accountService.checkSession();
     this.bannerService.updateState({
       heading: 'My brands',
       backto: '/dashboard',

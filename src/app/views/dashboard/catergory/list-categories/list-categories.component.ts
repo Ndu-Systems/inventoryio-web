@@ -23,8 +23,7 @@ export class ListCategoriesComponent implements OnInit {
   ngOnInit() {
     this.categories$ = this.categorieservice.categories;
     const user = this.accountService.currentUserValue;
-    if (!user.UserId) { this.router.navigate(['sign-in']); }
-
+    this.accountService.checkSession();
     this.bannerService.updateState({
       heading: 'My categories',
       backto: '/dashboard',

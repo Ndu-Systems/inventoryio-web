@@ -22,10 +22,7 @@ export class DashboardHomeComponent implements OnInit {
   ngOnInit() {
 
     this.user = this.accountService.currentUserValue;
-    if (!this.user) {
-      this.router.navigate(['sign-in']);
-      return;
-    }
+    this.accountService.checkSession();
     if (this.user.Password === DEFAULT_PASSWORD && this.user.CompanyId) {
       this.router.navigate(['dashboard/reset-password']);
       this.bannerService.updateState({
@@ -35,7 +32,7 @@ export class DashboardHomeComponent implements OnInit {
     }
     if (!this.user.CompanyId) {
       // debugger
-      this.createCompanyPopuP();
+      // this.createCompanyPopuP();
     }
     this.preloadData();
   }
@@ -47,19 +44,19 @@ export class DashboardHomeComponent implements OnInit {
   clearMessages() {
     this.messageService.clear();
   }
-  createCompanyPopuP() {
-    this.messageService.setMessage({
-      heading: [`Hey John`, `Welcome to inventory-io!`],
-      body: [`Your simplified  inventory
-                management with real-time
-                updates, please complete your profile to get started.`],
-      canShow: true,
-      class: 'success',
-      img: 'assets/images/undraw_Hello_qnas.png',
-      link: '/dashboard/add-company',
-      linkname: 'Complete my profile',
-    });
+  // createCompanyPopuP() {
+  //   this.messageService.setMessage({
+  //     heading: [`Hey John`, `Welcome to inventory-io!`],
+  //     body: [`Your simplified  inventory
+  //               management with real-time
+  //               updates, please complete your profile to get started.`],
+  //     canShow: true,
+  //     class: 'success',
+  //     img: 'assets/images/undraw_Hello_qnas.png',
+  //     link: '/dashboard/add-company',
+  //     linkname: 'Complete my profile',
+  //   });
 
-  }
+  // }
 
 }

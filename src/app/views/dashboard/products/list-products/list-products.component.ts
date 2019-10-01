@@ -24,7 +24,7 @@ export class ListProductsComponent implements OnInit {
 
   ngOnInit() {
     const user = this.accountService.currentUserValue;
-    if (!user.UserId) { this.router.navigate(['sign-in']); }
+    this.accountService.checkSession();
     this.products$ = this.productService.products;
     this.productService.getProducts(user.CompanyId);
 

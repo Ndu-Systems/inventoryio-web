@@ -40,9 +40,7 @@ export class UploadProductImageComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    if (!this.user) {
-      this.routeTo.navigate(['sign-in']);
-    }
+    this.accountService.checkSession();
   }
   filesChanged(files) {
     this.file = files[0] as File;

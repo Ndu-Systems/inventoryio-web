@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Company, User, Role } from 'src/app/_models';
+import { Company, User, Role, Splash } from 'src/app/_models';
 import { CompanyService, AccountService, RolesService, BannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
+import { SplashService } from 'src/app/_services/splash.service';
 
 @Component({
   selector: 'app-add-company',
@@ -19,6 +20,7 @@ export class AddCompanyComponent implements OnInit {
   error: string;
 
   roles: Role[];
+  user: User;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -27,23 +29,25 @@ export class AddCompanyComponent implements OnInit {
     private rolesService: RolesService,
     private bannerService: BannerService,
     private messageService: MessageService,
+    private splashService: SplashService,
   ) {
   }
 
   ngOnInit() {
 
-    const user: User = this.accountService.currentUserValue;
-    if (!user) {
+    this.user = this.accountService.currentUserValue;
+    if (!this.user) {
       this.routeTo.navigate(['sign-in']);
     }
+    this.showWelcome();
     this.rForm = this.fb.group({
       Name: ['', Validators.required],
       Address: ['', Validators.required],
       Website: [''],
       TelephoneNumber: ['', Validators.required],
-      CreateUserId: [user.UserId, Validators.required],
+      CreateUserId: [this.user.UserId, Validators.required],
       StatusId: [1, Validators.required],
-      ModifyUserId: [user.UserId, Validators.required],
+      ModifyUserId: [this.user.UserId, Validators.required],
     }
     );
 
@@ -90,6 +94,16 @@ export class AddCompanyComponent implements OnInit {
 
   createRoles() {
 
+  }
+
+  showWelcome() {
+    const message: Splash = {
+      heading: `Hey ${this.user.Name}, Welcome to inventory-io!`,
+      message: `One more step, please give us your company details`,
+      show: true,
+      class: 'success',
+    };
+    this.splashService.update(message);
   }
 
 }

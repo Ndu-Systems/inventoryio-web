@@ -1,7 +1,7 @@
 export interface Splash {
     heading?: string;
     message?: string;
-    correct?: boolean;
+    class: string;
     show?: boolean;
 
 }

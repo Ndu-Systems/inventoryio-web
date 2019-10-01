@@ -37,10 +37,7 @@ export class DashboardComponent implements OnInit {
     this.spinner$ = this.spinnerService.spinner;
     this.splash$ = this.splashService.splash;
     this.user = this.accountService.currentUserValue;
-    if (!this.user) {
-      this.router.navigate(['sign-in']);
-      return;
-    }
+    this.accountService.checkSession();
 
   }
 

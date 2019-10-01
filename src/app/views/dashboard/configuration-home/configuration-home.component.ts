@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BannerService } from 'src/app/_services';
+import { BannerService, AccountService } from 'src/app/_services';
 import { UserActions } from 'src/app/_models';
 
 @Component({
@@ -11,7 +11,8 @@ export class ConfigurationHomeComponent implements OnInit {
   actions: UserActions[] = [];
   actions2: UserActions[] = [];
   constructor(
-    private bannerService: BannerService
+    private bannerService: BannerService,
+    private accountService: AccountService,
   ) {
     this.bannerService.updateState({
       heading: 'Configuration',
@@ -20,6 +21,7 @@ export class ConfigurationHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.accountService.checkSession();
     this.populateActions();
   }
 

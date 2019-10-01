@@ -36,10 +36,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.user = this.accountService.currentUserValue;
-    if (!this.user) {
-      this.routeTo.navigate(['sign-in']);
-    }
-
+    this.accountService.checkSession();
     this.productService.product.subscribe(state => {
       if (!state) { return false; }
       this.productId = state.ProductId;

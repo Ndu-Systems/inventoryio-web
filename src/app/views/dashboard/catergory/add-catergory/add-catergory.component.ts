@@ -33,9 +33,7 @@ export class AddCatergoryComponent implements OnInit {
   ngOnInit() {
 
     const user: User = this.accountService.currentUserValue;
-    if (!user) {
-      this.routeTo.navigate(['sign-in']);
-    }
+    this.accountService.checkSession();
     this.rForm = this.fb.group({
       Name: ['', Validators.required],
       CompanyId: [user.CompanyId, Validators.required],
