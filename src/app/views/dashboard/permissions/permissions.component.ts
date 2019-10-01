@@ -49,24 +49,7 @@ export class PermissionsComponent implements OnInit {
 
   loadCompanyPermissions(companyId: string) {
 
-    this.systemPermissions = this.sharedService.loadSystemPermissions();
-    this.permissionService.permissions.subscribe(data => {
-      const _permissions: SystemPermissionModel[] = [];
-      data.forEach((item, index) => {
-        const p: SystemPermissionModel = {
-          key: item.Name.toUpperCase()
-        };
-        _permissions.push(p);
-      });
-      this.systemPermissions.forEach((item, index) => {
-        _permissions.forEach((i, x) => {
-          if(i.key === item.key){
-            this.companyPermissions.push(item);
-          }
-        });
-      })
-      console.log(this.companyPermissions);
-    });
+    this.companyPermissions = this.sharedService.loadCompanyPermissions(companyId);
 
   }
 
