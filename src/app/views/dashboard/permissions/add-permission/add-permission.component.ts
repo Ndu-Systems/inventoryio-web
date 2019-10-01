@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BannerService, PermissionsService, AccountService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../shared/shared.service';
-import { SystemPermissionModel, User, Permission } from 'src/app/_models';
+import { User, Permission, SystemPermissionModel } from 'src/app/_models';
 import { Router } from '@angular/router';
 
 @Component({

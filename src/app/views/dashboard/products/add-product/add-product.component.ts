@@ -60,7 +60,7 @@ export class AddProductComponent implements OnInit {
         Name: '',
         Description: '',
         UnitPrice: '',
-        UnitCost: '',
+        UnitCost: 0,
         Code: '',
         SKU: '',
         Quantity: 0,

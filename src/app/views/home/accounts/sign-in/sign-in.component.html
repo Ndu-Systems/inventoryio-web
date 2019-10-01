@@ -12,7 +12,7 @@
             <!-- <span class="highlight">test</span> -->
             <!-- <span class="bar"></span> -->
             <label>Email</label>
-          
+
           </div>
           <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
             Email is required
@@ -23,14 +23,15 @@
 
             <!-- <span class="highlight"></span>
           <span class="bar"></span> -->
-      
-          </div>  <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
             Password is required
           </div>
           <div class="reset-pass">
             <a routerLink="/forgot-password">Forgot password</a>
           </div>
-        
+
           <div class="group">
             <input type="submit" value="sign in" class="btn" [disabled]="!rForm.valid" />
           </div>
@@ -45,5 +46,17 @@
         <img src="../../../../../assets/images/sign-in-img.svg" alt="">
       </div>
     </div>
+  </div>
+</div>
+
+<div class="home-loading" *ngIf="this.loading$| async as loading">
+  <img class="logo" src="assets/images/white-icon.png" alt="">
+  <h1>Signing you in, please wait</h1>
+
+  <div class="lds-ellipsis">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </div>

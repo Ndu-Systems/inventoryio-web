@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,6 +15,7 @@ export class SignInComponent implements OnInit {
   showMobileNav
   rForm: FormGroup;
   error: string;
+  loading$: Observable<boolean>;
   email = environment.ACCOUNT_TEST_EMAIL;
   password = environment.ACCOUNT_TEST_PASSWORD;
   constructor(
@@ -36,6 +38,7 @@ export class SignInComponent implements OnInit {
       ),
       Password: [this.password, Validators.required]
     });
+    this.loading$ = this.accountService.loading;
 
   }
 

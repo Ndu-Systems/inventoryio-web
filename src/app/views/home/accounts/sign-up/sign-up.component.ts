@@ -13,6 +13,7 @@ export class SignUpComponent implements OnInit {
 
   rForm: FormGroup;
   error: string;
+  loading$ = this.accountService.loading;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,

@@ -1,4 +1,4 @@
-import { EntityModelBase } from '.';
+import { EntityModelBase } from './entity-model-base';
 
 export class SystemPermissionModel extends EntityModelBase {
   key: string;

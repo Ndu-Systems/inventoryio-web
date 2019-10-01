@@ -81,3 +81,16 @@
     </div>
   </div>
 </div>
+
+
+<div class="home-loading" *ngIf="this.loading$| async as loading">
+    <img class="logo" src="assets/images/white-icon.png" alt="">
+    <h1>Creating your account, please wait</h1>
+  
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>

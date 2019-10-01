@@ -7,7 +7,7 @@ export interface Product {
     Name: string;
     Description: string;
     UnitPrice: string;
-    UnitCost: string;
+    UnitCost: number;
     Code: string;
     SKU: string;
     Quantity: number;

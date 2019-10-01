@@ -1,7 +1,7 @@
 <div class="main">
   <div class="top-bar">
     <div class="logo">
-    <a routerLink="/"><img src="../../../../assets/images/logo.svg" alt=""></a>
+    <a routerLink="/"><img src="assets/images/logo.svg" alt=""></a>
     </div>
     <div class="nav">
       <li><a routerLink="" >Home</a></li>
@@ -12,7 +12,7 @@
 
     <div class="mobile-nav" *ngIf= "showMobileNav">
       <div class="close" (click)="toggleNav()">
-        <img src="../../../assets/images/close-mobilemenu.svg" alt="">
+        <img src="assets/images/close-mobilemenu.svg" alt="">
       </div>
       <li><a (click)="toggleNav()" routerLink="">Home</a></li>
       <!-- <li> <span class="blue"><a routerLink ="">About</a>  </span></li> -->
@@ -20,7 +20,7 @@
       <li><span class="sign-up-for-free"> <a  (click)="toggleNav()" routerLink="/sign-up">sign up for free</a> </span></li>
     </div>
     <div class="ham-icon"(click)="toggleNav()">
-      <img src="../../../assets/images/ham.svg" alt="">
+      <img src="assets/images/ham.svg" alt="">
   </div>
   </div>
   <router-outlet></router-outlet>
