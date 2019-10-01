@@ -16,10 +16,10 @@ export class ProductImagesComponent implements OnInit {
   images$: Observable<Image[]>;
 
   constructor(private router: Router,
-              private uploadService: UploadService,
-              private confirmationService: ConfirmationService,
-              private messageService: MessageService
-              ) {
+    private uploadService: UploadService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {
   }
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class ProductImagesComponent implements OnInit {
       message: 'Are you sure that you want to perform this action?',
       accept: () => {
         image.StatusId = 2;
+        image.OtherId = `removed-${image.OtherId}`;
         this.uploadService.update(image);
         this.messageService.add({
           severity: 'success',
