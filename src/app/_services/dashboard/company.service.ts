@@ -23,7 +23,10 @@ export class CompanyService {
   public get currentCompanyValue(): Company {
     return this.currentCompanySubject.value;
   }
-
+  updateState(company: Company) {
+    localStorage.setItem('currentCompany', JSON.stringify(company));
+    this.currentCompanySubject.next(company);
+  }
   addCompany(data: Company) {
     return this.http.post<any>(`${this.url}/api/company/add-company.php`, data).subscribe(resp => {
       const company: Company = resp;
@@ -32,6 +35,10 @@ export class CompanyService {
     }, error => {
       alert(JSON.stringify(error));
     });
+  }
+
+  addCompanySync(data: Company): Observable<any> {
+    return this.http.post<any>(`${this.url}/api/company/add-company.php`, data);
   }
 
 

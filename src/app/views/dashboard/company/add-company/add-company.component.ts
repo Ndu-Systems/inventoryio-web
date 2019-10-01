@@ -12,10 +12,6 @@ import { SplashService } from 'src/app/_services/splash.service';
   styleUrls: ['./add-company.component.scss']
 })
 export class AddCompanyComponent implements OnInit {
-  heading = 'Add company';
-  backto = '/dashboard';
-
-
   rForm: FormGroup;
   error: string;
 
@@ -34,10 +30,10 @@ export class AddCompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.user = this.accountService.currentUserValue;
     if (!this.user) {
       this.routeTo.navigate(['sign-in']);
+      return false;
     }
     this.showWelcome();
     this.rForm = this.fb.group({
@@ -51,19 +47,6 @@ export class AddCompanyComponent implements OnInit {
     }
     );
 
-    // update user
-    this.companyService.currentCompany.subscribe(data => {
-      if (data) {
-        this.addCompanyTo();
-        // this.rolesService.getRoles(data.CompanyId);
-      }
-    });
-
-    // get roles
-    // this.rolesService.currentRole.subscribe(data => {
-    //   this.roles = data;
-    // });
-
     this.bannerService.updateState({
       heading: 'Add Your Company',
       backto: '/dashboard'
@@ -74,22 +57,29 @@ export class AddCompanyComponent implements OnInit {
   }
   add(company: Company) {
     console.log(company);
-    this.companyService.addCompany(company);
+    this.companyService.addCompanySync(company)
+      .subscribe(resp => {
+        const companyDb: Company = resp;
+        localStorage.setItem('currentCompany', JSON.stringify(companyDb));
+        this.companyService.updateState(companyDb);
+
+        this.addCompanyTo(companyDb.CompanyId);
+      }, error => {
+        alert(JSON.stringify(error));
+      });
   }
 
-  addCompanyTo() {
-    const user = this.accountService.currentUserValue;
-    const currentCompany = this.companyService.currentCompanyValue;
-    if (!user.CompanyId) {
-      user.CompanyId = currentCompany.CompanyId;
-      this.accountService.updateUser(user);
-    }
+  addCompanyTo(companyId: string) {
+    this.user.CompanyId = companyId;
+    this.accountService.updateUser(this.user);
     this.messageService.add({
+      life: 7000,
       severity: 'success',
       summary: 'Success!',
-      detail: 'brand  created '
+      detail: `Your company  created successfully, now you can create stores, users, brands, categories,
+                products and start selling, we hope you are going to enjoy being part of the family`,
     });
-    this.routeTo.navigate(['/dashboard/add-product']);
+    this.routeTo.navigate(['/dashboard']);
   }
 
   createRoles() {

@@ -52,7 +52,8 @@ export class BrandService {
       this.spinnerService.hide();
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `sorry it looks like you're on a slow connection.`
+        message: `sorry it looks like you're on a slow connection.`,
+        class: `error`
       });
 
     });
@@ -65,7 +66,8 @@ export class BrandService {
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `Sorry it looks like you're on a slow connection.`
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
       });
 
     });

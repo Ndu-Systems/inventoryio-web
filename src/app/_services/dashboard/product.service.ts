@@ -36,7 +36,7 @@ export class ProductService {
 
   // state
   appendState(product: Product) {
-    let state = this._products.value;
+    let state = this._products.value || [];
     const existingProduct = state.find(x => x.ProductId === product.ProductId);
     if (existingProduct) {
       state = state.filter(x => x.ProductId !== product.ProductId);
@@ -55,6 +55,9 @@ export class ProductService {
 
   updateState(products: Product[]) {
     // sort
+    if (!products) {
+      products = [];
+    }
     products.sort((x, y) => {
       return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
     });

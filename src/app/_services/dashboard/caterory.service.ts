@@ -37,7 +37,8 @@ export class CateroryService {
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `Sorry it looks like you're on a slow connection.`
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
       });
     });
   }
@@ -50,7 +51,8 @@ export class CateroryService {
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `Sorry it looks like you're on a slow connection.`
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
       });
     });
   }

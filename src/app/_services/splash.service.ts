@@ -12,7 +12,7 @@ export class SplashService {
   public splash: Observable<Splash>;
   constructor(
   ) {
-    this._splash = new BehaviorSubject<Splash>({ show: false }
+    this._splash = new BehaviorSubject<Splash>({ show: false, class: `error` }
     );
     this.splash = this._splash.asObservable();
   }
@@ -21,11 +21,9 @@ export class SplashService {
   update(splash: Splash) {
     this._splash.next(splash);
   }
-  show() {
-    this._splash.next({ show: true });
-  }
+
   hide() {
-    this._splash.next({ show: false });
+    this._splash.next({ show: false, class: `error` });
   }
 
 
