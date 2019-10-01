@@ -15,7 +15,8 @@ export class ProductImagesComponent implements OnInit {
   img = 'http://localhost:8200/inventoryiodb-api/images/car.jpg';
   images$: Observable<Image[]>;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private uploadService: UploadService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService

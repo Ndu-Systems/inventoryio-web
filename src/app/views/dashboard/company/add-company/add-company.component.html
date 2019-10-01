@@ -3,55 +3,54 @@
 
   <div class="body">
 
-  <div class="form">
-    <form [formGroup]="rForm" (ngSubmit)="add(rForm.value)">
+    <div class="form">
+      <form [formGroup]="rForm" (ngSubmit)="add(rForm.value)">
 
-      <div class="group">
-        <input type="text"  formControlName="Name"    required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Company Name</label>
-        <div class="alert" *ngIf="!rForm.controls['Name'].valid">
-          Company Name is required
+        <div class="group">
+          <input type="text"  formControlName="Name"    required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Company Name</label>
+          <div class="alert" *ngIf="!rForm.controls['Name'].valid">
+            Company Name is required
+          </div>
         </div>
-      </div>
-
-
-      <div class="group">
-        <input type="text"  formControlName="Address"    required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Company  Address</label>
-        <div class="alert" *ngIf="!rForm.controls['Address'].valid">
-          Company  Address is required
+  
+  
+        <div class="group">
+          <input type="text"  formControlName="Address"    required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Company  Address</label>
+          <div class="alert" *ngIf="!rForm.controls['Address'].valid">
+            Company  Address is required
+          </div>
         </div>
-      </div>
-
-
-      <div class="group">
-        <input type="text"  formControlName="Website"    required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Company Website</label>
-      </div>
-
-
-      <div class="group">
-        <input type="text"  formControlName="TelephoneNumber"    required="required" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Telephone Number</label>
-        <div class="alert" *ngIf="!rForm.controls['TelephoneNumber'].valid">
-          Telephone Number is required
+  
+  
+        <div class="group">
+          <input type="text"  formControlName="Website"    required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Company Website</label>
         </div>
-      </div>
-
-      <div class="group">
-        <input type="submit" value="Add company" class="btn" [disabled]="!rForm.valid" />
-      </div>
-
-    </form>
-
-  </div>
+  
+  
+        <div class="group">
+          <input type="text"  formControlName="TelephoneNumber"    required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Telephone Number</label>
+          <div class="alert" *ngIf="!rForm.controls['TelephoneNumber'].valid">
+            Telephone Number is required
+          </div>
+        </div>
+  
+        <div class="group">
+          <input type="submit" value="Add company" class="btn" [disabled]="!rForm.valid" />
+        </div>
+  
+      </form>
+    </div>
   </div>
 </div>

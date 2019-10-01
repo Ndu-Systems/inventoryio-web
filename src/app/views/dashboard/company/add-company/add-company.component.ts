@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Company, User, Role } from 'src/app/_models';
-import { CompanyService, AccountService, RolesService } from 'src/app/_services';
+import { CompanyService, AccountService, RolesService, BannerService } from 'src/app/_services';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-company',
@@ -24,6 +25,8 @@ export class AddCompanyComponent implements OnInit {
     private companyService: CompanyService,
     private accountService: AccountService,
     private rolesService: RolesService,
+    private bannerService: BannerService,
+    private messageService: MessageService,
   ) {
   }
 
@@ -56,6 +59,11 @@ export class AddCompanyComponent implements OnInit {
     // this.rolesService.currentRole.subscribe(data => {
     //   this.roles = data;
     // });
+
+    this.bannerService.updateState({
+      heading: 'Add Your Company',
+      backto: '/dashboard'
+    });
   }
   get getFormValues() {
     return this.rForm.controls;
@@ -72,6 +80,12 @@ export class AddCompanyComponent implements OnInit {
       user.CompanyId = currentCompany.CompanyId;
       this.accountService.updateUser(user);
     }
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'brand  created '
+    });
+    this.routeTo.navigate(['/dashboard/add-product']);
   }
 
   createRoles() {
