@@ -9,13 +9,13 @@ import { Splash } from 'src/app/_models';
   styleUrls: ['./splash.component.scss']
 })
 export class SplashComponent implements OnInit {
-splash$ : Observable<Splash>;
+  splash$: Observable<Splash>;
   constructor(private splashService: SplashService) { }
 
   ngOnInit() {
     this.splash$ = this.splashService.splash;
   }
-close(){
-  this.splashService.hide();
-}
+  close() {
+    this.splashService.hide();
+  }
 }

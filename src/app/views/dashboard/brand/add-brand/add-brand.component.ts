@@ -20,6 +20,21 @@ export class AddBrandComponent implements OnInit {
   brands$: Observable<Brand[]>;
   catergories$: Observable<Caterory[]>;
 
+  mxolist: any[] = [
+    {
+      name: 'Mxolisi', age: 1
+    },
+    {
+      name: 'Mxolisi', age: 2
+    },
+    {
+      name: 'Mxolisi', age: 3
+    },
+    {
+      name: 'Mxolisi', age: 4
+    }
+  ];
+
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -34,6 +49,7 @@ export class AddBrandComponent implements OnInit {
 
     const user: User = this.accountService.currentUserValue;
     this.accountService.checkSession();
+
     this.rForm = this.fb.group({
       Name: ['', Validators.required],
       CompanyId: [user.CompanyId, Validators.required],

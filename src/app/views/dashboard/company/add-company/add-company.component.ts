@@ -73,7 +73,7 @@ export class AddCompanyComponent implements OnInit {
     this.user.CompanyId = companyId;
     this.accountService.updateUser(this.user);
     this.messageService.add({
-      life: 7000,
+      life: 60000,
       severity: 'success',
       summary: 'Success!',
       detail: `Your company  created successfully, now you can create stores, users, brands, categories,
