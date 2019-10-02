@@ -3,7 +3,7 @@
       <div class="form" *ngIf="companyPermissions">
         <form [formGroup]="rForm"  (ngSubmit)="onSubmit(rForm.value)">
           <div class="group">
-            <select formControlName="Name">
+            <select formControlName="PermissionId">
               <option value="">Select Permission</option>
               <option *ngFor="let item of companyPermissions" class="select-option" [value]="item.key">{{item.friendlyName}}</option>
             </select>

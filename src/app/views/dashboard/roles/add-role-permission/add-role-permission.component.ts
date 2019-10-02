@@ -1,10 +1,11 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { Permission, User, SystemPermissionModel } from 'src/app/_models';
+import { Permission, User, SystemPermissionModel, RolePermission } from 'src/app/_models';
 import { PermissionsService, AccountService, RolesService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../shared/shared.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-add-role-permission',
@@ -16,6 +17,7 @@ export class AddRolePermissionComponent implements OnInit {
   @Output() toggle = new EventEmitter<any>();
   rForm: FormGroup;
   companyPermissions: SystemPermissionModel[] = [];
+  dbPermissions: Permission[] = [];
   companyId: string;
   constructor(
     private fb: FormBuilder,
@@ -23,7 +25,8 @@ export class AddRolePermissionComponent implements OnInit {
     private permissionService: PermissionsService,
     private accountService: AccountService,
     private sharedService: SharedService,
-    private roleService: RolesService
+    private roleService: RolesService,
+    private messageService: MessageService,
 
   ) { }
 
@@ -33,7 +36,8 @@ export class AddRolePermissionComponent implements OnInit {
 
     this.companyId = user.CompanyId;
     // this.companyPermissions = this.sharedService.loadCompanyPermissions(user.CompanyId);
-    this.companyPermissions = this.sharedService.loadCompanyPermissions('1');
+    this.companyPermissions = this.sharedService.loadCompanyPermissions(this.companyId);
+    this.permissionService.getCompanyPermissions(this.companyId).subscribe(data => { this.dbPermissions = data; });
 
     if (!user) {
       this.accountService.logout();
@@ -41,17 +45,28 @@ export class AddRolePermissionComponent implements OnInit {
     }
     this.rForm = this.fb.group({
       RoleId: [this.roleId, Validators.required],
-      Name: [null, Validators.required],
+      PermissionId: [null, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
     });
   }
 
-  onSubmit(permission: Permission) {
-    permission.Name = permission.Name.toLowerCase();
-    // this.permissionService.addPermission(permission);
-    this.routeTo.navigate([`/dashboard/role-details/${this.roleId}`]);
+  onSubmit(rolePermission: RolePermission) {
+    if (this.dbPermissions === undefined) {
+      return;
+    }
+    const permission = this.dbPermissions.find(x => x.Name === rolePermission.PermissionId.toLowerCase());
+    rolePermission.PermissionId = permission.PermissionId;
+    this.roleService.addRolePermissions(rolePermission).subscribe(data => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success.',
+        detail: `Permission added to role`
+      });
+      this.toggle.emit(false);
+    });
+
   }
 
 }
