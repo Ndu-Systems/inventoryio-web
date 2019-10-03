@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BannerService, RolesService, AccountService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User, Role } from 'src/app/_models';
+import { MessageService } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-add-role',
@@ -16,6 +17,7 @@ export class AddRoleComponent implements OnInit {
     private bannerService: BannerService,
     private roleService: RolesService,
     private accountService: AccountService,
+    private messageService: MessageService,
     private routeTo: Router
   ) { }
 
@@ -42,6 +44,11 @@ export class AddRoleComponent implements OnInit {
 
   onSubmit(role: Role) {
     this.roleService.addRole(role);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success.',
+      detail: `Role ${role.Name} added successfully`
+    });
     this.routeTo.navigate(['/dashboard/roles']);
   }
 

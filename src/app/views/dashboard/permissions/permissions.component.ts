@@ -35,7 +35,7 @@ export class PermissionsComponent implements OnInit {
     const user: User = this.accountService.currentUserValue;
 
     this.loadCompanyPermissions(user.CompanyId);
-    this.permissionService.getAllPermissions(user.CompanyId);
+    // this.permissionService.getAllPermissions(user.CompanyId);
 
     if (!user) {
       this.accountService.logout();

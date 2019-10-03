@@ -16,7 +16,7 @@
 
   .cards {
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 50% 50%;
 
     .action-title {
       font-size: 20px;
@@ -162,6 +162,9 @@
             float: left;
           }
         }
+
+
+
       }
 
       .archive {
@@ -181,5 +184,49 @@
       color: #ED5575;
     }
 
+  }
+}
+
+
+// mobile
+
+@media only screen and (max-width: 600px) {
+  .main {
+    .cards {
+      grid-template-columns: 50% 50%;
+      .card {
+        &.col-1-of-2 {
+          grid-template-columns: 100%;
+        }
+        .icon {
+          border-top: solid 2px #0337BB;
+
+          img {
+            width: 27px;
+            margin: 0.5rem;
+            float: none;
+          }
+        }
+        .data {
+          padding: 0 1rem;
+
+          h1 {
+            text-align: center;
+
+
+            &.main {
+              margin: 0;
+              font-size: 12px;
+              font-weight: 600;
+            }
+
+            &.spec {
+              font-size: 10px;
+              color: #455E6D;
+            }
+          }
+        }
+      }
+    }
   }
 }

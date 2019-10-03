@@ -76,8 +76,8 @@ export class RolesService {
     return this.http.get<Permission[]>(`${this.url}/api/roles/get-role-permissions.php?RoleId=${roleId}`);
   }
 
-  addRolePermissions(rolePermission: RolePermission) {
-
+  addRolePermissions(rolePermission: RolePermission): Observable<RolePermission> {
+    return this.http.post<RolePermission>(`${this.url}/api/roles/add-role-permission.php`, rolePermission);
   }
 
 

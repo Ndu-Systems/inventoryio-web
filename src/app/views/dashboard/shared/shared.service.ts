@@ -49,10 +49,11 @@ export class SharedService {
   }
 
   loadCompanyPermissions(companyId): SystemPermissionModel[] {
-    const permissionsForCompany = this.loadSystemPermissions();
+    const systemPermissions = this.loadSystemPermissions();
+    const permissionsForCompany: SystemPermissionModel[] = [];
     this.permissionService.getCompanyPermissions(companyId).subscribe(response => {
       this.permissions = response;
-      permissionsForCompany.forEach((item, index) => {
+      systemPermissions.forEach((item, index) => {
         if (this.permissions) {
           this.permissions.forEach((x, y) => {
             if (item.key.toLowerCase() === x.Name) {

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../shared/shared.service';
 import { User, Permission, SystemPermissionModel } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-add-permission',
@@ -19,7 +20,8 @@ export class AddPermissionComponent implements OnInit {
     private bannerService: BannerService,
     private permissionService: PermissionsService,
     private accountService: AccountService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private messageService: MessageService,
   ) {
     this.bannerService.updateState({
       heading: 'Add Permission',
@@ -52,6 +54,11 @@ export class AddPermissionComponent implements OnInit {
       StatusId: '1'
     };
     this.permissionService.addPermission(addPermission);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success.',
+      detail: `Permission added successfully`
+    });
     this.routeTo.navigate(['/dashboard/permissions']);
   }
 

@@ -28,7 +28,7 @@
       text-align: center;
       height: 9rem;
       width: 9rem;
-      margin: 1rem;
+      margin: 1rem auto;
       border: 1px solid #E5E5E5;
       cursor: pointer;
 
@@ -70,6 +70,12 @@
 
         }
       }
+    }
+    .archive {
+      text-align: center;
+      width: 75%;
+      margin: 0 auto;
+      background: #ED5575;
     }
   }
 }

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { User } from 'src/app/_models';
 import { DEFAULT_PASSWORD, ACTIVE_STATUS } from '../../shared';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-add-user',
@@ -18,6 +19,7 @@ export class AddUserComponent implements OnInit {
     private bannerService: BannerService,
     private userService: UsersService,
     private accountService: AccountService,
+    private messageService: MessageService,
     private routeTo: Router
   ) { }
 
@@ -48,6 +50,11 @@ export class AddUserComponent implements OnInit {
 
   onSubmit(user: User) {
     this.userService.addUser(user);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success.',
+      detail: `User ${user.Name} added successfully`
+    });
     this.routeTo.navigate(['dashboard/users']);
 
   }
