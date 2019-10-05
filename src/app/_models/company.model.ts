@@ -1,11 +1,11 @@
 export interface Company {
-    CompanyId: string;
+    CompanyId?: string;
     Name: string;
     Website: string;
     TelephoneNumber: string;
-    CreateDate: string;
+    CreateDate?: string;
     CreateUserId: string;
-    ModifyDate: string;
+    ModifyDate?: string;
     ModifyUserId: string;
     StatusId: string;
 }

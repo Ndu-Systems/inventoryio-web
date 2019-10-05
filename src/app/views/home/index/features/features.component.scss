@@ -8,7 +8,7 @@
 
   h1 {
     color: #3F3D56;
-    border-bottom: .2rem solid #0337BB;
+    border-bottom: .2rem solid #104CE5;
     width: 20%;
     margin: auto;
     text-align: center;
@@ -43,7 +43,7 @@
     }
 
     h4 {
-      color: #0337BB;
+      color: #104CE5;
       font-weight: 400;
 
       @media only screen and (max-width: 600px) {}
@@ -95,7 +95,7 @@
       padding: 2rem;
 
       &:hover {
-        border-right: .6rem solid #0337BB;
+        border-right: .6rem solid #104CE5;
         -webkit-box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
         -moz-box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
         box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);

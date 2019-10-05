@@ -1,225 +1,61 @@
 .main {
+  position: fixed;
+  left: 2rem;
+  top: 2rem;
+  background: #FFFFFF;
+  width: 15%;
+  height: 94vh;
+  z-index: 10000;
 
-  .burger-menu {
-    position: absolute;
-    right: 2rem;
-    top: 0.5rem;
-    z-index: 500;
-    height: 1rem;
-  }
-
-  .nav-bar-mobile {
-    display: block;
-    position: fixed;
-    width: 50vw;
-    height: 100%;
-    background: white;
-    border-radius: 0;
-    z-index: 9999;
-    .go-back {
-      margin: 14px 7px;
-    }
-    .inventory-logo {
-      height: 43px;
-      margin: 0 4rem;
-    }
-
-    ul {
-      list-style: none;
-      width: 100%;
-      padding: 2rem;
-      
-    
-
-    }
-
-    li {
-      margin: 2rem 0;
-
-      a {
-        font-size: 18px;
-      }
-    }
-
-    .profile {
-      position: absolute;
-      bottom: 2rem;
-      // border-top: solid 1px #3742FA;
-
-      a {
-        color: #116fbf;
-
-      }
-
-      .signOut {
-        a {
-          color: #2E344C;
-          opacity: 0.5;
-        }
-      }
-    }
-
-  }
-
-  .logo {
-    display: none;
+  @media only screen and (max-width: 600px) {
+    width: 50%;
+    height: 100vh;
+    left: 0rem;
+    top: 0rem;
   }
 
   .nav-bar {
-    display: none;
-  }
-}
-
-// iphone se     height: 32px;
-@media only screen and (width: 320px) {
-  .main {
-    .nav-bar-mobile {
-
-      left: 1rem;
-
-      ul {
-        padding-top: 0;
-        padding-left: 0;
-        list-style: none;
-        width: 90vw;
-        height: 12vh;
-        padding: 1rem 0;
-        background: white;
-
-        li {
-          float: left;
-          margin: 0 7px;
-
-          a {
-            margin-top: 0;
-            color: white;
-            font-size: 25px;
-            font-weight: 300;
-            text-transform: capitalize;
-
-            img {
-              height: 32px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-}
-
-@media only screen and (width: 360px) {
-  .main {}
-
-}
-
-@media only screen and (width: 375px) {
-  .main {}
-
-}
-
-@media only screen and (width: 411px) {
-  .main {}
-
-}
-
-@media only screen and (width: 414px) {
-  .main {}
-
-}
-
-@media only screen and (height: 812px) {
-  .main {}
-
-}
-
-@media only screen and (min-width: 1254px) {
-  .main {
-    .logo {
-      display: block;
-      position: fixed;
-      z-index: 50;
-      left: 4rem;
-      top: 2rem;
-      cursor: pointer;
-
-      img {
-        height: 10vh;
-      }
-    }
-
-    .nav-bar {
-      display: block;
-      position: fixed;
-      left: 2rem;
-      top: 10rem;
-      width: 10vw;
-      height: 80vh;
-      background: white;
-      border-radius: 0;
-      z-index: 9999;
-
-      ul {
-        list-style: none;
-        width: 100%;
-        padding: 2rem;
-
-      }
+    ul {
+      list-style: none;
 
       li {
-        margin: 2rem 0;
-
         a {
-          font-size: 18px;
+          display: block;
+          padding: 1rem .5rem;
+          font-weight: 600;
+          text-transform: capitalize;
+          color: #7B8C98;
+        }
+
+        a.active-link {
+          color: #0337BB;
         }
       }
-
-      .profile {
-        position: absolute;
-        bottom: 2rem;
-        border-top: solid 1px #3742FA;
-
-        a {
-          color: #116fbf;
-
-        }
-
-        .signOut {
-          a {
-            color: #2E344C;
-            opacity: 0.5;
-          }
-        }
-
-      }
-
-    }
-
-    .nav-bar-mobile, .burger-menu {
-      display: none;
     }
   }
+
 }
 
-.user-profile{
-  a{
+
+.burger-menu{
+  display: none;
+  position: fixed;
+  right: 2rem;
+  top: 1rem;
+  width: 3rem;
+  z-index: 10000;
+  @media only screen and (max-width: 600px) {
     display: block;
-    font-size: .7rem !important;
-    font-weight: 700;
-    color:  #34495e;
-    text-align: center;
-   .dp{
-    //  background: #3742FA;
-    // border: 1px solid #34495e;
-     width: 3.5rem;
-     height:3.5rem;
-     border-radius: 50%;
-     text-align: center;
-     padding: .5%;
-    img{
-      width: 1rem;
-    }
-   }
+
   }
 
+ 
+}
+.back{
+  display: none;
+  margin: 1rem;
+  @media only screen and (max-width: 600px) {
+    display: block;
+
+  }  
 }

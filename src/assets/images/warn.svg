@@ -10,9 +10,9 @@
   </defs>
   <g id="warn" transform="translate(-665.199 -213)">
     <g id="Group_108" data-name="Group 108" transform="translate(-19 126)">
-      <path id="Path_233" data-name="Path 233" d="M374.093,214.113c-.84-63.531-52.533-116.853-116.261-116.853-40.6,0-78.722,21.946-99.77,53.577a58.408,58.408,0,0,0-90.729,48.669c0,1.117.1,2.206.168,3.316-.073,1.329-.168,2.673-.168,3.988C38.208,220.773,16.21,253.967,16.21,288.277a86.759,86.759,0,0,0,86.507,86.508H281.7c1.008,0,1.987-.117,2.98-.153,1,.037,1.979.153,2.987.153H359.26A80.781,80.781,0,0,0,439.8,294.244C439.8,255.018,411.362,221.131,374.093,214.113Z" transform="translate(684.199 5.95)" fill="#0337bb" stroke="#0337bb" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32.42"/>
-      <path id="Path_234" data-name="Path 234" d="M765.988,355.136s-18.514-2.739-36.538,0" transform="translate(287.304 -35.073)" fill="#0337bb" stroke="#0337bb" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32.42"/>
-      <path id="Path_235" data-name="Path 235" d="M129.68,252.946a58.426,58.426,0,0,1,116.853,0" transform="translate(616.852 52.51)" fill="#0337bb" stroke="#0337bb" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32.42"/>
+      <path id="Path_233" data-name="Path 233" d="M374.093,214.113c-.84-63.531-52.533-116.853-116.261-116.853-40.6,0-78.722,21.946-99.77,53.577a58.408,58.408,0,0,0-90.729,48.669c0,1.117.1,2.206.168,3.316-.073,1.329-.168,2.673-.168,3.988C38.208,220.773,16.21,253.967,16.21,288.277a86.759,86.759,0,0,0,86.507,86.508H281.7c1.008,0,1.987-.117,2.98-.153,1,.037,1.979.153,2.987.153H359.26A80.781,80.781,0,0,0,439.8,294.244C439.8,255.018,411.362,221.131,374.093,214.113Z" transform="translate(684.199 5.95)" fill="#104CE5" stroke="#104CE5" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32.42"/>
+      <path id="Path_234" data-name="Path 234" d="M765.988,355.136s-18.514-2.739-36.538,0" transform="translate(287.304 -35.073)" fill="#104CE5" stroke="#104CE5" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32.42"/>
+      <path id="Path_235" data-name="Path 235" d="M129.68,252.946a58.426,58.426,0,0,1,116.853,0" transform="translate(616.852 52.51)" fill="#104CE5" stroke="#104CE5" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32.42"/>
     </g>
     <ellipse id="Ellipse_43" data-name="Ellipse 43" cx="145.5" cy="142.5" rx="145.5" ry="142.5" transform="translate(762 354)" fill="#ffc42d"/>
     <g id="Group_107" data-name="Group 107">

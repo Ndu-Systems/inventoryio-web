@@ -39,6 +39,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SplashComponent } from './shared/splash/splash.component';
 import { PermissionsComponent, PermissionCardListComponent } from './permissions';
 import { AddPermissionComponent } from './permissions/add-permission';
+import { UserProfileDpComponent } from './users/user-profile-dp/user-profile-dp.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -124,6 +125,7 @@ export const declarations = [
   RoleDetailsComponent,
   AddRolePermissionComponent,
   ListRolePermissionsComponent,
+  UserProfileDpComponent,
   // pipes
   SearchProductPipe
 ];
