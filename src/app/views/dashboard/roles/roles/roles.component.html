@@ -9,6 +9,7 @@
         <button (click)="add()">Add A Role</button>
       </div>
     </div>
-    <app-role-card-list [roles]="roles"></app-role-card-list>
-  </div>
+    <div *ngIf="roles$ | async as roles">
+        <app-role-card-list [roles]="roles"></app-role-card-list>
+    </div>
 </div>

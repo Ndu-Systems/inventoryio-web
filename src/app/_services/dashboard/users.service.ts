@@ -16,8 +16,8 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers(companyId: string) {
-    this.http.get<User[]>(`${this.url}/api/user/get-users.php?CompanyId=${companyId}`)
+  getAllUsers(companyId: string, statusId: string) {
+    this.http.get<User[]>(`${this.url}/api/user/get-users.php?CompanyId=${companyId}&&StatusId=${statusId}`)
       .subscribe(data => {
         this.dataStore.users = data;
         this._users.next(Object.assign({}, this.dataStore).users);

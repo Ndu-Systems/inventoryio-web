@@ -9,6 +9,16 @@
         <button (click)="add()">Add A Permission</button>
       </div>
     </div>
-    <app-permission-card-list [permissions]="companyPermissions"></app-permission-card-list>
+    <div *ngIf="companyPermissions.length > 0 else notFound">
+      <app-permission-card-list [permissions]="companyPermissions"></app-permission-card-list>
+    </div>
+    <ng-template #notFound>
+      <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            {{notFoundModel.Message}}
+          </h1>
+      </div>
+    </ng-template>
   </div>
 </div>

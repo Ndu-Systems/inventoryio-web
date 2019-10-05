@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BannerService, UsersService, AccountService} from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { User } from 'src/app/_models';
-import { DEFAULT_PASSWORD, ACTIVE_STATUS } from '../../shared';
+import { DEFAULT_PASSWORD, StatusConstant } from '../../shared';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/api';
 
@@ -40,7 +40,7 @@ export class AddUserComponent implements OnInit {
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
-      StatusId: [ACTIVE_STATUS, Validators.required]
+      StatusId: [StatusConstant.ACTIVE_STATUS, Validators.required]
     });
     this.bannerService.updateState({
       heading: 'Add a user',

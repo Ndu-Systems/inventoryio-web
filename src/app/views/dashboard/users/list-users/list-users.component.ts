@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/_models';
 import { BannerService, AccountService, UsersService } from 'src/app/_services';
 import { Router } from '@angular/router';
+import { StatusConstant } from '../../shared';
 
 @Component({
   selector: 'app-list-users',
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class ListUsersComponent implements OnInit {
   search: string;
-  users: Observable<User[]>;
+  users$: Observable<User[]>;
+
+
   constructor(
     private bannerService: BannerService,
     private userService: UsersService,
@@ -25,12 +28,13 @@ export class ListUsersComponent implements OnInit {
       this.accountService.logout();
       this.routeTo.navigate(['sign-in']);
     }
+
     this.bannerService.updateState({
       heading: 'Manage Users',
       backto: '/dashboard/configurations'
     });
-    this.users = this.userService.users;
-    this.userService.getAllUsers(user.CompanyId);
+    this.users$ = this.userService.users;
+    this.userService.getAllUsers(user.CompanyId, StatusConstant.ACTIVE_STATUS);
   }
 
   add() {

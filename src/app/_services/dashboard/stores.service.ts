@@ -16,8 +16,8 @@ export class StoresService {
   readonly stores = this._stores.asObservable();
   constructor(private http: HttpClient) { }
 
-  getAllStores(companyId: string) {
-    this.http.get<Store[]>(`${this.url}/api/stores/get-stores.php?CompanyId=${companyId}`)
+  getAllStores(companyId: string, statusId: string) {
+    this.http.get<Store[]>(`${this.url}/api/stores/get-stores.php?CompanyId=${companyId}&&StatusId=${statusId}`)
       .subscribe(data => {
         this.dataStore.stores = data;
         this._stores.next(Object.assign({}, this.dataStore).stores);

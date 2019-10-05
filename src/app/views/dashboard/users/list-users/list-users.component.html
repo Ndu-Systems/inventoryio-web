@@ -9,6 +9,9 @@
          <button (click)="add()">Add A User</button>
        </div>
      </div>
-     <app-user-card-list [users]="users"></app-user-card-list>
+     <div *ngIf="users$ | async as users">
+        <app-user-card-list [users]="users"></app-user-card-list>
+     </div>
+
    </div>
  </div>

@@ -18,8 +18,8 @@ export class PermissionsService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPermissions(companyId: string) {
-    this.http.get<Permission[]>(`${this.url}/api/permissions/get-permissions.php?CompanyId=${companyId}`)
+  getAllPermissions(companyId: string, statusId: string) {
+    this.http.get<Permission[]>(`${this.url}/api/permissions/get-permissions.php?CompanyId=${companyId}&&StatusId=${statusId}`)
       .subscribe(data => {
         this.dataStore.permissions = data;
         this._permissions.next(Object.assign({}, this.dataStore).permissions);
@@ -65,8 +65,8 @@ export class PermissionsService {
     }, error => console.log('Could not update permission'));
   }
 
-  getCompanyPermissions(companyId: string): Observable<Permission[]> {
-    return this.http.get<Permission[]>(`${this.url}/api/permissions/get-permissions.php?CompanyId=${companyId}`);
+  getCompanyPermissions(companyId: string, statusId: string ): Observable<Permission[]> {
+    return this.http.get<Permission[]>(`${this.url}/api/permissions/get-permissions.php?CompanyId=${companyId}&&StatusId=${statusId}`);
    }
 
 }
