@@ -77,14 +77,16 @@ export class DashboardNavComponent implements OnInit {
   toggleNav() {
     this.showNav = !this.showNav;
   }
-
+  onToggle(event) {
+    this.showNav = !this.showNav;
+  }
   getDeviceSize() {
     this.width = screen.width;
     console.log(this.width);
-    
+
     if (this.width <= 720) {
       this.showNav = false;
-      
+
     }
   }
 

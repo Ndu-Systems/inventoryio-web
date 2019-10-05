@@ -34,12 +34,11 @@ import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './st
 import { ListCategoriesComponent } from './catergory/list-categories/list-categories.component';
 import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
 import { UserCardListComponent, AddUserComponent, UserFormComponent } from './users';
-import { UserProfileComponent, UserProfileDetailsComponent, UserProfileResetPasswordComponent } from './user-profile';
+import { UserProfileComponent, UserProfileDetailsComponent, UserProfileResetPasswordComponent, UserProfileDpComponent } from './user-profile';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SplashComponent } from './shared/splash/splash.component';
 import { PermissionsComponent, PermissionCardListComponent } from './permissions';
 import { AddPermissionComponent } from './permissions/add-permission';
-import { UserProfileDpComponent } from './users/user-profile-dp/user-profile-dp.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -71,6 +70,7 @@ const routes: Routes = [
       { path: 'permissions', component: PermissionsComponent },
       { path: 'add-permission', component: AddPermissionComponent },
       { path: 'role-details/:id', component: RoleDetailsComponent },
+      { path: 'profile', component: UserProfileComponent },
     ]
   },
 ];

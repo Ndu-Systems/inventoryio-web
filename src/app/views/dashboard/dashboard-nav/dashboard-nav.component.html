@@ -1,65 +1,59 @@
-<div class="main" *ngIf="showNav">
+<div class="main nav-bar-desktop">
   <div (click)="toggleNav()" class="back">
     <img src="assets/images/navigation/back-arrow.svg" alt="">
-  </div>
-  <div class="profile">
-    <app-user-profile-dp></app-user-profile-dp>
   </div>
   <div class="nav-bar">
     <ul>
       <li *ngFor="let item of models">
-        <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">{{item.Name}}</a>
+        <a [routerLink]="item.Link" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">{{item.Name}}</a>
       </li>
       <li *ngFor="let profileItem of profileModels" class="mt-20">
-        <a [routerLink]="profileItem.Link"
-          (click)="linkEvent(profileItem)"
-          routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"
-          >{{profileItem.Name}}</a></li>
+        <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">{{profileItem.Name}}</a></li>
       <li class="signOut">
         <a routerLink="/">sign out</a>
       </li>
     </ul>
-   
+
   </div>
   <div class="burger-menu" (click)="toggleNav()">
-      <img src="assets/images/ham.svg" alt="burger menu">
-    </div>
-
-<!-- 
+    <img src="assets/images/ham.svg" alt="burger menu">
+  </div>
+</div>
+<!--
   <div class="burger-menu" (click)="toggleNav()">
     <img src="assets/images/ham.svg" alt="burger menu">
   </div>
 
 -->
-<!-- 
-  <div class="nav-bar-mobile" *ngIf="showNav">
-    <div class="go-back">
-      <img src="assets/images/navigation/back-arrow.svg" alt="back arrow" (click)="toggleNav()" class="back-arrow">
-    </div>
-    <img src="assets/images/inventory-logo.svg" alt="inventory logo" (click)="toggleNav()" class="inventory-logo">
+
+<div class="main nav-bar-mobile" *ngIf="showNav">
+  <div (click)="toggleNav()" class="back">
+    <img src="assets/images/navigation/back-arrow.svg" alt="">
+  </div>
+  <div class="nav-bar">
     <ul>
-      <li *ngIf="user$ | async as user" class="user-profile">
-        <a>
-          <span class="dp">
-            <img src="assets/user.jpg" alt="">
-          </span>
-          {{user.Name}}
-        </a>
-        <a><i *ngIf="user.Company">-- {{user.Company?.Name}} -- </i></a>
+      <li *ngFor="let item of models" (click)="toggleNav()" >
+        <a [routerLink]="item.Link" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">{{item.Name}}</a>
       </li>
-      <li *ngFor="let item of models"><a [routerLink]="item.Link" (click)="toggleNav()">{{item.Name}}</a></li>
-    </ul>
-    <ul class="profile">
-      <li *ngFor="let profileItem of profileModels"><a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)"
-          (click)="toggleNav()">{{profileItem.Name}}</a></li>
+      <li *ngFor="let profileItem of profileModels" class="mt-20" (click)="toggleNav()" >
+        <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">{{profileItem.Name}}</a></li>
       <li class="signOut">
-        <a routerLink="/" (click)="toggleNav()">sign out</a>
+        <a routerLink="/">sign out</a>
       </li>
     </ul>
-  </div> -->
+
+  </div>
+  <div class="burger-menu" (click)="toggleNav()">
+    <img src="assets/images/ham.svg" alt="burger menu">
+  </div>
 </div>
 
 
+
 <div class="burger-menu" (click)="toggleNav()">
-    <img src="assets/images/ham.svg" alt="burger menu">
-  </div>
+  <img src="assets/images/ham.svg" alt="burger menu">
+</div>

@@ -1,3 +1,4 @@
+@import '../../../../../assets/styles/variables';
 .main {
   background: #104CE5;
   color: #fff;
@@ -5,11 +6,23 @@
   vertical-align: middle;
   position: relative;
   overflow: hidden;
-  height: 30vh;
+  height: 25vh;
+
   @media only screen and (max-width: 600px) {
     height: 15vh;
+    &.col-1-of-2 {
+      grid-template-columns: 15% auto;
+
+    }
 
   }
+
+  .profile {
+    background: $primary-bg-color;
+    height: 25vh;
+
+  }
+
 
   .back {
     text-align-last: left;
@@ -32,7 +45,9 @@
 
 .with-counts {
   grid-template-columns: 10% 50% auto;
+  display: grid;
   padding: 2rem 1rem;
+
 
   .back {
     text-align-last: left;
@@ -72,14 +87,28 @@
       }
     }
   }
+
+@media only screen and (max-width: 600px) {
+
+  padding: 0rem 1rem;
 }
 
+}
+
+@media only screen and (max-width: 600px) {
+
+  .col-1-of-2 {
+    grid-template-columns: 100%;
+    background: #104CE5;
+  }
+
+}
 
 
 @media only screen and (min-width: 1254px) {
 
   .col-1-of-2 {
-    padding: 2rem 18rem;
+    padding: 2rem auto;
     .heading {
       h1{
         margin-top: 7%;
@@ -89,6 +118,10 @@
       }
     }
 
+  }
+  .profile {
+    background: $primary-bg-color;
+    height: 25vh;
   }
 
 .with-counts {

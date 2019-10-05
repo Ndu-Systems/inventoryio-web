@@ -1,39 +1,46 @@
 <span *ngIf="banner$ | async as banner">
-  <div class="main col-1-of-2" *ngIf="!banner.count">
-    <div class="back">
-      <a [routerLink]="banner.backto">
-        <img src="assets/images/left-arrow.svg" alt="">
-      </a>
+  <div class="col-1-of-2">
+    <div class="profile">
+      <app-user-profile-dp (closeNav)="onToggle($event)"></app-user-profile-dp>
     </div>
-    <div class="heading">
-      <h1>
-        {{banner.heading}}
-      </h1>
-      <span class="circe"></span>
+    <div class="main col-1-of-2" *ngIf="!banner.count">
+      <div class="back">
+        <a [routerLink]="banner.backto">
+          <img src="assets/images/left-arrow.svg" alt="">
+        </a>
+      </div>
+      <div class="heading">
+        <h1>
+          {{banner.heading}}
+        </h1>
+        <span class="circe"></span>
+      </div>
+    </div>
+
+
+    <div class="main  with-counts" *ngIf="banner.count">
+      <div class="back">
+        <a [routerLink]="banner.backto">
+          <img src="assets/images/left-arrow.svg" alt="">
+        </a>
+      </div>
+      <div class="heading">
+        <h1>
+          {{banner.heading}}
+        </h1>
+      </div>
+      <div class="count">
+        <h1>
+          {{banner.count}}
+          <span>{{banner.countLabel}}</span>
+        </h1>
+        <span class="circe"></span>
+
+      </div>
     </div>
   </div>
 
 
-  <div class="main main col-1-of-2 with-counts" *ngIf="banner.count">
-    <div class="back">
-      <a [routerLink]="banner.backto">
-        <img src="assets/images/left-arrow.svg" alt="">
-      </a>
-    </div>
-    <div class="heading">
-      <h1>
-        {{banner.heading}}
-      </h1>
-    </div>
-    <div class="count">
-      <h1>
-        {{banner.count}}
-        <span>{{banner.countLabel}}</span>
-      </h1>
-      <span class="circe"></span>
-
-    </div>
-  </div>
 
 
 </span>

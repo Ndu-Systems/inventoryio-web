@@ -1,17 +1,21 @@
 .main {
   position: fixed;
-  left: 2rem;
-  top: 2rem;
+  left: 3rem;
+  top: 14rem;
   background: #FFFFFF;
-  width: 15%;
-  height: 94vh;
+  width: 10%;
+  height: 60vh;
   z-index: 10000;
 
   @media only screen and (max-width: 600px) {
     width: 50%;
-    height: 100vh;
+    height: 100%;
     left: 0rem;
-    top: 0rem;
+    top: 10rem;
+  }
+
+  .profile {
+    background: #104ce5;
   }
 
   .nav-bar {
@@ -37,25 +41,43 @@
 }
 
 
-.burger-menu{
+.burger-menu {
   display: none;
   position: fixed;
   right: 2rem;
-  top: 1rem;
+  top: 2rem;
   width: 3rem;
   z-index: 10000;
+
   @media only screen and (max-width: 600px) {
     display: block;
 
   }
 
- 
+
 }
-.back{
+
+.back {
   display: none;
   margin: 1rem;
+
   @media only screen and (max-width: 600px) {
     display: block;
 
-  }  
+  }
+}
+
+.nav-bar-mobile {
+  display: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .nav-bar-desktop {
+    display: none;
+  }
+  .nav-bar-mobile {
+    display: block;
+  }
+
 }

@@ -9,7 +9,7 @@ import { User } from 'src/app/_models';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-
+  user: User;
   constructor(
     private bannerService: BannerService,
     private userService: UsersService,
@@ -18,11 +18,15 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const user: User = this.accountService.currentUserValue;
-    if (!user) {
+    this.user = this.userService.currentUserValue;
+    if (!this.user) {
       this.accountService.logout();
       this.routeTo.navigate(['sign-in']);
     }
+    this.bannerService.updateState({
+      heading: 'Your Profile',
+      backto: '/dashboard'
+    });
   }
 
 }

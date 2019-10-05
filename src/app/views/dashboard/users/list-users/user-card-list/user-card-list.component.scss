@@ -78,9 +78,10 @@
     .cards {
       display: grid;
       grid-template-columns: 25% 25% 25% 25%;
-     grid-gap: 0rem;
-    height: 70vh;
-    overflow-y: scroll;
+      grid-gap: 0rem;
+      height: 60vh;
+      overflow-y: scroll;
+
       .card {
         width: 80%;
 

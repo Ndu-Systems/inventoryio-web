@@ -120,7 +120,7 @@
   background: #ecf0f1;
   position: absolute;
   right: 0;
-  top: 12rem;
+  top: 18rem;
   height: 22rem;
   width: 45%;
   z-index: 100;
@@ -133,11 +133,10 @@
   background: #104CE5;
   position: absolute;
   right: 0;
-  top: 35rem;
+  top: 40rem;
   width: 45%;
   z-index: 100;
-  border-top-left-radius: .8rem;
-  border-bottom-left-radius: .8rem;
+
   color: #fff;
   height: 10rem;
   padding-top: 1rem;
@@ -170,15 +169,14 @@
 @media only screen and (min-width: 1254px) {
 
   .cards {
-
+    height: 63vh;
+    max-width: 67vw;
     margin: 0 auto;
     overflow-y: scroll;
     display: grid;
     grid-template-columns: 33.33% 33.33% auto;
     width: 80%;
-    .card {
 
-    }
 
     .card-betta {
       position: relative;
@@ -241,7 +239,18 @@
   }
 
 
+  .sell {
 
+    top: 18rem;
+    height: 27rem;
+
+  }
+
+  .total {
+
+    top: 45rem;
+    height: 10rem;
+  }
    .total, .sell {
      width: 15vw;
      border-radius: 0;

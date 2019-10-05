@@ -71,7 +71,7 @@ export class AccountService {
         localStorage.clear();
         this.updateUserState(user);
         this.router.navigate(['dashboard']);
-      }else{
+      } else {
         alert("User unkown");
       }
       this._loading.next(false);
