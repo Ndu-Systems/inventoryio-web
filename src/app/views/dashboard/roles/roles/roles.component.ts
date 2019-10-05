@@ -2,7 +2,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BannerService, RolesService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Role, User } from 'src/app/_models';
+import { Role, User, NotFoundModel } from 'src/app/_models';
+import { NotFoundConstants, StatusConstant } from '../../shared';
 
 @Component({
   selector: 'app-roles',
@@ -11,7 +12,7 @@ import { Role, User } from 'src/app/_models';
 })
 export class RolesComponent implements OnInit {
   search: string;
-  roles: Observable<Role[]>;
+  roles$: Observable<Role[]>;
    constructor(
     private bannerService: BannerService,
     private roleService: RolesService,
@@ -26,13 +27,14 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.roles = this.roleService.roles;
+    this.roles$ = this.roleService.roles;
     const user: User = this.accountService.currentUserValue;
     if (!user) {
       this.accountService.logout();
       this.routeTo.navigate(['sign-in']);
     }
-    this.roleService.getAllRoles(user.CompanyId);
+
+    this.roleService.getAllRoles(user.CompanyId, StatusConstant.ACTIVE_STATUS);
   }
 
   add() {

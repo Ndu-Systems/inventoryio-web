@@ -6,6 +6,7 @@ import { SharedService } from '../../shared/shared.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { StatusConstant } from '../../shared';
 
 @Component({
   selector: 'app-add-role-permission',
@@ -36,8 +37,9 @@ export class AddRolePermissionComponent implements OnInit {
 
     this.companyId = user.CompanyId;
     // this.companyPermissions = this.sharedService.loadCompanyPermissions(user.CompanyId);
-    this.companyPermissions = this.sharedService.loadCompanyPermissions(this.companyId);
-    this.permissionService.getCompanyPermissions(this.companyId).subscribe(data => { this.dbPermissions = data; });
+    this.companyPermissions = this.sharedService.loadCompanyPermissions(this.companyId, StatusConstant.ACTIVE_STATUS);
+    this.permissionService.getCompanyPermissions(this.companyId, StatusConstant.ACTIVE_STATUS)
+    .subscribe(data => { this.dbPermissions = data; });
 
     if (!user) {
       this.accountService.logout();

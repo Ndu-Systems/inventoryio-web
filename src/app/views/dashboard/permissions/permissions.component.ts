@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BannerService, PermissionsService, AccountService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Permission, User, SystemPermissionModel } from 'src/app/_models';
+import { Permission, User, SystemPermissionModel, NotFoundModel } from 'src/app/_models';
 import { SharedService } from '../shared/shared.service';
+import { NotFoundConstants, StatusConstant } from '../shared';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class PermissionsComponent implements OnInit {
   companyPermissions: SystemPermissionModel[] = [];
   systemPermissions: SystemPermissionModel[] = [];
   permissions: Observable<Permission[]>;
+  notFoundModel: NotFoundModel;
   constructor(
     private bannerService: BannerService,
     private permissionService: PermissionsService,
@@ -33,24 +35,25 @@ export class PermissionsComponent implements OnInit {
   ngOnInit() {
     this.companyPermissions = [];
     const user: User = this.accountService.currentUserValue;
-
-    this.loadCompanyPermissions(user.CompanyId);
-    // this.permissionService.getAllPermissions(user.CompanyId);
-
     if (!user) {
       this.accountService.logout();
       this.routeTo.navigate(['sign-in']);
     }
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
+      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+    };
+    this.loadCompanyPermissions(user.CompanyId, StatusConstant.ACTIVE_STATUS);
+
+
   }
 
   add() {
     this.routeTo.navigate(['dashboard/add-permission']);
   }
 
-  loadCompanyPermissions(companyId: string) {
-
-    this.companyPermissions = this.sharedService.loadCompanyPermissions(companyId);
-
+  loadCompanyPermissions(companyId: string, statusId: string) {
+    this.companyPermissions = this.sharedService.loadCompanyPermissions(companyId, statusId);
   }
 
 }

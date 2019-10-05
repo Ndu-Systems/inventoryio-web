@@ -9,6 +9,8 @@
         <button (click)="add()">Add A Store</button>
       </div>
     </div>
-    <app-store-card-list [stores]="stores"></app-store-card-list>
+    <div *ngIf="stores$ | async as stores; else notFound">
+        <app-store-card-list [stores]="stores"></app-store-card-list>
+    </div>
   </div>
 </div>

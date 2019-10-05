@@ -48,10 +48,10 @@ export class SharedService {
     return permissionsForRole;
   }
 
-  loadCompanyPermissions(companyId): SystemPermissionModel[] {
+  loadCompanyPermissions(companyId, statusId): SystemPermissionModel[] {
     const systemPermissions = this.loadSystemPermissions();
     const permissionsForCompany: SystemPermissionModel[] = [];
-    this.permissionService.getCompanyPermissions(companyId).subscribe(response => {
+    this.permissionService.getCompanyPermissions(companyId, statusId).subscribe(response => {
       this.permissions = response;
       systemPermissions.forEach((item, index) => {
         if (this.permissions) {
