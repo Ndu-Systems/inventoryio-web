@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { NavModel } from 'src/app/_models';
+import { NavModel, User } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-nav',
@@ -13,6 +14,7 @@ export class DashboardNavComponent implements OnInit {
   profileModels: NavModel[];
   profileMobileModels: NavModel[];
   showNav: boolean;
+  user$: Observable<User> = this.accountService.user;
   constructor(
     private accountService: AccountService,
     private routeTo: Router

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Brand, Caterory, User, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { AccountService, ProductService, BrandService, CateroryService } from 'src/app/_services';
+import { AccountService, ProductService, BrandService, CateroryService, BannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -13,8 +13,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  heading = 'Manage Product';
-  backto = '/dashboard/list-product';
+
   user: User;
   rForm: FormGroup;
   error: string;
@@ -30,6 +29,7 @@ export class ProductDetailsComponent implements OnInit {
     private brandService: BrandService,
     private cateroryService: CateroryService,
     private messageService: MessageService,
+    private bannerService: BannerService,
   ) {
   }
 
@@ -51,6 +51,11 @@ export class ProductDetailsComponent implements OnInit {
 
     this.brands$ = this.brandService.brands;
     this.catergories$ = this.cateroryService.categories;
+
+    this.bannerService.updateState({
+      heading: 'Manage Users',
+      backto: '/dashboard/list-product'
+    });
   }
   initForm() {
     this.rForm = this.fb.group({

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Brand, Caterory, User } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { AccountService, ProductService, BrandService, CateroryService } from 'src/app/_services';
+import { AccountService, ProductService, BrandService, CateroryService, BannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -41,6 +41,7 @@ export class AddBrandComponent implements OnInit {
     private accountService: AccountService,
     private brandService: BrandService,
     private messageService: MessageService,
+    private bannerService: BannerService,
   ) {
 
   }
@@ -67,7 +68,7 @@ export class AddBrandComponent implements OnInit {
       summary: 'Success!',
       detail: 'brand  created '
     });
-    this.routeTo.navigate(['/dashboard/add-product']);
+    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }
 
 }

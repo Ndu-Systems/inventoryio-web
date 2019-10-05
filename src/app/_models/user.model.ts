@@ -14,6 +14,7 @@ export interface User {
   NewPassword?: string;
   ConfirmPassword?: string;
   StatusId: number;
+  Company?: any;
 }
 
 // add user to a store

@@ -28,6 +28,8 @@
       list-style: none;
       width: 100%;
       padding: 2rem;
+      
+    
 
     }
 
@@ -42,7 +44,7 @@
     .profile {
       position: absolute;
       bottom: 2rem;
-      border-top: solid 1px #3742FA;
+      // border-top: solid 1px #3742FA;
 
       a {
         color: #116fbf;
@@ -188,6 +190,7 @@
             opacity: 0.5;
           }
         }
+
       }
 
     }
@@ -196,4 +199,27 @@
       display: none;
     }
   }
+}
+
+.user-profile{
+  a{
+    display: block;
+    font-size: .7rem !important;
+    font-weight: 700;
+    color:  #34495e;
+    text-align: center;
+   .dp{
+    //  background: #3742FA;
+    // border: 1px solid #34495e;
+     width: 3.5rem;
+     height:3.5rem;
+     border-radius: 50%;
+     text-align: center;
+     padding: .5%;
+    img{
+      width: 1rem;
+    }
+   }
+  }
+
 }
