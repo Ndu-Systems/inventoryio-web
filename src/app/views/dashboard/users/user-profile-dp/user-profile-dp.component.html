@@ -1,7 +1,7 @@
 <div class="main">
   <div *ngIf="user$ | async as user" class="user-profile">
     <span class="dp">
-      <img *ngIf="user.DP" [src]="user.DP" alt="">
+      <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
       <img *ngIf="!user.DP" class="placeholder" src="assets/user.svg" alt="">
       <img *ngIf="!user.DP" class="placeholder mob" src="assets/user2.svg" alt="">
     </span>

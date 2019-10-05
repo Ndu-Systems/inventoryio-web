@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserStat, User, Product, Orders, Store } from 'src/app/_models';
 import { AccountService, OrdersService, ProductService, StoresService, UsersService } from 'src/app/_services';
 import { Router } from '@angular/router';
+import { StatusConstant } from '../../shared';
 
 @Component({
   selector: 'app-user-stat',
@@ -24,9 +25,9 @@ export class UserStatComponent implements OnInit {
     private usersService: UsersService,
   ) {
     this.user = this.accountService.currentUserValue;
-    this.storesService.getAllStores(this.user.CompanyId);
-    this.usersService.getAllUsers(this.user.CompanyId);
-    
+    this.storesService.getAllStores(this.user.CompanyId, StatusConstant.ACTIVE_STATUS);
+    this.usersService.getAllUsers(this.user.CompanyId, StatusConstant.ACTIVE_STATUS);
+
     this.usersService.users.subscribe(data => {
       if (!data) { return false; }
       this.users = data;
