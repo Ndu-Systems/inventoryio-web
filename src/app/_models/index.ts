@@ -18,5 +18,7 @@ export * from './splash.model';
 export * from './permission.model';
 export * from './system-permission.model';
 export * from './entity-model-base';
+export * from './not-found.model';
+
 
 

@@ -28,7 +28,7 @@
       text-align: center;
       height: 9rem;
       width: 9rem;
-      margin: 1rem;
+      margin: 1rem auto;
       border: 1px solid #E5E5E5;
       cursor: pointer;
 
@@ -47,7 +47,7 @@
         text-align: center;
 
         h1 {
-          color: #0337BB;
+          color: #104CE5;
           display: block;
           font-size: .8rem;
           font-weight: 600;
@@ -71,11 +71,17 @@
         }
       }
     }
+    .archive {
+      text-align: center;
+      width: 75%;
+      margin: 0 auto;
+      background: #ED5575;
+    }
   }
 }
 
 .add {
-  background: #0337BB;
+  background: #104CE5;
   float: right;
   border: none;
   padding: .5rem;
@@ -116,7 +122,7 @@
           }
         }
         .icon {
-          border-top: solid 2px #0337BB;
+          border-top: solid 2px #104CE5;
           img {
             width: 67.61px;
             margin: 0.5rem;

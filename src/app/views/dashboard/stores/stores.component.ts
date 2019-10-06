@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerService, StoresService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Store, User } from 'src/app/_models';
+import { Store, User, NotFoundModel } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { StatusConstant } from '../shared';
 
 @Component({
   selector: 'app-stores',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class StoresComponent implements OnInit {
   search: string;
-  stores: Observable<Store[]>;
+  stores$: Observable<Store[]>;
 
   constructor(
     private bannerService: BannerService,
@@ -31,8 +32,8 @@ export class StoresComponent implements OnInit {
       heading: 'Manage Stores',
       backto: '/dashboard/configurations'
     });
-    this.stores = this.storeService.stores;
-    this.storeService.getAllStores(user.CompanyId);
+    this.stores$ = this.storeService.stores;
+    this.storeService.getAllStores(user.CompanyId, StatusConstant.ACTIVE_STATUS);
   }
 
   add() {

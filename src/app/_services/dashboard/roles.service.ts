@@ -17,8 +17,8 @@ export class RolesService {
   readonly roles = this._roles.asObservable();
 
   constructor(private http: HttpClient) { }
-  getAllRoles(companyId: string) {
-    this.http.get<Role[]>(`${this.url}/api/roles/get-roles.php?CompanyId=${companyId}`)
+  getAllRoles(companyId: string, statusId: string) {
+    this.http.get<Role[]>(`${this.url}/api/roles/get-roles.php?CompanyId=${companyId}&&StatusId=${statusId}`)
       .subscribe(data => {
         this.dataStore.roles = data;
         this._roles.next(Object.assign({}, this.dataStore).roles);
@@ -76,8 +76,8 @@ export class RolesService {
     return this.http.get<Permission[]>(`${this.url}/api/roles/get-role-permissions.php?RoleId=${roleId}`);
   }
 
-  addRolePermissions(rolePermission: RolePermission) {
-
+  addRolePermissions(rolePermission: RolePermission): Observable<RolePermission> {
+    return this.http.post<RolePermission>(`${this.url}/api/roles/add-role-permission.php`, rolePermission);
   }
 
 

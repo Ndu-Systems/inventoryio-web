@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-  showMobileNav
+  showMobileNav;
   rForm: FormGroup;
   error: string;
   loading$: Observable<boolean>;
@@ -27,6 +27,7 @@ export class SignInComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.accountService.logout();
     this.rForm = this.fb.group({
       Email: new FormControl(
@@ -53,7 +54,7 @@ export class SignInComponent implements OnInit {
   }
 
   toggleNav() {
-    this.showMobileNav = !this.showMobileNav
+    this.showMobileNav = !this.showMobileNav;
   }
 
 }

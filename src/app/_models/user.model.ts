@@ -1,3 +1,5 @@
+import { Company } from './company.model';
+
 export interface User {
   UserId?: string;
   Email: string;
@@ -14,6 +16,8 @@ export interface User {
   NewPassword?: string;
   ConfirmPassword?: string;
   StatusId: number;
+  Company?: Company;
+  Dp?: string;
 }
 
 // add user to a store

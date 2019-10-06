@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="42.368" height="22.388" viewBox="0 0 42.368 22.388">
   <g id="listproducts" transform="translate(-243 -388)">
     <g id="product" transform="translate(257.499 388)">
-      <path id="Path_167" data-name="Path 167" d="M123.024,22.388h14.87a1.239,1.239,0,0,0,1.239-1.239V6.2a1.239,1.239,0,0,0-1.239-1.239h-3.718V3.718a3.718,3.718,0,0,0-7.435,0V4.957h-3.718A1.239,1.239,0,0,0,121.785,6.2V21.149A1.239,1.239,0,0,0,123.024,22.388Zm6.2-18.67a1.239,1.239,0,0,1,2.478,0V4.957H129.22Zm-4.957,3.718h2.478V8.674a1.239,1.239,0,1,0,2.478,0V7.435H131.7V8.674a1.239,1.239,0,1,0,2.478,0V7.435h2.478V19.909H124.263Zm0,0" transform="translate(-111.265)" fill="#0337bb"/>
+      <path id="Path_167" data-name="Path 167" d="M123.024,22.388h14.87a1.239,1.239,0,0,0,1.239-1.239V6.2a1.239,1.239,0,0,0-1.239-1.239h-3.718V3.718a3.718,3.718,0,0,0-7.435,0V4.957h-3.718A1.239,1.239,0,0,0,121.785,6.2V21.149A1.239,1.239,0,0,0,123.024,22.388Zm6.2-18.67a1.239,1.239,0,0,1,2.478,0V4.957H129.22Zm-4.957,3.718h2.478V8.674a1.239,1.239,0,1,0,2.478,0V7.435H131.7V8.674a1.239,1.239,0,1,0,2.478,0V7.435h2.478V19.909H124.263Zm0,0" transform="translate(-111.265)" fill="#104CE5"/>
     </g>
-    <g id="Ellipse_40" data-name="Ellipse 40" transform="translate(243 393)" fill="#fff" stroke="#0337bb" stroke-width="1">
+    <g id="Ellipse_40" data-name="Ellipse 40" transform="translate(243 393)" fill="#fff" stroke="#104CE5" stroke-width="1">
       <circle cx="2" cy="2" r="2" stroke="none"/>
       <circle cx="2" cy="2" r="1.5" fill="none"/>
     </g>
-    <g id="Ellipse_40-2" data-name="Ellipse 40" transform="translate(243 399)" fill="#fff" stroke="#0337bb" stroke-width="1">
+    <g id="Ellipse_40-2" data-name="Ellipse 40" transform="translate(243 399)" fill="#fff" stroke="#104CE5" stroke-width="1">
       <circle cx="2" cy="2" r="2" stroke="none"/>
       <circle cx="2" cy="2" r="1.5" fill="none"/>
     </g>
-    <g id="Ellipse_40-3" data-name="Ellipse 40" transform="translate(243 405)" fill="#fff" stroke="#0337bb" stroke-width="1">
+    <g id="Ellipse_40-3" data-name="Ellipse 40" transform="translate(243 405)" fill="#fff" stroke="#104CE5" stroke-width="1">
       <circle cx="2" cy="2" r="2" stroke="none"/>
       <circle cx="2" cy="2" r="1.5" fill="none"/>
     </g>
-    <line id="Line_20" data-name="Line 20" x2="13.327" transform="translate(249.5 395.5)" fill="none" stroke="#0337bb" stroke-linecap="round" stroke-width="1"/>
-    <path id="Path_168" data-name="Path 168" d="M0,0H13.327" transform="translate(249.5 401.5)" fill="none" stroke="#0337bb" stroke-linecap="round" stroke-width="1"/>
-    <line id="Line_22" data-name="Line 22" x2="13.327" transform="translate(249.5 407.5)" fill="none" stroke="#0337bb" stroke-linecap="round" stroke-width="1"/>
+    <line id="Line_20" data-name="Line 20" x2="13.327" transform="translate(249.5 395.5)" fill="none" stroke="#104CE5" stroke-linecap="round" stroke-width="1"/>
+    <path id="Path_168" data-name="Path 168" d="M0,0H13.327" transform="translate(249.5 401.5)" fill="none" stroke="#104CE5" stroke-linecap="round" stroke-width="1"/>
+    <line id="Line_22" data-name="Line 22" x2="13.327" transform="translate(249.5 407.5)" fill="none" stroke="#104CE5" stroke-linecap="round" stroke-width="1"/>
   </g>
 </svg>

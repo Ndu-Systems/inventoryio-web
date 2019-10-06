@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Permission, SystemPermissionModel } from 'src/app/_models';
+import { SystemPermissionModel } from 'src/app/_models';
 import { Observable } from 'rxjs';
 
 @Component({

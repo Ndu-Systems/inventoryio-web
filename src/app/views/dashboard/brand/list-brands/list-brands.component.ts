@@ -26,12 +26,16 @@ export class ListBrandsComponent implements OnInit {
     this.accountService.checkSession();
     this.bannerService.updateState({
       heading: 'My brands',
-      backto: '/dashboard',
+      backto: '/dashboard/configurations',
     });
     this.brandService.getBrands(user.CompanyId);
   }
 
   add() {
+    this.bannerService.updateState({
+      heading: 'Add Brand',
+      backto: '/dashboard/list-brands'
+    });
     this.router.navigate(['/dashboard/add-brand']);
   }
 

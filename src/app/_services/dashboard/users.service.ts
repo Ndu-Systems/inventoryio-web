@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User, UserRoleModel, UserStoreModel } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +14,26 @@ export class UsersService {
     users: User[]
   } = { users: [] };
   readonly users = this._users.asObservable();
+  private _user: BehaviorSubject<User>;
+  public user: Observable<User>;
+  private _loading: BehaviorSubject<boolean>;
+  public loading: Observable<boolean>;
+  constructor(private http: HttpClient,
+    private router: Router, ) {
+    this._user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+  }
 
-  constructor(private http: HttpClient) { }
+  public get currentUserValue(): User {
+    return this._user.value;
+  }
 
-  getAllUsers(companyId: string) {
-    this.http.get<User[]>(`${this.url}/api/user/get-users.php?CompanyId=${companyId}`)
+  updateUserState(user: User) {
+    this._user.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getAllUsers(companyId: string, statusId: string) {
+    this.http.get<User[]>(`${this.url}/api/user/get-users.php?CompanyId=${companyId}&&StatusId=${statusId}`)
       .subscribe(data => {
         this.dataStore.users = data;
         this._users.next(Object.assign({}, this.dataStore).users);

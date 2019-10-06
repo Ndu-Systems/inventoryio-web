@@ -8,7 +8,7 @@
         <h1>Sign In To Your Account</h1>
         <form [formGroup]="rForm" (ngSubmit)="Login()">
           <div class="group">
-            <input type="text" formControlName="Email" required="required" />
+            <input type="text" formControlName="Email"  />
             <!-- <span class="highlight">test</span> -->
             <!-- <span class="bar"></span> -->
             <label>Email</label>
@@ -18,7 +18,7 @@
             Email is required
           </div>
           <div class="group">
-            <input type="password" formControlName="Password" required="required" />
+            <input type="password" formControlName="Password"/>
             <label>Password</label>
 
             <!-- <span class="highlight"></span>
@@ -59,4 +59,8 @@
     <div></div>
     <div></div>
   </div>
+</div>
+
+<div class="wrong-password">
+  <h1>The username or password is incorrect</h1>
 </div>

@@ -1,6 +1,6 @@
 export interface UserStat {
     name: string;
-    value: string;
+    value: number;
     image: string;
     link:string;
 }

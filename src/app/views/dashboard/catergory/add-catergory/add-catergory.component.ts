@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Brand, Caterory, User, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { AccountService, ProductService, BrandService, CateroryService } from 'src/app/_services';
+import { AccountService, ProductService, BrandService, CateroryService, BannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -13,8 +13,6 @@ import { MessageService } from 'primeng/api';
 })
 export class AddCatergoryComponent implements OnInit {
 
-  heading = 'Add catergory';
-  backto = '/dashboard/add-product';
   rForm: FormGroup;
   error: string;
   brands$: Observable<Brand[]>;
@@ -26,6 +24,7 @@ export class AddCatergoryComponent implements OnInit {
     private accountService: AccountService,
     private cateroryService: CateroryService,
     private messageService: MessageService,
+    private bannerService: BannerService,
   ) {
 
   }
@@ -49,9 +48,9 @@ export class AddCatergoryComponent implements OnInit {
     this.messageService.add({
       severity: 'success',
       summary: 'Success!',
-      detail: 'brand  created '
+      detail: 'catergory  created '
     });
-    this.routeTo.navigate(['/dashboard/add-product']);
+    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }
 
 

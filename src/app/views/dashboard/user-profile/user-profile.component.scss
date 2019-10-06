@@ -1,0 +1,126 @@
+@import '../../../../assets/styles/variables';
+$dp-width : 8rem;
+
+.profile {
+  width: 75vw;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+
+
+  .profile-info {
+    padding: 0 1rem;
+    background: $white-color;
+
+    &.col-1-of-2 {
+      grid-template-columns: 20% auto;
+    }
+
+    .details {
+      padding: 1rem 2rem;
+      border-right: solid 1px #D3D8DF;
+
+      .dp {
+        padding: 0;
+        display: block;
+        border-radius: $dp-width;
+        width: $dp-width;
+        height: $dp-width;
+        overflow: hidden;
+        border: .1rem solid $white-color;
+        background: $primary-bg-color;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        color: #444966;
+        text-align: left;
+        font-size: 20px;
+        text-transform: capitalize;
+
+        span {
+          margin: 10px auto;
+        }
+
+        .header {
+          font-weight: bold;
+          display: block;
+        }
+
+        .spec {
+          font-weight: 500;
+          font-size: 15px;
+          display: block;
+
+          &.info {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+
+    .information {
+      .info-content {
+        padding: 1rem;
+        border-bottom:  solid 1px #D3D8DF;
+        &:last-child {
+          border-bottom: 0;
+        }
+        h1 {
+          color: #444966;
+          font-size: 20px;
+          text-transform: capitalize;
+          font-weight: bold;
+          &.heading {
+            color:#7B8C98;
+          }
+
+          &.label-header {
+            font-size: 15px;
+          }
+
+          &.label-text {
+            font-weight: 500;
+            font-size: 15px;
+          }
+        }
+
+        .add {
+          float: right;
+          margin: 1rem;
+          .btn {
+            background: $primary-bg-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// media queries
+
+@media only screen and (max-width: 600px) {
+
+  .profile {
+    padding: 0;
+    width: 100%;
+    .profile-info {
+      padding: 0;
+      &.col-1-of-2 {
+        grid-template-columns: 100%;
+      }
+
+      .details {
+        .dp {
+          margin: 0 auto;
+        }
+        h1 {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

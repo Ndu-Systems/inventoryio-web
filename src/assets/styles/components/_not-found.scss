@@ -1,0 +1,21 @@
+.not-found {
+  display: grid;
+  grid-template-columns: 100%;
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+
+  img {
+    margin: 0 auto;
+    margin-top: 5rem;
+  }
+
+  .message {
+    text-align: center;
+    margin: 5rem;
+    font-size: 30px;
+    font-weight: 400;
+    color: #2E344C;
+  }
+}

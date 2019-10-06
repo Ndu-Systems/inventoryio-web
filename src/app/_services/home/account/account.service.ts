@@ -66,13 +66,15 @@ export class AccountService {
   login(credentials: { email: any; password: any; }) {
     this._loading.next(true);
     return this.http.post<any>(`${this.url}/api/user/login.php`, credentials).subscribe(resp => {
-      const user: User = resp;
-      localStorage.clear();
-      this.updateUserState(user);
-      this.router.navigate(['dashboard']);
+      if (resp) {
+        const user: User = resp;
+        localStorage.clear();
+        this.updateUserState(user);
+        this.router.navigate(['dashboard']);
+      } else {
+        alert("User unkown");
+      }
       this._loading.next(false);
-
-
     }, error => {
       this._loading.next(false);
       alert(JSON.stringify(error));

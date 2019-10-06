@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Store } from 'src/app/_models';
+import { Store, NotFoundModel } from 'src/app/_models';
 import { Observable } from 'rxjs';
+import { NotFoundConstants } from '../../shared';
 
 @Component({
   selector: 'app-store-card-list',
@@ -9,9 +10,14 @@ import { Observable } from 'rxjs';
 })
 export class StoreCardListComponent implements OnInit {
  @Input() stores: Observable<Store[]>;
+ notFoundModel: NotFoundModel;
   constructor() { }
 
   ngOnInit() {
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
+      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+    };
   }
 
 }

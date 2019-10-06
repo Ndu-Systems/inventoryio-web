@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Brand, Caterory, User } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { AccountService, ProductService, BrandService, CateroryService } from 'src/app/_services';
+import { AccountService, ProductService, BrandService, CateroryService, BannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -20,12 +20,28 @@ export class AddBrandComponent implements OnInit {
   brands$: Observable<Brand[]>;
   catergories$: Observable<Caterory[]>;
 
+  mxolist: any[] = [
+    {
+      name: 'Mxolisi', age: 1
+    },
+    {
+      name: 'Mxolisi', age: 2
+    },
+    {
+      name: 'Mxolisi', age: 3
+    },
+    {
+      name: 'Mxolisi', age: 4
+    }
+  ];
+
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
     private brandService: BrandService,
     private messageService: MessageService,
+    private bannerService: BannerService,
   ) {
 
   }
@@ -34,6 +50,7 @@ export class AddBrandComponent implements OnInit {
 
     const user: User = this.accountService.currentUserValue;
     this.accountService.checkSession();
+
     this.rForm = this.fb.group({
       Name: ['', Validators.required],
       CompanyId: [user.CompanyId, Validators.required],
@@ -51,7 +68,7 @@ export class AddBrandComponent implements OnInit {
       summary: 'Success!',
       detail: 'brand  created '
     });
-    this.routeTo.navigate(['/dashboard/add-product']);
+    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }
 
 }

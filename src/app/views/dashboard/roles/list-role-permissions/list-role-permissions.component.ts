@@ -11,8 +11,8 @@ import { SharedService } from '../../shared/shared.service';
 })
 export class ListRolePermissionsComponent implements OnInit {
   @Input() roleId: string;
-  showAdd: boolean ;
-  permissions:  SystemPermissionModel[] = [];
+  showAdd: boolean;
+  permissions: SystemPermissionModel[] = [];
   constructor(
     private bannerService: BannerService,
     private sharedService: SharedService,
@@ -21,18 +21,18 @@ export class ListRolePermissionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.roleId);
     this.permissions = this.sharedService.loadRolePermissions(this.roleId);
   }
 
   add() {
 
   }
-  showAddForm(){
+  showAddForm() {
     this.showAdd = !this.showAdd;
   }
-  toggle(event) {
-   alert(JSON.stringify(event));
+  toggleTodo(event) {
+    this.showAdd = event;
+    this.permissions = this.sharedService.loadRolePermissions(this.roleId);
   }
 
 }

@@ -1,0 +1,104 @@
+@import '../../../../../assets/styles/variables';
+$dp-width : 6rem;
+$dp-reduced : 4rem;
+
+.main {
+  // background: $primary-bg-color;
+  padding: 2rem 0;
+
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
+
+  .user-profile {
+    display: grid;
+    grid-template-columns: 100%;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 50% auto;
+      padding: 1rem;
+
+    }
+
+    .dp {
+      padding: 0;
+      margin: 0 auto;
+      display: block;
+      border-radius: $dp-width;
+      width: $dp-width;
+      height: $dp-width;
+      overflow: hidden;
+      border: .1rem solid #fff;
+
+      display: block;
+
+      @media only screen and (max-width: 600px) {
+        border-radius: $dp-reduced;
+        width: $dp-reduced;
+        height: $dp-reduced;
+
+      }
+
+      img {
+        width: 100%;
+      }
+
+      img.placeholder {
+        width: 60%;
+        margin: 10% 20%;
+        display: block;
+
+        @media only screen and (max-width: 600px) {
+
+        }
+
+      }
+
+      img.mob {
+        display: none;
+
+        @media only screen and (max-width: 600px) {
+          display: block;
+        }
+      }
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #fff;
+      text-align: center;
+      font-size: .9rem;
+      margin: 0;
+      padding: 0;
+
+      @media only screen and (max-width: 600px) {
+
+        font-size: .7rem;
+
+      }
+    }
+
+    h1 {
+      @media only screen and (max-width: 600px) {
+        margin-top: 1rem;
+        ;
+      }
+    }
+
+    h2 {
+      font-size: .7rem;
+
+      @media only screen and (max-width: 600px) {
+        font-size: .5rem;
+      }
+    }
+
+    h3 {
+      font-size: .6rem;
+    }
+  }
+}
+
+
+

@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { NavModel } from 'src/app/_models';
+import { NavModel, User } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-nav',
@@ -12,7 +13,8 @@ export class DashboardNavComponent implements OnInit {
   models: NavModel[];
   profileModels: NavModel[];
   profileMobileModels: NavModel[];
-  showNav: boolean;
+  showNav = true;
+  width: number;
   constructor(
     private accountService: AccountService,
     private routeTo: Router
@@ -21,13 +23,14 @@ export class DashboardNavComponent implements OnInit {
   ngOnInit() {
     this.populateSideNav();
     this.populateProfileNav();
+    this.getDeviceSize();
   }
 
   populateSideNav() {
     this.models = [] = [
       {
         Name: 'dashboard',
-        Link: '/dashboard',
+        Link: '/dashboard/',
         Icon: 'dashboard'
 
       },
@@ -46,10 +49,6 @@ export class DashboardNavComponent implements OnInit {
   }
   populateProfileNav() {
     this.profileModels = [] = [
-      {
-        Name: 'profile',
-        Link: '/dashboard',
-      },
       {
         Name: 'configuration',
         Link: '/dashboard/configurations',
@@ -77,6 +76,18 @@ export class DashboardNavComponent implements OnInit {
   }
   toggleNav() {
     this.showNav = !this.showNav;
+  }
+  onToggle(event) {
+    this.showNav = !this.showNav;
+  }
+  getDeviceSize() {
+    this.width = screen.width;
+    console.log(this.width);
+
+    if (this.width <= 720) {
+      this.showNav = false;
+
+    }
   }
 
 }

@@ -1,17 +1,27 @@
 <div class="main">
-  <div class="cards">
-    <span *ngFor="let item of users | async">
-      <div class="card">
-        <div class="icon">
-          <!-- <img [src]="data.image" alt="role image"> -->
-          <img src="assets/images/actions/user.svg" alt="role image">
+  <div class="cards" *ngIf="users.length > 0; notFound">
+
+      <span *ngFor="let item of users">
+        <div class="card">
+          <div class="icon">
+            <!-- <img [src]="data.image" alt="role image"> -->
+            <img src="assets/images/actions/user.svg" alt="role image">
+          </div>
+          <div class="data">
+            <h1 class="main">{{item.Name}} {{item.Surname}}</h1>
+            <h1 class="spec">{{item.CellphoneNumber}}</h1>
+            <h1 class="spec">{{item.Email}}</h1>
+          </div>
         </div>
-        <div class="data">
-          <h1 class="main">{{item.Name}} {{item.Surname}}</h1>
-          <h1 class="spec">{{item.CellphoneNumber}}</h1>
-          <h1 class="spec">{{item.Email}}</h1>
-        </div>
-      </div>
-    </span>
+      </span>
+
   </div>
+  <ng-template #notFound>
+      <div class="not-found">
+        <img [src]="notFoundModel.Image" alt="no items found">
+        <h1 class="message">
+          {{notFoundModel.Message}}
+        </h1>
+      </div>
+    </ng-template>
 </div>

@@ -26,11 +26,15 @@ export class ListCategoriesComponent implements OnInit {
     this.accountService.checkSession();
     this.bannerService.updateState({
       heading: 'My categories',
-      backto: '/dashboard',
+      backto: '/dashboard/configurations',
     });
     this.categorieservice.getCateries(user.CompanyId);
   }
   add() {
+    this.bannerService.updateState({
+      heading: 'Add Catergory',
+      backto: '/dashboard/list-categories'
+    });
     this.router.navigate(['/dashboard/add-catergory']);
   }
 }

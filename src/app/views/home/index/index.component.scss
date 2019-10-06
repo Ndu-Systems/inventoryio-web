@@ -15,17 +15,14 @@ body {
   padding-bottom: 2rem;
   padding-top: 2rem;
 
-  // table-layout
-  @media only screen and (min-width: 481px) and (max-width:768px) {
-    background-size: 50%;
-  }
-
-  // mobile-layout
   @media only screen and (max-width: 600px) {
     background-image: url(../../../../assets/images/backgroundmobilehome.svg);
     background-size: 100%;
     background-position: top left;
     border-radius: 0;
+  }
+  @media only screen and (min-width: 481px) and (max-width:768px){
+    background-size: 55%;
   }
 }
 
@@ -34,26 +31,16 @@ body {
   margin: auto;
   margin-top: 15rem;
 
-  //mobile-layout
   @media only screen and (max-width: 600px) {
     width: 100%;
     margin-top: 7rem;
   }
 
-  // table-layout
-  @media only screen and (min-width: 481px) and (max-width:768px) {
-    width: 100%;
-    margin-top: 22rem;
-    justify-content: center;
-    text-align: center;
-  }
-
   h1 {
-    color: #104CE5;
-    font-size: 1.8rem;
+    color: #104ce5;
+    font-size: 2rem;
     margin-bottom: 2rem;
 
-    //mobile-layout
     @media only screen and (max-width: 600px) {
       font-size: 1.2rem;
       line-height: 1.8rem;
@@ -62,11 +49,12 @@ body {
       padding: .5rem;
       margin-top: 1.5rem;
     }
-
-    //tablet-layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-      font-size: 1.3rem;
-      text-align: center;
+    span {
+      display: block;
+    font-size: 18px;
+    color: #2e344c;
+    font-weight: 500;
+    margin-top: 15px;
     }
   }
 
@@ -84,8 +72,6 @@ body {
     -webkit-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
-
-    //mobile-layout
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin: auto;
@@ -96,19 +82,11 @@ body {
       text-transform: none;
     }
 
-    //tablet-layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-      font-size: 1rem;
-      padding: 1.2rem;
-
-    }
-
     &:hover {
       -webkit-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
       -moz-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
       box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
     }
-
   }
 
   .mobile-house {
@@ -136,22 +114,13 @@ body {
   justify-content: center;
   width: 80%;
   margin-bottom: 4rem;
-
-  //mobile-layout
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
+    width: 100%;
     grid-gap: 1rem;
     background: #F5F6FA;
     margin-top: 2rem;
   }
-
-  //tablet-layout
-  @media only screen and (min-width: 481px) and (max-width:768px) {
-    grid-template-columns: 55% 50%;
-    width: 95%;
-    margin-top: 5rem;
-  }
-
   .card {
     background: #FFFFFF;
     cursor: pointer;
@@ -159,17 +128,10 @@ body {
     margin: 4rem;
     padding: 1rem;
 
-    //mobile-layout
     @media only screen and (max-width: 600px) {
       width: 80%;
       margin: 0% auto;
       padding: .5rem;
-    }
-
-    //tablet-layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-      padding: 0%;
-      margin: 1rem;
     }
 
     &:hover {
@@ -177,17 +139,13 @@ body {
       -moz-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
       box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
       border-bottom: #104CE5 solid 5px;
+
     }
 
     img {
       width: 30%;
       margin-top: 3rem;
       transform: scaleX(-1);
-
-      //tablet-mode
-      @media only screen and (min-width: 481px) and (max-width:768px) {
-        width: 15%;
-      }
     }
 
     span img {
@@ -199,7 +157,6 @@ body {
       color: #2E344C;
       text-transform: capitalize;
     }
-
     p {
       font-size: 1rem;
       margin-bottom: 2rem;
@@ -211,11 +168,10 @@ footer {
   background: #F5F6FA;
   padding: 4rem;
   padding-bottom: 10rem;
-
   @media only screen and (max-width: 600px) {
     padding: 0%;
-  }
 
+  }
   h1 {
     color: #3F3D56;
     margin-top: 0%;
@@ -225,8 +181,6 @@ footer {
     padding-bottom: 1rem;
     margin-bottom: 4rem;
     text-align: center;
-
-    //mobile-layout
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin: 0%;
@@ -235,13 +189,6 @@ footer {
       margin-bottom: 2rem;
       border-bottom: .1rem solid #104CE5;
     }
-
-    //tablet-layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-      width: 100%;
-      font-size: 1.7rem;
-    }
-
   }
 
   .textbox {
@@ -254,52 +201,44 @@ footer {
     -moz-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
     box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
 
-    //mobile-layout
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin-bottom: 3rem;
+    
+      
     }
 
-    //tablet-layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-      width: 70%;
-    }
     ::placeholder {
       font-size: .7rem;
       color: #656D88;
       letter-spacing: .1rem;
       text-transform: none;
-
-      //mobile-layout
-      @media only screen and (max-width: 600px) {
+ @media only screen and (max-width: 600px) {
         font-size: .6rem;
         text-align: center;
         letter-spacing: 0ch;
+       
       }
     }
+
     input[type=text] {
       border: none;
       padding: 1rem;
-      @media only screen and (max-width: 600px) {
+      @media only screen and (max-width: 600px){
         padding: 0%;
       }
     }
+
     button {
       width: 40%;
       border-radius: 0 1rem 1rem 0;
       text-transform: none;
       font-size: 1rem;
-      //mobile-layout
       @media only screen and (max-width: 600px) {
         width: 50%;
         font-size: .8rem;
+       
       }
-      //tablet-layout
-      @media only screen and (min-width: 481px) and (max-width:768px) {
-        width: 50%;
-        font-size: .8rem;
-      }
-
     }
   }
 }
