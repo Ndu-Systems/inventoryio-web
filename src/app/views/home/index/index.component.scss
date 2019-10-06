@@ -21,7 +21,9 @@ body {
     background-position: top left;
     border-radius: 0;
   }
-  @media only screen and (min-width: 481px) and (max-width:768px){
+
+  //tablet layout
+  @media only screen and (min-width: 481px) and (max-width:768px) {
     background-size: 55%;
   }
 }
@@ -31,6 +33,7 @@ body {
   margin: auto;
   margin-top: 15rem;
 
+  //mobile layout
   @media only screen and (max-width: 600px) {
     width: 100%;
     margin-top: 7rem;
@@ -51,11 +54,24 @@ body {
     }
     span {
       display: block;
-    font-size: 18px;
-    color: #2e344c;
-    font-weight: 500;
-    margin-top: 15px;
+      font-size: 18px;
+      color: #2e344c;
+      font-weight: 500;
+      margin-top: 15px;
     }
+  }
+
+  //tablet layout
+  @media only screen and (min-width: 481px) and (max-width:768px) {
+    width: 100%;
+    text-align: center;
+    margin-top: 22rem;
+
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+   
   }
 
   button {
@@ -72,6 +88,8 @@ body {
     -webkit-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
+
+    //mobile layout
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin: auto;
@@ -81,12 +99,18 @@ body {
       margin-left: 1.2rem;
       text-transform: none;
     }
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      font-size: 1rem;
+      padding: 1rem;
+    }
 
     &:hover {
       -webkit-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
       -moz-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
       box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
     }
+    
   }
 
   .mobile-house {
@@ -114,6 +138,7 @@ body {
   justify-content: center;
   width: 80%;
   margin-bottom: 4rem;
+  //mobile layout
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
     width: 100%;
@@ -121,19 +146,28 @@ body {
     background: #F5F6FA;
     margin-top: 2rem;
   }
+  //tablet layout
+  @media only screen and (min-width: 481px) and (max-width:768px){
+    grid-template-columns: 50% 50%;
+    margin-top: 8rem;
+    width: 100%;
+  }
   .card {
     background: #FFFFFF;
     cursor: pointer;
     align-content: center;
     margin: 4rem;
     padding: 1rem;
-
+    //mobile layout
     @media only screen and (max-width: 600px) {
       width: 80%;
       margin: 0% auto;
       padding: .5rem;
     }
-
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      margin: 1rem;
+    }
     &:hover {
       -webkit-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
       -moz-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
@@ -157,6 +191,7 @@ body {
       color: #2E344C;
       text-transform: capitalize;
     }
+
     p {
       font-size: 1rem;
       margin-bottom: 2rem;
@@ -168,10 +203,12 @@ footer {
   background: #F5F6FA;
   padding: 4rem;
   padding-bottom: 10rem;
+
   @media only screen and (max-width: 600px) {
     padding: 0%;
 
   }
+
   h1 {
     color: #3F3D56;
     margin-top: 0%;
@@ -181,6 +218,7 @@ footer {
     padding-bottom: 1rem;
     margin-bottom: 4rem;
     text-align: center;
+    //mobile layout
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin: 0%;
@@ -189,8 +227,13 @@ footer {
       margin-bottom: 2rem;
       border-bottom: .1rem solid #104CE5;
     }
-  }
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      width: 100%;
+      font-size: 1.7rem;
 
+    }
+  }
   .textbox {
     display: flex;
     width: 40%;
@@ -201,11 +244,14 @@ footer {
     -moz-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
     box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
 
+    //mobile layout
     @media only screen and (max-width: 600px) {
       width: 90%;
       margin-bottom: 3rem;
-    
-      
+    }
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      width: 80%;
     }
 
     ::placeholder {
@@ -213,18 +259,20 @@ footer {
       color: #656D88;
       letter-spacing: .1rem;
       text-transform: none;
- @media only screen and (max-width: 600px) {
+
+      @media only screen and (max-width: 600px) {
         font-size: .6rem;
         text-align: center;
         letter-spacing: 0ch;
-       
+
       }
     }
 
     input[type=text] {
       border: none;
       padding: 1rem;
-      @media only screen and (max-width: 600px){
+
+      @media only screen and (max-width: 600px) {
         padding: 0%;
       }
     }
@@ -234,10 +282,14 @@ footer {
       border-radius: 0 1rem 1rem 0;
       text-transform: none;
       font-size: 1rem;
+
       @media only screen and (max-width: 600px) {
         width: 50%;
         font-size: .8rem;
-       
+      }
+      @media only screen and (min-width: 481px) and (max-width:768px){
+        width: 50%;
+        font-size: .8rem;
       }
     }
   }
