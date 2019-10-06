@@ -1,9 +1,6 @@
 .main {
   background: #E4E4E4;
-
-  @media only screen and (max-width: 600px) {}
 }
-
 .top-bar {
   display: grid;
   grid-template-columns: 50% auto;
@@ -12,16 +9,21 @@
   margin: auto;
   right: 10%;
   padding-right: 0%;
-
+   // mobile-layout
   @media only screen and (max-width: 600px) {
     display: flex;
     width: 80%;
     margin: auto;
     right: 10%;
     padding-right: 0%;
-
   }
-
+  // table-layout
+  @media only screen and (min-width: 481px) and (max-width:768px){
+    grid-template-columns: 30% auto;
+  width: 100%;
+  margin: 0%;
+  right: 0%;
+  }
   .logo {
     margin: 0 5rem;
     margin-top: 1rem;
@@ -29,17 +31,25 @@
     text-align: left;
     padding-left: 3.2rem;
 
+    // table-layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      text-align: center;
+      margin: 0%;
+      padding: 1rem;
+      img{
+        width: 45%;
+      }
+    }
+      // mobile-layout
     @media only screen and (max-width: 600px) {
       margin: 0%;
       padding: 0%;
       margin-top: 1rem;
-
       img {
         width: 4rem;
       }
     }
   }
-
   .nav {
     display: flex;
     padding: 2rem;
@@ -48,35 +58,40 @@
     justify-content: right;
     margin-right: 0%;
 
+    // table-layout 
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      width: 100%;
+      padding: 1rem;
+    }
+    //mobile-layout
     @media only screen and (max-width: 600px) {
       display: none;
     }
-
     li {
       list-style-type: none;
       padding: 0 2rem;
       font-weight: 500;
       color: #ffffff;
       text-align: right;
-
+      //tablet-layout
+      @media only screen and (min-width: 481px) and (max-width:768px){
+        padding: 0 1rem;
+      }
       .sign-up-for-free {
         background: #FFFFFF;
         border-radius: 5px;
         padding: .4rem;
         padding-right: 1.4rem;
         padding-left: 1.4rem;
-
         a {
           color: #104CE5;
         }
       }
-
       a {
         color: #ffffff;
       }
     }
   }
-
   .mobile-nav {
     display: none;
     @media only screen and (max-width: 600px) {
@@ -130,7 +145,6 @@
     }
   }
 }
-
 .ham-icon {
   display: none;
   @media only screen and (max-width: 600px) {
