@@ -1,0 +1,25 @@
+<div class="main">
+  <app-banner></app-banner>
+  <div class="body"  *ngIf="(user | async); let user">
+    <div class="cards">
+      <span>
+        <div class="card col-1-of-2">
+          <div class="icon">
+            <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
+            <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue.svg" alt="">
+          </div>
+          <div class="data">
+              <h1 class="main">{{user.Name}} {{user.Surname}}</h1>
+              <h1 class="spec email">{{user.Email}}</h1>
+              <h1 class="spec">{{user.CellphoneNumber}}</h1>
+          </div>
+        </div>
+        <button type="text" value="" class="btn">Update User Now</button>
+        <button type="text" value="" class="btn archive">Archive this user</button>
+      </span>
+    </div>
+    <app-list-user-roles
+    [user] = "user"
+    ></app-list-user-roles>
+  </div>
+</div>

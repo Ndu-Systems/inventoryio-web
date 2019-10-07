@@ -13,11 +13,11 @@ const routes: Routes = [
       { path: 'home', component: IndexComponent },
       { path: '', component: SignInComponent },
       { path: 'sign-in', component: SignInComponent },
-      { path: 'sign-up', component: SignUpComponent },    ]
+      { path: 'sign-up', component: SignUpComponent },]
   }
 ];
 
-export const declarations = [SignInComponent, HomeComponent, SignUpComponent, IndexComponent, HomePageComponent,FeaturesComponent];
+export const declarations = [SignInComponent, HomeComponent, SignUpComponent, IndexComponent, HomePageComponent, FeaturesComponent];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

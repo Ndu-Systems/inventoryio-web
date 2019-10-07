@@ -29,12 +29,31 @@ import { UpdateCompanyComponent } from './company/update-company/update-company.
 import { InvoiceComponent } from './products/invoice/invoice.component';
 import { ConfigurationHomeComponent } from './configuration-home';
 import { ActionsComponent } from './shared';
-import { RolesComponent, RoleCardListComponent, AddRoleComponent, RoleDetailsComponent, AddRolePermissionComponent, ListRolePermissionsComponent } from './roles';
+import {
+  RolesComponent,
+  RoleCardListComponent,
+  AddRoleComponent,
+  RoleDetailsComponent,
+  AddRolePermissionComponent,
+  ListRolePermissionsComponent
+} from './roles';
 import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './stores';
 import { ListCategoriesComponent } from './catergory/list-categories/list-categories.component';
 import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
-import { UserCardListComponent, AddUserComponent, UserFormComponent } from './users';
-import { UserProfileComponent, UserProfileDetailsComponent, UserProfileResetPasswordComponent, UserProfileDpComponent } from './user-profile';
+import {
+  UserCardListComponent,
+  AddUserComponent,
+  UserFormComponent,
+  UserDetailsComponent,
+  ListUserRolesComponent,
+  AddUserRoleComponent
+} from './users';
+import {
+  UserProfileComponent,
+  UserProfileDetailsComponent,
+  UserProfileResetPasswordComponent,
+  UserProfileDpComponent
+} from './user-profile';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SplashComponent } from './shared/splash/splash.component';
 import { PermissionsComponent, PermissionCardListComponent } from './permissions';
@@ -63,6 +82,7 @@ const routes: Routes = [
       { path: 'stores', component: StoresComponent },
       { path: 'add-store', component: AddStoreComponent },
       { path: 'users', component: ListUsersComponent },
+      { path: 'user-details/:id', component: UserDetailsComponent },
       { path: 'print-invoice', component: InvoiceComponent },
       { path: 'list-categories', component: ListCategoriesComponent },
       { path: 'list-brands', component: ListBrandsComponent },
@@ -126,6 +146,9 @@ export const declarations = [
   AddRolePermissionComponent,
   ListRolePermissionsComponent,
   UserProfileDpComponent,
+  UserDetailsComponent,
+  ListUserRolesComponent,
+  AddUserRoleComponent,
   // pipes
   SearchProductPipe
 ];

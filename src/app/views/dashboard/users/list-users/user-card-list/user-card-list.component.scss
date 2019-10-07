@@ -1,7 +1,11 @@
 .cards-betta {
   .card {
     cursor: pointer;
-
+    .icon {
+      img {
+        height: 72.36px;
+      }
+    }
     .name {
       h1 {
         color: #2F2E41;
@@ -12,6 +16,9 @@
 
         &.spec {
           font-weight: 500;
+          &.email {
+            text-transform: lowercase;
+          }
         }
       }
     }

@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="body">
+    <div class="page-actions">
+      <div class="col-1-of-2">
+        <h1 class="heading">
+         {{user.Name}}'s roles in the system
+        </h1>
+        <div class="add">
+          <button (click)="showAddForm()">add a role</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="(roles | async); let roles">
+      <div class="cards" *ngIf="roles; else notFound">
+        <span *ngFor="let item of roles">
+          <div class="card">
+            <div class="icon">
+               <img src="assets/images/actions/role.svg" alt="role image">
+            </div>
+            <div class="data">
+              <h1  class="main">{{item.Name}}</h1>
+            </div>
+          </div>
+        </span>
+      </div>
+      <ng-template #notFound>
+        <p class="not-found">
+          no  roles found for this user  {{user.Name}}
+        </p>
+      </ng-template>
+    </div>
+  </div>
+</div>

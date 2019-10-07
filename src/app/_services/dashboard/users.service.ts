@@ -45,7 +45,7 @@ export class UsersService {
       .subscribe(data => {
         let notFound = true;
         this.dataStore.users.forEach((item, index) => {
-          if (item.UserId == data.UserId) {
+          if (item.UserId === data.UserId) {
             this.dataStore.users[index] = data;
             notFound = false;
           }
