@@ -9,7 +9,7 @@
         <button (click)="add()">Add A Store</button>
       </div>
     </div>
-    <div *ngIf="stores$ | async as stores; else notFound">
+    <div *ngIf="stores$ | async as stores">
         <app-store-card-list [stores]="stores"></app-store-card-list>
     </div>
   </div>

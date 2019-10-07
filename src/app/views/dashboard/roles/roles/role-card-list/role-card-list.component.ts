@@ -10,7 +10,7 @@ import { NotFoundConstants } from '../../../shared';
   styleUrls: ['./role-card-list.component.scss']
 })
 export class RoleCardListComponent implements OnInit {
-  @Input() roles: Observable<Role[]>;
+  @Input() roles: Role[];
   notFoundModel: NotFoundModel;
 
   constructor(
