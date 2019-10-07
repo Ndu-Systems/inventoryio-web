@@ -1,7 +1,5 @@
 .main {
   background: #E4E4E4;
-
-  @media only screen and (max-width: 600px) {}
 }
 
 .top-bar {
@@ -13,12 +11,21 @@
   right: 10%;
   padding-right: 0%;
 
+  //mobile layout
   @media only screen and (max-width: 600px) {
     display: flex;
     width: 80%;
     margin: auto;
     right: 10%;
     padding-right: 0%;
+  }
+
+  //tablet layout
+  @media only screen and (min-width: 481px) and (max-width:768px) {
+    grid-template-columns: 30% auto;
+    width: 100%;
+    right: 0%;
+    padding-left: 5rem;
 
   }
 
@@ -29,6 +36,7 @@
     text-align: left;
     padding-left: 3.2rem;
 
+    //mobile layout
     @media only screen and (max-width: 600px) {
       margin: 0%;
       padding: 0%;
@@ -36,6 +44,18 @@
 
       img {
         width: 4rem;
+      }
+    }
+
+    //table layout
+    @media only screen and (min-width: 481px) and (max-width:768px) {
+      padding-left: 0%;
+      text-align: left;
+      margin: 0%;
+      justify-content: left;
+
+      img {
+        width: 40%;
       }
     }
   }
@@ -48,8 +68,16 @@
     justify-content: right;
     margin-right: 0%;
 
+    //mobile layout
     @media only screen and (max-width: 600px) {
       display: none;
+    }
+
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px) {
+      width: 85%;
+      padding: 0;
+      justify-content: right;
     }
 
     li {
@@ -65,7 +93,6 @@
         padding: .4rem;
         padding-right: 1.4rem;
         padding-left: 1.4rem;
-
         a {
           color: #104CE5;
         }
@@ -74,11 +101,20 @@
       a {
         color: #ffffff;
       }
+
+      //tablet layout
+      @media only screen and (min-width: 481px) and (max-width:768px) {
+        padding-right: 0%;
+        margin-right: 0%;
+        justify-content: right;
+        
+      }
     }
   }
 
   .mobile-nav {
     display: none;
+    //mobile layout
     @media only screen and (max-width: 600px) {
       display: grid;
       top: 0%;
@@ -89,7 +125,6 @@
       width: 100%;
       z-index: 1;
       color: #ffffff;
-
       li {
         text-align: center;
         list-style-type: none;
@@ -121,6 +156,7 @@
         width: 100%;
         justify-content: right;
         padding-bottom: 0%;
+
         img {
           width: 1.5rem;
           margin-right: 3rem;
@@ -133,12 +169,14 @@
 
 .ham-icon {
   display: none;
+
   @media only screen and (max-width: 600px) {
     display: grid;
     cursor: pointer;
     margin-top: 2rem;
     margin-left: 12rem;
     padding: 0%;
+
     img {
       width: 2rem;
       height: 2rem;

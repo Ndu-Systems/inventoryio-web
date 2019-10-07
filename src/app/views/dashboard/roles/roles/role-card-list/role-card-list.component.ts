@@ -10,7 +10,7 @@ import { NotFoundConstants } from '../../../shared';
   styleUrls: ['./role-card-list.component.scss']
 })
 export class RoleCardListComponent implements OnInit {
-  @Input() roles:Role[];
+  @Input() roles: Role[];
   notFoundModel: NotFoundModel;
 
   constructor(
@@ -26,4 +26,6 @@ export class RoleCardListComponent implements OnInit {
   getRoleDetails(role: Role) {
      this.routeTo.navigate([`/dashboard/role-details/${role.RoleId}`]);
   }
+
+
 }

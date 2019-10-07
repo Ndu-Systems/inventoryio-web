@@ -13,7 +13,7 @@ import { NotFoundConstants, StatusConstant } from '../../shared';
 export class RolesComponent implements OnInit {
   search: string;
   roles$: Observable<Role[]>;
-   constructor(
+  constructor(
     private bannerService: BannerService,
     private roleService: RolesService,
     private routeTo: Router,
@@ -39,6 +39,10 @@ export class RolesComponent implements OnInit {
 
   add() {
     this.routeTo.navigate(['dashboard/add-role']);
+  }
+
+  getRoleDetails(role: Role) {
+    this.routeTo.navigate([`/dashboard/role-details/${role.RoleId}`]);
   }
 
 }

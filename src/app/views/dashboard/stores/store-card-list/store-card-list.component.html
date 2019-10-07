@@ -1,26 +1,23 @@
-<div class="main">
-  <div class="cards"*ngIf="stores.length > 0; else notFound">
-
-      <span *ngFor="let item of stores">
-        <div class="card">
-          <div class="icon">
-            <!-- <img [src]="data.image" alt="role image"> -->
-            <img src="assets/images/actions/shop.svg" alt="role image">
-          </div>
-          <div class="data">
-            <h1 class="main">{{item.Name}}</h1>
-            <h1 class="spec">{{item.TelephoneNumber}}</h1>
-            <h1 class="spec">{{item.Address}}</h1>
-          </div>
-        </div>
-      </span>
-  </div>
-  <ng-template #notFound>
-      <div class="not-found">
-          <img [src]="notFoundModel.Image" alt="no items found">
-          <h1 class="message">
-            {{notFoundModel.Message}}
-          </h1>
+<span class="cards-betta" *ngIf="stores.length > 0; else notFound">
+  <span *ngFor="let item of stores">
+    <div class="card">
+      <div class="icon">
+        <!-- <img [src]="data.image" alt="role image"> -->
+        <img src="assets/images/actions/shop.svg" alt="role image">
       </div>
-    </ng-template>
-</div>
+      <div class="name">
+        <h1 class="main">{{item.Name}}</h1>
+        <h1 class="spec">{{item.TelephoneNumber}}</h1>
+        <h1 class="spec">{{item.Address}}</h1>
+      </div>
+    </div>
+  </span>
+</span>
+<ng-template #notFound>
+  <div class="not-found">
+    <img [src]="notFoundModel.Image" alt="no items found">
+    <h1 class="message">
+      {{notFoundModel.Message}}
+    </h1>
+  </div>
+</ng-template>

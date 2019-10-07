@@ -9,7 +9,7 @@ import { NotFoundConstants } from '../../../shared';
   styleUrls: ['./user-card-list.component.scss']
 })
 export class UserCardListComponent implements OnInit {
-@Input() users:User[];
+@Input() users: User[];
 notFoundModel: NotFoundModel;
   constructor() { }
   ngOnInit() {
