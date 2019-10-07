@@ -26,4 +26,6 @@ export class RoleCardListComponent implements OnInit {
   getRoleDetails(role: Role) {
      this.routeTo.navigate([`/dashboard/role-details/${role.RoleId}`]);
   }
+
+
 }

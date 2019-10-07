@@ -1,6 +1,6 @@
 <div class="main">
   <app-banner></app-banner>
-  <div class="body">
+  <div class="list-body">
     <div class="page-actions">
       <div class="search">
         <input type="text" [(ngModel)]="search" placeholder="search roles by name">
@@ -10,6 +10,7 @@
       </div>
     </div>
     <div *ngIf="roles$ | async as roles">
-        <app-role-card-list [roles]="roles"></app-role-card-list>
+      <app-role-card-list [roles]="roles"></app-role-card-list>
     </div>
+  </div>
 </div>
