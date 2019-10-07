@@ -59,30 +59,42 @@
 
 
 <div class="main">
-    <app-banner></app-banner>
-<div class="small-cards-body">
-
-  <div class="small-cards" *ngIf="products$  | async as products">
-
-    <div class="card" *ngFor="let item of products | searchproduct: search">
-      <div class="image">
-        <img [src]="item.Url" alt="" *ngIf="item.Url">
-      </div>
-      <div class="details">
-        <p class="name">
-          {{item.Name}}
-          <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
-        </p>
-
-      </div>
-      <div class="price">
-        <p>
-          {{item.UnitCost | currency:'R'}}
-        </p>
-        <button class="action-btn" (click)="details(item)">View</button>
-      </div>
+  <app-banner></app-banner>
+  <div class="filters">
+    <div></div>
+    <div><input type="text" [(ngModel)]="search" placeholder="search products">
     </div>
-
+    <div>
+      <select [(ngModel)]="search">
+        <option value="" selected>All</option>
+        <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+      </select>
+    </div>
+    <div></div>
   </div>
-</div>
+  <div class="small-cards-body">
+
+    <div class="small-cards" *ngIf="products$  | async as products">
+
+      <div class="card" *ngFor="let item of products | searchproduct: search">
+        <div class="image">
+          <img [src]="item.Url" alt="" *ngIf="item.Url">
+        </div>
+        <div class="details">
+          <p class="name">
+            {{item.Name}}
+            <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
+          </p>
+
+        </div>
+        <div class="price">
+          <p>
+            {{item.UnitCost | currency:'R'}}
+          </p>
+          <button class="action-btn" (click)="details(item)">View</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

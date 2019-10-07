@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class ListProductsComponent implements OnInit {
 
-  search: string;
+  search = ``;
+  categories: string[] = [];
   products$: Observable<Product[]>;
 
   constructor(
@@ -36,6 +37,11 @@ export class ListProductsComponent implements OnInit {
           countLabel: 'Total Products',
           count: state.length
         });
+
+        this.categories = state.map(c => c.Catergory);
+        console.log(this.categories );
+        
+        this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
       }
     });
   }
