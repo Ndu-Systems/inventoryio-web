@@ -1,4 +1,6 @@
+import { Role, Store } from 'src/app/_models';
 import { Company } from './company.model';
+
 
 export interface User {
   UserId?: string;
@@ -18,6 +20,8 @@ export interface User {
   StatusId: number;
   Company?: Company;
   Dp?: string;
+  Stores?: Store[];
+  Roles?: Role[];
 }
 
 // add user to a store

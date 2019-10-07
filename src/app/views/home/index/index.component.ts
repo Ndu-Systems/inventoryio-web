@@ -18,6 +18,6 @@ export class IndexComponent implements OnInit {
     this.bannerService.resetBannerState();
   }
   toggleNav() {
-    this.showMobileNav = !this.showMobileNav
+    this.showMobileNav = !this.showMobileNav;
   }
 }

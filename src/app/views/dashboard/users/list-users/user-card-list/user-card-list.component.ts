@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User, NotFoundModel } from 'src/app/_models';
 import { NotFoundConstants } from '../../../shared';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-card-list',
@@ -9,14 +10,20 @@ import { NotFoundConstants } from '../../../shared';
   styleUrls: ['./user-card-list.component.scss']
 })
 export class UserCardListComponent implements OnInit {
-@Input() users: User[];
-notFoundModel: NotFoundModel;
-  constructor() { }
+  @Input() users: User[];
+  notFoundModel: NotFoundModel;
+  constructor(
+    private routeTo: Router
+  ) { }
   ngOnInit() {
     this.notFoundModel = {
       Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
       Message: NotFoundConstants.NOT_FOUND_ITEMS.message
     };
+  }
+
+  getUserDetails(user: User) {
+    this.routeTo.navigate([`/dashboard/user-details/${user.UserId}`]);
   }
 
 }
