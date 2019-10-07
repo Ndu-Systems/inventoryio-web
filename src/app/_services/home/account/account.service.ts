@@ -65,8 +65,8 @@ export class AccountService {
 
   login(credentials: { email: any; password: any; }) {
     this._loading.next(true);
-    return this.http.post<any>(`${this.url}/api/user/login.php`, credentials).subscribe(resp => {
-      if (resp) {
+    return this.http.post<any>(`${this.url}/api/user/login.php`, credentials).subscribe((resp: User) => {
+      if (resp && resp.UserId) {
         const user: User = resp;
         localStorage.clear();
         this.updateUserState(user);
