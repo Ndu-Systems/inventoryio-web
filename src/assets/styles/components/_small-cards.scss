@@ -1,0 +1,91 @@
+$image-size:5rem;
+
+.small-cards-body {
+  width: 80%;
+  float: right;
+
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    float: none;
+  }
+}
+
+.small-cards {
+  width: 81%;
+  max-height: 60vh;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+
+  @media only screen and (max-width: 1300px) {
+    grid-template-columns: 30% 30% auto;
+  }
+
+  @media only screen and (max-width: 950px) {
+    grid-template-columns: 50% auto;
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    width: 100%;
+    max-height: 80vh;
+
+  }
+
+  .card {
+
+    text-align: center;
+    background: #fff;
+    margin: 1rem;
+    padding: .5rem;
+    border-bottom: 1px solid #bdc3c7;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-columns: 20% 45% auto;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
+
+    @media only screen and (max-width: 600px) {
+        margin:.4rem  1rem ;
+
+    }
+
+    .image {
+      text-align: center;
+      height: $image-size;
+      width: $image-size;
+      border-radius: $image-size;
+      //   background: red;
+      overflow: hidden;
+      padding: .5rem;
+      margin: auto 0;
+      ;
+
+      img {
+        width: 100%;
+        //   margin-top: 2.5rem;
+      }
+    }
+  }
+}
+
+
+.action-btn {
+  background: #104CE5;
+  color: #fff;
+  border: none;
+  padding: .3rem 1rem;
+  cursor: pointer;
+  transition:background-color box-shadow .1s linear;
+
+  background: #fff;
+  color: #104CE5;
+  border: 1px solid #104CE5;
+
+  &:hover {
+    background: #104CE5;
+    color: #fff;
+    border: none;
+  }
+
+}
