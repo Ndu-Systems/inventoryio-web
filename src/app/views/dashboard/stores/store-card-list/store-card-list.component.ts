@@ -9,7 +9,7 @@ import { NotFoundConstants } from '../../shared';
   styleUrls: ['./store-card-list.component.scss']
 })
 export class StoreCardListComponent implements OnInit {
- @Input() stores: Observable<Store[]>;
+ @Input() stores:Store[];
  notFoundModel: NotFoundModel;
   constructor() { }
 
