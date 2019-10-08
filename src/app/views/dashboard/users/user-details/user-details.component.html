@@ -2,7 +2,7 @@
   <app-banner></app-banner>
   <div class="body">
     <div class="card profile" *ngIf="user">
-      <div class="profile-info col-1-of-2" (click)="getUserNow(user)">
+      <div class="profile-info col-1-of-2">
         <div class="details">
           <span class="dp">
             <img *ngIf="user.DP" [src]="user.DP.Url" alt="user profile picture">
@@ -83,11 +83,14 @@
               </span>
             </div>
           </div>
-          <!-- <div class="info-content">
-            <div class="add">
-              <button class="btn">update profile</button>
-            </div>
-          </div> -->
+          <div class="info-content" *ngIf="user.Roles">
+              <h1 class="heading">
+                  role(s) information
+                </h1>
+            <span class="tag" *ngFor="let role of user.Roles">
+              <button class="btn">{{role.Name}} &times;</button>
+            </span>
+          </div>
         </div>
       </div>
     </div>

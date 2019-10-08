@@ -95,6 +95,14 @@ $dp-width : 8rem;
             background: $primary-bg-color;
           }
         }
+        .tag {
+          float: left;
+          margin: 1rem;
+          .btn {
+            background: $primary-bg-color;
+            border-radius: 0;
+          }
+        }
       }
     }
   }
