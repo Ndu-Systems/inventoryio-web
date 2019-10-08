@@ -56,6 +56,10 @@ export class UsersService {
       }, error => console.log('Could not load a user'));
   }
 
+  getUserDetails(userId: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/api/user/get-users-userid.php?UserId=${userId}`);
+  }
+
   addUser(user: User) {
     this.http.post<User>(`${this.url}/api/user/add-user.php`, JSON.stringify(user))
       .subscribe(data => {

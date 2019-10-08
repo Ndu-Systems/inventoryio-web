@@ -19,7 +19,6 @@ body {
     background-image: url(../../../../assets/images/backgroundmobilehome.svg);
     background-size: 100%;
     background-position: top left;
-    border-radius: 0;
   }
 
   //tablet layout
@@ -43,7 +42,6 @@ body {
     color: #104ce5;
     font-size: 2rem;
     margin-bottom: 2rem;
-
     @media only screen and (max-width: 600px) {
       font-size: 1.2rem;
       line-height: 1.8rem;
@@ -68,7 +66,7 @@ body {
     margin-top: 22rem;
 
     h1 {
-      font-size: 1.5rem;
+      // font-size: 1.8rem;
       text-align: center;
     }
    
@@ -79,10 +77,9 @@ body {
     color: #FFFFFF;
     border: none;
     width: 50%;
-    border-radius: 1rem;
     text-transform: uppercase;
     font-size: 1.2rem;
-    padding: 1.5rem;
+    padding: 1rem;
     cursor: pointer;
     font-weight: 400;
     -webkit-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
@@ -151,6 +148,7 @@ body {
     grid-template-columns: 50% 50%;
     margin-top: 8rem;
     width: 100%;
+     
   }
   .card {
     background: #FFFFFF;
@@ -238,7 +236,6 @@ footer {
     display: flex;
     width: 40%;
     margin: auto;
-    border-radius: 1rem;
     background: #ffff;
     -webkit-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
@@ -279,7 +276,6 @@ footer {
 
     button {
       width: 40%;
-      border-radius: 0 1rem 1rem 0;
       text-transform: none;
       font-size: 1rem;
 

@@ -12,7 +12,7 @@ import { User } from 'src/app/_models';
 })
 export class UserDetailsComponent implements OnInit {
   userId: string;
-  user: Observable<User>;
+  user: User;
   constructor(
     private bannerService: BannerService,
     private activatedRoute: ActivatedRoute,
@@ -40,9 +40,19 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUser(userId: string) {
-    this.user = this.userService.users
-    .pipe(map(users => users.find(item => item.UserId === userId)));
-    this.userService.getById(userId);
+    // this.user = this.userService.users
+    //   .pipe(map(users => users.find(item => item.UserId === userId)));
+    // this.userService.getById(userId);
+    this.userService.getUserDetails(userId).subscribe(response => {
+      if (response.UserId) {
+        this.user = response;
+      }
+    });
+  }
+
+
+  getUserNow(user: User) {
+    alert(JSON.stringify(user))
   }
 
 }

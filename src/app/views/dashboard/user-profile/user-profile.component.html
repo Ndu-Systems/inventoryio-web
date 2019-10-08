@@ -1,12 +1,12 @@
 <div class="main">
-  <app-banner></app-banner>
+  <!-- <app-banner></app-banner> -->
   <div class="body">
     <div class="card profile" *ngIf="user">
       <div class="profile-info col-1-of-2">
         <div class="details">
           <span class="dp">
             <img *ngIf="user.DP" [src]="user.DP.Url" alt="user profile picture">
-            <img *ngIf="!user.DP" class="placeholder" src="assets/user.svg" alt="">
+            <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue.svg" alt="">
           </span>
           <h1>
             <span class="header">

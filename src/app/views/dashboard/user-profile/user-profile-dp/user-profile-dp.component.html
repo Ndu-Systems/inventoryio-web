@@ -1,7 +1,6 @@
 <div class="main">
   <div *ngIf="user$ | async as user" class="user-profile">
     <div (click)=toProfile(user) class="cta">
-  
       <h1>
         {{user.Name}}
       </h1>
