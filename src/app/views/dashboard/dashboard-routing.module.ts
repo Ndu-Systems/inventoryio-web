@@ -58,6 +58,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SplashComponent } from './shared/splash/splash.component';
 import { PermissionsComponent, PermissionCardListComponent } from './permissions';
 import { AddPermissionComponent } from './permissions/add-permission';
+import { SearchProductByCatergoryPipe } from 'src/app/_pipes/search-product-by-catergory';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -150,7 +151,8 @@ export const declarations = [
   ListUserRolesComponent,
   AddUserRoleComponent,
   // pipes
-  SearchProductPipe
+  SearchProductPipe,
+  SearchProductByCatergoryPipe
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class ListProductsComponent implements OnInit {
 
   search = ``;
+  searchByCatergory: string;
   categories: string[] = [];
   products$: Observable<Product[]>;
 
@@ -39,8 +40,8 @@ export class ListProductsComponent implements OnInit {
         });
 
         this.categories = state.map(c => c.Catergory);
-        console.log(this.categories );
-        
+        console.log(this.categories);
+
         this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
       }
     });

@@ -217,14 +217,23 @@
 
 }
 
-.filters{
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  float: right;
-  width: 80%;
+// .filters{
+//   display: grid;
+//   grid-template-columns: repeat(2, 50%);
+//   width: 64%;
+//   margin: 0 auto;
+//   background: #fff;
+//   box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
+//   div{
+//     padding: 0;
+//     margin: 0;
+//     text-align: right;
+//   }
 
-  input, select{
-    width: 90%;
-    margin: 0 auto;
-  }
-}
+//   input, select{
+//     width: 90%;
+//     // margin: 0 auto;
+//     float: right;
+//     margin-right: 0;
+//   }
+// }

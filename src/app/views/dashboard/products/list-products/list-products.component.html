@@ -60,23 +60,23 @@
 
 <div class="main">
   <app-banner></app-banner>
-  <div class="filters">
-    <div></div>
-    <div><input type="text" [(ngModel)]="search" placeholder="search products">
+  <div class="list-filters">
+    <div>
+      <input type="text" [(ngModel)]="search" placeholder="search products">
     </div>
     <div>
-      <select [(ngModel)]="search">
+      <select [(ngModel)]="searchByCatergory">
         <option value="" selected>All</option>
         <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
       </select>
     </div>
-    <div></div>
   </div>
   <div class="small-cards-body">
 
     <div class="small-cards" *ngIf="products$  | async as products">
 
-      <div class="card" *ngFor="let item of products | searchproduct: search">
+      <div class="card"
+        *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
         <div class="image">
           <img [src]="item.Url" alt="" *ngIf="item.Url">
         </div>
