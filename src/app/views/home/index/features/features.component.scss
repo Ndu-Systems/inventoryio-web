@@ -1,11 +1,9 @@
 .section-2-content {
   background: #fff;
-
   @media only screen and (max-width: 600px) {
     background: #F5F6FA;
     margin: 2rem 10px;
   }
-
   h1 {
     color: #3F3D56;
     border-bottom: .2rem solid #104CE5;
@@ -14,7 +12,7 @@
     text-align: center;
     padding: 1.2rem;
     padding-top: 5rem;
-
+    //mobile layout
     @media only screen and (max-width: 600px) {
       width: 100%;
       border-bottom: none;
@@ -22,6 +20,9 @@
       &.heading-features {
         display:none;
       }
+    }
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      width: 95%;
     }
   }
 
@@ -33,7 +34,7 @@
     margin: auto;
     margin-top: 4rem;
     grid-gap: 5rem;
-
+    //mobile layout
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%;
       margin: 0%;
@@ -41,11 +42,17 @@
       grid-gap: 0ch;
       padding: 0%;
     }
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      grid-template-columns: 100%;
+      grid-gap: 0ch;
+      margin-top: 1rem;
+    }
 
     h4 {
       color: #104CE5;
       font-weight: 400;
-
+      //mobile layout
       @media only screen and (max-width: 600px) {}
 
       img {
@@ -73,6 +80,10 @@
 
   span {
     margin-bottom: 5rem;
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      margin-bottom: 0;
+    }
   }
 
   .cards {
@@ -82,10 +93,14 @@
     justify-content: center;
     padding-bottom: 2rem;
     padding: 2rem;
-
+    //mobile layout
     @media only screen and (max-width: 600px) {
       width: 100%;
       padding: 0%;
+    }
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+      width: 100%;
     }
 
     .card {
@@ -93,6 +108,11 @@
       grid-template-columns: 40% auto;
       margin: 1rem;
       padding: 2rem;
+      //tablet layout
+      @media only screen and (min-width: 481px) and (max-width:768px){
+       grid-template-columns: 100%;
+        width: 95%;
+      }
 
       &:hover {
         border-right: .6rem solid #104CE5;
@@ -114,6 +134,9 @@
 
         img {
           width: 50%;
+          @media only screen and (min-width: 481px) and (max-width:768px){
+            width: 20%;
+          }
         }
 
       }
