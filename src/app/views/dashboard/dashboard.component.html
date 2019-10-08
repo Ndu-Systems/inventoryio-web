@@ -1,41 +1,27 @@
 <div class="main">
-    <app-dashboard-nav></app-dashboard-nav>
-  <div class="container">
-    <router-outlet></router-outlet>
-    <div *ngIf="message$|async as message">
-      <!-- {{message | json}} -->
-    <span class="message" *ngIf="message.canShow">
-
-        <div class="image">
-            <img [src]="message.img" alt="">
-          </div>
-          <div class="body">
-            <h3 *ngFor="let h of message.heading">
-              {{h}}
-            </h3>
-            <p *ngFor="let text of message.messages">
-              {{text}}
-            </p>
-          </div>
-          <div class="action">
-            <a (click)="clearMessages(message.link)">{{message.linkname}}</a>
-          </div>
-    </span>
-
+  <div class="top-bar">
+      <app-user-profile-dp ></app-user-profile-dp>
     </div>
-  </div>
+
+    <div class="body">
+
+      <div class="nav">
+        <app-dashboard-nav></app-dashboard-nav>
+
+      </div>
+      <div class="container">
+        <router-outlet></router-outlet>
+
+      </div>
+    </div>
 </div>
+
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
 <p-confirmDialog></p-confirmDialog>
 <div *ngIf="spinner$ | async as spinner">
-    <app-spinner *ngIf="spinner"></app-spinner>
+  <app-spinner *ngIf="spinner"></app-spinner>
 </div>
 
 <div *ngIf="splash$ | async as splash">
-    <app-splash *ngIf="splash.show"></app-splash>
+  <app-splash *ngIf="splash.show"></app-splash>
 </div>
-
-
-
-
-

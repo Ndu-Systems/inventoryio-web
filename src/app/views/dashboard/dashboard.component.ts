@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService, ProductService, AccountService } from 'src/app/_services';
-import { User, Message, Splash } from 'src/app/_models';
+import { AccountService } from 'src/app/_services';
+import { User, Splash } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SpinnerService } from 'src/app/_services/dashboard/spinner.service';
@@ -19,13 +19,11 @@ export class DashboardComponent implements OnInit {
   link: string;
   linkname: string;
   heading: string[];
-  message$: Observable<Message>;
   spinner$: Observable<boolean>;
   splash$: Observable<Splash>;
 
   user: User;
   constructor(
-    private messageService: MessageService,
     private accountService: AccountService,
     private router: Router,
     private spinnerService: SpinnerService,
@@ -33,17 +31,10 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.message$ = this.messageService.messages;
     this.spinner$ = this.spinnerService.spinner;
     this.splash$ = this.splashService.splash;
     this.user = this.accountService.currentUserValue;
     this.accountService.checkSession();
-
-  }
-
-  clearMessages(url) {
-    this.messageService.clear();
-    this.router.navigate([url]);
 
   }
 

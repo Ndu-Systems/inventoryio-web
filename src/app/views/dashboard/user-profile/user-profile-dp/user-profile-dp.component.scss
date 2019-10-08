@@ -1,18 +1,27 @@
 @import '../../../../../assets/styles/variables';
-$dp-width : 6rem;
-$dp-reduced : 4rem;
+$dp-width : 4rem;
+$dp-reduced : 3rem;
 
 .main {
   // background: $primary-bg-color;
   padding: 2rem 0;
+  width: 30%;
+  position: relative;
+  // background: red;
+  float: right;
+
 
   @media only screen and (max-width: 600px) {
     padding: 0;
   }
 
   .user-profile {
-    display: grid;
-    grid-template-columns: 100%;
+    .cta {
+      display: grid;
+      grid-template-columns: 30% 30% auto;
+      margin-top: -1.5rem;
+    }
+
 
     @media only screen and (max-width: 600px) {
       grid-template-columns: 50% auto;
@@ -48,9 +57,7 @@ $dp-reduced : 4rem;
         margin: 10% 20%;
         display: block;
 
-        @media only screen and (max-width: 600px) {
-
-        }
+        @media only screen and (max-width: 600px) {}
 
       }
 
@@ -71,6 +78,7 @@ $dp-reduced : 4rem;
       font-size: .9rem;
       margin: 0;
       padding: 0;
+      margin-top: 1.3rem;
 
       @media only screen and (max-width: 600px) {
 
@@ -99,6 +107,3 @@ $dp-reduced : 4rem;
     }
   }
 }
-
-
-
