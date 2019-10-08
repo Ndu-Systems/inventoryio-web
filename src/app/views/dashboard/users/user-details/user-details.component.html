@@ -1,25 +1,96 @@
 <div class="main">
   <app-banner></app-banner>
-  <div class="body"  *ngIf="(user | async); let user">
-    <div class="cards">
-      <span>
-        <div class="card col-1-of-2">
-          <div class="icon">
-            <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
+  <div class="body">
+    <div class="card profile" *ngIf="user">
+      <div class="profile-info col-1-of-2" (click)="getUserNow(user)">
+        <div class="details">
+          <span class="dp">
+            <img *ngIf="user.DP" [src]="user.DP.Url" alt="user profile picture">
             <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue.svg" alt="">
-          </div>
-          <div class="data">
-              <h1 class="main">{{user.Name}} {{user.Surname}}</h1>
-              <h1 class="spec email">{{user.Email}}</h1>
-              <h1 class="spec">{{user.CellphoneNumber}}</h1>
-          </div>
+          </span>
+          <h1>
+            <span class="header">
+              {{user.Name}} {{user.Surname}}
+            </span>
+            <!-- <span class="spec">
+              {{user.Company?.Name}}
+            </span> -->
+            <span class="spec info">
+              Joining date: {{user.CreateDate | date}}
+            </span>
+          </h1>
         </div>
-        <button type="text" value="" class="btn">Update User Now</button>
-        <button type="text" value="" class="btn archive">Archive this user</button>
-      </span>
+        <div class="information">
+          <div class="info-content">
+            <h1 class="heading">
+              personal information
+            </h1>
+            <div class="col-1-of-4">
+              <span>
+                <h1 class="label-header">
+                  full names
+                </h1>
+                <h1 class="label-text">
+                  {{user.Name}} {{user.Surname}}
+                </h1>
+              </span>
+              <span>
+                <h1 class="label-header">
+                  cellphone number
+                </h1>
+                <h1 class="label-text">
+                  {{user.CellphoneNumber}}
+                </h1>
+              </span>
+              <span>
+                <h1 class="label-header">
+                  email address
+                </h1>
+                <h1 class="label-text">
+                  {{user.Email }}
+                </h1>
+              </span>
+            </div>
+          </div>
+          <div class="info-content" *ngIf="user.Company">
+            <h1 class="heading">
+              official information
+            </h1>
+            <div class="col-1-of-4">
+              <span>
+                <h1 class="label-header">
+                  company name
+                </h1>
+                <h1 class="label-text">
+                  {{user.Company.Name}}
+                </h1>
+              </span>
+              <span>
+                <h1 class="label-header">
+                  company phone
+                </h1>
+                <h1 class="label-text">
+                  {{user.Company.TelephoneNumber}}
+                </h1>
+              </span>
+              <span>
+                <h1 class="label-header">
+                  company website
+                </h1>
+                <h1 class="label-text">
+                  {{user.Company.Website }}
+                </h1>
+              </span>
+            </div>
+          </div>
+          <!-- <div class="info-content">
+            <div class="add">
+              <button class="btn">update profile</button>
+            </div>
+          </div> -->
+        </div>
+      </div>
     </div>
-    <app-list-user-roles
-    [user] = "user"
-    ></app-list-user-roles>
+    <!-- <app-list-user-roles [user]="user"></app-list-user-roles> -->
   </div>
 </div>

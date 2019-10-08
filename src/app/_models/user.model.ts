@@ -1,5 +1,5 @@
-import { Role, Store } from 'src/app/_models';
-import { Company } from './company.model';
+import { Role, Store, Company } from 'src/app/_models';
+// import { Company } from './company.model';
 
 
 export interface User {
