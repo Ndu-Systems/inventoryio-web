@@ -1,24 +1,10 @@
-  .heading {
-    font-size: 1.8rem;
-    font-weight: 300;
-    padding-left: 2.8rem;
-    @media only screen and (max-width: 600px) {
-      font-size: 1.2rem;
-      margin: 2rem .2rem;
-    }
-
-    span {
-      font-weight: 400;
-
-    }
-  }
 .main {
   width: 100%;
   overflow-x: scroll;
-  &::-webkit-scrollbar { 
-    display: none;  // Safari and Chrome
-}
 
+  &::-webkit-scrollbar {
+    display: none; // Safari and Chrome
+  }
 
 
   .cards {
@@ -30,7 +16,8 @@
       width: 50rem;
 
     }
-    span{
+
+    span {
       margin: 0;
       padding: 0;
     }
@@ -45,10 +32,13 @@
       transition: all 0.5s ease;
 
       @media only screen and (max-width: 600px) {
-        margin: .6rem;
+        margin: .6rem 1rem;
         padding: 1rem;
-      }
+        width: 68%;
 
+  
+      }
+   
 
       &:hover {
         background: rgb(16, 76, 229);
@@ -70,6 +60,7 @@
           text-align: center;
           font-weight: 400;
           font-size: 1.2rem;
+
           @media only screen and (max-width: 600px) {
             font-size: .8rem;
           }
@@ -78,6 +69,7 @@
             display: block;
             font-weight: 600;
             font-size: 2.5rem;
+
             @media only screen and (max-width: 600px) {
               font-size: 1.9rem;
             }
@@ -90,12 +82,14 @@
 }
 
 
-.slide{
+.slide {
   display: none;
+
   @media only screen and (max-width: 600px) {
     display: block;
   }
-  p{
+
+  p {
     width: 100%;
     text-align: center;
     font-style: italic;

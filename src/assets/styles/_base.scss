@@ -69,6 +69,20 @@ h1 {
   -o-transition: background-color 2s ease-out;
   transition: background-color 2s ease-out;
 }
+.heading {
+  font-size: 1.8rem;
+  font-weight: 300;
+  padding-left: 2.8rem;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.2rem;
+    margin: 2rem .2rem;
+  }
+
+  span {
+    font-weight: 400;
+
+  }
+}
 span.step {
   background: #cccccc;
   border-radius: 0.8em;
