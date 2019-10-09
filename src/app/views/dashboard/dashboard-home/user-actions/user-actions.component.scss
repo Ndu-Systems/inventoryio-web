@@ -4,7 +4,7 @@
 
   .cards {
     display: grid;
-    grid-template-columns: 50% auto;
+    grid-template-columns: repeat(10,10%);
 
     .card {
       background: #fff;
@@ -41,22 +41,3 @@
   }
 }
 
-
-@media only screen and (min-width: 1254px) {
-  .main {
-    margin: 0 auto;
-    width: 40%;
-
-    .container {
-
-      width:100%;
-
-    }
-    .cards {
-      display: grid;
-    grid-template-columns: 30% 30% auto;
-
-    }
-  }
-
-}
