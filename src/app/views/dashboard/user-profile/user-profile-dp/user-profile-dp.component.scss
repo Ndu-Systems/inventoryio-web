@@ -20,6 +20,10 @@ $dp-reduced : 3rem;
       display: grid;
       grid-template-columns: 30% 30% auto;
       margin-top: -1.5rem;
+      @media only screen and (max-width: 600px) {
+        margin-top: -0;
+
+      }
     }
 
 
@@ -37,7 +41,7 @@ $dp-reduced : 3rem;
       width: $dp-width;
       height: $dp-width;
       overflow: hidden;
-      border: .1rem solid #fff;
+      // border: .1rem solid #fff;
 
       display: block;
 
@@ -83,6 +87,7 @@ $dp-reduced : 3rem;
       @media only screen and (max-width: 600px) {
 
         font-size: .7rem;
+        display: none;
 
       }
     }

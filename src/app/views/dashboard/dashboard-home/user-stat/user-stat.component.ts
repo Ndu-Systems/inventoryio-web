@@ -16,6 +16,7 @@ export class UserStatComponent implements OnInit {
   products: Product[] = [];
   orders: Orders[] = [];
   stores: Store[] = [];
+  today = new Date();
   constructor(
     private accountService: AccountService,
     private router: Router,
@@ -50,25 +51,25 @@ export class UserStatComponent implements OnInit {
 
     if (this.user) {
       this.stat.push({
-        name: 'Users',
+        name: 'System users',
         value: this.users.length,
         image: 'assets/images/stat-users.svg',
         link: 'dashboard/users'
       });
       this.stat.push({
-        name: 'Stores',
+        name: 'Your stores',
         value: this.stores.length,
         image: 'assets/images/stat-store.svg',
         link: 'dashboard/stores'
       });
       this.stat.push({
-        name: 'Orders',
+        name: 'Active orders',
         value: this.orders.length,
         image: 'assets/images/state-orders.svg',
         link: 'dashboard/list-orders'
       });
       this.stat.push({
-        name: 'Products',
+        name: 'Total products',
         value: this.products.length,
         image: 'assets/images/stat-stock-and-hand.svg',
         link: 'dashboard/list-product'

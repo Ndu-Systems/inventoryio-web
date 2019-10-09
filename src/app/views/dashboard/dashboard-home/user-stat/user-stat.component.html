@@ -1,18 +1,21 @@
-<div class="main col-1-of-2">
-  <div class="profile">
-    <app-user-profile-dp ></app-user-profile-dp>
-  </div>
+<div class="main">
+  <h1 class="heading">
+    Welcome to <span>Inventory IO  | {{today | date: 'fullDate'}}</span>
+  </h1>
   <div class="cards">
     <span *ngFor="let data of stat">
-      <div class="card" (click)="goto(data.link)">
+      <div class="card transition" (click)="goto(data.link)">
         <div class="icon">
           <img [src]="data.image" alt="">
         </div>
         <div class="data">
-          <h1>{{data.value}}<span>{{data.name}}</span></h1>
+          <h1>
+            {{data.name}}
+          <span>{{data.value}}</span>
+          </h1>
         </div>
       </div>
     </span>
-
   </div>
 </div>
+
