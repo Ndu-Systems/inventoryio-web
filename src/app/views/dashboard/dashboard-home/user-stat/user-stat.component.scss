@@ -1,5 +1,9 @@
 .main {
   width: 100%;
+  overflow-x: scroll;
+  &::-webkit-scrollbar { 
+    display: none;  // Safari and Chrome
+}
 
   .heading {
     font-size: 1.8rem;
@@ -21,7 +25,8 @@
     grid-template-columns: repeat(4, 25%);
 
     @media only screen and (max-width: 600px) {
-      grid-template-columns: repeat(2, 50%);
+      // grid-template-columns: repeat(2, 50%);
+      width: 50rem;
 
     }
 
@@ -35,7 +40,7 @@
       transition: all 0.5s ease;
 
       @media only screen and (max-width: 600px) {
-        margin: .5rem;
+        margin: 1.5rem;
         padding: 1rem;
       }
 
