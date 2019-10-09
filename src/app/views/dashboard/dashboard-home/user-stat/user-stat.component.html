@@ -1,7 +1,8 @@
-<div class="main">
-  <h1 class="heading">
+<h1 class="heading">
     Welcome to <span>Inventory IO  | {{today | date: 'fullDate'}}</span>
   </h1>
+<div class="main">
+
   <div class="cards">
     <span *ngFor="let data of stat">
       <div class="card transition" (click)="goto(data.link)">
