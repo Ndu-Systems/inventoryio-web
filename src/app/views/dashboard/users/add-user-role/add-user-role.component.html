@@ -1,3 +1,16 @@
-<p>
-  add-user-role works!
-</p>
+<div class="card">
+  <h1 class="card-title">add role for {{user.Name}}</h1>
+  <div class="card-body">
+    <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <div class="group" *ngIf="roles">
+        <select formControlName="RoleId">
+          <option value="">Select Role</option>
+          <option *ngFor="let item of roles" class="select-option" [value]="item.RoleId">{{item.Name}}</option>
+        </select>
+      </div>
+      <div class="group">
+        <input type="submit" value="Add role" class="btn" [disabled]="!rForm.valid" />
+      </div>
+    </form>
+  </div>
+</div>

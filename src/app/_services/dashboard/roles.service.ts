@@ -64,12 +64,8 @@ export class RolesService {
       }, error => console.log('could not update todo'));
   }
 
-  getRolesForUser(userId: string) {
-    this.http.get<Role[]>(`${this.url}/api/roles/get-roles-userid.php?UserId=${userId}`)
-      .subscribe(data => {
-        this.dataStore.roles = data;
-        this._roles.next(Object.assign({}, this.dataStore).roles);
-      }, error => console.log('Could not load roles  for user'));
+  getRolesForUser(userId: string): Observable<Role[]> {
+    return this.http.get<Role[]>(`${this.url}/api/roles/get-roles-userid.php?UserId=${userId}`);
   }
 
   getRolePermissions(roleId: string): Observable<Permission[]> {
@@ -80,5 +76,8 @@ export class RolesService {
     return this.http.post<RolePermission>(`${this.url}/api/roles/add-role-permission.php`, rolePermission);
   }
 
+  getRolesForCompany(companyId: string, statusId: string): Observable<Role[]> {
+    return this.http.get<Role[]>(`${this.url}/api/roles/get-roles.php?CompanyId=${companyId}&&StatusId=${statusId}`);
+  }
 
 }

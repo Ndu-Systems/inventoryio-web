@@ -1,13 +1,12 @@
 // @import '../../../../assets/styles/variables';
 @import '../../../../../assets/styles/variables';
 $dp-width : 8rem;
-
+.body {
+  display: grid;
+  grid-template-columns: 65% auto;
+  grid-gap: 1rem;
+}
 .profile {
-  width: 75vw;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-
-
   .profile-info {
     padding: 0 1rem;
     background: $white-color;
@@ -112,7 +111,10 @@ $dp-width : 8rem;
 // media queries
 
 @media only screen and (max-width: 600px) {
-
+  .body {
+    grid-template-columns: 100%;
+    grid-gap: 0;
+  }
   .profile {
     padding: 0;
     width: 100%;

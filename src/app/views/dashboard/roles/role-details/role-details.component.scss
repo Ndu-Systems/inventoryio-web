@@ -28,7 +28,7 @@
       text-align: center;
       height: 9rem;
       width: 9rem;
-      margin: 1rem auto;
+      margin: 1rem 0;
       border: 1px solid #E5E5E5;
       cursor: pointer;
 
@@ -100,16 +100,20 @@
   .main {
     background: transparent;
   }
+  .tag {
+    float: left;
+    margin: 1rem;
+  }
 
   .body {
     display: grid;
     grid-template-columns: 50% auto;
     width: 75vw;
-    margin: 0 auto;
+   margin: 0 auto;
 
     .cards {
       .card {
-        margin: 1rem auto;
+        margin: 1rem 0;
         width: 519px;
         height: 251px;
         &.col-1-of-2{

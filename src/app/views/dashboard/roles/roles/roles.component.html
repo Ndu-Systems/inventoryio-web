@@ -1,14 +1,6 @@
+<h1 class="heading"> Your system roles </h1>
 <div class="main">
-  <!-- <app-banner></app-banner> -->
   <div class="list-body">
-    <div class="page-actions">
-      <div class="search">
-        <input type="text" [(ngModel)]="search" placeholder="search roles by name">
-      </div>
-      <div class="add">
-        <button (click)="add()">Add A Role</button>
-      </div>
-    </div>
     <div *ngIf="roles$ | async as roles">
       <app-role-card-list [roles]="roles"></app-role-card-list>
     </div>

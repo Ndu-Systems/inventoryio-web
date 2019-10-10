@@ -16,7 +16,7 @@
         <button type="text" value="" class="btn archive">Archive this role</button>
       </span>
     </div>
-    <div class="role-permissions" *ngIf="(role | async); let role">
+    <div *ngIf="(role | async); let role">
       <app-list-role-permissions
         [roleId]="role.RoleId"
       ></app-list-role-permissions>

@@ -1,14 +1,6 @@
+<h1 class="heading">your brands on the system</h1>
 <div class="main">
-  <!-- <app-banner></app-banner> -->
-  <div class="list-body">
-    <div class="page-actions">
-      <div class="search">
-        <input type="text" [(ngModel)]="search" placeholder="search brands">
-      </div>
-      <div class="add">
-        <button (click)="add()">Add Brand</button>
-      </div>
-    </div>
+   <div class="list-body">
     <div class="cards-betta" *ngIf="brands$  | async as brands">
       <span *ngFor="let item of brands | searchproduct: search">
         <div class="card">
@@ -27,6 +19,5 @@
         </div>
       </span>
     </div>
-
   </div>
 </div>

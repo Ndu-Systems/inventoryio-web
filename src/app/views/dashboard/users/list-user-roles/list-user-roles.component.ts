@@ -11,14 +11,28 @@ import { map } from 'rxjs/operators';
 })
 export class ListUserRolesComponent implements OnInit {
   @Input() user: User;
-  roles: Observable<Role[]>;
+  roles: Role[];
+  showAdd: boolean;
   constructor(
     private roleService: RolesService
   ) { }
 
   ngOnInit() {
-    this.roleService.getRolesForUser(this.user.UserId);
-    this.roles = this.roleService.roles;
+   this.getUserRoles();
+  }
+  getUserRoles() {
+    this.roleService.getRolesForUser(this.user.UserId)
+    .subscribe(response => {
+      this.roles = response;
+    });
+
   }
 
+  showAddForm() {
+    this.showAdd = !this.showAdd;
+  }
+  toggleTodo(event) {
+    this.showAdd = event;
+    this.getUserRoles();
+   }
 }

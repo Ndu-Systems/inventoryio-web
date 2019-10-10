@@ -1,14 +1,6 @@
+<h1 class="heading">your staff on the system</h1>
  <div class="main">
-   <!-- <app-banner></app-banner> -->
-   <div class="list-body">
-     <div class="page-actions">
-       <div class="search">
-         <input type="text" [(ngModel)]="search" placeholder="search users by name, address">
-       </div>
-       <div class="add">
-         <button (click)="add()">Add A User</button>
-       </div>
-     </div>
+    <div class="list-body">
      <div *ngIf="users$ | async as users">
         <app-user-card-list [users]="users"></app-user-card-list>
      </div>
