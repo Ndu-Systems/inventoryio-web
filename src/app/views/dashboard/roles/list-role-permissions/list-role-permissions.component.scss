@@ -2,10 +2,28 @@
 
 .col-1-of-2 {
   grid-template-columns: 60% auto;
-}
 
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+}
+.heading {
+  padding: 0;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+
+  }
+
+}
 .add {
   margin: 1rem;
+
+  @media only screen and (max-width: 600px) {
+    .btn {
+      width: 100%;
+    }
+  }
 }
 
 .cards-betta {
@@ -22,6 +40,12 @@
       font-weight: 500;
       color: $gray-color;
     }
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    width: 100%;
+    max-height: 80vh;
   }
 }
 
