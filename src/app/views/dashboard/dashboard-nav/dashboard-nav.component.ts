@@ -36,19 +36,19 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'dashboard',
         Link: '/dashboard/',
-        Icon: faThermometer
+        Icon: `pi pi-home`
 
       },
       {
         Name: 'products',
         Link: '/dashboard/list-product',
-        Icon: faCartPlus
+        Icon:  `pi pi-shopping-cart`
 
       },
       {
         Name: 'sell',
         Link: '/dashboard/sell',
-        Icon: faThermometer
+        Icon: `pi pi-money-bill`
       }
     ];
   }
@@ -57,7 +57,7 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'configuration',
         Link: '/dashboard/configurations',
-        Icon: faThermometer
+        Icon: `pi pi-cog`
       }
     ];
 
@@ -65,7 +65,7 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'sign out',
         Link: '/',
-        Icon: faThermometer
+        Icon: ``
       }
     ];
   }

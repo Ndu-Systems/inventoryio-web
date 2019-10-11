@@ -6,13 +6,19 @@
     <ul>
       <li *ngFor="let item of models">
         <a [routerLink]="item.Link" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}"> <fa-icon [icon]="item.Icon"></fa-icon> {{item.Name}}</a>
+          [routerLinkActiveOptions]="{exact: true}"> 
+          <i [ngClass]="item.Icon"></i>
+          {{item.Name}}
+        </a>
       </li>
       <li *ngFor="let profileItem of profileModels" class="mt-20">
         <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}">{{profileItem.Name}}</a></li>
+          [routerLinkActiveOptions]="{exact: true}">
+          <i [ngClass]="profileItem.Icon"></i>
+          {{profileItem.Name}}</a>
+        </li>
       <li class="signOut">
-        <a routerLink="/"> sign out</a>
+        <a routerLink="/"><i class="pi pi-sign-out"></i> sign out</a>
       </li>
     </ul>
 
