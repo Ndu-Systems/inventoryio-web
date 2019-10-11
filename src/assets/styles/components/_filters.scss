@@ -1,0 +1,41 @@
+
+.list-filters{
+    display: grid;
+    grid-template-columns: 30% 30% auto;
+    width: 94%;
+    margin: 0 auto;
+    border-bottom: 1px solid #c6c6c6;
+    padding-bottom: 1rem;
+  
+    div{
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+  
+    input, select{
+      width: 90%;
+      margin-right: 0;
+      border: 1px solid #c6c6c6;
+      font-size: .8rem;
+      padding:.5rem 1rem;
+    }
+    .select{
+      display: grid;
+      border: 1px solid #c6c6c6;
+      grid-template-columns: 30% auto;
+      .label{
+        font-size: .8rem;
+        padding-top: 0.5rem;
+        padding-left: 2rem;
+      }
+      select{
+        border:none;
+        width: 100%;
+      }
+    }
+    .btn {
+        float: right;
+    }
+  }
+  

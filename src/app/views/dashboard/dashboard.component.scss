@@ -1,5 +1,7 @@
 .main {
   background: #f1f1f1;
+  height: 98vh;
+  overflow: scroll;
 
   .top-bar {
     display: block;
@@ -10,7 +12,7 @@
 
   .body {
     display: grid;
-    grid-template-columns: 15% 85%;
+    grid-template-columns: 12% 85%;
     width: 100%;
 
     @media only screen and (max-width: 600px) {

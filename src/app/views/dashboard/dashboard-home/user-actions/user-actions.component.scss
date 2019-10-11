@@ -4,7 +4,11 @@
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(10,10%);
+    grid-template-columns: repeat(10, 10%);
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: repeat(2, 50%)
+    }
 
     .card {
       background: #fff;
@@ -14,6 +18,7 @@
       margin: 1rem;
       border: 1px solid #E5E5E5;
       cursor: pointer;
+
       .icon {
         img {
           width: 1.8rem;
@@ -26,6 +31,7 @@
 
         // background: rgb(34, 182, 34);
         text-align: center;
+
         h1 {
           color: #104CE5;
           display: block;
@@ -40,4 +46,3 @@
     }
   }
 }
-

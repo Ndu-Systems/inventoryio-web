@@ -1,6 +1,6 @@
 
 export interface NavModel {
-  Icon?: string;
+  Icon?: any;
   Name: string;
   Link: string;
 }

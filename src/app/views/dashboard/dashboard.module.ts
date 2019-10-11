@@ -10,6 +10,9 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +23,8 @@ import { ConfirmationService } from 'primeng/api';
     FileUploadModule,
     ToastModule,
     ToggleButtonModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    FontAwesomeModule
 
   ],
   declarations: [...declarations],

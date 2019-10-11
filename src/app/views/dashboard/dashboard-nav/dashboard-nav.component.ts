@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NavModel, User } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
-import { Observable } from 'rxjs';
+import { faCoffee , faThermometer, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard-nav',
@@ -15,6 +15,11 @@ export class DashboardNavComponent implements OnInit {
   profileMobileModels: NavModel[];
   showNav = true;
   width: number;
+
+  // font awesome
+  faCoffee = faCoffee;
+  faThermometer = faThermometer;
+  faCartPlus = faCartPlus;
   constructor(
     private accountService: AccountService,
     private routeTo: Router
@@ -31,19 +36,19 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'dashboard',
         Link: '/dashboard/',
-        Icon: 'dashboard'
+        Icon: faThermometer
 
       },
       {
         Name: 'products',
         Link: '/dashboard/list-product',
-        Icon: 'products'
+        Icon: faCartPlus
 
       },
       {
         Name: 'sell',
         Link: '/dashboard/sell',
-        Icon: 'sell'
+        Icon: faThermometer
       }
     ];
   }
@@ -52,7 +57,7 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'configuration',
         Link: '/dashboard/configurations',
-        Icon: 'settings'
+        Icon: faThermometer
       }
     ];
 
@@ -60,7 +65,7 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'sign out',
         Link: '/',
-        Icon: 'sign-out'
+        Icon: faThermometer
       }
     ];
   }

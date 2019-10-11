@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class ListProductsComponent implements OnInit {
 
   search = ``;
-  searchByCatergory: string;
+  searchByCatergory = ``;
   categories: string[] = [];
   products$: Observable<Product[]>;
 
