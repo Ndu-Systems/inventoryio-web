@@ -1,232 +1,62 @@
-.main {
+@import '../../../../../assets/styles/variables';
 
-  .body {
-    padding: 1rem;
-    padding-top: 0;
+.col-1-of-2 {
+  grid-template-columns: 60% auto;
 
-    .section {
-      background: #fff;
-      display: block;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      border-radius: .5rem;
-      border: 1px solid #C1C1C1;
-    }
-  }
-
-  .cards {
-    display: grid;
-    grid-template-columns: 50% 50%;
-
-    .action-title {
-      font-size: 20px;
-      color: #7B8C98;
-    }
-
-    .card {
-      background: #fff;
-      text-align: center;
-      height: 9rem;
-      width: 9rem;
-      margin: 1rem;
-      border: 1px solid #E5E5E5;
-      cursor: pointer;
-
-      .icon {
-        img {
-          width: 19.1px;
-          margin: 0.5rem;
-          float: left;
-        }
-      }
-
-
-      .data {
-        text-align: center;
-
-        h1 {
-          color: #104CE5;
-          display: block;
-          font-size: .8rem;
-          font-weight: 600;
-          text-align: center;
-          width: 100%;
-          margin-top: 1.5rem;
-          text-transform: capitalize;
-
-          &.main {
-            font-size: 18px;
-            margin-top: 2rem;
-            color: #2F2E41;
-          }
-
-          &.spec {
-            margin-top: 0;
-            color: #455E6D;
-            float: left;
-          }
-
-        }
-      }
-    }
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
   }
 }
+.heading {
+  padding: 0;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.2rem;
+    margin: 2rem 0;
 
+  }
+
+}
 .add {
-  background: #104CE5;
-  float: right;
-  border: none;
-  padding: .5rem;
-  font-weight: 800;
+  margin: 1rem;
 
-  a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-  }
-}
-
-.page-actions {
-  display: none;
-}
-
-@media only screen and (min-width: 1254px) {
-  .main {
-    background: transparent;
-  }
-
-  .body {
-    display: grid;
-    margin: 0 auto;
-
-    .page-actions {
+  @media only screen and (max-width: 600px) {
+    .btn {
       width: 100%;
-      display: block;
-      margin-top: 0rem;
-      grid-template-columns: 50% auto;
-      border-bottom: solid 2px white;
-
-      .heading {
-        font-size: 20px;
-        color: #455E6D;
-        font-weight: 500;
-        text-transform: capitalize;
-      }
-
-      .add {
-        background: transparent;
-
-        button {
-          text-transform: capitalize;
-        }
-      }
     }
-
-    .cards {
-      grid-template-columns: 50% auto;
-
-      .card {
-        margin: 10px auto;
-        width: 240px;
-        height: 147px;
-        float: left;
-
-        &.col-1-of-2 {
-          grid-template-columns: 20% auto;
-        }
-
-        .data {
-          padding: 0 1rem;
-
-          h1 {
-            text-align: left;
-          }
-
-          .main {
-            font-size: 13px;
-            font-weight: 600;
-          }
-
-          .spec {
-            font-size: 10px;
-            color: #455E6D;
-          }
-        }
-
-        .icon {
-          border-top: solid 2px #104CE5;
-
-          img {
-            width: 20px;
-            margin: 0.5rem;
-            float: left;
-          }
-        }
-
-
-
-      }
-
-      .archive {
-        text-align: center;
-        width: 75%;
-        margin: 0 auto;
-        background: #ED5575;
-      }
-    }
-
-    p.not-found {
-
-      padding: 1rem;
-      font-size: 1.2rem;
-      text-transform: capitalize;
-      font-weight: 400;
-      color: #ED5575;
-    }
-
   }
 }
 
+.cards-betta {
+  grid-template-columns: repeat(3, 33%);
 
-// mobile
-
-@media only screen and (max-width: 600px) {
-  .main {
-    .cards {
-      grid-template-columns: 50% 50%;
-      .card {
-        &.col-1-of-2 {
-          grid-template-columns: 100%;
-        }
-        .icon {
-          border-top: solid 2px #104CE5;
-
-          img {
-            width: 27px;
-            margin: 0.5rem;
-            float: none;
-          }
-        }
-        .data {
-          padding: 0 1rem;
-
-          h1 {
-            text-align: center;
-
-
-            &.main {
-              margin: 0;
-              font-size: 12px;
-              font-weight: 600;
-            }
-
-            &.spec {
-              font-size: 10px;
-              color: #455E6D;
-            }
-          }
-        }
-      }
+  .name {
+    .main {
+      font-size: 0.85rem;
+      color: $black-color;
     }
+
+    .spec {
+      font-size: 0.7777rem;
+      font-weight: 500;
+      color: $gray-color;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    width: 100%;
+    max-height: 80vh;
+  }
+}
+
+.not-found {
+  width: 50%;
+
+  .message {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2E344C;
   }
 }

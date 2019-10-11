@@ -52,7 +52,7 @@
 
 @media only screen and (min-width: 1254px) {
   .main {
-    margin: 0 auto;
+    margin: 0;
     width: 40%;
 
     .container {
@@ -64,7 +64,7 @@
     .cards {
       display: grid;
       grid-template-columns: 25% 25% 25% 25%;
-      grid-gap: 2rem;
+      grid-gap: 1rem;
 
     }
   }

@@ -1,0 +1,25 @@
+@import '../../../../../assets/styles/variables';
+
+.card {
+  padding: 1rem;
+  background: $white-color;
+
+  &.col-1-of-2 {
+    grid-template-columns: 70% auto;
+  }
+
+  .card-title {
+    font-weight: 500;
+    color: #7B8C98;
+    text-align: left;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+
+  .btn {
+    background: $primary-bg-color;
+    border-radius: 0;
+  }
+
+}

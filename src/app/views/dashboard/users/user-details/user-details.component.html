@@ -1,7 +1,6 @@
 <div class="main">
-  <!-- <app-banner></app-banner> -->
-  <div class="body">
-    <div class="card profile" *ngIf="user">
+  <div class="body" *ngIf="user">
+    <div class="card profile">
       <div class="profile-info col-1-of-2">
         <div class="details">
           <span class="dp">
@@ -12,9 +11,9 @@
             <span class="header">
               {{user.Name}} {{user.Surname}}
             </span>
-            <!-- <span class="spec">
+            <span class="spec">
               {{user.Company?.Name}}
-            </span> -->
+            </span>
             <span class="spec info">
               Joining date: {{user.CreateDate | date}}
             </span>
@@ -84,9 +83,9 @@
             </div>
           </div>
           <div class="info-content" *ngIf="user.Roles">
-              <h1 class="heading">
-                  role(s) information
-                </h1>
+            <h1 class="heading">
+              role(s) information
+            </h1>
             <span class="tag" *ngFor="let role of user.Roles">
               <button class="btn">{{role.Name}} &times;</button>
             </span>
@@ -94,6 +93,7 @@
         </div>
       </div>
     </div>
-    <!-- <app-list-user-roles [user]="user"></app-list-user-roles> -->
+    <div class="card">
+      <app-list-user-roles [user]="user"></app-list-user-roles>
+    </div>
   </div>
-</div>
