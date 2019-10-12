@@ -44,29 +44,29 @@ export class PermissionsService {
 
   addPermission(permission: Permission) {
     this.http.post<Permission>(`${this.url}/api/permissions/add-permissions.php`, JSON.stringify(permission))
-    .subscribe(data => {
-      this.dataStore.permissions.push(data);
-      this._permissions.next(Object.assign({}, this.dataStore).permissions);
+      .subscribe(data => {
+        this.dataStore.permissions.push(data);
+        this._permissions.next(Object.assign({}, this.dataStore).permissions);
       }, error => console.log('could not add  permission'));
   }
 
-  updatePermission(permission: Permission){
+  updatePermission(permission: Permission) {
     this.http.put<Permission>(`${this.url}/api/permissions/update-permissions.php`, JSON.stringify(permission))
-    .subscribe(data => {
-       this.dataStore.permissions.forEach((item, index) => {
-         if(item.PermissionId === data.PermissionId) {
-           this.dataStore.permissions[index] = data;
-         }
-       });
-       this.dataStore.permissions.sort((x, y) => {
-         return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
-       });
-       this._permissions.next(Object.assign({}, this.dataStore).permissions);
-    }, error => console.log('Could not update permission'));
+      .subscribe(data => {
+        this.dataStore.permissions.forEach((item, index) => {
+          if (item.PermissionId === data.PermissionId) {
+            this.dataStore.permissions[index] = data;
+          }
+        });
+        this.dataStore.permissions.sort((x, y) => {
+          return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+        });
+        this._permissions.next(Object.assign({}, this.dataStore).permissions);
+      }, error => console.log('Could not update permission'));
   }
 
-  getCompanyPermissions(companyId: string, statusId: string ): Observable<Permission[]> {
+  getCompanyPermissions(companyId: string, statusId: string): Observable<Permission[]> {
     return this.http.get<Permission[]>(`${this.url}/api/permissions/get-permissions.php?CompanyId=${companyId}&&StatusId=${statusId}`);
-   }
+  }
 
 }

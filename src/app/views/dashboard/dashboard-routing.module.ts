@@ -28,7 +28,7 @@ import { OrderDetailsComponent } from './products/order-details/order-details.co
 import { UpdateCompanyComponent } from './company/update-company/update-company.component';
 import { InvoiceComponent } from './products/invoice/invoice.component';
 import { ConfigurationHomeComponent } from './configuration-home';
-import { ActionsComponent } from './shared';
+import { ActionsComponent, ConfigurationPermissions } from './shared';
 import {
   RolesComponent,
   RoleCardListComponent,
@@ -60,6 +60,7 @@ import { PermissionsComponent, PermissionCardListComponent } from './permissions
 import { AddPermissionComponent } from './permissions/add-permission';
 import { SearchProductByCatergoryPipe } from 'src/app/_pipes/search-product-by-catergory';
 import { UploadPreviewComponent } from './uploads/upload-preview/upload-preview.component';
+import { AuthGuard } from 'src/app/_guards';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -78,7 +79,14 @@ const routes: Routes = [
       { path: 'sales-report', component: SalesReportComponent },
       { path: 'list-orders', component: ListOrdersComponent },
       { path: 'order-details', component: OrderDetailsComponent },
-      { path: 'configurations', component: ConfigurationHomeComponent },
+      {
+        path: 'configurations',
+        component: ConfigurationHomeComponent,
+        canActivate: [AuthGuard],
+        // data: {
+        //   roles: [ConfigurationPermissions.CAN_CONFIGURE]
+        // }
+      },
       { path: 'roles', component: RolesComponent },
       { path: 'add-role', component: AddRoleComponent },
       { path: 'stores', component: StoresComponent },
