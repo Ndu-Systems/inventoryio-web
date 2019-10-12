@@ -89,6 +89,17 @@ h1 {
 
   }
 }
+.pc-only{
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+}
+.phone-only{
+  display: none;
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
+}
 span.step {
   background: #cccccc;
   border-radius: 0.8em;

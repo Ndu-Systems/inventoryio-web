@@ -3,7 +3,7 @@
   grid-template-columns: 30% 30% auto;
   width: 94%;
   margin: 0 auto;
-  border-bottom: 1px solid #c6c6c6;
+  border-bottom: 1px solid hsl(0, 0%, 78%);
   padding-bottom: 1rem;
 
   div {
@@ -55,5 +55,8 @@
     right: 4rem;
     top: .4rem;
     cursor: pointer;
+    @media only screen and (max-width: 600px) {
+      right: 1rem;
+    }
   }
 }

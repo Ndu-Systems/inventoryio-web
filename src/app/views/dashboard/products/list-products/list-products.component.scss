@@ -1,1 +1,7 @@
 
+.list-filters {
+    @media only screen and (max-width: 600px) {
+        grid-template-columns:40% 40% auto;
+    }
+  }
+  

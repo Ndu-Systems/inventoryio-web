@@ -18,6 +18,8 @@ export class SellComponent implements OnInit {
   user: User;
   products: Product[];
   categories: string[] = [];
+  showCart = true;
+  width: number;
 
   constructor(
     private productService: ProductService,
@@ -36,6 +38,7 @@ export class SellComponent implements OnInit {
     this.products$ = this.productService.products;
     this.productService.products.subscribe(data => {
       this.products = data;
+      this.getDeviceSize();
     });
     this.productService.getProducts(this.user.CompanyId);
 
@@ -132,4 +135,13 @@ export class SellComponent implements OnInit {
   clearSearch() {
     this.search = '';
   }
+  getDeviceSize() {
+    this.width = screen.width;
+    console.log(this.width);
+    this.showCart = this.width >= 720;
+  }
+  toggleCart() {
+    this.showCart = !this.showCart;
+  }
 }
+
