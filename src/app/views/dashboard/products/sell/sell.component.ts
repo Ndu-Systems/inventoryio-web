@@ -130,6 +130,9 @@ export class SellComponent implements OnInit {
   }
   details(product: Product) {
     this.productService.updateCurrentProduct(product);
+    this.bannerService.updateState({
+      backto: '/dashboard/sell',
+    });
     this.router.navigate([`/dashboard/product-details`]);
   }
   clearSearch() {

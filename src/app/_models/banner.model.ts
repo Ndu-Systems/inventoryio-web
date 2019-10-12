@@ -1,6 +1,6 @@
 export interface Banner {
-    heading;
-    backto;
+    heading?;
+    backto?;
     goto?;
     count?;
     countLabel?;

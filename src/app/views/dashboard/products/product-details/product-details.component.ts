@@ -51,11 +51,6 @@ export class ProductDetailsComponent implements OnInit {
 
     this.brands$ = this.brandService.brands;
     this.catergories$ = this.cateroryService.categories;
-
-    this.bannerService.updateState({
-      heading: 'Manage Users',
-      backto: '/dashboard/list-product'
-    });
   }
   initForm() {
     this.rForm = this.fb.group({
@@ -87,6 +82,7 @@ export class ProductDetailsComponent implements OnInit {
       summary: 'Success!',
       detail: 'Product updated! '
     });
-  }
+    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
+}
 
 }

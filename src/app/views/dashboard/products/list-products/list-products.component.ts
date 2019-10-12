@@ -50,6 +50,9 @@ export class ListProductsComponent implements OnInit {
     this.router.navigate(['/dashboard/add-product']);
   }
   details(product: Product) {
+    this.bannerService.updateState({
+      backto: '/dashboard/list-product',
+    });
     this.productService.updateCurrentProduct(product);
     this.router.navigate([`/dashboard/product-details`]);
   }
