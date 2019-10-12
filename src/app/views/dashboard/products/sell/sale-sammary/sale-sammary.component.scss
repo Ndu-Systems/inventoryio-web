@@ -1,65 +1,117 @@
-.cards {
-  .card {
+// .cards {
+//   .card {
 
-    margin: 1rem 0;
-    padding-bottom: 0;
-    background: #fff;
-    position: relative;
+//     margin: 1rem 0;
+//     padding-bottom: 0;
+//     background: #fff;
+//     position: relative;
 
-    .close {
-        position: absolute;
-        right: 2px;
-        top: -12px;
-        background: #EF5374;
-        color: #fff;
-        border-radius: 10rem;
-        width: 2rem;
-        height: 2rem;
-        padding-top: .3rem;
-        font-weight: 700;
-        cursor: pointer;
+//     .close {
+//         position: absolute;
+//         right: 2px;
+//         top: -12px;
+//         background: #EF5374;
+//         color: #fff;
+//         border-radius: 10rem;
+//         width: 2rem;
+//         height: 2rem;
+//         padding-top: .3rem;
+//         font-weight: 700;
+//         cursor: pointer;
+//     }
+
+//     .name-price {
+//         padding: 0 .5rem;
+//         text-align: left;
+//       .name {
+//         color: #104CE5;
+//       }
+
+//       .price {
+//         color: #000;
+//       }
+//     }
+
+
+//   }
+// }
+
+
+
+
+
+.sale-item {
+  display: grid;
+  grid-template-columns: 15% 60% auto;
+  margin: 1rem .5rem;
+
+  .remove {
+    color: #e74c3c;
+    margin-top: .8rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    &:hover{
+      color: #d13625;
     }
+  }
 
-    .name-price {
-        padding: 0 .5rem;
-        text-align: left;
-      .name {
-        color: #104CE5;
-      }
+  .name-price {
+    h1 {
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: capitalize;
 
-      .price {
-        color: #000;
+      span {
+        display: block;
+        font-weight: 400;
+
       }
     }
+  }
 
+  .count {
     .qnty {
       display: grid;
-      grid-template-columns: 30% 40% 30%;
+      grid-template-columns: 60% 40%;
+      border: 3px solid #104CE5;
+      padding:0;
+      height: 2.7rem;
+      width: 4rem;
 
       .input {
+        padding:0;
+        input {
+          border: none;
+          margin: 0;
+          padding:0;
+          margin-top: .5rem;
+          margin-left: .6rem;
+        }
+
+      }
+
+      .btns {
         button {
+          display: block;
+          width:100%;
+          // height: 1.5rem;
+          text-align: center;
+          float: right;
+          margin: 0;
+          background: #104CE5;
           color: #fff;
           border: none;
-          padding: .5rem 1rem;
-          width: 100%;
-        }
-
-        .reduce {
-          background: #FBAB28;
-          cursor: pointer;
-        }
-
-        .add {
-          background: #69A832;
-          cursor: pointer;
-        }
-
-        input {
-          text-align: center;
-          padding: 0;
-          border: none;
+          font-weight: 700;
+          font-size: .8rem;
         }
       }
     }
   }
 }
+
+
+
+
+
+
+// fancy counter

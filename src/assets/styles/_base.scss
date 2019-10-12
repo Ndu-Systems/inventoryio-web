@@ -83,6 +83,22 @@ h1 {
     font-weight: 400;
 
   }
+  span.number{
+    font-size: .9rem;
+    font-weight: 800;
+
+  }
+}
+.pc-only{
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+}
+.phone-only{
+  display: none;
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
 }
 span.step {
   background: #cccccc;

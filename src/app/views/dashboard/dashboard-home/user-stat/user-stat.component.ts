@@ -69,7 +69,7 @@ export class UserStatComponent implements OnInit {
         link: 'dashboard/list-orders'
       });
       this.stat.push({
-        name: 'Total products',
+        name: 'Inventory ',
         value: this.products.length,
         image: 'assets/images/stat-stock-and-hand.svg',
         link: 'dashboard/list-product'

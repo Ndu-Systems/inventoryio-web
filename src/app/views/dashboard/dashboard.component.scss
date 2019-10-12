@@ -1,5 +1,5 @@
 .main {
-  background: #f1f1f1;
+  background: #F5F6FA;
   height: 98vh;
   overflow: scroll;
 
@@ -8,17 +8,25 @@
     background: #104CE5;
     height: 5rem;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
   }
 
   .body {
     display: grid;
     grid-template-columns: 12% 85%;
     width: 100%;
+    margin-top: 3rem;
+
     .container {
       padding: 2rem;
     }
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%;
+      margin-top: 7rem;
+
       .container {
         padding: 0;
       }

@@ -1,17 +1,7 @@
 
-.name{
-  font-weight: 600;
-  text-transform: capitalize;
-  text-align: left;
-  padding-left: 1rem;
-  font-size: .9rem;
-
-
-
-}
-.stock {
-  display: block;
-  font-size: .8rem;
-  text-transform: lowercase;
-
-}
+.list-filters {
+    @media only screen and (max-width: 600px) {
+        grid-template-columns:40% 40% auto;
+    }
+  }
+  

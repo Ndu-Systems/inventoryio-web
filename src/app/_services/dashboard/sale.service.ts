@@ -41,7 +41,10 @@ export class SaleService {
         total: 0
       });
     }
-    const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId);
+    let checkIfOtemExist;
+    if (sale) {
+      checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId)
+    }
     if (!checkIfOtemExist) {
       item.subTotal = item.price;
       sale.items.push(item);

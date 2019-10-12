@@ -15,6 +15,7 @@ export class ListProductsComponent implements OnInit {
   searchByCatergory = ``;
   categories: string[] = [];
   products$: Observable<Product[]>;
+  sum: number;
 
   constructor(
     private productService: ProductService,
@@ -40,8 +41,7 @@ export class ListProductsComponent implements OnInit {
         });
 
         this.categories = state.map(c => c.Catergory);
-        console.log(this.categories);
-
+        this.sum = state.length;
         this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
       }
     });
@@ -50,7 +50,13 @@ export class ListProductsComponent implements OnInit {
     this.router.navigate(['/dashboard/add-product']);
   }
   details(product: Product) {
+    this.bannerService.updateState({
+      backto: '/dashboard/list-product',
+    });
     this.productService.updateCurrentProduct(product);
     this.router.navigate([`/dashboard/product-details`]);
+  }
+  clearSearch() {
+    this.search = '';
   }
 }

@@ -1,41 +1,62 @@
+.list-filters {
+  display: grid;
+  grid-template-columns: 30% 30% auto;
+  width: 94%;
+  margin: 0 auto;
+  border-bottom: 1px solid hsl(0, 0%, 78%);
+  padding-bottom: 1rem;
 
-.list-filters{
+  div {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  input,
+  select {
+    width: 90%;
+    margin-right: 0;
+    border: 1px solid #c6c6c6;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+  }
+
+  .select {
     display: grid;
-    grid-template-columns: 30% 30% auto;
-    width: 94%;
-    margin: 0 auto;
-    border-bottom: 1px solid #c6c6c6;
-    padding-bottom: 1rem;
-  
-    div{
-      padding: 0;
-      margin: 0;
-      text-align: left;
-    }
-  
-    input, select{
-      width: 90%;
-      margin-right: 0;
-      border: 1px solid #c6c6c6;
+    border: 1px solid #c6c6c6;
+    grid-template-columns: 30% auto;
+
+    .label {
       font-size: .8rem;
-      padding:.5rem 1rem;
+      padding-top: 0.5rem;
+      padding-left: 2rem;
     }
-    .select{
-      display: grid;
-      border: 1px solid #c6c6c6;
-      grid-template-columns: 30% auto;
-      .label{
-        font-size: .8rem;
-        padding-top: 0.5rem;
-        padding-left: 2rem;
-      }
-      select{
-        border:none;
-        width: 100%;
-      }
-    }
-    .btn {
-        float: right;
+
+    select {
+      border: none;
+      width: 100%;
     }
   }
-  
+
+  .btn {
+    float: right;
+  }
+}
+
+.input-times {
+  //  background: red;
+  position: relative;
+
+  //  input{
+  //    background: yellow;
+  //  }
+  .times {
+    position: absolute;
+    right: 4rem;
+    top: .4rem;
+    cursor: pointer;
+    @media only screen and (max-width: 600px) {
+      right: 1rem;
+    }
+  }
+}

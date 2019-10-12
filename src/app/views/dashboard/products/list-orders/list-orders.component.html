@@ -1,15 +1,21 @@
 <div class="main">
-  <!-- <app-banner></app-banner> -->
-
   <div class="body">
-    <div class="page-actions">
-      <div class="search">
-        <input type="text" [(ngModel)]="search" placeholder="search orders">
-      </div>
-      <div class="add">
-        <button (click)="add()">Add order</button>
-      </div>
-    </div>
+      <h1 class="heading">
+          Order details 
+        </h1>
+
+        <div class="list-filters">
+            <div class="input-times">
+                <input type="text" [(ngModel)]="search" placeholder="search">
+                <div class="times" (click)="clearSearch()">
+                    <i class="pi pi-times"></i>
+                </div>
+              </div>
+          <div class="add">
+            <button class="btn" (click)="add()">New order</button>
+          </div>
+        </div>
+
     <div class="items" *ngIf="orders$  | async as orders">
       <span *ngFor="let item of orders | searchproduct: search">
         <div class="item">

@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
       ),
       password: ['', Validators.required],
       fullname: ['', Validators.required],
-      cell: ['', Validators.required],
+      cell: [''],
       passwordConfirm: ['', Validators.required],
       CompanyId: [null],
     });

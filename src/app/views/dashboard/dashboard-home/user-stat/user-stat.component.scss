@@ -12,9 +12,7 @@
     grid-template-columns: repeat(4, 25%);
 
     @media only screen and (max-width: 600px) {
-      // grid-template-columns: repeat(2, 50%);
       width: 50rem;
-
     }
 
     span {

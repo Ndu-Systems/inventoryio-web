@@ -17,6 +17,10 @@ export class SellComponent implements OnInit {
   sale: SellModel;
   user: User;
   products: Product[];
+  categories: string[] = [];
+  showCart = true;
+  width: number;
+
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -34,6 +38,7 @@ export class SellComponent implements OnInit {
     this.products$ = this.productService.products;
     this.productService.products.subscribe(data => {
       this.products = data;
+      this.getDeviceSize();
     });
     this.productService.getProducts(this.user.CompanyId);
 
@@ -46,6 +51,8 @@ export class SellComponent implements OnInit {
           count: state.length
         });
       }
+      this.categories = state.map(c => c.Catergory);
+      this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
     });
     this.saleService.sell.subscribe(state => {
       this.sale = state;
@@ -121,5 +128,23 @@ export class SellComponent implements OnInit {
     });
     this.productService.updateProductRange(products);
   }
-
+  details(product: Product) {
+    this.productService.updateCurrentProduct(product);
+    this.bannerService.updateState({
+      backto: '/dashboard/sell',
+    });
+    this.router.navigate([`/dashboard/product-details`]);
+  }
+  clearSearch() {
+    this.search = '';
+  }
+  getDeviceSize() {
+    this.width = screen.width;
+    console.log(this.width);
+    this.showCart = this.width >= 720;
+  }
+  toggleCart() {
+    this.showCart = !this.showCart;
+  }
 }
+
