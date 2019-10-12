@@ -1,4 +1,4 @@
-<div class="cards" *ngIf="sale$ | async as sale">
+<!-- <div class="cards" *ngIf="sale$ | async as sale">
   <span *ngIf=sale.items>
     <div class="card" *ngFor="let item of sale.items">
       <div class="close" (click)="close(item)">x</div>
@@ -19,4 +19,37 @@
       </div>
     </div>
   </span>
+</div> -->
+
+
+<div class="sale" *ngIf="sale$ | async as sale">
+    <div class="sale-item" *ngFor="let item of sale.items">
+        <div class="remove">
+            <i (click)="close(item)" class="pi pi-trash"></i>
+        </div>
+        <div class="name-price">
+      <h1>
+          {{item.name}}
+          <span>
+              {{item.subTotal| currency:'R'}}
+          </span>
+      </h1>
+        </div>
+        <div class="count">
+            <div class="qnty">
+              
+                <div class="input">
+                    <input type="text" pInputText pKeyFilter="int"  [(ngModel)]="item.quantity" (blur)="blur(item)">
+                  <!-- <input type="text" min="0" [(ngModel)]="item.quantity" (blur)="blur(item)" placeholder="search products"> -->
+                </div>
+
+                <div  class="btns">
+                    <button class="add" (click)="add(item)">+</button>
+                    <button class="reduce" (click)="reduce(item)">-</button>
+
+                </div>
+              </div>
+        </div>
+     
+      </div>
 </div>

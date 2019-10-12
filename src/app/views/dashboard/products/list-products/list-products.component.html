@@ -1,25 +1,26 @@
-
-
 <div class="main">
   <h1 class="heading">
     Products
   </h1>
   <div class="list-filters">
+      <div class="input-times">
+          <input type="text" [(ngModel)]="search" placeholder="search">
+          <div class="times" (click)="clearSearch()">
+              <i class="pi pi-times"></i>
+          </div>
+        </div>
     <div>
-      <input type="text" [(ngModel)]="search" placeholder="search">
-    </div>
-    <div>
-    <div class="select">
-      <div class="label">
-          filter category: 
-      </div>
-      <div class="input">
+      <div class="select">
+        <div class="label">
+          filter category:
+        </div>
+        <div class="input">
           <select [(ngModel)]="searchByCatergory">
-              <option value="" selected>All</option>
-              <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
-            </select>
+            <option value="" selected>All</option>
+            <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+          </select>
+        </div>
       </div>
-    </div>
     </div>
     <div class="add">
       <button class="btn" (click)="add()">Add product</button>
@@ -43,7 +44,7 @@
         </div>
         <div class="price">
           <p>
-            {{item.UnitCost | currency:'R'}}
+            {{item.UnitPrice | currency:'R'}}
           </p>
           <button class="action-btn" (click)="details(item)">View</button>
         </div>

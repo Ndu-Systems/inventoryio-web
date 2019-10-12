@@ -17,6 +17,8 @@ export class SellComponent implements OnInit {
   sale: SellModel;
   user: User;
   products: Product[];
+  categories: string[] = [];
+
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -46,6 +48,8 @@ export class SellComponent implements OnInit {
           count: state.length
         });
       }
+      this.categories = state.map(c => c.Catergory);
+      this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
     });
     this.saleService.sell.subscribe(state => {
       this.sale = state;
@@ -121,5 +125,11 @@ export class SellComponent implements OnInit {
     });
     this.productService.updateProductRange(products);
   }
-
+  details(product: Product) {
+    this.productService.updateCurrentProduct(product);
+    this.router.navigate([`/dashboard/product-details`]);
+  }
+  clearSearch() {
+    this.search = '';
+  }
 }

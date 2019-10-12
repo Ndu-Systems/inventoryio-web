@@ -11,6 +11,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {KeyFilterModule} from 'primeng/keyfilter';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ToastModule,
     ToggleButtonModule,
     ConfirmDialogModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    KeyFilterModule
 
   ],
   declarations: [...declarations],

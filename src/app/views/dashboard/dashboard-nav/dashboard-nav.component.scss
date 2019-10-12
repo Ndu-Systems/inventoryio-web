@@ -20,8 +20,9 @@
   .nav-bar {
     ul {
       list-style: none;
+
       @media only screen and (max-width: 600px) {
-margin-top: 5rem;
+        margin-top: 5rem;
       }
 
       li {
@@ -78,6 +79,7 @@ margin-top: 5rem;
   .nav-bar-desktop {
     display: none;
   }
+
   .nav-bar-mobile {
     display: block;
   }

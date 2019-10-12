@@ -1,16 +1,101 @@
 <div class="main">
-  <!-- <app-banner></app-banner> -->
+  <h1 class="heading">
+    Create sale order
+  </h1>
 
-  <div class="body">
+  <div class="sell-grid">
 
-    <div class="page-actions">
-      <div class="search">
-        <input type="text" [(ngModel)]="search" placeholder="search products">
-      </div>
-      <div class="add">
-        <button (click)="add()">Add Prod.</button>
+    <div class="products">
+        <div class="list-filters">
+            <div class="input-times">
+              <input type="text" [(ngModel)]="search" placeholder="search">
+              <div class="times" (click)="clearSearch()">
+                  <i class="pi pi-times"></i>
+              </div>
+            </div>
+            <div>
+              <div class="select">
+                <div class="label">
+                  filter category:
+                </div>
+                <div class="input">
+                  <select [(ngModel)]="searchByCatergory">
+                    <option value="" selected>All</option>
+                    <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+       
+          </div>
+ 
+      <div class="small-cards-body">
+
+        <div class="small-cards" *ngIf="products$  | async as products">
+          <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
+            <div class="card" >
+              <div class="image">
+                <img [src]="item.Url" alt="" *ngIf="item.Url">
+              </div>
+              <div class="details">
+                <p class="name">
+                  {{item.Name}}
+                  <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
+                </p>
+
+              </div>
+              <div class="price">
+                <p>
+                  {{item.UnitPrice | currency:'R'}}
+                </p>
+                <button class="action-btn" (click)="doSell(item)"><i class="pi pi-shopping-cart"></i></button>
+                <button class="action-btn" (click)="details(item)">
+                    <i class="pi pi-pencil"></i>
+                </button>
+              </div>
+            </div>
+
+          </span>
+
+        </div>
       </div>
     </div>
+    <div class="summary">
+       <h1>New order</h1>
+      <div class="sell">
+        <app-sale-sammary></app-sale-sammary>
+      </div>
+
+      <div class="sell total">
+        <h4>
+          {{sale?.total | currency:'R'}}
+          <span>Total</span>
+        </h4>
+    
+      </div>
+
+      <div class="list-filters">
+          <div class="add">
+            <button class="btn" (click)="onSubmit()">Save qoute</button>
+          </div>
+          <div class="add">
+            <button class="btn btn-warn" (click)="clear()">Clear form</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<!-- <div class="main">
+  <div class="body">
+
     <div class="cards" *ngIf="products$  | async as products">
       <span *ngFor="let item of products | searchproduct: search">
         <div class="card-betta" (click)="doSell(item)">
@@ -68,4 +153,4 @@
   </h4>
   <button class="btn" (click)="onSubmit()">Save qoute</button>
   <button class="btn warn" (click)="clear()">Clear form</button>
-</div>
+</div> -->

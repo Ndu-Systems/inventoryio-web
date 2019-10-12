@@ -40,8 +40,6 @@ export class ListProductsComponent implements OnInit {
         });
 
         this.categories = state.map(c => c.Catergory);
-        console.log(this.categories);
-
         this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
       }
     });
@@ -52,5 +50,8 @@ export class ListProductsComponent implements OnInit {
   details(product: Product) {
     this.productService.updateCurrentProduct(product);
     this.router.navigate([`/dashboard/product-details`]);
+  }
+  clearSearch() {
+    this.search = '';
   }
 }
