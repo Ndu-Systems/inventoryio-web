@@ -40,7 +40,7 @@ export class DashboardNavComponent implements OnInit {
 
       },
       {
-        Name: 'products',
+        Name: 'inventory ',
         Link: '/dashboard/list-product',
         Icon:  `pi pi-shopping-cart`
 

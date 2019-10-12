@@ -24,7 +24,7 @@
 
 <div class="sale" *ngIf="sale$ | async as sale">
     <div class="sale-item" *ngFor="let item of sale.items">
-        <div class="remove">
+        <div class="remove ">
             <i (click)="close(item)" class="pi pi-trash"></i>
         </div>
         <div class="name-price">
@@ -44,8 +44,12 @@
                 </div>
 
                 <div  class="btns">
-                    <button class="add" (click)="add(item)">+</button>
-                    <button class="reduce" (click)="reduce(item)">-</button>
+                    <button class="add hover-shadow" (click)="add(item)">
+                        <i class="pi pi-plus"></i>
+                    </button>
+                    <button class="reduce hover-shadow" (click)="reduce(item)">
+                      <i class="pi pi-minus"></i>
+                    </button>
 
                 </div>
               </div>

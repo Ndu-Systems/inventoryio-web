@@ -49,6 +49,10 @@
     color: #e74c3c;
     margin-top: .8rem;
     font-size: 1.6rem;
+    cursor: pointer;
+    &:hover{
+      color: #d13625;
+    }
   }
 
   .name-price {
@@ -71,7 +75,7 @@
       grid-template-columns: 60% 40%;
       border: 3px solid #104CE5;
       padding:0;
-      height: 2.3rem;
+      height: 2.7rem;
       width: 4rem;
 
       .input {

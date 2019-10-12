@@ -1,6 +1,6 @@
 <div class="main">
   <h1 class="heading">
-    Products
+      Inventory   <span class="number">{{sum}}</span>
   </h1>
   <div class="list-filters">
       <div class="input-times">
@@ -46,7 +46,7 @@
           <p>
             {{item.UnitPrice | currency:'R'}}
           </p>
-          <button class="action-btn" (click)="details(item)">View</button>
+          <button class="action-btn hover-shadow" (click)="details(item)">View</button>
         </div>
       </div>
 

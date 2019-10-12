@@ -15,6 +15,7 @@ export class ListProductsComponent implements OnInit {
   searchByCatergory = ``;
   categories: string[] = [];
   products$: Observable<Product[]>;
+  sum: number;
 
   constructor(
     private productService: ProductService,
@@ -40,6 +41,7 @@ export class ListProductsComponent implements OnInit {
         });
 
         this.categories = state.map(c => c.Catergory);
+        this.sum = state.length;
         this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
       }
     });
