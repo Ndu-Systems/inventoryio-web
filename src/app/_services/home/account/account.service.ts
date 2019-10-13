@@ -72,7 +72,7 @@ export class AccountService {
         this.updateUserState(user);
         this.router.navigate(['dashboard']);
       } else {
-        alert("User unkown");
+        alert('User unkown');
       }
       this._loading.next(false);
     }, error => {

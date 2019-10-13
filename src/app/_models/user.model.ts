@@ -1,4 +1,4 @@
-import { Role, Store, Company } from 'src/app/_models';
+import { Role, Store, Company, Permission, SystemPermissionModel } from 'src/app/_models';
 // import { Company } from './company.model';
 
 
@@ -22,6 +22,7 @@ export interface User {
   Dp?: string;
   Stores?: Store[];
   Roles?: Role[];
+  Permissions?: SystemPermissionModel[];
 }
 
 // add user to a store

@@ -39,6 +39,17 @@
               Cellphone number is required
             </div>
           </div>
+          <div class="group" *ngIf="roles">
+              <select formControlName="RoleId">
+                <option value="">Select Role</option>
+                <option *ngFor="let item of roles" class="select-option" [value]="item.RoleId">{{item.Name}}</option>
+              </select>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+               <div class="alert" *ngIf="!rForm.controls['RoleId'].valid && rForm.controls['RoleId'].touched">
+                  A role is required
+                </div>
+            </div>
 
           <div class="group">
             <input type="submit" value="Add User" class="btn" [disabled]="!rForm.valid" />

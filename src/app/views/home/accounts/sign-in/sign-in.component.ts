@@ -46,6 +46,7 @@ export class SignInComponent implements OnInit {
   get getFormValues() {
     return this.rForm.controls;
   }
+
   Login() {
     const email = this.getFormValues.Email.value;
     const password = this.getFormValues.Password.value;

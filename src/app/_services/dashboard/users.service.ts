@@ -1,3 +1,5 @@
+import { PermissionsService } from 'src/app/_services';
+import { RolesService } from './roles.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { User, UserRoleModel, UserStoreModel } from 'src/app/_models';
@@ -19,7 +21,7 @@ export class UsersService {
   private _loading: BehaviorSubject<boolean>;
   public loading: Observable<boolean>;
   constructor(private http: HttpClient,
-    private router: Router, ) {
+              private router: Router) {
     this._user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
   }
 
@@ -82,6 +84,7 @@ export class UsersService {
           return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
         });
         this._users.next(Object.assign({}, this.dataStore).users);
+        this.updateUserState(data);
       }, error => console.log('Could not update a user'));
   }
 

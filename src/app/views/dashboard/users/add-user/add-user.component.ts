@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BannerService, UsersService, AccountService} from 'src/app/_services';
+import { BannerService, UsersService, AccountService, RolesService} from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { User } from 'src/app/_models';
+import { User, Role } from 'src/app/_models';
 import { DEFAULT_PASSWORD, StatusConstant } from '../../shared';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/api';
@@ -14,17 +14,20 @@ import { MessageService } from 'primeng/components/common/api';
 export class AddUserComponent implements OnInit {
   rForm: FormGroup;
   userAdded: User;
+  roles: Role[];
   constructor(
     private fb: FormBuilder,
     private bannerService: BannerService,
     private userService: UsersService,
     private accountService: AccountService,
     private messageService: MessageService,
+    private roleService: RolesService,
     private routeTo: Router
   ) { }
 
   ngOnInit() {
     const user: User = this.accountService.currentUserValue;
+    this.getRoles(user.CompanyId);
     this.rForm = this.fb.group({
       Email: new FormControl(
         null,
@@ -37,6 +40,7 @@ export class AddUserComponent implements OnInit {
       Name: [null, Validators.required],
       CellphoneNumber: [null, Validators.required],
       Password: [DEFAULT_PASSWORD],
+      RoleId: [null, Validators.required],
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
@@ -47,7 +51,12 @@ export class AddUserComponent implements OnInit {
       backto: '/dashboard/users'
     });
   }
-
+  getRoles(companyId: string) {
+    this.roleService.getRolesForCompany(companyId, StatusConstant.ACTIVE_STATUS)
+      .subscribe(response => {
+        this.roles = response;
+      });
+  }
   onSubmit(user: User) {
     this.userService.addUser(user);
     this.messageService.add({
