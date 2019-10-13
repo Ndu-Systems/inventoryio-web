@@ -1,0 +1,14 @@
+<div class="main">
+  <!-- <app-banner></app-banner> -->
+
+  <div class="body">
+    <div class="form">
+      <input type="file" class="btn-1" name="myfile" (change)="filesChanged($event.target.files)" />
+      <div class="view">
+        <img [src]="fullUrl" class="preview" alt="">
+      </div>
+      <br><br>
+      <button type="button" class="btn" (click)="uplaodFile()">Confirm</button>
+    </div>
+  </div>
+</div>
