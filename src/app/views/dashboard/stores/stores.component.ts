@@ -3,7 +3,7 @@ import { BannerService, StoresService, AccountService } from 'src/app/_services'
 import { Observable } from 'rxjs';
 import { Store, User, NotFoundModel } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { StatusConstant } from '../shared';
+import { StatusConstant, NotFoundConstants } from '../shared';
 
 @Component({
   selector: 'app-stores',
@@ -13,6 +13,7 @@ import { StatusConstant } from '../shared';
 export class StoresComponent implements OnInit {
   search: string;
   stores$: Observable<Store[]>;
+  notFoundModel: NotFoundModel;
 
   constructor(
     private bannerService: BannerService,
@@ -27,7 +28,10 @@ export class StoresComponent implements OnInit {
       this.accountService.logout();
       this.routeTo.navigate(['sign-in']);
     }
-
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
+      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+    };
     this.bannerService.updateState({
       heading: 'Manage Stores',
       backto: '/dashboard/configurations'

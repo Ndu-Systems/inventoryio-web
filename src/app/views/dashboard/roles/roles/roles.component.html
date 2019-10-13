@@ -1,8 +1,33 @@
-<h1 class="heading"> Your system roles </h1>
 <div class="main">
-  <div class="list-body">
-    <div *ngIf="roles$ | async as roles">
-      <app-role-card-list [roles]="roles"></app-role-card-list>
+  <h1 class="heading"> Your system roles </h1>
+  <div class="list-filters">
+    <div>
+      <input type="text" [(ngModel)]="search" placeholder="search">
+    </div>
+    <div>
+      <!-- <div class="select">
+          <div class="label">
+              filter category:
+          </div>
+          <div class="input">
+              <select [(ngModel)]="searchByCatergory">
+                  <option value="" selected>All</option>
+                  <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+                </select>
+          </div>
+        </div> -->
+    </div>
+    <div class="add">
+      <button class="btn" (click)="add()">add role</button>
     </div>
   </div>
+  <div class="list-body">
+    <div *ngIf="roles$ | async as roles">
+      <span class="cards-betta" *ngIf="roles.length > 0; else no tFound">
+        <span *ngFor="let item of roles | configurationFilterPipe: search">
+          <app-role-card-list [role]="item"></app-role-card-list>
+        </span>
+      </span>
+    </div>
+  </div>``
 </div>

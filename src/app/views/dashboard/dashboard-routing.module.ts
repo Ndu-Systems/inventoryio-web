@@ -61,6 +61,7 @@ import { AddPermissionComponent } from './permissions/add-permission';
 import { SearchProductByCatergoryPipe } from 'src/app/_pipes/search-product-by-catergory';
 import { UploadPreviewComponent } from './uploads/upload-preview/upload-preview.component';
 import { AuthGuard } from 'src/app/_guards';
+import { ConfigurationFilterPipe, UserFilterPipe } from 'src/app/_pipes';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -160,9 +161,12 @@ export const declarations = [
   ListUserRolesComponent,
   AddUserRoleComponent,
   UploadPreviewComponent,
+  RoleCardListComponent,
   // pipes
   SearchProductPipe,
-  SearchProductByCatergoryPipe
+  SearchProductByCatergoryPipe,
+  UserFilterPipe,
+  ConfigurationFilterPipe
 ];
 
 @NgModule({

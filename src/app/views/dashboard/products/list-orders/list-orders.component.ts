@@ -81,4 +81,7 @@ export class ListOrdersComponent implements OnInit {
 
     // order.Due = order.Total - order.Paid;
   }
+  clearSearch(){
+    this.search = null;
+  }
 }

@@ -19,6 +19,7 @@ export class SellComponent implements OnInit {
   products: Product[];
   categories: string[] = [];
   showCart = true;
+  searchByCatergory;
   width: number;
 
   constructor(

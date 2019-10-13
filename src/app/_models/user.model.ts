@@ -9,8 +9,9 @@ export interface User {
   Surname: string;
   CellphoneNumber: string;
   Password: string;
-  CompanyId: string;
-  RoleId: number;
+  CompanyId?: string;
+  CompanyName?: string;
+  RoleId?: number;
   CreateDate?: string;
   CreateUserId?: string;
   ModifyDate?: string;
@@ -21,7 +22,7 @@ export interface User {
   Company?: Company;
   Dp?: string;
   Stores?: Store[];
-  Roles?: Role[];
+  Role?: Role;
   Permissions?: SystemPermissionModel[];
 }
 

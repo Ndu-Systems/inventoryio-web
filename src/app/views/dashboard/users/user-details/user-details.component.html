@@ -82,18 +82,15 @@
               </span>
             </div>
           </div>
-          <div class="info-content" *ngIf="user.Roles">
+          <div class="info-content" *ngIf="user.Role">
             <h1 class="heading">
               role(s) information
             </h1>
-            <span class="tag" *ngFor="let role of user.Roles">
-              <button class="btn">{{role.Name}} &times;</button>
+            <span class="tag" *ngIf="user.Role">
+              <button class="btn">{{user.Role.Name}} &times;</button>
             </span>
           </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <app-list-user-roles [user]="user"></app-list-user-roles>
     </div>
   </div>

@@ -79,5 +79,7 @@ export class RolesService {
   getRolesForCompany(companyId: string, statusId: string): Observable<Role[]> {
     return this.http.get<Role[]>(`${this.url}/api/roles/get-roles.php?CompanyId=${companyId}&&StatusId=${statusId}`);
   }
-
+  addCompanyRole(role: Role): Observable<Role> {
+    return this.http.post<Role>(`${this.url}/api/roles/add-role.php?`, JSON.stringify(role));
+  }
 }

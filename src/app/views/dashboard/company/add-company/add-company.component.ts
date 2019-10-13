@@ -15,7 +15,7 @@ export class AddCompanyComponent implements OnInit {
   rForm: FormGroup;
   error: string;
 
-  roles: Role[];
+  role: Role;
   user: User;
   constructor(
     private fb: FormBuilder,
@@ -62,8 +62,9 @@ export class AddCompanyComponent implements OnInit {
         const companyDb: Company = resp;
         localStorage.setItem('currentCompany', JSON.stringify(companyDb));
         this.companyService.updateState(companyDb);
-
         this.addCompanyTo(companyDb.CompanyId);
+        this.addRole(companyDb.CompanyId)
+
       }, error => {
         alert(JSON.stringify(error));
       });
@@ -80,6 +81,10 @@ export class AddCompanyComponent implements OnInit {
                 products and start selling, we hope you are going to enjoy being part of the family`,
     });
     this.routeTo.navigate(['/dashboard']);
+  }
+
+  addRole(companyId: string) {
+    this.role.CompanyId = companyId;
   }
 
   createRoles() {

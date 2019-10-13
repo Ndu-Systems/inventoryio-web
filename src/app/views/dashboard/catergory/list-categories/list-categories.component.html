@@ -1,9 +1,21 @@
-<h1 class="heading">your categories on the system</h1>
+
 
 <div class="main">
+    <h1 class="heading">your categories on the system</h1>
+    <div class="list-filters">
+        <div>
+          <input type="text" [(ngModel)]="search" placeholder="search">
+        </div>
+        <div>
+
+        </div>
+        <div class="add">
+          <button class="btn" (click)="add()">add category</button>
+        </div>
+      </div>
   <div class="list-body">
     <div class="cards-betta" *ngIf="categories$  | async as categories">
-      <span *ngFor="let item of categories | searchproduct: search">
+      <span *ngFor="let item of categories | configurationFilterPipe: search">
         <div class="card">
           <div class="image">
             <img src="assets/images/maintenance.svg" alt="">
