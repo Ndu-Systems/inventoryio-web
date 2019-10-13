@@ -52,7 +52,7 @@ export class UserDetailsComponent implements OnInit {
 
 
   getUserNow(user: User) {
-    alert(JSON.stringify(user))
+    alert(JSON.stringify(user));
   }
 
 }
