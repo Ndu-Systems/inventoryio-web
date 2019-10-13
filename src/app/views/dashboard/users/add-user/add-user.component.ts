@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BannerService, UsersService, AccountService, RolesService} from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { User, Role } from 'src/app/_models';
@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/components/common/api';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+  @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
   rForm: FormGroup;
   userAdded: User;
   roles: Role[];
@@ -58,14 +59,14 @@ export class AddUserComponent implements OnInit {
       });
   }
   onSubmit(user: User) {
-    this.userService.addUser(user);
+    this.userService.addSystemUser(user);
     this.messageService.add({
       severity: 'success',
       summary: 'Success.',
       detail: `User ${user.Name} added successfully`
     });
     this.routeTo.navigate(['dashboard/users']);
-
+    this.showForm.emit(false);
   }
 
 }

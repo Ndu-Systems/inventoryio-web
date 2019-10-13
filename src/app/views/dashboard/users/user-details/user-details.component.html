@@ -1,4 +1,5 @@
 <div class="main">
+    <h1 class="heading bordered">user details </h1>
   <div class="body" *ngIf="user">
     <div class="card profile">
       <div class="profile-info col-1-of-2">
@@ -53,7 +54,7 @@
           </div>
           <div class="info-content" *ngIf="user.Company">
             <h1 class="heading">
-              official information
+              official company information
             </h1>
             <div class="col-1-of-4">
               <span>
@@ -84,7 +85,7 @@
           </div>
           <div class="info-content" *ngIf="user.Role">
             <h1 class="heading">
-              role(s) information
+             system role information
             </h1>
             <span class="tag" *ngIf="user.Role">
               <button class="btn">{{user.Role.Name}} &times;</button>

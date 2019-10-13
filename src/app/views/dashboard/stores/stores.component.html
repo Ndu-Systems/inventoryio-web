@@ -18,25 +18,29 @@
             </div> -->
     </div>
     <div class="add">
-      <button class="btn" (click)="add()">add a store</button>
+      <button class="btn" (click)="showAdd()">add a store</button>
     </div>
   </div>
-  <div class="list-body">
-    <div *ngIf="stores$ | async as stores">
-      <span class="cards-betta" *ngIf="stores.length > 0; else notFound">
-        <span *ngFor="let item of stores | configurationFilterPipe: search">
-          <app-store-card-list [store]="item"></app-store-card-list>
+  <div class="list-body col-1-of-2">
+    <span>
+      <div *ngIf="stores$ | async as stores">
+        <span class="cards-betta" *ngIf="stores.length > 0; else notFound">
+          <span *ngFor="let item of stores | configurationFilterPipe: search">
+            <app-store-card-list [store]="item"></app-store-card-list>
+          </span>
         </span>
-      </span>
-      <ng-template #notFound>
-        <div class="not-found">
-          <img [src]="notFoundModel.Image" alt="no items found">
-          <h1 class="message">
-            {{notFoundModel.Message}}
-          </h1>
-        </div>
-      </ng-template>
-    </div>
-
+        <ng-template #notFound>
+          <div class="not-found">
+            <img [src]="notFoundModel.Image" alt="no items found">
+            <h1 class="message">
+              {{notFoundModel.Message}}
+            </h1>
+          </div>
+        </ng-template>
+      </div>
+    </span>
+    <span *ngIf="showForm">
+        <app-add-store (showForm)="showAdd()"></app-add-store>
+    </span>
   </div>
 </div>

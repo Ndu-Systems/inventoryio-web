@@ -18,18 +18,19 @@
         </div> -->
     </div>
     <div class="add">
-      <button class="btn" (click)="add()">add staff member</button>
+      <button class="btn" (click)="showAdd()">add staff member</button>
     </div>
   </div>
-  <div class="list-body">
-    <div *ngIf="users$ | async as users">
-      <span class="cards-betta" *ngIf="users.length > 0; notFound">
-        <span *ngFor="let user of users | userFilterPipe: search">
-          <app-user-card-list [user]="user"></app-user-card-list>
+  <div class="list-body col-1-of-2">
+    <span>
+      <div *ngIf="users$ | async as users">
+        <span class="cards-betta" *ngIf="users.length > 0; notFound">
+          <span *ngFor="let user of users | userFilterPipe: search">
+            <app-user-card-list [user]="user"></app-user-card-list>
+          </span>
         </span>
-      </span>
-    </div>
-    <ng-template #notFound>
+      </div>
+      <ng-template #notFound>
         <div class="not-found">
           <img [src]="notFoundModel.Image" alt="no items found">
           <h1 class="message">
@@ -37,6 +38,11 @@
           </h1>
         </div>
       </ng-template>
-
+    </span>
+    <span *ngIf="showForm">
+        <app-add-user
+        (showForm)="showAdd()"
+        ></app-add-user>
+    </span>
   </div>
 </div>

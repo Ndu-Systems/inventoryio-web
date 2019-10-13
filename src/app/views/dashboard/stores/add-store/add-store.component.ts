@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BannerService, StoresService, AccountService } from 'src/app/_services';
 import { Router } from '@angular/router';
@@ -13,6 +13,8 @@ import { MessageService } from 'primeng/components/common/api';
 })
 export class AddStoreComponent implements OnInit {
   rForm: FormGroup;
+  @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(
     private fb: FormBuilder,
     private bannerService: BannerService,
@@ -51,6 +53,7 @@ export class AddStoreComponent implements OnInit {
       detail: `Store ${store.Name} added successfully`
     });
     this.routeTo.navigate(['dashboard/stores']);
+    this.showForm.emit(false);
   }
 
 }

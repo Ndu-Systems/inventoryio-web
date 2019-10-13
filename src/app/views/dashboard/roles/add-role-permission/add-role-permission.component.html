@@ -1,11 +1,16 @@
 <div class="main">
-    <div class="body">
+  <div class="body">
+    <div class="form">
+      <h1 class="form-heading">
+        add a permission for role
+      </h1>
       <div class="form" *ngIf="companyPermissions">
-        <form [formGroup]="rForm"  (ngSubmit)="onSubmit(rForm.value)">
+        <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
           <div class="group">
             <select formControlName="PermissionId">
               <option value="">Select Permission</option>
-              <option *ngFor="let item of companyPermissions" class="select-option" [value]="item.key">{{item.friendlyName}}</option>
+              <option *ngFor="let item of companyPermissions" class="select-option" [value]="item.key">
+                {{item.friendlyName}}</option>
             </select>
           </div>
           <div class="group">
@@ -15,3 +20,4 @@
       </div>
     </div>
   </div>
+</div>

@@ -14,7 +14,7 @@ export class StoresComponent implements OnInit {
   search: string;
   stores$: Observable<Store[]>;
   notFoundModel: NotFoundModel;
-
+  showForm: boolean;
   constructor(
     private bannerService: BannerService,
     private storeService: StoresService,
@@ -42,6 +42,10 @@ export class StoresComponent implements OnInit {
 
   add() {
     this.routeTo.navigate(['dashboard/add-store']);
+  }
+
+  showAdd() {
+    this.showForm = !this.showForm;
   }
 
 }
