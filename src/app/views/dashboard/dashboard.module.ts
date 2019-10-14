@@ -12,7 +12,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {KeyFilterModule} from 'primeng/keyfilter';
-import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 
 
@@ -28,8 +27,7 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
     ToggleButtonModule,
     ConfirmDialogModule,
     FontAwesomeModule,
-    KeyFilterModule,
-    Ng2ImgMaxModule
+    KeyFilterModule
 
   ],
   declarations: [...declarations],

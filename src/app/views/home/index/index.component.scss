@@ -229,15 +229,20 @@ body {
     margin-top: 5rem;
   }
 }
-
 footer {
   background: #F5F6FA;
   padding: 4rem;
   padding-bottom: 10rem;
-
   //mobile layout
   @media only screen and (max-width: 600px) {
     padding: 0%;
+  }
+  //ipad pro
+  @media only screen and (min-width: 1024px) and (max-width:1366px)
+  {
+    padding: 0%;
+    margin-bottom: 30rem;
+   
   }
   h1 {
     color: #3F3D56;
@@ -262,6 +267,13 @@ footer {
       width: 100%;
       font-size: 1.7rem;
     }
+    //ipad pro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    width: 95%;
+    padding: 2rem;
+    font-size: 1.5rem;
+   padding-bottom: 1rem;
+  }
   }
   .textbox {
     display: flex;
@@ -299,7 +311,7 @@ footer {
     input[type=text] {
       border: none;
       padding: 1rem;
-
+      //mobile layout
       @media only screen and (max-width: 600px) {
         padding: 0%;
       }
@@ -309,15 +321,21 @@ footer {
       width: 40%;
       text-transform: none;
       font-size: 1rem;
-
+      //mobile layout
       @media only screen and (max-width: 600px) {
         width: 50%;
         font-size: .8rem;
       }
+      //tablet layout
       @media only screen and (min-width: 481px) and (max-width:768px){
         width: 50%;
         font-size: .8rem;
       }
+      //ipad pro
+     @media only screen and (min-width: 1024px) and (max-width:1366px){
+       font-size: .8rem;
+       padding: 0%;
+     }
     }
   }
 }
