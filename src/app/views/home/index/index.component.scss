@@ -15,6 +15,7 @@ body {
   padding-bottom: 2rem;
   padding-top: 2rem;
 
+  //mobile layout
   @media only screen and (max-width: 600px) {
     background-image: url(../../../../assets/images/backgroundmobilehome.svg);
     background-size: 100%;
@@ -25,6 +26,11 @@ body {
   @media only screen and (min-width: 481px) and (max-width:768px) {
     background-size: 55%;
   }
+  //ipad pro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    background-size: 50%;
+  }
+  
 }
 
 .content {
@@ -57,6 +63,10 @@ body {
       font-weight: 500;
       margin-top: 15px;
     }
+    @media only screen and (min-width: 1024px) and (max-width:1366px){
+      text-align: center;
+      padding-top: 12rem;
+    }
   }
 
   //tablet layout
@@ -64,14 +74,19 @@ body {
     width: 100%;
     text-align: center;
     margin-top: 22rem;
-
     h1 {
       // font-size: 1.8rem;
       text-align: center;
     }
-   
   }
 
+  //ipad pro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  
   button {
     background: #104CE5;
     color: #FFFFFF;
@@ -107,7 +122,6 @@ body {
       -moz-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
       box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
     }
-    
   }
 
   .mobile-house {
@@ -150,6 +164,11 @@ body {
     width: 100%;
      
   }
+  //ipdad pro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    grid-template-columns:50% 50%;
+
+  }
   .card {
     background: #FFFFFF;
     cursor: pointer;
@@ -175,7 +194,7 @@ body {
     }
 
     img {
-      width: 30%;
+      width: 20%;
       margin-top: 3rem;
       transform: scaleX(-1);
     }
@@ -194,6 +213,20 @@ body {
       font-size: 1rem;
       margin-bottom: 2rem;
     }
+    //ipad pro
+    @media only screen and (min-width: 1024px) and (max-width:1366px){
+      margin: 1rem;
+      padding: 0%;
+      img{
+        width: 10%;
+      }
+    }
+  }
+  //ipad ro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    width:100%;
+    margin: 0%;
+    margin-top: 5rem;
   }
 }
 
@@ -202,11 +235,10 @@ footer {
   padding: 4rem;
   padding-bottom: 10rem;
 
+  //mobile layout
   @media only screen and (max-width: 600px) {
     padding: 0%;
-
   }
-
   h1 {
     color: #3F3D56;
     margin-top: 0%;
@@ -229,7 +261,6 @@ footer {
     @media only screen and (min-width: 481px) and (max-width:768px){
       width: 100%;
       font-size: 1.7rem;
-
     }
   }
   .textbox {

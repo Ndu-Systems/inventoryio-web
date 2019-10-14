@@ -21,9 +21,14 @@
         display:none;
       }
     }
+    //ipad layout
     @media only screen and (min-width: 481px) and (max-width:768px){
       width: 95%;
     }
+    //ipad ro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    width: 95%;
+  }
   }
 
   .profile {
@@ -48,10 +53,15 @@
       grid-gap: 0ch;
       margin-top: 1rem;
     }
+     //ipad ro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    grid-template-columns: 50% 50%;
+  }
 
     h4 {
       color: #104CE5;
       font-weight: 400;
+      cursor: pointer;
       //mobile layout
       @media only screen and (max-width: 600px) {}
 
@@ -102,6 +112,10 @@
     @media only screen and (min-width: 481px) and (max-width:768px){
       width: 100%;
     }
+       //ipad ro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    width: 95%;
+  }
 
     .card {
       display: grid;
@@ -113,6 +127,12 @@
        grid-template-columns: 100%;
         width: 95%;
       }
+       //ipad pro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    width: 95%;
+    padding: 0;
+  
+  }
 
       &:hover {
         border-right: .6rem solid #104CE5;
@@ -120,22 +140,20 @@
         -moz-box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
         box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
       }
-
-
-
       .image {
         text-align: center;
         margin: auto;
         width: 100%;
-
+        //mobile layout
         @media only screen and (max-width: 600px) {
           display: none;
         }
 
         img {
           width: 50%;
+          //tablet layout
           @media only screen and (min-width: 481px) and (max-width:768px){
-            width: 20%;
+            width: 40%;
           }
         }
 
@@ -153,6 +171,7 @@
           font-size: 25px;
           font-weight: bold;
           text-transform: capitalize;
+          //moibile layout
           @media only screen and (max-width: 600px) {
             font-size: 1rem;
 
