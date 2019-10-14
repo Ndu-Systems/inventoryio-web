@@ -1,12 +1,11 @@
-<div class="main">
-  <!-- <app-banner></app-banner> -->
-  <div class="body">
-    <div class="cards">
+<!-- <div class="main">
+    <h1 class="heading bordered">Role details</h1>
+    <div class="body">
+    <div class="cards profile">
       <span *ngIf="(role | async); let role">
         <div class="card col-1-of-2">
           <div class="icon">
-            <!-- <img [src]="data.image" alt="role image"> -->
-            <img src="assets/images/actions/role.svg" alt="role image">
+             <img src="assets/images/actions/role.svg" alt="role image">
           </div>
           <div class="data">
             <h1 class="main">{{role.Name}}</h1>
@@ -22,4 +21,42 @@
       ></app-list-role-permissions>
     </div>
   </div>
-</div>
+</div> -->
+
+<div class="main">
+  <h1 class="heading bordered">role details </h1>
+  <div class="body" *ngIf="(role | async); let role">
+    <div class="card profile">
+      <div class="profile-info col-1-of-2">
+        <div class="details">
+          <span class="dp">
+            <!-- <img *ngIf="user.DP" [src]="user.DP.Url" alt="user profile picture">-->
+            <img class="placeholder" src="assets/images/actions/role.svg" alt="">
+          </span>
+          <h1>
+            <span class="header">
+              {{role.Name}}
+            </span>
+          </h1>
+        </div>
+        <div class="information">
+          <div class="info-content" *ngIf="!showAdd">
+            <div class="col-1-of-2">
+              <h1 class="heading">
+                permissions for role
+              </h1>
+              <div class="add">
+                <button class="btn" (click)="showAddForm()">add a permission</button>
+              </div>
+            </div>
+
+            <app-list-role-permissions [roleId]="role.RoleId"></app-list-role-permissions>
+          </div>
+          <span *ngIf="showAdd">
+            <app-add-role-permission (showForm)="showAddForm()" [roleId]="roleId">
+            </app-add-role-permission>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>

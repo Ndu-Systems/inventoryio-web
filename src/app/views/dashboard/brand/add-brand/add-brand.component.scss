@@ -1,27 +1,60 @@
 .main {
-    .body {
-      padding: 1rem;
-      padding-top: 0;
+  background: #fff;
 
-      .section {
-        background: #fff;
-        display: block;
-        padding: 1.5rem;
-        margin-top: 2rem;
-        border-radius: .5rem;
-        border: 1px solid #C1C1C1;
+  .body {
+    padding: 0;
+    padding-top: 0;
 
-      }
+    .section {
+      background: #fff;
+      display: block;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: .5rem;
+      border: 1px solid #C1C1C1;
     }
   }
-  @media only screen and (min-width: 1254px) {
-    .main {
-      .body {
-        padding: 1rem;
-        padding-top: 10px;
-        width: 30vw;
-        margin: 0 auto;
-        background: #fff;
-      }
+}
+
+.col-1-of-2 {
+  grid-template-columns: 100%;
+}
+
+.add {
+  background: #104CE5;
+  float: right;
+  border: none;
+  padding: .5rem;
+  font-weight: 800;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1254px) {
+  .main {
+    padding: 1rem;
+    background: transparent;
+  }
+  .col-1-of-2 {
+    grid-template-columns: 50% 50%;
+  }
+
+  .body {
+    display: grid;
+    margin: 0 auto;
+    .card {
+      margin: 1rem;
+    }
+
+    .form {
+      background: white;
+      padding: 2rem 0;
+      width: 100%;
+      margin: 0 auto;
     }
   }
+}

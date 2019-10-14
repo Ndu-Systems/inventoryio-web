@@ -13,7 +13,7 @@
         padding: 0%;
         height: 100vh;
 
-      
+
     }
 }
 .section {
@@ -48,6 +48,9 @@
         margin: auto;
         padding: 2rem;
         margin-top: 8rem;
+        &.sign-up {
+          padding: 0;
+        }
         @media only screen and (max-width: 600px) {
             width: 90%;
             margin-top: 2%;
@@ -176,6 +179,6 @@
     img {
         width: 80%;
         text-align: center;
-       
+
     }
 }

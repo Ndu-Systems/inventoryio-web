@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-card-list.component.scss']
 })
 export class UserCardListComponent implements OnInit {
-  @Input() users: User[];
+  @Input() user: User;
   notFoundModel: NotFoundModel;
   constructor(
     private routeTo: Router

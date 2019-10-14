@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ListCategoriesComponent implements OnInit {
   search;
   categories$: Observable<Caterory[]>;
+  showForm: boolean;
   constructor(private categorieservice: CateroryService,
               private accountService: AccountService,
               private router: Router,
@@ -37,4 +38,8 @@ export class ListCategoriesComponent implements OnInit {
     });
     this.router.navigate(['/dashboard/add-catergory']);
   }
+  showAdd() {
+    this.showForm = !this.showForm;
+  }
+
 }

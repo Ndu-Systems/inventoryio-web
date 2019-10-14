@@ -25,6 +25,14 @@
     }
   }
 }
+.tag {
+  float: left;
+  margin: 1rem 0;
+  .btn {
+    background: $primary-bg-color;
+    border-radius: 0;
+  }
+}
 
 .cards-betta {
   grid-template-columns: repeat(3, 33%);

@@ -14,7 +14,7 @@ export class ListUsersComponent implements OnInit {
   search: string;
   users$: Observable<User[]>;
 
-
+  showForm: boolean;
   constructor(
     private bannerService: BannerService,
     private userService: UsersService,
@@ -39,6 +39,9 @@ export class ListUsersComponent implements OnInit {
 
   add() {
     this.routeTo.navigate(['dashboard/add-user']);
+  }
+  showAdd() {
+    this.showForm = !this.showForm;
   }
 
 }

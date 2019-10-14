@@ -89,11 +89,8 @@ export class AccountService {
   checkSession() {
     const user: User = this.currentUserValue;
     if (!user) {
+      this.logout();
       this.router.navigate(['sign-in']);
-    }
-
-    if (user.CompanyId.length <= 5) {
-      this.router.navigate(['dashboard/add-company']);
     }
   }
 

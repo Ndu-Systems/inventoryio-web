@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Brand, Caterory, User } from 'src/app/_models';
@@ -12,7 +12,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./add-brand.component.scss']
 })
 export class AddBrandComponent implements OnInit {
-
+  @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
   heading = 'Add brand';
   backto = '/dashboard/add-product';
   rForm: FormGroup;
@@ -68,7 +68,7 @@ export class AddBrandComponent implements OnInit {
       summary: 'Success!',
       detail: 'brand  created '
     });
-    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
-  }
+    this.showForm.emit(false);
+   }
 
 }

@@ -4,40 +4,38 @@
       <div class="mobile-fingerprint-img">
         <img src="../../../../../assets/images/figerprint.svg" alt="">
       </div>
-      <div class="form">
+      <div class="form sign-up">
         <form [formGroup]="rForm" (ngSubmit)="signUp()">
           <h1>Sign Up For Your Free Account</h1>
           <div class="group">
             <input type="text" formControlName="fullname" required="required" />
-
-
             <label>Full Name</label>
           </div>
           <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
             Full Name is required
           </div>
-          <!-- <div class="group">
+          <div class="group">
             <input type="text" formControlName="cell" required="required" />
-
-
             <label>Cell Phone Number</label>
-
           </div>
           <div class="alert" *ngIf="!rForm.controls['cell'].valid  && rForm.controls['cell'].touched">
             Cell Phone Number is required
-          </div> -->
+          </div>
 
           <div class="group">
             <input type="text" formControlName="email" required="required" />
-
-
             <label>Email Address</label>
-
           </div>
           <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
-            A vailid email is required
+            A valid email is required
           </div>
-
+          <div class="group">
+              <input type="text" formControlName="companyName" required="required" />
+              <label>Company Name</label>
+            </div>
+            <div class="alert" *ngIf="!rForm.controls['companyName'].valid  && rForm.controls['companyName'].touched">
+              Company name is required
+            </div>
           <div class="group">
             <input type="password" formControlName="password" required="required" autocomplete="new-password" />
 
@@ -61,7 +59,7 @@
             Confirm Password is required
           </div>
           <div class="actions">
-          
+
           </div>
           <br>
           <div class="group">
@@ -84,13 +82,13 @@
 
 
 <div class="home-loading" *ngIf="this.loading$| async as loading">
-    <img class="logo" src="assets/images/white-icon.png" alt="">
-    <h1>Creating your account, please wait</h1>
-  
-    <div class="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+  <img class="logo" src="assets/images/white-icon.png" alt="">
+  <h1>Creating your account, please wait</h1>
+
+  <div class="lds-ellipsis">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
+</div>

@@ -2,7 +2,7 @@
   background: #fff;
 
   .body {
-    padding: 1rem;
+    padding: 0;
     padding-top: 0;
 
     .section {
@@ -36,6 +36,7 @@
 
 @media only screen and (min-width: 1254px) {
   .main {
+    padding: 1rem;
     background: transparent;
   }
   .col-1-of-2 {
@@ -44,7 +45,6 @@
 
   .body {
     display: grid;
-    width: 75vw;
     margin: 0 auto;
     .card {
       margin: 1rem;
@@ -52,8 +52,8 @@
 
     .form {
       background: white;
-      padding: 2rem;
-      width: 40%;
+      padding: 2rem 0;
+      width: 100%;
       margin: 0 auto;
     }
   }
