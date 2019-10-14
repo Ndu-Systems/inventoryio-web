@@ -14,6 +14,7 @@ export class UploadPreviewComponent implements OnInit {
   heading = 'Upload';
   backto = '/dashboard/add-product';
   file: File;
+  files: File[];
   message: string;
   success: string;
   clientId: any;
@@ -41,9 +42,20 @@ export class UploadPreviewComponent implements OnInit {
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
     this.accountService.checkSession();
+    // this.cropImage();
   }
   filesChanged(files) {
+    console.log(files);
+    this.files = files;
+
     this.file = files[0] as File;
+    const time = new Date().getTime();
+    const extention = this.file.name.split('.')[this.file.name.split('.').length - 1];
+    const newfilename = `${time}.${extention}`;
+    const myNewFile = new File([this.file], newfilename, { type: this.file.type });
+    this.file = myNewFile;
+    console.log(this.file);
+
   }
   uplaodFile() {
     if (!this.file) {
@@ -71,5 +83,31 @@ export class UploadPreviewComponent implements OnInit {
     this.uploadService.addImage(data);
     // this.routeTo.navigate([this.backto]);
   }
+  cropImage() {
+    const canvas: any = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
 
+    img.onload = () => {
+
+      // set size proportional to image
+      canvas.height = canvas.width * (img.height / img.width);
+
+      // step 1 - resize to 50%
+      const oc = document.createElement('canvas');
+      const octx = oc.getContext('2d');
+
+      oc.width = img.width * 0.5;
+      oc.height = img.height * 0.5;
+      octx.drawImage(img, 0, 0, oc.width, oc.height);
+
+      // step 2
+      octx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5);
+
+      // step 3, resize to final size
+      ctx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5,
+        0, 0, canvas.width, canvas.height);
+    };
+    img.src = '//i.imgur.com/SHo6Fub.jpg';
+  }
 }

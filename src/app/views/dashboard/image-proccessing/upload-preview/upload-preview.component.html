@@ -3,7 +3,7 @@
 
   <div class="body">
     <div class="form">
-      <input type="file" class="btn-1" name="myfile" (change)="filesChanged($event.target.files)" />
+      <input type="file" class="btn-1" name="myfile" (change)="filesChanged($event.target.files)" multiple />
       <div class="view">
         <img [src]="fullUrl" class="preview" alt="">
       </div>
@@ -12,3 +12,5 @@
     </div>
   </div>
 </div>
+<!-- <img src="//i.imgur.com/SHo6Fub.jpg" width="300" height="234">
+<canvas id="canvas" width=300></canvas> -->
