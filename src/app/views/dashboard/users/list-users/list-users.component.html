@@ -1,12 +1,11 @@
-
- <div class="main">
-    <h1 class="heading">your staff on the system</h1>
-    <div class="list-filters">
-        <div>
-          <!-- <input type="text" [(ngModel)]="search" placeholder="search"> -->
-        </div>
-        <div>
-        <!-- <div class="select">
+<div class="main">
+  <h1 class="heading">your staff on the system</h1>
+  <div class="list-filters">
+    <div>
+      <input type="text" [(ngModel)]="search" placeholder="search">
+    </div>
+    <div>
+      <!-- <div class="select">
           <div class="label">
               filter category:
           </div>
@@ -17,15 +16,33 @@
                 </select>
           </div>
         </div> -->
-        </div>
-        <div class="add">
-          <button class="btn" (click)="add()">add staff member</button>
-        </div>
+    </div>
+    <div class="add">
+      <button class="btn" (click)="showAdd()">add staff member</button>
+    </div>
+  </div>
+  <div class="list-body col-1-of-2">
+    <span>
+      <div *ngIf="users$ | async as users">
+        <span class="cards-betta" *ngIf="users.length > 0; notFound">
+          <span *ngFor="let user of users | userFilterPipe: search">
+            <app-user-card-list [user]="user"></app-user-card-list>
+          </span>
+        </span>
       </div>
-    <div class="list-body">
-     <div *ngIf="users$ | async as users">
-        <app-user-card-list [users]="users"></app-user-card-list>
-     </div>
-
-   </div>
- </div>
+      <ng-template #notFound>
+        <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            {{notFoundModel.Message}}
+          </h1>
+        </div>
+      </ng-template>
+    </span>
+    <span *ngIf="showForm">
+        <app-add-user
+        (showForm)="showAdd()"
+        ></app-add-user>
+    </span>
+  </div>
+</div>

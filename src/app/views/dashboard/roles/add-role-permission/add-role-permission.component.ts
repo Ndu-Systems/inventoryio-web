@@ -14,6 +14,8 @@ import { StatusConstant } from '../../shared';
   styleUrls: ['./add-role-permission.component.scss']
 })
 export class AddRolePermissionComponent implements OnInit {
+  @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @Input() roleId: string;
   @Output() toggle = new EventEmitter<any>();
   rForm: FormGroup;
@@ -66,7 +68,7 @@ export class AddRolePermissionComponent implements OnInit {
         summary: 'Success.',
         detail: `Permission added to role`
       });
-      this.toggle.emit(false);
+      this.showForm.emit(false);
     });
 
   }

@@ -1,7 +1,8 @@
+import { Role } from './../../../../_models/roles.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from 'src/app/_services';
+import { AccountService, RolesService } from 'src/app/_services';
 import { User } from 'src/app/_models';
 
 @Component({
@@ -14,6 +15,7 @@ export class SignUpComponent implements OnInit {
   rForm: FormGroup;
   error: string;
   loading$ = this.accountService.loading;
+  role: Role;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -34,8 +36,8 @@ export class SignUpComponent implements OnInit {
       password: ['', Validators.required],
       fullname: ['', Validators.required],
       cell: [''],
-      passwordConfirm: ['', Validators.required],
-      CompanyId: [null],
+      companyName: [''],
+      passwordConfirm: ['', Validators.required]
     });
 
   }
@@ -46,11 +48,10 @@ export class SignUpComponent implements OnInit {
   signUp() {
     const fullname: string = this.getFormValues.fullname.value;
     const cell = this.getFormValues.cell.value;
-    const CompanyId = this.getFormValues.CompanyId.value;
+    const companyName = this.getFormValues.companyName.value;
     const email = this.getFormValues.email.value;
     const password = this.getFormValues.password.value;
     const passwordConfirm = this.getFormValues.passwordConfirm.value;
-
     if (password !== passwordConfirm) {
       this.error = `Password must match`;
       alert(this.error);
@@ -62,14 +63,15 @@ export class SignUpComponent implements OnInit {
       Name: fullname.split(' ')[0],
       Surname: fullname.split(' ')[1] || '',
       CellphoneNumber: cell,
+      CompanyName: companyName,
       Password: password,
       CreateUserId: 'web',
       ModifyUserId: 'web',
       RoleId: 1,
-      StatusId: 1,
-      CompanyId: ''
-    };
+      StatusId: 1
+     };
     this.accountService.addUser(data);
+
   }
 
 }

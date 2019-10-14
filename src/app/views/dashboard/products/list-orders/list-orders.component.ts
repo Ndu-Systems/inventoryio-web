@@ -55,7 +55,7 @@ export class ListOrdersComponent implements OnInit {
     } else {
       order.Disable = false;
       order.Due = order.Total - order.Payment;
-      order.Due =  order.Due - order.Paid;
+      order.Due = order.Due - order.Paid;
       console.log(order);
     }
 
@@ -80,5 +80,8 @@ export class ListOrdersComponent implements OnInit {
     order.Paying = !order.Paying;
 
     // order.Due = order.Total - order.Paid;
+  }
+  clearSearch() {
+    this.search = null;
   }
 }

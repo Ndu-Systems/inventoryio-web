@@ -12,7 +12,6 @@ import { NotFoundConstants } from '../../shared';
 })
 export class ListRolePermissionsComponent implements OnInit {
   @Input() roleId: string;
-  showAdd: boolean;
   notFoundModel: NotFoundModel;
   permissions: SystemPermissionModel[] = [];
   constructor(
@@ -33,12 +32,7 @@ export class ListRolePermissionsComponent implements OnInit {
   add() {
 
   }
-  showAddForm() {
-    this.showAdd = !this.showAdd;
-  }
-  toggleTodo(event) {
-    this.showAdd = event;
-    this.permissions = this.sharedService.loadRolePermissions(this.roleId);
-  }
+
+
 
 }

@@ -9,15 +9,11 @@ import { NotFoundConstants } from '../../shared';
   styleUrls: ['./store-card-list.component.scss']
 })
 export class StoreCardListComponent implements OnInit {
- @Input() stores: Store[];
- notFoundModel: NotFoundModel;
+ @Input() store: Store;
   constructor() { }
 
   ngOnInit() {
-    this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
-      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
-    };
+
   }
 
 }

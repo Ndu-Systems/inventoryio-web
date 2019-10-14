@@ -15,6 +15,8 @@ export class RoleDetailsComponent implements OnInit {
   roles: Observable<Role[]>;
   role: Observable<Role>;
   roleId: string;
+  showAdd: boolean;
+
   constructor(
     private fb: FormBuilder,
     private bannerService: BannerService,
@@ -49,6 +51,8 @@ export class RoleDetailsComponent implements OnInit {
   }
 
 
-
+  showAddForm() {
+    this.showAdd = !this.showAdd;
+  }
 
 }

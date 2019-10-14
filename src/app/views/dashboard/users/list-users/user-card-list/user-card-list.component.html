@@ -1,24 +1,11 @@
-<span class="cards-betta" *ngIf="users.length > 0; notFound">
-
-  <span *ngFor="let item of users">
-    <div class="card" (click)="getUserDetails(item)">
-      <div class="icon">
-        <!-- <img [src]="data.image" alt="role image"> -->
-        <img src="assets/user-blue.svg" alt="role image">
-      </div>
-      <div class="name">
-        <h1 class="main">{{item.Name}} {{item.Surname}}</h1>
-        <h1 class="spec">{{item.CellphoneNumber}}</h1>
-        <h1 class="spec email">{{item.Email}}</h1>
-      </div>
-    </div>
-  </span>
-</span>
-<ng-template #notFound>
-  <div class="not-found">
-    <img [src]="notFoundModel.Image" alt="no items found">
-    <h1 class="message">
-      {{notFoundModel.Message}}
-    </h1>
+<div class="card" (click)="getUserDetails(user)">
+  <div class="icon">
+    <!-- <img [src]="data.image" alt="role image"> -->
+    <img src="assets/user-blue.svg" alt="role image">
   </div>
-</ng-template>
+  <div class="name">
+    <h1 class="main">{{user.Name}} {{user.Surname}}</h1>
+    <h1 class="spec">{{user.CellphoneNumber}}</h1>
+    <h1 class="spec email">{{user.Email}}</h1>
+  </div>
+</div>

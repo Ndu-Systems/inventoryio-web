@@ -1,9 +1,9 @@
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { BannerService, AccountService, UsersService } from 'src/app/_services';
+import { BannerService, AccountService, UsersService, RolesService } from 'src/app/_services';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/_models';
+import { User, Role } from 'src/app/_models';
 
 @Component({
   selector: 'app-user-details',
@@ -13,9 +13,11 @@ import { User } from 'src/app/_models';
 export class UserDetailsComponent implements OnInit {
   userId: string;
   user: User;
+  role: Role;
   constructor(
     private bannerService: BannerService,
     private activatedRoute: ActivatedRoute,
+    private roleService: RolesService,
     private accountService: AccountService,
     private userService: UsersService,
     private routeTo: Router
@@ -37,6 +39,7 @@ export class UserDetailsComponent implements OnInit {
     if (this.userId) {
       this.getUser(this.userId);
     }
+    this.getCompanyRoles();
   }
 
   getUser(userId: string) {
@@ -46,13 +49,23 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUserDetails(userId).subscribe(response => {
       if (response.UserId) {
         this.user = response;
+        this.role = this.user.Role;
       }
     });
+
+  }
+  getCompanyRoles() {
+    if (this.user) {
+      this.roleService.getRolesForCompany(this.user.CompanyId, '1').subscribe(Response => {
+        if (Response.length === 0) {
+          alert('do work');
+        }
+      });
+    }
   }
 
-
   getUserNow(user: User) {
-    alert(JSON.stringify(user))
+    alert(JSON.stringify(user));
   }
 
 }

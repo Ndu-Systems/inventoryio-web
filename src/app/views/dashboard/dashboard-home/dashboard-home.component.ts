@@ -31,8 +31,7 @@ export class DashboardHomeComponent implements OnInit {
       });
     }
     if (!this.user.CompanyId) {
-      // debugger
-      // this.createCompanyPopuP();
+      this.router.navigate(['/dashboard/add-company']);
     }
     this.preloadData();
   }

@@ -1,60 +1,54 @@
 <div class="main">
-  <!-- <app-banner></app-banner> -->
   <div class="body">
-      <div class="form">
-        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
-          <div class="group">
-            <input type="text" formControlName="Name" required="required" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>First Name</label>
-            <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
-              Name is required
-            </div>
-          </div>
-          <div class="group">
-            <input type="text" formControlName="Surname" required="required" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Surname</label>
-            <div class="alert" *ngIf="!rForm.controls['Surname'].valid && rForm.controls['Surname'].touched">
-              Surname is required
-            </div>
-          </div>
-          <div class="group">
-            <input type="email" formControlName="Email" required="required" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Email Address</label>
-            <div class="alert" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
-              Email is required
-            </div>
-          </div>
-          <div class="group">
-            <input type="text" formControlName="CellphoneNumber" required="required" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Cellphone Number</label>
-            <div class="alert" *ngIf="!rForm.controls['CellphoneNumber'].valid && rForm.controls['CellphoneNumber'].touched">
-              Cellphone number is required
-            </div>
-          </div>
-          <div class="group" *ngIf="roles">
-              <select formControlName="RoleId">
-                <option value="">Select Role</option>
-                <option *ngFor="let item of roles" class="select-option" [value]="item.RoleId">{{item.Name}}</option>
-              </select>
-              <span class="highlight"></span>
-              <span class="bar"></span>
-               <div class="alert" *ngIf="!rForm.controls['RoleId'].valid && rForm.controls['RoleId'].touched">
-                  A role is required
-                </div>
-            </div>
+    <div class="form">
+      <h1 class="form-heading">
+        add a new user
+      </h1>
+      <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+        <div class="group">
+          <input type="text" formControlName="Name" required="required" />
+          <label>First Name</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+          Name is required
+        </div>
+        <div class="group">
+          <input type="text" formControlName="Surname" required="required" />
+          <label>Surname</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['Surname'].valid && rForm.controls['Surname'].touched">
+          Surname is required
+        </div>
+        <div class="group">
+          <input type="email" formControlName="Email" required="required" />
+          <label>Email Address</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+          Email is required
+        </div>
+        <div class="group">
+          <input type="text" formControlName="CellphoneNumber" required="required" />
 
-          <div class="group">
-            <input type="submit" value="Add User" class="btn" [disabled]="!rForm.valid" />
-          </div>
-        </form>
-      </div>
+          <label>Cellphone Number</label>
+        </div>
+        <div class="alert"
+          *ngIf="!rForm.controls['CellphoneNumber'].valid && rForm.controls['CellphoneNumber'].touched">
+          Cellphone number is required
+        </div>
+        <div class="group" *ngIf="roles">
+          <select formControlName="RoleId">
+            <option value="">Select Role</option>
+            <option *ngFor="let item of roles" class="select-option" [value]="item.RoleId">{{item.Name}}</option>
+          </select>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['RoleId'].valid && rForm.controls['RoleId'].touched">
+          A role is required
+        </div>
+
+        <div class="group">
+          <input type="submit" value="Add User" class="btn" [disabled]="!rForm.valid" />
+        </div>
+      </form>
+    </div>
   </div>
 </div>

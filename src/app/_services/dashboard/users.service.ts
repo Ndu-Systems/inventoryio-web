@@ -69,6 +69,13 @@ export class UsersService {
         this._users.next(Object.assign({}, this.dataStore).users);
       }, error => console.log('Could not add a store'));
   }
+  addSystemUser(user: User) {
+    this.http.post<User>(`${this.url}/api/user/add-user-system.php`, JSON.stringify(user))
+      .subscribe(data => {
+        this.dataStore.users.push(data);
+        this._users.next(Object.assign({}, this.dataStore).users);
+      }, error => console.log('Could not add a store'));
+  }
 
 
 

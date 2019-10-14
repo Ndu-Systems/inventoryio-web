@@ -1,18 +1,46 @@
-<h1 class="heading">your stores on the system</h1>
 <div class="main">
-   <div class="list-body">
-    <div *ngIf="stores$ | async as stores">
-        <app-store-card-list [stores]="stores"></app-store-card-list>
+  <h1 class="heading">your stores on the system</h1>
+  <div class="list-filters">
+    <div>
+      <input type="text" [(ngModel)]="search" placeholder="search">
     </div>
-    <ng-template #notFound>
-        <div class="not-found">
+    <div>
+      <!-- <div class="select">
+              <div class="label">
+                  filter category:
+              </div>
+              <div class="input">
+                  <select [(ngModel)]="searchByCatergory">
+                      <option value="" selected>All</option>
+                      <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+                    </select>
+              </div>
+            </div> -->
+    </div>
+    <div class="add">
+      <button class="btn" (click)="showAdd()">add a store</button>
+    </div>
+  </div>
+  <div class="list-body col-1-of-2">
+    <span>
+      <div *ngIf="stores$ | async as stores">
+        <span class="cards-betta" *ngIf="stores.length > 0; else notFound">
+          <span *ngFor="let item of stores | configurationFilterPipe: search">
+            <app-store-card-list [store]="item"></app-store-card-list>
+          </span>
+        </span>
+        <ng-template #notFound>
+          <div class="not-found">
             <img [src]="notFoundModel.Image" alt="no items found">
             <h1 class="message">
-              No stores found
+              {{notFoundModel.Message}}
             </h1>
-        </div>
-      </ng-template>
+          </div>
+        </ng-template>
+      </div>
+    </span>
+    <span *ngIf="showForm">
+        <app-add-store (showForm)="showAdd()"></app-add-store>
+    </span>
   </div>
 </div>
-
-

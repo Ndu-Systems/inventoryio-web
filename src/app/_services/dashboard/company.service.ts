@@ -37,8 +37,8 @@ export class CompanyService {
     });
   }
 
-  addCompanySync(data: Company): Observable<any> {
-    return this.http.post<any>(`${this.url}/api/company/add-company.php`, data);
+  addCompanySync(data: Company): Observable<Company> {
+    return this.http.post<Company>(`${this.url}/api/company/add-company.php`, data);
   }
 
 

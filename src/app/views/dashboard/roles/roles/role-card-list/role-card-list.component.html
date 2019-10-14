@@ -1,16 +1,13 @@
- <span class="cards-betta" *ngIf="roles.length > 0; else notFound">
-   <span *ngFor="let item of roles">
-     <div class="card" (click)="getRoleDetails(item)">
+
+     <div class="card" (click)="getRoleDetails(role)">
        <div class="image">
          <!-- <img [src]="data.image" alt="role image"> -->
          <img src="assets/images/actions/role.svg" alt="role image">
        </div>
        <div class="name">
-         <h1>{{item.Name}}</h1>
+         <h1>{{role.Name}}</h1>
        </div>
      </div>
-   </span>
- </span>
  <ng-template #notFound>
    <div class="not-found">
      <img [src]="notFoundModel.Image" alt="no items found">

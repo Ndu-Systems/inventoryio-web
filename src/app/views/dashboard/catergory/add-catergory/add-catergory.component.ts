@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Brand, Caterory, User, Product } from 'src/app/_models';
@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./add-catergory.component.scss']
 })
 export class AddCatergoryComponent implements OnInit {
+  @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   rForm: FormGroup;
   error: string;
@@ -50,7 +51,7 @@ export class AddCatergoryComponent implements OnInit {
       summary: 'Success!',
       detail: 'catergory  created '
     });
-    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
+    this.showForm.emit(false);
   }
 
 
