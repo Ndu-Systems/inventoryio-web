@@ -1,9 +1,11 @@
 .section-2-content {
   background: #fff;
+
   @media only screen and (max-width: 600px) {
     background: #F5F6FA;
     margin: 2rem 10px;
   }
+
   h1 {
     color: #3F3D56;
     border-bottom: .2rem solid #104CE5;
@@ -12,16 +14,25 @@
     text-align: center;
     padding: 1.2rem;
     padding-top: 5rem;
+
     //mobile layout
     @media only screen and (max-width: 600px) {
       width: 100%;
       border-bottom: none;
       padding: 0%;
+
       &.heading-features {
-        display:none;
+        display: none;
       }
     }
-    @media only screen and (min-width: 481px) and (max-width:768px){
+
+    //ipad layout
+    @media only screen and (min-width: 481px) and (max-width:768px) {
+      width: 95%;
+    }
+
+    //ipad Pro
+    @media only screen and (min-width: 1024px) and (max-width:1366px) {
       width: 95%;
     }
   }
@@ -34,6 +45,7 @@
     margin: auto;
     margin-top: 4rem;
     grid-gap: 5rem;
+
     //mobile layout
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%;
@@ -42,16 +54,24 @@
       grid-gap: 0ch;
       padding: 0%;
     }
+
     //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px){
+    @media only screen and (min-width: 481px) and (max-width:768px) {
       grid-template-columns: 100%;
       grid-gap: 0ch;
       margin-top: 1rem;
     }
 
+    //ipad ro
+    @media only screen and (min-width: 1024px) and (max-width:1366px) {
+      grid-template-columns: 50% 50%;
+    }
+
     h4 {
       color: #104CE5;
       font-weight: 400;
+      cursor: pointer;
+
       //mobile layout
       @media only screen and (max-width: 600px) {}
 
@@ -80,8 +100,9 @@
 
   span {
     margin-bottom: 5rem;
+
     //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px){
+    @media only screen and (min-width: 481px) and (max-width:768px) {
       margin-bottom: 0;
     }
   }
@@ -93,14 +114,21 @@
     justify-content: center;
     padding-bottom: 2rem;
     padding: 2rem;
+
     //mobile layout
     @media only screen and (max-width: 600px) {
       width: 100%;
       padding: 0%;
     }
+
     //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px){
+    @media only screen and (min-width: 481px) and (max-width:768px) {
       width: 100%;
+    }
+
+    //ipad ro
+    @media only screen and (min-width: 1024px) and (max-width:1366px) {
+      width: 95%;
     }
 
     .card {
@@ -108,10 +136,17 @@
       grid-template-columns: 40% auto;
       margin: 1rem;
       padding: 2rem;
+
       //tablet layout
-      @media only screen and (min-width: 481px) and (max-width:768px){
-       grid-template-columns: 100%;
+      @media only screen and (min-width: 481px) and (max-width:768px) {
+        grid-template-columns: 100%;
         width: 95%;
+      }
+
+      //ipad pro
+      @media only screen and (min-width: 1024px) and (max-width:1366px) {
+        width: 95%;
+        padding: 0;
       }
 
       &:hover {
@@ -120,22 +155,20 @@
         -moz-box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
         box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
       }
-
-
-
       .image {
         text-align: center;
         margin: auto;
         width: 100%;
 
+        //mobile layout
         @media only screen and (max-width: 600px) {
           display: none;
         }
-
         img {
           width: 50%;
-          @media only screen and (min-width: 481px) and (max-width:768px){
-            width: 20%;
+          //tablet layout
+          @media only screen and (min-width: 481px) and (max-width:768px) {
+            width: 40%;
           }
         }
 
@@ -153,6 +186,8 @@
           font-size: 25px;
           font-weight: bold;
           text-transform: capitalize;
+
+          //moibile layout
           @media only screen and (max-width: 600px) {
             font-size: 1rem;
 
@@ -166,6 +201,7 @@
           line-height: 20px;
           color: #455E6D;
         }
+
         @media only screen and (max-width: 600px) {
           margin: 0%;
           text-align: center;
@@ -183,10 +219,8 @@
           img {
             margin: 1rem auto;
           }
-
         }
       }
-
       @media only screen and (max-width: 600px) {
         display: grid;
         grid-template-columns: 100%;

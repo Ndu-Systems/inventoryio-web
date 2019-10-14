@@ -1,7 +1,7 @@
 .main {
-  background: #E4E4E4;
-}
+  background: #F5F6FA ;
 
+}
 .top-bar {
   display: grid;
   grid-template-columns: 50% auto;
@@ -21,12 +21,18 @@
   }
 
   //tablet layout
-  @media only screen and (min-width: 481px) and (max-width:768px) {
+  @media only screen and (min-width: 768px) and (max-width:1024px) {
     grid-template-columns: 30% auto;
     width: 100%;
     right: 0%;
     padding-left: 5rem;
-
+  }
+  //ipad pro
+  @media only screen and (min-width: 1024px) and (max-width:1366px){
+    grid-template-columns: 25% auto;
+    width: 100%;
+    right: 0%;
+    
   }
 
   .logo {
@@ -58,7 +64,12 @@
         width: 40%;
       }
     }
+    //ipad pro
+    @media only screen and (min-width: 1024px) and (max-width:1366px){
+      margin: 0%;
+    }
   }
+  
 
   .nav {
     display: flex;
@@ -79,7 +90,13 @@
       padding: 0;
       justify-content: right;
     }
-
+    //ipad pro
+    @media only screen and (min-width: 1024px) and (max-width:1366px){
+      width: 70%;
+      padding: 0%;
+      
+    }
+   
     li {
       list-style-type: none;
       padding: 0 2rem;
@@ -96,7 +113,6 @@
           color: #104CE5;
         }
       }
-
       a {
         color: #ffffff;
       }
@@ -106,8 +122,8 @@
         padding-right: 0%;
         margin-right: 0%;
         justify-content: right;
-        
       }
+     
     }
   }
 

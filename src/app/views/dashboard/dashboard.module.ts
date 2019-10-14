@@ -28,6 +28,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
     ConfirmDialogModule,
     FontAwesomeModule,
     KeyFilterModule
+
   ],
   declarations: [...declarations],
   providers: [MessageService, ConfirmationService]
