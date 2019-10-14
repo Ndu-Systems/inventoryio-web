@@ -14,6 +14,10 @@
         </div>
 
         <div class="group">
+          <app-file-upload formControlName="image" [progress]="progress"></app-file-upload>
+        </div>
+
+        <div class="group">
           <select formControlName="BrandId">
             <option value="">No Brand</option>
             <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
@@ -94,18 +98,99 @@
 </div> -->
 
 
-<h1 class="heading">
-  Add a product
-</h1>
+<div class="add-body">
+  <div class="head">
+    New Product
+  </div>
+  <div class="add-form">
+    <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <div class="group name">
+        <input type="text" formControlName="Name" placeholder="Product Name" />
+        <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+          Product Name is required
+        </div>
+      </div>
 
-<div class="main">
-  <div class="name-image">
-  <div class="name">
-    <label>Name</label>
-    <input type="text">
-  </div>
-  <div class="image">
-     <app-upload-preview></app-upload-preview>
-  </div>
+
+      <div class="group image">
+        <app-file-upload formControlName="image" [progress]="progress"></app-file-upload>
+      </div>
+
+      <div class="col-2-of-2">
+
+        <div class="group">
+          <div class="input-icon">
+            <div class="icon">
+              <img src="../../../../../assets/selectbrand.svg" alt="">
+            </div>
+            <div class="input">
+                <select formControlName="BrandId">
+                    <option value="">No Brand</option>
+                    <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
+                  </select>
+            </div>
+          </div>
+        
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Brand</label>
+          <div class="add">
+            <a (click)="addbrand(rForm.value)">+</a>
+          </div>
+        </div>
+
+        <div class="group">
+          <select formControlName="CatergoryId">
+            <option value="">No Caterory</option>
+            <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CatergoryId">{{catergory.Name}}
+            </option>
+          </select>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Caterory</label>
+          <div class="add">
+            <a (click)="addcatergory(rForm.value)">+</a>
+          </div>
+        </div>
+
+
+
+        <div class="group">
+          <input type="text" formControlName="UnitPrice" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Unit Selling Price</label>
+        </div>
+
+        <div class="group">
+          <input type="text" formControlName="UnitCost" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Unit Cost</label>
+        </div>
+
+
+        <div class="group">
+          <input type="number" formControlName="Quantity" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Quantity</label>
+        </div>
+
+        <div class="group">
+          <input type="number" min="0" formControlName="LowStock" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Low Stock Alert</label>
+        </div>
+
+        
+
+      </div>
+
+      <div class="group">
+          <input type="submit" value="Add Product" class="btn" [disabled]="!rForm.valid" />
+      </div>
+    </form>
   </div>
 </div>

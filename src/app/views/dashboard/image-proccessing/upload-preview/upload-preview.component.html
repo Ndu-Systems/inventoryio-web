@@ -1,5 +1,4 @@
 <div class="main">
-  <!-- <app-banner></app-banner> -->
 
   <div class="body">
     <div class="form">
@@ -12,5 +11,19 @@
     </div>
   </div>
 </div>
-<!-- <img src="//i.imgur.com/SHo6Fub.jpg" width="300" height="234">
-<canvas id="canvas" width=300></canvas> -->
+
+
+
+
+<form [formGroup]="signup" (ngSubmit)="submit()">
+
+  <div class="form-group">
+    <label>Email address</label>
+    <input type="email" formControlName="email">
+  </div>
+
+  <!-- <app-file-upload formControlName="image" [progress]="progress"></app-file-upload> -->
+
+  <button>Submit</button>
+
+</form>
