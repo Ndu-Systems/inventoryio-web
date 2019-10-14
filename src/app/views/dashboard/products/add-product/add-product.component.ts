@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService, AccountService, CateroryService, BrandService, BannerService, UploadService } from 'src/app/_services';
 import { User, Product, Brand, Caterory } from 'src/app/_models';
@@ -78,13 +78,15 @@ export class AddProductComponent implements OnInit {
       UnitPrice: [this.prodcut.UnitPrice || ''],
       UnitCost: [this.prodcut.UnitCost || ''],
       Code: [this.prodcut.Code || ''],
-      SKU: [this.prodcut.SKU || ''],
+      SKU: [this.prodcut.SKU || 'na'],
       Quantity: [this.prodcut.Quantity || 1],
       LowStock: [this.prodcut.LowStock || 0],
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
+      image: new FormControl(null)
+
     }
     );
 

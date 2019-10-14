@@ -1,0 +1,16 @@
+<div>
+  <!-- <input class="file-input" type="file" multiple> -->
+
+
+ 
+</div>
+<div class="images" *ngIf="imgURL">
+  <div class="image" *ngFor="let image of imgURL">
+    <img [src]="image" height="200">
+  </div>
+  <div class="file-drop-area">
+      <span class="fake-btn">Image</span>
+      <input class="file-input" type="file" multiple>
+    </div>
+</div>
+<!-- <app-progress [progress]="progress"></app-progress> -->

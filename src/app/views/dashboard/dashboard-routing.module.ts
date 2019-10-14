@@ -62,6 +62,8 @@ import { SearchProductByCatergoryPipe } from 'src/app/_pipes/search-product-by-c
 import { UploadPreviewComponent } from './image-proccessing/upload-preview/upload-preview.component';
 import { AuthGuard } from 'src/app/_guards';
 import { ConfigurationFilterPipe, UserFilterPipe } from 'src/app/_pipes';
+import { FileUploadComponent } from './products/add-product/file-upload/file-upload.component';
+import { ProgressComponent } from './products/add-product/progress/progress.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -162,6 +164,8 @@ export const declarations = [
   AddUserRoleComponent,
   UploadPreviewComponent,
   RoleCardListComponent,
+  FileUploadComponent,
+  ProgressComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,
