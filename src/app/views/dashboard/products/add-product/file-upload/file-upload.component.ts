@@ -16,8 +16,6 @@ export class FileUploadComponent implements ControlValueAccessor {
 
 
 
-  @Input() progress;
-
   private files: FileList | null = null;
   message: string;
   imagePath: any;
@@ -42,6 +40,7 @@ export class FileUploadComponent implements ControlValueAccessor {
   }
   setDisabledState?(isDisabled: boolean): void {
   }
+
   preview(files: FileList) {
     if (!files.length) {
       return;
