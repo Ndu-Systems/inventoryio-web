@@ -5,6 +5,17 @@
     @media only screen and (max-width: 600px) {
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
     }
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+        background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
+       width: 100%;
+      background-size: 125rem;
+     }
+     //ipad ro
+    @media only screen and (min-width: 1024px) and (max-width:1366px){
+        background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
+        background-size: 145rem;
+    }
 }
 .wrong-password{
     display: none;
