@@ -86,9 +86,9 @@ const routes: Routes = [
         path: 'configurations',
         component: ConfigurationHomeComponent,
         canActivate: [AuthGuard],
-        // data: {
-        //   roles: [ConfigurationPermissions.CAN_CONFIGURE]
-        // }
+        data: {
+          role: ConfigurationPermissions.CAN_CONFIGURE.key
+        }
       },
       { path: 'roles', component: RolesComponent },
       { path: 'add-role', component: AddRoleComponent },

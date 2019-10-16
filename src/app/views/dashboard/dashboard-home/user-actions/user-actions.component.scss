@@ -10,6 +10,10 @@
       grid-template-columns: repeat(2, 50%)
     }
 
+    @media only screen and (min-width: 768px) {
+      grid-template-columns: repeat(4, 25%);
+    }
+
     .card {
       background: #fff;
       text-align: center;

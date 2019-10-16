@@ -4,8 +4,8 @@
     <div>
       <input type="text" [(ngModel)]="search" placeholder="search">
     </div>
-    <div>
-      <!-- <div class="select">
+    <!-- <div>
+      <div class="select">
           <div class="label">
               filter category:
           </div>
@@ -15,10 +15,13 @@
                   <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
                 </select>
           </div>
-        </div> -->
-    </div>
+        </div>
+    </div> -->
     <div class="add">
-      <button class="btn" (click)="showAdd()">add staff member</button>
+      <button class="btn">
+          <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
+          <span class="pc-only" (click)="showAdd()">add a user</span>
+      </button>
     </div>
   </div>
   <div class="list-body col-1-of-2">

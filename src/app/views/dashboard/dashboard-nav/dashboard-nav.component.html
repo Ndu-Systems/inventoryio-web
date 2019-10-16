@@ -6,7 +6,7 @@
     <ul>
       <li *ngFor="let item of models">
         <a [routerLink]="item.Link" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}"> 
+          [routerLinkActiveOptions]="{exact: true}">
           <i [ngClass]="item.Icon"></i>
           {{item.Name}}
         </a>
@@ -45,13 +45,8 @@
         <a routerLink="/"><i class="pi pi-sign-out"></i>sign out</a>
       </li>
     </ul>
-
   </div>
- 
 </div>
-
-
-
 <div class="burger-menu" (click)="toggleNav()">
   <img src="assets/images/ham.svg" alt="burger menu">
 </div>

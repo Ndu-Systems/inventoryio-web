@@ -1,17 +1,20 @@
 <div class="main">
   <div class="body">
     <div class="form">
-        <h1 class="heading"> add a brand</h1>
+      <h1 class="form-heading"> add a brand</h1>
       <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
         <div class="group">
           <input type="text" formControlName="Name" required="required" />
           <label>Name</label>
         </div>
         <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
-            Brand Name is required
-          </div>
-        <div class="group">
+          Brand Name is required
+        </div>
+        <div class="group button">
           <input type="submit" value="Add brand" class="btn" [disabled]="!rForm.valid" />
+        </div>
+        <div class="group cancel">
+          <a routerLink="/dashboard/list-brands">abort</a>
         </div>
       </form>
     </div>

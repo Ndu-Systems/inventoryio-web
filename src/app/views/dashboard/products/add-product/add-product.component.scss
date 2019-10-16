@@ -1,25 +1,148 @@
-.add-body{
-  width: 60%;
+.add-body {
+  width: 100%;
   margin: 5% auto;
   background: #fff;
   padding: 1rem;
-  .head{
 
-  }
-  .add-form{
-    .name{
-     input{
-      border: none;
-     }
+  .head {}
+
+  .add-form {
+    .name {
+      input {
+        border: none;
+      }
     }
-    .col-2-of-2{
+
+    .col-2-of-2 {
       display: grid;
       grid-template-columns: 50% auto;
+
+      .input-icon {
+        background: #EDF2FA;
+        margin: .5rem;
+        padding: 0;
+
+        p {
+          padding: .5rem;
+        }
+
+        select {
+          background: none;
+          border: none;
+          // background: olivedrab;
+        }
+      }
     }
   }
 }
 
-.input-icon{
+.input-icon {
   display: grid;
   grid-template-columns: 10% auto;
+}
+
+select {
+  background: #EDF2FA;
+}
+
+.play {
+  .message {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: lightblue;
+    color: darkblue;
+    border-radius: 5px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .message.person-2 {
+    background: lightpink;
+    color: darkred;
+  }
+
+  .message.blue {
+    background: #E4F0D5;
+  }
+  .message.l-blue {
+    background: #EDF2FA;
+  }
+  .message.fff {
+    background: #fff;
+  }
+  .message.blue-money {
+    background: #CDF9C8;
+  }
+  .message.red {
+    background: #FF5F81;
+  }
+  .message.stock {
+    background: #EC9BFF;
+  }
+  .message.alert {
+    background: #FBF4C7;
+  }
+  .message.submit {
+    background: #104CE5;
+    border-radius:0;
+    input{
+      color: #fff;
+
+    }
+  }
+
+  .message[data-text*="hello"i]::before {
+    content: "🛍️";
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .message[data-text*="image"i]::before {
+    content: "📷";
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .message[data-text*="brand"i]::before {
+    content: "🏷️";
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .message[data-text*="cat"i]::before {
+    content: "🔖";
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .message[data-text*="price"i]::before {
+    content: "💰";
+    display: inline-block;
+  }
+  .message[data-text*="cost"i]::before {
+    content: "📈";
+    display: inline-block;
+  }
+  .message[data-text*="stock"i]::before {
+    content: "📊";
+    display: inline-block;
+  }
+  .message[data-text*="alert"i]::before {
+    content: "⚠️";
+    display: inline-block;
+  }
+  .message[data-text*="submit"i]::before {
+    content: "";
+    display: inline-block;
+  }
+}
+
+.crazy-inputs {
+  background: none;
+  width: 90%;
+  float: right;
+  margin-top: 2px;
+  border: none;
+  padding: 0 1rem;
 }

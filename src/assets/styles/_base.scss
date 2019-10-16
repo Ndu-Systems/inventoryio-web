@@ -63,21 +63,24 @@ h1 {
   }
 }
 
-.transition{
+.transition {
   -webkit-transition: background-color 2s ease-out;
   -moz-transition: background-color 2s ease-out;
   -o-transition: background-color 2s ease-out;
   transition: background-color 2s ease-out;
 }
+
 .heading {
   font-size: 1.8rem;
   font-weight: 300;
   padding-left: 2.8rem;
   text-transform: capitalize;
+
   &.bordered {
     padding-bottom: 3rem;
     border-bottom: solid $black-color 1px;
   }
+
   @media only screen and (max-width: 600px) {
     font-size: 1.2rem;
     margin: 1rem .2rem;
@@ -87,23 +90,35 @@ h1 {
     font-weight: 400;
 
   }
-  span.number{
+
+  span.number {
     font-size: .9rem;
     font-weight: 800;
 
   }
 }
-.pc-only{
+
+.pc-only {
   @media only screen and (max-width: 600px) {
     display: none;
   }
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+
 }
-.phone-only{
+
+.phone-only {
   display: none;
+
   @media only screen and (max-width: 600px) {
     display: block;
   }
+  @media only screen and (min-width: 768px) {
+    display: block;
+  }
 }
+
 span.step {
   background: #cccccc;
   border-radius: 0.8em;
@@ -157,7 +172,8 @@ span.step {
     }
   }
 }
-.mt-20{
+
+.mt-20 {
   margin-top: 10rem;
 }
 
@@ -173,20 +189,22 @@ span.step {
   text-align: center;
   padding-top: 15%;
 
-  h1{
+  h1 {
     text-align: center;
     color: #fff;
   }
 
-.logo{
-  width: 7rem;
-}
+  .logo {
+    width: 7rem;
+  }
+
   .lds-ellipsis {
     display: inline-block;
     position: relative;
     width: 64px;
     height: 64px;
   }
+
   .lds-ellipsis div {
     position: absolute;
     top: 27px;
@@ -196,42 +214,52 @@ span.step {
     background: #fff;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
+
   .lds-ellipsis div:nth-child(1) {
     left: 6px;
     animation: lds-ellipsis1 0.6s infinite;
   }
+
   .lds-ellipsis div:nth-child(2) {
     left: 6px;
     animation: lds-ellipsis2 0.6s infinite;
   }
+
   .lds-ellipsis div:nth-child(3) {
     left: 26px;
     animation: lds-ellipsis2 0.6s infinite;
   }
+
   .lds-ellipsis div:nth-child(4) {
     left: 45px;
     animation: lds-ellipsis3 0.6s infinite;
   }
+
   @keyframes lds-ellipsis1 {
     0% {
       transform: scale(0);
     }
+
     100% {
       transform: scale(1);
     }
   }
+
   @keyframes lds-ellipsis3 {
     0% {
       transform: scale(1);
     }
+
     100% {
       transform: scale(0);
     }
   }
+
   @keyframes lds-ellipsis2 {
     0% {
       transform: translate(0, 0);
     }
+
     100% {
       transform: translate(19px, 0);
     }
@@ -243,3 +271,11 @@ span.step {
   cursor: pointer;
 }
 
+
+
+// mobile responsiveness
+@media only screen and (max-width: 600px) {
+  .heading {
+    padding: 1% 2%;
+  }
+}

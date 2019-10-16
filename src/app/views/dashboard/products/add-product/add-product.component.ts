@@ -79,8 +79,8 @@ export class AddProductComponent implements OnInit {
       UnitCost: [this.prodcut.UnitCost || ''],
       Code: [this.prodcut.Code || ''],
       SKU: [this.prodcut.SKU || 'na'],
-      Quantity: [this.prodcut.Quantity || 1],
-      LowStock: [this.prodcut.LowStock || 0],
+      Quantity: [this.prodcut.Quantity || undefined],
+      LowStock: [this.prodcut.LowStock || undefined],
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
@@ -106,7 +106,7 @@ export class AddProductComponent implements OnInit {
       summary: 'Success!',
       detail: 'product created '
     });
-    this.routeTo.navigate([`/dashboard/product-details`]);
+  //  this.routeTo.navigate([`/dashboard/product-details`]);
 
   }
   addbrand(data: Product) {
