@@ -12,6 +12,7 @@
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
         width: 100%;
         background-size: 125rem;
+        background-position: top right;
     }
 
     //ipad ro
@@ -45,20 +46,7 @@
     }
 }
 
-.mobile-fingerprint-img {
-    display: none;
 
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-        display: block;
-
-        img {
-            width: 20%;
-            margin-bottom: 2rem;
-        }
-
-    }
-}
 
 // .image,img{
 //     display: none;
@@ -78,19 +66,17 @@
 
     //tablet layout
     @media only screen and (min-width: 481px) and (max-width:768px) {
-        margin: 0%;
+        margin: auto;
         margin-left: 1rem;
         padding-top: 5rem;
-        width: 95%;
-        display: block;
+        width: 95%; 
     }
-
     //ipad ro
     @media only screen and (min-width: 1024px) and (max-width:1366px) {
         margin: auto;
-        margin-left: 15rem;
-        padding-top: 15rem;
+        padding-top: 25rem;
         width: 100%;
+      
     }
 
     .image-form {
@@ -107,18 +93,22 @@
     }
 
     .form {
-
         //mobile layout
         @media only screen and (max-width: 600px) {
             margin: auto;
         }
+        //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px){
+        margin-top: 10rem;
+        margin-left: 5.5rem;
+    }
 
         //ipad ro
         @media only screen and (min-width: 1024px) and (max-width:1366px) {
             margin: auto;
-            background: yellow;
-            margin: 0%;
-
+            width: 70%;
+            margin-top: 2rem;
+           
         }
 
         .sign-up {
@@ -130,6 +120,27 @@
             }
 
         }
+    }
+    .mobile-fingerprint-img {
+        display: none;
+        //mobile layout
+        @media only screen and (max-width: 600px) {
+            display: block;
+            img {
+                width: 20%;
+                margin-bottom: 2rem;
+            }
+        }
+         //tablet layout
+        // @media only screen and (min-width: 481px) and (max-width:768px){
+        //     background: yellow;
+        //     img {
+        //         width: 80%;
+        //         background: black;
+               
+        //     }
+        // }
+       
     }
 
 }
