@@ -4,20 +4,24 @@
     //mobile layout
     @media only screen and (max-width: 600px) {
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
+        background-size: 25rem;
     }
+
     //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px){
+    @media only screen and (min-width: 481px) and (max-width:768px) {
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-       width: 100%;
-      background-size: 125rem;
-     }
-     //ipad ro
-    @media only screen and (min-width: 1024px) and (max-width:1366px){
+        width: 100%;
+        background-size: 125rem;
+    }
+
+    //ipad ro
+    @media only screen and (min-width: 1024px) and (max-width:1366px) {
         background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
         background-size: 145rem;
     }
 }
-.wrong-password{
+
+.wrong-password {
     display: none;
     position: fixed;
     width: 100%;
@@ -27,14 +31,105 @@
     top: 0;
     left: 0;
 
-    h1{
+    h1 {
         margin-top: 80% auto;
         text-align: center;
         color: #fff;
+
+        //mobile layout
         @media only screen and (max-width: 600px) {
-           font-size: 1.2rem;
-           font-weight: 400;
-           padding: 0 2rem;
-          }
+            font-size: 1.2rem;
+            font-weight: 400;
+            padding: 0 2rem;
+        }
     }
+}
+
+.mobile-fingerprint-img {
+    display: none;
+
+    //mobile layout
+    @media only screen and (max-width: 600px) {
+        display: block;
+
+        img {
+            width: 20%;
+            margin-bottom: 2rem;
+        }
+
+    }
+}
+
+// .image,img{
+//     display: none;
+// }
+.section {
+    width: 60%;
+    margin: auto;
+    margin-left: 45rem;
+
+    //mobile layout
+    @media only screen and (max-width: 600px) {
+        margin: auto;
+        padding-top: 10rem;
+        width: 95%;
+        display: block;
+    }
+
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px) {
+        margin: 0%;
+        margin-left: 1rem;
+        padding-top: 5rem;
+        width: 95%;
+        display: block;
+    }
+
+    //ipad ro
+    @media only screen and (min-width: 1024px) and (max-width:1366px) {
+        margin: auto;
+        margin-left: 15rem;
+        padding-top: 15rem;
+        width: 100%;
+    }
+
+    .image-form {
+
+        //mobile layout
+        @media only screen and (max-width: 600px) {
+            display: none;
+        }
+
+        img {
+            width: 80%;
+            padding-top: 15rem;
+        }
+    }
+
+    .form {
+
+        //mobile layout
+        @media only screen and (max-width: 600px) {
+            margin: auto;
+        }
+
+        //ipad ro
+        @media only screen and (min-width: 1024px) and (max-width:1366px) {
+            margin: auto;
+            background: yellow;
+            margin: 0%;
+
+        }
+
+        .sign-up {
+
+            //mobile layout
+            @media only screen and (max-width: 600px) {
+                font-size: .6rem;
+
+            }
+
+        }
+    }
+
 }
