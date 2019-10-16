@@ -1,7 +1,7 @@
 <div class="main">
-  <h1 class="heading bordered"> add a permission</h1>
   <div class="body">
     <div class="form">
+      <h1 class="form-heading"> add a role</h1>
       <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
         <div class="group">
           <input type="text" formControlName="Name" required="required" />
@@ -12,8 +12,11 @@
             Role Name is required
           </div>
         </div>
-        <div class="group">
+        <div class="group button">
           <input type="submit" value="Add Role" class="btn" [disabled]="!rForm.valid" />
+        </div>
+        <div class="group cancel">
+          <a routerLink="/dashboard/roles">abort</a>
         </div>
       </form>
     </div>

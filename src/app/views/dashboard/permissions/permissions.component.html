@@ -21,25 +21,30 @@
         </div> -->
     </div>
     <div class="add">
-      <button class="btn" (click)="add()">
-        <span class="phone-only"><i class="pi pi-plus"></i></span>
-        <span class="pc-only"> Add a permission</span>
-
+      <button class="btn">
+        <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
+        <span class="pc-only" (click)="showAdd()"> Add a permission</span>
       </button>
     </div>
   </div>
-  <div class="list-body">
-    <div *ngIf="companyPermissions.length > 0 else notFound">
-      <app-permission-card-list [permissions]="companyPermissions"></app-permission-card-list>
-    </div>
-
-    <ng-template #notFound>
-      <div class="not-found">
-        <img [src]="notFoundModel.Image" alt="no items found">
-        <h1 class="message">
-          {{notFoundModel.Message}}
-        </h1>
+  <div class="list-body col-1-of-2">
+    <span>
+      <div *ngIf="companyPermissions.length > 0 else notFound">
+        <app-permission-card-list [permissions]="companyPermissions"></app-permission-card-list>
       </div>
-    </ng-template>
+      <ng-template #notFound>
+        <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            {{notFoundModel.Message}}
+          </h1>
+        </div>
+      </ng-template>
+    </span>
+    <span *ngIf="showForm">
+        <app-add-permission
+        (showForm)="showAdd()"
+        ></app-add-permission>
+    </span>
   </div>
 </div>

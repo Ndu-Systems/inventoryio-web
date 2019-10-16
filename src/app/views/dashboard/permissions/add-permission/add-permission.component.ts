@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { BannerService, PermissionsService, AccountService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../shared/shared.service';
@@ -14,6 +14,8 @@ import { MessageService } from 'primeng/components/common/api';
 export class AddPermissionComponent implements OnInit {
   rForm: FormGroup;
   systemPermissions: SystemPermissionModel[] = [];
+  @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -60,6 +62,8 @@ export class AddPermissionComponent implements OnInit {
       detail: `Permission added successfully`
     });
     this.routeTo.navigate(['/dashboard/permissions']);
+    this.showForm.emit(false);
+
   }
 
 }

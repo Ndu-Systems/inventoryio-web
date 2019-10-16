@@ -19,11 +19,16 @@
     background: #104ce5;
   }
 
+  &.nav-bar-desktop {
+    display: block;
+  }
+
   .nav-bar {
     height: 88vh;
+
     ul {
       list-style: none;
-
+      padding: 0;
       @media only screen and (max-width: 600px) {
         margin-top: 5rem;
       }
@@ -43,7 +48,6 @@
       }
     }
   }
-
 }
 
 
@@ -53,14 +57,14 @@
   left: 2rem;
   top: 2rem;
   width: 3rem;
-  z-index: 10000;
+  z-index: 1000;
 
   @media only screen and (max-width: 600px) {
     display: block;
-
   }
-
-
+  @media only screen and (max-width: 768px) {
+    display: block;
+  }
 }
 
 .back {
@@ -86,6 +90,38 @@
 
   .nav-bar-mobile {
     display: block;
+
+    img {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .main.nav-bar-desktop {
+    display: none;
   }
 
+  .nav-bar-mobile {
+    display: block;
+    width: 8rem;
+    position: absolute;
+    z-index: 9999;
+
+    img {
+      width: 50%;
+    }
+
+    .nav-bar {
+      height: 89vh;
+
+      ul {
+        padding: 0;
+
+        li {
+          font-size: 80%;
+        }
+      }
+    }
+  }
 }

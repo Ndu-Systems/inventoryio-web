@@ -32,10 +32,6 @@ export class ListCategoriesComponent implements OnInit {
     this.categorieservice.getCateries(user.CompanyId);
   }
   add() {
-    this.bannerService.updateState({
-      heading: 'Add Catergory',
-      backto: '/dashboard/list-categories'
-    });
     this.router.navigate(['/dashboard/add-catergory']);
   }
   showAdd() {

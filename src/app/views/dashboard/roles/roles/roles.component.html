@@ -5,29 +5,28 @@
       <input type="text" [(ngModel)]="search" placeholder="search">
     </div>
     <div>
-      <!-- <div class="select">
-          <div class="label">
-              filter category:
-          </div>
-          <div class="input">
-              <select [(ngModel)]="searchByCatergory">
-                  <option value="" selected>All</option>
-                  <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
-                </select>
-          </div>
-        </div> -->
     </div>
     <div class="add">
-      <button class="btn" (click)="add()">add role</button>
+      <button class="btn">
+          <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
+          <span class="pc-only" (click)="showAdd()"> add role</span>
+      </button>
     </div>
   </div>
-  <div class="list-body">
-    <div *ngIf="roles$ | async as roles">
-      <span class="cards-betta" *ngIf="roles.length > 0; else no tFound">
-        <span *ngFor="let item of roles | configurationFilterPipe: search">
-          <app-role-card-list [role]="item"></app-role-card-list>
+  <div class="list-body col-1-of-2">
+    <span>
+      <div *ngIf="roles$ | async as roles">
+        <span class="cards-betta" *ngIf="roles.length > 0; else no tFound">
+          <span *ngFor="let item of roles | configurationFilterPipe: search">
+            <app-role-card-list [role]="item"></app-role-card-list>
+          </span>
         </span>
-      </span>
-    </div>
-  </div>``
+      </div>
+    </span>
+    <span *ngIf="showForm">
+      <app-add-role
+      (showForm)="showAdd()"
+      ></app-add-role>
+    </span>
+  </div>
 </div>

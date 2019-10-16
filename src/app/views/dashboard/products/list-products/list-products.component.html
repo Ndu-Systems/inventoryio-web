@@ -28,7 +28,6 @@
         <button class="btn" (click)="add()">
           <span class="phone-only"><i class="pi pi-plus"></i></span>
           <span class="pc-only"> Add product</span>
-        
         </button>
       </div>
     </div>
@@ -37,7 +36,7 @@
     <div class="small-cards-body">
 
         <div class="small-cards" *ngIf="products$  | async as products">
-    
+
           <div class="card"
             *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
             <div class="image">
@@ -48,7 +47,7 @@
                 {{item.Name}}
                 <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
               </p>
-    
+
             </div>
             <div class="price">
               <p>
@@ -57,7 +56,7 @@
               <button class="action-btn hover-shadow" (click)="details(item)">View</button>
             </div>
           </div>
-    
+
         </div>
     </div>
 </div>
