@@ -23,12 +23,20 @@
     .container {
       padding: 2rem;
     }
+
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%;
       margin-top: 7rem;
 
       .container {
         padding: 0;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      grid-template-columns: 10% 90%;
+      .container {
+        padding: 2rem 0;
       }
     }
 

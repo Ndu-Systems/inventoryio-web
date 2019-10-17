@@ -155,11 +155,38 @@
         -moz-box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
         box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
       }
+      .image1 {
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        //mobile layout
+        @media only screen and (max-width: 600px) {
+          display: none;
+        }
+        
+        img {
+          width: 45%;
+          margin: 0%;
+          padding: 0%;
+          margin-top: 3rem;
+           //tablet layout
+           @media only screen and (min-width: 481px) and (max-width:768px) {
+            width: 40%;
+          }
+          //ipad pro
+          @media only screen and (min-width: 1024px) and (max-width:1366px){
+            width: 65%;
+          }
+        }
+
+      }
+
 
       .image {
         text-align: center;
         margin: auto;
         width: 100%;
+        margin: 0%;
 
         //mobile layout
         @media only screen and (max-width: 600px) {
@@ -168,6 +195,9 @@
 
         img {
           width: 45%;
+          margin: 0%;
+          padding: 0%;
+
 
           //tablet layout
           @media only screen and (min-width: 481px) and (max-width:768px) {

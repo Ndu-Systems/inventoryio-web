@@ -15,9 +15,12 @@
             Product Name is required
           </div>
         </div>
-        <div class="group">
+        <div class="group button">
           <input type="submit" value="Add catergory" class="btn" [disabled]="!rForm.valid" />
         </div>
+        <div class="group cancel">
+            <a routerLink="/dashboard/list-categories">abort</a>
+          </div>
       </form>
     </div>
   </div>

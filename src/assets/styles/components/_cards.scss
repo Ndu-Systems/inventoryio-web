@@ -1,6 +1,24 @@
 .list-body {
   &.col-1-of-2 {
     grid-template-columns: 75% auto;
+
+    // mobile responsiveness
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+
+      .add-form {
+        display: none;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      grid-template-columns: 100%;
+
+      .add-form {
+        display: none;
+      }
+    }
+
   }
 }
 
@@ -13,6 +31,10 @@
 
   @media only screen and (max-width: 1300px) {
     grid-template-columns: 30% 30% auto;
+  }
+
+  @media only screen and (min-width: 768px) {
+    max-height: 77vh;
   }
 
   @media only screen and (max-width: 950px) {
@@ -47,10 +69,11 @@
 
     .image {
       text-align: center;
+      margin: 0;
 
       img {
         width: 1.8rem;
-        margin-top: 2.5rem;
+
       }
     }
 

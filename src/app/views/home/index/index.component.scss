@@ -48,6 +48,7 @@ body {
     color: #104ce5;
     font-size: 2rem;
     margin-bottom: 2rem;
+    //mobile layout
     @media only screen and (max-width: 600px) {
       font-size: 1.2rem;
       line-height: 1.8rem;
@@ -62,7 +63,13 @@ body {
       color: #2e344c;
       font-weight: 500;
       margin-top: 15px;
+      //mobile layout
+      @media only screen and (max-width: 600px){
+        color: #F5F6FA;
+      }
     }
+    
+    //ipad pro layout
     @media only screen and (min-width: 1024px) and (max-width:1366px){
       text-align: center;
       padding-top: 12rem;

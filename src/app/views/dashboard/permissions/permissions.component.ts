@@ -18,6 +18,8 @@ export class PermissionsComponent implements OnInit {
   systemPermissions: SystemPermissionModel[] = [];
   permissions: Observable<Permission[]>;
   notFoundModel: NotFoundModel;
+  showForm: boolean;
+
   constructor(
     private bannerService: BannerService,
     private permissionService: PermissionsService,
@@ -47,9 +49,11 @@ export class PermissionsComponent implements OnInit {
 
 
   }
-
   add() {
-    this.routeTo.navigate(['dashboard/add-permission']);
+    this.routeTo.navigate(['/dashboard/add-permission']);
+  }
+  showAdd() {
+    this.showForm = !this.showForm;
   }
 
   loadCompanyPermissions(companyId: string, statusId: string) {

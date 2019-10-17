@@ -45,9 +45,12 @@
           A role is required
         </div>
 
-        <div class="group">
+        <div class="group button">
           <input type="submit" value="Add User" class="btn" [disabled]="!rForm.valid" />
         </div>
+        <div class="group cancel">
+            <a routerLink="/dashboard/users">abort</a>
+          </div>
       </form>
     </div>
   </div>

@@ -13,6 +13,7 @@ import { NotFoundConstants, StatusConstant } from '../../shared';
 export class RolesComponent implements OnInit {
   search: string;
   roles$: Observable<Role[]>;
+  showForm: boolean;
   constructor(
     private bannerService: BannerService,
     private roleService: RolesService,
@@ -36,11 +37,12 @@ export class RolesComponent implements OnInit {
 
     this.roleService.getAllRoles(user.CompanyId, StatusConstant.ACTIVE_STATUS);
   }
-
-  add() {
-    this.routeTo.navigate(['dashboard/add-role']);
+  add(){
+    this.routeTo.navigate(['/dashboard/add-role']);
   }
-
+  showAdd() {
+    this.showForm = !this.showForm;
+  }
   getRoleDetails(role: Role) {
     this.routeTo.navigate([`/dashboard/role-details/${role.RoleId}`]);
   }

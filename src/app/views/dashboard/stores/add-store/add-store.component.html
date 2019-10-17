@@ -28,8 +28,11 @@
         <div class="alert" *ngIf="!rForm.controls['Address'].valid && rForm.controls['Address'].touched">
           Store Name is required
         </div>
-        <div class="group">
+        <div class="group button">
           <input type="submit" value="Add Store" class="btn" [disabled]="!rForm.valid" />
+        </div>
+        <div class="group cancel">
+          <a routerLink="/dashboard/stores">abort</a>
         </div>
       </form>
     </div>

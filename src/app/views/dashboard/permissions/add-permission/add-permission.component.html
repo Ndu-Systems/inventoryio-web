@@ -1,16 +1,20 @@
 <div class="main">
-    <h1 class="heading bordered"> add a permission </h1>
   <div class="body">
     <div class="form" *ngIf="systemPermissions">
-      <form [formGroup]="rForm"  (ngSubmit)="onSubmit(rForm.value)">
+      <h1 class="form-heading"> add a permission </h1>
+      <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
         <div class="group">
           <select formControlName="Name">
             <option value="">Select Permission</option>
-            <option *ngFor="let item of systemPermissions" class="select-option" [value]="item.key">{{item.friendlyName}}</option>
+            <option *ngFor="let item of systemPermissions" class="select-option" [value]="item.key">
+              {{item.friendlyName}}</option>
           </select>
         </div>
-        <div class="group">
+        <div class="group button">
           <input type="submit" value="Add Permission" class="btn" [disabled]="!rForm.valid" />
+        </div>
+        <div class="group cancel">
+          <a routerLink="/dashboard/permissions">abort</a>
         </div>
       </form>
     </div>

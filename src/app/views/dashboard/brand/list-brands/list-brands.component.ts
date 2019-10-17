@@ -14,9 +14,9 @@ export class ListBrandsComponent implements OnInit {
   showForm: boolean;
   search;
   constructor(private brandService: BrandService,
-              private accountService: AccountService,
-              private router: Router,
-              private bannerService: BannerService,
+    private accountService: AccountService,
+    private router: Router,
+    private bannerService: BannerService,
 
 
   ) { }
@@ -33,12 +33,7 @@ export class ListBrandsComponent implements OnInit {
   }
 
   add() {
-    this.bannerService.updateState({
-      heading: 'Add Brand',
-      backto: '/dashboard/list-brands'
-    });
     this.router.navigate(['/dashboard/add-brand']);
-
   }
 
   showAdd() {
