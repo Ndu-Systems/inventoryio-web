@@ -3,12 +3,9 @@
 }
 .top-bar {
   display: grid;
-  grid-template-columns: 50% auto;
+  grid-template-columns: 40% auto;
   position: absolute;
-  width: 80%;
-  margin: auto;
-  right: 10%;
-  padding-right: 0%;
+  width: 100%;
   //mobile layout
   @media only screen and (max-width: 600px) {
     display: flex;
@@ -73,7 +70,7 @@
     margin: auto;
     justify-content: right;
     margin-right: 0%;
-
+   
     //mobile layout
     @media only screen and (max-width: 600px) {
       display: none;
@@ -98,12 +95,14 @@
       font-weight: 500;
       color: #ffffff;
       text-align: right;
-
+  
       .sign-up-for-free {
         background: #FFFFFF;
         padding: .4rem;
         padding-right: 1.4rem;
         padding-left: 1.4rem;
+        cursor: pointer;
+  
         a {
           color: #104CE5;
         }
@@ -111,7 +110,6 @@
       a {
         color: #ffffff;
       }
-
       //tablet layout
       @media only screen and (min-width: 481px) and (max-width:768px) {
         padding-right: 0%;
