@@ -2,14 +2,14 @@ $image-size:5rem;
 
 .small-cards-body {
   width: 100%;
-  padding:2rem;
+  padding: 2rem;
   // float: right;
 
 
   @media only screen and (max-width: 600px) {
     width: 100%;
     float: none;
-    padding:.5rem;
+    padding: .5rem;
 
   }
 }
@@ -51,7 +51,9 @@ $image-size:5rem;
     box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
 
     @media only screen and (max-width: 600px) {
-        margin:  .3rem;
+      margin: .3rem;
+      //grid-template-columns: repeat(3, 33%);
+
     }
 
     .image {
@@ -63,7 +65,11 @@ $image-size:5rem;
       overflow: hidden;
       padding: .5rem;
       margin: auto 0;
-      ;
+
+      @media only screen and (max-width: 600px) {
+        display: block;
+      }
+
 
       img {
         width: 100%;
@@ -71,23 +77,24 @@ $image-size:5rem;
       }
     }
 
-    .name{
+    .name {
       font-weight: 600;
       text-transform: capitalize;
       text-align: left;
       padding-left: 1rem;
       font-size: .9rem;
-    
-    
-    
+
+
+
     }
+
     .stock {
       display: block;
       font-size: .8rem;
       text-transform: lowercase;
-    
+
     }
-    
+
   }
 }
 
@@ -98,7 +105,7 @@ $image-size:5rem;
   border: none;
   padding: .3rem 1rem;
   cursor: pointer;
-  transition:background-color box-shadow .1s linear;
+  transition: background-color box-shadow .1s linear;
   margin-right: .2rem;
 
   // background: #fff;
@@ -112,4 +119,3 @@ $image-size:5rem;
   }
 
 }
-

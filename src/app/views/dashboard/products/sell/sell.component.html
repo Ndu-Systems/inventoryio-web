@@ -40,7 +40,8 @@
           <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
             <div class="card" >
               <div class="image">
-                <img [src]="item.Url" alt="" *ngIf="item.Url">
+                <img [src]="item.Url" alt="" *ngIf="item.Url"/>
+                <img src="assets/images/placeholder.png" *ngIf="!item.Url" alt=""/>
               </div>
               <div class="details">
                 <p class="name">

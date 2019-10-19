@@ -84,6 +84,20 @@
 
     }
 
+    .image {
+        height: 50%;
+        margin-top: 10rem;
+        justify-content: center;
+    
+        //mobile layout
+        @media only screen and (max-width: 600px) {
+            display: none;
+        }
+        img {
+            width: 20%;
+            text-align: center;
+        }
+    }
 }
 
 
@@ -230,18 +244,4 @@
     }
 }
 
-.image {
-    height: 50%;
-    margin-top: 10rem;
-    justify-content: center;
 
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-        display: none;
-    }
-}
-
-img {
-    width: 20%;
-    text-align: center;
-}

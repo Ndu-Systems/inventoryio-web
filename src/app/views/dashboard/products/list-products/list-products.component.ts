@@ -16,6 +16,7 @@ export class ListProductsComponent implements OnInit {
   categories: string[] = [];
   products$: Observable<Product[]>;
   sum: number;
+  totalPrice = 0;
 
   constructor(
     private productService: ProductService,
@@ -42,6 +43,8 @@ export class ListProductsComponent implements OnInit {
 
         this.categories = state.map(c => c.Catergory);
         this.sum = state.length;
+        let prices = state.map(x => Number(x.UnitPrice));
+        this.totalPrice = prices.reduce(this.myFunc);
         this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
       }
     });
@@ -58,5 +61,8 @@ export class ListProductsComponent implements OnInit {
   }
   clearSearch() {
     this.search = '';
+  }
+  myFunc(total, num) {
+    return total + num;
   }
 }

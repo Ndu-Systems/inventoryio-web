@@ -2,7 +2,9 @@
     <div class="sell-grid">
 <div class="list-body">
     <h1 class="heading">
-        Inventory   <span class="number">{{sum}}</span>
+        Inventory   
+        <span class="number">{{sum}} </span>
+        <span class="number">  | {{totalPrice | currency:'R'}}</span>
     </h1>
     <div class="list-filters">
         <div class="input-times">
@@ -37,17 +39,20 @@
 
         <div class="small-cards" *ngIf="products$  | async as products">
 
-          <div class="card"
-            *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
+          <div class="card" *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
             <div class="image">
-              <img [src]="item.Url" alt="" *ngIf="item.Url">
+              <img [src]="item.images[0].Url" alt="" *ngIf="item.images"/>
+              <img src="assets/images/placeholder.png" *ngIf="!item.images" alt=""/>
             </div>
             <div class="details">
               <p class="name">
                 {{item.Name}}
                 <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
+              
               </p>
-
+              <!-- <p>
+                {{item|json}}
+              </p> -->
             </div>
             <div class="price">
               <p>
