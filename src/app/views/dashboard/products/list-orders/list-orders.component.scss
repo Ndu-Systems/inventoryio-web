@@ -10,7 +10,7 @@
  
     .item {
       grid-template-columns: 20% 10% 10% 15% 15% auto;
-      grid-template-columns: repeat(6, 16.5%);
+      grid-template-columns: repeat(7, 12%);
 
       @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;

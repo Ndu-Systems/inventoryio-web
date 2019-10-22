@@ -63,7 +63,6 @@ import { UploadPreviewComponent } from './image-proccessing/upload-preview/uploa
 import { AuthGuard } from 'src/app/_guards';
 import { ConfigurationFilterPipe, UserFilterPipe } from 'src/app/_pipes';
 import { FileUploadComponent } from './products/add-product/file-upload/file-upload.component';
-import { ProgressComponent } from './products/add-product/progress/progress.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -85,10 +84,10 @@ const routes: Routes = [
       {
         path: 'configurations',
         component: ConfigurationHomeComponent,
-        canActivate: [AuthGuard],
-        data: {
-          role: ConfigurationPermissions.CAN_CONFIGURE.key
-        }
+        // canActivate: [AuthGuard],
+        // data: {
+        //   role: ConfigurationPermissions.CAN_CONFIGURE.key
+        // }
       },
       { path: 'roles', component: RolesComponent },
       { path: 'add-role', component: AddRoleComponent },
@@ -165,7 +164,6 @@ export const declarations = [
   UploadPreviewComponent,
   RoleCardListComponent,
   FileUploadComponent,
-  ProgressComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

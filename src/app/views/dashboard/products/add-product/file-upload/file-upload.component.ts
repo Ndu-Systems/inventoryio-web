@@ -25,7 +25,7 @@ export class FileUploadComponent implements ControlValueAccessor {
     const files = event && event;
     this.files = files;
     console.log(files);
-    this.preview(files);
+    // this.preview(files);
 
   }
 
@@ -45,6 +45,7 @@ export class FileUploadComponent implements ControlValueAccessor {
     if (!files.length) {
       return;
     }
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < files.length; i++) {
       const mimeType = files[i].type;
       if (mimeType.match(/image\/*/) == null) {

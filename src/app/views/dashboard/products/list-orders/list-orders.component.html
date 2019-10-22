@@ -1,8 +1,8 @@
 <div class="main">
   <div class="body">
       <h1 class="heading">
-          Order details 
-        </h1>
+          Sales Orders. 
+      </h1>
 
         <div class="list-filters">
             <div class="input-times">
@@ -39,14 +39,26 @@
           </div>
 
 
-          <div *ngIf="item.Due > 0" class="data payall" (click)="payAll(item)">
+          
+          <div class="data"  (click)="payAll(item)">
+            <span class="value">{{item.Due  | currency:'R'}}</span>
+            <span class="label">Amount Still Due</span>
+          </div>
+
+          
+          <div class="data">
+            <span class="value">{{item.Total  | currency:'R'}}</span>
+            <span class="label">Total</span>
+          </div>
+
+          <!-- <div *ngIf="item.Due > 0" class="data payall" (click)="payAll(item)">
             <span class="value">{{item.Due  | currency:'R'}} /{{item.Total  | currency:'R'}}</span>
             <span class="label">Amount Due</span>
-          </div>
-          <div class="data paid" *ngIf="item.Due == 0">
+          </div> -->
+          <!-- <div class="data paid" *ngIf="item.Due == 0">
             <span class="value">{{item.Due  | currency:'R'}} /{{item.Total  | currency:'R'}}</span>
             <span class="label">Amount Due</span>
-          </div>
+          </div> -->
           <div class="data">
             <span *ngIf="!item.Paying">
               <a (click)="pay(item)" *ngIf="item.Due > 0" class="action pay">Pay</a>
