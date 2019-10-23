@@ -1,16 +1,29 @@
-<div>
-  <!-- <input class="file-input" type="file" multiple> -->
-
-
- 
-</div>
+<div class="main">
+  
 <div class="images" *ngIf="imgURL">
-  <div class="image" *ngFor="let image of imgURL">
-    <img [src]="image" height="200">
-  </div>
-  <div class="file-drop-area">
-      <span class="fake-btn">Image</span>
-      <input class="file-input" type="file" multiple>
+
+    <!-- <div class="image" *ngFor="let image of imgURL">
+      <img [src]="image" height="200">
+    </div> -->
+  
+
+    
+  <div class="cards">
+      <span *ngFor="let image of imgURL">
+        <div class="card">
+          <div class="icon">
+            <img [src]="image" alt="">
+          </div>
+        </div>
+      </span>
+      <span>
+          <div class="card card-image">
+              <div class="file-drop-area">
+                  <span class="fake-btn">Image</span>
+                  <input class="file-input" type="file" multiple>
+                </div>
+            </div>
+      </span>
     </div>
+  </div>
 </div>
-<!-- <app-progress [progress]="progress"></app-progress> -->
