@@ -10,6 +10,7 @@
 .sell-grid {
     display: grid;
     grid-template-columns: 70% auto;
+    grid-template-columns:100%;
   
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%;
@@ -41,4 +42,7 @@
   
       // margin-top: 2.5rem;
     }
+  }
+  .small-cards{
+    grid-template-columns: repeat(4,25%);
   }

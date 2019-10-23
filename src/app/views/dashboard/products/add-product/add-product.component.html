@@ -1,70 +1,76 @@
-<div class="add-body">
-  <div class="head">
-    <h1>
-      New Product
-    </h1>
-  </div>
-  <div class="add-form">
-    <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)" class="play">
+<h1 class="heading">
+  Add Product   
+</h1>
 
-      <!-- Name -->
-      <div class="message person-2 fff" data-text="hello">
-        <input class="crazy-inputs" placeholder="Product Name" formControlName="Name" />
-      </div>
+<div class="clean-from-body">
+  <div class="form" [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+    <div class="group">
+      <span>product name</span>
+      <input formControlName="Name" />
+    </div>
 
-      <!-- Images -->
-      <div class="message person-2 fff" data-text="image">
-        <app-file-upload formControlName="image"></app-file-upload>
-      </div>
-
-
-
-      <!-- Brand -->
-      <div class="message person-2 blue" data-text="brand">
-        <select formControlName="BrandId" class="crazy-inputs">
+    <div class="two">
+      <div class="group">
+        <span>
+          Brand
+          <span class="add btn" (click)="addbrand(rForm.value)">Add new</span>
+        </span>
+        <select formControlName="BrandId">
           <option value="">No Brand</option>
           <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
         </select>
       </div>
 
-
-      <!-- Caterory -->
-      <div class="message person-2 l-blue" data-text="cat">
-        <select formControlName="CatergoryId" class="crazy-inputs">
+      <div class="group">
+        <span>
+          Caterory
+          <span class="add btn" (click)="addcatergory(rForm.value)">Add new</span>
+        </span>
+        <select formControlName="CatergoryId">
           <option value="">No Caterory</option>
           <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CatergoryId">{{catergory.Name}}
           </option>
         </select>
       </div>
+    </div>
 
-      <!-- Price -->
-      <div class="message person-2 blue-money" data-text="price">
-        <input class="crazy-inputs" placeholder="Selling Price" formControlName="UnitPrice" />
+    <div class="two">
+      <div class="group">
+        <span>Selling Price</span>
+        <input formControlName="UnitPrice" />
       </div>
 
+      <div class="group">
+        <span>Cost Price</span>
+        <input formControlName="UnitCost" />
+      </div>
+    </div>
 
-      <!-- Cost -->
-      <div class="message person-2" data-text="cost">
-        <input class="crazy-inputs" placeholder="Cost Price" formControlName="UnitCost" />
+
+    <div class="two">
+      <div class="group">
+        <span>Quantity</span>
+        <input formControlName="Quantity" />
       </div>
 
-      <!-- Quantity -->
-      <div class="message person-2 stock" data-text="stock">
-        <input class="crazy-inputs" placeholder="Quantity" formControlName="Quantity" />
+      <div class="group">
+        <span>Low Stock Alert</span>
+        <input formControlName="LowStock" />
       </div>
+    </div>
 
-      <!-- Stock alert -->
-      <div class="message person-2 alert" data-text="alert">
-        <input class="crazy-inputs" placeholder="Low Stock Alert" formControlName="LowStock" />
-      </div>
+    <div class="group">
+      <span>
+        product Code
+        <span class="add btn" (click)="addbrand(rForm.value)">Scann</span>
+      </span>
+      <input formControlName="SKU" />
+    </div>
 
-
-      <!-- SAVE -->
-      <div class="message person-2 submit" data-text="submit">
-        <input class="crazy-inputs" type="submit" value="Add product" />
-      </div>
-
-
-    </form>
+    <div class="group mt-1 longer">
+      <span>Images</span>
+      <app-file-upload formControlName="image"></app-file-upload>
+    </div>
+    <input type="submit" class="btn save" value="Add product" />
   </div>
 </div>

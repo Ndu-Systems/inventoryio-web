@@ -1,148 +1,83 @@
-.add-body {
-  width: 100%;
-  margin: 5% auto;
+.clean-from-body {
   background: #fff;
-  padding: 1rem;
+  width: 80%;
+  padding: 2rem;
+  margin: 0 auto;
 
-  .head {}
+  .form {
+    padding: 2rem;
+    padding: 0;
+    margin: 0 auto;
 
-  .add-form {
-    .name {
-      input {
-        border: none;
-      }
-    }
-
-    .col-2-of-2 {
+    .two {
       display: grid;
       grid-template-columns: 50% auto;
+      padding: .5rem 1.5rem;
+      // background: rgb(31, 15, 246);
+      margin: 0;
+      padding: 0;
 
-      .input-icon {
-        background: #EDF2FA;
-        margin: .5rem;
-        padding: 0;
+      .group {
+        width: 99%;
+      }
+    }
 
-        p {
-          padding: .5rem;
+    .group {
+      border: 1px solid #d7d7d7;
+      padding: .5rem;
+      background: #fff;
+      margin: 0;
+      width: 99%;
+      margin: .5rem;
+      height: 3.78rem;
+      // padding-bottom: 0;
+
+
+      span {
+        display: block;
+        width: 100%;
+        text-align: left;
+        text-transform: capitalize;
+        font-size: .8rem;
+
+        .add {
+          display: inline;
+          background: #2ecc71;
+          color: #fff;
+          padding: .1rem .3rem;
+          font-size: .7rem;
+          cursor: pointer;
+
         }
+      }
 
-        select {
-          background: none;
-          border: none;
-          // background: olivedrab;
+      input,
+      select {
+        display: block;
+        width: 100%;
+        border: none;
+        padding: .4rem 0;
+        margin: 0;
+        background: #fff;
+        font-size: 1rem;
+
+        &:invalid {
+          background: red;
         }
       }
     }
+
   }
 }
 
-.input-icon {
-  display: grid;
-  grid-template-columns: 10% auto;
+.mt-1 {
+  margin-top: 1rem;
+}
+.longer{
+  height: 12rem !important;
 }
 
-select {
-  background: #EDF2FA;
-}
-
-.play {
-  .message {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    background: lightblue;
-    color: darkblue;
-    border-radius: 5px;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-
-  .message.person-2 {
-    background: lightpink;
-    color: darkred;
-  }
-
-  .message.blue {
-    background: #E4F0D5;
-  }
-  .message.l-blue {
-    background: #EDF2FA;
-  }
-  .message.fff {
-    background: #fff;
-  }
-  .message.blue-money {
-    background: #CDF9C8;
-  }
-  .message.red {
-    background: #FF5F81;
-  }
-  .message.stock {
-    background: #EC9BFF;
-  }
-  .message.alert {
-    background: #FBF4C7;
-  }
-  .message.submit {
-    background: #104CE5;
-    border-radius:0;
-    input{
-      color: #fff;
-
-    }
-  }
-
-  .message[data-text*="hello"i]::before {
-    content: "🛍️";
-    display: inline-block;
-    margin-right: 5px;
-  }
-
-  .message[data-text*="image"i]::before {
-    content: "📷";
-    display: inline-block;
-    margin-right: 5px;
-  }
-
-  .message[data-text*="brand"i]::before {
-    content: "🏷️";
-    display: inline-block;
-    margin-right: 5px;
-  }
-  .message[data-text*="cat"i]::before {
-    content: "🔖";
-    display: inline-block;
-    margin-right: 5px;
-  }
-  .message[data-text*="price"i]::before {
-    content: "💰";
-    display: inline-block;
-  }
-  .message[data-text*="cost"i]::before {
-    content: "📈";
-    display: inline-block;
-  }
-  .message[data-text*="stock"i]::before {
-    content: "📊";
-    display: inline-block;
-  }
-  .message[data-text*="alert"i]::before {
-    content: "⚠️";
-    display: inline-block;
-  }
-  .message[data-text*="submit"i]::before {
-    content: "";
-    display: inline-block;
-  }
-}
-
-.crazy-inputs {
-  background: none;
-  width: 90%;
+.save {
+  width: 10rem;
   float: right;
-  margin-top: 2px;
-  border: none;
-  padding: 0 1rem;
 }

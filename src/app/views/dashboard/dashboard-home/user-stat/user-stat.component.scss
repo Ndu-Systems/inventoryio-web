@@ -84,6 +84,10 @@
         }
       }
     }
+
+    .card:nth-child(1) {
+      animation: moveInLeft .5s ease-in-out;
+    }
   }
 }
 
