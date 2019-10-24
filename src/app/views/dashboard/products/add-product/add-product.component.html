@@ -71,6 +71,12 @@
       <span>Images</span>
       <app-file-upload formControlName="image"></app-file-upload>
     </div>
-    <input type="submit" class="btn save" value="Add product" />
+    <input type="submit" class="btn save" (click)="onSubmit(rForm.value)"  value="Add product" [disabled]="!rForm.valid"/>
   </div>
 </div>
+
+<pre>
+    {{rForm.value | json}}
+</pre>
+<!-- [disabled]="!rForm.valid" -->
+{{rForm.valid}}

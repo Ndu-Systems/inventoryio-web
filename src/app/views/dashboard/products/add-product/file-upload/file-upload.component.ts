@@ -26,10 +26,11 @@ export class FileUploadComponent implements ControlValueAccessor {
   private files: FileList | null = null;
   message: string;
   imagePath: any;
-  imgURL: string[] = [];
+  imgURL: any[] = [];
 
   user: User;
   productId;
+  //onChange: () => void;
 
   @HostListener('change', ['$event.target.files']) emitFiles(event: FileList) {
     const files = event && event;
@@ -54,28 +55,12 @@ export class FileUploadComponent implements ControlValueAccessor {
   writeValue(obj: any): void {
     this.files = obj ? obj : undefined;
   }
+
   registerOnChange(fn: any): void {
   }
   registerOnTouched(fn: any): void {
   }
   setDisabledState?(isDisabled: boolean): void {
-  }
-
-  saveImage(url) {
-    const data: Image = {
-      CompanyId: this.user.CompanyId,
-      OtherId: this.productId,
-      Url: `${environment.API_URL}/api/upload/${url}`,
-      CreateUserId: this.user.UserId,
-      ModifyUserId: this.user.UserId,
-      StatusId: 1
-    };
-    this.uploadService.addImage(data);
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success!',
-      detail: 'Image  uploaded '
-    });
   }
 
   uplaodFile() {
@@ -86,8 +71,8 @@ export class FileUploadComponent implements ControlValueAccessor {
 
     Array.from(this.files).forEach(file => {
       this.documentsService.uploadFile(file).subscribe(response => {
-        // this.saveImage(response);
         this.imgURL.push(`${environment.API_URL}/api/upload/${response}`);
+        this.uploadService.updateState(this.imgURL);
         console.log(response);
       });
     });

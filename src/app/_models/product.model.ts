@@ -20,5 +20,6 @@ export interface Product {
     Catergory?: string;
     Brand?: string;
     QuantityAvailable?: number;
+    Images?;
 
 }

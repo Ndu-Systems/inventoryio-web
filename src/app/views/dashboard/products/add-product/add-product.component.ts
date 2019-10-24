@@ -30,7 +30,8 @@ export class AddProductComponent implements OnInit {
     private cateroryService: CateroryService,
     private bannerService: BannerService,
     private uploadService: UploadService,
-    private messageService: MessageService
+    private messageService: MessageService,
+
   ) {
     this.bannerService.updateState({
       heading: 'Add Products',
@@ -100,6 +101,9 @@ export class AddProductComponent implements OnInit {
     return this.rForm.controls;
   }
   onSubmit(product: Product) {
+    product.Images = this.uploadService.currentImageValue;
+    console.log(product);
+    
     this.productService.addProduct(product);
     this.messageService.add({
       severity: 'success',
