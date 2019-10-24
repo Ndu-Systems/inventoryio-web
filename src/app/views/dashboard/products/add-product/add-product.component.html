@@ -8,6 +8,10 @@
       <span>product name</span>
       <input formControlName="Name" />
     </div>
+    <div class="group mt-1 longer">
+      <span>Images</span>
+      <app-file-upload formControlName="image"></app-file-upload>
+    </div>
 
     <div class="two">
       <div class="group">
@@ -62,15 +66,17 @@
     <div class="group">
       <span>
         product Code
-        <span class="add btn" (click)="addbrand(rForm.value)">Scann</span>
+        <!-- <span class="add btn" (click)="addbrand(rForm.value)">Scann</span> -->
       </span>
       <input formControlName="SKU" />
     </div>
 
-    <div class="group mt-1 longer">
-      <span>Images</span>
-      <app-file-upload formControlName="image"></app-file-upload>
-    </div>
-    <input type="submit" class="btn save" value="Add product" />
+    
+    <input type="submit" class="btn save" (click)="onSubmit(rForm.value)"  value="Add product" [disabled]="!rForm.valid"/>
   </div>
 </div>
+<!-- 
+<pre>
+    {{rForm.value | json}}
+</pre>
+{{rForm.valid}} -->

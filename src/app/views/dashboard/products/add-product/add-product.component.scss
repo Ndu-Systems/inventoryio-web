@@ -1,8 +1,14 @@
 .clean-from-body {
   background: #fff;
   width: 80%;
-  padding: 2rem;
+  padding: 3rem 2rem;
   margin: 0 auto;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    padding: 1rem;
+
+
+  }
 
   .form {
     padding: 2rem;
@@ -17,6 +23,11 @@
       margin: 0;
       padding: 0;
 
+      
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: 100%;
+      }
+
       .group {
         width: 99%;
       }
@@ -27,7 +38,7 @@
       padding: .5rem;
       background: #fff;
       margin: 0;
-      width: 99%;
+      width: 99.5%;
       margin: .5rem;
       height: 3.78rem;
       // padding-bottom: 0;
@@ -74,7 +85,7 @@
   margin-top: 1rem;
 }
 .longer{
-  height: 12rem !important;
+  height: 9rem !important;
 }
 
 .save {

@@ -41,7 +41,7 @@ export class ListProductsComponent implements OnInit {
           count: state.length
         });
 
-        this.categories = state.map(c => c.Catergory);
+        this.categories = state.map(c => c.Catergory && c.Catergory.Name || '');
         this.sum = state.length;
         let prices = state.map(x => Number(x.UnitPrice));
         this.totalPrice = prices.reduce(this.myFunc);

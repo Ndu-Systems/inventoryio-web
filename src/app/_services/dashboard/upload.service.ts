@@ -27,7 +27,7 @@ export class UploadService {
   public get currentImageValue(): Image[] {
     return this._images.value;
   }
-  apendState(data: Image) {
+  apendState(data: any) {
     let state = this.currentImageValue;
     if (!state) {
       state = [];
@@ -38,7 +38,6 @@ export class UploadService {
   updateState(data: Image[]) {
     this._images.next(data);
     localStorage.setItem('images', JSON.stringify(data));
-
   }
   clearState() {
     this.updateState(null);

@@ -52,7 +52,7 @@ export class SellComponent implements OnInit {
           count: state.length
         });
       }
-      this.categories = state.map(c => c.Catergory);
+      this.categories = state.map(c => c.Catergory.Name);
       this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
     });
     this.saleService.sell.subscribe(state => {

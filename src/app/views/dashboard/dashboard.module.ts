@@ -7,12 +7,11 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {KeyFilterModule} from 'primeng/keyfilter';
-
+import {ChartModule} from 'primeng/chart';
 
 
 @NgModule({
@@ -27,7 +26,8 @@ import {KeyFilterModule} from 'primeng/keyfilter';
     ToggleButtonModule,
     ConfirmDialogModule,
     FontAwesomeModule,
-    KeyFilterModule
+    KeyFilterModule,
+    ChartModule
 
   ],
   declarations: [...declarations],

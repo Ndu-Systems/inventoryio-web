@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { UploadService } from 'src/app/_services';
+import { UploadService, DocumentsService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Image } from 'src/app/_models';
+import { Image, User } from 'src/app/_models';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-images',
@@ -12,20 +13,25 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class ProductImagesComponent implements OnInit {
   @Input() productId?;
-  img = 'http://localhost:8200/inventoryiodb-api/images/car.jpg';
   images$: Observable<Image[]>;
+  files: FileList;
+  user: User;
+  imgURLs: any[] = [];
 
   constructor(
     private router: Router,
     private uploadService: UploadService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private documentsService: DocumentsService,
+    private accountService: AccountService,
   ) {
   }
 
   ngOnInit() {
     this.uploadService.getImages(this.productId);
     this.images$ = this.uploadService.images;
+    this.user = this.accountService.currentUserValue;
   }
   add() {
     this.router.navigate([`dashboard/upload-product-image/${this.productId}`]);
@@ -43,6 +49,44 @@ export class ProductImagesComponent implements OnInit {
           detail: 'Image removed! '
         });
       }
+    });
+  }
+
+  // upload images
+  onChange(event: FileList) {
+    const files = event && event;
+    this.files = files;
+    this.uplaodFile();
+  }
+  uplaodFile() {
+    if (!this.files.length) {
+      return false;
+    }
+
+    Array.from(this.files).forEach(file => {
+      this.documentsService.uploadFile(file).subscribe(response => {
+       // this.imgURLs.push(`${environment.API_URL}/api/upload/${response}`);
+        this.saveImage(response);
+        console.log(response);
+      });
+    });
+
+  }
+
+  saveImage(url) {
+    const data: Image = {
+      CompanyId: this.user.CompanyId,
+      OtherId: this.productId,
+      Url: `${environment.API_URL}/api/upload/${url}`,
+      CreateUserId: this.user.UserId,
+      ModifyUserId: this.user.UserId,
+      StatusId: 1
+    };
+    this.uploadService.addImage(data);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'Image  uploaded '
     });
   }
 }
