@@ -65,9 +65,7 @@ export class ProductImagesComponent implements OnInit {
 
     Array.from(this.files).forEach(file => {
       this.documentsService.uploadFile(file).subscribe(response => {
-       // this.imgURLs.push(`${environment.API_URL}/api/upload/${response}`);
         this.saveImage(response);
-        console.log(response);
       });
     });
 
