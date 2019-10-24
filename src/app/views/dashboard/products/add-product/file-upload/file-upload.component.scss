@@ -61,7 +61,10 @@
     }
 
     .card-image {
-      background: #104CE5;
+      background: #fff;
+      &:hover {
+        background: #fff;;
+      }
     }
 
     .card:nth-child(1) {
@@ -78,11 +81,16 @@
   align-items: center;
   width: 5rem;
   height: 5rem;
-  border: 1px dashed #fff;
-  border-radius: 3px;
+  // border: 1px dashed #fff;
+  // border-radius: 3px;
   transition: 0.2s;
-  border: 2px dotted #fff;
+  // border: 2px dotted #fff;
   text-align: center;
+
+  img{
+    width: 5rem;
+    height: 5rem;
+  }
 }
 
 .fake-btn {

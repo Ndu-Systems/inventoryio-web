@@ -1,3 +1,6 @@
+import { Brand } from './brand.model';
+import { Caterory } from './caterory.model';
+
 export interface Product {
     CompanyId?: string;
     ProductId: string;
@@ -17,8 +20,8 @@ export interface Product {
     ModifyDate: string;
     ModifyUserId: string;
     StatusId: string;
-    Catergory?: string;
-    Brand?: string;
+    Catergory?: Caterory;
+    Brand?: Brand;
     QuantityAvailable?: number;
     Images?;
 

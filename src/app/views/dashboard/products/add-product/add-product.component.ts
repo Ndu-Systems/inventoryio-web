@@ -103,14 +103,14 @@ export class AddProductComponent implements OnInit {
   onSubmit(product: Product) {
     product.Images = this.uploadService.currentImageValue;
     console.log(product);
-    
+
     this.productService.addProduct(product);
     this.messageService.add({
       severity: 'success',
       summary: 'Success!',
       detail: 'product created '
     });
-  //  this.routeTo.navigate([`/dashboard/product-details`]);
+    this.routeTo.navigate([`/dashboard/list-product`]);
 
   }
   addbrand(data: Product) {
