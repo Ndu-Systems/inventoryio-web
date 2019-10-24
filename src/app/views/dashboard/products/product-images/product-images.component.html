@@ -1,16 +1,28 @@
 <div class="main">
-  <h1>
+  <!-- <h1>
     Product Images
-  </h1>
-  <div class="images" *ngFor="let image of images$|async">
-    <img [src]="image?.Url" alt="">
-    <div class="close">
-      <button class="btn"  (click)="remove(image)" >Remove</button>
+  </h1> -->
+  <div class="images">
+    <div class="image"  *ngFor="let image of images$|async">
+        <img [src]="image?.Url" alt="">
+        <div class="close">
+          <button class="btn"  (click)="remove(image)" >
+              <i class="pi pi-trash"></i>
+          </button>
+        </div>
+    </div>
+    <div class="image uplaod">
+        <div class="file-drop-area">
+            <span class="fake-btn">
+              <img src="assets/add-image.svg" alt="">
+            </span>
+            <input class="file-input" type="file" (change)="onChange($event)" multiple>
+          </div>
     </div>
   </div>
 
-
+<!-- 
   <div class="add">
     <a class="hover-shadow" (click)="add()">Add Image</a>
-  </div>
+  </div> -->
 </div>

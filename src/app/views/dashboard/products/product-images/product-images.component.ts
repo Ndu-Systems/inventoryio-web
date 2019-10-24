@@ -45,4 +45,10 @@ export class ProductImagesComponent implements OnInit {
       }
     });
   }
+
+  // upload images
+  onChange(e){
+    console.log(e);
+    
+  }
 }
