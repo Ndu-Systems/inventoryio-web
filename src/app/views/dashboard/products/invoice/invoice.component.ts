@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersService } from 'src/app/_services';
+import { OrdersService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { OrderProducts } from 'src/app/_models';
+import { OrderProducts, User } from 'src/app/_models';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
@@ -17,12 +17,14 @@ export class InvoiceComponent implements OnInit {
   total = 0;
   InvoiceDate: string;
   InvoiceNumber: number;
+  user: User;
 
 
-  constructor(private ordersService: OrdersService, private router: Router
+  constructor(private ordersService: OrdersService, private router: Router, private accountService: AccountService
   ) { }
 
   ngOnInit() {
+    this.user = this.accountService.currentUserValue;
     this.products$ = this.ordersService.orderProducts;
 
     this.ordersService.order.subscribe(state => {
