@@ -48,6 +48,7 @@
 
 
 @media only screen and (max-width: 600px) {
+  .list-body {
   .cards-betta {
     grid-template-columns: 50% auto;
 
@@ -55,4 +56,5 @@
       margin: 1rem auto;
     }
   }
+}
 }
