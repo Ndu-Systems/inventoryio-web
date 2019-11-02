@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SplashService } from 'src/app/_services/splash.service';
+import { Observable } from 'rxjs';
+import { Splash } from 'src/app/_models';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   showMobileNav;
+  splash$: Observable<Splash>;
 
-  constructor() { }
+
+  constructor(private splashService: SplashService,
+    ) { }
 
   ngOnInit() {
+    this.splash$ = this.splashService.splash;
   }
   toggleNav() {
     this.showMobileNav = !this.showMobileNav;

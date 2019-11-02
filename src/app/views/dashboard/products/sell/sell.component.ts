@@ -68,7 +68,7 @@ export class SellComponent implements OnInit {
         this.messageService.add({
           severity: 'warn',
           summary: 'Stock Alert.',
-          detail: `You run out of ${product.Name}`
+          detail: `You have run out of  ${product.Name}`
         });
         return false;
       }

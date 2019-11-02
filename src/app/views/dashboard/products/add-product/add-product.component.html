@@ -6,7 +6,7 @@
   <div class="form" [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
     <div class="group">
       <span>product name</span>
-      <input formControlName="Name" />
+      <input formControlName="Name" autofocus />
     </div>
     <div class="group mt-1 longer">
       <span>Images</span>
@@ -41,12 +41,12 @@
     <div class="two">
       <div class="group">
         <span>Selling Price</span>
-        <input formControlName="UnitPrice" />
+        <input  type="number"  formControlName="UnitPrice" />
       </div>
 
       <div class="group">
         <span>Cost Price</span>
-        <input formControlName="UnitCost" />
+        <input  type="number"  formControlName="UnitCost" />
       </div>
     </div>
 
@@ -54,12 +54,12 @@
     <div class="two">
       <div class="group">
         <span>Quantity</span>
-        <input formControlName="Quantity" />
+        <input  type="number"  formControlName="Quantity" />
       </div>
 
       <div class="group">
         <span>Low Stock Alert</span>
-        <input formControlName="LowStock" />
+        <input type="number" formControlName="LowStock" />
       </div>
     </div>
 

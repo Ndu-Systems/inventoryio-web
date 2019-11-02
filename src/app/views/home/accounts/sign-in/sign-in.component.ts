@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
 
-    this.accountService.logout();
+    // this.accountService.logout();
     this.rForm = this.fb.group({
       Email: new FormControl(
         this.email,

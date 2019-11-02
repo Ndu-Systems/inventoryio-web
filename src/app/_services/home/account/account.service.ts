@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { SplashService } from '../../splash.service';
 
 
 @Injectable({
@@ -21,6 +22,7 @@ export class AccountService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private splashService: SplashService,
   ) {
     this._user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this._loading = new BehaviorSubject<boolean>(false);
@@ -50,7 +52,12 @@ export class AccountService {
       this.router.navigate(['dashboard']);
     }, error => {
       this._loading.next(false);
-      alert(JSON.stringify(error));
+      console.log(error);
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `It looks like you are not connected to the internet.`,
+        class: `error`
+      });
     });
   }
 
@@ -59,7 +66,12 @@ export class AccountService {
       const user: User = resp;
       this.updateUserState(user);
     }, error => {
-      alert(JSON.stringify(error));
+      console.log(error);
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `It looks like you are not connected to the internet.`,
+        class: `error`
+      });
     });
   }
 
@@ -72,12 +84,21 @@ export class AccountService {
         this.updateUserState(user);
         this.router.navigate(['dashboard']);
       } else {
-        alert('User unkown');
+        this.splashService.update({
+          show: true, heading: 'Opps',
+          message: `Opps wrong login details`,
+          class: `error`
+        });
       }
       this._loading.next(false);
     }, error => {
       this._loading.next(false);
-      alert(JSON.stringify(error));
+      console.log(error);
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `It looks like you are not connected to the internet.`,
+        class: `error`
+      });
     });
   }
 

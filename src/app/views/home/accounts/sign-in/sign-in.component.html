@@ -8,7 +8,7 @@
         <h1>Sign In To Your Account</h1>
         <form [formGroup]="rForm" (ngSubmit)="Login()">
           <div class="group">
-            <input type="text" formControlName="Email"  />
+            <input type="text" autofocus formControlName="Email"  />
             <!-- <span class="highlight">test</span> -->
             <!-- <span class="bar"></span> -->
             <label>Email</label>
@@ -18,7 +18,7 @@
             Email is required
           </div>
           <div class="group">
-            <input type="password" formControlName="Password"/>
+            <input type="password"  formControlName="Password"/>
             <label>Password</label>
 
             <!-- <span class="highlight"></span>

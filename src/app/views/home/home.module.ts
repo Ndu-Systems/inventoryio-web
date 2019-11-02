@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule, declarations } from './home-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { ToastModule } from 'primeng/toast';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule, ReactiveFormsModule
 
   ],
-  declarations: [...declarations]
+  declarations: [...declarations],
 })
 export class HomeModule {
 
