@@ -6,7 +6,7 @@ import { SignUpComponent } from './accounts/sign-up/sign-up.component';
 import { IndexComponent } from './index/index.component';
 import { HomePageComponent } from './index/home-page/home-page.component';
 import { FeaturesComponent } from './index/features/features.component';
-import { SplashComponent } from '../dashboard/shared/splash/splash.component';
+import { SplashHomeComponent } from '../dashboard/shared/splash-home/splash-home.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -20,7 +20,7 @@ const routes: Routes = [
 
 export const declarations = [SignInComponent,
   HomeComponent, SignUpComponent, IndexComponent,
-  HomePageComponent, FeaturesComponent, SplashComponent];
+  HomePageComponent, FeaturesComponent, SplashHomeComponent];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

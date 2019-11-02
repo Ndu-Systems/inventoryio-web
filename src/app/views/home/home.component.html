@@ -28,6 +28,6 @@
   <router-outlet></router-outlet>
 
   <div *ngIf="splash$ | async as splash">
-    <app-splash *ngIf="splash.show"></app-splash>
+    <app-splash-home *ngIf="splash.show"></app-splash-home>
   </div>
 </div>
