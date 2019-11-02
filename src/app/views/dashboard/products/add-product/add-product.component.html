@@ -1,5 +1,5 @@
 <h1 class="heading">
-  Add Product   
+  Add Product
 </h1>
 
 <div class="clean-from-body">
@@ -70,12 +70,10 @@
       </span>
       <input formControlName="SKU" />
     </div>
-
-    
     <input type="submit" class="btn save" (click)="onSubmit(rForm.value)"  value="Add product" [disabled]="!rForm.valid"/>
   </div>
 </div>
-<!-- 
+<!--
 <pre>
     {{rForm.value | json}}
 </pre>

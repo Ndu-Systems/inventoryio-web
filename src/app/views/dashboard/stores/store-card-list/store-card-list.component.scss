@@ -1,16 +1,29 @@
    .card {
-    cursor: pointer;
+     cursor: pointer;
 
-    .name {
-      h1 {
-        color: #2F2E41;
-        &.main {
-          font-weight: bold;
-        }
-        &.spec {
-          font-weight: 500;
-        }
-      }
-    }
-  }
+     .name {
+       h1 {
+         color: #2F2E41;
 
+         &.main {
+           font-weight: bold;
+         }
+
+         &.spec {
+           font-weight: 500;
+         }
+       }
+     }
+   }
+
+
+
+   @media only screen and (max-width: 600px) {
+
+     .card {
+       margin: 0;
+       width: 40vw;
+       height: 25vh;
+     }
+
+   }

@@ -30,12 +30,25 @@
   margin: 1rem 0;
   .btn {
     background: $primary-bg-color;
-    border-radius: 0;
+    border-radius: 25px;
+    box-shadow: none;
+    margin: 0 1rem;
+    font-size: 0.8rem;
+    padding: 10px 2rem;
   }
 }
+a {
+  text-transform: capitalize;
 
+  &.back-to {
+    color: #D3D8DF;
+    margin: 4rem 2rem;
+    margin-bottom: 0;
+    text-align: right;
+  }
+}
 .cards-betta {
-  grid-template-columns: repeat(3, 33%);
+  grid-template-columns: repeat(4, 25%);
 
   .name {
     .main {
@@ -65,6 +78,6 @@
     margin: 2rem 0;
     font-size: 15px;
     font-weight: 600;
-    color: #2E344C;
+    color: #FCD0AE;
   }
 }

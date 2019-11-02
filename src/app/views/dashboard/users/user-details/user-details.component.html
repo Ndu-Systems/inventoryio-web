@@ -1,5 +1,5 @@
 <div class="main">
-    <h1 class="heading bordered">user details </h1>
+  <h1 class="heading">user details </h1>
   <div class="body" *ngIf="user">
     <div class="card profile">
       <div class="profile-info col-1-of-2">
@@ -22,7 +22,7 @@
         </div>
         <div class="information">
           <div class="info-content">
-            <h1 class="heading">
+            <h1 class="heading detail">
               personal information
             </h1>
             <div class="col-1-of-4">
@@ -53,7 +53,7 @@
             </div>
           </div>
           <div class="info-content" *ngIf="user.Company">
-            <h1 class="heading">
+            <h1 class="heading detail">
               official company information
             </h1>
             <div class="col-1-of-4">
@@ -84,12 +84,17 @@
             </div>
           </div>
           <div class="info-content" *ngIf="user.Role">
-            <h1 class="heading">
-             system role information
+            <h1 class="heading detail">
+              system role information
             </h1>
-            <span class="tag" *ngIf="user.Role">
-              <button class="btn">{{user.Role.Name}} &times;</button>
-            </span>
+            <div class="col-1-of-2">
+              <span class="tag" *ngIf="user.Role">
+                <button class="btn">{{user.Role.Name}} &times;</button>
+              </span>
+              <a class="back-to" routerLink="/dashboard/users">
+                go back
+              </a>
+            </div>
           </div>
         </div>
       </div>

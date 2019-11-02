@@ -10,9 +10,6 @@
       grid-template-columns: repeat(2, 50%)
     }
 
-    @media only screen and (min-width: 768px) {
-      grid-template-columns: repeat(4, 25%);
-    }
 
     .card {
       background: #fff;
@@ -20,12 +17,13 @@
       height: 9rem;
       width: 9rem;
       margin: 1rem;
-      border: 1px solid #E5E5E5;
+      // border: 1px solid #E5E5E5;
+      border-radius: 10px;
       cursor: pointer;
 
       .icon {
         img {
-          width: 1.8rem;
+
           margin-top: 2.5rem;
         }
       }
@@ -33,8 +31,7 @@
 
       .data {
 
-        // background: rgb(34, 182, 34);
-        text-align: center;
+          text-align: center;
 
         h1 {
           color: #104CE5;

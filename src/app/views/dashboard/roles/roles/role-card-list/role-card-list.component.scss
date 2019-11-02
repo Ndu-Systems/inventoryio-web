@@ -1,9 +1,24 @@
 .card {
   cursor: pointer;
+  text-align: center;
+  background: #fff;
+  margin: 1rem;
+  padding: 1rem .6rem;
+  width: 15rem;
+  height: 10rem;
 
   .name {
     h1 {
       color: #2F2E41;
     }
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .card {
+    margin: 0;
+    width: 40vw;
+    height: 16vh;
   }
 }
