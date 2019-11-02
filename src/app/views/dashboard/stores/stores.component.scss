@@ -1,6 +1,7 @@
 .list-filters {
   grid-template-columns: 80% auto;
 }
+
 .cards-betta {
   display: grid;
   grid-template-columns: repeat(5, 20%);
@@ -12,12 +13,15 @@
     padding: 1rem .6rem;
     width: 15rem;
     height: 10rem;
+
     .name {
       h1 {
         color: #2F2E41;
+
         &.main {
           font-weight: bold;
         }
+
         &.spec {
           font-weight: 500;
         }
@@ -27,9 +31,26 @@
 }
 
 
+@media only screen and (max-width: 768px) {
+  .list-body {
+    padding: 0;
+    .cards-betta {
+      grid-template-columns: repeat(3, 31%);
+      grid-gap: 1rem;
+
+      span {
+        margin: 1rem auto;
+      }
+    }
+
+  }
+}
+
+
 @media only screen and (max-width: 600px) {
   .cards-betta {
     grid-template-columns: 50% auto;
+
     span {
       margin: 1rem auto;
     }

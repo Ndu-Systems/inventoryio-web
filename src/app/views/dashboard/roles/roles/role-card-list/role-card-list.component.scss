@@ -14,6 +14,18 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+
+  span {
+    margin: 1rem auto;
+  }
+
+  .card {
+    margin: 0;
+    width: 25vw;
+  }
+
+}
 
 @media only screen and (max-width: 600px) {
   .card {

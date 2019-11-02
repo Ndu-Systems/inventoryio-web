@@ -24,7 +24,7 @@
       </button>
     </div>
   </div>
-  <div class="list-body col-1-of-2">
+  <div class="list-body">
     <span>
       <div *ngIf="users$ | async as users">
         <span class="cards-betta" *ngIf="users.length > 0; notFound">
@@ -42,10 +42,10 @@
         </div>
       </ng-template>
     </span>
-    <span *ngIf="showForm">
+    <!-- <span *ngIf="showForm">
         <app-add-user
         (showForm)="showAdd()"
         ></app-add-user>
-    </span>
+    </span> -->
   </div>
 </div>

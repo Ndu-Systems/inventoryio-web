@@ -164,8 +164,55 @@ $dp-width : 8rem;
         border-right: none;
 
       }
+
       .information {
-        .info-content{
+        .info-content {
+          .col-1-of-2 {
+            grid-template-columns: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .information {
+    .info-content {
+      h1.heading.detail {
+        margin: 0;
+      }
+
+
+    }
+  }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .profile {
+
+    .profile-info {
+      padding: 0 1rem;
+      border-radius: 10px;
+      background: $white-color;
+
+      &.col-1-of-2 {
+        grid-template-columns: 100%;
+      }
+
+      .details {
+        border-right: none;
+        h1 {
+          text-align: left;
+        }
+        .dp {
+          margin: 0;
+        }
+      }
+
+      .information {
+        .info-content {
           .col-1-of-2 {
             grid-template-columns: 100%;
           }

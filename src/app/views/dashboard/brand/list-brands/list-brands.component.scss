@@ -30,6 +30,19 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .cards-betta {
+    grid-template-columns: 50% auto;
+    span {
+      margin: 1rem auto;
+    }
+    .card {
+      margin: 0;
+      width: 40vw;
+     }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .cards-betta {
     grid-template-columns: 50% auto;

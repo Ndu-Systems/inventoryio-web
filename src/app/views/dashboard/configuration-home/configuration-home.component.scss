@@ -12,6 +12,13 @@
 
 }
 
+@media only screen and (max-width: 768px) {
+   .actions {
+     h1 {
+       padding-left: 1rem;
+     }
+   }
+}
 
 
 @media only screen and (max-width: 600px) {

@@ -13,7 +13,7 @@
       </button>
     </div>
   </div>
-  <div class="list-body col-1-of-2">
+  <div class="list-body">
     <span>
       <div *ngIf="stores$ | async as stores">
         <span class="cards-betta" *ngIf="stores.length > 0; else notFound">
@@ -31,8 +31,6 @@
         </ng-template>
       </div>
     </span>
-    <span *ngIf="showForm" class="add-form">
-      <app-add-store (showForm)="showAdd()"></app-add-store>
-    </span>
+
   </div>
 </div>
