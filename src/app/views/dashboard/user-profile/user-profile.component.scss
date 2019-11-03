@@ -125,9 +125,19 @@ $dp-width : 8rem;
         }
 
         h1 {
-          text-align: center;
+          text-align: left;
         }
       }
+
+
+    }
+  }
+
+  .heading {
+    margin: 0;
+    padding: 0;
+    &.bordered {
+      padding: 1rem 0.5rem;
     }
   }
 }
