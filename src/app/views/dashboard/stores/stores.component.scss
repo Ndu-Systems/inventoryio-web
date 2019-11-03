@@ -31,6 +31,20 @@
 }
 
 
+@media only screen and (max-width: 1024px) {
+  .list-body {
+    padding: 0;
+    .cards-betta {
+      grid-template-columns: repeat(3, 31%);
+      grid-gap: 1rem;
+
+      span {
+        margin: 1rem auto;
+      }
+    }
+
+  }
+}
 @media only screen and (max-width: 768px) {
   .list-body {
     padding: 0;

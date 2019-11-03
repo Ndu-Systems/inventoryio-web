@@ -11,7 +11,7 @@
       </button>
     </div>
   </div>
-  <div class="list-body col-1-of-2">
+  <div class="list-body">
     <span>
       <div class="cards-betta" *ngIf="brands$  | async as brands">
         <span *ngFor="let item of brands | configurationFilterPipe: search">
@@ -31,9 +31,6 @@
           </div>
         </span>
       </div>
-    </span>
-    <span *ngIf="showForm">
-      <app-add-brand (showForm)="showAdd()"></app-add-brand>
     </span>
   </div>
 </div>

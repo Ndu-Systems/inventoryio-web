@@ -45,6 +45,9 @@ $dp-width : 8rem;
         img {
           width: 100%;
         }
+        @media only screen and (max-width: 768px) {
+          width: 6rem;
+        }
       }
 
       h1 {
@@ -87,6 +90,10 @@ $dp-width : 8rem;
 
         .col-1-of-2 {
           grid-template-columns: 80% auto;
+
+          @media only screen and (max-width: 768px) {
+            grid-template-columns: 70% auto;
+          }
         }
 
         h1 {
@@ -147,32 +154,17 @@ $dp-width : 8rem;
 
 // media queries
 
-// @media only screen and (max-width: 600px) {
-//   .body {
-//     grid-template-columns: 100%;
-//     grid-gap: 0;
-//   }
-//   .profile {
-//     padding: 0;
-//     width: 100%;
-//     .profile-info {
-//       padding: 0;
-//       &.col-1-of-2 {
-//         grid-template-columns: 100%;
-//       }
+@media only screen and (max-width: 1024px) {
+  .information {
+    .info-content {
+      .col-1-of-2 {
+        grid-template-columns: repeat(2, 50%);
+      }
+    }
+  }
+}
 
-//       .details {
-//         .dp {
-//           margin: 0 auto;
-//         }
-//         h1 {
-//           text-align: center;
-//         }
-//       }
-//     }
-//   }
-// }
-
+@media only screen and (max-width: 768px) {}
 
 @media only screen and (max-width: 600px) {
 
@@ -182,9 +174,11 @@ $dp-width : 8rem;
       padding: 0 1rem;
       border-radius: 10px;
       background: $white-color;
+
       .dp {
         height: 100%;
       }
+
       &.col-1-of-2 {
         grid-template-columns: 100%;
       }
@@ -201,6 +195,7 @@ $dp-width : 8rem;
           &:last-child {
             border-bottom: 0;
           }
+
           h1 {
             &.heading {
               margin: 0;
@@ -208,7 +203,7 @@ $dp-width : 8rem;
           }
 
           .col-1-of-2 {
-            grid-template-columns:100%;
+            grid-template-columns: 100%;
           }
 
         }

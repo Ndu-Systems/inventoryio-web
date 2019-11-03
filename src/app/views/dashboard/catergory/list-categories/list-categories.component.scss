@@ -27,7 +27,23 @@
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .cards-betta {
+    grid-template-columns: repeat(4, 25%);
+    span {
+      margin: 1rem auto;
+    }
+    .card {
+      margin: 0;
+      width: 19vw;
+     }
+  }
+}
+
 @media only screen and (max-width: 768px) {
+  .list-body {
+    padding: 0;
+  }
   .cards-betta {
     grid-template-columns: 50% auto;
     span {

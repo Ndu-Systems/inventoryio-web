@@ -72,6 +72,16 @@
 
 }
 
+@media only screen and (max-width: 1024px) {
+  .main {
+    margin-top: -26px;
+
+    .cards {
+      grid-template-columns: repeat(5, 20%);
+    }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .main {
     margin-top: -26px;

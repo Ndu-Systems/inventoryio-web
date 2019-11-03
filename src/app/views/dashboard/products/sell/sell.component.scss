@@ -7,6 +7,10 @@
 .small-cards {
   grid-template-columns: repeat(3, 33%);
 
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 100%;
+
+  }
   @media only screen and (max-width: 768px) {
     grid-template-columns: 100%;
 

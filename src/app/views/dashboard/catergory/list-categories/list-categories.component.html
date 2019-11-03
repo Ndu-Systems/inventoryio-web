@@ -12,7 +12,7 @@
       </button>
     </div>
   </div>
-  <div class="list-body col-1-of-2">
+  <div class="list-body">
     <span>
       <div class="cards-betta" *ngIf="categories$  | async as categories">
         <span *ngFor="let item of categories | configurationFilterPipe: search">
@@ -32,9 +32,6 @@
           </div>
         </span>
       </div>
-    </span>
-    <span *ngIf="showForm">
-      <app-add-catergory (showForm)="showAdd()"></app-add-catergory>
     </span>
   </div>
 </div>

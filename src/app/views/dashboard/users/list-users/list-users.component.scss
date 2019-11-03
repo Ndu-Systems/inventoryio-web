@@ -6,6 +6,22 @@
   grid-template-columns: repeat(5, 20%);
 }
 
+@media only screen and (max-width: 1024px) {
+  .cards-betta {
+    grid-template-columns: repeat(4,25%);
+    span {
+      margin: 10px;
+    }
+    .card {
+      margin: 0;
+      width: 25vw;
+      height: 24vh;
+    }
+  }
+  .list-body {
+    padding: 0;
+  }
+}
 @media only screen and (max-width: 768px) {
   .cards-betta {
     grid-template-columns: repeat(3, 33%);
