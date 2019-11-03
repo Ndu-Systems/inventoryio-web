@@ -104,6 +104,34 @@ $dp-width : 8rem;
 }
 
 
+@media only screen and (max-width: 768px) {
+
+  .profile {
+    padding: 0;
+    width: 100%;
+
+    .profile-info {
+      padding: 0;
+
+      &.col-1-of-2 {
+        grid-template-columns: 100%;
+      }
+
+      .details {
+        .dp {
+          margin: 0 auto;
+        }
+
+        h1 {
+          text-align: left;
+        }
+      }
+
+
+    }
+  }
+}
+
 // media queries
 
 @media only screen and (max-width: 600px) {

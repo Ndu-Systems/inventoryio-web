@@ -11,6 +11,10 @@ $dp-reduced : 3rem;
   float: right;
 
 
+  @media only screen and (max-width: 768px) {
+     width: 50%;
+  }
+
   @media only screen and (max-width: 600px) {
     padding: 0;
   }
@@ -20,6 +24,12 @@ $dp-reduced : 3rem;
       display: grid;
       grid-template-columns: 30% 30% auto;
       margin-top: -1.5rem;
+
+      .text{
+        font-weight: 500;
+        font-size: 0.8rem;
+      }
+
       @media only screen and (max-width: 600px) {
         margin-top: -0;
 

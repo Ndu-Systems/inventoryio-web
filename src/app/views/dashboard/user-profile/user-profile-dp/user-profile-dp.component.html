@@ -2,17 +2,20 @@
   <div *ngIf="user$ | async as user" class="user-profile">
     <div (click)=toProfile(user) class="cta">
       <h1>
-        {{user.Name}}
-      </h1>
-
-      <h2>
-        {{user.Company?.Name}}
-      </h2>
-      <span class="dp">
-          <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
-          <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue.svg" alt="">
-          <!-- <img *ngIf="!user.DP" class="placeholder mob" src="assets/user2.svg" alt=""> -->
+        <span class="text">
+            {{user.Company?.Name}}
         </span>
+      </h1>
+      <h1>
+        <span  class="text">
+           hello, {{user.Name}}
+        </span>
+      </h1>
+      <span class="dp">
+        <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
+        <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue.svg" alt="">
+        <!-- <img *ngIf="!user.DP" class="placeholder mob" src="assets/user2.svg" alt=""> -->
+      </span>
     </div>
   </div>
 </div>
