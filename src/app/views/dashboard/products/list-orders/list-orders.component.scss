@@ -1,5 +1,5 @@
 .body {
-  width:100%; 
+  width:100%;
 
   @media only screen and (max-width: 600px) {
     width: 100%;
@@ -7,11 +7,24 @@
   }
 
   .items {
- 
+    @media only screen and (max-width: 768px) {
+      display: grid;
+      grid-template-columns: 50% auto;
+    }
+    @media only screen and (max-width: 600px) {
+      display: grid;
+      grid-template-columns: 100%;
+    }
+
     .item {
       grid-template-columns: 20% 10% 10% 15% 15% auto;
       grid-template-columns: repeat(7, 12%);
 
+      border-radius: 10px;
+      @media only screen and (max-width: 768px) {
+        grid-template-columns: 100%;
+        margin: 1rem;
+      }
       @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
       }
@@ -81,5 +94,14 @@
   grid-template-columns: 50% auto;
   .btn{
     float: right;
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 50% auto;
+  }
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+    margin-left: 0.2rem;
   }
 }

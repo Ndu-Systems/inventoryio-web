@@ -31,7 +31,10 @@ $dp-reduced : 3rem;
       }
 
       @media only screen and (max-width: 600px) {
-        margin-top: -0;
+        grid-template-columns: 100%;
+        h1 {
+          display: none;
+        }
 
       }
     }
@@ -55,11 +58,16 @@ $dp-reduced : 3rem;
 
       display: block;
 
+      @media only screen and (max-width: 768px) {
+
+      }
+
       @media only screen and (max-width: 600px) {
         border-radius: $dp-reduced;
         width: $dp-reduced;
         height: $dp-reduced;
-
+        margin-left: 5rem;
+        margin-top: 1.5rem;
       }
 
       img {
