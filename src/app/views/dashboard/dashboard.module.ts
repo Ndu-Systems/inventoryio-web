@@ -12,6 +12,7 @@ import { ConfirmationService } from 'primeng/api';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import {ChartModule} from 'primeng/chart';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {ChartModule} from 'primeng/chart';
     ConfirmDialogModule,
     FontAwesomeModule,
     KeyFilterModule,
-    ChartModule
+    ChartModule,
+    ProgressBarModule
 
   ],
   declarations: [...declarations],

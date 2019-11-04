@@ -9,22 +9,35 @@ import { SpinnerService } from './spinner.service';
 })
 export class DocumentsService {
   url: any;
+  fileOfBlob: File;
+  formData: FormData;
 
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.url = environment.API_URL;
 
   }
 
-
-  uploadFile(file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('name', file.name);
+  // moveFile(file: File): Observable<any> {
+  //   return this.http.post<any>(`${this.url}/api/upload/upload.php`,
+  //   this.formData
+  // );
+  // }
+  uploadFile(formData): Observable<any> {
+    // this.cropImage(file);
+    // alert(file.type);
+    // alert(file.name);
+    // const formData = new FormData();
+    // formData.append('file', file);
+    // formData.append('name', file.name);
+    // return this.http.post<any>(`${this.url}/api/upload/upload.php`,
+    //   formData
+    // );
+  
+    // if (this.fileOfBlob) {
     return this.http.post<any>(`${this.url}/api/upload/upload.php`,
       formData
     );
+    // }
   }
-
-
 }
