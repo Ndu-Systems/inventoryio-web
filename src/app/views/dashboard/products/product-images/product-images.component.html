@@ -1,7 +1,4 @@
 <div class="main">
-  <!-- <h1>
-    Product Images
-  </h1> -->
   <div class="images">
     <div class="image"  *ngFor="let image of images$|async">
         <img [src]="image?.Url" alt="">
@@ -20,9 +17,4 @@
           </div>
     </div>
   </div>
-
-<!-- 
-  <div class="add">
-    <a class="hover-shadow" (click)="add()">Add Image</a>
-  </div> -->
 </div>
