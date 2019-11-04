@@ -56,7 +56,7 @@ export class AccountService {
       this.splashService.update({
         show: true, heading: 'Network Error',
         message: `It looks like you are not connected to the internet.`,
-        class: `error`
+        class: `error`,
       });
     });
   }
