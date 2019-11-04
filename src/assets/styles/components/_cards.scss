@@ -1,4 +1,10 @@
 .list-body {
+  padding: 1rem 3rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: 1rem 0rem;
+  }
+
   &.col-1-of-2 {
     grid-template-columns: 75% auto;
 
@@ -11,9 +17,9 @@
       }
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (max-width: 768px) {
       grid-template-columns: 100%;
-
+      padding: 0;
       .add-form {
         display: none;
       }
@@ -33,7 +39,7 @@
     grid-template-columns: 30% 30% auto;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (max-width: 768px) {
     max-height: 77vh;
   }
 
@@ -55,6 +61,7 @@
     margin: 1rem;
     padding: 1rem .6rem;
     // border-bottom: 1px solid #bdc3c7;
+    border-radius: 10px;
 
     h1 {
       color: #104CE5;
@@ -91,5 +98,8 @@
     }
 
 
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+    }
   }
 }

@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
   <div class="body">
     <div class="form">
       <h1 class="form-heading">
@@ -27,6 +27,42 @@
         </div>
         <div class="alert" *ngIf="!rForm.controls['Address'].valid && rForm.controls['Address'].touched">
           Store Name is required
+        </div>
+        <div class="group button">
+          <input type="submit" value="Add Store" class="btn" [disabled]="!rForm.valid" />
+        </div>
+        <div class="group cancel">
+          <a routerLink="/dashboard/stores">abort</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<div class="main">
+  <h1 class="heading">add a new store</h1>
+  <div class="list-body col-1-of-2">
+    <div class="form">
+        <h1 class="form-heading">Expanding? add different branches or provide sales, stocking & shared management</h1>
+      <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+        <div class="group">
+          <input type="text" formControlName="Name" required="required" />
+          <label>Name</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+          Store Name is required
+        </div>
+        <div class="group">
+          <input type="text" formControlName="TelephoneNumber" required="required" />
+          <label>Telephone Number</label>
+        </div>
+        <div class="alert"
+          *ngIf="!rForm.controls['TelephoneNumber'].valid && rForm.controls['TelephoneNumber'].touched">
+          Telephone Number is required
+        </div>
+        <div class="group">
+          <input type="text" formControlName="Address"  required="required" />
+          <label>Address</label>
         </div>
         <div class="group button">
           <input type="submit" value="Add Store" class="btn" [disabled]="!rForm.valid" />

@@ -17,8 +17,9 @@
       height: 9rem;
       width: 9rem;
       margin: 1rem;
-      border: 1px solid #E5E5E5;
+      // border: 1px solid #E5E5E5;
       cursor: pointer;
+      border-radius: 10px;
 
       .icon {
         img {
@@ -69,4 +70,30 @@
     }
   }
 
+}
+
+@media only screen and (max-width: 1024px) {
+  .main {
+    margin-top: -26px;
+
+    .cards {
+      grid-template-columns: repeat(5, 20%);
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .main {
+    margin-top: -26px;
+
+    .cards {
+      grid-template-columns: repeat(4, 25%);
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main .cards {
+    grid-template-columns: 50% auto;
+  }
 }

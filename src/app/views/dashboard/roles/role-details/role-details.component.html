@@ -1,29 +1,4 @@
-<!-- <div class="main">
-    <h1 class="heading bordered">Role details</h1>
-    <div class="body">
-    <div class="cards profile">
-      <span *ngIf="(role | async); let role">
-        <div class="card col-1-of-2">
-          <div class="icon">
-             <img src="assets/images/actions/role.svg" alt="role image">
-          </div>
-          <div class="data">
-            <h1 class="main">{{role.Name}}</h1>
-            <h1 class="spec">{{role.CreateDate | date:'short'}}</h1>
-          </div>
-        </div>
-        <button type="text" value="" class="btn archive">Archive this role</button>
-      </span>
-    </div>
-    <div *ngIf="(role | async); let role">
-      <app-list-role-permissions
-        [roleId]="role.RoleId"
-      ></app-list-role-permissions>
-    </div>
-  </div>
-</div> -->
-
-<div class="main">
+ <div class="main">
   <h1 class="heading bordered">role details </h1>
   <div class="body" *ngIf="(role | async); let role">
     <div class="card profile">

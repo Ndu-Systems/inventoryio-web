@@ -1,3 +1,71 @@
 .list-filters {
   grid-template-columns: 80% auto;
 }
+.cards-betta {
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+
+  .card {
+    text-align: center;
+    background: #fff;
+    margin: 1rem;
+    padding: 1rem .6rem;
+    width: 15rem;
+    height: 10rem;
+    border-radius: 10px;
+    .name {
+      h1 {
+        color: #2F2E41;
+        &.main {
+          font-weight: bold;
+        }
+        &.spec {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .cards-betta {
+    grid-template-columns: repeat(4, 25%);
+    span {
+      margin: 1rem auto;
+    }
+    .card {
+      margin: 0;
+      width: 19vw;
+     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .list-body {
+    padding: 0;
+  }
+  .cards-betta {
+    grid-template-columns: 50% auto;
+    span {
+      margin: 1rem auto;
+    }
+    .card {
+      margin: 0;
+      width: 40vw;
+     }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .cards-betta {
+    grid-template-columns: 50% auto;
+    span {
+      margin: 1rem auto;
+    }
+
+    .card {
+      margin: 0;
+      width: 40vw;
+      height: 25vh;
+    }
+  }
+}

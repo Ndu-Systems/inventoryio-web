@@ -27,7 +27,7 @@
       </button>
     </div>
   </div>
-  <div class="list-body col-1-of-2">
+  <div class="list-body">
     <span>
       <div *ngIf="companyPermissions.length > 0 else notFound">
         <app-permission-card-list [permissions]="companyPermissions"></app-permission-card-list>
@@ -41,10 +41,6 @@
         </div>
       </ng-template>
     </span>
-    <span *ngIf="showForm">
-        <app-add-permission
-        (showForm)="showAdd()"
-        ></app-add-permission>
-    </span>
+
   </div>
 </div>

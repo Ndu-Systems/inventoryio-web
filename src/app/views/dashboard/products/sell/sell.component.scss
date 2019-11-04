@@ -1,5 +1,20 @@
+.small-cards-body {
+  @media only screen and (max-width: 768px) {
+    padding: 0;
+  }
+}
+
 .small-cards {
   grid-template-columns: repeat(3, 33%);
+
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 100%;
+
+  }
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 100%;
+
+  }
 
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
@@ -25,6 +40,11 @@
   display: grid;
   grid-template-columns: 75% auto;
 
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 65% auto;
+
+  }
+
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
 
@@ -33,6 +53,7 @@
   .summary {
     background: #fff;
     padding: 1rem;
+    border-radius: 10px;
 
     .back {
       display: none;
@@ -76,7 +97,7 @@
   top: 10rem;
   font-size: 4rem;
   position: fixed;
-  right: 9rem;
+  right: 12rem;
   top: 1rem;
   font-size: 1.5rem;
   background: #104ce5;
@@ -90,7 +111,13 @@
     // right: -5rem;
     font-size: .7rem;
   }
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+
 }
+
 
 .success {
   background: #2ecc71;

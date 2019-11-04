@@ -3,6 +3,7 @@
   width: 80%;
   padding: 3rem 2rem;
   margin: 0 auto;
+  border-radius: 10px;
   @media only screen and (max-width: 600px) {
     width: 100%;
     padding: 1rem;
@@ -23,7 +24,7 @@
       margin: 0;
       padding: 0;
 
-      
+
       @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
       }
@@ -96,4 +97,12 @@
 .save {
   width: 10rem;
   float: right;
+  margin: 0.5rem 0rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .clean-from-body {
+    height: 104vh;
+  }
 }

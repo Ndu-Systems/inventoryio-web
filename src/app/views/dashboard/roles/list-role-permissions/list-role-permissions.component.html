@@ -1,13 +1,20 @@
-<span class="cards-betta" *ngIf="permissions.length > 0; else notFound">
-  <span *ngFor="let item of permissions">
-    <span class="tag">
-      <button class="btn">{{item.friendlyName}}&times;</button>
+<div class="col-1-of-2">
+  <span class="cards-betta" *ngIf="permissions.length > 0; else notFound">
+
+    <span *ngFor="let item of permissions">
+      <span class="tag">
+        <button class="btn">{{item.friendlyName}}&times;</button>
+      </span>
     </span>
   </span>
-</span>
-<ng-template #notFound>
+
+  <a class="back-to" routerLink="/dashboard/roles">
+    go back
+  </a>
+</div>
+ <ng-template #notFound>
   <div class="not-found">
-    <img [src]="notFoundModel.Image" alt="no items found">
+    <!-- <img [src]="notFoundModel.Image" alt="no items found"> -->
     <h1 class="message">
       {{notFoundModel.Message}}
     </h1>

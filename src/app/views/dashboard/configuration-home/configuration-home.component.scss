@@ -9,8 +9,16 @@
     font-weight: 400;
     text-transform: capitalize;
   }
+
 }
 
+@media only screen and (max-width: 768px) {
+   .actions {
+     h1 {
+       padding-left: 1rem;
+     }
+   }
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -24,6 +32,9 @@
       margin: 2rem;
       font-weight: 400;
       text-transform: capitalize;
+    }
+    .heading {
+      margin: 2rem 2rem;
     }
   }
 }

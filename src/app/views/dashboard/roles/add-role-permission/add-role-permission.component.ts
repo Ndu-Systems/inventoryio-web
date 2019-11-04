@@ -70,7 +70,10 @@ export class AddRolePermissionComponent implements OnInit {
       });
       this.showForm.emit(false);
     });
+  }
 
+  cancelForm() {
+    this.showForm.emit(false);
   }
 
 }

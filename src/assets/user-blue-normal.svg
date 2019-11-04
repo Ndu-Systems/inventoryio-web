@@ -1,18 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="552" height="552.018" viewBox="0 0 552 552.018">
-  <g id="user-blue" transform="translate(-1182 -108)">
-    <g id="user-blue-2" data-name="user-blue" transform="translate(1182 108)">
+  <g id="user-blue-normal" transform="translate(-1182 -108)">
+    <g id="user-blue" transform="translate(1182 108)">
       <path id="Path_1133" data-name="Path 1133" d="M105.009,357.45,22.654,402.372a74.01,74.01,0,0,0-13.217,9.4,275.834,275.834,0,0,0,354.406.917,73.063,73.063,0,0,0-14.519-9.728l-88.188-44.089a33.63,33.63,0,0,1-18.592-30.08V294.2a133.208,133.208,0,0,0,8.343-10.728A202.918,202.918,0,0,0,278.3,228.225a27.7,27.7,0,0,0,19.644-26.351V164.941a27.572,27.572,0,0,0-9.228-20.466V91.085S299.684,8,187.166,8,85.616,91.085,85.616,91.085v53.39a27.535,27.535,0,0,0-9.228,20.466v36.933a27.689,27.689,0,0,0,12.769,23.237c9.228,40.172,33.392,69.086,33.392,69.086v33.746a33.665,33.665,0,0,1-17.54,29.507Z" transform="translate(88.853 75.332)" fill="#e7eced"/>
       <g id="Group_583" data-name="Group 583">
         <path id="Path_1134" data-name="Path 1134" d="M280.727.041C128.318-2.563,2.645,118.881.041,271.291-1.438,357.708,37.079,435.376,98.4,487.026a73.342,73.342,0,0,1,13.092-9.311l82.355-44.922a33.643,33.643,0,0,0,17.529-29.528V369.519s-24.174-28.913-33.392-69.086A27.7,27.7,0,0,1,165.22,277.2V240.263a27.572,27.572,0,0,1,9.228-20.466v-53.39S163.48,83.323,276,83.323s101.551,83.084,101.551,83.084V219.8a27.535,27.535,0,0,1,9.228,20.466V277.2a27.7,27.7,0,0,1-19.644,26.351A202.919,202.919,0,0,1,339.722,358.8a133.187,133.187,0,0,1-8.343,10.728v34.6a33.621,33.621,0,0,0,18.6,30.083l88.182,44.086A73.433,73.433,0,0,1,452.636,488a275.292,275.292,0,0,0,99.322-207.267C554.58,128.318,433.147,2.645,280.727.041Z" fill="#556080"/>
-      </g>
-    </g>
-    <g id="Group_549" data-name="Group 549" transform="translate(0 23)">
-      <g id="Group_550" data-name="Group 550" transform="translate(23)">
-        <g id="Rectangle_295" data-name="Rectangle 295" transform="translate(1253 467)" fill="#556080" stroke="#ebeef2" stroke-width="3" opacity="0.5">
-          <rect width="364" height="68" rx="25" stroke="none"/>
-          <rect x="1.5" y="1.5" width="361" height="65" rx="23.5" fill="none"/>
-        </g>
-        <text id="upload_your_profile_picture" data-name="upload your profile picture" transform="translate(1284 507)" fill="#d3d8df" font-size="21" font-family="Montserrat-Medium, Montserrat" font-weight="500"><tspan x="0" y="0">Upload Your Profile Picture</tspan></text>
       </g>
     </g>
   </g>
