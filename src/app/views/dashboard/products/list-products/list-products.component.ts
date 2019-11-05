@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService, AccountService, BannerService } from 'src/app/_services';
-import { Product } from 'src/app/_models';
+import { Product, NotFoundModel } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { NotFoundConstants } from '../../shared';
 
 @Component({
   selector: 'app-list-products',
@@ -13,10 +14,12 @@ export class ListProductsComponent implements OnInit {
 
   search = ``;
   searchByCatergory = ``;
-  categories: string[] = [];
+  // categories: string[];
   products$: Observable<Product[]>;
   sum: number;
   totalPrice = 0;
+  notFoundModel: NotFoundModel;
+  categories: any[];
 
   constructor(
     private productService: ProductService,
@@ -40,14 +43,18 @@ export class ListProductsComponent implements OnInit {
           countLabel: 'Total Products',
           count: state.length
         });
-
-        this.categories = state.map(c => c.Catergory && c.Catergory.Name || '');
-        this.sum = state.length;
-        let prices = state.map(x => Number(x.UnitPrice) * Number(x.Quantity)) || [0];
-        this.totalPrice = prices.reduce(this.myFunc);
+        const categories = state.map(c => c.Catergory && c.Catergory.Name || '') || [];
+        this.categories = categories.filter((item, index) => categories.indexOf(item) === index);
         this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
+        this.sum = state.length;
+        const prices = state.map(x => Number(x.UnitPrice) * Number(x.Quantity)) || [0];
+        this.totalPrice = prices.reduce(this.myFunc, 0);
       }
     });
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
+      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+    };
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);

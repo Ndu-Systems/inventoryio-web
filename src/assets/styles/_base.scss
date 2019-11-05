@@ -104,20 +104,13 @@ h1 {
     display: none;
   }
   @media only screen and (min-width: 768px) {
-    display: none;
+    display: inline;
   }
 
 }
-
-.phone-only {
-  display: none;
-
-  @media only screen and (max-width: 600px) {
-    display: block;
-  }
-  @media only screen and (min-width: 768px) {
-    display: block;
-  }
+.link-add{
+  cursor: pointer;
+  font-style: italic;
 }
 
 span.step {
