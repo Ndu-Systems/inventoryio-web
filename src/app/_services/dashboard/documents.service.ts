@@ -17,27 +17,9 @@ export class DocumentsService {
     this.url = environment.API_URL;
 
   }
-
-  // moveFile(file: File): Observable<any> {
-  //   return this.http.post<any>(`${this.url}/api/upload/upload.php`,
-  //   this.formData
-  // );
-  // }
   uploadFile(formData): Observable<any> {
-    // this.cropImage(file);
-    // alert(file.type);
-    // alert(file.name);
-    // const formData = new FormData();
-    // formData.append('file', file);
-    // formData.append('name', file.name);
-    // return this.http.post<any>(`${this.url}/api/upload/upload.php`,
-    //   formData
-    // );
-  
-    // if (this.fileOfBlob) {
     return this.http.post<any>(`${this.url}/api/upload/upload.php`,
       formData
     );
-    // }
   }
 }

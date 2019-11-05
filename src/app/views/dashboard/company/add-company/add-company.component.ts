@@ -66,8 +66,11 @@ export class AddCompanyComponent implements OnInit {
         this.addRole(companyDb.CompanyId)
 
       }, error => {
-        alert(JSON.stringify(error));
-      });
+        this.splashService.update({
+          show: true, heading: 'Network Error',
+          message: `Sorry it looks like you're on a slow connection.`,
+          class: `error`
+        });      });
   }
 
   addCompanyTo(companyId: string) {

@@ -58,14 +58,14 @@ export class UserDetailsComponent implements OnInit {
     if (this.user) {
       this.roleService.getRolesForCompany(this.user.CompanyId, '1').subscribe(Response => {
         if (Response.length === 0) {
-          alert('do work');
+         // alert('do work');
         }
       });
     }
   }
 
   getUserNow(user: User) {
-    alert(JSON.stringify(user));
+    // alert(JSON.stringify(user));
   }
 
 }

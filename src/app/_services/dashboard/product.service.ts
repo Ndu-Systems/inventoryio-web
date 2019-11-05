@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { SpinnerService } from '.';
+import { SplashService } from '../splash.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class ProductService {
   url: string;
   constructor(
     private http: HttpClient,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private splashService: SplashService,
 
   ) {
     this._products = new BehaviorSubject<Product[]>(JSON.parse(localStorage.getItem('products')) || []);
@@ -82,7 +84,11 @@ export class ProductService {
       }
       this.spinnerService.hide();
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
       this.spinnerService.hide();
     });
   }
@@ -96,7 +102,11 @@ export class ProductService {
       }
       this.spinnerService.hide();
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
       this.spinnerService.hide();
     });
   }
@@ -109,7 +119,11 @@ export class ProductService {
 
       }
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
       this.spinnerService.hide();
 
     });
@@ -120,7 +134,11 @@ export class ProductService {
       const products: Product[] = resp;
       this.updateState(products);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
     });
   }
 }

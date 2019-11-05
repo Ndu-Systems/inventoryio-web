@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Orders, Item, OrderProducts } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { SplashService } from '../splash.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class OrdersService {
   public orderProducts: Observable<OrderProducts[]>;
   url: string;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private splashService: SplashService,
   ) {
     this._orders = new BehaviorSubject<Orders[]>(JSON.parse(localStorage.getItem('orders')) || []);
     this.orders = this._orders.asObservable();
@@ -62,7 +64,11 @@ export class OrdersService {
       this.apendState(order);
       this.updateOrderState(order);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
     });
   }
 
@@ -73,7 +79,11 @@ export class OrdersService {
       this.apendState(order);
       this.updateOrderState(order);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
     });
   }
 
@@ -97,8 +107,11 @@ export class OrdersService {
     return this.http.post<any>(`${this.url}/api/order_products/add-order_product-range.php`, data).subscribe(resp => {
       this.getProductsForAnOrder(orderId);
     }, error => {
-      alert(JSON.stringify(error));
-    });
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });    });
   }
 
   getOrders(companyId) {
@@ -107,16 +120,22 @@ export class OrdersService {
       localStorage.setItem('orders', JSON.stringify(orders));
       this._orders.next(orders);
     }, error => {
-      alert(JSON.stringify(error));
-    });
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });    });
   }
   getProductsForAnOrder(orderId: string) {
     return this.http.get<any>(`${this.url}/api/order_products/get-order_products.php?OrderId=${orderId}`).subscribe(resp => {
       const products: OrderProducts[] = resp;
       this.updateOrderProductsState(products);
     }, error => {
-      alert(JSON.stringify(error));
-    });
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });    });
   }
 
 

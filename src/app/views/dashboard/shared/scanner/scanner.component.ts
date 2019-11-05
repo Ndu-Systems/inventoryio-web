@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
+import { SplashService } from 'src/app/_services/splash.service';
 
 @Component({
   selector: 'app-scanner',
@@ -18,19 +19,26 @@ export class ScannerComponent implements OnInit {
   ];
 
 
-  constructor() { }
+  constructor(private splashService: SplashService) { }
 
   ngOnInit() {
   }
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
-    alert(this.qrResultString);
+    this.splashService.update({
+      show: true, heading: 'Network Error',
+      message: resultString,
+      class: `error`
+    });
   }
   scanErrorHandler(error: string) {
-    alert(error);
+    this.splashService.update({
+      show: true, heading: 'Network Error',
+      message: error,
+      class: `error`
+    });
   }
   scanCompleteHandler(result: string) {
-    // alert(result);
-    // Emitted after any scan attempt, no matter what.
+
   }
 }

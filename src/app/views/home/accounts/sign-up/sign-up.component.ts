@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AccountService, RolesService } from 'src/app/_services';
 import { User } from 'src/app/_models';
+import { SplashService } from 'src/app/_services/splash.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private splashService: SplashService,
   ) {
   }
 
@@ -54,7 +56,11 @@ export class SignUpComponent implements OnInit {
     const passwordConfirm = this.getFormValues.passwordConfirm.value;
     if (password !== passwordConfirm) {
       this.error = `Password must match`;
-      alert(this.error);
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: this.error,
+        class: `error`
+      });
       return false;
     }
 
@@ -69,7 +75,7 @@ export class SignUpComponent implements OnInit {
       ModifyUserId: 'web',
       RoleId: 1,
       StatusId: 1
-     };
+    };
     this.accountService.addUser(data);
 
   }

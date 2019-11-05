@@ -48,7 +48,6 @@ export class BrandService {
       const brand: Brand = resp;
       this.apendState(brand);
     }, error => {
-      // alert(JSON.stringify(error));
       this.spinnerService.hide();
       this.splashService.update({
         show: true, heading: 'Network Error',

@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { SplashService } from '../splash.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class CompanyService {
   public currentCompany: Observable<Company>;
   url: string;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private splashService: SplashService
   ) {
     this.currentCompanySubject = new BehaviorSubject<Company>(JSON.parse(localStorage.getItem('currentCompany')));
     this.currentCompany = this.currentCompanySubject.asObservable();
@@ -33,7 +35,11 @@ export class CompanyService {
       localStorage.setItem('currentCompany', JSON.stringify(company));
       this.currentCompanySubject.next(company);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
     });
   }
 

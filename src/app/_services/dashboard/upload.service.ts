@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Image } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { SpinnerService } from './spinner.service';
+import { SplashService } from '../splash.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class UploadService {
   url: string;
   constructor(
     private http: HttpClient,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private splashService: SplashService,
   ) {
     this._images = new BehaviorSubject<Image[]>(JSON.parse(localStorage.getItem('images')) || []);
     this.images = this._images.asObservable();
@@ -51,7 +53,11 @@ export class UploadService {
 
     }, error => {
       this.spinnerService.hide();
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
     });
   }
   update(data: Image) {
@@ -59,7 +65,11 @@ export class UploadService {
       const state = this.currentImageValue.filter(x => x.ImageId !== data.ImageId);
       this.updateState(state);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
     });
   }
 
@@ -68,7 +78,11 @@ export class UploadService {
       const images: Image[] = resp;
       this.updateState(images);
     }, error => {
-      alert(JSON.stringify(error));
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: `Sorry it looks like you're on a slow connection.`,
+        class: `error`
+      });
     });
   }
 

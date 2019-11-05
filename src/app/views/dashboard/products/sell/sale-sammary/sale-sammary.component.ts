@@ -21,7 +21,6 @@ export class SaleSammaryComponent implements OnInit {
   ngOnInit() {
     this.sale$ = this.saleService.sell;
     this.saleService.sell.subscribe(state => {
-      // alert(state);
     });
     this.productService.products.subscribe(r => {
       this.products = r;
