@@ -56,9 +56,8 @@ export class UploadService {
   }
   update(data: Image) {
     return this.http.post<any>(`${this.url}/api/image/update-image.php`, data).subscribe(resp => {
-      const image: Image = resp;
-      // this.apendState(image);
-      this.getImages(data.OtherId);
+      const state = this.currentImageValue.filter(x => x.ImageId !== data.ImageId);
+      this.updateState(state);
     }, error => {
       alert(JSON.stringify(error));
     });

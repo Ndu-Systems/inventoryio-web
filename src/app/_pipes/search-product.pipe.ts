@@ -13,8 +13,8 @@ export class SearchProductPipe implements PipeTransform {
     return products.filter(x =>
       x.Name.toLocaleLowerCase().includes(val.toLocaleLowerCase()) ||
       (x.Description || '').includes(val) ||
-      (x.Catergory.Name || '').includes(val) ||
-      (x.Brand.Name || '').includes(val) ||
+      (x.Catergory && x.Catergory.Name || '').includes(val) ||
+      (x.Brand && x.Brand.Name || '').includes(val) ||
       x.Code.toLocaleLowerCase().includes(val.toLocaleLowerCase()));
   }
 
