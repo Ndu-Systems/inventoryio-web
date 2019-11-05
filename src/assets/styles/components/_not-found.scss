@@ -6,9 +6,18 @@
   text-align: center;
   padding: 2rem;
 
+  @media only screen and (max-width: 600px) {
+    width: 100vw;
+  }
+
   img {
     margin: 0 auto;
     margin-top: 5rem;
+
+    @media only screen and (max-width: 600px) {
+      width: 4rem;
+
+    }
   }
 
   .message {
@@ -17,5 +26,16 @@
     font-size: 30px;
     font-weight: 400;
     color: #2E344C;
+    span{
+      display: block;
+    }
+
+    @media only screen and (max-width: 600px) {
+      margin: 0;
+      font-size: 20px;
+      margin-top: 2rem;
+      
+
+    }
   }
 }

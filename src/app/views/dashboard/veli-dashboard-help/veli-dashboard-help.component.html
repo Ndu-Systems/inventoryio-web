@@ -1,0 +1,18 @@
+<div class="main" *ngIf="display">
+  <div class="icon">
+    <img src="assets/images/veli.svg" alt="">
+
+  </div>
+  <div class="body">
+    <h3>
+      {{heading}}
+    </h3>
+      <p>
+       {{details}}
+      </p>
+      <p>
+        <a [routerLink]="link"  class="btn" (click)="hide()">{{linklabel}}</a>
+        <a  class="btn warn" (click)="hide()">   Dismiss</a>
+      </p>
+    </div>
+</div>

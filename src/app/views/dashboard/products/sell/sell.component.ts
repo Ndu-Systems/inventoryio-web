@@ -4,6 +4,7 @@ import { Product, SellModel, Orders, User, Item } from 'src/app/_models';
 import { ProductService, AccountService, BannerService, SaleService, OrdersService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { NotFoundConstants } from '../../shared';
 
 @Component({
   selector: 'app-sell',
@@ -21,6 +22,8 @@ export class SellComponent implements OnInit {
   showCart = true;
   searchByCatergory;
   width: number;
+  notFoundModel: NotFoundModel;
+
 
   constructor(
     private productService: ProductService,
@@ -50,6 +53,11 @@ export class SellComponent implements OnInit {
     this.saleService.sell.subscribe(state => {
       this.sale = state;
     });
+
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
+      Message: ''
+    };
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);

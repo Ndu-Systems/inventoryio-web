@@ -63,6 +63,7 @@ import { UploadPreviewComponent } from './image-proccessing/upload-preview/uploa
 import { AuthGuard } from 'src/app/_guards';
 import { ConfigurationFilterPipe, UserFilterPipe } from 'src/app/_pipes';
 import { FileUploadComponent } from './products/add-product/file-upload/file-upload.component';
+import { VeliDashboardHelpComponent } from './veli-dashboard-help/veli-dashboard-help.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -164,6 +165,7 @@ export const declarations = [
   UploadPreviewComponent,
   RoleCardListComponent,
   FileUploadComponent,
+  VeliDashboardHelpComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

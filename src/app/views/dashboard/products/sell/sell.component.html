@@ -34,9 +34,9 @@
        
           </div>
  
-      <div class="small-cards-body">
+      <div class="small-cards-body"  *ngIf="products$  | async as products">
 
-        <div class="small-cards" *ngIf="products$  | async as products">
+        <div class="small-cards" *ngIf="products.length > 0; else notFound">
           <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
             <div class="card" >
               <div class="image">
@@ -64,6 +64,18 @@
           </span>
 
         </div>
+        <ng-template #notFound>
+            <div class="not-found">
+              <img [src]="notFoundModel.Image" alt="no items found">
+              <h1 class="message">
+                You do not  have products on the system as yet, please add a product to make a sale.
+                <span>
+                    <a class="link-add" (click) = "add()"> add new product.</a>
+                </span>
+              </h1>
+              
+            </div>
+          </ng-template>
       </div>
     </div>
     <div class="summary" *ngIf="showCart">
