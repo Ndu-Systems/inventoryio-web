@@ -44,9 +44,7 @@
   display: grid;
   grid-template-columns: 15% 60% auto;
   margin: 1rem .5rem;
-  animation: moveInRight 20s ease-in-out 5555s;
-  animation-fill-mode: backwards;
-
+  animation: moveInRight .2s ease-in-out;
 
 
   .remove {
