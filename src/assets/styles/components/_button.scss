@@ -3,6 +3,7 @@
   background: $primary-bg-color;
   color: #fff;
   border: none;
+  border-radius: 10px;
   padding: 7px 20px;
   border-radius: 0;
   letter-spacing: 0.06em;
@@ -16,7 +17,6 @@
 
   @media only screen and (max-width: 600px) {
     padding: 4px 20px;
-
 
   }
   cursor: pointer;

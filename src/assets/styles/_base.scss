@@ -98,6 +98,13 @@ h1 {
 
   }
 }
+.sub-heading {
+  font-size: 1rem;
+  font-weight: 400;
+  padding-left: 2.8rem;
+  text-transform: capitalize;
+  color: $gray-color;
+}
 
 .pc-only {
   @media only screen and (max-width: 600px) {
@@ -168,7 +175,7 @@ span.step {
 }
 
 .mt-20 {
-  margin-top: 10rem;
+    margin-top: 10rem;
 }
 
 

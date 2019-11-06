@@ -5,17 +5,18 @@
   <div class="nav-bar">
     <ul>
       <li *ngFor="let item of models">
-        <a [routerLink]="item.Link" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
           <i [ngClass]="item.Icon"></i>
           {{item.Name}}
         </a>
       </li>
-      <li *ngFor="let profileItem of profileModels" class="mt-20">
-        <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}">
-          <i [ngClass]="profileItem.Icon"></i>
-          {{profileItem.Name}}</a>
+    </ul>
+    <ul class="mt-20">
+        <li *ngFor="let profileItem of profileModels">
+          <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">
+            <i [ngClass]="profileItem.Icon"></i>
+            {{profileItem.Name}}</a>
         </li>
       <li class="signOut">
         <a routerLink="/"><i class="pi pi-sign-out"></i> sign out</a>
@@ -34,13 +35,14 @@
   </div>
   <div class="nav-bar">
     <ul>
-      <li *ngFor="let item of models" (click)="toggleNav()" >
-        <a [routerLink]="item.Link" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}">  <i [ngClass]="item.Icon"></i>{{item.Name}}</a>
+      <li *ngFor="let item of models" (click)="toggleNav()">
+        <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> <i
+            [ngClass]="item.Icon"></i>{{item.Name}}</a>
       </li>
-      <li *ngFor="let profileItem of profileModels" class="mt-20" (click)="toggleNav()" >
+      <li *ngFor="let profileItem of profileModels" (click)="toggleNav()">
         <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}">  <i [ngClass]="profileItem.Icon"></i>{{profileItem.Name}}</a></li>
+          [routerLinkActiveOptions]="{exact: true}"> <i [ngClass]="profileItem.Icon"></i>{{profileItem.Name}}</a>
+      </li>
       <li class="signOut">
         <a routerLink="/"><i class="pi pi-sign-out"></i>sign out</a>
       </li>

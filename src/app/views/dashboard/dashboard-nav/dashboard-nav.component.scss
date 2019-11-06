@@ -29,26 +29,31 @@
     ul {
       list-style: none;
       padding: 0;
+
       @media only screen and (max-width: 600px) {
         margin-top: 5rem;
       }
 
       li {
+
+
+
         a {
           display: block;
           padding: 1rem .5rem;
           font-weight: 600;
           text-transform: capitalize;
           color: #7B8C98;
+
           @media only screen and (max-width: 1024px) {
             font-size: 9px;
           }
+
           @media only screen and (max-width: 768px) {
             font-size: 100%;
           }
-          @media only screen and (max-width: 600px) {
 
-          }
+          @media only screen and (max-width: 600px) {}
         }
 
         a.active-link {
@@ -71,6 +76,7 @@
   @media only screen and (max-width: 600px) {
     display: block;
   }
+
   @media only screen and (max-width: 768px) {
     display: block;
   }

@@ -88,7 +88,7 @@
         height: 50%;
         margin-top: 10rem;
         justify-content: center;
-    
+
         //mobile layout
         @media only screen and (max-width: 600px) {
             display: none;
@@ -108,6 +108,7 @@
     margin: auto;
     padding: 2rem;
     margin-top: 15rem;
+    border-radius: 10px;
     &.sign-up {
         padding: 0;
     }
@@ -150,6 +151,7 @@
 
     input[type=submit] {
         border: none;
+        border-radius: 10px;
     }
 
     input[type=text],

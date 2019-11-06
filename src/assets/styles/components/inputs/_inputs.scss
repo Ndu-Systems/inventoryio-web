@@ -15,11 +15,13 @@ $width: 100%;
 form {
   width: $width;
   margin: 45px auto;
+  border-radius: 10px;
 }
 
 .group {
   position: relative;
   margin: 19px 0;
+  border-radius: 10px;
 }
 
 // INPUTS // ============================== //
@@ -39,6 +41,7 @@ textarea {
   border: none;
   border-radius: 0;
   border-bottom: 1px solid $muted-color;
+  margin-top: 1rem;
 
   &:focus {
     outline: none;
@@ -54,6 +57,10 @@ textarea {
   &:focus~.bar:before {
     width: $width;
   }
+}
+
+textarea {
+  height: 7rem;
 }
 
 input[type="password"] {
@@ -194,8 +201,18 @@ label {
     border: none;
   }
 
+  .checkbox {
+    display: grid;
+    grid-template-columns: 20% auto;
+
+    input[type=checkbox] {
+      height: 25px;
+    }
+  }
+
   input[type=text],
-  input[type=password] {
+  input[type=password],
+  input[type=checkbox] {
     border: none;
     width: 80%;
     margin: 1rem;
@@ -204,10 +221,9 @@ label {
       width: 80%;
     }
   }
-  input[type=text]{
-    @media only screen and (max-width: 600px) {
 
-    }
+  input[type=text] {
+    @media only screen and (max-width: 600px) {}
   }
 
   select {

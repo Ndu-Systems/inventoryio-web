@@ -64,6 +64,7 @@ import { AuthGuard } from 'src/app/_guards';
 import { ConfigurationFilterPipe, UserFilterPipe } from 'src/app/_pipes';
 import { FileUploadComponent } from './products/add-product/file-upload/file-upload.component';
 import { VeliDashboardHelpComponent } from './veli-dashboard-help/veli-dashboard-help.component';
+import { SupportComponent, ListSupportComponent, AddSupportComponent } from './support';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -104,6 +105,7 @@ const routes: Routes = [
       { path: 'add-permission', component: AddPermissionComponent },
       { path: 'role-details/:id', component: RoleDetailsComponent },
       { path: 'profile', component: UserProfileComponent },
+      { path: 'support', component: SupportComponent },
     ]
   },
 ];
@@ -166,6 +168,9 @@ export const declarations = [
   RoleCardListComponent,
   FileUploadComponent,
   VeliDashboardHelpComponent,
+  SupportComponent,
+  ListSupportComponent,
+  AddSupportComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

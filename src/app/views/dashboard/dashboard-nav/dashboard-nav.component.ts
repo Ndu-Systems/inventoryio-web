@@ -54,10 +54,16 @@ export class DashboardNavComponent implements OnInit {
   }
   populateProfileNav() {
     this.profileModels = [] = [
+
       {
         Name: 'configuration',
         Link: '/dashboard/configurations',
         Icon: `pi pi-cog`
+      },
+      {
+        Name: 'support',
+        Link: '/dashboard/support',
+        Icon: `pi pi-comments`
       }
     ];
 

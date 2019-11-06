@@ -1,0 +1,42 @@
+.main {
+  padding: 1rem;
+  .list-container {
+    background: #fff;
+    padding: 2rem;
+    height: 40rem;
+    overflow-y: scroll;
+    border-radius: 10px;
+    .header {
+      width: 80%;
+      font-size: 1rem;
+      color: #000000;
+      margin: 1rem;
+      text-align: left;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+
+    .card {
+      border-bottom: solid 1px #7B8C98;
+      width: 90%;
+      margin: 0 auto;
+      .title {
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      .text {
+        font-size: 12px;
+        color: #7B8C98;
+      }
+
+      .date {
+        font-size: 10px;
+        font-weight: 800;
+        color: #7B8C98;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="main">
+  <div class="list-body">
+    <div class="form">
+      <h1 class="form-heading">enter your support requests here.</h1>
+      <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
+        <div class="group">
+          <input type="text" formControlName="Subject" required="required" />
+          <label>Subject</label>
+        </div>
+        <div class="group">
+          <textarea type="text" formControlName="Message" required="required"></textarea>
+          <label>Message</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['Message'].valid && rForm.controls['Message'].touched">
+          Support request message is required
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="callback" formControlName="CallBack">
+          <h1 class="label">Call Me Back</h1>
+        </div>
+        <div class="group button">
+          <input type="submit" value="Submit Support Request" class="btn" [disabled]="!rForm.valid" />
+        </div>
+        <div class="group cancel">
+          <a routerLink="/dashboard/">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
