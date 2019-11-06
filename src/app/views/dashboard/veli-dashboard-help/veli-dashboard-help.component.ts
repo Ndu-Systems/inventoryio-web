@@ -26,6 +26,7 @@ export class VeliDashboardHelpComponent implements OnInit {
     this.details = `I am here to help you to oversee your inventory, but I will need you to add some products first.`;
     this.linklabel = 'Add product';
     this.link = `add-product`;
+    this.display = true;
 
     this.productService.products.subscribe(products => {
       if (products.length === 0 && this.canShow) {

@@ -11,6 +11,10 @@
   animation: moveInButton 1s  ease-out 5s;
   animation-fill-mode: backwards;
 
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+
+  }
 
 
   .icon {
@@ -29,6 +33,11 @@
     color: #fff;
     background: #2ecc71;
     margin-left: 1rem;
+
+    @media only screen and (max-width: 600px) {
+display: block;
+margin: 1rem auto;
+    }
 }
 .warn{
     background: #e67e22;
