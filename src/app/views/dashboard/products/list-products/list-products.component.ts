@@ -14,7 +14,6 @@ export class ListProductsComponent implements OnInit {
 
   search = ``;
   searchByCatergory = ``;
-  // categories: string[];
   products$: Observable<Product[]>;
   sum: number;
   totalPrice = 0;

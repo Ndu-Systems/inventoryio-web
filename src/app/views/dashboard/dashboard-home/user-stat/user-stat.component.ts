@@ -49,6 +49,11 @@ export class UserStatComponent implements OnInit {
 
   ngOnInit() {
 
+    this.user = this.usersService.currentUserValue;
+    this.productService.getProducts(this.user.CompanyId);
+    this.ordersService.getOrders(this.user.CompanyId);
+    this.storesService.getAllStores(this.user.CompanyId, StatusConstant.ACTIVE_STATUS);
+    this.usersService.getAllUsers(this.user.CompanyId, StatusConstant.ACTIVE_STATUS);
     if (this.user) {
       this.stat.push({
         name: 'System users',

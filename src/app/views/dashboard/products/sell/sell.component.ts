@@ -43,8 +43,8 @@ export class SellComponent implements OnInit {
     this.productService.products.subscribe(data => {
       this.products = data;
       this.getDeviceSize();
-      console.log(data);
-      this.categories = data.map(c => c.Catergory && c.Catergory.Name || '');
+      const categories = data.map(c => c.Catergory && c.Catergory.Name || '') || [];
+      this.categories = categories.filter((item, index) => categories.indexOf(item) === index);
       this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
     });
     this.productService.getProducts(this.user.CompanyId);
