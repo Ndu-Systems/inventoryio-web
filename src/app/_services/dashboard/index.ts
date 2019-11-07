@@ -13,5 +13,7 @@ export * from './upload.service';
 export * from './users.service';
 export * from './spinner.service';
 export * from './permissions.service';
+export * from './support.service';
+
  // end:ng42.barrel
 

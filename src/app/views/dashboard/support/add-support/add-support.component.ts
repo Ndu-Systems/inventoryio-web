@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AccountService } from 'src/app/_services';
-import { User, Support } from 'src/app/_models';
+import { AccountService, SupportService, EmailService } from 'src/app/_services';
+import { User, Support, Email } from 'src/app/_models';
 import { MessageService } from 'primeng/api';
 
 
@@ -12,34 +12,53 @@ import { MessageService } from 'primeng/api';
 })
 export class AddSupportComponent implements OnInit {
   rForm: FormGroup;
-
+  user: User;
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
-    private accountService: AccountService
+    private supportService: SupportService,
+    private accountService: AccountService,
+    private emailService: EmailService
   ) { }
 
   ngOnInit() {
-    const user: User = this.accountService.currentUserValue;
+    this.user = this.accountService.currentUserValue;
     this.rForm = this.fb.group({
+      CompanyId: [this.user.CompanyId, Validators.required],
+      UserId: [this.user.UserId, Validators.required],
       Subject: [null],
       Message: [null, Validators.required],
       CallBack: [false],
-      CompanyId: [user.CompanyId, Validators.required],
-      CreateUserId: [user.UserId, Validators.required],
-      ModifyUserId: [user.UserId, Validators.required],
+      CreateUserId: [this.user.UserId, Validators.required],
+      ModifyUserId: [this.user.UserId, Validators.required],
       StatusId: [1, Validators.required]
     });
   }
 
   add(support: Support) {
-    alert(JSON.stringify(support));
+    this.supportService.addSupportTicket(support);
     this.messageService.add(
       {
         severity: 'success',
         summary: 'Success!',
         detail: 'Support request received'
       });
+    this.rForm.reset();
+    const email: Email = {
+      CompanyName: this.user.Company.Name,
+      EmailType: 'Support Ticket',
+      Email: this.user.Email,
+      ContactNumber: this.user.CellphoneNumber,
+      Subject: support.Subject,
+      Message: support.Message
+    };
+    this.sendEmailNow(email);
+  }
+
+  sendEmailNow(email: Email) {
+    this.emailService.sendEmail(email).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

@@ -1,18 +1,17 @@
 <div class="main">
   <div class="list-body">
-    <div class="list-container">
+    <div class="list-container" *ngIf="tickets">
       <h1 class="header">your recent support requests</h1>
-      <span *ngFor="let i of [1,1,1,1,1,1,1,1]">
+      <span *ngFor="let item of tickets">
         <div class="card">
           <h1 class="title">
-            users not updating
+            {{item.Subject}}
           </h1>
           <p class="text">
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book....
+            {{item.Message}}
           </p>
           <div class="col-1-of-2">
-            <h1 class="date">05 Nov 2019</h1>
+            <h1 class="date">{{item.CreateDate | date}}</h1>
           </div>
         </div>
       </span>

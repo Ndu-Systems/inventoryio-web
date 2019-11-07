@@ -11,7 +11,9 @@
         <app-add-support></app-add-support>
       </div>
       <div>
-        <app-list-support></app-list-support>
+        <span *ngIf="tickets$ | async as tickets">
+            <app-list-support [tickets]="tickets"></app-list-support>
+        </span>
       </div>
     </div>
   </div>

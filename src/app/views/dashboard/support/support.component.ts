@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService, SupportService } from 'src/app/_services';
+import { Observable } from 'rxjs';
+import { Support, User } from 'src/app/_models';
+import { StatusConstant } from '../shared';
 
 @Component({
   selector: 'app-support',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./support.component.scss']
 })
 export class SupportComponent implements OnInit {
-
-  constructor() { }
+  tickets$: Observable<Support[]>;
+  constructor(
+    private accountService: AccountService,
+    private supportService: SupportService
+  ) { }
 
   ngOnInit() {
+    const user: User = this.accountService.currentUserValue;
+    this.tickets$ = this.supportService.supportTickets;
+    this.supportService.getAllCompanyTickets(user.CompanyId, StatusConstant.ACTIVE_STATUS);
   }
 
 }

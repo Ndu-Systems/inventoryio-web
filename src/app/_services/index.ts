@@ -12,3 +12,4 @@ export * from './dashboard/sale.service';
 export * from './dashboard/orders.service';
 export * from './home/pwa.service';
 export * from './dashboard';
+export * from './communication';

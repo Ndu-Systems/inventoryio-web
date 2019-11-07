@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Support } from 'src/app/_models';
 
 @Component({
   selector: 'app-list-support',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-support.component.scss']
 })
 export class ListSupportComponent implements OnInit {
+  @Input() tickets: Support[];
 
   constructor() { }
 
