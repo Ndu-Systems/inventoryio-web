@@ -25,7 +25,7 @@
 <div class="sale" *ngIf="sale$ | async as sale">
     <div class="sale-item" *ngFor="let item of sale.items">
         <div class="remove ">
-            <i (click)="close(item)" class="pi pi-trash"></i>
+            <i (click)="removeItem(item)" class="pi pi-trash"></i>
         </div>
         <div class="name-price">
       <h1>

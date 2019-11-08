@@ -66,6 +66,10 @@ export class SaleService {
   removeItem(item: Item) {
     if (this.currentSellModelValue) {
       const sale = this.currentSellModelValue;
+      const product = this.productService.getSigleProductFronState(item.prodcuId);
+      product.QuantityAvailable = item.quantity;
+      this.productService.appendState(product);
+
       const itemToRemove = sale.items.indexOf(item);
       sale.items.splice(itemToRemove, 1);
       this.updateState(sale);
