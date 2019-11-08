@@ -39,6 +39,7 @@ export class SellComponent implements OnInit {
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
     this.accountService.checkSession();
+    this.productService.getProducts(this.user.CompanyId);
     this.products$ = this.productService.products;
     this.productService.products.subscribe(data => {
       this.products = data;
@@ -47,7 +48,6 @@ export class SellComponent implements OnInit {
       this.categories = categories.filter((item, index) => categories.indexOf(item) === index);
       this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
     });
-    this.productService.getProducts(this.user.CompanyId);
 
 
     this.saleService.sell.subscribe(state => {
@@ -75,8 +75,6 @@ export class SellComponent implements OnInit {
       const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
       if (item) {
         item.quantity++;
-        product.QuantityAvailable = product.Quantity - item.quantity;
-        this.productService.appendState(product);
         this.saleService.doSellLogic(item);
         return;
       }

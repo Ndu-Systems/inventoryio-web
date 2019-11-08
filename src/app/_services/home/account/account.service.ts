@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { SplashService } from '../../splash.service';
+import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
 
 
 @Injectable({
@@ -55,7 +56,7 @@ export class AccountService {
       console.log(error);
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `It looks like you are not connected to the internet.`,
+        message: COMMON_CONN_ERR_MSG,
         class: `error`,
       });
     });
@@ -69,7 +70,7 @@ export class AccountService {
       console.log(error);
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `It looks like you are not connected to the internet.`,
+        message: COMMON_CONN_ERR_MSG,
         class: `error`
       });
     });
@@ -96,7 +97,7 @@ export class AccountService {
       console.log(error);
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `It looks like you are not connected to the internet.`,
+        message: COMMON_CONN_ERR_MSG,
         class: `error`
       });
     });

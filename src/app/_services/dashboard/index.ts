@@ -7,13 +7,14 @@ export * from './documents.service';
 export * from './message.service';
 export * from './orders.service';
 export * from './roles.service';
-export * from './sale.service';
 export * from './stores.service';
 export * from './upload.service';
 export * from './users.service';
 export * from './spinner.service';
 export * from './permissions.service';
 export * from './support.service';
+// export * from './product.service';
+// export * from './sale.service';
 
  // end:ng42.barrel
 

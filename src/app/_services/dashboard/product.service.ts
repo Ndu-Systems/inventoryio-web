@@ -67,6 +67,9 @@ export class ProductService {
     localStorage.setItem('products', JSON.stringify(products));
 
   }
+  getSigleProductFronState(id: string) {
+    return this._products.value.find(x => x.ProductId === id);
+  }
   // state
   updateCurrentProduct(product: Product) {
     this._product.next(product);

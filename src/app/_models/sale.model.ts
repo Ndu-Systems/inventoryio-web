@@ -9,4 +9,4 @@ export interface Item {
     price: number;
     subTotal?: number;
     quantity: number;
-};
+}

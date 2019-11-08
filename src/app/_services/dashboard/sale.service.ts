@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SellModel, Item } from 'src/app/_models/sale.model';
 import { BehaviorSubject, Observable } from 'rxjs';
-
+import { ProductService } from './product.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +9,7 @@ export class SaleService {
   private _sell: BehaviorSubject<SellModel>;
   public sell: Observable<SellModel>;
   constructor(
+    private productService: ProductService
   ) {
     this._sell = new BehaviorSubject<SellModel>(JSON.parse(localStorage.getItem('sell')));
     this.sell = this._sell.asObservable();
@@ -34,23 +35,31 @@ export class SaleService {
   }
 
   doSellLogic(item: Item) {
-    const sale = this.currentSellModelValue;
-    if (!sale) {
+    let sale;
+    if (this.currentSellModelValue) {
+      sale = this.currentSellModelValue;
+    } else {
       this.updateState({
         items: [],
         total: 0
       });
+      sale = this.currentSellModelValue;
     }
-    let checkIfOtemExist;
-    if (sale) {
-      checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId)
-    }
+
+    const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId);
+    const product = this.productService.getSigleProductFronState(item.prodcuId);
+
+
     if (!checkIfOtemExist) {
       item.subTotal = item.price;
       sale.items.push(item);
     } else {
+      // item is on the sale already it just needs to be updated
       checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
+     // item.quantity++;
+      this.productService.appendState(product);
     }
+    product.QuantityAvailable = product.Quantity - item.quantity;
     this.updateState(sale);
 
   }
