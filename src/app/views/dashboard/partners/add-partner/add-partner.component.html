@@ -1,3 +1,58 @@
-<h1>
-  {{type}}
-</h1>
+<div class="main">
+  <h1 class="heading">add a new user</h1>
+  <div class="body">
+    <div class="form">
+      <h1 class="form-heading">
+        add a new user and assign him/her or other to a role to use the inventoryio.
+      </h1>
+      <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+        <div class="group">
+          <input type="text" formControlName="Name" required="required" />
+          <label>Name <span class="required">*</span></label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+          Name is required
+        </div>
+        <div class="group">
+          <input type="text" formControlName="Surname" />
+          <label>Surname</label>
+        </div>
+     
+        <div class="group">
+          <input type="email" formControlName="EmailAddress" required="required" />
+          <label>Email Address</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['EmailAddress'].valid && rForm.controls['EmailAddress'].touched">
+          Email is required
+        </div>
+        <div class="group">
+          <input type="text" formControlName="CellphoneNumber" required="required" />
+          <label>Cellphone Number</label>
+        </div>
+        <div class="alert"
+          *ngIf="!rForm.controls['CellphoneNumber'].valid && rForm.controls['CellphoneNumber'].touched">
+          Cellphone number is required
+        </div>
+
+        <div class="group">
+          <input type="text" formControlName="Address"/>
+          <label>Address</label>
+        </div>
+   
+        <div class="group button">
+          <input type="submit" value="Add User" class="btn" [disabled]="!rForm.valid" />
+        </div>
+        <div class="group cancel">
+          <a routerLink="/dashboard/users">abort</a>
+        </div>
+      </form>
+     
+    </div>
+  </div>
+</div>
+
+<pre>
+  {{rForm.value | json}}
+</pre>
+
+

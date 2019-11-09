@@ -1,0 +1,117 @@
+.form {
+    margin: 0;
+    width: 35rem;
+  
+    h1 {
+      width: 80%;
+      font-size: 1rem;
+      color: #000000;
+      margin: 1rem 2.34554rem;
+      text-align: left;
+      font-weight: 600;
+    }
+  
+    .group.cancel {
+      padding: 1rem;
+      background: none;
+  
+      a {
+        float: left;
+        font-size: 1.5rem;
+        color: #D3D8DF;
+        text-transform: capitalize;
+      }
+  
+    }
+  }
+  
+  .main {
+    padding: 1rem;
+  
+    .heading {
+      border-bottom: solid 1px;
+      padding-bottom: 1rem;
+    }
+  }
+  
+  .form {
+    margin: 0;
+    width: 35rem;
+  
+    h1 {
+      width: 80%;
+      font-size: 1rem;
+      color: #000000;
+      margin: 1rem 2.34554rem;
+      text-align: left;
+      font-weight: 600;
+    }
+  
+    .group {
+      &.select {
+        label {
+          padding: 1rem;
+        }
+      }
+  
+      &.cancel {
+        padding: 1rem;
+        background: none;
+  
+        a {
+          float: left;
+          font-size: 1.5rem;
+          color: #D3D8DF;
+          text-transform: capitalize;
+        }
+  
+      }
+    }
+  }
+  
+  .main {
+    padding: 1rem;
+  
+    .heading {
+      border-bottom: solid 1px;
+      padding-bottom: 1rem;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 600px) {
+  
+    .form {
+      margin: 0;
+      width: 100%;
+      h1 {
+        width: 100%;
+        font-size: 0.8rem;
+        color: #000000;
+        margin: 0;
+        text-align: left;
+        font-weight: 600;
+      }
+      .group {
+        &.select {
+          label {
+            padding: 1rem;
+          }
+        }
+  
+        &.cancel {
+          padding: 1rem;
+          background: none;
+  
+          a {
+            float: left;
+            font-size: 1rem;
+            color: #D3D8DF;
+            text-transform: capitalize;
+          }
+  
+        }
+      }
+    }
+  }
+  

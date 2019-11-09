@@ -12,9 +12,9 @@
   </div>
   <div class="list-body">
     <span>
-      <div *ngIf="users$ | async as users">
-        <span class="cards-betta" *ngIf="users.length > 0; notFound">
-          <span *ngFor="let user of users | userFilterPipe: search">
+      <div *ngIf="partners$ | async as partners">
+        <span class="cards-betta" *ngIf="partners.length > 0; notFound">
+          <span *ngFor="let user of partners | userFilterPipe: search">
             <app-user-card-list [user]="user"></app-user-card-list>
           </span>
         </span>

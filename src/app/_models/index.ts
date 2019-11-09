@@ -21,6 +21,7 @@ export * from './entity-model-base';
 export * from './not-found.model';
 export * from './support.model';
 export * from './email.model';
+export * from './partner.model';
 
 
 
