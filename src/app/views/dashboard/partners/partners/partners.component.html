@@ -1,0 +1,32 @@
+<div class="main">
+  <h1 class="heading">your {{type}} on the system</h1>
+  <div class="list-filters">
+    <div>
+      <input type="text" [(ngModel)]="search" placeholder="search">
+    </div>
+    <div class="add">
+      <button class="btn">
+          <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
+      </button>
+    </div>
+  </div>
+  <div class="list-body">
+    <span>
+      <div *ngIf="users$ | async as users">
+        <span class="cards-betta" *ngIf="users.length > 0; notFound">
+          <span *ngFor="let user of users | userFilterPipe: search">
+            <app-user-card-list [user]="user"></app-user-card-list>
+          </span>
+        </span>
+      </div>
+      <ng-template #notFound>
+        <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            {{notFoundModel.Message}}
+          </h1>
+        </div>
+      </ng-template>
+    </span>
+  </div>
+</div>

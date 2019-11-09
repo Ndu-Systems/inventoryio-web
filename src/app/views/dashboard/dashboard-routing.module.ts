@@ -65,6 +65,8 @@ import { ConfigurationFilterPipe, UserFilterPipe } from 'src/app/_pipes';
 import { FileUploadComponent } from './products/add-product/file-upload/file-upload.component';
 import { VeliDashboardHelpComponent } from './veli-dashboard-help/veli-dashboard-help.component';
 import { SupportComponent, ListSupportComponent, AddSupportComponent } from './support';
+import { AddPartnerComponent } from './partners/add-partner/add-partner.component';
+import { PartnersComponent } from './partners/partners/partners.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -106,6 +108,8 @@ const routes: Routes = [
       { path: 'role-details/:id', component: RoleDetailsComponent },
       { path: 'profile', component: UserProfileComponent },
       { path: 'support', component: SupportComponent },
+      { path: 'add-partner/:id', component: AddPartnerComponent },
+      { path: 'partners/:id', component: PartnersComponent },
     ]
   },
 ];
@@ -171,6 +175,8 @@ export const declarations = [
   SupportComponent,
   ListSupportComponent,
   AddSupportComponent,
+  AddPartnerComponent,
+  PartnersComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

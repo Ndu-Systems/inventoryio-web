@@ -28,45 +28,46 @@ export class ConfigurationHomeComponent implements OnInit {
   populateActions() {
     this.actions.push(
       {
-      name: 'manage stores',
-      image: 'assets/images/actions/shop.svg',
-      link: 'dashboard/stores'
-    },
+        name: 'manage stores',
+        image: 'assets/images/actions/shop.svg',
+        link: 'dashboard/stores'
+      },
       {
-      name: 'manage brands',
-      image: 'assets/images/actions/brands.svg',
-      link: 'dashboard/list-brands'
-    },
+        name: 'manage staff',
+        image: 'assets/images/actions/staff.svg',
+        link: 'dashboard/users'
+      },
       {
-      name: 'manage categories',
-      image: 'assets/images/actions/maintenance.svg',
-      link: 'dashboard/list-categories'
-    },
-    // {
-    //   name: 'manage clients',
-    //   image: 'assets/images/actions/clients.svg',
-    //   link: 'dashboard/configurations'
-    // },
-    // {
-    //   name: 'manage suppliers',
-    //   image: 'assets/images/actions/inventory.svg',
-    //   link: 'dashboard/configurations'
-    // },
-    {
-      name: 'manage staff',
-      image: 'assets/images/actions/staff.svg',
-      link: 'dashboard/users'
-    });
+        name: 'manage brands',
+        image: 'assets/images/actions/brands.svg',
+        link: 'dashboard/list-brands'
+      },
+      {
+        name: 'manage categories',
+        image: 'assets/images/actions/maintenance.svg',
+        link: 'dashboard/list-categories'
+      },
+      {
+        name: 'manage customers',
+        image: 'assets/images/actions/permission.svg',
+        link: 'dashboard/partners/customers'
+      },
+      {
+        name: 'manage suppliers',
+        image: 'assets/images/actions/permission.svg',
+        link: 'dashboard/partners/suppliers'
+      }
+    );
     this.actions2.push({
       name: 'manage roles',
       image: 'assets/images/actions/role.svg',
       link: 'dashboard/roles'
     },
-    {
-      name: 'permissions',
-      image: 'assets/images/actions/permission.svg',
-      link: 'dashboard/permissions'
-    }
+      {
+        name: 'permissions',
+        image: 'assets/images/actions/permission.svg',
+        link: 'dashboard/permissions'
+      }
     );
   }
 }

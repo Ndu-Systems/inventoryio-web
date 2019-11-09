@@ -72,14 +72,14 @@ export class ListOrdersComponent implements OnInit {
     order.Due = Number(order.Total) - Number(order.Paid);
     this.ordersService.uptadeOrder(order);
     this.pay(order);
+    this.messageService.add({
+      severity: 'success',
+      summary: `R ${order.Payment}`,
+      detail: 'Payment successful!'
+    });
   }
   pay(order: Orders) {
-    // if (order.Paying) {
-    //   order.Due = order.Total - order.Paid;
-    // }
     order.Paying = !order.Paying;
-
-    // order.Due = order.Total - order.Paid;
   }
   clearSearch() {
     this.search = null;
