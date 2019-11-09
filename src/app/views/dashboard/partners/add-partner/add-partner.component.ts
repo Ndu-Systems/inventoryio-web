@@ -29,7 +29,7 @@ export class AddPartnerComponent implements OnInit {
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.type = r.id;
-      this.partnerType = this.type;
+      this.partnerType = this.type.slice(0, -1);
     });
   }
 
