@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService, SupportService, EmailService } from 'src/app/_services';
 import { User, Support, Email } from 'src/app/_models';
@@ -11,8 +11,10 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./add-support.component.scss']
 })
 export class AddSupportComponent implements OnInit {
+  @Output() showTab: EventEmitter<boolean> = new EventEmitter<boolean>();
   rForm: FormGroup;
   user: User;
+
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
@@ -59,6 +61,10 @@ export class AddSupportComponent implements OnInit {
     this.emailService.sendEmail(email).subscribe(data => {
       console.log(data);
     });
+  }
+
+  goToTickets() {
+
   }
 
 }
