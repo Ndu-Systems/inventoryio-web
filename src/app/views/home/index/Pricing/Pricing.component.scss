@@ -1,3 +1,10 @@
+.content{
+    background-image: url(../../../../../assets/sign-in-background.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding:6rem 0;
+ 
+
 h1 {
     text-align: center;
     padding: 2rem;
@@ -63,4 +70,5 @@ h1 {
         }
     }
 
+}
 }
