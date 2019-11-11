@@ -1,3 +1,5 @@
+@import '../../../../../assets/styles/variables';
+
 .form {
   margin: 0;
   width: 35rem;
@@ -23,6 +25,16 @@
       text-transform: capitalize;
     }
 
+  }
+
+  a.cta {
+    font-weight: 700;
+    cursor: pointer;
+    color: $primary-bg-color;
+    float: left;
+    margin-left: 2rem;
+    text-transform: capitalize;
+    display: none;
   }
 }
 
@@ -78,6 +90,11 @@
         }
 
       }
+    }
+
+    a.cta {
+      float: left;
+      margin-left: 0;
     }
   }
 }

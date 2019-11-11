@@ -18,12 +18,12 @@
             <div class="label">
               <i class="pi pi-filter"></i> <span class="pc-only">category : </span>
             </div>
-            <div class="input">
+            <!-- <div class="input"> -->
               <select [(ngModel)]="searchByCatergory">
                 <option value="" selected>All</option>
                 <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
               </select>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
         <div class="add">
@@ -76,14 +76,14 @@
                   <a class="link-add" (click) = "add()"> add new product.</a>
               </span>
             </h1>
-            
+
           </div>
         </ng-template>
       </div>
- 
+
     </div>
 
-    <!-- 
+    <!--
   <div class="add">
     <app-add-product></app-add-product>
   </div> -->
