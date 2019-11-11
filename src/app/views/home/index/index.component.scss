@@ -42,18 +42,12 @@ body {
     width: 100%;
     margin-top: 7rem;
   }
-  .mobile-heading{
-    display: none;
-    @media only screen and (max-width: 600px){
-      display: flex;
-    }
-  }
 
   .main-heading{
+    width: 50%;
     @media only screen and (max-width: 600px){
-      display: none;
+      width: 100%;
     }
-  
   }
 
   h1 {
