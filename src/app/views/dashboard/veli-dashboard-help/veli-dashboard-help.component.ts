@@ -30,6 +30,8 @@ export class VeliDashboardHelpComponent implements OnInit {
     this.productService.products.subscribe(products => {
       if (products.length === 0 && this.canShow) {
         this.display = true;
+      }else{
+        this.display = false;
       }
     });
   }
