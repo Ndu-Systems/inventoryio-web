@@ -14,7 +14,7 @@
     <span>
       <div *ngIf="partners$ | async as partners">
         <span class="cards-betta" *ngIf="partners.length > 0; notFound">
-          <span *ngFor="let user of partners | userFilterPipe: search">
+          <span *ngFor="let user of partners | searchpartner: search | searchpartner: searchType">
             <app-user-card-list [user]="user"></app-user-card-list>
           </span>
         </span>

@@ -5,6 +5,7 @@ import { Image } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { SpinnerService } from './spinner.service';
 import { SplashService } from '../splash.service';
+import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +56,7 @@ export class UploadService {
       this.spinnerService.hide();
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `Sorry it looks like you're on a slow connection.`,
+        message: COMMON_CONN_ERR_MSG,
         class: `error`
       });
     });
@@ -67,7 +68,7 @@ export class UploadService {
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `Sorry it looks like you're on a slow connection.`,
+        message: COMMON_CONN_ERR_MSG,
         class: `error`
       });
     });
@@ -80,7 +81,7 @@ export class UploadService {
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `Sorry it looks like you're on a slow connection.`,
+        message: COMMON_CONN_ERR_MSG,
         class: `error`
       });
     });

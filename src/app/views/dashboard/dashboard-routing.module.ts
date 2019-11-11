@@ -67,6 +67,7 @@ import { VeliDashboardHelpComponent } from './veli-dashboard-help/veli-dashboard
 import { SupportComponent, ListSupportComponent, AddSupportComponent } from './support';
 import { AddPartnerComponent } from './partners/add-partner/add-partner.component';
 import { PartnersComponent } from './partners/partners/partners.component';
+import { SearchPartnerPipe } from 'src/app/_pipes/search-partners.pipe';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -181,7 +182,8 @@ export const declarations = [
   SearchProductPipe,
   SearchProductByCatergoryPipe,
   UserFilterPipe,
-  ConfigurationFilterPipe
+  ConfigurationFilterPipe,
+  SearchPartnerPipe
 ];
 
 @NgModule({

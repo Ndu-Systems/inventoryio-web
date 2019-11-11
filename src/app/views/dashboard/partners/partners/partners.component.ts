@@ -16,6 +16,7 @@ export class PartnersComponent implements OnInit {
   partners$: Observable<Partner[]>;
 
   showForm: boolean;
+  searchType: any;
   constructor(
     private bannerService: BannerService,
     private partnerService: PartnerService,
@@ -26,6 +27,8 @@ export class PartnersComponent implements OnInit {
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.type = r.id;
+      this.searchType = this.type.slice(0, -1);
+
     });
   }
 

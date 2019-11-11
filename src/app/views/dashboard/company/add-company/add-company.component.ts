@@ -5,6 +5,7 @@ import { Company, User, Role, Splash } from 'src/app/_models';
 import { CompanyService, AccountService, RolesService, BannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
 import { SplashService } from 'src/app/_services/splash.service';
+import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
 
 @Component({
   selector: 'app-add-company',
@@ -68,7 +69,7 @@ export class AddCompanyComponent implements OnInit {
       }, error => {
         this.splashService.update({
           show: true, heading: 'Network Error',
-          message: `Sorry it looks like you're on a slow connection.`,
+          message: COMMON_CONN_ERR_MSG,
           class: `error`
         });      });
   }

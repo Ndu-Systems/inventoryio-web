@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SplashService } from '../splash.service';
+import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class CompanyService {
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',
-        message: `Sorry it looks like you're on a slow connection.`,
+        message: COMMON_CONN_ERR_MSG,
         class: `error`
       });
     });

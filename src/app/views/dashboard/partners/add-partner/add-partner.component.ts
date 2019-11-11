@@ -56,7 +56,7 @@ export class AddPartnerComponent implements OnInit {
       StatusId: [StatusConstant.ACTIVE_STATUS, Validators.required]
     });
     this.bannerService.updateState({
-      heading: 'Add a user',
+      heading: `${this.partnerType} Add a user`,
       backto: '/dashboard/users'
     });
   }
@@ -73,8 +73,7 @@ export class AddPartnerComponent implements OnInit {
       summary: 'Success.',
       detail: `User ${partner.Name} added successfully`
     });
-    //  this.routeTo.navigate(['dashboard/users']);
-    //this.showForm.emit(false);
+    this.routeTo.navigate([`dashboard/partners/${this.type}`]);
   }
 
 

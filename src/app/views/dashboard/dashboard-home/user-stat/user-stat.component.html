@@ -4,7 +4,7 @@
 <div class="main">
 
   <div class="cards">
-    <span *ngFor="let data of stat">
+    <span *ngFor="let data of statEmitter$|async">
       <div class="card transition" (click)="goto(data.link)">
         <div class="icon">
           <img [src]="data.image" alt="">
