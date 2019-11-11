@@ -30,7 +30,6 @@ body {
   @media only screen and (min-width: 1024px) and (max-width:1366px){
     background-size: 50%;
   }
-  
 }
 
 .content {
@@ -44,6 +43,13 @@ body {
     margin-top: 7rem;
   }
 
+  .main-heading{
+    width: 50%;
+    @media only screen and (max-width: 600px){
+      width: 100%;
+    }
+  }
+
   h1 {
     color: #104ce5;
     font-size: 2rem;
@@ -54,8 +60,6 @@ body {
       line-height: 1.8rem;
       color: #F5F6FA;
       text-align: center;
-      padding: .5rem;
-      margin-top: 1.5rem;
     }
     span {
       display: block;
@@ -63,12 +67,17 @@ body {
       color: #2e344c;
       font-weight: 500;
       margin-top: 15px;
+
       //mobile layout
       @media only screen and (max-width: 600px){
         color: #F5F6FA;
+        background: #104CE5;
+        display: flex;
+        padding: 1.5rem;
+        text-align: left;
+       
       }
     }
-    
     //ipad pro layout
     @media only screen and (min-width: 1024px) and (max-width:1366px){
       text-align: center;
