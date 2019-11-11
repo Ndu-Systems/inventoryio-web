@@ -93,9 +93,13 @@ export class UserStatComponent implements OnInit {
     if (!data.name) {
       return false;
     }
-
-    this.stat = this.stat.filter(x => x.name !== data.name);
-    this.stat.push(data);
+    const item = this.stat.find(x => x.name === data.name);
+    if (item) {
+      this.stat[this.stat.indexOf(item)].value = data.value;
+    } else {
+      this.stat.push(data);
+    }
+    // this.stat = this.stat.filter(x => x.name !== data.name);
     this.statEmitter$.next(this.stat);
   }
 }
