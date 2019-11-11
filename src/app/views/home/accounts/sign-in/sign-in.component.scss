@@ -97,6 +97,7 @@
     .form {
         margin: auto;
         width: 100%;
+        border-radius: 0%;
         //mobile layout
         @media only screen and (max-width: 600px) {
             margin: auto;
