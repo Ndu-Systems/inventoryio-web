@@ -134,10 +134,19 @@
       width: 100%;
       z-index: 1;
       color: #ffffff;
+      // background-image: url(../../../assets/images/backlogimg2.PNG);
+      // background-repeat: no-repeat;
 
       ul{
-
         line-height: 5rem;
+        align-content: center;
+        
+        img{
+
+          margin: 1rem;
+          vertical-align: middle;
+          margin-left: 0%;
+        }
         
       }
       li {
@@ -145,6 +154,8 @@
         list-style-type: none;
         .sign-up-for-free {
           background: #FFFFFF;
+          
+
         }
 
         .sign-up-for-free a {
