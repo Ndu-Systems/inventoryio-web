@@ -123,3 +123,30 @@
 .success {
   background: #2ecc71;
 }
+
+.customer{
+  background: #eeeff9;
+  padding: .2rem;
+  display: grid;
+  grid-template-columns: 10% 60% auto;
+  border-radius: 3px;
+  p{
+    color: #5460ac;
+  }
+  .action{
+    text-align: center;
+    cursor: pointer;
+    p{
+      &:hover{
+        color: #2d3b90;
+      }
+    }
+  }
+}
+::ng-deep{
+  .ui-inputtext{
+    border: none !important;
+    width: 100% !important;
+    background: none !important;
+  }
+}

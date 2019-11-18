@@ -60,13 +60,11 @@
     .form {
         margin: auto;
         width: 100%;
-        border-radius: 0%;
-
+        
         //mobile
         @media only screen and (max-width: 600px) {
             width: 100%;
             padding: 1rem;
-
             h1 {
                 padding: 0%;
                 margin: 0%;

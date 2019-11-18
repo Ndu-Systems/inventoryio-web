@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, SellModel, Orders, User, Item, NotFoundModel } from 'src/app/_models';
-import { ProductService, AccountService, BannerService, SaleService, OrdersService } from 'src/app/_services';
+import { Product, SellModel, Orders, User, Item, NotFoundModel, Partner } from 'src/app/_models';
+import { ProductService, AccountService, BannerService, SaleService, OrdersService, PartnerService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { NotFoundConstants } from '../../shared';
@@ -23,8 +23,12 @@ export class SellComponent implements OnInit {
   searchByCatergory;
   width: number;
   notFoundModel: NotFoundModel;
+  // results = [];
 
-  customer = 'Ndu';
+  selectedCustomer = 'Ndu';
+  results: string[] = ['Audi', 'BMW', 'Fiat', 'Ford', 'Honda', 'Jaguar', 'Mercedes', 'Renault', 'Volvo', 'VW'];
+  customers$: Observable<Array<Partner>>;
+
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -32,7 +36,9 @@ export class SellComponent implements OnInit {
     private bannerService: BannerService,
     private saleService: SaleService,
     private messageService: MessageService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private partnerService: PartnerService
+
 
   ) { }
 
@@ -58,6 +64,9 @@ export class SellComponent implements OnInit {
       Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
       Message: ''
     };
+    this.partnerService.partners.subscribe(data => {
+      this.results = data.map(x => x.Name);
+    })
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
@@ -144,6 +153,15 @@ export class SellComponent implements OnInit {
   }
   toggleCart() {
     this.showCart = !this.showCart;
+  }
+
+  // customer
+  suggetsCustomer(event) {
+    const fraze = event.query;
+    this.results = this.results.filter(x => x.toLocaleUpperCase().includes(fraze.toLocaleUpperCase()));
+    console.log(event);
+
+    // this.results = this.partnerService.getPartners(this.user.CompanyId);
   }
 }
 

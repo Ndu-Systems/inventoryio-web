@@ -1,3 +1,5 @@
+
+
 .main {
   background: #F5F6FA ;
 }
@@ -100,6 +102,7 @@
         padding: .4rem;
         padding-right: 1.4rem;
         padding-left: 1.4rem;
+        border-radius: 10px;
         cursor: pointer;
         a {
           color: #104CE5;
@@ -131,12 +134,28 @@
       width: 100%;
       z-index: 1;
       color: #ffffff;
+      // background-image: url(../../../assets/images/backlogimg2.PNG);
+      // background-repeat: no-repeat;
+
+      ul{
+        line-height: 5rem;
+        align-content: center;
+        
+        img{
+
+          margin: 1rem;
+          vertical-align: middle;
+          margin-left: 0%;
+        }
+        
+      }
       li {
         text-align: center;
         list-style-type: none;
-
         .sign-up-for-free {
           background: #FFFFFF;
+          
+
         }
 
         .sign-up-for-free a {
@@ -145,6 +164,8 @@
           padding: .4rem;
           padding-right: 1.4rem;
           padding-left: 1.4rem;
+          border-radius: 10px;
+          font-weight: 500;
         }
 
         a {
