@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User, Partner } from 'src/app/_models';
+import { User, Partner, NotFoundModel } from 'src/app/_models';
 import { BannerService, PartnerService, AccountService } from 'src/app/_services';
-import { StatusConstant } from '../../shared';
+import { StatusConstant, NotFoundConstants } from '../../shared';
 
 @Component({
   selector: 'app-partners',
@@ -16,6 +16,8 @@ export class PartnersComponent implements OnInit {
   partners$: Observable<Partner[]>;
 
   showForm: boolean;
+  notFoundModel: NotFoundModel;
+
   searchType: any;
   constructor(
     private bannerService: BannerService,
@@ -45,6 +47,10 @@ export class PartnersComponent implements OnInit {
     });
     this.partners$ = this.partnerService.partners;
     this.partnerService.getPartners(user.CompanyId);
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
+      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+    };
   }
 
   add() {

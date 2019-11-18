@@ -13,20 +13,24 @@
   <div class="list-body">
     <span>
       <div *ngIf="partners$ | async as partners">
-        <span class="cards-betta" *ngIf="partners.length > 0; notFound">
+        <span class="cards-betta" *ngIf="(partners| searchpartner: searchType).length > 0;else notFound">
           <span *ngFor="let user of partners | searchpartner: search | searchpartner: searchType">
             <app-user-card-list [user]="user"></app-user-card-list>
           </span>
         </span>
+        <ng-template #notFound>
+          <div class="not-found">
+            <img [src]="notFoundModel.Image" alt="no items found">
+              <h1 class="message">
+                You do not  have {{type}} on the system as yet.
+                <span>
+                    <a class="link-add" (click) = "add()"> add new...</a>
+                </span>
+              </h1>
+          </div>
+        </ng-template>
       </div>
-      <ng-template #notFound>
-        <div class="not-found">
-          <img [src]="notFoundModel.Image" alt="no items found">
-          <h1 class="message">
-            {{notFoundModel.Message}}
-          </h1>
-        </div>
-      </ng-template>
+  
     </span>
   </div>
 </div>

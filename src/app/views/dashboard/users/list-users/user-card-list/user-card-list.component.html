@@ -4,8 +4,10 @@
     <img src="assets/user-blue.svg" alt="role image">
   </div>
   <div class="name">
-    <h1 class="main">{{user.Name}} {{user.Surname}}</h1>
-    <h1 class="spec">{{user.CellphoneNumber}}</h1>
-    <h1 class="spec email">{{user.Email}}</h1>
+    <h1 class="main">{{user?.Name}} {{user?.Surname}}</h1>
+    <h1 class="spec">{{user?.CellphoneNumber}}</h1>
+    <h1 class="spec email">{{user?.Email}}</h1>
+    <h1 class="spec email">{{user?.EmailAddress}}</h1>
+    <h1 class="spec email">{{user?.Address}}</h1>
   </div>
 </div>

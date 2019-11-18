@@ -24,7 +24,7 @@ export class SellComponent implements OnInit {
   width: number;
   notFoundModel: NotFoundModel;
 
-
+  customer = 'Ndu';
   constructor(
     private productService: ProductService,
     private router: Router,
