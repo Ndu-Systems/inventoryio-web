@@ -86,4 +86,9 @@ export class ListOrdersComponent implements OnInit {
   clearSearch() {
     this.search = null;
   }
+  select(order: Orders) {
+    // order.CardClass.push('card-active');
+    this.ordersService.updateOrderState(order);
+    this.ordersService.getProductsForAnOrder(order.OrdersId);
+  }
 }

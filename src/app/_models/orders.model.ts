@@ -18,6 +18,7 @@ export interface Orders {
     Touched?:boolean;
     Paying?:boolean;
     Payment?:number;
+    CardClass?: string[];
 
 
 }

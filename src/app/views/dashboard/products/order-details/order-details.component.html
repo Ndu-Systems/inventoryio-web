@@ -36,7 +36,13 @@
     <div class="cards" *ngIf="products$  | async as products">
       <div class="items">
         <span *ngFor="let item of products | searchproduct: search">
+           
           <div class="item">
+              <div class="image">
+                  <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+                  <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
+                </div>
+            
             <div class="data">
               <span class="value">{{item.ProductName}}</span>
               <span class="label"> Product Name</span>

@@ -49,8 +49,19 @@ export class OrdersService {
     localStorage.setItem('orders', JSON.stringify(state));
   }
   updateOrderState(order: Orders) {
+    this.clearSelectedClass();
+    if (order) {
+      order.CardClass.push('card-active');
+    }
     this._order.next(order);
     localStorage.setItem('order', JSON.stringify(order));
+  }
+  clearSelectedClass() {
+    const state = this.currentOrdersValue || [];
+    state.forEach(data => {
+      data.CardClass = ['card'];
+    });
+    this._orders.next(state);
   }
   updateOrderProductsState(products: OrderProducts[]) {
     this._orderProducts.next(products);
@@ -112,20 +123,28 @@ export class OrdersService {
         show: true, heading: 'Network Error',
         message: COMMON_CONN_ERR_MSG,
         class: `error`
-      });    });
+      });
+    });
   }
 
   getOrders(companyId) {
     return this.http.get<any>(`${this.url}/api/orders/get-orders.php?CompanyId=${companyId}`).subscribe(resp => {
       const orders: Orders[] = resp;
       localStorage.setItem('orders', JSON.stringify(orders));
+
+      // make the first order selected by defoult.
+      if (orders.length) {
+        this.updateOrderState(orders[0]);
+        orders[0].CardClass.push('card-active');
+      }
       this._orders.next(orders);
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',
         message: COMMON_CONN_ERR_MSG,
         class: `error`
-      });    });
+      });
+    });
   }
   getProductsForAnOrder(orderId: string) {
     return this.http.get<any>(`${this.url}/api/order_products/get-order_products.php?OrderId=${orderId}`).subscribe(resp => {
@@ -136,7 +155,8 @@ export class OrdersService {
         show: true, heading: 'Network Error',
         message: COMMON_CONN_ERR_MSG,
         class: `error`
-      });    });
+      });
+    });
   }
 
 

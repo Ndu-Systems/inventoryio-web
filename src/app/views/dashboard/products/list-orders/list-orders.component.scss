@@ -1,116 +1,203 @@
-.body {
-  width:100%;
+.main {
+  .body {
+    display: grid;
+    grid-template-columns: 30% auto;
 
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-    float: none;
-  }
+    .list {
+      .small-cards-body {
+        .small-cards {
+          grid-template-columns: 100%;
 
-  .items {
-    @media only screen and (max-width: 768px) {
-      display: grid;
-      grid-template-columns: 50% auto;
-    }
-    @media only screen and (max-width: 600px) {
-      display: grid;
-      grid-template-columns: 100%;
-    }
+          .card {
+            padding: 0.1rem;
+            cursor: pointer;
 
-    .item {
-      grid-template-columns: 20% 10% 10% 15% 15% auto;
-      grid-template-columns: repeat(7, 12%);
+            // &:hover {
+            //   background: #104ce534;
+            // }
 
-      border-radius: 10px;
-      @media only screen and (max-width: 768px) {
-        grid-template-columns: 100%;
-        margin: 1rem;
-      }
-      @media only screen and (max-width: 600px) {
-        grid-template-columns: 100%;
-      }
+            .image {
+              img {
+                width: 3rem;
+                border-radius: 100%;
+                // border: 2px solid #2980b9;
+              }
+            }
 
-      .data {
-        .action {
-          color: #fff;
-          padding: .2rem 1rem;
-          margin: 0 1rem;
-          font-weight: 600;
-           border-radius: .2rem;
-          background: #104CE5;
-          cursor: pointer;
-          border: none;
-          display: inline;
-          position: relative;
-          top: 0.5rem;
+            .name {
+              padding-top: 1rem;
 
-          &:disabled {
-            opacity: .4;
-            cursor: no-drop;
-            background: #7f8c8d;
-            color: #000;
+              h4,
+              h5 {
+                margin: 0;
+              }
+            }
+
+            .total {
+              padding-top: 1rem;
+
+              h4,
+              h6 {
+                margin: 0;
+              }
+
+              h6 {
+                color: #bdc3c7;
+              }
+            }
+          }
+
+          .card-active {
+            background: #104ce5;
+            color: #fff;
+
+            .image {
+              img {
+                background: #fff;
+              }
+            }
+
+            .name {
+
+              h4,
+              h5 {
+                color: #fff;
+              }
+            }
+
+            .total {
+
+              h4,
+              h6 {
+                color: #fff;
+              }
+            }
           }
         }
-
-        .pay {
-          background: #8e44ad;
-        }
-
-        .input {
-          margin-bottom: 1rem;
-        }
-
-        .btn-save {
-          background: #2ecc71;
-          margin-left: 0;
-
-        }
-
-        .btn-cancel {
-          background: #e74c3c;
-          margin: 1rem .5rem;
-        }
-        .status{
-          background: #104CE5;
-          color: #fff;
-          text-align: left;
-          padding: .1rem 10%;
-          border-radius: .5rem;
-          width: 50%;
-          margin: 0 auto;
-        }
       }
 
-      .payall {
-        background: #2ecc701c;
-        padding: .3rem;
-        cursor: pointer;
-      }
-
-      .paid {
-        background: #aab8af1c;
-        padding: .3rem;
-        cursor: no-drop;
-      }
     }
-  }
+.order-details{
+
 }
 
-.list-filters{
-  margin-left: 1rem;
-  margin-right: .5rem;
-  width: 97%;
-  margin-bottom: 2rem;
-  grid-template-columns: 50% auto;
-  .btn{
-    float: right;
   }
 
-  @media only screen and (max-width: 768px) {
-    display: grid;
-    grid-template-columns: 50% auto;
-  }
-  @media only screen and (max-width: 600px) {
-    margin: 0;
-    margin-left: 0.2rem;
-  }
 }
+
+// .body {
+//   width:100%;
+
+//   @media only screen and (max-width: 600px) {
+//     width: 100%;
+//     float: none;
+//   }
+
+//   .items {
+//     @media only screen and (max-width: 768px) {
+//       display: grid;
+//       grid-template-columns: 50% auto;
+//     }
+//     @media only screen and (max-width: 600px) {
+//       display: grid;
+//       grid-template-columns: 100%;
+//     }
+
+//     .item {
+//       grid-template-columns: 20% 10% 10% 15% 15% auto;
+//       grid-template-columns: repeat(7, 12%);
+
+//       border-radius: 10px;
+//       @media only screen and (max-width: 768px) {
+//         grid-template-columns: 100%;
+//         margin: 1rem;
+//       }
+//       @media only screen and (max-width: 600px) {
+//         grid-template-columns: 100%;
+//       }
+
+//       .data {
+//         .action {
+//           color: #fff;
+//           padding: .2rem 1rem;
+//           margin: 0 1rem;
+//           font-weight: 600;
+//            border-radius: .2rem;
+//           background: #104CE5;
+//           cursor: pointer;
+//           border: none;
+//           display: inline;
+//           position: relative;
+//           top: 0.5rem;
+
+//           &:disabled {
+//             opacity: .4;
+//             cursor: no-drop;
+//             background: #7f8c8d;
+//             color: #000;
+//           }
+//         }
+
+//         .pay {
+//           background: #8e44ad;
+//         }
+
+//         .input {
+//           margin-bottom: 1rem;
+//         }
+
+//         .btn-save {
+//           background: #2ecc71;
+//           margin-left: 0;
+
+//         }
+
+//         .btn-cancel {
+//           background: #e74c3c;
+//           margin: 1rem .5rem;
+//         }
+//         .status{
+//           background: #104CE5;
+//           color: #fff;
+//           text-align: left;
+//           padding: .1rem 10%;
+//           border-radius: .5rem;
+//           width: 50%;
+//           margin: 0 auto;
+//         }
+//       }
+
+//       .payall {
+//         background: #2ecc701c;
+//         padding: .3rem;
+//         cursor: pointer;
+//       }
+
+//       .paid {
+//         background: #aab8af1c;
+//         padding: .3rem;
+//         cursor: no-drop;
+//       }
+//     }
+//   }
+// }
+
+// .list-filters{
+//   margin-left: 1rem;
+//   margin-right: .5rem;
+//   width: 97%;
+//   margin-bottom: 2rem;
+//   grid-template-columns: 50% auto;
+//   .btn{
+//     float: right;
+//   }
+
+//   @media only screen and (max-width: 768px) {
+//     display: grid;
+//     grid-template-columns: 50% auto;
+//   }
+//   @media only screen and (max-width: 600px) {
+//     margin: 0;
+//     margin-left: 0.2rem;
+//   }
+// }
