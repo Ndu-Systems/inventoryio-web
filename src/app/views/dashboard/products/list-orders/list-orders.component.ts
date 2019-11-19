@@ -70,6 +70,8 @@ export class ListOrdersComponent implements OnInit {
   updateOrder(order: Orders) {
     order.Paid = Number(order.Paid) + Number(order.Payment);
     order.Due = Number(order.Total) - Number(order.Paid);
+    order.Status = order.Status;
+
     this.ordersService.uptadeOrder(order);
     this.pay(order);
     this.messageService.add({

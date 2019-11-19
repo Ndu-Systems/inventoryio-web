@@ -20,7 +20,7 @@ export class PartnerService {
     private spinnerService: SpinnerService,
     private splashService: SplashService,
   ) {
-    this._partners = new BehaviorSubject<Partner[]>(JSON.parse(localStorage.getItem('Partners')) || []);
+    this._partners = new BehaviorSubject<Partner[]>(JSON.parse(localStorage.getItem('partners')) || []);
     this.partners = this._partners.asObservable();
     this.url = environment.API_URL;
   }
@@ -32,12 +32,12 @@ export class PartnerService {
     const state = this.currentPartnerValue || [];
     state.push(data);
     this._partners.next(state);
-    localStorage.setItem('Partners', JSON.stringify(state));
+    localStorage.setItem('partners', JSON.stringify(state));
 
   }
   updateState(data: Partner[]) {
     this._partners.next(data);
-    localStorage.setItem('Partners', JSON.stringify(data));
+    localStorage.setItem('partners', JSON.stringify(data));
 
   }
   addPartner(data: Partner) {

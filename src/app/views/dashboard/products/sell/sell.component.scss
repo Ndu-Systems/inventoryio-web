@@ -11,6 +11,7 @@
     grid-template-columns: 100%;
 
   }
+
   @media only screen and (max-width: 768px) {
     grid-template-columns: 100%;
 
@@ -114,7 +115,7 @@
   }
 
   @media only screen and (max-width: 768px) {
-   display: block;
+    display: block;
   }
 
 }
@@ -124,29 +125,33 @@
   background: #2ecc71;
 }
 
-.customer{
+.customer {
   background: #eeeff9;
-  padding: .2rem;
-  display: grid;
-  grid-template-columns: 10% 60% auto;
-  border-radius: 3px;
-  p{
-    color: #5460ac;
-  }
-  .action{
-    text-align: center;
-    cursor: pointer;
-    p{
-      &:hover{
-        color: #2d3b90;
-      }
+  padding: 1rem;
+  
+
+  .list-filters {
+    grid-template-columns: 80% auto;
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+    .select {
+      display: grid;
+      border: 1px solid #c6c6c6;
+      grid-template-columns: 40% auto;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .btn {
+      padding: 4px 20px;
     }
   }
 }
-::ng-deep{
-  .ui-inputtext{
-    border: none !important;
-    width: 100% !important;
-    background: none !important;
-  }
-}
+
+// ::ng-deep{
+//   .ui-inputtext{
+//     border: none !important;
+//     width: 100% !important;
+//     background: none !important;
+//   }
+// }

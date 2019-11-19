@@ -86,18 +86,24 @@
       </div>
 
       <div class="customer">
-        <div>
-
-        </div>
-        <div>
-          <!-- <p>
-            No customer
-          </p> -->
-          <p-autoComplete [(ngModel)]="selectedCustomer" [suggestions]="results" (completeMethod)="suggetsCustomer($event)"></p-autoComplete>
-
-        </div>
-        <div class="action">
-          <p><i class="pi pi-pencil"></i></p>
+        <div class="list-filters">
+          <div>
+            <div class="select">
+              <div class="label">
+                <i class="pi pi-user"></i> <span class="pc-only"></span>
+              </div>
+              <div class="input">
+                <select [(ngModel)]="selectedCustomerId">
+                  <option value="" selected>Select customer</option>
+                  <option [value]="customer.PartnerId" *ngFor="let customer of customers$  | async as customers">{{customer.Name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn" (click)="addCustomer()"><i class="pi pi-plus"></i></button>
+          </div>
+  
         </div>
       </div>
       <h3>

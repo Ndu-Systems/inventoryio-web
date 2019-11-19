@@ -19,6 +19,7 @@
     border: 1px solid #c6c6c6;
     font-size: .8rem;
     padding: .5rem 1rem;
+    margin: 0;
   }
 
   .select {
@@ -28,7 +29,8 @@
 
     .label {
       font-size: .8rem;
-      padding-top: 1.5rem;
+      // padding-top: 1.5rem;
+      padding-top: .5rem;
       padding-left: 2rem;
     }
 
@@ -53,7 +55,7 @@
   .times {
     position: absolute;
     right: 4rem;
-    top: 1.4rem;
+    top: .4rem;
     cursor: pointer;
     @media only screen and (max-width: 600px) {
       right: 1rem;

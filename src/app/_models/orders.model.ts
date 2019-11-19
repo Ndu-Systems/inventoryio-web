@@ -11,6 +11,7 @@ export interface Orders {
     CreateUserId: string;
     ModifyDate?: string;
     ModifyUserId: string;
+    Status: string;
     StatusId: number;
     // local
     Disable?:boolean;

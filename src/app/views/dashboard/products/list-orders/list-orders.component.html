@@ -21,11 +21,12 @@
         <div class="item">
           <div class="data">
             <span class="value"> {{item.CreateDate | date:'short'}}</span>
-            <span class="label"> Order Date</span>
+            <span class="label status">{{item.Status}}</span>
+            <!-- <span class="label"> Order Date</span> -->
           </div>
           <div class="data">
-            <!-- <span class="value">John Doe</span>
-            <span class="label">Client</span> -->
+            <span class="value">{{item.Customer?.Name}}</span>
+            <span class="label">Client</span>
           </div>
 
           <div class="data">

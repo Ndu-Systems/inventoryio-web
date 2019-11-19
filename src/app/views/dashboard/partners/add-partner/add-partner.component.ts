@@ -55,10 +55,6 @@ export class AddPartnerComponent implements OnInit {
       ModifyUserId: [user.UserId, Validators.required],
       StatusId: [StatusConstant.ACTIVE_STATUS, Validators.required]
     });
-    this.bannerService.updateState({
-      heading: `${this.partnerType} Add a user`,
-      backto: '/dashboard/users'
-    });
   }
   getRoles(companyId: string) {
     this.roleService.getRolesForCompany(companyId, StatusConstant.ACTIVE_STATUS)
@@ -71,10 +67,12 @@ export class AddPartnerComponent implements OnInit {
     this.messageService.add({
       severity: 'success',
       summary: 'Success.',
-      detail: `User ${partner.Name} added successfully`
+      detail: `${this.partnerType} ${partner.Name} added successfully`
     });
-    this.routeTo.navigate([`dashboard/partners/${this.type}`]);
+    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }
 
-
+  abort() {
+    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
+  }
 }

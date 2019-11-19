@@ -25,8 +25,8 @@ export class SellComponent implements OnInit {
   notFoundModel: NotFoundModel;
   // results = [];
 
-  selectedCustomer = 'Ndu';
-  results: string[] = ['Audi', 'BMW', 'Fiat', 'Ford', 'Honda', 'Jaguar', 'Mercedes', 'Renault', 'Volvo', 'VW'];
+  selectedCustomerId = '';
+  customers: Partner[] = [];
   customers$: Observable<Array<Partner>>;
 
   constructor(
@@ -64,9 +64,11 @@ export class SellComponent implements OnInit {
       Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
       Message: ''
     };
+    this.partnerService.getPartners(this.user.CompanyId);
     this.partnerService.partners.subscribe(data => {
-      this.results = data.map(x => x.Name);
-    })
+      this.customers = data;
+    });
+    this.customers$ = this.partnerService.partners;
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
@@ -107,13 +109,14 @@ export class SellComponent implements OnInit {
     this.ordersService.updateOrderState(null);
     const order: Orders = {
       CompanyId: this.user.CompanyId,
-      ParntersId: '',
+      ParntersId: this.selectedCustomerId,
       OrderType: 'Sell',
       Total: this.sale.total,
       Paid: 0,
       Due: this.sale.total,
       CreateUserId: this.user.UserId,
       ModifyUserId: this.user.UserId,
+      Status: 'estimated',
       StatusId: 1
     };
     console.log(order);
@@ -154,14 +157,16 @@ export class SellComponent implements OnInit {
   toggleCart() {
     this.showCart = !this.showCart;
   }
-
-  // customer
-  suggetsCustomer(event) {
-    const fraze = event.query;
-    this.results = this.results.filter(x => x.toLocaleUpperCase().includes(fraze.toLocaleUpperCase()));
-    console.log(event);
-
-    // this.results = this.partnerService.getPartners(this.user.CompanyId);
+  addCustomer() {
+    this.bannerService.updateState({
+      backto: `/dashboard/sell`,
+    });
+    this.router.navigate(['/dashboard/add-partner/customers']);
   }
+  // customer
+  // suggetsCustomer(event) {
+  //   const fraze = event.query;
+  //   this.customers = this.customers.filter(x => x.toLocaleUpperCase().includes(fraze.toLocaleUpperCase()));
+  // }
 }
 

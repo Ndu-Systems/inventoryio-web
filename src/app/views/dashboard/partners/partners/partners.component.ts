@@ -40,13 +40,12 @@ export class PartnersComponent implements OnInit {
       this.accountService.logout();
       this.routeTo.navigate(['sign-in']);
     }
-
+    this.partnerService.getPartners(user.CompanyId);
     this.bannerService.updateState({
       heading: 'Manage partners',
       backto: '/dashboard/configurations'
     });
     this.partners$ = this.partnerService.partners;
-    this.partnerService.getPartners(user.CompanyId);
     this.notFoundModel = {
       Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
       Message: NotFoundConstants.NOT_FOUND_ITEMS.message
@@ -54,6 +53,9 @@ export class PartnersComponent implements OnInit {
   }
 
   add() {
+    this.bannerService.updateState({
+      backto: `/dashboard/partners/${this.type}`,
+    });
     this.routeTo.navigate([`dashboard/add-partner/${this.type}`]);
   }
   showAdd() {
