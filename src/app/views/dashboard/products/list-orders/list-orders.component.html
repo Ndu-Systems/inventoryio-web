@@ -1,17 +1,47 @@
 <div class="main">
   <h1 class="heading">
-    Sale orders
+    Sales orders
   </h1>
   <div class="body">
 
     <div class="list">
       <div class="small-cards-body" *ngIf="orders$  | async as orders">
+        <div class="small-cards">
+          <div class="card filter-card">
+            <div class="list-filters">
+              <div class="input select">
+                <div>
+                  <i class="pi pi-filter"></i>
+                </div>
+                <select [(ngModel)]="searchByCatergory">
+                  <option value="" selected>All sales orders</option>
+                  <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+                </select>
+              </div>
+
+              <div class="search">
+                <button class="btn btn-transparent" (click)="searchOrder()"><i class="pi pi-search"></i></button>
+              </div>
+              <div class="add">
+                <button class="btn" (click)="add()"><i class="pi pi-plus"></i></button>
+              </div>
+            </div>
+            <div class="search-box" *ngIf="showSearchOrder">
+              <div class="input-times">
+                <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
+                <div class="times" (click)="clearSearch()">
+                  <i class="pi pi-times"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="small-cards" *ngIf="orders.length > 0; else notFound">
           <span *ngFor="let order of orders | searchproduct: search">
             <div [ngClass]="order.CardClass" (click)="select(order)">
               <div class="image">
-                <img src="../../../../../assets/user2.svg" alt="">
+                <img src="assets/user2.svg" alt="">
                 <!-- <img src="../../../../../assets/ndu.jpg" alt=""> -->
               </div>
               <div class="name">

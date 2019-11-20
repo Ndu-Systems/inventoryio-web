@@ -1,4 +1,5 @@
 // VARIABLES // ============================== //
+@import '../../variables';
 $bg-color: #424242;
 $hl-color: #2196F3;
 $muted-color: mix(white, $bg-color, 70%);
@@ -97,7 +98,7 @@ label {
 
 // BUTTONS // ============================== //
 .btn {
-  background: #375DB9;
+  background: $primary-bg-color;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -154,6 +155,15 @@ label {
 .btn-box {
   text-align: center;
   margin: 50px 0;
+}
+
+.btn-transparent {
+  background: #fff;
+  color: #000;
+  &:hover {
+    background: darken(#eee, 5%);
+    color: mix(black, $muted-color, 30%);
+  }
 }
 
 .alert {

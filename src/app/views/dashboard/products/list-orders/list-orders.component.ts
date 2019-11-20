@@ -15,6 +15,7 @@ export class ListOrdersComponent implements OnInit {
   search: string;
   paying: boolean;
   orders$: Observable<Orders[]>;
+  showSearchOrder: any;
 
   constructor(
     private ordersService: OrdersService,
@@ -38,6 +39,9 @@ export class ListOrdersComponent implements OnInit {
   }
   add() {
     this.router.navigate(['/dashboard/sell']);
+  }
+  searchOrder(){
+    this.showSearchOrder = !this.showSearchOrder;
   }
   details(order: Orders) {
     this.ordersService.updateOrderState(order);
@@ -85,6 +89,7 @@ export class ListOrdersComponent implements OnInit {
   }
   clearSearch() {
     this.search = null;
+    this.searchOrder();
   }
   select(order: Orders) {
     // order.CardClass.push('card-active');

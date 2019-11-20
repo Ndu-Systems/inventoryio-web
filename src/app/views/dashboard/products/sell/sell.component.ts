@@ -116,7 +116,7 @@ export class SellComponent implements OnInit {
       Due: this.sale.total,
       CreateUserId: this.user.UserId,
       ModifyUserId: this.user.UserId,
-      Status: 'estimated',
+      Status: 'new',
       StatusId: 1
     };
     console.log(order);

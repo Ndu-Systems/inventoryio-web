@@ -5,6 +5,7 @@
 
     .list {
       .small-cards-body {
+        padding: 0 1rem;
         .small-cards {
           grid-template-columns: 100%;
 
@@ -73,13 +74,57 @@
               }
             }
           }
+
+          .filter-card {
+            grid-template-columns: 100%;
+            padding: .5rem;
+            padding-top: 1rem;
+            position: relative;
+
+            .list-filters {
+              grid-template-columns: 60% 20% auto;
+              border: none;
+
+              .select {
+                border: none;
+                padding-top: .2rem;
+                grid-template-columns: 10% auto;
+
+                select {
+                  font-weight: 700;
+                  display: inline;
+                }
+              }
+
+            }
+
+            .search-box {
+              position: absolute;
+              background: #fff;
+              width: 100%;
+              height: 100%;
+              padding: 1% 4%;
+
+              .input-times {
+                input {
+                  border: none;
+                }
+              }
+
+            }
+          }
         }
       }
 
     }
-.order-details{
 
-}
+    .order-details {
+      .small-cards-body {
+        .small-cards {
+          grid-template-columns: 100%;
+        }
+      }
+    }
 
   }
 

@@ -56,7 +56,7 @@ export class UserStatComponent implements OnInit {
       if (!data) { return false; }
       this.orders = data;
       this.pushStat({
-        name: 'Active orders',
+        name: 'Sales Orders',
         value: this.orders.length,
         image: 'assets/images/state-orders.svg',
         link: 'dashboard/list-orders'

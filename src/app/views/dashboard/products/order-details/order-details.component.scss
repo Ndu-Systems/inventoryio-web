@@ -1,26 +1,63 @@
+.small-cards {
+  grid-template-columns: 100%;
+
+  .card {
+    grid-template-columns: 100%;
+
+    .topbar {
+      width: 40%;
+      margin-right: 1rem;
+      border: none;
+      margin-top: 1rem;
+      grid-template-columns: repeat(4,25%);
+    }
+  }
+}
+
+.main{
+  background: #fff;
+}
+
+.order-number{
+  display: block;
+  font-size: .9rem;
+  font-weight: 800;
+  color: #95a5a6;
+}
+
+.col-1-of-2{
+  grid-template-columns: 70% auto;
+}
+
+
+
 .body {
   width: 100%;
-  .items{
-    .item{
+
+  .items {
+    .item {
       border-radius: 10px;
-      grid-template-columns: repeat(3,30%);
-      grid-template-columns: repeat(4,20%);
+      grid-template-columns: repeat(3, 30%);
+      grid-template-columns: repeat(4, 20%);
 
       @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
       }
-      .data{
-        .total{
+
+      .data {
+        .total {
           font-size: 1.3rem;
           font-weight: 500;
         }
-        .tax{
+
+        .tax {
           font-size: .8rem;
         }
       }
     }
-    .image{
-      img{
+
+    .image {
+      img {
         width: 3rem;
       }
     }
@@ -31,4 +68,3 @@
     float: none;
   }
 }
-
