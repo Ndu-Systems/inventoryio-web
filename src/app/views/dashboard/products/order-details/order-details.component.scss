@@ -9,27 +9,82 @@
       margin-right: 1rem;
       border: none;
       margin-top: 1rem;
-      grid-template-columns: repeat(4,25%);
+      grid-template-columns: repeat(4, 25%);
     }
   }
 }
 
-.main{
+.main {
   background: #fff;
 }
 
-.order-number{
+.order-number {
   display: block;
   font-size: .9rem;
   font-weight: 800;
   color: #95a5a6;
 }
 
-.col-1-of-2{
-  grid-template-columns: 70% auto;
+h1.date {
+  font-size: 1rem;
+    span {
+      display: block;
+      font-size: .9rem;
+      font-weight: 500;
+      color: #95a5a6;
+    }
 }
 
+.col-1-of-2 {
+  grid-template-columns: 70% auto;
+  padding: 1rem;
+}
+.s10-20{
+  grid-template-columns: 10% auto;
 
+}
+
+.billto {
+  box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
+  padding: 1rem;
+  width: 80%;
+  margin-right: 1rem;
+
+  h3 {
+    color: #95a5a6;
+    text-transform: uppercase;
+  }
+
+  .customer {
+    .image {
+      img {
+        width: 3rem;
+      }
+    }
+
+    .name {
+      h1 {
+        color: royalblue;
+        font-size: 1rem;
+      }
+    }
+
+    .phone {
+      h1 {
+        color: rgb(2, 2, 2);
+        font-size: .7rem;
+        font-weight: 500;
+      }
+    }
+
+    .address {
+      h1 {
+        color: royalblue;
+        font-size: 1rem;
+      }
+    }
+  }
+}
 
 .body {
   width: 100%;

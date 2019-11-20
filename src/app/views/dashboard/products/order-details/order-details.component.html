@@ -18,18 +18,50 @@
         </div>
       </div>
     </div>
-   <div class="col-1-of-2">
-      <h1 class="heading">
+    <div class="col-1-of-2">
+
+      <div class="order-data">
+        <h1 class="heading">
           Order details
-          <span class="order-number">  ORD-{{order.OrderId}}</span>
+          <span class="order-number"> ORD-{{order.OrderId}}</span>
+          <span class="order-status"> {{order.Status}}</span>
         </h1>
-        <div class="billto">
-          <h3>Billing to</h3>
-          <div class="customer">
-            
+<div class="col-1-of-2 s10-20">
+<div class="image">
+<h1>📅</h1>
+</div>
+<h1 class="date">
+    <span class="label"> Order Date</span>
+    {{order.CreateDate | date:'short'}}
+  </h1>
+</div>
+      
+      </div>
+      <div class="billto" *ngIf="order.Customer">
+        <h3>Billing to</h3>
+        <div class="customer">
+          <div class="image">
+            <img src="assets/user2.svg" alt="">
+            <!-- <img src="../../../../../assets/ndu.jpg" alt=""> -->
+          </div>
+          <div class="name">
+            <h1>
+              {{order.Customer.Name}}
+            </h1>
+          </div>
+          <div class="phone">
+            <h1>
+              {{order.Customer.CellphoneNumber}} / {{order.Customer.EmailAddress}}
+            </h1>
+          </div>
+          <div class="address">
+            <h1>
+              {{order.Customer.Address}}
+            </h1>
           </div>
         </div>
-   </div>
+      </div>
+    </div>
 
     <div class="cards" *ngIf="products$  | async as products">
       <div class="items">
