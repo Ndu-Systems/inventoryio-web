@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { OrderProducts, User } from 'src/app/_models';
+import { OrderProducts, User, Orders } from 'src/app/_models';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
@@ -18,6 +18,8 @@ export class InvoiceComponent implements OnInit {
   InvoiceDate: string;
   InvoiceNumber: number;
   user: User;
+  order$: Observable<Orders>;
+
 
 
   constructor(private ordersService: OrdersService, private router: Router, private accountService: AccountService
@@ -26,6 +28,8 @@ export class InvoiceComponent implements OnInit {
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
     this.products$ = this.ordersService.orderProducts;
+    this.order$ = this.ordersService.order;
+
 
     this.ordersService.order.subscribe(state => {
       if (!state) { return; }
@@ -49,6 +53,6 @@ export class InvoiceComponent implements OnInit {
     });
   }
   cancel() {
-    this.router.navigate(['/dashboard/order-details']);
+    this.router.navigate(['/dashboard/list-orders']);
   }
 }

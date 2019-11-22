@@ -1,4 +1,4 @@
-<div class="print">
+<div class="print" *ngIf="order$ | async as order;">
   <div class="banner">
     <div class="image">
       <img src="../../../../../assets/images/white-icon.png" alt="">
@@ -33,18 +33,18 @@
         </h1>
        
       </div>
-<!-- 
-      <div class="client">
+
+      <div class="client"  *ngIf="order.Customer">
         <h1>
           BILLED TO :
         </h1>
         <p>
-          <span>Trueworths SA</span>
-          <span>270 St CBD</span>
-          <span>Durban 4000</span>
-          <span>0118454574</span>
+          <span>  {{order.Customer.Name}}</span>
+          <span>  {{order.Customer.Address}}</span>
+          <span> {{order.Customer.CellphoneNumber}}</span>
+          <span> {{order.Customer.EmailAddress}}</span>
         </p>
-      </div> -->
+      </div>
 
     </div>
     <div class="table">
