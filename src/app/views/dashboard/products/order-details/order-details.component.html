@@ -26,17 +26,17 @@
           <span class="order-number"> ORD-{{order.OrderId}}</span>
           <span class="order-status"> {{order.Status}}</span>
         </h1>
-<div class="col-1-of-2 s10-20">
-<div class="image">
-<!-- <h1>📅</h1> -->
-<img src="assets/images/icons/date.svg" alt="">
-</div>
-<h1 class="date">
-    <span class="label"> Order Date</span>
-    {{order.CreateDate | date:'short'}}
-  </h1>
-</div>
-      
+        <div class="col-1-of-2 s10-20">
+          <div class="image">
+            <!-- <h1>📅</h1> -->
+            <img class="ordrer-heading-icons" src="assets/images/icons/date.svg" alt="">
+          </div>
+          <h1 class="date">
+            <span class="label"> Order Date</span>
+            {{order.CreateDate | date:'short'}}
+          </h1>
+        </div>
+
       </div>
       <div class="billto" *ngIf="order.Customer">
         <h3>Billing to</h3>
