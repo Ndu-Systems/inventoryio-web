@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Orders, OrderProducts } from 'src/app/_models';
 import { OrdersService, AccountService, BannerService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 
 @Component({
@@ -28,7 +28,8 @@ export class OrderDetailsComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
     private bannerService: BannerService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
 
   ) { }
 
@@ -69,28 +70,38 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   savePayment(order: Orders) {
+    order.Payment = this.amountPaid;
     if (!this.validatePaymentAmount(order)) {
       return false;
     }
-    order.Payment = this.amountPaid;
-    order.Paid = Number(order.Paid) + Number(order.Payment);
-    order.Due = Number(order.Total) - Number(order.Paid);
-    order.Status = order.Status;
+    this.confirmationService.confirm({
+      message: `The payment of R${this.amountPaid} will be processed , continue`,
+      accept: () => {
+        order.Paid = Number(order.Paid) + Number(order.Payment);
+        order.Due = Number(order.Total) - Number(order.Paid);
+        order.Status = order.Status;
 
-    this.ordersService.uptadeOrder(order);
-    this.messageService.add({
-      severity: 'success',
-      summary: `R ${order.Payment}`,
-      detail: 'Payment successful!'
+        this.ordersService.uptadeOrder(order);
+        this.messageService.add({
+          severity: 'success',
+          summary: `R ${order.Payment}`,
+          detail: 'Payment successful!'
+        });
+        this.paymentAction = false;
+        this.order$ = this.ordersService.order;
+        this.amountPaid = undefined;
+      }
     });
+
   }
 
   validatePaymentAmount(order: Orders) {
-    if ((order.Total - order.Payment < 0) || Number(order.Due) < 0) {
+    if ((order.Total - order.Payment < 0) || Number(order.Due) <= 0) {
       this.messageService.add({
         severity: 'warn',
-        summary: 'Sorry!',
-        detail: 'Payment more that total amount'
+        summary: 'Payment exceeded!',
+        detail: 'Payment cannot be more the total amount',
+        life: 7000
       });
       return false;
     }

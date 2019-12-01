@@ -10,7 +10,7 @@
                 </div>
                 <div class="buttons">
                   <button class="btn btn-transparent" (click)="cancelPayAction()">Abort</button>
-                  <button class="btn"  (click)="savePayment(order)">Save</button>
+                  <button class="btn"  (click)="savePayment(order)" [disabled]="!amountPaid">Save</button>
                 </div>
           </div>
           <div>
@@ -36,19 +36,23 @@
           <span class="order-number"> ORD-{{order.OrderId}}</span>
           <span class="order-status"> {{order.Status}}</span>
         </h1>
+        <!-- <h1 class="date">
+            <span class="label"> Order Date</span>
+            {{order.CreateDate | date:'short'}}
+          </h1> -->
      <div class="more-details col-1-of-2">
         <div class="col-1-of-2 s10-20">
             <div class="image">
-              <img class="ordrer-heading-icons" src="assets/images/icons/date.svg" alt="">
+              <img class="ordrer-heading-icons" src="assets/images/pending.svg" alt="">
             </div>
             <h1 class="date">
-              <span class="label"> Order Date</span>
-              {{order.CreateDate | date:'short'}}
+              <span class="label">Outstanding balance</span>
+              {{order.Due | currency:'R'}}
             </h1>
           </div>
           <div class="col-1-of-2 s10-20">
             <div class="image">
-              <img class="ordrer-heading-icons" src="assets/images/icons/date.svg" alt="">
+              <img class="ordrer-heading-icons" src="assets/images/paid.svg" alt="">
             </div>
             <h1 class="date">
               <span class="label"> Amount paid</span>
