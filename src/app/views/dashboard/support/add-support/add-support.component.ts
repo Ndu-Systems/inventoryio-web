@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AccountService, SupportService, EmailService } from 'src/app/_services';
-import { User, Support, Email } from 'src/app/_models';
+import { AccountService, SupportService, EmailService, SmsService } from 'src/app/_services';
+import { User, Support, Email, SmsModel, From } from 'src/app/_models';
 import { MessageService } from 'primeng/api';
 
 
@@ -20,7 +20,8 @@ export class AddSupportComponent implements OnInit {
     private messageService: MessageService,
     private supportService: SupportService,
     private accountService: AccountService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private smsService: SmsService
   ) { }
 
   ngOnInit() {
@@ -54,13 +55,28 @@ export class AddSupportComponent implements OnInit {
       Subject: support.Subject,
       Message: support.Message
     };
-    this.sendEmailNow(email);
+    // this.sendEmailNow(email);
+    this.sendSms();
   }
 
   sendEmailNow(email: Email) {
     this.emailService.sendEmail(email).subscribe(data => {
       console.log(data);
     });
+  }
+
+  sendSms() {
+    const from: From = {
+      type: 'LOCAL',
+      address: '1111111'
+    };
+    const sms: SmsModel = {
+      from,
+      to: ['test'],
+      body: 'Hello from our angular 7 app'
+
+    };
+    this.smsService.post(sms);
   }
 
   goToTickets() {

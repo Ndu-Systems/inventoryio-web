@@ -22,6 +22,9 @@ export * from './not-found.model';
 export * from './support.model';
 export * from './email.model';
 export * from './partner.model';
+export * from './sms.model';
+export * from './bulk-sms.model';
+
 
 
 
