@@ -10,6 +10,21 @@
       border: none;
       margin-top: 1rem;
       grid-template-columns: repeat(4, 25%);
+      grid-template-columns: repeat(3, 33.3333%);
+      position: relative;
+
+      .pay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: grid;
+        grid-template-columns: 50% auto;
+
+        .btn {
+          margin: 0 .5rem;
+        }
+      }
     }
   }
 }
@@ -27,21 +42,28 @@
 
 h1.date {
   font-size: 1rem;
-    span {
-      display: block;
-      font-size: .9rem;
-      font-weight: 500;
-      color: #95a5a6;
-    }
+
+  span {
+    display: block;
+    font-size: .9rem;
+    font-weight: 500;
+    color: #95a5a6;
+  }
 }
+
 
 .col-1-of-2 {
   grid-template-columns: 70% auto;
   padding: 1rem;
 }
-.s10-20{
-  grid-template-columns: 10% auto;
 
+.s10-20 {
+  grid-template-columns: 20% auto;
+
+}
+
+.more-details {
+  grid-template-columns: 50% auto;
 }
 
 .billto {
@@ -53,6 +75,7 @@ h1.date {
   h3 {
     color: #95a5a6;
     text-transform: uppercase;
+    font-size: .7rem;
   }
 
   .customer {
@@ -86,8 +109,12 @@ h1.date {
   }
 }
 
-.ordrer-heading-icons{
-  width: 4rem; 
+.ordrer-heading-icons {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 4rem;
+  box-shadow: 0 7px 14px rgba(104, 104, 104, 0.18), 0 5px 5px rgba(128, 128, 128, 0.12);
+
 }
 
 .body {
@@ -126,4 +153,8 @@ h1.date {
     width: 100%;
     float: none;
   }
+}
+
+h1.date{
+  padding-left: 2.322rem;
 }

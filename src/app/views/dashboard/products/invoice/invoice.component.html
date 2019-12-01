@@ -4,9 +4,9 @@
       <img src="../../../../../assets/images/white-icon.png" alt="">
     </div>
     <h1>
-        Preview invoice
+      Preview invoice
     </h1>
-    
+
   </div>
 
   <div class="invoice" id="contentToConvert">
@@ -19,7 +19,7 @@
         </h1>
         <h1>
           <span>
-           {{user.Company.Name}}
+            {{user.Company.Name}}
             <!-- <br>
           155 The willams Four ways <br>
           Gauteng  -->
@@ -31,16 +31,16 @@
         <h1>
           INVOICE DATE <span>{{InvoiceDate  | date:'mediumDate'}}</span>
         </h1>
-       
+
       </div>
 
-      <div class="client"  *ngIf="order.Customer">
+      <div class="client" *ngIf="order.Customer">
         <h1>
           BILLED TO :
         </h1>
         <p>
-          <span>  {{order.Customer.Name}}</span>
-          <span>  {{order.Customer.Address}}</span>
+          <span> {{order.Customer.Name}}</span>
+          <span> {{order.Customer.Address}}</span>
           <span> {{order.Customer.CellphoneNumber}}</span>
           <span> {{order.Customer.EmailAddress}}</span>
         </p>

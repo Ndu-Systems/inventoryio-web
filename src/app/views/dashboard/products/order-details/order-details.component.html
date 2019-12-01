@@ -3,12 +3,22 @@
     <div class="small-cards">
       <div class="card filter-card">
         <div class="list-filters topbar">
-          <div>
-            <button class="btn btn-transparent" (click)="print()"><i class="pi pi-money-bill"></i> Pay</button>
+          <div class="search-box pay" *ngIf="paymentAction">
+              <div class="input-times">
+                <!-- Payment Amount ZAR -->
+                  <input type="text" class="input-box" [(ngModel)]="amountPaid" placeholder="💵 Enter payment amount here.">
+                </div>
+                <div class="buttons">
+                  <button class="btn btn-transparent" (click)="cancelPayAction()">Abort</button>
+                  <button class="btn"  (click)="savePayment(order)" [disabled]="!amountPaid">Save</button>
+                </div>
           </div>
           <div>
+            <button class="btn btn-transparent" (click)="triggerPaymentAction()"><i class="pi pi-money-bill"></i> Pay</button>
+          </div>
+          <!-- <div>
             <button class="btn btn-transparent" (click)="print()"><i class="pi pi-pencil"></i> Edit</button>
-          </div>
+          </div> -->
           <div>
             <button class="btn btn-transparent" (click)="print()"><i class="pi pi-print"></i> Print</button>
           </div>
@@ -26,16 +36,30 @@
           <span class="order-number"> ORD-{{order.OrderId}}</span>
           <span class="order-status"> {{order.Status}}</span>
         </h1>
-        <div class="col-1-of-2 s10-20">
-          <div class="image">
-            <!-- <h1>📅</h1> -->
-            <img class="ordrer-heading-icons" src="assets/images/icons/date.svg" alt="">
-          </div>
-          <h1 class="date">
+        <!-- <h1 class="date">
             <span class="label"> Order Date</span>
             {{order.CreateDate | date:'short'}}
-          </h1>
-        </div>
+          </h1> -->
+     <div class="more-details col-1-of-2">
+        <div class="col-1-of-2 s10-20">
+            <div class="image">
+              <img class="ordrer-heading-icons" src="assets/images/pending.svg" alt="">
+            </div>
+            <h1 class="date">
+              <span class="label">Outstanding balance</span>
+              {{order.Due | currency:'R'}}
+            </h1>
+          </div>
+          <div class="col-1-of-2 s10-20">
+            <div class="image">
+              <img class="ordrer-heading-icons" src="assets/images/paid.svg" alt="">
+            </div>
+            <h1 class="date">
+              <span class="label"> Amount paid</span>
+              {{order.Paid | currency:'R'}}
+            </h1>
+          </div>
+     </div>
 
       </div>
       <div class="billto" *ngIf="order.Customer">

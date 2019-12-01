@@ -49,7 +49,17 @@ export class DashboardNavComponent implements OnInit {
         Name: 'sell',
         Link: '/dashboard/sell',
         Icon: `pi pi-money-bill`
-      }
+      },
+      {
+        Name: 'sales orders',
+        Link: '/dashboard/list-orders',
+        Icon: `pi pi-align-left`
+      },
+      // {
+      //   Name: 'Reports',
+      //   Link: '/dashboard/reports',
+      //   Icon: `pi pi-chart-line`
+      // }
     ];
   }
   populateProfileNav() {
