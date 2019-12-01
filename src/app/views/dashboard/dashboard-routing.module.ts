@@ -68,6 +68,7 @@ import { SupportComponent, ListSupportComponent, AddSupportComponent } from './s
 import { AddPartnerComponent } from './partners/add-partner/add-partner.component';
 import { PartnersComponent } from './partners/partners/partners.component';
 import { SearchPartnerPipe } from 'src/app/_pipes/search-partners.pipe';
+import { ReportsComponent } from './reports/reports/reports.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -111,6 +112,7 @@ const routes: Routes = [
       { path: 'support', component: SupportComponent },
       { path: 'add-partner/:id', component: AddPartnerComponent },
       { path: 'partners/:id', component: PartnersComponent },
+      { path: 'reports', component: ReportsComponent },
     ]
   },
 ];
@@ -178,6 +180,7 @@ export const declarations = [
   AddSupportComponent,
   AddPartnerComponent,
   PartnersComponent,
+  ReportsComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,
