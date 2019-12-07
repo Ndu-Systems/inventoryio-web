@@ -1,12 +1,9 @@
-<div class="mobile-background">
-  <div class="sign-in-background">
+<div class="container">
+  <div class="sign-in-background"></div>
     <div class="section">
-      <div class="mobile-fingerprint-img">
-        <img src="../../../../../assets/images/sign-mobile-img.svg" alt="">
-      </div>
-      <div class="form sign-up">
+      <h1 class="access">Create your new free account.</h1>
+      <div class="form">
         <form [formGroup]="rForm" (ngSubmit)="signUp()">
-          <h1>Sign Up For Your Free Account</h1>
           <div class="group">
             <input type="text" formControlName="fullname" autofocus required="required" />
             <label>Full Name</label>
@@ -30,12 +27,12 @@
             A valid email is required
           </div>
           <div class="group">
-              <input type="text" formControlName="companyName" required="required" />
-              <label>Company Name</label>
-            </div>
-            <div class="alert" *ngIf="!rForm.controls['companyName'].valid  && rForm.controls['companyName'].touched">
-              Company name is required
-            </div>
+            <input type="text" formControlName="companyName" required="required" />
+            <label>Company Name</label>
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['companyName'].valid  && rForm.controls['companyName'].touched">
+            Company name is required
+          </div>
           <div class="group">
             <input type="password" formControlName="password" required="required" autocomplete="new-password" />
 
@@ -63,21 +60,18 @@
           </div>
           <br>
           <div class="group">
-            <input type="submit" value="Sign Up For Free" class="btn" [disabled]="!rForm.valid" />
+            <input type="submit" value="Register account" class="btn" [disabled]="!rForm.valid" />
           </div>
 
         </form>
         <div class="actions">
           <div class="sign-up">
-            Already A Member?<a routerLink="/sign-in">Sign In.</a>
+            Already A Member?<a routerLink="/sign-in"  class="btn btn-border">Sign in now.</a>
           </div>
         </div>
       </div>
-      <div class="image">
-        <img src="../../../../../assets/images/sign-up-img.svg" alt="">
-      </div>
+
     </div>
-  </div>
 </div>
 
 

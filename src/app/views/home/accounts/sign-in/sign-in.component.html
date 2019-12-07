@@ -1,53 +1,42 @@
-  <div class="mobile-background">
+<div class="container">
   <div class="sign-in-background">
-    <div class="section">
-      <div class="mobile-fingerprint-img">
-        <img src="../../../../../assets/images/figerprint.svg" alt="">
-      </div>
-      <div class="form">
-        <h1>Sign In To Your Account</h1>
-        <form [formGroup]="rForm" (ngSubmit)="Login()">
-          <div class="group">
-            <input type="text" autofocus formControlName="Email"  />
-            <!-- <span class="highlight">test</span> -->
-            <!-- <span class="bar"></span> -->
-            <label>Email</label>
-
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
-            Email is required
-          </div>
-          <div class="group">
-            <input type="password"  formControlName="Password"/>
-            <label>Password</label>
-
-            <!-- <span class="highlight"></span>
-          <span class="bar"></span> -->
-
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
-            Password is required
-          </div>
-          <div class="reset-pass">
-            <a routerLink="/forgot-password">Forgot password</a>
-          </div>
-
-          <div class="group">
-            <input type="submit" value="sign in" class="btn" [disabled]="!rForm.valid" />
-          </div>
-        </form>
-        <div class="actions">
-          <div class="sign-up">
-            Not A Member? <a routerLink="/sign-up">Sign Up For Free</a>
-          </div>
+  </div>
+  <div class="section">
+    <div class="portal col-1-of-2">
+      <img src="assets/images/icons/portal.svg" alt="portal image">
+      <h1>client portal</h1>
+    </div>
+    <h1 class="access">Access your account.</h1>
+    <div class="form">
+      <form [formGroup]="rForm" (ngSubmit)="Login()">
+        <div class="group">
+          <input type="text" autofocus formControlName="Email" />
+          <label>Email</label>
         </div>
-      </div>
-      <div class="image-form">
-        <img src="../../../../../assets/images/sign-in-img.svg" alt="">
+        <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
+          Email is required
+        </div>
+        <div class="group">
+          <input type="password" formControlName="Password" />
+          <label>Password</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+          Password is required
+        </div>
+        <div class="group">
+          <input type="submit" value="Sign me in" class="btn" [disabled]="!rForm.valid" />
+        </div>
+      </form>
+      <div class="actions">
+        <div class="sign-up">
+          Don't have an account? <a routerLink="/sign-up" class="btn btn-border">Sign up for free</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
 
 <div class="home-loading" *ngIf="this.loading$| async as loading">
   <img class="logo" src="assets/images/white-icon.png" alt="">
