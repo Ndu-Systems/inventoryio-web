@@ -4,4 +4,6 @@ export const COMMON_CONN_ERR_MSG = 'it looks like there is an internet connectio
 export const BULK_SMS_API = 'https://api.bulksms.com/v1/messages';
 export const BULK_SMS_USER = 'ndusystems';
 export const BULK_SMS_KEY = 'Harder01!';
+export const STRG_ROLE = 'role';
+export const STRG_USER = 'user';
 

@@ -5,21 +5,27 @@
   <div class="nav-bar">
     <ul>
       <li *ngFor="let item of models">
-        <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-          <i [ngClass]="item.Icon"></i>
-          {{item.Name}}
-        </a>
+        <span *ngIf="true">
+
+          <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <i [ngClass]="item.Icon"></i>
+            {{item.Name}}
+          </a>
+
+        </span>
       </li>
     </ul>
     <ul class="mt-20">
       <li *ngFor="let profileItem of profileModels">
-        <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}">
-          <i [ngClass]="profileItem.Icon"></i>
-          {{profileItem.Name}}</a>
+        <span *ngIf="profileItem.showItem">
+          <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">
+            <i [ngClass]="profileItem.Icon"></i>
+            {{profileItem.Name}}</a>
+        </span>
       </li>
       <li class="signOut">
-        <a routerLink="/"><i class="pi pi-sign-out"></i> sign out</a>
+        <a routerLink="/" (click)="signOut()"><i class="pi pi-sign-out"></i> sign out</a>
       </li>
     </ul>
 

@@ -6,6 +6,7 @@ import { User } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { SplashService } from '../../splash.service';
 import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
+import { RolesService } from '../../dashboard';
 
 
 @Injectable({
@@ -24,6 +25,7 @@ export class AccountService {
     private http: HttpClient,
     private router: Router,
     private splashService: SplashService,
+    private roleService: RolesService
   ) {
     this._user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this._loading = new BehaviorSubject<boolean>(false);
@@ -48,7 +50,6 @@ export class AccountService {
       localStorage.clear();
       this.updateUserState(user);
       this._loading.next(false);
-
       user.CompanyId = 'n/a';
       this.router.navigate(['dashboard']);
     }, error => {
@@ -83,6 +84,7 @@ export class AccountService {
         const user: User = resp;
         localStorage.clear();
         this.updateUserState(user);
+
         this.router.navigate(['dashboard']);
       } else {
         this.splashService.update({

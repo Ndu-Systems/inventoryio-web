@@ -10,7 +10,11 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public pwaService: PwaService, private router: Router) {
+  constructor(
+    public pwaService: PwaService,
+    private router: Router,
+
+    ) {
 
   }
   ngOnInit() {
@@ -19,7 +23,6 @@ export class AppComponent implements OnInit {
         window.location.href = location.href.replace('http', 'https');
       }
     }
-
     // scroll up
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -31,4 +34,7 @@ export class AppComponent implements OnInit {
   installPwa(): void {
     this.pwaService.promptEvent.prompt();
   }
+
+  // user rights
+
 }
