@@ -4,8 +4,8 @@
   </h1>
   <div class="body">
 
-    <div class="list">
-      <div class="small-cards-body" *ngIf="orders$  | async as orders">
+    <div class="list" *ngIf="orders$  | async as orders" >
+      <div class="small-cards-body" *ngIf="orders.length > 0; else notFound">
         <div class="small-cards">
           <div class="card filter-card">
             <div class="list-filters">
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div class="small-cards" *ngIf="orders.length > 0; else notFound">
+        <div class="small-cards" >
           <span *ngFor="let order of orders | searchproduct: search">
             <div [ngClass]="order.CardClass" (click)="select(order)">
               <div class="image">
@@ -62,10 +62,21 @@
 
           </span>
         </div>
+     
       </div>
-      <div class=".order-details">
 
-      </div>
+      <ng-template #notFound>
+        <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            You do not  have orders on the system as yet.
+            <span>
+                <a class="link-add" (click) = "add()"> create new order.</a>
+            </span>
+          </h1>
+
+        </div>
+      </ng-template>
 
     </div>
     <div class="order-details">

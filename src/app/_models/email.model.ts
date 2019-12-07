@@ -5,4 +5,5 @@ export interface Email {
   ContactNumber: string;
   Subject: string;
   Message: string;
+  DownloadLink?: string;
 }
