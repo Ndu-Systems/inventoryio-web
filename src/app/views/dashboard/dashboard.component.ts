@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
   userRoles: Role[];
   userPermissions: SystemPermissionModel[];
   user: User;
+
+
   constructor(
     private accountService: AccountService,
     private router: Router,
@@ -32,7 +34,7 @@ export class DashboardComponent implements OnInit {
     private splashService: SplashService,
     private roleService: RolesService,
     private sharedService: SharedService
-   ) { }
+  ) { }
 
   ngOnInit() {
     this.spinner$ = this.spinnerService.spinner;
@@ -41,18 +43,5 @@ export class DashboardComponent implements OnInit {
     this.accountService.checkSession();
   }
 
-  getUserPermissions() {
-    this.roleService.getRolesForUser(this.user.UserId).subscribe(
-      response => {
-        this.userRoles = response;
-      });
-
-
-    if (this.userRoles.length > 0) {
-      this.userRoles.forEach((role) => {
-        this.userPermissions = this.sharedService.loadRolePermissions(role.RoleId);
-      });
-    }
-  }
 
 }

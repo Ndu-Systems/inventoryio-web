@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Role, RolePermission } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
+import { STRG_ROLE } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,11 @@ export class RolesService {
     roles: Role[]
   } = { roles: [] };
   readonly roles = this._roles.asObservable();
+  private _role: BehaviorSubject<Role>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this._role = new BehaviorSubject<Role>(JSON.parse(localStorage.getItem(STRG_ROLE)));
+  }
   getAllRoles(companyId: string, statusId: string) {
     this.http.get<Role[]>(`${this.url}/api/roles/get-roles.php?CompanyId=${companyId}&&StatusId=${statusId}`)
       .subscribe(data => {
@@ -37,9 +41,20 @@ export class RolesService {
         });
         if (notFound) {
           this.dataStore.roles.push(data);
+          this.getRole(data);
         }
       }, error => console.log('could not load role.'));
   }
+
+  getRole(role: Role): Role {
+    this._role.next(role);
+    localStorage.setItem(STRG_ROLE, JSON.stringify(role));
+    return this._role.value;
+  }
+  public get currentRole(): Role {
+    return this._role.value;
+  }
+
 
   addRole(role: Role) {
     this.http.post<Role>(`${this.url}/api/roles/add-role.php?`, JSON.stringify(role))
@@ -68,7 +83,7 @@ export class RolesService {
     return this.http.get<Role[]>(`${this.url}/api/roles/get-roles-userid.php?UserId=${userId}`);
   }
 
-  getRolePermissions(roleId: string): Observable<Permission[]> {
+  getRolePermissions(roleId: string | number): Observable<Permission[]> {
     return this.http.get<Permission[]>(`${this.url}/api/roles/get-role-permissions.php?RoleId=${roleId}`);
   }
 
@@ -81,5 +96,9 @@ export class RolesService {
   }
   addCompanyRole(role: Role): Observable<Role> {
     return this.http.post<Role>(`${this.url}/api/roles/add-role.php?`, JSON.stringify(role));
+  }
+
+  clearRoleStorage() {
+    localStorage.setItem(STRG_ROLE, null);
   }
 }

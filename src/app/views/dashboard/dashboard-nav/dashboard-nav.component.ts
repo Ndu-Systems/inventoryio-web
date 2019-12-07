@@ -1,8 +1,10 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { NavModel, User } from 'src/app/_models';
-import { AccountService } from 'src/app/_services';
-import { faCoffee , faThermometer, faCartPlus} from '@fortawesome/free-solid-svg-icons';
+import { NavModel, User, Role, Permission } from 'src/app/_models';
+import { AccountService, RolesService } from 'src/app/_services';
+import { faCoffee, faThermometer, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-dashboard-nav',
@@ -15,20 +17,30 @@ export class DashboardNavComponent implements OnInit {
   profileMobileModels: NavModel[];
   showNav = true;
   width: number;
+  show: boolean;
+  role: Role;
+  rolePermissions: Permission[] = [];
 
   // font awesome
   faCoffee = faCoffee;
   faThermometer = faThermometer;
   faCartPlus = faCartPlus;
+  configRight: boolean;
   constructor(
     private accountService: AccountService,
-    private routeTo: Router
-  ) { }
+    private routeTo: Router,
+    private roleService: RolesService,
+    private sharedService: SharedService
+  ) {
+
+
+  }
 
   ngOnInit() {
-    this.populateSideNav();
-    this.populateProfileNav();
+    const user: User = this.accountService.currentUserValue;
+    this.getUserRole(user);
     this.getDeviceSize();
+    this.populateSideNav();
   }
 
   populateSideNav() {
@@ -36,24 +48,26 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'dashboard',
         Link: '/dashboard/',
-        Icon: `pi pi-home`
-
+        Icon: `pi pi-home`,
+        showItem: true
       },
       {
         Name: 'inventory ',
         Link: '/dashboard/list-product',
-        Icon:  `pi pi-shopping-cart`
-
+        Icon: `pi pi-shopping-cart`,
+        showItem: true
       },
       {
         Name: 'sell',
         Link: '/dashboard/sell',
-        Icon: `pi pi-money-bill`
+        Icon: `pi pi-money-bill`,
+        showItem: true
       },
       {
         Name: 'sales orders',
         Link: '/dashboard/list-orders',
-        Icon: `pi pi-align-left`
+        Icon: `pi pi-align-left`,
+        showItem: true
       },
       // {
       //   Name: 'Reports',
@@ -68,15 +82,16 @@ export class DashboardNavComponent implements OnInit {
       {
         Name: 'configuration',
         Link: '/dashboard/configurations',
-        Icon: `pi pi-cog`
+        Icon: `pi pi-cog`,
+        showItem: this.configRight
       },
       {
         Name: 'support',
         Link: '/dashboard/support',
-        Icon: `pi pi-comments`
+        Icon: `pi pi-comments`,
+        showItem: this.configRight
       }
     ];
-
     this.profileMobileModels = [] = [
       {
         Name: 'sign out',
@@ -109,6 +124,48 @@ export class DashboardNavComponent implements OnInit {
       this.showNav = false;
 
     }
+  }
+
+  getUserRole(user: User) {
+      this.getRolePermissions(user.RoleId);
+  }
+
+  getRolePermissions(roleId: string | number) {
+    this.roleService.getRolePermissions(roleId).subscribe(data => {
+      if (data.length > 0) {
+        this.rolePermissions = [];
+        this.rolePermissions = data;
+        this.canConfigure();
+        this.populateProfileNav();
+
+      }
+    });
+  }
+
+  // Can access permissions
+  canConfigure(): boolean {
+    const configurePermissions = this.sharedService.loadConfigurationPermissions();
+    this.configRight = false;
+    let found = 0;
+    configurePermissions.forEach((item) => {
+      if (this.rolePermissions.length > 0) {
+        this.rolePermissions.forEach((x) => {
+          if (item.key.toLowerCase() === x.Name) {
+            found++;
+          }
+        });
+        if (found > 0) {
+          this.configRight = true;
+        }
+      }
+    });
+    console.log(this.configRight);
+    return this.configRight;
+  }
+
+  signOut() {
+    this.accountService.logout();
+    this.roleService.getRole(null);
   }
 
 }
