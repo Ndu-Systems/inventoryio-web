@@ -1,0 +1,33 @@
+<div class="top-bar">
+  <div class="logo">
+    <a routerLink="/home"><img src="assets/images/icons/logo-white.png" alt=""></a>
+  </div>
+  <div class="nav">
+    <!--  -->
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/Pricing">Pricing</a></li>
+    <li><a routerLink="/sign-in">Sign in</a></li>
+    <li><span routerLink="/sign-up"><a>sign up for free</a> </span></li>
+    <!-- </ul> -->
+  </div>
+
+  <div class="mobile-nav" *ngIf="showMobileNav">
+    <div class="close" (click)="toggleNav()">
+      <img src="assets/images/close-mobilemenu.svg" alt="">
+    </div>
+    <ul>
+      <li><a (click)="toggleNav()" routerLink="/home"> <img src="../../../assets/images/home-solid.svg" alt="">Home</a>
+      </li>
+      <!-- <li> <span class="blue"><a routerLink ="">About</a>  </span></li> -->
+      <li><a routerLink="/Pricing" (click)="toggleNav()"> <img src="../../../assets/images/tag-solid.svg" alt="">
+          Pricing</a></li>
+      <li><a routerLink="/sign-in" (click)="toggleNav()"> <img src="../../../assets/images/sign-in-alt-solid.svg"
+            alt=""> Sign in </a></li>
+      <li><span class="sign-up-for-free"> <a (click)="toggleNav()" routerLink="/sign-up">sign up for free</a> </span>
+      </li>
+    </ul>
+  </div>
+  <div class="ham-icon" (click)="toggleNav()">
+    <img src="assets/images/ham.svg" alt="">
+  </div>
+</div>

@@ -1,0 +1,222 @@
+.top-bar {
+  display: grid;
+  grid-template-columns: 20% auto;
+  position: absolute;
+  width: 99%;
+  background: #3742FA;
+
+  //mobile layout
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    margin: auto;
+    // right: 10%;
+    padding-right: 0%;
+  }
+
+  //tablet layout
+  @media only screen and (min-width: 768px) and (max-width:1024px) {
+    grid-template-columns: 30% auto;
+    width: 100%;
+    right: 0%;
+    padding-left: 5rem;
+  }
+
+  //ipad pro
+  @media only screen and (min-width: 1024px) and (max-width:1366px) {
+    grid-template-columns: 25% auto;
+    width: 100%;
+    right: 0%;
+    margin-top: 1rem;
+  }
+
+  .logo {
+    text-align: left;
+    margin: 0.5rem auto;
+
+    //mobile layout
+    @media only screen and (max-width: 600px) {
+      margin: 0.5rem auto;
+
+      img {
+        width: 4rem;
+      }
+    }
+
+    //table layout
+    @media only screen and (min-width: 481px) and (max-width:768px) {
+      padding-left: 0%;
+      text-align: left;
+      margin: 0%;
+      justify-content: left;
+
+      img {
+        width: 50%;
+      }
+    }
+
+    //ipad pro
+    @media only screen and (min-width: 1024px) and (max-width:1366px) {
+      margin: 0%;
+
+      img {
+        width: 60%;
+      }
+    }
+  }
+
+
+  .nav {
+    display: flex;
+    padding: 2rem;
+    width: 70%;
+    margin: auto;
+    justify-content: right;
+    margin-right: 0%;
+
+    //mobile layout
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
+
+    //tablet layout
+    @media only screen and (min-width: 481px) and (max-width:768px) {
+      width: 85%;
+      padding: 0;
+      justify-content: right;
+    }
+
+    //ipad pro
+    @media only screen and (min-width: 1024px) and (max-width:1366px) {
+      width: 70%;
+      padding: 0%;
+
+    }
+
+    li {
+      list-style-type: none;
+      padding: 0 2rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-align: right;
+
+      span {
+        background: #FFFFFF;
+        padding: .4rem;
+        padding-right: 1.4rem;
+        padding-left: 1.4rem;
+        border-radius: 10px;
+        cursor: pointer;
+
+        a {
+          color: #104CE5;
+        }
+      }
+
+      a {
+        color: #ffffff;
+      }
+
+      //tablet layout
+      @media only screen and (min-width: 481px) and (max-width:768px) {
+        padding-right: 0%;
+        margin-right: 0%;
+        justify-content: right;
+      }
+
+    }
+  }
+
+  .mobile-nav {
+    display: none;
+
+    //mobile layout
+    @media only screen and (max-width: 600px) {
+      display: grid;
+      top: 0%;
+      left: 0%;
+      position: fixed;
+      background: #104CE5;
+      height: 100vh;
+      width: 100%;
+      z-index: 1;
+      color: #ffffff;
+      // background-image: url(../../../assets/images/backlogimg2.PNG);
+      // background-repeat: no-repeat;
+
+      ul {
+        line-height: 5rem;
+        align-content: center;
+
+        img {
+
+          margin: 1rem;
+          vertical-align: middle;
+          margin-left: 0%;
+        }
+
+      }
+
+      li {
+        text-align: center;
+        list-style-type: none;
+
+        .sign-up-for-free {
+          background: #FFFFFF;
+
+
+        }
+
+        .sign-up-for-free a {
+          background: #FFFFFF;
+          color: #104CE5;
+          padding: .4rem;
+          padding-right: 1.4rem;
+          padding-left: 1.4rem;
+          border-radius: 10px;
+          font-weight: 500;
+        }
+
+        a {
+          color: #FFFFFF;
+        }
+      }
+    }
+
+    .close {
+
+      // display: none;
+      @media only screen and (max-width: 600px) {
+        display: block;
+        float: right;
+
+        img {
+          width: 1.5rem;
+          margin-right: 3rem;
+          float: right;
+          margin: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.ham-icon {
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    display: block;
+    cursor: pointer;
+    padding: 0%;
+
+    img {
+      width: 2rem;
+      height: 2rem;
+      float: right;
+      margin: 1rem;
+    }
+  }
+}
+
+.active-link {
+  color: rgb(117, 237, 253);
+}
