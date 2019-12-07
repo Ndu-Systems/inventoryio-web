@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <filter id="Rectangle_2145" x="112.5" y="45.5" width="1056" height="716" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="16.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Web_1280_2">
+      <rect width="1280" height="800"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1280_2" data-name="Web 1280 – 2" clip-path="url(#clip-Web_1280_2)">
+    <rect width="1280" height="800" fill="#fff"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_2145)">
+      <rect id="Rectangle_2145-2" data-name="Rectangle 2145" width="957" height="617" transform="translate(162 92)" fill="#f5f6fa"/>
+    </g>
+    <rect id="Rectangle_2146" data-name="Rectangle 2146" width="957" height="179" transform="translate(162 92)" fill="#104ce5"/>
+    <text id="YOUR_INVOICE_IS_HERE_" data-name="YOUR INVOICE IS HERE " transform="translate(472 163)" fill="#f5f6fa" font-size="30" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">YOUR INVOICE IS HERE </tspan></text>
+    <text id="_01_Dec_2019_Sunday_" data-name="01 Dec 2019, Sunday " transform="translate(554 209)" fill="#f5f6fa" font-size="17" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">01 Dec 2019, Sunday </tspan></text>
+    <text id="Dear_Ndumiso" data-name="Dear Ndumiso" transform="translate(333 429)" fill="#191919" font-size="17" font-family="Montserrat-Regular, Montserrat"><tspan x="0" y="0">Dear Ndumiso</tspan></text>
+    <text id="Thank_you_for_visiting_us_and_making_your_first_purchase._We_re_glad_that_you_found_what_you_were_looking_for" data-name="Thank you for visiting us and making your first purchase. We’re glad that you found what you were looking for" transform="translate(333 467)" fill="#191919" font-size="17" font-family="Montserrat-Regular, Montserrat"><tspan x="0" y="0">Thank you for visiting us and making your first purchase. We’re glad </tspan><tspan x="0" y="20">that you found what you were looking for</tspan></text>
+    <text id="Please_click_the_download_button_bellow_to_download_your_invoice" data-name="Please click the download button bellow to download your invoice" transform="translate(333 527)" fill="#191919" font-size="17" font-family="Montserrat-Regular, Montserrat"><tspan x="0" y="0">Please click the download button bellow to download your invoice</tspan></text>
+    <text id="Yours_faithfully" data-name="Yours faithfully" transform="translate(333 617)" fill="#191919" font-size="17" font-family="Montserrat-Regular, Montserrat"><tspan x="0" y="0">Yours faithfully</tspan></text>
+    <text id="Ndu_Systems_PTY_LTD" data-name="Ndu Systems PTY LTD" transform="translate(333 637)" fill="#191919" font-size="17" font-family="Montserrat-Regular, Montserrat"><tspan x="0" y="0">Ndu Systems PTY LTD</tspan></text>
+    <g id="Group_1160" data-name="Group 1160">
+      <rect id="Rectangle_2147" data-name="Rectangle 2147" width="120" height="27" rx="5" transform="translate(341 556)" fill="#104ce5"/>
+      <a href="google.com"><text id="download" transform="translate(373 574)" fill="#fff" font-size="11" font-family="Montserrat-Regular, Montserrat"><tspan x="0" y="0">Download</tspan></text></a>
+    </g>
+  </g>
+</svg>

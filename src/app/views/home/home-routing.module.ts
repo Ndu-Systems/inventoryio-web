@@ -6,6 +6,7 @@ import { PricingComponent } from './index/Pricing/Pricing.component';
 import { HomeNavComponent } from './shared/home-nav';
 import { IndexComponent, HomePageComponent, FeaturesComponent } from './index';
 import { SignUpComponent, SignInComponent } from './accounts';
+import { DownloadInvoiceComponent } from '../dashboard/invoicing/download-invoice/download-invoice.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -14,7 +15,10 @@ const routes: Routes = [
       { path: '', component: SignInComponent },
       { path: 'Pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
-      { path: 'sign-up', component: SignUpComponent }]
+      { path: 'sign-up', component: SignUpComponent },
+      { path: 'download-invoice/:id', component: DownloadInvoiceComponent },
+
+    ]
   }
 ];
 
@@ -27,8 +31,10 @@ export const declarations = [
   FeaturesComponent,
   SplashHomeComponent,
   PricingComponent,
+  DownloadInvoiceComponent,
   HomeNavComponent
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

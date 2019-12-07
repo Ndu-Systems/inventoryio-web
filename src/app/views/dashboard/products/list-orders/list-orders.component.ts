@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderProducts, Product, Orders } from 'src/app/_models';
+import { OrderProducts, Product, Orders, NotFoundModel } from 'src/app/_models';
 import { OrdersService, AccountService, BannerService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { NotFoundConstants } from '../../shared';
 
 @Component({
   selector: 'app-list-orders',
@@ -16,6 +17,7 @@ export class ListOrdersComponent implements OnInit {
   paying: boolean;
   orders$: Observable<Orders[]>;
   showSearchOrder: any;
+  notFoundModel: NotFoundModel;
 
   constructor(
     private ordersService: OrdersService,
@@ -36,11 +38,15 @@ export class ListOrdersComponent implements OnInit {
       backto: '/dashboard',
     });
     this.ordersService.getOrders(user.CompanyId);
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
+      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+    };
   }
   add() {
     this.router.navigate(['/dashboard/sell']);
   }
-  searchOrder(){
+  searchOrder() {
     this.showSearchOrder = !this.showSearchOrder;
   }
   details(order: Orders) {

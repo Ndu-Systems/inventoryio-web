@@ -1,15 +1,6 @@
-<div class="print" *ngIf="order$ | async as order;">
-  <div class="banner">
-    <div class="image">
-      <img src="../../../../../assets/images/white-icon.png" alt="">
-    </div>
-    <h1>
-      Preview invoice
-    </h1>
+<div class="print" *ngIf="order">
 
-  </div>
-
-  <div class="invoice" id="contentToConvert">
+  <div class="invoice" id="contentToConvert" >
     <input type="text" class="input-heading" value="CUSTOMER INVOICE">
 
     <div class="client-company">
@@ -19,14 +10,14 @@
         </h1>
         <h1>
           <span>
-            {{user.Company.Name}}
+            {{order.Company?.Name}}
             <!-- <br>
           155 The willams Four ways <br>
           Gauteng  -->
           </span>
         </h1>
         <h1>
-          INVOICE # <span>ORD-{{InvoiceNumber}}</span>
+          INVOICE # <span>ORD-{{order.OrderId}}</span>
         </h1>
         <h1>
           INVOICE DATE <span>{{InvoiceDate  | date:'mediumDate'}}</span>
@@ -48,7 +39,7 @@
 
     </div>
     <div class="table">
-      <table *ngIf="products$  | async as products">
+      <table *ngIf="order.Products">
         <thead>
           <tr>
             <th>
@@ -66,7 +57,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of products">
+          <tr *ngFor="let item of order.Products">
             <td class="name">
               {{item.ProductName}}
             </td>
@@ -87,7 +78,7 @@
     <div class="total">
       <div class="data">
         <span class="value total">
-          Total: {{total | currency:'R'}}
+          Total: {{order.Total | currency:'R'}}
         </span>
         <span class="value tax">
           Thank you.
@@ -99,9 +90,9 @@
     </div>
   </div>
 
-  <div class="actions">
-    <button (click)="captureScreen()" class="btn">Print</button>
-    <button (click)="cancel()" class="btn cancel">Cancel</button>
-
-  </div>
+  <!-- <div class="done"  *ngIf="done">
+<h1>
+  Your invoice was downloaded successfuly
+</h1>
+  </div> -->
 </div>

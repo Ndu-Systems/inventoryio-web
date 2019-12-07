@@ -146,6 +146,7 @@ export class OrdersService {
       });
     });
   }
+
   getProductsForAnOrder(orderId: string) {
     return this.http.get<any>(`${this.url}/api/order_products/get-order_products.php?OrderId=${orderId}`).subscribe(resp => {
       const products: OrderProducts[] = resp;
@@ -159,5 +160,10 @@ export class OrdersService {
     });
   }
 
+
+  //email
+  getOrderById(orderId): Observable<any> {
+    return this.http.get<any>(`${this.url}/api/orders/get-order-by-id.php?OrderId=${orderId}`);
+  }
 
 }

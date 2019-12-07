@@ -26,7 +26,6 @@ import { ListOrdersComponent } from './products/list-orders/list-orders.componen
 import { BrandComponent } from './brand';
 import { OrderDetailsComponent } from './products/order-details/order-details.component';
 import { UpdateCompanyComponent } from './company/update-company/update-company.component';
-import { InvoiceComponent } from './products/invoice/invoice.component';
 import { ConfigurationHomeComponent } from './configuration-home';
 import { ActionsComponent, ConfigurationPermissions } from './shared';
 import {
@@ -69,6 +68,8 @@ import { AddPartnerComponent } from './partners/add-partner/add-partner.componen
 import { PartnersComponent } from './partners/partners/partners.component';
 import { SearchPartnerPipe } from 'src/app/_pipes/search-partners.pipe';
 import { ReportsComponent } from './reports/reports/reports.component';
+import { EmailInvoiceComponent } from './products/email-invoice/email-invoice.component';
+import { InvoiceComponent } from './invoicing/invoice/invoice.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -113,6 +114,7 @@ const routes: Routes = [
       { path: 'add-partner/:id', component: AddPartnerComponent },
       { path: 'partners/:id', component: PartnersComponent },
       { path: 'reports', component: ReportsComponent },
+      { path: 'email-invoice', component: EmailInvoiceComponent },
     ]
   },
 ];
@@ -181,6 +183,7 @@ export const declarations = [
   AddPartnerComponent,
   PartnersComponent,
   ReportsComponent,
+  EmailInvoiceComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

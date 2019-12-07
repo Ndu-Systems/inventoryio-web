@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Orders, OrderProducts } from 'src/app/_models';
-import { OrdersService, AccountService, BannerService } from 'src/app/_services';
+import { Orders, OrderProducts, Email, User } from 'src/app/_models';
+import { OrdersService, AccountService, BannerService, EmailService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService, ConfirmationService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class OrderDetailsComponent implements OnInit {
   showPrint: boolean;
   paymentAction: boolean;
   amountPaid: number;
+  user: User;
 
   constructor(
     private ordersService: OrdersService,
@@ -29,13 +31,14 @@ export class OrderDetailsComponent implements OnInit {
     private accountService: AccountService,
     private bannerService: BannerService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private emailService: EmailService,
 
   ) { }
 
   ngOnInit() {
-    const user = this.accountService.currentUserValue;
-    if (!user.UserId) { this.router.navigate(['sign-in']); }
+    this.user = this.accountService.currentUserValue;
+    if (!this.user.UserId) { this.router.navigate(['sign-in']); }
     this.order$ = this.ordersService.order;
     this.products$ = this.ordersService.orderProducts;
 
@@ -107,4 +110,30 @@ export class OrderDetailsComponent implements OnInit {
     }
     return true;
   }
+  sendInvoice(order: Orders) {
+    const subject = 9;
+    const downloadLink = `${environment.BASE_URL}/download-invoice/${order.OrdersId}}`;
+
+    const email: Email = {
+      CompanyName: this.user.Company.Name,
+      EmailType: '',
+      Email: this.user.Email,
+      ContactNumber: this.user.CellphoneNumber,
+      Subject: 'Invoice',
+      Message: '',
+      DownloadLink: downloadLink
+    };
+     this.sendEmailNow(email);
+  }
+  sendEmailNow(email: Email) {
+    this.emailService.sendEmailInvoice(email).subscribe(data => {
+      console.log(data);
+      this.messageService.add({
+        severity: 'success',
+        summary: `Invoice sent`,
+        detail: 'Customer invoice was sent successful!'
+      });
+    });
+  }
+
 }
