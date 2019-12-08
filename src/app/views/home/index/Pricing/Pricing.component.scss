@@ -1,74 +1,295 @@
-.content{
-    background-image: url(../../../../../assets/sign-in-background.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding:6rem 0;
- 
+.banner {
+  background: url(../../../../../assets/images/home/pricing-banner.svg);
+  background-size: cover;
+  height: 25rem;
+  width: 99.9%;
 
-h1 {
-    text-align: center;
-    padding: 2rem;
-    margin-top: 4rem;
-    padding-bottom: 0rem;
-    color: #104CE5;
+  .banner-body {
+    padding: 10rem 0;
+
+    .heading {
+      text-transform: initial;
+      text-transform: initial;
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #F5F6FA;
+    }
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    height: 20rem;
+
+    .banner-body {
+      padding: 4rem 0;
+      padding-bottom: 1rem;
+
+      .heading {
+        margin: 1rem;
+        padding: 1rem;
+        font-size: 1.8em;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
 }
 
-.pricing {
-    width: 80%;
-    margin: auto;
-    padding: 2rem;
-    padding-top: 0%;
-    margin-top: 6rem;
-    background: #ffffff;
+.content {
+  padding: 5rem 10rem;
+  background: #FFFFFF;
+
+  .card {
     border-radius: 10px;
-    -webkit-box-shadow: -3px 6px 33px -8px rgba(0, 0, 0, 0.26);
-    -moz-box-shadow: -3px 6px 33px -8px rgba(0, 0, 0, 0.26);
-    box-shadow: -3px 6px 33px -8px rgba(0, 0, 0, 0.26);
-    margin-bottom: 2rem;
-    @media only screen and (max-width: 600px){
-        margin-top: 0%;
-        padding: 1.5rem;
-        width: 100%;
-       box-shadow: none;
+    border: solid 1px #D3D8DF;
+    padding: 2rem;
+    background: white;
+    width: 85%;
+    margin: 0 auto;
+
+    .card-icon {
+      text-align: center;
+
+      img {
+        height: 4rem;
+      }
     }
-    .Pricing-Package {
-        display: grid;
-        grid-template-columns: 25% 25% 25% 25%;
+
+    .card-title {
+      h1 {
+        text-transform: capitalize;
+        text-align: center;
+
+        &.description {
+          font-size: 1.6em;
+        }
+
+        &.amount {
+          font-size: 2em;
+
+          .month {
+            font-size: 0.4em;
+            display: block;
+          }
+        }
+      }
+    }
+
+    .card-body {
+      ul {
+        list-style: none;
+        padding: 1rem 5rem;
+
+        li {
+          font-weight: 600;
+          margin: 1rem 0;
+
+          &.gray {
+            color: #7B8C98;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .card-actions {
+      text-align: center;
+
+      a {
+        font-weight: 700;
+        color: #3742FA;
+      }
+    }
+
+    &.recommended {
+      background: #3742FA;
+      border: solid 1px #3742FA;
+      box-shadow: 2px 1px 14px 5px rgba(0, 0, 0, 0.14);
+
+      h1 {
+        color: #F5F6FA;
+      }
+
+      .card-body {
+        ul {
+          li {
+            color: #F5F6FA;
+
+            &.gray {
+              color: #7B8C98;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+
+      .card-actions {
+        text-align: center;
+
+        a {
+          font-weight: 700;
+          color: #F5F6FA;
+        }
+      }
+    }
+  }
+
+  .terms {
+    font-weight: 400;
+    color: #7B8C98;
+    font-size: 1em;
+    padding: 1rem 2rem;
+    width: 50rem;
+  }
+
+  .panel {
+    padding: 2rem;
+
+    .col-1-of-2 {
+      grid-template-columns: 25% auto;
+
+    }
+
+    img {
+      height: 20rem;
+    }
+
+    .heading {
+      font-weight: 600;
+      padding: 0;
+    }
+
+    p {
+      width: 40rem;
+      color: #7B8C98;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 50% auto;
+      grid-gap: 2em;
+      width: 50%;
+      margin: 3rem 0;
+
+      .btn {
+        text-align: center;
+      }
+
+      .btn-border {
+        background: none;
+        color: #3742FA;
+        border: solid 2px #3742FA;
+        border-radius: 7px;
+
         @media only screen and (max-width: 600px) {
-            grid-template-columns: 100%;
+          display: block;
+          text-align: center;
         }
-        .card {
-            -webkit-box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
-            -moz-box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
-            box-shadow: 0px 1px 6px 4px rgba(71, 66, 71, 0.09);
-            margin: 2rem;
-            text-align: center;
-            cursor: pointer;
-
-            &:hover {
-                border-bottom: .6rem solid #104CE5;
-              }
-            @media only screen and (max-width: 600px){
-                margin: 1rem 0;
-            }
-            img{
-                margin: 2rem;
-                margin-bottom: 0%;
-            }
-            h2{
-                color: #D3D8DF;
-            }
-            h3{
-                color: #656D88;
-                font-size: 2rem;
-            }
-            h6,span{
-                font-weight: 400;
-                color: #656D88;
-                font-size: .8rem;
-            }
-        }
+      }
     }
 
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 1rem;
+
+    .card {
+      margin-bottom: 1rem;
+      padding: 1rem 0;
+
+      .card-icon {
+        img {
+          height: 2rem;
+        }
+      }
+
+      .card-title {
+        h1 {
+          &.description {
+            font-size: 1em;
+          }
+
+          &.amount {
+            font-size: 1.5em;
+          }
+        }
+      }
+
+      .card-body {
+        ul {
+          padding: 1rem 2rem;
+        }
+      }
+    }
+
+    .terms {
+      font-size: 0.8em;
+      width: 22rem;
+      padding: 0 1rem;
+    }
+
+    .panel {
+      padding: 0;
+
+      .col-1-of-2 {
+        grid-template-columns: 100%;
+      }
+
+      img {
+        height: 10rem;
+        margin: 0 auto;
+      }
+
+      .heading {
+        margin: 0.5rem 0;
+      }
+
+      p {
+        width: 20rem;
+      }
+      .buttons {
+        width: 100%;
+        grid-gap: 5px;
+      }
+    }
+  }
 }
+
+.enterprise {
+  .col-1-of-2 {
+    grid-template-columns: 60% auto;
+  }
+
+  .plan {
+    padding: 2rem 4rem;
+
+    p {
+      color: #7B8C98;
+    }
+  }
+
+  .cta {
+    padding: 7rem 0;
+
+    .btn {
+      text-transform: initial;
+      border-radius: 5px;
+      padding: 15px 30px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .col-1-of-2 {
+      grid-template-columns: 100%;
+    }
+
+    .plan {
+      padding: 2rem 0.5rem;
+    }
+
+    .cta {
+      padding: 2rem 0.5rem;
+    }
+  }
+
 }
