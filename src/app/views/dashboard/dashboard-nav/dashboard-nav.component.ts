@@ -69,11 +69,18 @@ export class DashboardNavComponent implements OnInit {
         Icon: `pi pi-align-left`,
         showItem: true
       },
-      // {
-      //   Name: 'Reports',
-      //   Link: '/dashboard/reports',
-      //   Icon: `pi pi-chart-line`
-      // }
+
+      {
+        Name: 'configuration',
+        Link: '/dashboard/configurations',
+        Icon: `pi pi-cog`,
+        showItem: this.configRight
+      },
+      {
+        Name: 'Reports',
+        Link: '/dashboard/reports',
+        Icon: `pi pi-chart-line`
+      }
     ];
   }
   populateProfileNav() {
@@ -127,7 +134,7 @@ export class DashboardNavComponent implements OnInit {
   }
 
   getUserRole(user: User) {
-      this.getRolePermissions(user.RoleId);
+    this.getRolePermissions(user.RoleId);
   }
 
   getRolePermissions(roleId: string | number) {
