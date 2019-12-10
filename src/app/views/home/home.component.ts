@@ -9,7 +9,6 @@ import { Splash } from 'src/app/_models';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  showMobileNav;
   splash$: Observable<Splash>;
 
 
@@ -19,8 +18,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.splash$ = this.splashService.splash;
   }
-  toggleNav() {
-    this.showMobileNav = !this.showMobileNav;
-  }
+
 }
 

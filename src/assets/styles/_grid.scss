@@ -23,3 +23,16 @@
 
   }
 }
+
+.col-1-of-3 {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  grid-gap: 1rem;
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    grid-gap: 0rem;
+
+  }
+}

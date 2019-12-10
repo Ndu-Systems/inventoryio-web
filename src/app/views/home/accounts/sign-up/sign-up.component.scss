@@ -1,122 +1,180 @@
+.container {
+  display: grid;
+  grid-template-columns: 40% auto;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+}
+
 .sign-in-background {
-    background-image: url(../../../../../assets/images/sign-in-background.svg);
+  background-image: url(../../../../../assets/images/account/account-bg.svg);
+  background-size: cover;
 
-    //mobile
-    @media only screen and (max-width: 600px) {
-        background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
+  //mobile
+  @media only screen and (max-width: 600px) {
+    // background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
+    background-size: 25rem;
+    height: 15rem;
+  }
 
-    }
+  //tablet layout
+  @media only screen and (min-width: 481px) and (max-width:768px) {
+    // background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
+    // background-size: 125rem;
+  }
 
-    //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-        background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-        background-size: 125rem;
-
-
-    }
-
-    //ipad ro
-    @media only screen and (min-width: 1024px) and (max-width:1366px) {
-        background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-        background-size: 145rem;
-    }
+  //ipad ro
+  @media only screen and (min-width: 1024px) and (max-width:1366px) {
+    // background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
+    // background-size: 145rem;
+  }
 
 }
 
 .section {
-    width: 55%;
-    padding-top: 10rem;
-    margin-left: 10rem;
-    justify-content: right;
-    margin: auto;
+  width: 100%;
+  padding-top: 5rem;
+  margin-left: 1rem;
+  justify-content: right;
+  margin: auto;
+  display: block;
+
+  //mobile
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+    padding: 0%;
+    padding-top: 1rem;
+  }
+
+  //tablet layout
+  @media only screen and (min-width: 481px) and (max-width:768px) {
+    width: 80%;
+    padding-top: 8rem;
+  }
+
+  //ipad ro
+  @media only screen and (min-width: 1024px) and (max-width:1366px) {
+    width: 80%;
+    padding-top: 18rem;
+  }
+
+  .access {
+    font-size: 1.8em;
+    padding: 0 3rem;
+
+    @media only screen and (max-width: 600px) {
+      padding: 0;
+      font-size: 1.3em;
+    }
+  }
+
+  .mobile-fingerprint-img {
+    display: none;
+
+    //mobile
+    @media only screen and (max-width: 600px) {}
+
+  }
+
+  .form {
+    margin: 1rem 0;
+    width: 50%;
+    padding: 1rem;
+
+    background: transparent;
+
+    form {
+      @media only screen and (max-width: 600px) {
+        margin: 10px auto;
+      }
+    }
 
     //mobile
     @media only screen and (max-width: 600px) {
-        width: 90%;
+      width: 100%;
+      padding: 1rem;
+      margin: 2px auto;
+
+      h1 {
         padding: 0%;
-        padding-top: 8rem;
+        margin: 0%;
+      }
+    }
+
+    //mobile
+    @media only screen and (max-width: 600px) {
+      .actions {
+        padding: 0%;
+        margin: 0;
+        font-size: 1rem;
+
+      }
     }
 
     //tablet layout
     @media only screen and (min-width: 481px) and (max-width:768px) {
-        width: 80%;
-        padding-top: 8rem;
+      margin: 4rem auto;
     }
 
     //ipad ro
     @media only screen and (min-width: 1024px) and (max-width:1366px) {
+      margin: 80px auto;
+
+      .group {
         width: 80%;
-        padding-top: 18rem;
+        margin-top: 2rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .sign-up {
+        font-size: 1.2rem;
+
+        a {
+          font-size: 1.2rem;
+        }
+
+      }
     }
 
-    .mobile-fingerprint-img {
-        display: none;
-
-        //mobile
-        @media only screen and (max-width: 600px) {}
-
+    .btn {
+      box-shadow: none;
     }
 
-    .form {
-        margin: auto;
-        width: 100%;
-        
-        //mobile
-        @media only screen and (max-width: 600px) {
-            width: 100%;
-            padding: 1rem;
-            h1 {
-                padding: 0%;
-                margin: 0%;
-            }
-        }
+    .btn-border {
+      background: none;
+      color: #3742FA;
+      border: solid 2px #3742FA;
+      border-radius: 7px;
 
-        //mobile
-        @media only screen and (max-width: 600px) {
-            .actions {
-                padding: 0%;
-                margin: 0;
-                font-size: 1rem;
+      @media only screen and (max-width: 600px) {
+        display: block;
+        text-align: center;
+      }
+    }
+    .sign-up {
+      font-weight: 600;
 
-            }
-        }
-
-        //tablet layout
-        @media only screen and (min-width: 481px) and (max-width:768px) {
-            margin: 4rem auto;
-        }
-
-        //ipad ro
-        @media only screen and (min-width: 1024px) and (max-width:1366px) {
-            margin: 80px auto;
-            .group {
-                width: 80%;
-                margin-top: 2rem;
-            }
-            h1{
-                font-size: 1.5rem;
-            }
-            .sign-up{
-                font-size: 1.2rem;
-               
-                a{
-                    font-size: 1.2rem;
-                }
-              
-            }
-        }
-
+      //mobile layout
+      @media only screen and (max-width: 600px) {
+        font-size: .6rem;
+      }
     }
 
-    .image {
-        margin: auto;
+  }
 
-        img {
-            width: 90%;
-            padding-top: 2rem;
-            padding-left: 4rem;
-        }
+  .image {
+    margin: auto;
 
+    img {
+      width: 90%;
+      padding-top: 2rem;
+      padding-left: 4rem;
     }
+
+  }
 
 }
