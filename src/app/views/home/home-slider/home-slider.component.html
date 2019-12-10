@@ -1,0 +1,18 @@
+<span *ngFor="let slide of slides">
+  <div class="main" *ngIf="slide.active">
+    <div class="col-1-of-2">
+      <div class="heading">
+        <h1>{{slide.heading}}</h1>
+        <p>
+          {{slide.paragraph}}
+        </p>
+        <a routerLink="/sign-up" class="btn filled">Sign up today</a>
+        <a routerLink="/sign-in" class="btn not-filled">Sign in now</a>
+      </div>
+
+      <div class="slide">
+        <img [src]="slide.img" alt="">
+      </div>
+    </div>
+  </div>
+</span>

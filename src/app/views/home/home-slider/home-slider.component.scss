@@ -1,0 +1,57 @@
+.main {
+  padding-top: 6rem;
+  animation: moveInRight .2s ease-in-out;
+
+
+  .col-1-of-2 {
+    grid-template-columns: 50% auto;
+
+    .heading {
+      padding-top: 10%;
+      padding-left: 20%;
+
+      h1 {
+        color: #3742FA;
+        font-size: 2rem;
+        margin-left: 0;
+
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 1.1rem;
+        margin-left: 0;
+
+      }
+
+      a {
+        border-radius: 5px;
+        padding: 1rem;
+        margin: 0 1rem;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-left: 0;
+
+
+      }
+
+      .filled {
+        background: #3742FA;
+        color: #fff;
+      }
+
+      .not-filled {
+        color: #3742FA;
+        background: #fff;
+        border: 1px solid #3742FA;
+      }
+    }
+
+    .slide {
+      img {
+        width: 80%;
+        margin: auto;
+      }
+    }
+  }
+}

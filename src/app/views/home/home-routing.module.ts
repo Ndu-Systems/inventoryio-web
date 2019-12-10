@@ -7,6 +7,7 @@ import { HomeNavComponent } from './shared/home-nav';
 import { IndexComponent, HomePageComponent, FeaturesComponent } from './index';
 import { SignUpComponent, SignInComponent } from './accounts';
 import { DownloadInvoiceComponent } from '../dashboard/invoicing/download-invoice/download-invoice.component';
+import { HomeSliderComponent } from './home-slider/home-slider.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -32,7 +33,8 @@ export const declarations = [
   SplashHomeComponent,
   PricingComponent,
   DownloadInvoiceComponent,
-  HomeNavComponent
+  HomeNavComponent,
+  HomeSliderComponent
 ];
 
 
