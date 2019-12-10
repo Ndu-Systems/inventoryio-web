@@ -112,7 +112,7 @@ export class OrderDetailsComponent implements OnInit {
   }
   sendInvoice(order: Orders) {
     const subject = 9;
-    const downloadLink = `${environment.BASE_URL}/#/download-invoice/${order.OrdersId}}`;
+    const downloadLink = `${environment.BASE_URL}/#/download-invoice/${order.OrdersId}`;
 
     const email: Email = {
       CompanyName: this.user.Company.Name,
