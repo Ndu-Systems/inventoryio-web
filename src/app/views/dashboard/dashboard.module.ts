@@ -14,6 +14,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
 import {ChartModule} from 'primeng/chart';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {AutoCompleteModule} from 'primeng/autocomplete';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 
 
@@ -32,7 +33,8 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     KeyFilterModule,
     ChartModule,
     ProgressBarModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    ProgressSpinnerModule
 
   ],
   declarations: [...declarations],
