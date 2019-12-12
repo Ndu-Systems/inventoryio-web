@@ -1,3 +1,5 @@
+import { Partner } from './partner.model';
+
 export interface Orders {
     OrdersId?: string;
     OrderId?: number;
@@ -13,11 +15,12 @@ export interface Orders {
     ModifyUserId: string;
     Status: string;
     StatusId: number;
+    Customer?: Partner;
     // local
-    Disable?:boolean;
-    Touched?:boolean;
-    Paying?:boolean;
-    Payment?:number;
+    Disable?: boolean;
+    Touched?: boolean;
+    Paying?: boolean;
+    Payment?: number;
     CardClass?: string[];
 
 

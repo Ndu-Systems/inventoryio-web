@@ -6,4 +6,6 @@ export interface Email {
   Subject: string;
   Message: string;
   DownloadLink?: string;
+  InvoiceDate?: string;
+  Customer?: string;
 }

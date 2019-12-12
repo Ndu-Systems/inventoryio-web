@@ -113,17 +113,28 @@ export class OrderDetailsComponent implements OnInit {
   sendInvoice(order: Orders) {
     const subject = 9;
     const downloadLink = `${environment.BASE_URL}/#/download-invoice/${order.OrdersId}`;
+    if (!order.Customer) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'No Customer details!',
+        detail: 'This order have no customer details!',
+        life: 7000
+      });
+      return false;
+    }
 
     const email: Email = {
       CompanyName: this.user.Company.Name,
       EmailType: '',
-      Email: this.user.Email,
+      Email: order.Customer && order.Customer.EmailAddress,
       ContactNumber: this.user.CellphoneNumber,
-      Subject: 'Invoice',
+      Subject: `${this.user.Company.Name} Invoice to ${order.Customer && order.Customer.Name}`,
       Message: '',
-      DownloadLink: downloadLink
+      DownloadLink: downloadLink,
+      InvoiceDate: this.formatDate(order.CreateDate),
+      Customer: order.Customer && order.Customer.Name,
     };
-     this.sendEmailNow(email);
+    this.sendEmailNow(email);
   }
   sendEmailNow(email: Email) {
     this.emailService.sendEmailInvoice(email).subscribe(data => {
@@ -136,4 +147,22 @@ export class OrderDetailsComponent implements OnInit {
     });
   }
 
+  formatDate(d: string) {
+    const months = ['Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep',
+      'Oct', 'Nov', 'Dec'];
+
+    const days = ['Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'];
+
+    const date = new Date(d);
+
+    return `${date.getDay()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
+  }
 }
