@@ -1,36 +1,48 @@
-<div class="main">
-  <h1 class="heading">your stores on the system</h1>
-  <div class="list-filters">
-    <div>
-      <input type="text" [(ngModel)]="search" placeholder="search">
+<div class="main-content">
+  <h1 class="title-header">Your stores on the system</h1>
+  <div class="panel col-1-of-3">
+    <div class="input-card">
+      <div class="search-box">
+        <div class="input-times">
+          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
+          <div class="times" (click)="clearSearch()">
+            <i class="pi pi-times"></i>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- <div>
-    </div> -->
-    <div class="add">
-      <button class="btn">
-          <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
-          <!-- <span class="pc-only" (click)="showAdd()"> add a store</span> -->
+    <div class="input-card">
+      <div class="list-filters">
+        <div class="input select">
+          <div>
+            <i class="pi pi-filter"></i>
+          </div>
+          <select [(ngModel)]="searchByProvince">
+            <option value="" selected>filter by province</option>
+            <option [value]="province" *ngFor="let province of provinces">{{province}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="cta">
+      <button class="btn" (click)="add()">
+        <span class="" >Add a store</span>
       </button>
     </div>
   </div>
-  <div class="list-body">
-    <span>
-      <div *ngIf="stores$ | async as stores">
-        <span class="cards-betta" *ngIf="stores.length > 0; else notFound">
-          <span *ngFor="let item of stores | configurationFilterPipe: search">
-            <app-store-card-list [store]="item"></app-store-card-list>
-          </span>
-        </span>
-        <ng-template #notFound>
-          <div class="not-found">
-            <img [src]="notFoundModel.Image" alt="no items found">
-            <h1 class="message">
-              {{notFoundModel.Message}}
-            </h1>
-          </div>
-        </ng-template>
-      </div>
+  <div *ngIf="stores$ | async as stores">
+    <span class="cards-betta" *ngIf="stores.length > 0; else notFound">
+      <span *ngFor="let item of stores | configurationFilterPipe: search">
+        <app-store-card-list [store]="item"></app-store-card-list>
+      </span>
     </span>
-
+    <ng-template #notFound>
+      <div class="not-found">
+        <img [src]="notFoundModel.Image" alt="no items found">
+        <h1 class="message">
+          {{notFoundModel.Message}}
+        </h1>
+      </div>
+    </ng-template>
   </div>
 </div>
