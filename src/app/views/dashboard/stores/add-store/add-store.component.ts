@@ -34,7 +34,8 @@ export class AddStoreComponent implements OnInit {
       Name: [null, Validators.required],
       CompanyId: [user.CompanyId, Validators.required],
       TelephoneNumber: [null, Validators.required],
-      Address: [null],
+      Address: [null, Validators.required],
+      Email: [null],
       CreateUserId: [user.UserId, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required]

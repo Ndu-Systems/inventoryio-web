@@ -40,4 +40,6 @@ export class ListBrandsComponent implements OnInit {
     this.showForm = !this.showForm;
   }
 
+  clearSearch() { this.search = null; }
+
 }

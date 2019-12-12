@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
   <h1 class="heading">your categories on the system</h1>
   <div class="list-filters">
     <div>
@@ -7,8 +7,7 @@
 
     <div class="add">
       <button class="btn">
-          <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
-          <!-- <span class="pc-only" (click)="showAdd()">add category</span> -->
+        <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
       </button>
     </div>
   </div>
@@ -34,4 +33,48 @@
       </div>
     </span>
   </div>
+</div> -->
+
+<div class="main-content">
+  <h1 class="title-header">Your categories in the system</h1>
+  <div class="panel col-1-of-3">
+    <div class="input-card">
+      <div class="search-box">
+        <div class="input-times">
+          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
+          <div class="times" (click)="clearSearch()">
+            <i class="pi pi-times"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="input-card">
+    </div>
+    <div class="cta">
+      <button class="btn" (click)="add()">
+        <span class="">Add a category</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="cards-betta" *ngIf="categories$  | async as categories">
+    <span *ngFor="let item of categories | configurationFilterPipe: search">
+      <div class="card">
+        <div class="image">
+          <img src="assets/images/maintenance.svg" alt="">
+        </div>
+        <div class="name">
+          <h1>
+            {{item.Name}}
+          </h1>
+          <div class="status">
+            <p-toggleButton [(ngModel)]="item.StatusId" onLabel="Active" offLabel="Not Active" onIcon="pi pi-check"
+              offIcon="pi pi-times" [style]="{'width':'100%'}"></p-toggleButton>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+
+
 </div>

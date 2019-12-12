@@ -70,6 +70,7 @@ import { SearchPartnerPipe } from 'src/app/_pipes/search-partners.pipe';
 import { ReportsComponent } from './reports/reports/reports.component';
 import { EmailInvoiceComponent } from './products/email-invoice/email-invoice.component';
 import { InvoiceComponent } from './invoicing/invoice/invoice.component';
+import { PartnerCardComponent } from './partners';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -184,6 +185,7 @@ export const declarations = [
   PartnersComponent,
   ReportsComponent,
   EmailInvoiceComponent,
+  PartnerCardComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

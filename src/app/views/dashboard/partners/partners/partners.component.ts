@@ -61,5 +61,6 @@ export class PartnersComponent implements OnInit {
   showAdd() {
     this.showForm = !this.showForm;
   }
+  clearSearch() { this.search = null; }
 
 }

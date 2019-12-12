@@ -69,13 +69,6 @@ export class DashboardNavComponent implements OnInit {
         Icon: `pi pi-align-left`,
         showItem: true
       },
-
-      {
-        Name: 'configuration',
-        Link: '/dashboard/configurations',
-        Icon: `pi pi-cog`,
-        showItem: this.configRight
-      },
       {
         Name: 'Reports',
         Link: '/dashboard/reports',

@@ -1,53 +1,67 @@
-<div class="main">
-  <h1 class="heading">add a new {{partnerType}}</h1>
-  <div class="body">
-    <div class="form">
-      <!-- <h1 class="form-heading">
-        add a new user and assign him/her or other to a role to use the inventoryio.
-      </h1> -->
-      <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
-        <div class="group">
-          <input type="text" formControlName="Name" required="required" />
-          <label>Name <span class="required">*</span></label>
-        </div>
-        <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
-          Name is required
-        </div>
-        <div class="group">
-          <input type="text" formControlName="Surname" />
-          <label>Surname</label>
-        </div>
-     
-        <div class="group">
-          <input type="email" formControlName="EmailAddress" required="required" />
-          <label>Email Address  <span class="required">*</span></label>
-        </div>
-        <div class="alert" *ngIf="!rForm.controls['EmailAddress'].valid && rForm.controls['EmailAddress'].touched">
-          Email is required
-        </div>
-        <div class="group">
-          <input type="text" formControlName="CellphoneNumber" required="required" />
-          <label>Cellphone Number  <span class="required">*</span></label>
-        </div>
-        <div class="alert"
-          *ngIf="!rForm.controls['CellphoneNumber'].valid && rForm.controls['CellphoneNumber'].touched">
-          Cellphone number is required
-        </div>
+<div class="main-content">
+  <h1 class="title-header">Add a new {{partnerType}}</h1>
+  <div class="col-1-of-2">
+    <div class="panel">
+      <div class="form">
+        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+          <div class="col-1-of-2">
+            <span>
+              <div class="form-group">
+                <div class="group">
+                  <input type="text" formControlName="Name" required="required" />
+                  <label class="label">First name*</label>
+                </div>
+              </div>
+              <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+                Name is required
+              </div>
+            </span>
+            <span>
+              <div class="form-group">
+                <div class="group">
+                  <input type="text" formControlName="Surname" required="required" />
+                  <label class="label">Surname</label>
+                </div>
+              </div>
+            </span>
+          </div>
 
-        <div class="group">
-          <input type="text" formControlName="Address"/>
-          <label>Address</label>
-        </div>
-   
-        <div class="group button">
-          <input type="submit" [value]="'Add '  + partnerType" class="btn" [disabled]="!rForm.valid" />
-        </div>
-        <div class="group cancel">
-          <a (click)="abort()">abort</a>
-        </div>
-      </form>
-     
+          <div class="form-group">
+            <div class="group">
+              <input type="text" formControlName="EmailAddress" required="required" />
+              <label class="label">Email address*</label>
+            </div>
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['EmailAddress'].valid && rForm.controls['EmailAddress'].touched">
+            Email is required
+          </div>
+
+          <div class="form-group">
+            <div class="group">
+              <input type="text" formControlName="CellphoneNumber" required="required" />
+              <label class="label">Contact number*</label>
+            </div>
+          </div>
+          <div class="alert"
+            *ngIf="!rForm.controls['CellphoneNumber'].valid && rForm.controls['CellphoneNumber'].touched">
+            Cellphone number is required
+          </div>
+
+          <div class="form-group">
+            <div class="group">
+              <textarea type="text" formControlName="Address" ></textarea>
+              <label class="label">Store address</label>
+            </div>
+          </div>
+
+          <div class="cta col-1-of-2">
+            <div class="group button">
+              <input type="submit" [value]="'Add '  + partnerType" class="btn" [disabled]="!rForm.valid" />
+            </div>
+            <a routerLink="/dashboard/stores" class="cancel">cancel</a>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
-

@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
   <h1 class="heading">your {{type}} on the system</h1>
   <div class="list-filters">
     <div>
@@ -30,7 +30,46 @@
           </div>
         </ng-template>
       </div>
-  
     </span>
+  </div>
+</div> -->
+<div class="main-content">
+  <h1 class="title-header">Your {{type}} in the system.</h1>
+  <div class="panel col-1-of-3">
+    <div class="input-card">
+      <div class="search-box">
+        <div class="input-times">
+          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
+          <div class="times" (click)="clearSearch()">
+            <i class="pi pi-times"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="input-card">
+    </div>
+    <div class="cta">
+      <button class="btn" (click)="add()">
+        <span class="">Add {{type}}</span>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="partners$ | async as partners">
+    <span class="cards-betta" *ngIf="(partners| searchpartner: searchType).length > 0;else notFound">
+      <span *ngFor="let partner of partners | searchpartner: search | searchpartner: searchType">
+        <app-partner-card [partner]="partner"></app-partner-card>
+      </span>
+    </span>
+    <ng-template #notFound>
+      <div class="not-found">
+        <img [src]="notFoundModel.Image" alt="no items found">
+        <h1 class="message">
+          You do not have {{type}} on the system as yet.
+          <span>
+            <a class="link-add" (click)="add()"> add new...</a>
+          </span>
+        </h1>
+      </div>
+    </ng-template>
   </div>
 </div>

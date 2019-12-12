@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BannerService, UsersService, AccountService, RolesService} from 'src/app/_services';
+import { BannerService, UsersService, AccountService, RolesService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { User, Role } from 'src/app/_models';
 import { DEFAULT_PASSWORD, StatusConstant } from '../../shared';
@@ -40,12 +40,13 @@ export class AddUserComponent implements OnInit {
       Surname: [null, Validators.required],
       Name: [null, Validators.required],
       CellphoneNumber: [null, Validators.required],
+      SecondaryContactNumber: [null],
       Password: [DEFAULT_PASSWORD],
       RoleId: [null, Validators.required],
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
-      StatusId: [StatusConstant.ACTIVE_STATUS, Validators.required]
+      StatusId: [StatusConstant.ACTIVE_STATUS, Validators.required],
     });
     this.bannerService.updateState({
       heading: 'Add a user',
