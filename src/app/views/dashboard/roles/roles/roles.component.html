@@ -1,25 +1,29 @@
-<div class="main">
-  <h1 class="heading"> Your system roles </h1>
-  <div class="list-filters">
-    <div>
-      <input type="text" [(ngModel)]="search" placeholder="search">
+<div class="main-content">
+  <h1 class="title-header">Your system roles.</h1>
+  <div class="panel col-1-of-3">
+    <div class="input-card">
+      <div class="search-box">
+        <div class="input-times">
+          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
+          <div class="times" (click)="clearSearch()">
+            <i class="pi pi-times"></i>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="add">
-      <button class="btn">
-          <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
-          <!-- <span class="pc-only" (click)="showAdd()"> add role</span> -->
+    <div class="input-card">
+    </div>
+    <div class="cta">
+      <button class="btn" (click)="add()">
+        <span class="">Add a role</span>
       </button>
     </div>
   </div>
-  <div class="list-body">
-    <span>
-      <div *ngIf="roles$ | async as roles">
-        <span class="cards-betta" *ngIf="roles.length > 0; else no tFound">
-          <span *ngFor="let item of roles | configurationFilterPipe: search">
-            <app-role-card-list [role]="item"></app-role-card-list>
-          </span>
-        </span>
-      </div>
+  <div *ngIf="roles$ | async as roles">
+    <span class="cards-betta" *ngIf="roles.length > 0; else no tFound">
+      <span *ngFor="let item of roles | configurationFilterPipe: search">
+        <app-role-card-list [role]="item"></app-role-card-list>
+      </span>
     </span>
   </div>
 </div>

@@ -37,7 +37,7 @@ export class RolesComponent implements OnInit {
 
     this.roleService.getAllRoles(user.CompanyId, StatusConstant.ACTIVE_STATUS);
   }
-  add(){
+  add() {
     this.routeTo.navigate(['/dashboard/add-role']);
   }
   showAdd() {
@@ -46,5 +46,7 @@ export class RolesComponent implements OnInit {
   getRoleDetails(role: Role) {
     this.routeTo.navigate([`/dashboard/role-details/${role.RoleId}`]);
   }
+
+  clearSearch() { this.search = null; }
 
 }

@@ -1,46 +1,27 @@
-<!-- <div class="main">
-  <div class="body">
-    <div class="form" *ngIf="systemPermissions">
-      <h1 class="form-heading"> add a permission </h1>
-      <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
-        <div class="group">
-          <select formControlName="Name">
-            <option value="">Select Permission</option>
-            <option *ngFor="let item of systemPermissions" class="select-option" [value]="item.key">
-              {{item.friendlyName}}</option>
-          </select>
-        </div>
-        <div class="group button">
-          <input type="submit" value="Add Permission" class="btn" [disabled]="!rForm.valid" />
-        </div>
-        <div class="group cancel">
-          <a routerLink="/dashboard/permissions">abort</a>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
-
-<div class="main">
-  <h1 class="heading">add a permission</h1>
-  <div class="list-body col-1-of-2">
-    <div class="form">
-      <h1 class="form-heading"> these are the capabilities of the system for different users.</h1>
-      <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
-        <div class="group">
-          <select formControlName="Name">
-            <option value="">Select Permission</option>
-            <option *ngFor="let item of systemPermissions" class="select-option" [value]="item.key">
-              {{item.friendlyName}}</option>
-          </select>
-        </div>
-        <div class="group button">
-          <input type="submit" value="Add Permission" class="btn" [disabled]="!rForm.valid" />
-        </div>
-        <div class="group cancel">
-          <a routerLink="/dashboard/permissions">abort</a>
-        </div>
-      </form>
+<div class="main-content">
+  <h1 class="title-header">Add a new brand.</h1>
+  <div class="col-1-of-2">
+    <div class="panel">
+      <h1 class="sub-header">Add brands that are in your inventory</h1>
+      <div class="form">
+        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+          <div class="form-group">
+            <div class="group">
+              <select formControlName="Name">
+                <option value="">Select Permission</option>
+                <option *ngFor="let item of systemPermissions" class="select-option" [value]="item.key">
+                  {{item.friendlyName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="cta col-1-of-2">
+            <div class="group button">
+              <input type="submit" value="Add Permission" class="btn" [disabled]="!rForm.valid" />
+            </div>
+            <a routerLink="/dashboard/permissions" class="cancel">cancel</a>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

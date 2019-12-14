@@ -1,38 +1,4 @@
-<!-- <div class="main">
-  <h1 class="heading">your {{type}} on the system</h1>
-  <div class="list-filters">
-    <div>
-      <input type="text" [(ngModel)]="search" placeholder="search">
-    </div>
-    <div class="add">
-      <button class="btn">
-          <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
-      </button>
-    </div>
-  </div>
-  <div class="list-body">
-    <span>
-      <div *ngIf="partners$ | async as partners">
-        <span class="cards-betta" *ngIf="(partners| searchpartner: searchType).length > 0;else notFound">
-          <span *ngFor="let user of partners | searchpartner: search | searchpartner: searchType">
-            <app-user-card-list [user]="user"></app-user-card-list>
-          </span>
-        </span>
-        <ng-template #notFound>
-          <div class="not-found">
-            <img [src]="notFoundModel.Image" alt="no items found">
-              <h1 class="message">
-                You do not  have {{type}} on the system as yet.
-                <span>
-                    <a class="link-add" (click) = "add()"> add new...</a>
-                </span>
-              </h1>
-          </div>
-        </ng-template>
-      </div>
-    </span>
-  </div>
-</div> -->
+
 <div class="main-content">
   <h1 class="title-header">Your {{type}} in the system.</h1>
   <div class="panel col-1-of-3">
