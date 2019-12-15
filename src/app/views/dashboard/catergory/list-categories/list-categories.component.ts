@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Brand, Caterory } from 'src/app/_models';
+import { Brand, Caterory, NotFoundModel } from 'src/app/_models';
 import { AccountService, BannerService, CateroryService } from 'src/app/_services';
 import { Router } from '@angular/router';
+import { NotFoundConstants } from '../../shared';
 
 @Component({
   selector: 'app-list-categories',
@@ -13,6 +14,8 @@ export class ListCategoriesComponent implements OnInit {
   search;
   categories$: Observable<Caterory[]>;
   showForm: boolean;
+  notFoundModel: NotFoundModel;
+
   constructor(private categorieservice: CateroryService,
               private accountService: AccountService,
               private router: Router,
@@ -30,6 +33,10 @@ export class ListCategoriesComponent implements OnInit {
       backto: '/dashboard/configurations',
     });
     this.categorieservice.getCateries(user.CompanyId);
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_CATEGORIES.image,
+      Message: NotFoundConstants.NOT_FOUND_CATEGORIES.message
+    };
   }
   add() {
     this.router.navigate(['/dashboard/add-catergory']);

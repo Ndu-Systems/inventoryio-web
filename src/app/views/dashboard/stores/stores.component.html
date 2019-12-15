@@ -41,6 +41,9 @@
         <img [src]="notFoundModel.Image" alt="no items found">
         <h1 class="message">
           {{notFoundModel.Message}}
+          <span>
+            <a class="link-add" (click)="add()"> Add a new store now.</a>
+          </span>
         </h1>
       </div>
     </ng-template>

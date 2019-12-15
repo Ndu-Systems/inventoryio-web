@@ -29,8 +29,8 @@ export class StoresComponent implements OnInit {
       this.routeTo.navigate(['sign-in']);
     }
     this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
-      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+      Image: NotFoundConstants.NOT_FOUND_STORES.image,
+      Message: NotFoundConstants.NOT_FOUND_STORES.message
     };
     this.bannerService.updateState({
       heading: 'Manage Stores',

@@ -51,8 +51,8 @@ export class ListProductsComponent implements OnInit {
       }
     });
     this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
-      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+      Image: NotFoundConstants.NOT_FOUND_PRODUCTS.image,
+      Message: NotFoundConstants.NOT_FOUND_PRODUCTS.message
     };
   }
   add() {

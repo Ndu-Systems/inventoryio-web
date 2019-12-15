@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="cards-betta" *ngIf="brands$  | async as brands">
+  <div class="cards-betta" *ngIf="brands$  | async as brands; else notFound">
     <span *ngFor="let item of brands | configurationFilterPipe: search">
       <div class="card">
         <div class="image">
@@ -38,5 +38,16 @@
       </div>
     </span>
   </div>
+  <ng-template #notFound>
+    <div class="not-found">
+      <img [src]="notFoundModel.Image" alt="no items found">
+      <h1 class="message">
+        {{notFoundModel.Message}}
+        <span>
+          <a class="link-add" (click)="add()"> Add a new brand now.</a>
+        </span>
+      </h1>
+    </div>
+  </ng-template>
 
 </div>

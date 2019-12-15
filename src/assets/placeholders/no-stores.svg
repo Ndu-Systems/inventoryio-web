@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="295.549" height="156.061" viewBox="0 0 295.549 156.061">
+  <g id="no-stores" transform="translate(-810.5 -475.537)">
+    <g id="front-store" transform="translate(947.334 490.518)">
+      <g id="store" transform="translate(0 0)">
+        <path id="Path_1066" data-name="Path 1066" d="M149.9,25.5H8.818V43.135H149.9Zm8.818,88.175V96.04L149.9,51.953H8.818L0,96.04v17.635H8.818V166.58H96.993V113.675h35.27V166.58H149.9V113.675Zm-79.358,35.27H26.453v-35.27H79.358Z" transform="translate(0 -25.5)" fill="#fff"/>
+      </g>
+    </g>
+    <g id="front-store-2" data-name="front-store" transform="translate(813 478.037)">
+      <g id="store-2" data-name="store" transform="translate(0 0)">
+        <path id="Path_1066-2" data-name="Path 1066" d="M149.9,25.5H8.818V43.135H149.9Zm8.818,88.175V96.04L149.9,51.953H8.818L0,96.04v17.635H8.818V166.58H96.993V113.675h35.27V166.58H149.9V113.675Zm-79.358,35.27H26.453v-35.27H79.358Z" transform="translate(0 -25.5)" fill="#fff" stroke="#f5f6fa" stroke-width="5"/>
+      </g>
+    </g>
+  </g>
+</svg>

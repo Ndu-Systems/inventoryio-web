@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BrandService, AccountService, BannerService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Brand } from 'src/app/_models';
+import { Brand, NotFoundModel } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { NotFoundConstants } from '../../shared';
 
 @Component({
   selector: 'app-list-brands',
@@ -13,12 +14,12 @@ export class ListBrandsComponent implements OnInit {
   brands$: Observable<Brand[]>;
   showForm: boolean;
   search;
+  notFoundModel: NotFoundModel;
+
   constructor(private brandService: BrandService,
-    private accountService: AccountService,
-    private router: Router,
-    private bannerService: BannerService,
-
-
+              private accountService: AccountService,
+              private router: Router,
+              private bannerService: BannerService
   ) { }
 
   ngOnInit() {
@@ -30,6 +31,10 @@ export class ListBrandsComponent implements OnInit {
       backto: '/dashboard/configurations',
     });
     this.brandService.getBrands(user.CompanyId);
+    this.notFoundModel = {
+      Image: NotFoundConstants.NOT_FOUND_BRANDS.image,
+      Message: NotFoundConstants.NOT_FOUND_BRANDS.message
+    };
   }
 
   add() {
