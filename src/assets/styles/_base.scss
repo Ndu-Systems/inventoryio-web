@@ -90,6 +90,7 @@ h1 {
   span {
     font-weight: 400;
 
+
   }
 
   span.number {
@@ -98,6 +99,7 @@ h1 {
 
   }
 }
+
 .sub-heading {
   font-size: 1rem;
   font-weight: 400;
@@ -110,12 +112,14 @@ h1 {
   @media only screen and (max-width: 600px) {
     display: none;
   }
+
   @media only screen and (min-width: 768px) {
     display: inline;
   }
 
 }
-.link-add{
+
+.link-add {
   cursor: pointer;
   font-style: italic;
 }
@@ -175,7 +179,7 @@ span.step {
 }
 
 .mt-20 {
-    margin-top: 10rem;
+  margin-top: 10rem;
 }
 
 

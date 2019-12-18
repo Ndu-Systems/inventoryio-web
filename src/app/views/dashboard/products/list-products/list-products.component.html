@@ -1,46 +1,46 @@
-<div class="main">
-  <div class="sell-grid">
-    <div class="list-body">
-      <h1 class="heading">
-        Inventory
-        <span class="number">{{sum}} </span>
-        <span class="number"> | {{totalPrice | currency:'R'}}</span>
-      </h1>
-      <div class="list-filters">
+<div class="main-content">
+
+  <h1 class="heading">
+    Inventory
+    <span class="number">{{sum}} </span>
+    <span class="number"> | {{totalPrice | currency:'R'}}</span>
+  </h1>
+
+  <div class="panel col-1-of-3">
+    <div class="input-card">
+      <div class="search-box">
         <div class="input-times">
-          <input type="text" [(ngModel)]="search" placeholder="search">
+          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
           <div class="times" (click)="clearSearch()">
             <i class="pi pi-times"></i>
           </div>
         </div>
-        <div>
-          <div class="select">
-            <div class="label">
-              <i class="pi pi-filter"></i> <span class="pc-only">category : </span>
-            </div>
-            <!-- <div class="input"> -->
-              <select [(ngModel)]="searchByCatergory">
-                <option value="" selected>All</option>
-                <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
-              </select>
-            <!-- </div> -->
+      </div>
+    </div>
+    <div class="input-card">
+      <div class="list-filters">
+        <div class="input select">
+          <div>
+            <i class="pi pi-filter"></i>
           </div>
-        </div>
-        <div class="add">
-          <button class="btn" (click)="add()">
-            <span class="phone-only"><i class="pi pi-plus"></i></span>
-            <span class="pc-only"> Add product</span>
-          </button>
+          <select [(ngModel)]="searchByCatergory">
+            <option value="" selected>All</option>
+            <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+          </select>
         </div>
       </div>
-
-
-      <div class="small-cards-body"  *ngIf="products$  | async as products" >
+    </div>
+    <div class="cta">
+      <button class="btn" (click)="add()">
+        <span class="">Add product</span>
+      </button>
+    </div>
+  </div>
+  <div class="sell-grid">
+    <!-- <div class="list-body"> -->
+      <div class="small-cards-body" *ngIf="products$  | async as products">
 
         <div class="small-cards" *ngIf="products.length > 0; else notFound">
-          <!-- <pre>
-            {{products|json}}
-          </pre> -->
 
           <div class="card"
             *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
@@ -54,9 +54,7 @@
                 <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
 
               </p>
-              <!-- <p>
-                {{item|json}}
-              </p> -->
+
             </div>
             <div class="price">
               <p>
@@ -71,21 +69,14 @@
           <div class="not-found">
             <img [src]="notFoundModel.Image" alt="no items found">
             <h1 class="message">
-               {{notFoundModel.Message}}
+              {{notFoundModel.Message}}
               <span>
-                  <a class="link-add" (click) = "add()"> add new product.</a>
+                <a class="link-add" (click)="add()"> add new product.</a>
               </span>
             </h1>
-
           </div>
         </ng-template>
-      </div>
-
+      <!-- </div> -->
     </div>
-
-    <!--
-  <div class="add">
-    <app-add-product></app-add-product>
-  </div> -->
   </div>
 </div>

@@ -115,18 +115,15 @@ export class AddProductComponent implements OnInit {
   }
   addbrand(data: Product) {
     this.bannerService.updateState({
-      heading: 'Add Brand',
-      backto: '/dashboard/add-product'
+       backto: '/dashboard/add-product'
     });
     this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-brand']);
-
   }
 
   addcatergory(data: Product) {
     this.bannerService.updateState({
-      heading: 'Add Catergory',
-      backto: '/dashboard/add-product'
+       backto: '/dashboard/add-product'
     });
     this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-catergory']);

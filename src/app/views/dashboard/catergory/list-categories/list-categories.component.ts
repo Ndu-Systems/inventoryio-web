@@ -19,19 +19,14 @@ export class ListCategoriesComponent implements OnInit {
   constructor(private categorieservice: CateroryService,
               private accountService: AccountService,
               private router: Router,
-              private bannerService: BannerService,
-
-
+              private bannerService: BannerService
   ) { }
 
   ngOnInit() {
     this.categories$ = this.categorieservice.categories;
     const user = this.accountService.currentUserValue;
     this.accountService.checkSession();
-    this.bannerService.updateState({
-      heading: 'My categories',
-      backto: '/dashboard/configurations',
-    });
+
     this.categorieservice.getCateries(user.CompanyId);
     this.notFoundModel = {
       Image: NotFoundConstants.NOT_FOUND_CATEGORIES.image,
@@ -39,6 +34,9 @@ export class ListCategoriesComponent implements OnInit {
     };
   }
   add() {
+    this.bannerService.updateState({
+      backto: '/dashboard/list-categories',
+    });
     this.router.navigate(['/dashboard/add-catergory']);
   }
   showAdd() {

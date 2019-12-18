@@ -26,10 +26,6 @@ export class ListBrandsComponent implements OnInit {
     this.brands$ = this.brandService.brands;
     const user = this.accountService.currentUserValue;
     this.accountService.checkSession();
-    this.bannerService.updateState({
-      heading: 'My brands',
-      backto: '/dashboard/configurations',
-    });
     this.brandService.getBrands(user.CompanyId);
     this.notFoundModel = {
       Image: NotFoundConstants.NOT_FOUND_BRANDS.image,
@@ -38,6 +34,9 @@ export class ListBrandsComponent implements OnInit {
   }
 
   add() {
+    this.bannerService.updateState({
+      backto: '/dashboard/list-brands',
+   });
     this.router.navigate(['/dashboard/add-brand']);
   }
 

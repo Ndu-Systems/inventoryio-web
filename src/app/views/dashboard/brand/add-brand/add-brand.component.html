@@ -19,7 +19,7 @@
               <div class="group button">
                 <input type="submit" value="Add brand" class="btn" [disabled]="!rForm.valid" />
               </div>
-              <a routerLink="/dashboard/list-brands" class="cancel">cancel</a>
+              <a  (click)="cancel()" class="cancel">cancel</a>
             </div>
           </div>
         </form>
