@@ -69,11 +69,11 @@ export class DashboardNavComponent implements OnInit {
         Icon: `pi pi-align-left`,
         showItem: true
       },
-      {
-        Name: 'Reports',
-        Link: '/dashboard/reports',
-        Icon: `pi pi-chart-line`
-      }
+      // {
+      //   Name: 'Reports',
+      //   Link: '/dashboard/reports',
+      //   Icon: `pi pi-chart-line`
+      // }
     ];
   }
   populateProfileNav() {
