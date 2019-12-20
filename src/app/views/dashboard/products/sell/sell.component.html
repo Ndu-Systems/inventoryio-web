@@ -70,9 +70,9 @@
           <div class="not-found">
             <img [src]="notFoundModel.Image" alt="no items found">
             <h1 class="message">
-              You do not have products on the system as yet, please add a product to make a sale.
+              {{notFoundModel.Message}}
               <span>
-                <a class="link-add" (click)="add()"> add new product.</a>
+                <a class="link-add" (click)="add()">add new product.</a>
               </span>
             </h1>
 
@@ -103,7 +103,7 @@
           <div>
             <button class="btn" (click)="addCustomer()"><i class="pi pi-plus"></i></button>
           </div>
-  
+
         </div>
       </div>
       <h3>
@@ -134,70 +134,3 @@
 
 </div>
 
-
-
-
-
-
-
-<!-- <div class="main">
-  <div class="body">
-
-    <div class="cards" *ngIf="products$  | async as products">
-      <span *ngFor="let item of products | searchproduct: search">
-        <div class="card-betta" (click)="doSell(item)">
-          <div class="top-row">
-            <p [ngClass]="item.Class">In Stock- {{item.Quantity}}</p>
-
-            <p>
-              <span>Price</span>
-              {{item.UnitPrice | currency:'R'}}
-            </p>
-          </div>
-          <div class="name">
-            <h1>
-              {{item.Name}}
-            </h1>
-          </div>
-          <div class="grid">
-            <div class="image">
-              <img [src]="item.Url" alt="" *ngIf="item.Url">
-              <img src="assets/placeholders/picture.svg" class="placeholder" *ngIf="!item.Url" alt="">
-            </div>
-            <div class="details">
-              <p *ngIf="item.Brand">
-                <span>Brand</span> {{item.Brand}}
-              </p>
-              <p *ngIf="item.Catergory">
-                <span>Catergory</span> {{item.Catergory}}
-              </p>
-              <p *ngIf="item.UnitCost">
-                <span>Cost</span> {{item.UnitCost | currency:'R'}}
-              </p>
-              <p>
-                <span>Profit Margin</span> {{item.Margin}}%
-              </p>
-              <p>
-                <span>Profit</span> {{item.Profit | currency:'R'}}
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </span>
-    </div>
-  </div>
-
-</div>
-<div class="sell">
-  <app-sale-sammary></app-sale-sammary>
-</div>
-
-<div class="sell total">
-  <h4>
-    {{sale?.total | currency:'R'}}
-    <span>Total</span>
-  </h4>
-  <button class="btn" (click)="onSubmit()">Save qoute</button>
-  <button class="btn warn" (click)="clear()">Clear form</button>
-</div> -->

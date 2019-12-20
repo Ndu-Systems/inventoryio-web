@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 import { SplashHomeComponent } from '../dashboard/shared/splash-home/splash-home.component';
 import { PricingComponent } from './index/Pricing/Pricing.component';
 import { HomeNavComponent } from './shared/home-nav';
-import { IndexComponent, HomePageComponent, FeaturesComponent } from './index';
+import { IndexComponent, HomePageComponent, FeaturesComponent, HowItWorksComponent } from './index';
 import { SignUpComponent, SignInComponent } from './accounts';
 import { DownloadInvoiceComponent } from '../dashboard/invoicing/download-invoice/download-invoice.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
@@ -14,7 +14,8 @@ const routes: Routes = [
     children: [
       { path: 'home', component: IndexComponent },
       { path: '', component: SignInComponent },
-      { path: 'Pricing', component: PricingComponent },
+      { path: 'how-it-works', component: HowItWorksComponent },
+      { path: 'pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent },
       { path: 'download-invoice/:id', component: DownloadInvoiceComponent },
@@ -34,7 +35,8 @@ export const declarations = [
   PricingComponent,
   DownloadInvoiceComponent,
   HomeNavComponent,
-  HomeSliderComponent
+  HomeSliderComponent,
+  HowItWorksComponent
 ];
 
 

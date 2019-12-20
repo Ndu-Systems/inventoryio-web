@@ -61,8 +61,8 @@ export class SellComponent implements OnInit {
     });
 
     this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
-      Message: ''
+      Image: NotFoundConstants.NOT_FOUND_SALES.image,
+      Message: NotFoundConstants.NOT_FOUND_SALES.message
     };
     this.partnerService.getPartners(this.user.CompanyId);
     this.partnerService.partners.subscribe(data => {

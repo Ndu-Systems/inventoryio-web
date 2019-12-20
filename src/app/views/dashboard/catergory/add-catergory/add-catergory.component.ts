@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Brand, Caterory, User, Product } from 'src/app/_models';
+import { Brand, Caterory, User, Product, Banner } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { AccountService, ProductService, BrandService, CateroryService, BannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
@@ -18,7 +18,7 @@ export class AddCatergoryComponent implements OnInit {
   error: string;
   brands$: Observable<Brand[]>;
   catergories$: Observable<Caterory[]>;
-
+  banner: Banner;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -40,8 +40,9 @@ export class AddCatergoryComponent implements OnInit {
       CreateUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
-    }
-    );
+    });
+    this.banner = this.bannerService.currentBannerValue;
+
   }
 
   add(caterory: Caterory) {
@@ -51,7 +52,11 @@ export class AddCatergoryComponent implements OnInit {
       summary: 'Success!',
       detail: 'catergory  created '
     });
-    this.showForm.emit(false);
+    this.routeTo.navigate([this.banner.backto]);
+  }
+
+  cancel() {
+    this.routeTo.navigate([this.banner.backto]);
   }
 
 

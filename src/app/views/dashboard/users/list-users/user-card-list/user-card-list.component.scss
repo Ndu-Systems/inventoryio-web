@@ -1,35 +1,7 @@
+.card {
+  cursor: pointer;
+}
 
-  .card {
-    cursor: pointer;
-    .icon {
-      img {
-        height: 72.36px;
-      }
-    }
-    .name {
-      h1 {
-        color: #2F2E41;
-
-        &.main {
-          font-weight: bold;
-        }
-
-        &.spec {
-          font-weight: 500;
-          &.email {
-            text-transform: lowercase;
-          }
-        }
-      }
-    }
-  }
-
-
-  @media only screen and (max-width: 600px) {
-
-      .card {
-        margin: 0;
-        width: 40vw;
-      }
-
-  }
+.card-data .data h1.main {
+  font-size: 1em;
+}

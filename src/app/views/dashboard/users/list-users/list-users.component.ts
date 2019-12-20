@@ -43,5 +43,5 @@ export class ListUsersComponent implements OnInit {
   showAdd() {
     this.showForm = !this.showForm;
   }
-
+  clearSearch() { this.search = null; }
 }

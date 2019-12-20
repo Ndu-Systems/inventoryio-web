@@ -47,8 +47,8 @@ export class PartnersComponent implements OnInit {
     });
     this.partners$ = this.partnerService.partners;
     this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
-      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+      Image: NotFoundConstants.NOT_FOUND_PARTNER.image,
+      Message: `There are no ${this.type} yet.`
     };
   }
 
@@ -61,5 +61,6 @@ export class PartnersComponent implements OnInit {
   showAdd() {
     this.showForm = !this.showForm;
   }
+  clearSearch() { this.search = null; }
 
 }

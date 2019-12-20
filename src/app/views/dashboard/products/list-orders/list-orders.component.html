@@ -4,7 +4,7 @@
   </h1>
   <div class="body">
 
-    <div class="list" *ngIf="orders$  | async as orders" >
+    <div class="list" *ngIf="orders$  | async as orders">
       <div class="small-cards-body" *ngIf="orders.length > 0; else notFound">
         <div class="small-cards">
           <div class="card filter-card">
@@ -18,7 +18,6 @@
                   <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
                 </select>
               </div>
-
               <div class="search">
                 <button class="btn btn-transparent" (click)="searchOrder()"><i class="pi pi-search"></i></button>
               </div>
@@ -37,7 +36,7 @@
           </div>
         </div>
 
-        <div class="small-cards" >
+        <div class="small-cards">
           <span *ngFor="let order of orders | searchproduct: search">
             <div [ngClass]="order.CardClass" (click)="select(order)">
               <div class="image">
@@ -62,16 +61,16 @@
 
           </span>
         </div>
-     
+
       </div>
 
       <ng-template #notFound>
         <div class="not-found">
           <img [src]="notFoundModel.Image" alt="no items found">
           <h1 class="message">
-            You do not  have orders on the system as yet.
+            You do not have orders on the system as yet.
             <span>
-                <a class="link-add" (click) = "add()"> create new order.</a>
+              <a class="link-add" (click)="add()"> create new order.</a>
             </span>
           </h1>
 
@@ -91,7 +90,7 @@
   <!-- <div class="main">
   <div class="body">
       <h1 class="heading">
-          Sales Orders. 
+          Sales Orders.
       </h1>
 
         <div class="list-filters">
@@ -130,13 +129,13 @@
           </div>
 
 
-          
+
           <div class="data"  (click)="payAll(item)">
             <span class="value">{{item.Due  | currency:'R'}}</span>
             <span class="label">Amount Still Due</span>
           </div>
 
-          
+
           <div class="data">
             <span class="value">{{item.Total  | currency:'R'}}</span>
             <span class="label">Total</span>

@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Brand, Caterory, User } from 'src/app/_models';
+import { Brand, Caterory, User, Banner } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { AccountService, ProductService, BrandService, CateroryService, BannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
@@ -13,28 +13,13 @@ import { MessageService } from 'primeng/api';
 })
 export class AddBrandComponent implements OnInit {
   @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
-  heading = 'Add brand';
-  backto = '/dashboard/add-product';
+
   rForm: FormGroup;
   error: string;
   brands$: Observable<Brand[]>;
   catergories$: Observable<Caterory[]>;
 
-  mxolist: any[] = [
-    {
-      name: 'Mxolisi', age: 1
-    },
-    {
-      name: 'Mxolisi', age: 2
-    },
-    {
-      name: 'Mxolisi', age: 3
-    },
-    {
-      name: 'Mxolisi', age: 4
-    }
-  ];
-
+  banner: Banner;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -57,9 +42,10 @@ export class AddBrandComponent implements OnInit {
       CreateUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
-    }
-    );
-  }
+    });
+
+    this.banner = this.bannerService.currentBannerValue;
+   }
 
   add(brand: Brand) {
     this.brandService.addBrand(brand);
@@ -68,7 +54,11 @@ export class AddBrandComponent implements OnInit {
       summary: 'Success!',
       detail: 'brand  created '
     });
-    this.showForm.emit(false);
+    this.routeTo.navigate([this.banner.backto]);
+  }
+
+   cancel() {
+     this.routeTo.navigate([this.banner.backto]);
    }
 
 }

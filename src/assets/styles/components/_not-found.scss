@@ -15,18 +15,19 @@
     margin-top: 5rem;
 
     @media only screen and (max-width: 600px) {
-      width: 4rem;
-
+      width: 10rem;
+      margin-top: 5rem;
     }
   }
 
   .message {
     text-align: center;
     margin: 5rem;
-    font-size: 30px;
-    font-weight: 400;
-    color: #2E344C;
-    span{
+    font-size: 25px;
+    font-weight: 700;
+    color: #7B8C98;
+
+    span {
       display: block;
     }
 
@@ -34,8 +35,17 @@
       margin: 0;
       font-size: 20px;
       margin-top: 2rem;
-      
+    }
+  }
 
+  a {
+    color: gray;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 18px;
+
+    &:hover {
+      color: gray;
     }
   }
 }

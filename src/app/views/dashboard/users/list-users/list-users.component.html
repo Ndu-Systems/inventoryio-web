@@ -1,51 +1,48 @@
-<div class="main">
-  <h1 class="heading">your staff on the system</h1>
-  <div class="list-filters">
-    <div>
-      <input type="text" [(ngModel)]="search" placeholder="search">
-    </div>
-    <!-- <div>
-      <div class="select">
-          <div class="label">
-              filter category:
-          </div>
-          <div class="input">
-              <select [(ngModel)]="searchByCatergory">
-                  <option value="" selected>All</option>
-                  <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
-                </select>
+<div class="main-content">
+  <h1 class="title-header">Your staff members in the system.</h1>
+  <div class="panel col-1-of-3">
+    <div class="input-card">
+      <div class="search-box">
+        <div class="input-times">
+          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
+          <div class="times" (click)="clearSearch()">
+            <i class="pi pi-times"></i>
           </div>
         </div>
-    </div> -->
-    <div class="add">
-      <button class="btn">
-          <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
-          <!-- <span class="pc-only" (click)="showAdd()">add a user</span> -->
+      </div>
+    </div>
+    <div class="input-card">
+      <div class="list-filters">
+        <div class="input select">
+          <div>
+            <i class="pi pi-filter"></i>
+          </div>
+          <select [(ngModel)]="searchByProvince">
+            <option value="" selected>filter by role</option>
+            <option [value]="role" *ngFor="let role of roles">{{role}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="cta">
+      <button class="btn" (click)="add()">
+        <span class="">Add staff member</span>
       </button>
     </div>
   </div>
-  <div class="list-body">
-    <span>
-      <div *ngIf="users$ | async as users">
-        <span class="cards-betta" *ngIf="users.length > 0; notFound">
-          <span *ngFor="let user of users | userFilterPipe: search">
-            <app-user-card-list [user]="user"></app-user-card-list>
-          </span>
-        </span>
-      </div>
-      <ng-template #notFound>
-        <div class="not-found">
-          <img [src]="notFoundModel.Image" alt="no items found">
-          <h1 class="message">
-            {{notFoundModel.Message}}
-          </h1>
-        </div>
-      </ng-template>
+  <div *ngIf="users$ | async as users">
+    <span class="cards-betta" *ngIf="users.length > 0; notFound">
+      <span *ngFor="let user of users | userFilterPipe: search">
+        <app-user-card-list [user]="user"></app-user-card-list>
+      </span>
     </span>
-    <!-- <span *ngIf="showForm">
-        <app-add-user
-        (showForm)="showAdd()"
-        ></app-add-user>
-    </span> -->
   </div>
+  <ng-template #notFound>
+    <div class="not-found">
+      <img [src]="notFoundModel.Image" alt="no items found">
+      <h1 class="message">
+        {{notFoundModel.Message}}
+      </h1>
+    </div>
+  </ng-template>
 </div>

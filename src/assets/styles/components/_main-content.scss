@@ -1,0 +1,221 @@
+.main-content {
+  padding: 1rem 3rem;
+
+  .title-header {
+    text-transform: initial;
+    font-weight: 600;
+  }
+
+  .sub-header {
+    font-size: 1em;
+    font-weight: 500;
+    width: 60%;
+  }
+
+  .col-1-of-2 {
+    grid-template-columns: 50% 50%;
+    margin-bottom: 0;
+  }
+
+  .panel {
+    border-radius: 15px;
+    background: #FFFFFF;
+    padding: 0.5rem 2rem;
+
+
+    .input-card {
+
+      .list-filters {
+        grid-template-columns: 100%;
+        border: none;
+        padding-bottom: 0;
+
+        .select {
+          border: none;
+          grid-template-columns: 10% auto;
+          padding: 0.222rem;
+
+          select {
+            font-weight: 700;
+            display: inline;
+
+          }
+        }
+      }
+
+      .search-box {
+        background: #fff;
+        width: 100%;
+        height: 100%;
+
+        .input-times {
+          input {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    .cta {
+      .btn {
+        font-weight: bold;
+        border-radius: 5px;
+        text-transform: initial;
+      }
+    }
+
+  }
+
+  .form {
+    margin-top: 0;
+    margin: 0 auto;
+    padding: 0rem;
+
+    .form-group {
+      border: 1px solid #d7d7d7;
+      border-radius: 10px;
+      padding: 12px;
+      margin: 0.5rem 0.5rem;
+
+      .group {
+        margin: 0;
+        background: transparent;
+
+        input {
+          margin-top: 0;
+          margin: 2px;
+          width: 100%;
+        }
+
+        textarea {
+          border-bottom: 0;
+        }
+
+        .label {
+          font-weight: 700;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    .cta {
+      .group {
+        background: transparent;
+
+        .btn {
+          font-size: 15px;
+        }
+      }
+
+      a.cancel {
+        margin-top: 1.5rem;
+        font-weight: 500;
+        color: #D3D8DF;
+        font-size: 1.2em;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+
+
+  .card-data {
+    .col-1-of-2 {
+      grid-template-columns: 30% auto;
+    }
+
+    .image {
+      margin: 2rem;
+
+      img {
+        width: 4rem;
+      }
+    }
+
+    .data {
+      padding: 0 1rem;
+
+      h1 {
+        text-align: left;
+        margin-top: 1rem;
+        color: #2E344C;
+
+        &.main {
+          font-size: 1.3em;
+          font-weight: bold;
+        }
+
+        &.sub {
+          font-weight: 600;
+          font-size: 0.8rem;
+        }
+
+        &.text {
+          font-weight: 700;
+          font-size: 0.8rem;
+          color: #7B8C98;
+        }
+
+        &.pill {
+          padding: 5px;
+          background: #3742FA;
+          border-radius: 25px;
+          color: #F3F4F9;
+          width: 50%;
+          text-align: center;
+          font-size: 70%;
+        }
+
+      }
+    }
+
+  }
+
+
+
+
+}
+
+
+
+// responsive design
+@media only screen and (max-width: 600px) {
+  .main-content {
+    padding: 1rem;
+
+    h1 {
+      &.title-header {
+        font-size: 20px;
+      }
+
+      &.sub-header {
+        font-size: 12px;
+        width: 100%;
+      }
+    }
+
+    .col-1-of-2 {
+      grid-template-columns: 100%;
+    }
+
+    .panel {
+      padding: 0.5rem 1rem;
+
+      form {
+        margin: 20px auto;
+      }
+
+    }
+
+    .form {
+      .cta {
+        a.cancel {
+          text-align: left;
+        }
+      }
+      select {
+        width: 90%;
+      }
+    }
+  }
+}
