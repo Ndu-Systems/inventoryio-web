@@ -42,7 +42,6 @@ export class ProductDetailsComponent implements OnInit {
       this.productId = state.ProductId;
       this.product = state;
       this.initForm();
-
     });
     this.brandService.getBrands(this.user.CompanyId);
     this.cateroryService.getCateries(this.user.CompanyId);

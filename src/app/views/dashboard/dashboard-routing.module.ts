@@ -23,7 +23,7 @@ import { SaleSammaryComponent } from './products/sell/sale-sammary/sale-sammary.
 import { ListUsersComponent } from './users/list-users/list-users.component';
 import { SalesReportComponent } from './products/sales-report/sales-report.component';
 import { ListOrdersComponent } from './products/list-orders/list-orders.component';
-import { BrandComponent } from './brand';
+import { BrandComponent, EditBrandComponent } from './brand';
 import { OrderDetailsComponent } from './products/order-details/order-details.component';
 import { UpdateCompanyComponent } from './company/update-company/update-company.component';
 import { ConfigurationHomeComponent } from './configuration-home';
@@ -36,7 +36,7 @@ import {
   AddRolePermissionComponent,
   ListRolePermissionsComponent
 } from './roles';
-import { StoresComponent, StoreCardListComponent, AddStoreComponent } from './stores';
+import { StoresComponent, StoreCardListComponent, AddStoreComponent, EditStoreComponent } from './stores';
 import { ListCategoriesComponent } from './catergory/list-categories/list-categories.component';
 import { ListBrandsComponent } from './brand/list-brands/list-brands.component';
 import {
@@ -85,6 +85,7 @@ const routes: Routes = [
       { path: 'upload-product-image/:id', component: UploadProductImageComponent },
       { path: 'add-catergory', component: AddCatergoryComponent },
       { path: 'add-brand', component: AddBrandComponent },
+      { path: 'edit-brand', component: EditBrandComponent },
       { path: 'sell', component: SellComponent },
       { path: 'sales-report', component: SalesReportComponent },
       { path: 'list-orders', component: ListOrdersComponent },
@@ -101,6 +102,7 @@ const routes: Routes = [
       { path: 'add-role', component: AddRoleComponent },
       { path: 'stores', component: StoresComponent },
       { path: 'add-store', component: AddStoreComponent },
+      { path: 'edit-store', component: EditStoreComponent },
       { path: 'users', component: ListUsersComponent },
       { path: 'user-details/:id', component: UserDetailsComponent },
       { path: 'print-invoice', component: InvoiceComponent },
@@ -186,6 +188,8 @@ export const declarations = [
   ReportsComponent,
   EmailInvoiceComponent,
   PartnerCardComponent,
+  EditStoreComponent,
+  EditBrandComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

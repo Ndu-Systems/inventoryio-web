@@ -75,7 +75,6 @@ export class ProductService {
   updateCurrentProduct(product: Product) {
     this._product.next(product);
     localStorage.setItem('product', JSON.stringify(product));
-
   }
 
   addProduct(data: Product) {

@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Brand } from 'src/app/_models';
 import { SpinnerService } from './spinner.service';
 import { SplashService } from '../splash.service';
-import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
+import { COMMON_CONN_ERR_MSG, BRAND } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,9 @@ export class BrandService {
   private _brands: BehaviorSubject<Brand[]>;
   public brands: Observable<Brand[]>;
   url: string;
+
+  private _brand: BehaviorSubject<Brand>;
+  public brand: Observable<Brand>;
   constructor(
     private http: HttpClient,
     private spinnerService: SpinnerService,
@@ -24,6 +27,8 @@ export class BrandService {
     this._brands = new BehaviorSubject<Brand[]>(JSON.parse(localStorage.getItem('brands')) || []);
     this.brands = this._brands.asObservable();
     this.url = environment.API_URL;
+    this._brand = new BehaviorSubject<Brand>(JSON.parse(localStorage.getItem(BRAND)));
+    this.brand = this._brand.asObservable();
   }
 
   public get currentBrandValue(): Brand[] {
@@ -36,11 +41,21 @@ export class BrandService {
     localStorage.setItem('brands', JSON.stringify(state));
 
   }
+
   updateState(data: Brand[]) {
     this._brands.next(data);
     localStorage.setItem('brands', JSON.stringify(data));
-
   }
+
+  updateCurrentBrand(brand: Brand) {
+    this._brand.next(brand);
+    localStorage.setItem(BRAND, JSON.stringify(brand));
+  }
+
+  removeCurrentBrand() {
+    localStorage.removeItem(BRAND);
+  }
+
   addBrand(data: Brand) {
     this.spinnerService.show();
     return this.http.post<any>(`${this.url}/api/brand/add-brand.php`, data).subscribe(resp => {
