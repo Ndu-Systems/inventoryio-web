@@ -12,10 +12,13 @@ import { COMMON_CONN_ERR_MSG, BRAND } from 'src/app/_shared';
 })
 export class BrandService {
 
-
   private _brands: BehaviorSubject<Brand[]>;
   public brands: Observable<Brand[]>;
   url: string;
+
+  private dataStore: {
+    brands: Brand[]
+  } = { brands: [] };
 
   private _brand: BehaviorSubject<Brand>;
   public brand: Observable<Brand>;
@@ -73,11 +76,27 @@ export class BrandService {
 
     });
   }
+  updateBrand(brand: Brand) {
+    this.http.put<Brand>(`${this.url}/api/brand/edit-brand.php`, JSON.stringify(brand))
+      .subscribe(data => {
+        this.dataStore.brands.forEach((item, index) => {
+          if (item.BrandId === data.BrandId) {
+            this.dataStore.brands[index] = data;
+          }
+        });
+        this.dataStore.brands.sort((x, y) => {
+          return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+        });
+        this._brands.next(Object.assign({}, this.dataStore).brands);
+      }, error => console.log('Could not update brand'));
+  }
 
   getBrands(companyId) {
     return this.http.get<any>(`${this.url}/api/brand/get-brands.php?CompanyId=${companyId}`).subscribe(resp => {
       const brands: Brand[] = resp;
       this.updateState(brands);
+      this.dataStore.brands = resp;
+      this._brands.next(Object.assign({}, this.dataStore).brands);
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',

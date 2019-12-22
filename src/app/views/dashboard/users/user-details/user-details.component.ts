@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { BannerService, AccountService, UsersService, RolesService } from 'src/app/_services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User, Role } from 'src/app/_models';
+import { STAFF } from 'src/app/_shared';
 
 @Component({
   selector: 'app-user-details',
@@ -64,8 +65,9 @@ export class UserDetailsComponent implements OnInit {
     }
   }
 
-  getUserNow(user: User) {
-    // alert(JSON.stringify(user));
+  updateUser(user: User) {
+     this.userService.updateUserState(user, STAFF);
+     this.routeTo.navigate(['/dashboard/edit-user']);
   }
 
 }

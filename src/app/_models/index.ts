@@ -24,6 +24,7 @@ export * from './email.model';
 export * from './partner.model';
 export * from './sms.model';
 export * from './bulk-sms.model';
+export * from './caterory.model';
 
 
 

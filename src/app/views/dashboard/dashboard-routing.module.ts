@@ -45,7 +45,8 @@ import {
   UserFormComponent,
   UserDetailsComponent,
   ListUserRolesComponent,
-  AddUserRoleComponent
+  AddUserRoleComponent,
+  EditUserComponent
 } from './users';
 import {
   UserProfileComponent,
@@ -71,6 +72,7 @@ import { ReportsComponent } from './reports/reports/reports.component';
 import { EmailInvoiceComponent } from './products/email-invoice/email-invoice.component';
 import { InvoiceComponent } from './invoicing/invoice/invoice.component';
 import { PartnerCardComponent } from './partners';
+import { EditCategoryComponent } from './catergory';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -78,12 +80,14 @@ const routes: Routes = [
       { path: '', component: DashboardHomeComponent },
       { path: 'add-company', component: AddCompanyComponent },
       { path: 'add-user', component: AddUserComponent },
+      { path: 'edit-user', component: EditUserComponent },
       { path: 'list-user', component: ListUsersComponent },
       { path: 'add-product', component: AddProductComponent },
       { path: 'list-product', component: ListProductsComponent },
       { path: 'product-details', component: ProductDetailsComponent },
       { path: 'upload-product-image/:id', component: UploadProductImageComponent },
       { path: 'add-catergory', component: AddCatergoryComponent },
+      { path: 'edit-category', component: EditCategoryComponent },
       { path: 'add-brand', component: AddBrandComponent },
       { path: 'edit-brand', component: EditBrandComponent },
       { path: 'sell', component: SellComponent },
@@ -190,6 +194,8 @@ export const declarations = [
   PartnerCardComponent,
   EditStoreComponent,
   EditBrandComponent,
+  EditCategoryComponent,
+  EditUserComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

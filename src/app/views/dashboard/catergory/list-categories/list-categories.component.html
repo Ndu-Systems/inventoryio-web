@@ -67,9 +67,15 @@
           <h1>
             {{item.Name}}
           </h1>
-          <div class="status">
+          <!-- <div class="status">
             <p-toggleButton [(ngModel)]="item.StatusId" onLabel="Active" offLabel="Not Active" onIcon="pi pi-check"
               offIcon="pi pi-times" [style]="{'width':'100%'}"></p-toggleButton>
+          </div> -->
+          <div class="cta col-1-of-2">
+            <button class="btn" (click)="updateCategory(item)">
+              <img src="assets/images/actions/edit.svg" alt="edit icon">&nbsp;
+              <span class="">Update category</span>
+            </button>
           </div>
         </div>
       </div>

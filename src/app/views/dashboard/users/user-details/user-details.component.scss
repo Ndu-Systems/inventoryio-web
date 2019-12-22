@@ -78,6 +78,18 @@ $dp-width : 8rem;
       }
     }
 
+
+    .cta.col-1-of-2 {
+      grid-template-columns: 100%;
+      padding: 1rem 0;
+
+      .btn {
+        width: 80%;
+        padding: 10px;
+        margin: 0 auto;
+      }
+    }
+
     .information {
       .info-content {
         padding: 1rem;
@@ -176,9 +188,11 @@ $dp-width : 8rem;
 
       .details {
         border-right: none;
+
         h1 {
           text-align: left;
         }
+
         .dp {
           margin: 0;
         }

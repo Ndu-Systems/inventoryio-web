@@ -3,6 +3,7 @@ import { BrandService, AccountService, BannerService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Brand, User } from 'src/app/_models';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-edit-brand',
@@ -17,6 +18,7 @@ export class EditBrandComponent implements OnInit {
     private fb: FormBuilder,
     private brandService: BrandService,
     private accountService: AccountService,
+    private messageService: MessageService,
     private routeTo: Router
   ) { }
 
@@ -42,7 +44,14 @@ export class EditBrandComponent implements OnInit {
   }
 
   update(brand: Brand) {
-
+    this.brandService.updateBrand(brand);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'Brand updated'
+    });
+    this.brandService.removeCurrentBrand();
+    this.routeTo.navigate(['/dashboard/list-brands']);
   }
 
 }
