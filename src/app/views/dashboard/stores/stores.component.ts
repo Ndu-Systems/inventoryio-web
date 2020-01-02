@@ -38,6 +38,8 @@ export class StoresComponent implements OnInit {
     });
     this.stores$ = this.storeService.stores;
     this.storeService.getAllStores(user.CompanyId, StatusConstant.ACTIVE_STATUS);
+    this.storeService.removeCurrentStore();
+
   }
 
   add() {

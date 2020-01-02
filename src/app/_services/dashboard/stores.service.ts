@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from 'src/app/_models';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { STORE } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,21 @@ export class StoresService {
     stores: Store[]
   } = { stores: [] };
   readonly stores = this._stores.asObservable();
-  constructor(private http: HttpClient) { }
+
+  private _store: BehaviorSubject<Store>;
+  public store: Observable<Store>;
+  constructor(private http: HttpClient) {
+    this._store = new BehaviorSubject<Store>(JSON.parse(localStorage.getItem(STORE)));
+    this.store = this._store.asObservable();
+  }
+
+  updateCurrentStore(store: Store) {
+    this._store.next(store);
+    localStorage.setItem(STORE, JSON.stringify(store));
+  }
+  removeCurrentStore() {
+    localStorage.removeItem(STORE);
+  }
 
   getAllStores(companyId: string, statusId: string) {
     this.http.get<Store[]>(`${this.url}/api/stores/get-stores.php?CompanyId=${companyId}&&StatusId=${statusId}`)

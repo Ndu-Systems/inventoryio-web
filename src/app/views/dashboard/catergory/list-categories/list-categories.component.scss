@@ -27,6 +27,16 @@
   }
 }
 
+.cta.col-1-of-2 {
+  grid-template-columns: 100%;
+  padding: 1rem 0;
+  .btn {
+    width: 80%;
+    padding: 10px;
+    margin: 0 auto;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .cards-betta {
     grid-template-columns: repeat(4, 25%);

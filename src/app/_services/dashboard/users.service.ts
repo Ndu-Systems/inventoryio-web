@@ -21,17 +21,22 @@ export class UsersService {
   private _loading: BehaviorSubject<boolean>;
   public loading: Observable<boolean>;
   constructor(private http: HttpClient,
-              private router: Router) {
+    private router: Router) {
     this._user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+
   }
 
   public get currentUserValue(): User {
     return this._user.value;
   }
 
-  updateUserState(user: User) {
+  updateUserState(user: User, userType: string) {
     this._user.next(user);
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem(userType, JSON.stringify(user));
+  }
+
+  removeUserState(userType: string) {
+    localStorage.removeItem(userType);
   }
 
   getAllUsers(companyId: string, statusId: string) {
@@ -91,7 +96,7 @@ export class UsersService {
           return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
         });
         this._users.next(Object.assign({}, this.dataStore).users);
-        this.updateUserState(data);
+        this.updateUserState(data, 'user');
       }, error => console.log('Could not update a user'));
   }
 

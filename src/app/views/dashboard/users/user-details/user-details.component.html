@@ -19,6 +19,12 @@
               Joining date: {{user.CreateDate | date}}
             </span>
           </h1>
+          <div class="cta col-1-of-2">
+            <button class="btn" (click)="updateUser(user)">
+              <img src="assets/images/actions/edit.svg" alt="edit icon">&nbsp;
+              <span class="">Update user</span>
+            </button>
+          </div>
         </div>
         <div class="information">
           <div class="info-content">

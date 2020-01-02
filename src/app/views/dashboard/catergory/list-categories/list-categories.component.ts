@@ -42,7 +42,8 @@ export class ListCategoriesComponent implements OnInit {
   showAdd() {
     this.showForm = !this.showForm;
   }
-  clearSearch() {
-    this.search = undefined;
+  updateCategory(category: Caterory) {
+    this.categorieservice.updateCurrentCategory(category);
+    this.router.navigate(['/dashboard/edit-category']);
   }
 }

@@ -45,5 +45,8 @@ export class ListBrandsComponent implements OnInit {
   }
 
   clearSearch() { this.search = null; }
-
+  updateBrand(brand: Brand) {
+    this.brandService.updateCurrentBrand(brand);
+    this.router.navigate(['/dashboard/edit-brand']);
+  }
 }

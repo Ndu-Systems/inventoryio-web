@@ -1,0 +1,86 @@
+<div class="main-content">
+  <h1 class="title-header">Add a new staff member.</h1>
+  <div class="col-1-of-2">
+    <div class="panel">
+      <h1 class="sub-header">Add A New User And Assign Him/Her Or Other To A Role To Use The Inventoryio.</h1>
+      <div class="form">
+        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="update(rForm.value)">
+          <div class="col-1-of-2">
+            <span>
+              <div class="form-group">
+                <div class="group">
+                  <input type="text" formControlName="Name" required="required" />
+                  <label class="label">First name*</label>
+                </div>
+              </div>
+              <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+                Name is required
+              </div>
+            </span>
+            <span>
+              <div class="form-group">
+                <div class="group">
+                  <input type="text" formControlName="Surname" required="required" />
+                  <label class="label">Surname*</label>
+                </div>
+              </div>
+              <div class="alert" *ngIf="!rForm.controls['Surname'].valid && rForm.controls['Surname'].touched">
+                Surname is required
+              </div>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <div class="group">
+              <input type="text" formControlName="Email" disabled required="required" />
+              <!-- <label class="label">Email address*</label> -->
+            </div>
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+            Email is required
+          </div>
+
+          <div class="col-1-of-1">
+            <span>
+              <div class="form-group">
+                <div class="group">
+                  <input type="text" formControlName="CellphoneNumber" required="required" />
+                  <label class="label">Contact number*</label>
+                </div>
+              </div>
+              <div class="alert"
+                *ngIf="!rForm.controls['CellphoneNumber'].valid && rForm.controls['CellphoneNumber'].touched">
+                Cellphone number is required
+              </div>
+            </span>
+            <!-- <span>
+              <div class="form-group">
+                <div class="group">
+                  <input type="text" formControlName="SecondaryContactNumber" required="required" />
+                  <label class="label">Alternative number</label>
+                </div>
+              </div>
+            </span> -->
+          </div>
+          <div class="form-group" *ngIf="roles">
+            <div class="group">
+              <select formControlName="RoleId">
+                <option value="" disabled>Select Role</option>
+                <option *ngFor="let item of roles" class="select-option" [value]="item.RoleId">{{item.Name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['RoleId'].valid && rForm.controls['RoleId'].touched">
+            Please assign role to user
+          </div>
+          <div class="cta col-1-of-2">
+            <div class="group button">
+              <input type="submit" value="Update staff member" class="btn" [disabled]="!rForm.valid" />
+            </div>
+            <a routerLink="/dashboard/users" class="cancel">cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
