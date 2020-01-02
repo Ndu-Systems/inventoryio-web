@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Orders, OrderProducts, Email, User } from 'src/app/_models';
-import { OrdersService, AccountService, BannerService, EmailService } from 'src/app/_services';
+import { OrdersService, AccountService, BannerService, EmailService, InvoiceService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
@@ -33,6 +33,7 @@ export class OrderDetailsComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private emailService: EmailService,
+    private invoiceService: InvoiceService,
 
   ) { }
 
@@ -112,7 +113,9 @@ export class OrderDetailsComponent implements OnInit {
   }
   sendInvoice(order: Orders) {
     const subject = 9;
-    const downloadLink = `${environment.BASE_URL}/#/download-invoice/${order.OrdersId}`;
+   // const downloadLink = `${environment.BASE_URL}/#/download-invoice/${order.OrdersId}`;
+    const downloadLink = this.invoiceService.getInvoiceURL(order.OrdersId);
+
     if (!order.Customer) {
       this.messageService.add({
         severity: 'warn',

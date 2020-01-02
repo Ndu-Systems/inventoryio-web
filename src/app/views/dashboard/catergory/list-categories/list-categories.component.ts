@@ -17,9 +17,9 @@ export class ListCategoriesComponent implements OnInit {
   notFoundModel: NotFoundModel;
 
   constructor(private categorieservice: CateroryService,
-              private accountService: AccountService,
-              private router: Router,
-              private bannerService: BannerService
+    private accountService: AccountService,
+    private router: Router,
+    private bannerService: BannerService
   ) { }
 
   ngOnInit() {
@@ -42,5 +42,7 @@ export class ListCategoriesComponent implements OnInit {
   showAdd() {
     this.showForm = !this.showForm;
   }
-
+  clearSearch() {
+    this.search = undefined;
+  }
 }

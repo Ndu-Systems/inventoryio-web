@@ -14,6 +14,7 @@ export * from './spinner.service';
 export * from './permissions.service';
 export * from './support.service';
 export * from './partner.service';
+export * from './invoice.service';
 // export * from './product.service';
 // export * from './sale.service';
 

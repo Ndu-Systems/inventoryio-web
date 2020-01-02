@@ -15,6 +15,7 @@ export class ListUsersComponent implements OnInit {
   users$: Observable<User[]>;
 
   showForm: boolean;
+  roles = [];
   constructor(
     private bannerService: BannerService,
     private userService: UsersService,
@@ -44,4 +45,5 @@ export class ListUsersComponent implements OnInit {
     this.showForm = !this.showForm;
   }
   clearSearch() { this.search = null; }
+  searchByProvince() { this.search = null; }
 }
