@@ -1,0 +1,26 @@
+<div class="main-content">
+  <h1 class="title-header">Invoicing {{configType}}</h1>
+  <div class="col-1-of-2">
+    <div class="panel">
+      <div class="form">
+        <div class="form">
+        
+            
+          <div class="form-group" *ngFor="let field of fields">
+            <div class="group">
+              <input type="text"  [(ngModel)]="field.Value" required="required" />
+              <label class="label">{{field.Label}}*</label>
+            </div>
+          </div>
+          
+          <div class="cta col-1-of-2">
+            <div class="group button">
+              <input type="submit" [value]="'Add '  + partnerType" class="btn" [disabled]="!rForm.valid" />
+            </div>
+            <a routerLink="/dashboard/partners/{{type}}" class="cancel">cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

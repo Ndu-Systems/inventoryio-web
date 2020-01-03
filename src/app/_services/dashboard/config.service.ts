@@ -21,7 +21,7 @@ export class ConfigService {
     private spinnerService: SpinnerService,
     private splashService: SplashService,
   ) {
-    this._configs = new BehaviorSubject<Config[]>(JSON.parse(localStorage.getItem('Configs')) || []);
+    this._configs = new BehaviorSubject<Config[]>(JSON.parse(localStorage.getItem('configs')) || []);
     this.configs = this._configs.asObservable();
     this.url = environment.API_URL;
   }
@@ -61,8 +61,8 @@ export class ConfigService {
 
   getConfigs(companyId) {
     return this.http.get<any>(`${this.url}/api/config/get-config.php?CompanyId=${companyId}`).subscribe(resp => {
-      const Configs: Config[] = resp;
-      this.updateState(Configs);
+      const configs: Config[] = resp;
+      this.updateState(configs);
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',

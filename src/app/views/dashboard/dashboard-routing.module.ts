@@ -72,6 +72,7 @@ import { ReportsComponent } from './reports/reports/reports.component';
 import { EmailInvoiceComponent } from './products/email-invoice/email-invoice.component';
 import { PartnerCardComponent } from './partners';
 import { EditCategoryComponent } from './catergory';
+import { CompanyViewConfigsComponent } from './company-config/company-view-configs/company-view-configs.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -120,6 +121,8 @@ const routes: Routes = [
       { path: 'partners/:id', component: PartnersComponent },
       { path: 'reports', component: ReportsComponent },
       { path: 'email-invoice', component: EmailInvoiceComponent },
+      { path: 'company-view-configs/:id', component: CompanyViewConfigsComponent },
+
     ]
   },
 ];
@@ -193,6 +196,7 @@ export const declarations = [
   EditBrandComponent,
   EditCategoryComponent,
   EditUserComponent,
+  CompanyViewConfigsComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

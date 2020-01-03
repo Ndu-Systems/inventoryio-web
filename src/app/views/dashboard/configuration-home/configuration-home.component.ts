@@ -10,6 +10,8 @@ import { UserActions } from 'src/app/_models';
 export class ConfigurationHomeComponent implements OnInit {
   actions: UserActions[] = [];
   actions2: UserActions[] = [];
+  partners: UserActions[] = [];
+  invoices: UserActions[] = [];
   constructor(
     private bannerService: BannerService,
     private accountService: AccountService,
@@ -46,17 +48,8 @@ export class ConfigurationHomeComponent implements OnInit {
         name: 'manage categories',
         image: 'assets/images/actions/maintenance.svg',
         link: 'dashboard/list-categories'
-      },
-      {
-        name: 'manage customers',
-        image: 'assets/images/actions/cutomer.svg',
-        link: 'dashboard/partners/customers'
-      },
-      {
-        name: 'manage suppliers',
-        image: 'assets/images/actions/suplier.svg',
-        link: 'dashboard/partners/suppliers'
       }
+
     );
     this.actions2.push({
       name: 'manage roles',
@@ -67,6 +60,30 @@ export class ConfigurationHomeComponent implements OnInit {
         name: 'permissions',
         image: 'assets/images/actions/permission.svg',
         link: 'dashboard/permissions'
+      }
+    );
+
+    this.partners.push({
+      name: 'manage customers',
+      image: 'assets/images/actions/cutomer.svg',
+      link: 'dashboard/partners/customers'
+    },
+      {
+        name: 'manage suppliers',
+        image: 'assets/images/actions/suplier.svg',
+        link: 'dashboard/partners/suppliers'
+      }
+    );
+
+    this.invoices.push({
+      name: 'banking details',
+      image: 'assets/images/actions/save-money.svg',
+      link: 'dashboard/company-view-configs/bank-details'
+    },
+      {
+        name: 'address details',
+        image: 'assets/images/actions/companyaddress.svg',
+        link: 'dashboard/company-view-configs/address-details'
       }
     );
   }

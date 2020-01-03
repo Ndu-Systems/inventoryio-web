@@ -1,11 +1,12 @@
 export interface Config {
-    BrandId: string;
+    ConfigId?: number;
     CompanyId: string;
     Name: string;
-    CreateDate: string;
+    Label: string;
+    Value: string;
+    CreateDate?: string;
     CreateUserId: string;
-    ModifyDate: string;
+    ModifyDate?: string;
     ModifyUserId: string;
     StatusId: string;
-    Status?: boolean;
 }
