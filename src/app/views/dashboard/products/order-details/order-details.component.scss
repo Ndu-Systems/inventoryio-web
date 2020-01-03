@@ -119,8 +119,14 @@ h1.date {
 
 .body {
   width: 100%;
-
+  padding: 2rem;
+  background: #fff;
   .items {
+    background: #f3f4f8;
+    padding: 1rem;
+    border-radius: 15px;
+    overflow-y: unset;
+    height: auto;
     .item {
       border-radius: 10px;
       grid-template-columns: repeat(3, 30%);
