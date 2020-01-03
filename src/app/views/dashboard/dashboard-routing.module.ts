@@ -70,7 +70,6 @@ import { PartnersComponent } from './partners/partners/partners.component';
 import { SearchPartnerPipe } from 'src/app/_pipes/search-partners.pipe';
 import { ReportsComponent } from './reports/reports/reports.component';
 import { EmailInvoiceComponent } from './products/email-invoice/email-invoice.component';
-import { InvoiceComponent } from './invoicing/invoice/invoice.component';
 import { PartnerCardComponent } from './partners';
 import { EditCategoryComponent } from './catergory';
 const routes: Routes = [
@@ -109,7 +108,6 @@ const routes: Routes = [
       { path: 'edit-store', component: EditStoreComponent },
       { path: 'users', component: ListUsersComponent },
       { path: 'user-details/:id', component: UserDetailsComponent },
-      { path: 'print-invoice', component: InvoiceComponent },
       { path: 'list-categories', component: ListCategoriesComponent },
       { path: 'list-brands', component: ListBrandsComponent },
       { path: 'reset-password', component: UserProfileResetPasswordComponent },
@@ -152,7 +150,6 @@ export const declarations = [
   OrderDetailsComponent,
   BrandComponent,
   UpdateCompanyComponent,
-  InvoiceComponent,
   ConfigurationHomeComponent,
   ActionsComponent,
   RolesComponent,

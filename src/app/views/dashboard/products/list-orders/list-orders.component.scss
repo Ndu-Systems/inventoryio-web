@@ -13,6 +13,7 @@
           .card {
             padding: 0.1rem;
             cursor: pointer;
+            grid-template-columns: 14% 40% auto;
 
             // &:hover {
             //   background: #104ce534;
@@ -33,6 +34,19 @@
               h5 {
                 margin: 0;
               }
+
+              .customer-name {}
+
+              .order-status {
+                text-transform: uppercase;
+                font-size: .6rem;
+              }
+
+              .new {
+                color: #3498db;
+              }
+
+
             }
 
             .total {
@@ -43,8 +57,13 @@
                 margin: 0;
               }
 
+              h4 {
+                font-weight: 400;
+
+              }
+
               h6 {
-                color: #bdc3c7;
+                color: #95a5a6;
               }
             }
           }

@@ -6,7 +6,6 @@ import { PricingComponent } from './index/Pricing/Pricing.component';
 import { HomeNavComponent } from './shared/home-nav';
 import { IndexComponent, HomePageComponent, FeaturesComponent, HowItWorksComponent } from './index';
 import { SignUpComponent, SignInComponent } from './accounts';
-import { DownloadInvoiceComponent } from '../dashboard/invoicing/download-invoice/download-invoice.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 const routes: Routes = [
   {
@@ -18,7 +17,6 @@ const routes: Routes = [
       { path: 'pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent },
-      { path: 'download-invoice/:id', component: DownloadInvoiceComponent },
 
     ]
   }
@@ -33,7 +31,6 @@ export const declarations = [
   FeaturesComponent,
   SplashHomeComponent,
   PricingComponent,
-  DownloadInvoiceComponent,
   HomeNavComponent,
   HomeSliderComponent,
   HowItWorksComponent

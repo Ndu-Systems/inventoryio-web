@@ -40,14 +40,14 @@
           <span *ngFor="let order of orders | searchproduct: search">
             <div [ngClass]="order.CardClass" (click)="select(order)">
               <div class="image">
-                <img src="assets/user2.svg" alt="">
+                <img src="assets/images/order/user.svg" alt="">
                 <!-- <img src="../../../../../assets/ndu.jpg" alt=""> -->
               </div>
               <div class="name">
-                <h4 *ngIf="order.Customer">{{order.Customer.Name}}</h4>
-                <h4 *ngIf="!order.Customer">No Customer</h4>
-                <h5 *ngIf="order.Status"><i class="pi pi-circle-on"></i>{{order.Status}}</h5>
-                <h5 *ngIf="!order.Status"><i class="pi pi-circle-on"></i>Shipped</h5>
+                <h4 *ngIf="order.Customer"  class="customer-name">{{order.Customer.Name}}</h4>
+                <h4 *ngIf="!order.Customer" class="customer-name">No Customer</h4>
+                <h5 *ngIf="order.Status" class="order-status {{order.Status}}">{{order.Status}}</h5>
+                <h5 *ngIf="!order.Status"  class="order-status">Shipped</h5>
               </div>
               <div class="total">
                 <h4>

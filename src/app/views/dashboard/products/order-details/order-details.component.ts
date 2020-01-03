@@ -62,8 +62,11 @@ export class OrderDetailsComponent implements OnInit {
     this.ordersService.getProductsForAnOrder(order.OrdersId);
     this.router.navigate([`/dashboard/order-details`]);
   }
-  print() {
-    this.router.navigate(['/dashboard/print-invoice']);
+  print(order: Orders) {
+   // this.router.navigate(['/dashboard/print-invoice']);
+   const url = this.invoiceService.getInvoiceURL(order.OrdersId);
+   const win = window.open(url, '_blank');
+   win.focus();
   }
 
   cancelPayAction() {

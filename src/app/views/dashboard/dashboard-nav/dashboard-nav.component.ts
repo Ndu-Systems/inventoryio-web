@@ -132,7 +132,7 @@ export class DashboardNavComponent implements OnInit {
 
   getRolePermissions(roleId: string | number) {
     this.roleService.getRolePermissions(roleId).subscribe(data => {
-      if (data.length > 0) {
+      if (data && data.length > 0) {
         this.rolePermissions = [];
         this.rolePermissions = data;
         this.canConfigure();
