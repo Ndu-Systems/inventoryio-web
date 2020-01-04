@@ -1,103 +1,73 @@
-<div class="main">
-    <h1 class="heading bordered">user profile </h1>
-    <div class="body">
-    <div class="card profile" *ngIf="user">
-      <div class="profile-info col-1-of-2">
-        <div class="details">
-          <!-- <span class="dp">
-            <img *ngIf="user.DP" [src]="user.DP.Url" alt="user profile picture">
-            <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue.svg" alt="">
-          </span> -->
 
-          <div class="file-drop-area">
-              <span class="fake-btn dp">
-                  <img *ngIf="user.DP" [src]="user.DP.Url" alt="user profile picture">
-                  <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue.svg" alt="">
-              </span>
-              <input class="file-input" type="file" (change)="onChange($event.target.files)">
-            </div>
-          <h1>
-            <span class="header">
-              {{user.Name}} {{user.Surname}}
-            </span>
-            <span class="spec">
-              {{user.Company?.Name}}
-            </span>
-            <span class="spec info">
-              Joining date: {{user.CreateDate | date}}
-            </span>
-          </h1>
-        </div>
-        <div class="information">
-          <div class="info-content">
-            <h1 class="heading">
-              official information
-            </h1>
-            <div class="col-1-of-4">
-              <span>
-                <h1 class="label-header">
-                  company name
-                </h1>
-                <h1 class="label-text">
-                  {{user.Company?.Name}}
-                </h1>
-              </span>
-              <span>
-                <h1 class="label-header">
-                  company phone
-                </h1>
-                <h1 class="label-text">
-                  {{user.Company?.TelephoneNumber}}
-                </h1>
-              </span>
-              <span>
-                <h1 class="label-header">
-                  company website
-                </h1>
-                <h1 class="label-text">
-                  {{user.Company?.Website }}
-                </h1>
-              </span>
-            </div>
-          </div>
-          <div class="info-content">
-            <h1 class="heading">
-              personal information
-            </h1>
-            <div class="col-1-of-4">
-              <span>
-                <h1 class="label-header">
-                  full names
-                </h1>
-                <h1 class="label-text">
-                  {{user.Name}} {{user.Surname}}
-                </h1>
-              </span>
-              <span>
-                <h1 class="label-header">
-                  cellphone number
-                </h1>
-                <h1 class="label-text">
-                  {{user.CellphoneNumber}}
-                </h1>
-              </span>
-              <span>
-                <h1 class="label-header">
-                  email address
-                </h1>
-                <h1 class="label-text">
-                  {{user.Email }}
-                </h1>
-              </span>
-            </div>
-          </div>
-          <!-- <div class="info-content">
-            <div class="add">
-              <button class="btn">update profile</button>
-            </div>
-          </div> -->
-        </div>
+<div class="main-content">
+  <h1 class="title-header">My Profile.</h1>
+  <div class="col-1-of-2">
+    <div class="panel">
+      <span class="dp">
+        <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
+        <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="">
+      </span>
+      <div class="upload-btn-wrapper">
+        <button class="btn">Upload a file</button>
+        <input type="file" name="myfile" (change)="onChange($event.target.files)" />
+      </div>
+      <div class="quick-info col-1-of-2">
+        <h1 class="main">Name</h1>
+        <h1 class="data">{{user.Name}} {{user.Surname}}</h1>
+      </div>
+      <div class="quick-info col-1-of-2">
+        <h1 class="main">Company</h1>
+        <h1 class="data">{{user.Company?.Name}}</h1>
+      </div>
+      <div class="quick-info col-1-of-2">
+        <h1 class="main">Company domain</h1>
+        <h1 class="data">{{user.Company?.Website}}</h1>
+      </div>
+      <div class="quick-info col-1-of-2">
+        <h1 class="main">Joining date</h1>
+        <h1 class="data">{{user.CreateDate | date}}</h1>
       </div>
     </div>
+    <span class="information">
+      <div class="col-1-of-1">
+        <div class="panel information">
+          <h1 class="heading">
+            personal information
+          </h1>
+          <span class="col-1-of-3">
+            <div class="quick-info">
+              <h1 class="main">Full Names</h1>
+              <h1 class="data">{{user.Name}} {{user.Surname}}</h1>
+            </div>
+            <div class="quick-info">
+              <h1 class="main">Cellphone Number</h1>
+              <h1 class="data">{{user.CellphoneNumber}}</h1>
+            </div>
+            <div class="quick-info">
+              <h1 class="main">Email Address</h1>
+              <h1 class="data">{{user.Email}}</h1>
+            </div>
+          </span>
+        </div>
+        <div class="panel information">
+          <h1 class="heading">
+            company information
+          </h1>
+          <span class="col-1-of-3">
+            <div class="quick-info">
+              <h1 class="main">Company Name</h1>
+              <h1 class="data">{{user.Company?.Name}}</h1>
+            </div>
+            <div class="quick-info">
+              <h1 class="main">Company Phone</h1>
+              <h1 class="data"> {{user.Company?.TelephoneNumber}}</h1>
+            </div>
+            <div class="quick-info">
+              <h1 class="main">Company Domain</h1>
+              <h1 class="data">{{user.Company?.Website}}</h1>
+            </div>
+          </span>
+        </div>
+      </div>
+    </span>
   </div>
-</div>
