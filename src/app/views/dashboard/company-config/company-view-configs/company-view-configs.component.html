@@ -19,10 +19,24 @@
           </div>
           <div class="form-group"  *ngIf="type == 'logocolors'">
             <p for="">Logo for invoice</p>
-            <!-- <app-file-upload  *ngIf="type == 'logocolors'"></app-file-upload> -->
             <div class="group images" >
               <app-product-images [productId]="user.CompanyId"></app-product-images>
             </div>
+          </div>
+          
+          <div class="form-group"  *ngIf="type == 'logocolors'">
+            <p>Select invoice background color(Higliter) </p>
+            <p-colorPicker [(ngModel)]="backgroundColor"  [inline]="true"></p-colorPicker>
+
+            <p style="margin-top:.5em">Selected Color: <span style="display:inline-block;width:32px;height:32px;vertical-align:middle" [style.backgroundColor]="backgroundColor"></span> {{backgroundColor}} </p>    
+             
+          </div>
+          <div class="form-group"  *ngIf="type == 'logocolors'">
+            <p>Select invoice font color (Higliter) </p>
+            <p-colorPicker [(ngModel)]="fontColor"  [inline]="true"></p-colorPicker>
+
+            <p style="margin-top:.5em">Selected Color: <span style="display:inline-block;width:32px;height:32px;vertical-align:middle" [style.backgroundColor]="fontColor"></span> {{fontColor}} </p>    
+             
           </div>
           
           <div class="cta col-1-of-2">

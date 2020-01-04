@@ -20,6 +20,8 @@ export class CompanyViewConfigsComponent implements OnInit {
   invoices: UserActions[] = [];
   fields$: Observable<Config[]>;
   lebel: string;
+  backgroundColor = '#bdc3c7';
+  fontColor = '#000000';
 
 
   constructor(

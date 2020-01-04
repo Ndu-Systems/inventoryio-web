@@ -16,6 +16,7 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {CalendarModule} from 'primeng/calendar';
+import {ColorPickerModule} from 'primeng/colorpicker';
 
 
 
@@ -36,7 +37,8 @@ import {CalendarModule} from 'primeng/calendar';
     ProgressBarModule,
     AutoCompleteModule,
     ProgressSpinnerModule,
-    CalendarModule
+    CalendarModule,
+    ColorPickerModule
 
   ],
   declarations: [...declarations],
