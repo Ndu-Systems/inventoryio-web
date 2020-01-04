@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
   <h1 class="heading">user details </h1>
   <div class="body" *ngIf="user">
     <div class="card profile">
@@ -105,4 +105,84 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+<div class="main-content">
+  <h1 class="title-header">Staff details.</h1>
+  <div class="col-1-of-2">
+    <div class="panel">
+      <span class="dp">
+        <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
+        <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="">
+      </span>
+      <div class="upload-btn-wrapper">
+        <button class="btn">Upload a file</button>
+        <input type="file" name="myfile" (change)="onChange($event.target.files)" />
+      </div>
+      <div class="quick-info col-1-of-2">
+        <h1 class="main">Name</h1>
+        <h1 class="data">{{user.Name}} {{user.Surname}}</h1>
+      </div>
+      <div class="quick-info col-1-of-2">
+        <h1 class="main">Company</h1>
+        <h1 class="data">{{user.Company?.Name}}</h1>
+      </div>
+      <div class="quick-info col-1-of-2">
+        <h1 class="main">Company domain</h1>
+        <h1 class="data">{{user.Company?.Website}}</h1>
+      </div>
+      <div class="quick-info col-1-of-2">
+        <h1 class="main">Joining date</h1>
+        <h1 class="data">{{user.CreateDate | date}}</h1>
+      </div>
+      <div class="panel-cta">
+        <a class="cta" (click)="updateUser(user)">
+          Update staff
+        </a>
+      </div>
+
+    </div>
+    <span class="information">
+      <div class="col-1-of-1">
+        <div class="panel information">
+          <h1 class="heading">
+            personal information
+          </h1>
+          <span class="col-1-of-3">
+            <div class="quick-info">
+              <h1 class="main">Full Names</h1>
+              <h1 class="data">{{user.Name}} {{user.Surname}}</h1>
+            </div>
+            <div class="quick-info">
+              <h1 class="main">Cellphone Number</h1>
+              <h1 class="data">{{user.CellphoneNumber}}</h1>
+            </div>
+            <div class="quick-info">
+              <h1 class="main">Email Address</h1>
+              <h1 class="data">{{user.Email}}</h1>
+            </div>
+          </span>
+
+        </div>
+        <div class="panel information">
+          <h1 class="heading">
+            company information
+          </h1>
+          <span class="col-1-of-3">
+            <div class="quick-info">
+              <h1 class="main">Company Name</h1>
+              <h1 class="data">{{user.Company?.Name}}</h1>
+            </div>
+            <div class="quick-info">
+              <h1 class="main">Company Phone</h1>
+              <h1 class="data"> {{user.Company?.TelephoneNumber}}</h1>
+            </div>
+            <div class="quick-info">
+              <h1 class="main">Company Domain</h1>
+              <h1 class="data">{{user.Company?.Website}}</h1>
+            </div>
+          </span>
+        </div>
+      </div>
+    </span>
   </div>
