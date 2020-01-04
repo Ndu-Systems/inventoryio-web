@@ -59,8 +59,45 @@ export class ConfigService {
     });
   }
 
+  addConfigsRange(data: Config[]) {
+    const configs = { configs: data };
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/config/add-config-range.php`, configs).subscribe(resp => {
+      this.spinnerService.hide();
+
+      const config: Config = resp;
+      this.apendState(config);
+    }, error => {
+      this.spinnerService.hide();
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: COMMON_CONN_ERR_MSG,
+        class: `error`
+      });
+
+    });
+  }
+  updateConfigsRange(data: Config[]) {
+    const configs = { configs: data };
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/config/update-config-range.php`, configs).subscribe(resp => {
+      this.spinnerService.hide();
+
+      const config: Config = resp;
+      this.apendState(config);
+    }, error => {
+      this.spinnerService.hide();
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: COMMON_CONN_ERR_MSG,
+        class: `error`
+      });
+
+    });
+  }
+
   getConfigs(companyId) {
-    return this.http.get<any>(`${this.url}/api/config/get-config.php?CompanyId=${companyId}`).subscribe(resp => {
+    return this.http.get<any>(`${this.url}/api/config/get-configs.php?CompanyId=${companyId}`).subscribe(resp => {
       const configs: Config[] = resp;
       this.updateState(configs);
     }, error => {

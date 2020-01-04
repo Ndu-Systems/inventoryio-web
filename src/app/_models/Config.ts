@@ -1,5 +1,5 @@
 export interface Config {
-    ConfigId?: number;
+    ConfigId: string;
     CompanyId: string;
     Name: string;
     Type?: string;
@@ -20,6 +20,7 @@ export interface Config {
 export function newBankArray(companyId: string): Config[] {
     return [
         {
+            ConfigId: '',
             CompanyId: companyId,
             Name: 'bankname',
             Label: 'BANK NAME',
@@ -32,6 +33,7 @@ export function newBankArray(companyId: string): Config[] {
             StatusId: 1
         },
         {
+            ConfigId: '',
             CompanyId: companyId,
             Name: 'accountnumber',
             Label: 'account number',
@@ -44,6 +46,7 @@ export function newBankArray(companyId: string): Config[] {
             StatusId: 1
         },
         {
+            ConfigId: '',
             CompanyId: companyId,
             Name: 'branchname',
             Label: 'branch name',
@@ -56,6 +59,7 @@ export function newBankArray(companyId: string): Config[] {
             StatusId: 1
         },
         {
+            ConfigId: '',
             CompanyId: companyId,
             Name: 'acountholder',
             Label: 'Account Holder',
@@ -66,12 +70,72 @@ export function newBankArray(companyId: string): Config[] {
             CreateUserId: 'system',
             ModifyUserId: 'system',
             StatusId: 1
+        }
+
+    ];
+}
+// init new bank
+
+export function newAddressArray(companyId: string): Config[] {
+    return [
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'addressline1',
+            Label: 'address line1',
+            Type: 'address',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
         },
         {
+            ConfigId: '',
             CompanyId: companyId,
-            Name: 'reference',
-            Label: 'reference',
-            Type: 'bank',
+            Name: 'addressline2',
+            Label: 'address line2',
+            Type: 'address',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        },
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'addressline3',
+            Label: 'addressline3',
+            Type: 'address',
+            Value: ' ',
+            IsRequired: false,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        },
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'email',
+            Label: 'Email Address',
+            Type: 'address',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        },
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'phone',
+            Label: 'Contact Number',
+            Type: 'address',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -79,5 +143,7 @@ export function newBankArray(companyId: string): Config[] {
             ModifyUserId: 'system',
             StatusId: 1
         }
+
     ];
 }
+

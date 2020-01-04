@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService, BannerService } from 'src/app/_services';
 import { User } from 'src/app/_models';
-import { Config, newBankArray } from 'src/app/_models/Config';
+import { Config, newBankArray, newAddressArray } from 'src/app/_models/Config';
 import { ConfigService } from 'src/app/_services/dashboard/config.service';
 
 @Component({
@@ -35,14 +35,20 @@ export class CompanyViewConfigsComponent implements OnInit {
     this.user = this.accountService.currentUserValue;
     this.configService.getConfigs(this.user.CompanyId);
     this.fields = this.configService.currentConfigValue;
-    if (this.fields && this.fields.length) {
+    this.getCurrentConfigType();
+    this.initScreen();
 
+  }
+  initScreen() {
+    if (this.fields && this.fields.length) {
+      this.fields = this.fields.filter(x => x.Type === this.type);
+      if (!this.fields.length) {
+        this.createNewForm();
+      }
     } else {
-      // create new banking details form
-      this.createNewBankForm();
+      this.createNewForm();
     }
   }
-
   populateFields(data) {
     this.fields.push(data);
   }
@@ -50,12 +56,44 @@ export class CompanyViewConfigsComponent implements OnInit {
     this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }
 
-  createNewBankForm() {
-    this.fields = newBankArray(this.user.CompanyId);
+  createNewForm() {
+    if (this.type === 'bank') {
+      this.fields = newBankArray(this.user.CompanyId);
+
+    }
+    if (this.type === 'address') {
+      this.fields = newAddressArray(this.user.CompanyId);
+    }
   }
   getCurrentConfigType() {
     if (this.configType === 'bank-details') {
       this.type = 'bank';
     }
+    if (this.configType === 'address-details') {
+      this.type = 'address';
+    }
+  }
+  onSave() {
+    if (this.isConfigValidToPost(this.fields)) {
+      if (this.isNewConfigs(this.fields)) {
+        this.postConfigs(this.fields);
+      } else {
+        this.updateConfigs(this.fields);
+      }
+    }
+  }
+  isConfigValidToPost(configs: Config[]) {
+    return configs.filter(x => x.IsRequired && x.Value.trim() === '').length === 0;
+  }
+  isNewConfigs(configs: Config[]) {
+    return configs.filter(x => x.ConfigId.length > 0).length === 0;
+  }
+  postConfigs(configs: Config[]) {
+    alert('posting');
+    this.configService.addConfigsRange(configs);
+  }
+  updateConfigs(configs: Config[]) {
+    alert('updating');
+    this.configService.updateConfigsRange(configs);
   }
 }
