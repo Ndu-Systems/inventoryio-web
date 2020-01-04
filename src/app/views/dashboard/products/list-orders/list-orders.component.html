@@ -40,7 +40,8 @@
           <span *ngFor="let order of orders | searchproduct: search">
             <div [ngClass]="order.CardClass" (click)="select(order)">
               <div class="image">
-                <img src="assets/images/order/user.svg" alt="">
+                <img  *ngIf="order.Customer" src="assets/images/order/user.svg" alt="">
+                <img  *ngIf="!order.Customer" src="assets/images/order/user-no-customer.svg" alt="">
                 <!-- <img src="../../../../../assets/ndu.jpg" alt=""> -->
               </div>
               <div class="name">

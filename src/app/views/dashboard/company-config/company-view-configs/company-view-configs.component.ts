@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AccountService, BannerService } from 'src/app/_services';
-import { User } from 'src/app/_models';
+import { AccountService, BannerService, CompanyConfigsService } from 'src/app/_services';
+import { User, UserActions } from 'src/app/_models';
 import { Config, newBankArray, newAddressArray } from 'src/app/_models/Config';
 import { ConfigService } from 'src/app/_services/dashboard/config.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-company-view-configs',
@@ -16,6 +17,9 @@ export class CompanyViewConfigsComponent implements OnInit {
   user: User;
   fields: Config[] = [];
   type: string;
+  invoices: UserActions[] = [];
+  fields$: Observable<Config[]>;
+  lebel: string;
 
 
   constructor(
@@ -24,24 +28,28 @@ export class CompanyViewConfigsComponent implements OnInit {
     private accountService: AccountService,
     private configService: ConfigService,
     private bannerService: BannerService,
+    private companyConfigsService: CompanyConfigsService,
 
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.configType = r.id;
+      this.user = this.accountService.currentUserValue;
+      this.configService.getConfigs(this.user.CompanyId);
+      this.fields = this.configService.currentConfigValue;
+      this.getCurrentConfigType();
+      this.initScreen();
+      this.pupulateTabls();
+      this.fields$ = this.companyConfigsService.feilds;
     });
   }
 
   ngOnInit() {
-    this.user = this.accountService.currentUserValue;
-    this.configService.getConfigs(this.user.CompanyId);
-    this.fields = this.configService.currentConfigValue;
-    this.getCurrentConfigType();
-    this.initScreen();
 
   }
   initScreen() {
     if (this.fields && this.fields.length) {
       this.fields = this.fields.filter(x => x.Type === this.type);
+      this.companyConfigsService.updateState(this.fields);
       if (!this.fields.length) {
         this.createNewForm();
       }
@@ -64,16 +72,23 @@ export class CompanyViewConfigsComponent implements OnInit {
     if (this.type === 'address') {
       this.fields = newAddressArray(this.user.CompanyId);
     }
+    this.companyConfigsService.updateState(this.fields);
   }
   getCurrentConfigType() {
     if (this.configType === 'bank-details') {
       this.type = 'bank';
+      this.lebel = 'Banking Details';
+
+
     }
     if (this.configType === 'address-details') {
       this.type = 'address';
+      this.lebel = 'Address Details';
+
     }
     if (this.configType === 'logo-and-colors') {
       this.type = 'logocolors';
+      this.lebel = 'Invoice Logo';
     }
   }
   onSave() {
@@ -98,5 +113,34 @@ export class CompanyViewConfigsComponent implements OnInit {
   updateConfigs(configs: Config[]) {
     alert('updating');
     this.configService.updateConfigsRange(configs);
+  }
+
+  pupulateTabls() {
+    this.invoices = [];
+    this.invoices.push({
+      name: 'banking details',
+      image: 'assets/images/actions/save-money.svg',
+      imageInverse: 'assets/images/actions/white-save-money.svg',
+      link: 'dashboard/company-view-configs/bank-details',
+      active: this.getActiveTab('dashboard/company-view-configs/bank-details')
+    },
+      {
+        name: 'address details',
+        image: 'assets/images/actions/companyaddress.svg',
+        imageInverse: 'assets/images/actions/white-companyaddress.svg',
+        link: 'dashboard/company-view-configs/address-details',
+        active: this.getActiveTab('dashboard/company-view-configs/address-details')
+      },
+      {
+        name: 'Logo and colors',
+        image: 'assets/images/actions/logo-and-colors.svg',
+        imageInverse: 'assets/images/actions/white-logo-and-colors.svg',
+        link: 'dashboard/company-view-configs/logo-and-colors',
+        active: this.getActiveTab('dashboard/company-view-configs/logo-and-colors')
+      }
+    );
+  }
+  getActiveTab(name: string) {
+    return name.includes(this.configType);
   }
 }

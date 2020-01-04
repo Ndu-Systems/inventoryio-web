@@ -31,7 +31,7 @@ export class FileUploadComponent implements ControlValueAccessor {
   user: User;
   productId;
   fileOfBlob: File;
-  //onChange: () => void;
+  // onChange: () => void;
 
   @HostListener('change', ['$event.target.files']) emitFiles(event: FileList) {
     const files = event && event;
@@ -107,7 +107,7 @@ export class FileUploadComponent implements ControlValueAccessor {
           const resizedImage = this.dataURLToBlob(dataUrl);
           this.fileOfBlob = new File([resizedImage], 'iio.jpg');
           // upload
-          let formData = new FormData();
+          const formData = new FormData();
           formData.append('file', this.fileOfBlob);
           formData.append('name', 'iio');
           this.documentsService.uploadFile(formData).subscribe(response => {

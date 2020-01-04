@@ -1,25 +1,33 @@
+<div class="actions">
+  <h1 class="heading">invoice configurations</h1>
+  <app-actions [actions]="invoices"></app-actions>
+</div>
+
 <div class="main-content">
-  <h1 class="title-header">Invoicing {{configType}}</h1>
+  <h1 class="title-header"> {{lebel}}</h1>
   <div class="col-1-of-2">
     <div class="panel">
       <div class="form">
         <div class="form">
         
             
-          <div class="form-group" *ngFor="let field of fields">
+          <div class="form-group" *ngFor="let field of fields$  | async as fields">
             <div class="group">
               <input type="text"  [(ngModel)]="field.Value" required="required" />
               <label class="label">{{field.Label}}*</label>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group"  *ngIf="type == 'logocolors'">
             <p for="">Logo for invoice</p>
-            <app-file-upload  *ngIf="type == 'logocolors'"></app-file-upload>
+            <!-- <app-file-upload  *ngIf="type == 'logocolors'"></app-file-upload> -->
+            <div class="group images" >
+              <app-product-images [productId]="user.CompanyId"></app-product-images>
+            </div>
           </div>
           
           <div class="cta col-1-of-2">
             <div class="group button">
-              <input type="submit" [value]="'Save '  + configType" class="btn" (click)="onSave()" [disabled]="valid" />
+              <input type="submit" [value]="'Save '  + lebel" class="btn" (click)="onSave()" [disabled]="valid" />
             </div>
             <a routerLink="/dashboard/partners/{{type}}" class="cancel">cancel</a>
           </div>

@@ -1,9 +1,10 @@
 <div class="main">
   <div class="cards">
     <span *ngFor="let data of actions">
-      <div class="card" (click)="openAction(data.link)">
+      <div class="card active-{{data.active}}" (click)="openAction(data.link)">
         <div class="icon">
-          <img [src]="data.image" alt="">
+          <img *ngIf="!data.active" [src]="data.image" alt="">
+          <img *ngIf="data.active" [src]="data.imageInverse" alt="">
         </div>
         <div class="data">
           <h1>{{data.name}}</h1>
