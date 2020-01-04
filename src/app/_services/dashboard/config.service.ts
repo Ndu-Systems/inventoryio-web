@@ -33,12 +33,12 @@ export class ConfigService {
     const state = this.currentConfigValue || [];
     state.push(data);
     this._configs.next(state);
-    localStorage.setItem('Configs', JSON.stringify(state));
+    localStorage.setItem('configs', JSON.stringify(state));
 
   }
   updateState(data: Config[]) {
     this._configs.next(data);
-    localStorage.setItem('Configs', JSON.stringify(data));
+    localStorage.setItem('configs', JSON.stringify(data));
 
   }
   addConfig(data: Config) {

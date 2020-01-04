@@ -15,7 +15,7 @@
           
           <div class="cta col-1-of-2">
             <div class="group button">
-              <input type="submit" [value]="'Add '  + partnerType" class="btn" [disabled]="!rForm.valid" />
+              <input type="submit" [value]="'Save '  + configType" class="btn" [disabled]="valid" />
             </div>
             <a routerLink="/dashboard/partners/{{type}}" class="cancel">cancel</a>
           </div>
@@ -24,3 +24,7 @@
     </div>
   </div>
 </div>
+
+<pre>
+  {{fields |json}}
+</pre>

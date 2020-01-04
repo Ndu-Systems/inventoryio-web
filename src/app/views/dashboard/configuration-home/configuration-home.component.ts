@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerService, AccountService } from 'src/app/_services';
-import { UserActions } from 'src/app/_models';
+import { UserActions, User } from 'src/app/_models';
+import { ConfigService } from 'src/app/_services/dashboard/config.service';
 
 @Component({
   selector: 'app-configuration-home',
@@ -12,9 +13,11 @@ export class ConfigurationHomeComponent implements OnInit {
   actions2: UserActions[] = [];
   partners: UserActions[] = [];
   invoices: UserActions[] = [];
+  user: User;
   constructor(
     private bannerService: BannerService,
     private accountService: AccountService,
+    private configService: ConfigService,
   ) {
     this.bannerService.updateState({
       heading: 'Configuration',
@@ -24,7 +27,10 @@ export class ConfigurationHomeComponent implements OnInit {
 
   ngOnInit() {
     this.accountService.checkSession();
+    this.user = this.accountService.currentUserValue;
     this.populateActions();
+    this.configService.getConfigs(this.user.CompanyId);
+
   }
 
   populateActions() {
