@@ -4,6 +4,7 @@
   padding: 3rem 2rem;
   margin: 0 auto;
   border-radius: 10px;
+
   @media only screen and (max-width: 600px) {
     width: 100%;
     padding: 1rem;
@@ -78,19 +79,44 @@
         }
       }
     }
-    .images{
+
+    .images {
       // border: none;
       height: 8.5rem;
 
     }
 
+    .cta {
+      width: 30%;
+
+      .col-1-of-2 {
+        grid-template-columns: 50% auto;
+
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 100%;
+        }
+      }
+
+      a.cancel {
+        margin-top: 1.5rem;
+        font-weight: 500;
+        color: #D3D8DF;
+        font-size: 1.2em;
+        text-transform: capitalize;
+      }
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+    }
   }
 }
 
 .mt-1 {
   margin-top: 1rem;
 }
-.longer{
+
+.longer {
   height: 9rem !important;
 }
 
