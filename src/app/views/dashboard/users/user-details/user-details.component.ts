@@ -59,15 +59,15 @@ export class UserDetailsComponent implements OnInit {
     if (this.user) {
       this.roleService.getRolesForCompany(this.user.CompanyId, '1').subscribe(Response => {
         if (Response.length === 0) {
-         // alert('do work');
+          // alert('do work');
         }
       });
     }
   }
 
   updateUser(user: User) {
-     this.userService.updateUserState(user, STAFF);
-     this.routeTo.navigate(['/dashboard/edit-user']);
+    this.userService.updateUserState(user, STAFF);
+    this.routeTo.navigate(['/dashboard/edit-user']);
   }
-
+  onChange(event) { }
 }

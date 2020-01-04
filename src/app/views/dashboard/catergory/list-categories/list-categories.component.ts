@@ -46,4 +46,5 @@ export class ListCategoriesComponent implements OnInit {
     this.categorieservice.updateCurrentCategory(category);
     this.router.navigate(['/dashboard/edit-category']);
   }
+  clearSearch() { }
 }

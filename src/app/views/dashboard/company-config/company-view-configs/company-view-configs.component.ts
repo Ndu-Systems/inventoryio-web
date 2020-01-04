@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService, BannerService, CompanyConfigsService } from 'src/app/_services';
 import { User, UserActions } from 'src/app/_models';
-import { Config, newBankArray, newAddressArray } from 'src/app/_models/Config';
+import { Config, newBankArray, newAddressArray, newColorsArray } from 'src/app/_models/Config';
 import { ConfigService } from 'src/app/_services/dashboard/config.service';
 import { Observable } from 'rxjs';
 
@@ -22,6 +22,7 @@ export class CompanyViewConfigsComponent implements OnInit {
   lebel: string;
   backgroundColor = '#bdc3c7';
   fontColor = '#000000';
+  valid = false;
 
 
   constructor(
@@ -74,6 +75,9 @@ export class CompanyViewConfigsComponent implements OnInit {
     if (this.type === 'address') {
       this.fields = newAddressArray(this.user.CompanyId);
     }
+    if (this.type === 'logocolors') {
+      this.fields = newColorsArray(this.user.CompanyId);
+    }
     this.companyConfigsService.updateState(this.fields);
   }
   getCurrentConfigType() {
@@ -94,6 +98,10 @@ export class CompanyViewConfigsComponent implements OnInit {
     }
   }
   onSave() {
+    if (this.isColorsConfig(this.fields)) {
+      this.fields[0].Value = this.hexToRgbA(this.backgroundColor);
+      this.fields[1].Value = this.hexToRgbA(this.fontColor);
+    }
     if (this.isConfigValidToPost(this.fields)) {
       if (this.isNewConfigs(this.fields)) {
         this.postConfigs(this.fields);
@@ -108,9 +116,18 @@ export class CompanyViewConfigsComponent implements OnInit {
   isNewConfigs(configs: Config[]) {
     return configs.filter(x => x.ConfigId.length > 0).length === 0;
   }
+  isColorsConfig(configs: Config[]) {
+    return configs.filter(x => x.Type === 'logocolors').length > 0;
+  }
   postConfigs(configs: Config[]) {
     alert('posting');
     this.configService.addConfigsRange(configs);
+    this.configService.getConfigs(this.user.CompanyId);
+    this.configService.configs.subscribe(data => {
+      this.fields = data;
+      this.fields = this.fields.filter(x => x.Type === this.type);
+
+    })
   }
   updateConfigs(configs: Config[]) {
     alert('updating');
@@ -144,5 +161,17 @@ export class CompanyViewConfigsComponent implements OnInit {
   }
   getActiveTab(name: string) {
     return name.includes(this.configType);
+  }
+  hexToRgbA(hex) {
+    let c: any;
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+      c = hex.substring(1).split('');
+      if (c.length == 3) {
+        c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+      }
+      c = '0x' + c.join('');
+      return [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',');
+    }
+    throw new Error('Bad Hex');
   }
 }

@@ -147,3 +147,39 @@ export function newAddressArray(companyId: string): Config[] {
     ];
 }
 
+
+
+// init colors
+
+export function newColorsArray(companyId: string): Config[] {
+    return [
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'bgcolor',
+            Label: 'Background Color',
+            Type: 'logocolors',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        },
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'fontcolor',
+            Label: 'Font Color',
+            Type: 'logocolors',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        }
+
+    ];
+}
+
