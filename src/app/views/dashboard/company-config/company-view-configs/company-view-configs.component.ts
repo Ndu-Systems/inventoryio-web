@@ -72,6 +72,9 @@ export class CompanyViewConfigsComponent implements OnInit {
     if (this.configType === 'address-details') {
       this.type = 'address';
     }
+    if (this.configType === 'logo-and-colors') {
+      this.type = 'logocolors';
+    }
   }
   onSave() {
     if (this.isConfigValidToPost(this.fields)) {

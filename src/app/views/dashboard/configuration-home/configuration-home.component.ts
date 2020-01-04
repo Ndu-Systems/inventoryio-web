@@ -90,6 +90,11 @@ export class ConfigurationHomeComponent implements OnInit {
         name: 'address details',
         image: 'assets/images/actions/companyaddress.svg',
         link: 'dashboard/company-view-configs/address-details'
+      },
+      {
+        name: 'Logo and colors',
+        image: 'assets/images/actions/logo-and-colors.svg',
+        link: 'dashboard/company-view-configs/logo-and-colors'
       }
     );
   }
