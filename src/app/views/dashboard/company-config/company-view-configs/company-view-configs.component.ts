@@ -5,6 +5,7 @@ import { User, UserActions } from 'src/app/_models';
 import { Config, newBankArray, newAddressArray, newColorsArray } from 'src/app/_models/Config';
 import { ConfigService } from 'src/app/_services/dashboard/config.service';
 import { Observable } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-company-view-configs',
@@ -32,6 +33,7 @@ export class CompanyViewConfigsComponent implements OnInit {
     private configService: ConfigService,
     private bannerService: BannerService,
     private companyConfigsService: CompanyConfigsService,
+    private messageService: MessageService,
 
   ) {
     this.activatedRoute.params.subscribe(r => {
@@ -52,6 +54,10 @@ export class CompanyViewConfigsComponent implements OnInit {
   initScreen() {
     if (this.fields && this.fields.length) {
       this.fields = this.fields.filter(x => x.Type === this.type);
+      if (this.type === 'logocolors' && this.fields.length) {
+        this.backgroundColor = this.rgb2hex(this.fields[0].Value);
+        this.fontColor = this.rgb2hex(this.fields[1].Value);
+      }
       this.companyConfigsService.updateState(this.fields);
       if (!this.fields.length) {
         this.createNewForm();
@@ -111,7 +117,7 @@ export class CompanyViewConfigsComponent implements OnInit {
     }
   }
   isConfigValidToPost(configs: Config[]) {
-    return configs.filter(x => x.IsRequired && x.Value.trim() === '').length === 0;
+    return configs.filter(x => x.IsRequired && !x.Value).length === 0;
   }
   isNewConfigs(configs: Config[]) {
     return configs.filter(x => x.ConfigId.length > 0).length === 0;
@@ -120,7 +126,11 @@ export class CompanyViewConfigsComponent implements OnInit {
     return configs.filter(x => x.Type === 'logocolors').length > 0;
   }
   postConfigs(configs: Config[]) {
-    alert('posting');
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: `${this.type} created successfully.`
+    });
     this.configService.addConfigsRange(configs);
     this.configService.getConfigs(this.user.CompanyId);
     this.configService.configs.subscribe(data => {
@@ -130,7 +140,11 @@ export class CompanyViewConfigsComponent implements OnInit {
     })
   }
   updateConfigs(configs: Config[]) {
-    alert('updating');
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: `${this.type} updated successfully.`
+    });
     this.configService.updateConfigsRange(configs);
   }
 
@@ -173,5 +187,13 @@ export class CompanyViewConfigsComponent implements OnInit {
       return [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',');
     }
     throw new Error('Bad Hex');
+  }
+  rgb2hex(rgb) {
+    rgb = `rgb(${rgb})`;
+    rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+    return (rgb && rgb.length === 4) ? '#' +
+      ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+      ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+      ('0' + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
   }
 }

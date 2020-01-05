@@ -11,13 +11,21 @@
           <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
             Full Name is required
           </div>
+
           <div class="group">
+            <input type="text" formControlName="companyName" required="required" />
+            <label>Company Name</label>
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['companyName'].valid  && rForm.controls['companyName'].touched">
+            Company name is required
+          </div>
+          <!-- <div class="group">
             <input type="text" formControlName="cell" required="required" />
             <label>Cell Phone Number</label>
           </div>
           <div class="alert" *ngIf="!rForm.controls['cell'].valid  && rForm.controls['cell'].touched">
             Cell Phone Number is required
-          </div>
+          </div> -->
 
           <div class="group">
             <input type="text" formControlName="email" required="required" />
@@ -26,13 +34,7 @@
           <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
             A valid email is required
           </div>
-          <div class="group">
-            <input type="text" formControlName="companyName" required="required" />
-            <label>Company Name</label>
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['companyName'].valid  && rForm.controls['companyName'].touched">
-            Company name is required
-          </div>
+         
           <div class="group">
             <input type="password" formControlName="password" required="required" autocomplete="new-password" />
 
@@ -44,7 +46,7 @@
             Password is required
           </div>
 
-          <div class="group">
+          <!-- <div class="group">
             <input type="password" formControlName="passwordConfirm" required="required" />
 
 
@@ -54,7 +56,7 @@
           <div class="alert"
             *ngIf="!rForm.controls['passwordConfirm'].valid  && rForm.controls['passwordConfirm'].touched">
             Confirm Password is required
-          </div>
+          </div> -->
           <div class="actions">
 
           </div>

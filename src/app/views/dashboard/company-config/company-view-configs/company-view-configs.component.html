@@ -1,60 +1,66 @@
-<div class="actions">
-  <h1 class="heading">invoice configurations</h1>
+<h1 class="heading">
+  invoice configurations</h1>
+
   <app-actions [actions]="invoices"></app-actions>
-</div>
-
-<div class="main-content">
-  <h1 class="title-header"> {{lebel}}</h1>
-  <div class="col-1-of-2">
-    <div class="panel">
-      <div class="form">
-        <div class="form">
 
 
+<div class="clean-from-body">
+  <div class="form">
 
-          <span *ngIf="type != 'logocolors'">
-            <div class="form-group" *ngFor="let field of fields$  | async as fields">
-              <div class="group">
-                <input type="text" [(ngModel)]="field.Value" required="required" />
-                <label class="label">{{field.Label}}*</label>
-              </div>
-            </div>
-          </span>
 
-          <div class="form-group" *ngIf="type == 'logocolors'">
-            <p for="">Logo for invoice</p>
-            <div class="group images">
-              <app-product-images [productId]="user.CompanyId"></app-product-images>
-            </div>
+    <span *ngIf="type != 'logocolors'">
+
+      <div class="two">
+        <div class="group" *ngFor="let field of fields$  | async as fields">
+          <span>{{field.Label}}</span>
+          <input [type]="field.FieldType" [(ngModel)]="field.Value" />
+        </div>
+      </div>
+    </span>
+    <span *ngIf="type == 'logocolors'">
+      <div class="group mt-1 longer">
+        <span>Images</span>
+        <app-product-images [productId]="user.CompanyId"></app-product-images>
+      </div>
+
+      <div class="group mt-1 longer">
+        <span>Select invoice background color(Higliter)</span>
+
+        <div class="col-1-of-2">
+          <div>
+            <!-- <p-colorPicker [(ngModel)]="fontColor" [inline]="true"></p-colorPicker> -->
+            <p-colorPicker [(ngModel)]="backgroundColor" [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
           </div>
-
-          <div class="form-group" *ngIf="type == 'logocolors'">
-            <p>Select invoice background color(Higliter) </p>
-            <p-colorPicker [(ngModel)]="backgroundColor" [inline]="true"></p-colorPicker>
-
-            <p style="margin-top:.5em">Selected Color: <span
-                style="display:inline-block;width:32px;height:32px;vertical-align:middle"
-                [style.backgroundColor]="backgroundColor"></span> {{backgroundColor}} </p>
-
-          </div>
-          <div class="form-group" *ngIf="type == 'logocolors'">
-            <p>Select invoice font color (Higliter) </p>
-            <p-colorPicker [(ngModel)]="fontColor" [inline]="true"></p-colorPicker>
-
-            <p style="margin-top:.5em">Selected Color: <span
-                style="display:inline-block;width:32px;height:32px;vertical-align:middle"
-                [style.backgroundColor]="fontColor"></span> {{fontColor}} </p>
-
-          </div>
-
-          <div class="cta col-1-of-2">
-            <div class="group button">
-              <input type="submit" value="Save Details" class="btn" (click)="onSave()" [disabled]="valid" />
-            </div>
-            <a routerLink="/dashboard/partners/{{type}}" class="cancel">cancel</a>
+          <div>
+            <input type="text"  [(ngModel)]="backgroundColor" required="required" />
           </div>
         </div>
       </div>
+
+      <div class="group mt-1 longer">
+        <span>Select invoice font color (Higliter)</span>
+
+        <div class="col-1-of-2">
+          <div>
+            <!-- <p-colorPicker [(ngModel)]="fontColor" [inline]="true"></p-colorPicker> -->
+            <p-colorPicker [(ngModel)]="fontColor" [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
+          </div>
+          <div>
+            <input type="text"  [(ngModel)]="fontColor" required="required" />
+          </div>
+        </div>
+      </div>
+    </span>
+
+
+
+
+
+
+
+    <div class="cta col-1-of-2">
+      <input type="submit" class="btn save" (click)="onSave()" value="Save Details" />
+      <a routerLink="/dashboard/list-product" class="cancel">cancel</a>
     </div>
   </div>
 </div>
