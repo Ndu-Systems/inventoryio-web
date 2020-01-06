@@ -1,0 +1,136 @@
+.clean-from-body {
+    background: #fff;
+    width: 70%;
+    padding: 5rem 2rem;
+    margin: 1rem 2rem;
+    border-radius: 10px;
+  
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      padding: 1rem;
+  
+  
+    }
+  
+    .form {
+      padding: 2rem;
+      padding: 0;
+      margin: 0 auto;
+  
+      .two {
+        display: grid;
+        grid-template-columns: 50% auto;
+        padding: .5rem 1.5rem;
+        // background: rgb(31, 15, 246);
+        margin: 0;
+        padding: 0;
+  
+  
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 100%;
+        }
+  
+        .group {
+          width: 99%;
+        }
+      }
+  
+      .group {
+        border: 1px solid #d7d7d7;
+        padding: .5rem;
+        background: #fff;
+        margin: 0;
+        width: 99.5%;
+        margin: .5rem;
+        height: 3.78rem;
+        // padding-bottom: 0;
+  
+  
+        span {
+          display: block;
+          width: 100%;
+          text-align: left;
+          text-transform: capitalize;
+          font-size: .8rem;
+  
+          .add {
+            display: inline;
+            background: #2ecc71;
+            color: #fff;
+            padding: .1rem .3rem;
+            font-size: .7rem;
+            cursor: pointer;
+  
+          }
+        }
+  
+        input,
+        select {
+          display: block;
+          width: 100%;
+          border: none;
+          padding: .4rem 0;
+          margin: 0;
+          background: #fff;
+          font-size: 1rem;
+  
+          &:invalid {
+            border-right: 1px solid #e74c3c;
+          }
+        }
+      }
+  
+      .cta {
+         width: 30%;
+  
+        .col-1-of-2 {
+          grid-template-columns: 50% auto;
+  
+          @media only screen and (max-width: 600px) {
+            grid-template-columns: 100%;
+          }
+        }
+  
+        a.cancel {
+          margin-top: 1.5rem;
+          font-weight: 500;
+          color: #D3D8DF;
+          font-size: 1.2em;
+          text-transform: capitalize;
+        }
+  
+        @media only screen and (max-width: 600px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+  
+  .mt-1 {
+    margin-top: 1rem;
+  }
+  
+  .longer {
+    height: 9rem !important;
+  }
+  
+  .save {
+    width: 10rem;
+    float: right;
+    margin: 0.5rem 0rem;
+  }
+  
+  
+  @media only screen and (max-width: 600px) {
+    .clean-from-body {
+      height: 104vh;
+    }
+  }
+  
+  span.images {
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #656D88;
+    float: left;
+  }
+  

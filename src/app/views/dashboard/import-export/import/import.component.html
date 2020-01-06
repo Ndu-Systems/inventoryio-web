@@ -1,0 +1,27 @@
+<h1 class="heading">
+  Data Import
+</h1>
+
+<div class="clean-from-body">
+  <div class="form" (ngSubmit)="onSubmit(rForm.value)">
+    <div class="group mt-1 longer">
+      <span>
+        <br>
+        Download the <a class="download-link"> template file</a> and fill with the products information
+        <br>
+        <i>
+          Please do not change the file structure
+        </i>
+<br><br>
+      </span>
+      <input type='file' (change)="onFileSelect($event)" />
+    </div>
+
+
+    <div class="cta col-1-of-2">
+      <input type="submit" class="btn save" (click)="onSubmit()" value="Save products"
+        [disabled]="!valid" />
+      <a routerLink="/dashboard/list-product" class="cancel">cancel</a>
+    </div>
+  </div>
+</div>

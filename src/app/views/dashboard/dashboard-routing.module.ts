@@ -69,10 +69,10 @@ import { AddPartnerComponent } from './partners/add-partner/add-partner.componen
 import { PartnersComponent } from './partners/partners/partners.component';
 import { SearchPartnerPipe } from 'src/app/_pipes/search-partners.pipe';
 import { ReportsComponent } from './reports/reports/reports.component';
-import { EmailInvoiceComponent } from './products/email-invoice/email-invoice.component';
 import { PartnerCardComponent } from './partners';
 import { EditCategoryComponent } from './catergory';
 import { CompanyViewConfigsComponent } from './company-config/company-view-configs/company-view-configs.component';
+import { ImportComponent } from './import-export/import/import.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -120,7 +120,7 @@ const routes: Routes = [
       { path: 'add-partner/:id', component: AddPartnerComponent },
       { path: 'partners/:id', component: PartnersComponent },
       { path: 'reports', component: ReportsComponent },
-      { path: 'email-invoice', component: EmailInvoiceComponent },
+      { path: 'data-import', component: ImportComponent },
       { path: 'company-view-configs/:id', component: CompanyViewConfigsComponent },
 
     ]
@@ -190,13 +190,13 @@ export const declarations = [
   AddPartnerComponent,
   PartnersComponent,
   ReportsComponent,
-  EmailInvoiceComponent,
   PartnerCardComponent,
   EditStoreComponent,
   EditBrandComponent,
   EditCategoryComponent,
   EditUserComponent,
   CompanyViewConfigsComponent,
+  ImportComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,
