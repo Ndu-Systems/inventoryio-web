@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'ts-xlsx';
 import { Product, User } from 'src/app/_models';
-import { AccountService, ProductService } from 'src/app/_services';
+import { AccountService, ProductService, SpinnerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 @Component({
@@ -13,14 +13,15 @@ export class ImportComponent implements OnInit {
   file: File;
   arrayBuffer: any;
   user: User;
-  isConfirmingImportNow: boolean = true;
+  isConfirmingImportNow: boolean;
   products: Product[] = [];
 
 
   constructor(private accountService: AccountService,
-              private productService: ProductService,
-              private messageService: MessageService,
-              private routeTo: Router,
+    private productService: ProductService,
+    private messageService: MessageService,
+    private spinnerService: SpinnerService,
+    private routeTo: Router,
   ) { }
 
   ngOnInit() {
@@ -52,17 +53,17 @@ export class ImportComponent implements OnInit {
   mapProducts(fileProducts: Product[]) {
     fileProducts.forEach(fp => {
       const newProd: any = {
-        ProductId: fp.ProductId,
-        Name: fp.Name,
-        BrandId: fp.BrandId,
-        CatergoryId: fp.CatergoryId,
+        ProductId: fp.ProductId || '',
+        Name: fp.Name || '',
+        BrandId: fp.BrandId || '',
+        CatergoryId: fp.CatergoryId || '',
         Description: '',
-        UnitPrice: fp.UnitPrice,
-        UnitCost: fp.UnitCost,
-        Code: fp.Code,
+        UnitPrice: fp.UnitPrice || 0,
+        UnitCost: fp.UnitCost || 0,
+        Code: fp.Code || '',
         SKU: '',
-        Quantity: fp.Quantity,
-        LowStock: fp.LowStock,
+        Quantity: fp.Quantity || 0,
+        LowStock: fp.LowStock || 0,
         CompanyId: this.user.CompanyId,
         CreateUserId: this.user.UserId,
         StatusId: 1,
@@ -75,13 +76,17 @@ export class ImportComponent implements OnInit {
     console.log(this.products);
   }
   save() {
-    this.productService.addProductRange(this.products);
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success!',
-      detail: 'products created '
+    this.productService.addProductRange(this.products).subscribe(r => {
+      this.productService.getProducts(this.user.CompanyId);
+      this.spinnerService.hide();
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success!',
+        detail: 'products created '
+      });
+      this.routeTo.navigate([`/dashboard/list-product`]);
     });
-    this.routeTo.navigate([`/dashboard/list-product`]);
+
 
   }
   cancel() {
