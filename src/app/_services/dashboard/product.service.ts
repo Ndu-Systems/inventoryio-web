@@ -95,6 +95,24 @@ export class ProductService {
       this.spinnerService.hide();
     });
   }
+  addProductRange(data: Product[]) {
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/product/add-product-range.php`, data).subscribe(resp => {
+      const product: Product = resp;
+      if (product.ProductId) {
+        this.appendState(product);
+        this.updateCurrentProduct(product);
+      }
+      this.spinnerService.hide();
+    }, error => {
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: COMMON_CONN_ERR_MSG,
+        class: `error`
+      });
+      this.spinnerService.hide();
+    });
+  }
   updateProduct(data: Product) {
     this.spinnerService.show();
     return this.http.post<any>(`${this.url}/api/product/update-product.php`, data).subscribe(resp => {

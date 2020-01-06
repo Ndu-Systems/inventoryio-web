@@ -8,3 +8,27 @@ span{
     display: inline-block;
     font-weight: 600;
 }
+h2.heading{
+font-weight: 600;
+text-align: left;
+padding-left: 0;
+}
+hr{
+    border: 1px solid #ecf0f1;
+}
+.report{
+    display: grid;
+    grid-template-columns: 8% auto;
+    margin: 1rem 0;
+
+
+    .icon{
+        img{
+            width: 3.7rem;
+        }
+    }
+}
+
+.cta{
+    text-align: right;
+}

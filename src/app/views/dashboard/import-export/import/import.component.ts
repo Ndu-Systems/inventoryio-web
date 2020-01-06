@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'ts-xlsx';
 import { Product, User } from 'src/app/_models';
-import { AccountService } from 'src/app/_services';
+import { AccountService, ProductService } from 'src/app/_services';
+import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-import',
   templateUrl: './import.component.html',
@@ -11,8 +13,15 @@ export class ImportComponent implements OnInit {
   file: File;
   arrayBuffer: any;
   user: User;
+  isConfirmingImportNow: boolean = true;
+  products: Product[] = [];
 
-  constructor(private accountService: AccountService) { }
+
+  constructor(private accountService: AccountService,
+              private productService: ProductService,
+              private messageService: MessageService,
+              private routeTo: Router,
+  ) { }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
@@ -41,7 +50,6 @@ export class ImportComponent implements OnInit {
   }
 
   mapProducts(fileProducts: Product[]) {
-    const products: Product[] = [];
     fileProducts.forEach(fp => {
       const newProd: any = {
         ProductId: fp.ProductId,
@@ -61,8 +69,24 @@ export class ImportComponent implements OnInit {
         ModifyUserId: this.user.UserId
 
       };
-      products.push(newProd);
+      this.products.push(newProd);
     });
-    console.log(products);
+    this.isConfirmingImportNow = true;
+    console.log(this.products);
+  }
+  save() {
+    this.productService.addProductRange(this.products);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'products created '
+    });
+    this.routeTo.navigate([`/dashboard/list-product`]);
+
+  }
+  cancel() {
+    this.products = [];
+    this.file = null;
+    this.isConfirmingImportNow = false;
   }
 }
