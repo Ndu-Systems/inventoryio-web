@@ -3,10 +3,10 @@
   <h1 class="title-header">My Profile.</h1>
   <div class="col-1-of-2">
     <div class="panel">
-      <span class="Dp">
-        <img *ngIf="user.Dp" [src]="user.Dp.Url" alt="">
-        <img *ngIf="!user.Dp" class="placeholder" src="assets/user-blue-normal.svg" alt="">
-      </span>
+      <div class="dp">
+        <img *ngIf="user.Dp" [src]="user.Dp.Url" alt="user Profile">
+        <img *ngIf="!user.Dp" class="placeholder" src="assets/user-blue-normal.svg" alt="placeholder">
+      </div>
       <div class="upload-btn-wrapper">
         <button class="btn">Upload a file</button>
         <input type="file" name="myfile" (change)="onChange($event.target.files)" />

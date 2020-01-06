@@ -60,7 +60,6 @@
 
           @media only screen and (max-width: 600px) {
             width: 100%;
-
           }
 
         }
@@ -72,6 +71,10 @@
           font-weight: 700;
           font-size: .8rem;
           margin-left: 0;
+
+          @media only screen and (max-width: 600px) {
+            font-size: 0.6rem;
+          }
 
         }
 
