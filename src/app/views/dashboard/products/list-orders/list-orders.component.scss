@@ -2,6 +2,9 @@
   .body {
     display: grid;
     grid-template-columns: 30% auto;
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+    }
 
     .list {
       .small-cards-body {
@@ -14,6 +17,10 @@
             padding: 0.1rem;
             cursor: pointer;
             grid-template-columns: 14% 40% auto;
+            @media only screen and (max-width: 600px) {
+              grid-template-columns: 18% 40% auto;
+
+            }
 
             // &:hover {
             //   background: #104ce534;
