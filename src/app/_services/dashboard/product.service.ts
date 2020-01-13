@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Product } from 'src/app/_models';
+import { Product, Caterory } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { SpinnerService } from '.';
 import { SplashService } from '../splash.service';
@@ -95,9 +95,9 @@ export class ProductService {
       this.spinnerService.hide();
     });
   }
-  addProductRange(data: Product[]): Observable<any> {
+  addProductRange(data: Product[], cats: Caterory[] = []): Observable<any> {
     this.spinnerService.show();
-    return this.http.post<any>(`${this.url}/api/product/add-product-range.php`, { products: data });
+    return this.http.post<any>(`${this.url}/api/product/add-product-range.php`, { products: data, catergories: cats });
   }
   updateProduct(data: Product) {
     this.spinnerService.show();

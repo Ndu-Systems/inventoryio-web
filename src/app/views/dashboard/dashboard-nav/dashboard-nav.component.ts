@@ -64,8 +64,32 @@ export class DashboardNavComponent implements OnInit {
         showItem: true
       },
       {
+        Name: 'Qoute',
+        Link: '/dashboard/qoute-customer',
+        Icon: `pi pi-money-bill`,
+        showItem: true
+      },
+      {
         Name: 'sales orders',
         Link: '/dashboard/list-orders',
+        Icon: `pi pi-align-left`,
+        showItem: true
+      },
+      {
+        Name: 'New Service',
+        Link: '/dashboard/add-company-service',
+        Icon: `pi pi-align-left`,
+        showItem: true
+      },
+      {
+        Name: 'Services',
+        Link: '/dashboard/company-services',
+        Icon: `pi pi-align-left`,
+        showItem: true
+      },
+      {
+        Name: 'Order Services',
+        Link: '/dashboard/order-service',
         Icon: `pi pi-align-left`,
         showItem: true
       },

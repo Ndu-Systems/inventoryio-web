@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'ts-xlsx';
-import { Product, User } from 'src/app/_models';
+import { Product, User, Caterory } from 'src/app/_models';
 import { AccountService, ProductService, SpinnerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
@@ -15,6 +15,9 @@ export class ImportComponent implements OnInit {
   user: User;
   isConfirmingImportNow: boolean;
   products: Product[] = [];
+  productToBeCreated: number;
+  productToBeUpdated = 0;
+  cetergoriesToBeCreated = 0;
 
 
   constructor(private accountService: AccountService,
@@ -29,11 +32,12 @@ export class ImportComponent implements OnInit {
     this.accountService.checkSession();
   }
   onFileSelect(event) {
+    this.file = null;
     this.file = event.target.files[0];
-    this.Upload();
+    this.Upload(this.file);
 
   }
-  Upload() {
+  Upload(file) {
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
@@ -47,7 +51,7 @@ export class ImportComponent implements OnInit {
       const allData: Product[] = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       this.mapProducts(allData);
     };
-    fileReader.readAsArrayBuffer(this.file);
+    fileReader.readAsArrayBuffer(file);
   }
 
   mapProducts(fileProducts: Product[]) {
@@ -73,10 +77,29 @@ export class ImportComponent implements OnInit {
       this.products.push(newProd);
     });
     this.isConfirmingImportNow = true;
+    this.productToBeCreated = this.products.length;
+    this.cetergoriesToBeCreated = this.products.filter(x => x.CatergoryId !== '').length;
     console.log(this.products);
+
+  }
+  mapCatergories(): Caterory[] {
+    const cats = [];
+    this.products.forEach(fp => {
+      if (fp.CatergoryId && fp.CatergoryId !== '') {
+        const cat: Caterory = {
+          Name: fp.CatergoryId,
+          CompanyId: this.user.CompanyId,
+          CreateUserId: this.user.UserId,
+          StatusId: 1,
+          ModifyUserId: this.user.UserId
+        };
+        cats.push(cat);
+      }
+    });
+    return cats;
   }
   save() {
-    this.productService.addProductRange(this.products).subscribe(r => {
+    this.productService.addProductRange(this.products, this.mapCatergories()).subscribe(r => {
       this.productService.getProducts(this.user.CompanyId);
       this.spinnerService.hide();
       this.messageService.add({

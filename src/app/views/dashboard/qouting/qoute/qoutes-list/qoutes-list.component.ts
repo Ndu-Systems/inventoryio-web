@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderProducts, Product, Orders, NotFoundModel } from 'src/app/_models';
-import { OrdersService, AccountService, BannerService } from 'src/app/_services';
 import { Observable } from 'rxjs';
+import { Orders, NotFoundModel, Qoutation } from 'src/app/_models';
+import { OrdersService, AccountService, BannerService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/components/common/messageservice';
-import { NotFoundConstants } from '../../shared';
+import { NotFoundConstants } from '../../../shared';
+import { MessageService } from 'primeng/api';
+import { QoutationService } from 'src/app/_services/dashboard/qoutation.service';
 
 @Component({
-  selector: 'app-list-orders',
-  templateUrl: './list-orders.component.html',
-  styleUrls: ['./list-orders.component.scss']
+  selector: 'app-qoutes-list',
+  templateUrl: './qoutes-list.component.html',
+  styleUrls: ['./qoutes-list.component.scss']
 })
-export class ListOrdersComponent implements OnInit {
+export class QoutesListComponent implements OnInit {
 
   search: string;
   paying: boolean;
@@ -20,7 +21,7 @@ export class ListOrdersComponent implements OnInit {
   notFoundModel: NotFoundModel;
 
   constructor(
-    private ordersService: OrdersService,
+    private qoutationService: QoutationService,
     private router: Router,
     private accountService: AccountService,
     private bannerService: BannerService,
@@ -31,13 +32,13 @@ export class ListOrdersComponent implements OnInit {
   ngOnInit() {
     const user = this.accountService.currentUserValue;
     if (!user.UserId) { this.router.navigate(['sign-in']); }
-    this.orders$ = this.ordersService.orders;
+    this.orders$ = this.qoutationService.qoutations;
 
     this.bannerService.updateState({
       heading: 'Orders',
       backto: '/dashboard',
     });
-    this.ordersService.getOrders(user.CompanyId);
+    this.qoutationService.getQoutations(user.CompanyId);
     this.notFoundModel = {
       Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
       Message: NotFoundConstants.NOT_FOUND_ITEMS.message
@@ -48,6 +49,11 @@ export class ListOrdersComponent implements OnInit {
   }
   searchOrder() {
     this.showSearchOrder = !this.showSearchOrder;
+  }
+  details(order: Orders) {
+    this.qoutationService.updateQoutationState(order);
+    this.qoutationService.getProductsForAnQoute(order.OrdersId);
+    this.router.navigate([`/dashboard/order-details`]);
   }
   onPay(order: Orders) {
     if ((order.Total - order.Payment < 0) || Number(order.Due) < 0) {
@@ -77,7 +83,7 @@ export class ListOrdersComponent implements OnInit {
     order.Due = Number(order.Total) - Number(order.Paid);
     order.Status = order.Status;
 
-    this.ordersService.uptadeOrder(order);
+    this.qoutationService.uptadeQoute(order);
     this.pay(order);
     this.messageService.add({
       severity: 'success',
@@ -92,9 +98,10 @@ export class ListOrdersComponent implements OnInit {
     this.search = null;
     this.searchOrder();
   }
-  select(order: Orders) {
+  select(qoute: Qoutation) {
     // order.CardClass.push('card-active');
-    this.ordersService.updateOrderState(order);
-    this.ordersService.getProductsForAnOrder(order.OrdersId);
+    this.qoutationService.updateQoutationState(qoute);
+    this.qoutationService.getProductsForAnQoute(qoute.QuotationId);
   }
+
 }

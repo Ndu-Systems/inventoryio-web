@@ -1,0 +1,86 @@
+
+<div class="main-content">
+
+  <h1 class="heading">
+    Services
+    <!-- <span class="number">{{sum}} </span>
+    <span class="number"> | {{totalPrice | currency:'R'}}</span> -->
+  </h1>
+
+  <div class="panel col-1-of-3">
+    <div class="input-card">
+      <div class="search-box">
+        <div class="input-times">
+          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
+          <div class="times" (click)="clearSearch()">
+            <i class="pi pi-times"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="input-card">
+      <div class="list-filters">
+        <div class="input select">
+          <div>
+            <i class="pi pi-filter"></i>
+          </div>
+          <select [(ngModel)]="searchByCatergory">
+            <option value="" selected>All</option>
+            <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="cta">
+      <button class="btn" (click)="add()">
+        <span class="">Add service</span>
+      </button>
+      <!-- <button class="btn btn-transparent" (click)="import()">
+        <span class="">Import</span>
+      </button> -->
+    </div>
+  </div>
+  <div class="sell-grid">
+    <!-- <div class="list-body"> -->
+      <div class="small-cards-body" *ngIf="services$  | async as services">
+
+        <div class="small-cards" *ngIf="services.length > 0; else notFound">
+
+          <div class="card"
+            *ngFor="let item of services | searchproduct: search | searchproductbycatergory:searchByCatergory">
+            <div class="image">
+              <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+              <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+            </div>
+            <div class="details">
+              <p class="name">
+                {{item.Name}}
+                <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
+
+              </p>
+
+            </div>
+            <div class="price">
+              <p>
+                {{item.UnitPrice | currency:'R'}}
+              </p>
+              <button class="action-btn hover-shadow" (click)="details(item)">View</button>
+            </div>
+          </div>
+
+        </div>
+        <ng-template #notFound>
+          <div class="not-found">
+            <img [src]="notFoundModel.Image" alt="no items found">
+            <h1 class="message">
+              {{notFoundModel.Message}}
+              <span>
+                <a class="link-add" (click)="add()"> add new product.</a>
+              </span>
+            </h1>
+          </div>
+        </ng-template>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

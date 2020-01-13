@@ -10,7 +10,7 @@
     <div class="group mt-1 longer">
       <span>
         <br>
-        Download the <a class="download-link" href="assets/files/inventoryio_product_template.xlsx"> template file</a>
+        Download the <a class="download-link" href="assets/files/products_samplefile.xlsx"> template file</a>
         and fill with the products information
         <br>
         <i>
@@ -23,7 +23,6 @@
 
 
     <div class="cta col-1-of-2">
-      <input type="submit" class="btn save" (click)="onSubmit()" value="Save products" [disabled]="!valid" />
       <a routerLink="/dashboard/list-product" class="cancel">cancel</a>
     </div>
   </div>
@@ -43,7 +42,7 @@
     </div>
     <div class="data">
       <h4>
-        33 products will be created.
+        {{productToBeCreated}} products will be created.
       </h4>
     </div>
   </div>
@@ -54,12 +53,12 @@
     </div>
     <div class="data">
       <h4>
-        1 category will be created
+        {{cetergoriesToBeCreated}} category will be created
       </h4>
     </div>
   </div>
 
-  <div class="report">
+  <!-- <div class="report">
     <div class="icon">
       <img src="assets/images/import-export/edited.svg" alt="">
     </div>
@@ -68,7 +67,7 @@
         4 products will be edited.
       </h4>
     </div>
-  </div>
+  </div> -->
   <hr>
   <div class="cta">
     <button class="btn btn-transparent" (click)="cancel()">

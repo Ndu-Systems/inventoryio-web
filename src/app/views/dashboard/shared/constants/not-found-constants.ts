@@ -3,6 +3,10 @@ export const NotFoundConstants = {
       image: 'assets/placeholders/no-products.svg',
       message: 'There are no products yet'
     },
+    NOT_FOUND_SERVICES: {
+      image: 'assets/placeholders/no-products.svg',
+      message: 'There are no services yet'
+    },
     NOT_FOUND_SALES: {
       image: 'assets/placeholders/no-sales.svg',
       message: 'There are no products for sale yet'

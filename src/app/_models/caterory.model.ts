@@ -1,10 +1,10 @@
 export interface Caterory {
-    CatergoryId: string;
+    CatergoryId?: string;
     CompanyId: string;
     Name: string;
-    CreateDate: string;
+    CreateDate?: string;
     CreateUserId: string;
-    ModifyDate: string;
+    ModifyDate?: string;
     ModifyUserId: string;
-    StatusId: string;
+    StatusId: number;
 }

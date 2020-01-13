@@ -27,7 +27,7 @@ import { BrandComponent, EditBrandComponent } from './brand';
 import { OrderDetailsComponent } from './products/order-details/order-details.component';
 import { UpdateCompanyComponent } from './company/update-company/update-company.component';
 import { ConfigurationHomeComponent } from './configuration-home';
-import { ActionsComponent, ConfigurationPermissions } from './shared';
+import { ActionsComponent } from './shared';
 import {
   RolesComponent,
   RoleCardListComponent,
@@ -73,6 +73,12 @@ import { PartnerCardComponent } from './partners';
 import { EditCategoryComponent } from './catergory';
 import { CompanyViewConfigsComponent } from './company-config/company-view-configs/company-view-configs.component';
 import { ImportComponent } from './import-export/import/import.component';
+import { QouteComponent } from './qouting/qoute/qoute.component';
+import { QoutesListComponent } from './qouting/qoute/qoutes-list/qoutes-list.component';
+import { QouteDetailsComponent } from './qouting/qoute/qoute-details/qoute-details.component';
+import { CompanyServicesComponent } from './company-services/company-services/company-services.component';
+import { AddCompanyServiceComponent } from './company-services/company-services/add-company-service/add-company-service.component';
+import { SellServiceComponent } from './company-services/company-services/sell-service/sell-service.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -121,10 +127,15 @@ const routes: Routes = [
       { path: 'partners/:id', component: PartnersComponent },
       { path: 'reports', component: ReportsComponent },
       { path: 'data-import', component: ImportComponent },
+      { path: 'qoute-customer', component: QouteComponent },
+      { path: 'qoutes-list', component: QoutesListComponent },
+      { path: 'qoute-details', component: QouteDetailsComponent },
       { path: 'company-view-configs/:id', component: CompanyViewConfigsComponent },
-
+      { path: 'company-services', component: CompanyServicesComponent },
+      { path: 'add-company-service', component: AddCompanyServiceComponent },
+      { path: 'order-service', component: SellServiceComponent },
     ]
-  },
+  }
 ];
 
 export const declarations = [
@@ -197,6 +208,12 @@ export const declarations = [
   EditUserComponent,
   CompanyViewConfigsComponent,
   ImportComponent,
+  QouteComponent,
+  QoutesListComponent,
+  QouteDetailsComponent,
+  CompanyServicesComponent,
+  AddCompanyServiceComponent,
+  SellServiceComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,
