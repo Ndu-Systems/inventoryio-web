@@ -57,6 +57,10 @@ export class PartnerService {
 
     });
   }
+  addPartnersRange(data: Partner[]): Observable<any> {
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/partner/add-partners-range.php`, { partners: data });
+  }
 
   getPartners(companyId) {
     return this.http.get<any>(`${this.url}/api/partner/get-partner.php?CompanyId=${companyId}`).subscribe(resp => {

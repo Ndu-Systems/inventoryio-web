@@ -76,9 +76,9 @@ import { ImportComponent } from './import-export/import/import.component';
 import { QouteComponent } from './qouting/qoute/qoute.component';
 import { QoutesListComponent } from './qouting/qoute/qoutes-list/qoutes-list.component';
 import { QouteDetailsComponent } from './qouting/qoute/qoute-details/qoute-details.component';
-import { CompanyServicesComponent } from './company-services/company-services/company-services.component';
-import { AddCompanyServiceComponent } from './company-services/company-services/add-company-service/add-company-service.component';
-import { SellServiceComponent } from './company-services/company-services/sell-service/sell-service.component';
+import { SpeechComponent } from './shared/speech/speech.component';
+import { ImportPartnersComponent } from './import-export/import/import-partners/import-partners.component';
+
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
@@ -131,9 +131,10 @@ const routes: Routes = [
       { path: 'qoutes-list', component: QoutesListComponent },
       { path: 'qoute-details', component: QouteDetailsComponent },
       { path: 'company-view-configs/:id', component: CompanyViewConfigsComponent },
-      { path: 'company-services', component: CompanyServicesComponent },
-      { path: 'add-company-service', component: AddCompanyServiceComponent },
-      { path: 'order-service', component: SellServiceComponent },
+      { path: 'import-partners/:id', component: ImportPartnersComponent },
+      // { path: 'company-services', component: CompanyServicesComponent },
+      // { path: 'add-company-service', component: AddCompanyServiceComponent },
+      // { path: 'order-service', component: SellServiceComponent },
     ]
   }
 ];
@@ -211,9 +212,11 @@ export const declarations = [
   QouteComponent,
   QoutesListComponent,
   QouteDetailsComponent,
-  CompanyServicesComponent,
-  AddCompanyServiceComponent,
-  SellServiceComponent,
+  SpeechComponent,
+  ImportPartnersComponent,
+  // CompanyServicesComponent,
+  // AddCompanyServiceComponent,
+  // SellServiceComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

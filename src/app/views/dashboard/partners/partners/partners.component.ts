@@ -62,5 +62,11 @@ export class PartnersComponent implements OnInit {
     this.showForm = !this.showForm;
   }
   clearSearch() { this.search = null; }
+  import() {
+    this.bannerService.updateState({
+      backto: `/dashboard/partners/${this.type}`,
+    });
+    this.routeTo.navigate([`/dashboard/import-partners/${this.type}`]);
+  }
 
 }

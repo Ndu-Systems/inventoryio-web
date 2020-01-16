@@ -62,8 +62,8 @@ export class AddProductComponent implements OnInit {
         UnitCost: 0,
         Code: '',
         SKU: '',
-        Quantity: 0,
-        LowStock: '',
+        Quantity: 1,
+        LowStock: 0,
         CreateDate: '',
         CreateUserId: '',
         ModifyDate: '',
@@ -77,11 +77,11 @@ export class AddProductComponent implements OnInit {
       CatergoryId: [this.prodcut.CatergoryId || ''],
       Description: [this.prodcut.Description || ' '],
       UnitPrice: [this.prodcut.UnitPrice || ''],
-      UnitCost: [this.prodcut.UnitCost || ''],
+      UnitCost: [this.prodcut.UnitCost || 0],
       Code: [this.prodcut.Code || ''],
       SKU: [this.prodcut.SKU || 'na'],
-      Quantity: [this.prodcut.Quantity || undefined],
-      LowStock: [this.prodcut.LowStock || undefined],
+      Quantity: [this.prodcut.Quantity || 1],
+      LowStock: [this.prodcut.LowStock || 0],
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
@@ -115,7 +115,7 @@ export class AddProductComponent implements OnInit {
   }
   addbrand(data: Product) {
     this.bannerService.updateState({
-       backto: '/dashboard/add-product'
+      backto: '/dashboard/add-product'
     });
     this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-brand']);
@@ -123,7 +123,7 @@ export class AddProductComponent implements OnInit {
 
   addcatergory(data: Product) {
     this.bannerService.updateState({
-       backto: '/dashboard/add-product'
+      backto: '/dashboard/add-product'
     });
     this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-catergory']);

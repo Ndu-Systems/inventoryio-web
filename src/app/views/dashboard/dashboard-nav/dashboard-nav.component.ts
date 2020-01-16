@@ -46,27 +46,27 @@ export class DashboardNavComponent implements OnInit {
   populateSideNav() {
     this.models = [] = [
       {
-        Name: 'dashboard',
+        Name: 'Dashboard',
         Link: '/dashboard/',
         Icon: `pi pi-home`,
         showItem: true
       },
       {
-        Name: 'inventory ',
+        Name: 'New Item',
+        Link: '/dashboard/add-product',
+        Icon: `pi pi-plus`,
+        showItem: true
+      },
+      {
+        Name: 'Items',
         Link: '/dashboard/list-product',
         Icon: `pi pi-shopping-cart`,
         showItem: true
       },
       {
-        Name: 'sell',
+        Name: 'New Sales Order',
         Link: '/dashboard/sell',
-        Icon: `pi pi-money-bill`,
-        showItem: true
-      },
-      {
-        Name: 'Qoute',
-        Link: '/dashboard/qoute-customer',
-        Icon: `pi pi-money-bill`,
+        Icon: `pi pi-plus`,
         showItem: true
       },
       {
@@ -76,23 +76,36 @@ export class DashboardNavComponent implements OnInit {
         showItem: true
       },
       {
-        Name: 'New Service',
-        Link: '/dashboard/add-company-service',
-        Icon: `pi pi-align-left`,
+        Name: 'New Qoute',
+        Link: '/dashboard/qoute-customer',
+        Icon: `pi pi-plus`,
         showItem: true
       },
       {
-        Name: 'Services',
-        Link: '/dashboard/company-services',
+        Name: 'View Qoutes',
+        Link: '/dashboard/qoutes-list',
         Icon: `pi pi-align-left`,
         showItem: true
       },
-      {
-        Name: 'Order Services',
-        Link: '/dashboard/order-service',
-        Icon: `pi pi-align-left`,
-        showItem: true
-      },
+
+      // {
+      //   Name: 'New Service',
+      //   Link: '/dashboard/add-company-service',
+      //   Icon: `pi pi-align-left`,
+      //   showItem: true
+      // },
+      // {
+      //   Name: 'Services',
+      //   Link: '/dashboard/company-services',
+      //   Icon: `pi pi-align-left`,
+      //   showItem: true
+      // },
+      // {
+      //   Name: 'Order Services',
+      //   Link: '/dashboard/order-service',
+      //   Icon: `pi pi-align-left`,
+      //   showItem: true
+      // },
       // {
       //   Name: 'Reports',
       //   Link: '/dashboard/reports',

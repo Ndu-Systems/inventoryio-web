@@ -14,7 +14,7 @@ export interface Product {
     Code: string;
     SKU: string;
     Quantity: number;
-    LowStock: string;
+    LowStock: number;
     CreateDate: string;
     CreateUserId: string;
     ModifyDate: string;
