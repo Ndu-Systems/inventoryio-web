@@ -22,7 +22,7 @@ export class QoutationService {
     private http: HttpClient,
     private splashService: SplashService,
   ) {
-    this._qoutations = new BehaviorSubject<Qoutation[]>(JSON.parse(localStorage.getItem('quotation')) || []);
+    this._qoutations = new BehaviorSubject<Qoutation[]>(JSON.parse(localStorage.getItem('quotations')) || []);
     this.qoutations = this._qoutations.asObservable();
     this._qoute = new BehaviorSubject<Qoutation>(JSON.parse(localStorage.getItem('quote')));
     this.qoute = this._qoute.asObservable();
@@ -46,7 +46,7 @@ export class QoutationService {
       return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
     });
     this._qoutations.next(state);
-    localStorage.setItem('quotation', JSON.stringify(state));
+    localStorage.setItem('quotations', JSON.stringify(state));
   }
   updateQoutationState(qoute: Qoutation) {
     this.clearSelectedClass();

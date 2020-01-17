@@ -1,11 +1,11 @@
  <h1 class="heading">
-   Add Product
+   Add Item
  </h1>
 
  <div class="clean-from-body">
    <div class="form" [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
      <div class="group">
-       <span>product name</span>
+       <span>Item name</span>
        <input formControlName="Name" autofocus />
      </div>
      <div class="group mt-1 longer">
@@ -65,13 +65,13 @@
 
      <div class="group">
        <span>
-         product Code
+        Item Code
        </span>
        <input formControlName="SKU" />
      </div>
 
      <div class="cta col-1-of-2">
-       <input type="submit" class="btn save" (click)="onSubmit(rForm.value)" value="Add product"
+       <input type="submit" class="btn save" (click)="onSubmit(rForm.value)" value="Save Item"
          [disabled]="!rForm.valid" />
        <a routerLink="/dashboard/list-product" class="cancel">cancel</a>
      </div>

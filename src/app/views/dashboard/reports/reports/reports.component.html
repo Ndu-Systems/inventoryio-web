@@ -1,1 +1,95 @@
-<p-chart type="doughnut" [data]="data"></p-chart>
+<!-- <p-chart type="doughnut" [data]="data"></p-chart> -->
+
+
+<!-- <p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<p-chart type="line" [data]="linedata" (onDataSelect)="selectData($event)"></p-chart> -->
+
+
+
+
+
+<div class="main">
+  <div class="heading-grid">
+    <div class="main-heading">
+      <h1 class="heading">
+        Reports
+        <span>
+          for
+        </span>
+      </h1>
+    </div>
+  
+    <div class="date-range">
+      <input class="date-selector"  type="date">-
+      <input class="date-selector" type="date">
+    </div>
+  </div>
+  <div class="tabs">
+    <div class="tab">
+      <button class="btn" (click)="import()">
+        <span class="">Sales Report</span>
+      </button>
+    </div>
+    <div class="tab">
+      <button class="btn btn-transparent" (click)="import()">
+        <span class="">Inventory Report</span>
+      </button>
+    </div>
+  </div>
+  <div class="col-1-of-2">
+    <div class="graph">
+      <h3>
+        REVENUE
+      </h3>
+      <p-chart type="line" [data]="linedata" (onDataSelect)="selectData($event)"></p-chart>
+    </div>
+    <div class="stat">
+      <div class="stat-big">
+        <div class="card">
+          <h4>
+            Items Sold <span> R 8074.50</span>
+
+          </h4>
+          <p>65</p>
+        </div>
+
+        <div class="card">
+          <h4>
+            Items Quoted <span> R 00</span>
+          </h4>
+
+          <p>00</p>
+        </div>
+      </div>
+
+
+      <div class="stat-big">
+        <div class="card inverse">
+          <h4>
+            TOTAL REVENUE
+          </h4>
+          <p>
+            R15000.500
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>
+            Top Selling Items <span>View All</span>
+          </h4>
+          <table>
+            <tr *ngFor="let item of [0,0,0,0]">
+              <td>
+                Item
+              </td>
+              <td class="value">
+                R200
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

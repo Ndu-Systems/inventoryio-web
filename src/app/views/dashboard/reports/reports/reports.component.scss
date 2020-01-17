@@ -1,0 +1,99 @@
+.main {
+  // background: yellow;
+  padding: 2rem;
+
+  .heading-grid {
+    display: grid;
+    grid-template-columns: 15% auto;
+
+    .main-heading {
+      .heading {
+        padding-left: 1rem;
+      }
+    }
+
+    .date-range {
+      padding-top: .8rem;
+
+      .date-selector {
+        background: none;
+        width: 15rem;
+        display: inline-block;
+        margin: .5rem;
+        border: 1px solid #B1B5BD;
+        border-radius: 10rem;
+        padding: .2rem 1rem;
+      }
+
+    }
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: 10% auto;
+    padding-left: .8888rem;
+    margin: 1.5rem 0;
+  }
+
+  .col-1-of-2 {
+    grid-template-columns: 50% auto;
+
+    .graph {
+      background: #fff;
+      padding: 1rem;
+      margin: 1rem;
+    }
+
+    .stat {
+      padding: 0 1rem;
+      margin: 1rem;
+
+      .stat-big {
+        display: grid;
+        grid-template-columns: 50% auto;
+
+        .card {
+          background: #fff;
+          margin: .5rem 1rem;
+          padding: .5rem 1rem;
+
+          h4 {
+            font-weight: 600;
+            text-transform: uppercase;
+
+            span {
+              color: #0337BB;
+              padding-left: 2rem;
+            }
+          }
+
+          p {
+            width: 100%;
+            text-align: left;
+            font-size: 2.5rem;
+          }
+
+          table {
+            width: 100%;
+
+            .value {
+              text-align: right;
+              opacity: .4;
+            }
+          }
+        }
+
+        .inverse {
+          background: #0337BB;
+
+          h4,
+          p {
+            color: #fff;
+          }
+        }
+      }
+
+
+    }
+  }
+}

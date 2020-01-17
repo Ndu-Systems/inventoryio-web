@@ -32,6 +32,7 @@ export class QoutesListComponent implements OnInit {
   ngOnInit() {
     const user = this.accountService.currentUserValue;
     if (!user.UserId) { this.router.navigate(['sign-in']); }
+    this.qoutationService.getQoutations(user.CompanyId);
     this.orders$ = this.qoutationService.qoutations;
 
     this.bannerService.updateState({
