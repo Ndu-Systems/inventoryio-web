@@ -4,18 +4,35 @@
   </div>
   <div class="nav-bar">
     <ul>
+      <h1 class="header">
+        Main
+      </h1>
       <li *ngFor="let item of models">
         <span *ngIf="true">
-
           <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
             <i [ngClass]="item.Icon"></i>
             {{item.Name}}
           </a>
-
         </span>
       </li>
     </ul>
-    <ul class="mt-20">
+    <ul>
+      <h1 class="header">
+        Sales
+      </h1>
+      <li *ngFor="let item of salesNavModels">
+        <span *ngIf="true">
+          <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <i [ngClass]="item.Icon"></i>
+            {{item.Name}}
+          </a>
+        </span>
+      </li>
+    </ul>
+    <ul class="mt-10">
+      <h1 class="header">
+        help
+      </h1>
       <li *ngFor="let profileItem of profileModels">
         <span *ngIf="profileItem.showItem">
           <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"

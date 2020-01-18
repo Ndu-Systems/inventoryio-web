@@ -2,7 +2,7 @@
 
 .form {
   margin: 0;
-  width: 35rem;
+  width: 100%;
   border-radius: 10px;
 
   h1 {
@@ -97,4 +97,13 @@
       margin-left: 0;
     }
   }
+}
+
+.cta.col-1-of-2 {
+  grid-template-columns: 60% auto;
+}
+
+.main-content .form .cta a.cancel {
+  margin-top: 1.888rem;
+ margin-right: 3em;
 }
