@@ -48,5 +48,9 @@ export class CompanyService {
     return this.http.post<Company>(`${this.url}/api/company/add-company.php`, data);
   }
 
+  updateCompany(data: Company): Observable<Company> {
+    return this.http.put<Company>(`${this.url}/api/company/edit-company.php`, data);
+  }
+
 
 }
