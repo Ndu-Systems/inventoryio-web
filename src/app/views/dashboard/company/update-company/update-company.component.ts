@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService, CompanyService } from 'src/app/_services';
+import { UsersService, CompanyService, AccountService } from 'src/app/_services';
 import { User, Company } from 'src/app/_models';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -15,12 +15,13 @@ export class UpdateCompanyComponent implements OnInit {
   company: Company;
   rForm: FormGroup;
   constructor(private fb: FormBuilder,
-    private userService: UsersService,
-    private messageService: MessageService,
-    private routeTo: Router,
-    private companyService: CompanyService) {
+              private userService: UsersService,
+              private accountService: AccountService,
+              private messageService: MessageService,
+              private routeTo: Router,
+              private companyService: CompanyService) {
 
-     }
+  }
 
   ngOnInit() {
     this.user = this.userService.currentUserValue;
@@ -44,10 +45,13 @@ export class UpdateCompanyComponent implements OnInit {
           summary: 'Success.',
           detail: `Company updated successfully`
         });
+        this.companyService.updateState(response);
         this.company.Name = response.Name;
         this.company.Website = response.Website;
         this.company.TelephoneNumber = response.TelephoneNumber;
         this.user.Company = this.company;
+        this.userService.updateUserState(this.user, 'user');
+        this.accountService.updateUserState(this.user);
       }
     });
     this.routeTo.navigate(['/dashboard/profile'])

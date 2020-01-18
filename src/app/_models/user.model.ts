@@ -20,7 +20,7 @@ export interface User {
   ConfirmPassword?: string;
   StatusId: number;
   Company?: Company;
-  Dp?: string;
+  DP?: any;
   Stores?: Store[];
   Role?: Role;
   Permissions?: SystemPermissionModel[];

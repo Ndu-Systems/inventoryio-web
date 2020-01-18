@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User, Image } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { MessageService } from 'primeng/api';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,6 +13,7 @@ import { MessageService } from 'primeng/api';
 })
 export class UserProfileComponent implements OnInit {
   user: User;
+  user$: Observable<User>;
   files: FileList;
   constructor(
     private bannerService: BannerService,
@@ -33,6 +35,7 @@ export class UserProfileComponent implements OnInit {
       heading: 'Your Profile',
       backto: '/dashboard'
     });
+    this.user$ = this.accountService.user;
   }
 
   // update DP
@@ -69,10 +72,10 @@ export class UserProfileComponent implements OnInit {
     this.messageService.add({
       severity: 'success',
       summary: 'Success!',
-      detail: 'Profile image  updated, please logout and login again.'
+      detail: 'Profile image  updated.'
     });
 
-    this.user.Dp = ` ${environment.API_URL}/api/upload/${url}`;
+    this.user.DP.Url = `${environment.API_URL}/api/upload/${url}`;
     this.accountService.updateUserState(this.user);
   }
 
