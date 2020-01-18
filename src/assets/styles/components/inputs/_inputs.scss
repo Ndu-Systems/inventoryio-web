@@ -117,8 +117,8 @@ label {
     background: $muted-color;
     cursor: none;
 
-    &:hover{
-      box-shadow:none;
+    &:hover {
+      box-shadow: none;
       cursor: no-drop;
       background: $muted-color;
 
@@ -168,6 +168,7 @@ label {
 .btn-transparent {
   background: #fff;
   color: #000;
+
   &:hover {
     background: darken(#eee, 5%);
     color: mix(black, $muted-color, 30%);
@@ -180,10 +181,12 @@ label {
   text-align: left;
   color: #e74c3c;
 }
-.input-box{
+
+.input-box {
   padding: 10px 20px;
   border-radius: 3px;
 }
+
 .form {
   text-align: right;
   background: #ffffff;
@@ -331,4 +334,14 @@ label {
       }
     }
   }
+}
+
+.roundInput {
+  background: none;
+  width: 15rem;
+  display: inline-block;
+  margin: .5rem;
+  border: 1px solid #B1B5BD;
+  border-radius: .2rem;
+  padding: .2rem 1rem;
 }

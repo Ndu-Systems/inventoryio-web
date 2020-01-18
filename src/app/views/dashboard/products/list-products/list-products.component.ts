@@ -19,6 +19,7 @@ export class ListProductsComponent implements OnInit {
   totalPrice = 0;
   notFoundModel: NotFoundModel;
   categories: any[];
+  showScan: boolean;
 
   constructor(
     private productService: ProductService,
@@ -73,5 +74,8 @@ export class ListProductsComponent implements OnInit {
   }
   myFunc(total, num) {
     return total + num;
+  }
+  scann() {
+    this.showScan = true;
   }
 }

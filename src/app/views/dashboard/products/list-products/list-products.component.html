@@ -6,7 +6,7 @@
     <span class="number"> | {{totalPrice | currency:'R'}}</span>
   </h1>
 
-  <div class="panel col-1-of-3">
+  <!-- <div class="panel col-1-of-3">
     <div class="input-card">
       <div class="search-box">
         <div class="input-times">
@@ -38,48 +38,97 @@
         <span class="">Import</span>
       </button>
     </div>
+  </div> -->
+
+
+
+
+  <div class="small-cards small-cards-filter">
+    <div class="card filter-card">
+      <div class="list-filters topbar">
+        <div class="search-box">
+          <div class="input-times">
+            <input type="text" class="roundInput"  [(ngModel)]="search" placeholder="🔎 search here ...">
+          </div>
+        </div>
+       
+        <div>
+          <select [(ngModel)]="searchByCatergory" class="roundInput">
+            <option value="" selected>All</option>
+            <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+          </select>
+        </div>
+        <div>
+          <button class="btn btn-transparent" (click)="scann()">
+            <span class=""><i class="pi pi-ticket"></i>Scan</span>
+          </button>
+        </div>
+        <div></div>
+        <div>
+          <button class="btn" (click)="add()">
+            <span class=""><i class="pi pi-plus"></i> Add Item</span>
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-transparent" (click)="import()">
+            <span class=""><i class="pi pi-download"></i> Import</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+
+
+
+
+
   <div class="sell-grid">
     <!-- <div class="list-body"> -->
-      <div class="small-cards-body" *ngIf="products$  | async as products">
+    <div class="small-cards-body" *ngIf="products$  | async as products">
 
-        <div class="small-cards" *ngIf="products.length > 0; else notFound">
+      <div class="small-cards" *ngIf="products.length > 0; else notFound">
 
-          <div class="card"
-            *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-            <div class="image">
-              <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-              <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
-            </div>
-            <div class="details">
-              <p class="name">
-                {{item.Name}}
-                <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
-
-              </p>
-
-            </div>
-            <div class="price">
-              <p>
-                {{item.UnitPrice | currency:'R'}}
-              </p>
-              <button class="action-btn hover-shadow" (click)="details(item)">View</button>
-            </div>
+        <div class="card"
+          *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
+          <div class="image">
+            <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+            <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
           </div>
+          <div class="details">
+            <p class="name">
+              {{item.Name}}
+              <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
 
+            </p>
+
+          </div>
+          <div class="price">
+            <p>
+              {{item.UnitPrice | currency:'R'}}
+            </p>
+            <button class="action-btn hover-shadow" (click)="details(item)">View</button>
+          </div>
         </div>
-        <ng-template #notFound>
-          <div class="not-found">
-            <img [src]="notFoundModel.Image" alt="no items found">
-            <h1 class="message">
-              {{notFoundModel.Message}}
-              <span>
-                <a class="link-add" (click)="add()"> add new product.</a>
-              </span>
-            </h1>
-          </div>
-        </ng-template>
+
+      </div>
+      <ng-template #notFound>
+        <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            {{notFoundModel.Message}}
+            <span>
+              <a class="link-add" (click)="add()"> add new product.</a>
+            </span>
+          </h1>
+        </div>
+      </ng-template>
       <!-- </div> -->
     </div>
   </div>
+</div>
+
+<div class="scanner-pluggin" *ngIf="showScan">
+    <app-scanner></app-scanner>
 </div>

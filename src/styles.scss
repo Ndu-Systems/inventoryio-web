@@ -1,6 +1,5 @@
 @import './assets/styles/base';
 @import './assets/styles/keyframes';
-@import './assets/styles/components/inputs/inputs';
 @import './assets/styles/components/items';
 @import './assets/styles/grid';
 @import './assets/styles/components/cards';
@@ -12,6 +11,8 @@
 @import './assets/styles/components/filters';
 @import './assets/styles/components/main-content';
 @import './assets/styles/components/forms-prod-congig-import';
+@import './assets/styles/components/inputs/inputs';
+
 
 .card{
     border-radius: 10px;
