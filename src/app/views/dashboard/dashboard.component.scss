@@ -12,33 +12,56 @@
     top: 0;
     left: 0;
     z-index: 1000;
-  }
 
-  .body {
-    display: grid;
-    grid-template-columns: 12% 85%;
-    width: 100%;
-    margin-top: 3rem;
-
-    .container {
-      padding: 2rem;
+    img {
+      height: 5.5em;
+      margin: -0.5em;
     }
 
     @media only screen and (max-width: 600px) {
-      grid-template-columns: 100%;
-      margin-top: 5rem;
-
-      .container {
-        padding: 0;
+      img {
+        height: 2.5em;
+        margin: 1.5em;
+        margin-left: 4em;
       }
-    }
+  }
+}
 
-    @media only screen and (min-width: 768px) {
-      grid-template-columns: 10% 90%;
-      .container {
-        padding: 2rem 0;
-      }
-    }
+.body {
+  display: grid;
+  grid-template-columns: 12% 85%;
+  width: 100%;
+  margin-top: 3rem;
 
+  .container {
+    padding: 2rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    margin-top: 5rem;
+
+    .container {
+      padding: 0;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: 10% 90%;
+
+    .container {
+      padding: 2rem 0;
+    }
+  }
+
+}
+}
+
+@media only screen and (min-width: 600px) {
+  .image {
+    img {
+      height: 5em;
+      padding: 1rem;
+    }
   }
 }
