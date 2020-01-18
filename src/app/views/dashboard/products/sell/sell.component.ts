@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product, SellModel, Orders, User, Item, NotFoundModel, Partner } from 'src/app/_models';
-import { ProductService, AccountService, BannerService, SaleService, OrdersService, PartnerService } from 'src/app/_services';
+import { ProductService, AccountService, BannerService, SaleService, OrdersService, PartnerService, ScannerService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { NotFoundConstants } from '../../shared';
@@ -28,6 +28,7 @@ export class SellComponent implements OnInit {
   selectedCustomerId = '';
   customers: Partner[] = [];
   customers$: Observable<Array<Partner>>;
+  showScan: boolean;
 
   constructor(
     private productService: ProductService,
@@ -37,9 +38,8 @@ export class SellComponent implements OnInit {
     private saleService: SaleService,
     private messageService: MessageService,
     private ordersService: OrdersService,
-    private partnerService: PartnerService
-
-
+    private partnerService: PartnerService,
+    private scannerService: ScannerService
   ) { }
 
   ngOnInit() {
@@ -69,6 +69,18 @@ export class SellComponent implements OnInit {
       this.customers = data;
     });
     this.customers$ = this.partnerService.partners;
+    this.scannerService.scann.subscribe(scan => {
+      if (scan) {
+        this.showScan = scan.isOpen;
+        if (scan.code) {
+          const product = this.products.find(x => x.Code === scan.code);
+          if (product) {
+            this.doSell(product);
+          }
+        }
+
+      }
+    });
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
@@ -83,6 +95,11 @@ export class SellComponent implements OnInit {
         });
         return false;
       }
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Added to cart',
+        detail: `${product.Name} Added`
+      });
       const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
       if (item) {
         item.quantity++;
@@ -163,10 +180,8 @@ export class SellComponent implements OnInit {
     });
     this.router.navigate(['/dashboard/add-partner/customers']);
   }
-  // customer
-  // suggetsCustomer(event) {
-  //   const fraze = event.query;
-  //   this.customers = this.customers.filter(x => x.toLocaleUpperCase().includes(fraze.toLocaleUpperCase()));
-  // }
+  scann() {
+    this.showScan = true;
+  }
 }
 

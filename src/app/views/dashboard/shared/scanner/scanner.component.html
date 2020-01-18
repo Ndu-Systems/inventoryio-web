@@ -1,11 +1,13 @@
-<p>
-  scanner works!
-</p>
-<zxing-scanner 
-[formats]="allowedFormats"
-[torch]="torch"
-(scanSuccess)="onCodeResult($event)"
-(scanError)="scanErrorHandler($event)"
-(scanComplete)="scanCompleteHandler($event)"
->
-</zxing-scanner>
+<div class="main">
+  <div class="scanner">
+    <div class="close" (click)="close()">
+      <h1>
+        <i class="pi pi-chevron-left"></i>
+      </h1>
+    </div>
+    <zxing-scanner class="barcode" [formats]="allowedFormats" [torch]="torch" (scanSuccess)="onCodeResult($event)"
+      (scanError)="scanErrorHandler($event)" (scanComplete)="scanCompleteHandler($event)">
+    </zxing-scanner>
+  </div>
+
+</div>

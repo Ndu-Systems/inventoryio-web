@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService, AccountService, BannerService } from 'src/app/_services';
+import { ProductService, AccountService, BannerService, ScannerService } from 'src/app/_services';
 import { Product, NotFoundModel } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -20,12 +20,15 @@ export class ListProductsComponent implements OnInit {
   notFoundModel: NotFoundModel;
   categories: any[];
   showScan: boolean;
+  productBarcode: string;
 
   constructor(
     private productService: ProductService,
     private router: Router,
     private accountService: AccountService,
-    private bannerService: BannerService
+    private bannerService: BannerService,
+    private scannerService: ScannerService
+
 
   ) { }
 
@@ -55,6 +58,13 @@ export class ListProductsComponent implements OnInit {
       Image: NotFoundConstants.NOT_FOUND_PRODUCTS.image,
       Message: NotFoundConstants.NOT_FOUND_PRODUCTS.message
     };
+
+    this.scannerService.scann.subscribe(scan => {
+      if (scan) {
+        this.showScan = scan.isOpen;
+        this.search = scan.code;
+      }
+    });
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
 import { SplashService } from 'src/app/_services/splash.service';
+import { ScannerService } from 'src/app/_services';
 
 @Component({
   selector: 'app-scanner',
@@ -19,26 +20,25 @@ export class ScannerComponent implements OnInit {
   ];
 
 
-  constructor(private splashService: SplashService) { }
+  constructor(private splashService: SplashService, private scannerService: ScannerService) { }
 
   ngOnInit() {
   }
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
-    this.splashService.update({
-      show: true, heading: 'Bar code',
-      message: resultString,
-      class: `success`
-    });
+    this.scannerService.updateCannState({ code: resultString, isOpen: false });
   }
   scanErrorHandler(error: string) {
     this.splashService.update({
-      show: true, heading: 'Network Error',
-      message: 'success',
+      show: true, heading: 'Sorry',
+      message: 'Opps, Error uccured while trying to scann',
       class: `error`
     });
   }
   scanCompleteHandler(result: string) {
 
+  }
+  close() {
+    this.scannerService.closeScanner();
   }
 }

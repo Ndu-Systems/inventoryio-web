@@ -21,7 +21,7 @@
   <div class="sell-grid">
 
     <div class="products">
-      <div class="list-filters">
+      <!-- <div class="list-filters">
         <div class="input-times">
           <input type="text" [(ngModel)]="search" placeholder="search">
           <div class="times" (click)="clearSearch()">
@@ -42,7 +42,63 @@
           </div>
         </div>
 
+      </div> -->
+
+
+      <div class="small-cards small-cards-filter">
+        <div class="card filter-card">
+          <div class="list-filters topbar">
+            <div class="search-box">
+              <div class="input-times">
+                <input type="text" class="roundInput"  [(ngModel)]="search" placeholder="🔎 search here ...">
+              </div>
+            </div>
+           
+            <div>
+              <select [(ngModel)]="searchByCatergory" class="roundInput">
+                <option value="" selected>All</option>
+                <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+              </select>
+            </div>
+            <div>
+              <button class="btn btn-transparent" (click)="scann()">
+                <span class=""><i class="pi pi-ticket"></i>Scan</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+
+
+      <div class="small-cards small-cards-filter">
+        <div class="card filter-card">
+          <div class="list-filters topbar">
+            <div class="search-box">
+              <div class="input-times">
+                <input type="text" class="roundInput"  [(ngModel)]="search" placeholder="🔎 search here ...">
+              </div>
+            </div>
+           
+            <div>
+              <select [(ngModel)]="searchByCatergory" class="roundInput">
+                <option value="" selected>All</option>
+                <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+              </select>
+            </div>
+            <div>
+              <button class="btn btn-transparent" (click)="scann()">
+                <span class=""><i class="pi pi-ticket"></i>Scan</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+
+
+
 
       <div class="small-cards-body" *ngIf="products$  | async as products">
 
@@ -143,3 +199,6 @@
 
 </div>
 
+<div class="scanner-pluggin" *ngIf="showScan">
+  <app-scanner></app-scanner>
+</div>
