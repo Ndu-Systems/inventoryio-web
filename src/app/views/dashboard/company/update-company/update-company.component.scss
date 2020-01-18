@@ -1,8 +1,11 @@
-.btn {
-
-  padding: 1em 0;
-
-}
 .main-content .form .cta .group .btn {
   font-size: 13px;
+}
+
+.cta.col-1-of-2 {
+  grid-template-columns: 40% 20%;
+}
+
+.main-content .form .cta a.cancel {
+  margin-top: 1.888rem;
 }

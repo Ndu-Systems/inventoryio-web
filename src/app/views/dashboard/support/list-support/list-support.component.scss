@@ -1,73 +1,9 @@
 @import '../../../../../assets/styles/variables';
 
-.main {
-  padding: 1rem;
-
-  .list-container {
-    background: #fff;
-    padding: 2rem;
-    height: 40rem;
-    overflow-y: scroll;
-    border-radius: 10px;
-
-    .header {
-      width: 80%;
-      font-size: 1rem;
-      color: #000000;
-      margin: 1rem;
-      text-align: left;
-      font-weight: 600;
-      text-transform: capitalize;
-    }
-
-
-    .card {
-      border-bottom: solid 1px #7B8C98;
-      width: 90%;
-      margin: 0 auto;
-
-      .title {
-        font-size: 15px;
-        font-weight: bold;
-        text-transform: capitalize;
-      }
-
-      .text {
-        font-size: 12px;
-        color: #7B8C98;
-      }
-
-      .date {
-        font-size: 10px;
-        font-weight: 800;
-        color: #7B8C98;
-      }
-    }
-  }
+.cards {
+  grid-template-columns: 100%;
 }
 
-a.cta {
-  font-weight: 700;
-  cursor: pointer;
-  color: $primary-bg-color;
-  float: left;
-  margin-left: 2rem;
-  text-transform: capitalize;
-  display: none;
-}
+.card {
 
-@media only screen and (max-width: 600px) {
-
-  .main {
-    .list-container {
-      height: 42rem;
-    }
-  }
-
-  a.cta {
-    float: left;
-    margin-left: 0;
-    margin-top: 1.7rem;
-
-  }
 }

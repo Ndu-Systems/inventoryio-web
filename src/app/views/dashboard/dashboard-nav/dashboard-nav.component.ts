@@ -14,6 +14,7 @@ import { SharedService } from '../shared/shared.service';
 export class DashboardNavComponent implements OnInit {
   models: NavModel[];
   profileModels: NavModel[];
+  salesNavModels: NavModel[];
   profileMobileModels: NavModel[];
   showNav = true;
   width: number;
@@ -41,6 +42,7 @@ export class DashboardNavComponent implements OnInit {
     this.getUserRole(user);
     this.getDeviceSize();
     this.populateSideNav();
+    this.populateSalesNav();
   }
 
   populateSideNav() {
@@ -50,6 +52,11 @@ export class DashboardNavComponent implements OnInit {
         Link: '/dashboard/',
         Icon: `pi pi-home`,
         showItem: true
+      },
+      {
+        Name: 'Reports',
+        Link: '/dashboard/reports',
+        Icon: `pi pi-chart-line`
       },
       {
         Name: 'New Item',
@@ -62,7 +69,12 @@ export class DashboardNavComponent implements OnInit {
         Link: '/dashboard/list-product',
         Icon: `pi pi-shopping-cart`,
         showItem: true
-      },
+      }
+    ];
+  }
+  populateSalesNav() {
+    this.salesNavModels = [] = [
+
       {
         Name: 'New Sales Order',
         Link: '/dashboard/sell',
@@ -76,40 +88,16 @@ export class DashboardNavComponent implements OnInit {
         showItem: true
       },
       {
-        Name: 'New Qoute',
+        Name: 'New Quote',
         Link: '/dashboard/qoute-customer',
         Icon: `pi pi-plus`,
         showItem: true
       },
       {
-        Name: 'View Qoutes',
+        Name: 'View Quotes',
         Link: '/dashboard/qoutes-list',
         Icon: `pi pi-align-left`,
         showItem: true
-      },
-
-      // {
-      //   Name: 'New Service',
-      //   Link: '/dashboard/add-company-service',
-      //   Icon: `pi pi-align-left`,
-      //   showItem: true
-      // },
-      // {
-      //   Name: 'Services',
-      //   Link: '/dashboard/company-services',
-      //   Icon: `pi pi-align-left`,
-      //   showItem: true
-      // },
-      // {
-      //   Name: 'Order Services',
-      //   Link: '/dashboard/order-service',
-      //   Icon: `pi pi-align-left`,
-      //   showItem: true
-      // },
-      {
-        Name: 'Reports',
-        Link: '/dashboard/reports',
-        Icon: `pi pi-chart-line`
       }
     ];
   }
