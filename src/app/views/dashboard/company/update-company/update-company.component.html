@@ -1,3 +1,52 @@
-<p>
-  update-company works!
-</p>
+<div class="main-content">
+  <h1 class="title-header">Update your company here.</h1>
+  <div class="col-1-of-2">
+    <div class="panel">
+      <h1 class="sub-header">Update your company details to ensure current & accurate data is set for company purposes.</h1>
+      <div class="form">
+        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="update(rForm.value)">
+          <div class="form-group">
+            <div class="group">
+              <input type="text" formControlName="Name" required="required" />
+              <label class="label">Company name*</label>
+            </div>
+          </div>
+          <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+            Company name is required
+          </div>
+          <div class="col-1-of-2">
+            <span>
+              <div class="form-group">
+                <div class="group">
+                  <input type="text" formControlName="TelephoneNumber" required="required" />
+                  <label class="label">Company telephone*</label>
+                </div>
+              </div>
+              <div class="alert"
+                *ngIf="!rForm.controls['TelephoneNumber'].valid && rForm.controls['TelephoneNumber'].touched">
+                Telephone Number is required
+              </div>
+            </span>
+            <span>
+              <div class="form-group">
+                <div class="group">
+                  <input type="text" formControlName="Website" />
+                  <label class="label">Company Website</label>
+                </div>
+              </div>
+            </span>
+          </div>
+
+          <div class="col-1-of-2">
+            <div class="cta col-1-of-2">
+              <div class="group button">
+                <input type="submit" value="Update company" class="btn" [disabled]="!rForm.valid" />
+              </div>
+              <a routerLink="/dashboard/profile" class="cancel">cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

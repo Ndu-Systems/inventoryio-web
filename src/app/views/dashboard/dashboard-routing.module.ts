@@ -85,6 +85,7 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'add-company', component: AddCompanyComponent },
+      { path: 'edit-company', component: UpdateCompanyComponent },
       { path: 'add-user', component: AddUserComponent },
       { path: 'edit-user', component: EditUserComponent },
       { path: 'list-user', component: ListUsersComponent },
