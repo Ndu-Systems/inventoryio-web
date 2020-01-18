@@ -17,6 +17,8 @@ export class SignUpComponent implements OnInit {
   error: string;
   loading$ = this.accountService.loading;
   role: Role;
+  hidePassword = true;
+
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,

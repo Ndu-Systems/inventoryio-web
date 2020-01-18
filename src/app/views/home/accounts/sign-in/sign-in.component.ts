@@ -18,6 +18,7 @@ export class SignInComponent implements OnInit {
   loading$: Observable<boolean>;
   email = environment.ACCOUNT_TEST_EMAIL;
   password = environment.ACCOUNT_TEST_PASSWORD;
+  hidePassword = true;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
