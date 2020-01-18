@@ -133,6 +133,7 @@
       &.col-1-of-2 {
         grid-template-columns: 100%;
       }
+      padding: 0;
     }
   }
 }
@@ -156,6 +157,7 @@
       }
     }
   }
+
 
   .solutions {
     h1.heading {
