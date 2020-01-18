@@ -1,25 +1,25 @@
 <div class="container">
   <div class="sign-in-background"></div>
-    <div class="section">
-      <h1 class="access">Create your new free account.</h1>
-      <div class="form">
-        <form [formGroup]="rForm" (ngSubmit)="signUp()">
-          <div class="group">
-            <input type="text" formControlName="fullname" autofocus required="required" />
-            <label>Full Name</label>
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
-            Full Name is required
-          </div>
+  <div class="section">
+    <h1 class="access">Create your new free account.</h1>
+    <div class="form">
+      <form [formGroup]="rForm" (ngSubmit)="signUp()">
+        <div class="group">
+          <input type="text" formControlName="fullname" autofocus required="required" />
+          <label>Full Name</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
+          Full Name is required
+        </div>
 
-          <div class="group">
-            <input type="text" formControlName="companyName" required="required" />
-            <label>Company Name</label>
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['companyName'].valid  && rForm.controls['companyName'].touched">
-            Company name is required
-          </div>
-          <!-- <div class="group">
+        <div class="group">
+          <input type="text" formControlName="companyName" required="required" />
+          <label>Company Name</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['companyName'].valid  && rForm.controls['companyName'].touched">
+          Company name is required
+        </div>
+        <!-- <div class="group">
             <input type="text" formControlName="cell" required="required" />
             <label>Cell Phone Number</label>
           </div>
@@ -27,53 +27,47 @@
             Cell Phone Number is required
           </div> -->
 
-          <div class="group">
-            <input type="text" formControlName="email" required="required" />
-            <label>Email Address</label>
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
-            A valid email is required
-          </div>
-         
-          <div class="group">
-            <input type="password" formControlName="password" required="required" autocomplete="new-password" />
+        <div class="group">
+          <input type="text" formControlName="email" required="required" />
+          <label>Email Address</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
+          A valid email is required
+        </div>
+
+        <div class="group">
+          <input [type]="hidePassword? 'password': 'text'" formControlName="password" required="required"
+            autocomplete="new-password" />
+          <label>Password</label>
+        </div>
+        <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
+          Password is required
+        </div>
+
+        <div class="showPassword" (click)="hidePassword = !hidePassword">
+          <i *ngIf="hidePassword" class="pi pi-eye-slash"></i>
+          <i *ngIf="!hidePassword" class="pi pi-eye"></i>
+        </div>
 
 
-            <label>Password</label>
 
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
-            Password is required
-          </div>
-
-          <!-- <div class="group">
-            <input type="password" formControlName="passwordConfirm" required="required" />
-
-
-            <label>Confirm Password</label>
-
-          </div>
-          <div class="alert"
-            *ngIf="!rForm.controls['passwordConfirm'].valid  && rForm.controls['passwordConfirm'].touched">
-            Confirm Password is required
-          </div> -->
-          <div class="actions">
-
-          </div>
-          <br>
-          <div class="group">
-            <input type="submit" value="Register account" class="btn" [disabled]="!rForm.valid" />
-          </div>
-
-        </form>
         <div class="actions">
-          <div class="sign-up">
-            Already A Member?<a routerLink="/sign-in"  class="btn btn-border">Sign in now.</a>
-          </div>
+
+        </div>
+        <br>
+        <div class="group">
+          <input type="submit" value="Register account" class="btn" [disabled]="!rForm.valid" />
+        </div>
+
+      </form>
+      <div class="actions">
+        <div class="sign-up">
+          Already A Member?<a routerLink="/sign-in" class="btn btn-border">Sign in now.</a>
         </div>
       </div>
-
     </div>
+
+  </div>
 </div>
 
 

@@ -17,9 +17,15 @@
           Email is required
         </div>
         <div class="group">
-          <input type="password" formControlName="Password" />
+          <input type="password" [type]="hidePassword? 'password': 'text'" formControlName="Password" />
           <label>Password</label>
         </div>
+        <div>
+          <div class="showPassword" (click)="hidePassword = !hidePassword">
+            <i *ngIf="hidePassword"  class="pi pi-eye-slash"></i>
+            <i *ngIf="!hidePassword"  class="pi pi-eye"></i>
+          </div>
+         </div>
         <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
           Password is required
         </div>
