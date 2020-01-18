@@ -16,6 +16,7 @@ export * from './support.service';
 export * from './partner.service';
 export * from './invoice.service';
 export * from './company-configs.service';
+export * from './reports.service';
 // export * from './product.service';
 // export * from './sale.service';
 

@@ -116,6 +116,13 @@ label {
   &:disabled {
     background: $muted-color;
     cursor: none;
+
+    &:hover{
+      box-shadow:none;
+      cursor: no-drop;
+      background: $muted-color;
+
+    }
   }
 
   &:hover {

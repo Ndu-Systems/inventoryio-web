@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersService, AccountService } from 'src/app/_services';
-import { User } from 'src/app/_models';
+import { OrdersService, AccountService, ReportsService } from 'src/app/_services';
+import { User, OrderProducts, Orders } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { QoutationService } from 'src/app/_services/dashboard/qoutation.service';
 
 @Component({
   selector: 'app-reports',
@@ -18,14 +19,25 @@ export class ReportsComponent implements OnInit {
   rangeDates: Date[];
   calendarStyle: any;
 
+  dateTo;
+  dateFrom;
+  reportTag;
+  items: OrderProducts[];
+  orders: Orders[];
+  totalRev: any = '00';
+
   constructor(
     private ordersService: OrdersService,
     private accountService: AccountService,
     private router: Router,
     private messageService: MessageService,
+    private reportsService: ReportsService,
+    private qoutationService: QoutationService,
 
   ) {
-
+    this.dateTo = this.shortDate(new Date());
+    this.dateFrom = this.shortDate(new Date());
+    this.reportTag = `Today's report`;
   }
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
@@ -49,33 +61,25 @@ export class ReportsComponent implements OnInit {
     };
     this.initStyles();
     this.ordersService.getOrders(this.user.CompanyId);
-    this.getSalesReportsForToday();
+    this.orders = this.ordersService.currentOrdersValue;
   }
 
-  getSalesReportsForToday() {
-    const orders = this.ordersService.currentOrdersValue;
-    console.log('orders', orders);
-    const ordersToday = orders.filter(x => this.getDate(new Date(x.CreateDate)) === this.getDate(new Date()));
-    console.log('ordersToday', ordersToday);
-    this.mainReportLineData = ordersToday.map(x => Number(x.Total));
-    this.intLineGraph();
-
-  }
   getDate(date: Date) {
     const val = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
     console.log(date, val);
 
     return val;
   }
-  intLineGraph() {
+  intLineGraph(vals) {
     this.linedata = {
-      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
+      // labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
+      labels: vals,
       datasets: [
         {
           label: 'Sales Today',
-          data: [18000, 1500, 1350, 2200, 5000, 9900, 21000],
+          data: vals,
           fill: false,
-          borderColor: '#4cd137'
+          borderColor: '#8e44ad'
         }
       ]
     };
@@ -90,5 +94,35 @@ export class ReportsComponent implements OnInit {
   }
   initStyles() {
     this.calendarStyle = { border: 'none' };
+  }
+
+  shortDate(date: Date) {
+
+    const monthNames = ['Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep',
+      'Oct', 'Nov', 'Dec'];
+
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+
+    // return '' + day + '-' + monthNames[monthIndex] + '-' + year;
+    return year + '-' + monthIndex + 1 + '-' + day;
+  }
+  dateRangeChanged() {
+    const data = this.reportsService.getOrdersForARange(this.dateFrom, this.dateTo, this.orders);
+    console.log('data data data', data);
+    const vals = data.map(x => Number(x.Total));
+    this.totalRev = this.getTotal(vals);
+
+    this.intLineGraph(vals);
+  }
+  getTotal(numbers: number[]) {
+    let sum = 0;
+    numbers.forEach(num => {
+      sum += num;
+    });
+    return sum;
   }
 }

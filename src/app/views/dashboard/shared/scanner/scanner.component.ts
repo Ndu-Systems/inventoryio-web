@@ -26,15 +26,15 @@ export class ScannerComponent implements OnInit {
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
     this.splashService.update({
-      show: true, heading: 'Network Error',
+      show: true, heading: 'Bar code',
       message: resultString,
-      class: `error`
+      class: `success`
     });
   }
   scanErrorHandler(error: string) {
     this.splashService.update({
       show: true, heading: 'Network Error',
-      message: error,
+      message: 'success',
       class: `error`
     });
   }

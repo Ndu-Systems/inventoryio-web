@@ -21,18 +21,22 @@
     </div>
   
     <div class="date-range">
-      <input class="date-selector"  type="date">-
-      <input class="date-selector" type="date">
+      <input class="date-selector"  [(ngModel)]="dateFrom" (change)="dateRangeChanged()" type="date">-
+      <input class="date-selector"  [(ngModel)]="dateTo"   (change)="dateRangeChanged()" type="date">
+      <div class="tags">
+        {{reportTag}}
+      </div>
+
     </div>
   </div>
   <div class="tabs">
     <div class="tab">
-      <button class="btn" (click)="import()">
+      <button class="btn">
         <span class="">Sales Report</span>
       </button>
     </div>
     <div class="tab">
-      <button class="btn btn-transparent" (click)="import()">
+      <button class="btn btn-transparent" disabled>
         <span class="">Inventory Report</span>
       </button>
     </div>
@@ -70,7 +74,7 @@
             TOTAL REVENUE
           </h4>
           <p>
-            R15000.500
+            R {{totalRev}}
           </p>
         </div>
 

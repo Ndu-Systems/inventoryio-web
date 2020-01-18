@@ -24,6 +24,9 @@ export class QoutationService {
   ) {
     this._qoutations = new BehaviorSubject<Qoutation[]>(JSON.parse(localStorage.getItem('quotations')) || []);
     this.qoutations = this._qoutations.asObservable();
+    if (localStorage.getItem('quote') === 'undefined') {
+      localStorage.setItem('quote', null);
+    }
     this._qoute = new BehaviorSubject<Qoutation>(JSON.parse(localStorage.getItem('quote')));
     this.qoute = this._qoute.asObservable();
     this._qouteProducts = new BehaviorSubject<QouteProducts[]>(JSON.parse(localStorage.getItem('quotation_products')) || []);
@@ -135,7 +138,7 @@ export class QoutationService {
 
       // make the first Qoute selected by defoult.
       if (qoutation.length) {
-       
+
         qoutation[0].CardClass.push('card-active');
       }
       this._qoutations.next(qoutation);

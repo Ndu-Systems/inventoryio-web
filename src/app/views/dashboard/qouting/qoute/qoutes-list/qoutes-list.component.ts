@@ -46,7 +46,7 @@ export class QoutesListComponent implements OnInit {
     };
   }
   add() {
-    this.router.navigate(['/dashboard/sell']);
+    this.router.navigate(['/dashboard/qoute-customer']);
   }
   searchOrder() {
     this.showSearchOrder = !this.showSearchOrder;

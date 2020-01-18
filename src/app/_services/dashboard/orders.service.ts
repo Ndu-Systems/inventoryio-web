@@ -34,6 +34,9 @@ export class OrdersService {
   public get currentOrdersValue(): Orders[] {
     return this._orders.value;
   }
+  public get currentProductOrdersValue(): OrderProducts[] {
+    return this._orderProducts.value;
+  }
   apendState(order: Orders) {
     const state = this.currentOrdersValue || [];
     const item = state.find(x => x.OrdersId === order.OrdersId);

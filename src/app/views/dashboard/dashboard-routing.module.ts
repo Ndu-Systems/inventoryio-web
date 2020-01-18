@@ -21,7 +21,6 @@ import { SellComponent } from './products/sell/sell.component';
 import { DashboardNavComponent } from './dashboard-nav';
 import { SaleSammaryComponent } from './products/sell/sale-sammary/sale-sammary.component';
 import { ListUsersComponent } from './users/list-users/list-users.component';
-import { SalesReportComponent } from './products/sales-report/sales-report.component';
 import { ListOrdersComponent } from './products/list-orders/list-orders.component';
 import { BrandComponent, EditBrandComponent } from './brand';
 import { OrderDetailsComponent } from './products/order-details/order-details.component';
@@ -78,6 +77,7 @@ import { QoutesListComponent } from './qouting/qoute/qoutes-list/qoutes-list.com
 import { QouteDetailsComponent } from './qouting/qoute/qoute-details/qoute-details.component';
 import { SpeechComponent } from './shared/speech/speech.component';
 import { ImportPartnersComponent } from './import-export/import/import-partners/import-partners.component';
+import { InventoryReportComponent } from './reports/reports/inventory-report/inventory-report.component';
 
 const routes: Routes = [
   {
@@ -97,7 +97,7 @@ const routes: Routes = [
       { path: 'add-brand', component: AddBrandComponent },
       { path: 'edit-brand', component: EditBrandComponent },
       { path: 'sell', component: SellComponent },
-      { path: 'sales-report', component: SalesReportComponent },
+      // { path: 'sales-report', component: SalesReportComponent },
       { path: 'list-orders', component: ListOrdersComponent },
       { path: 'order-details', component: OrderDetailsComponent },
       {
@@ -160,7 +160,6 @@ export const declarations = [
   SaleSammaryComponent,
   AddUserComponent,
   ListUsersComponent,
-  SalesReportComponent,
   ListOrdersComponent,
   OrderDetailsComponent,
   BrandComponent,
@@ -214,6 +213,8 @@ export const declarations = [
   QouteDetailsComponent,
   SpeechComponent,
   ImportPartnersComponent,
+  // SalesReportComponent,
+  InventoryReportComponent,
   // CompanyServicesComponent,
   // AddCompanyServiceComponent,
   // SellServiceComponent,
