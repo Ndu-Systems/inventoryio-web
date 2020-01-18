@@ -17,6 +17,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {CalendarModule} from 'primeng/calendar';
 import {ColorPickerModule} from 'primeng/colorpicker';
+import {DialogModule} from 'primeng/dialog';
 
 
 
@@ -38,7 +39,8 @@ import {ColorPickerModule} from 'primeng/colorpicker';
     AutoCompleteModule,
     ProgressSpinnerModule,
     CalendarModule,
-    ColorPickerModule
+    ColorPickerModule,
+    DialogModule
 
   ],
   declarations: [...declarations],
