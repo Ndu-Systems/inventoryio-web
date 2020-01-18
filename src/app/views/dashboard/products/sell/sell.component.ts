@@ -29,6 +29,8 @@ export class SellComponent implements OnInit {
   customers: Partner[] = [];
   customers$: Observable<Array<Partner>>;
   showScan: boolean;
+  showChangeCustomer: boolean;
+  selectedPartner: Partner;
 
   constructor(
     private productService: ProductService,
@@ -126,7 +128,7 @@ export class SellComponent implements OnInit {
     this.ordersService.updateOrderState(null);
     const order: Orders = {
       CompanyId: this.user.CompanyId,
-      ParntersId: this.selectedCustomerId,
+      ParntersId: this.selectedPartner && this.selectedPartner.PartnerId || null,
       OrderType: 'Sell',
       Total: this.sale.total,
       Paid: 0,
@@ -182,6 +184,13 @@ export class SellComponent implements OnInit {
   }
   scann() {
     this.showScan = true;
+  }
+  changeCustomer() {
+    this.showChangeCustomer = true;
+  }
+  selectCustomer(customer: Partner) {
+    this.selectedPartner = customer;
+    this.showChangeCustomer = false;
   }
 }
 

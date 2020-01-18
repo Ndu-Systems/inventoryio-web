@@ -7,6 +7,7 @@
 
 <div class="main">
 
+
   <div class="cart phone-only">
     <i (click)="toggleCart()" class="pi pi-shopping-cart"></i>
     <div class="amount">
@@ -17,13 +18,33 @@
 
     <div class="products">
 
-      <div class="cutomer-details">
-        <div class="img">
-          <img *ngIf="orderCustomer" src="assets/images/order/user.svg" alt="">
-          <img *ngIf="!orderCustomer" src="assets/images/order/user-no-customer.svg" alt="">
-        </div>
-        <div class="heading">
-          <h3>Guest Customer</h3>
+      <div class="small-cards small-cards-filter">
+        <div class=" cutomer-details">
+          <div class="img">
+            <img *ngIf="selectedPartner" src="assets/images/order/user.svg" alt="">
+            <img *ngIf="!selectedPartner" src="assets/images/order/user-no-customer.svg" alt="">
+          </div>
+          <div *ngIf="!selectedPartner">
+            <h3>Guest Customer</h3>
+          </div>
+          <div *ngIf="selectedPartner">
+            <h3>{{selectedPartner.Name}} {{selectedPartner.Surname}}</h3>
+            <p>
+              {{selectedPartner.CellphoneNumber || 'No phone number'}} | {{selectedPartner.EmailAddress || 'No email address'}}
+            </p>
+            <p>
+              {{selectedPartner.Address || 'No customer address'}}
+            </p>
+          </div>
+          <div></div>
+          <div>
+            <!-- <button class="btn btn-transparent" (click)="scann()">
+              <span class=""> <i class="pi pi-user-edit"></i>Edit</span>
+            </button> -->
+            <button class="btn btn-transparent" (click)="changeCustomer()">
+              <span class=""> <i class="pi pi-refresh"></i>Change</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -102,7 +123,7 @@
         <i class="pi pi-chevron-left"></i>
       </div>
 
-      <div class="customer">
+      <!-- <div class="customer">
         <div class="list-filters">
           <div>
             <div class="select">
@@ -123,7 +144,7 @@
           </div>
 
         </div>
-      </div>
+      </div> -->
       <h3>
         Cart
       </h3>
@@ -155,3 +176,31 @@
 <div class="scanner-pluggin" *ngIf="showScan">
   <app-scanner></app-scanner>
 </div>
+
+
+<p-dialog header="Selct a customer" [modal]="true" [(visible)]="showChangeCustomer" [style]="{width: '30%'}">
+  <div class="input-times">
+    <input type="text" class="roundInput" [(ngModel)]="searchCustomer" placeholder="🔎 search customer ...">
+  </div>
+  <table *ngIf="customers$  | async as customers">
+    <tr>
+      <td>
+        Guest Customer
+      </td>
+      <td class="actions">
+        <button class="btn" (click)="selectCustomer(null)">Select</button>
+      </td>
+    </tr>
+    <tr *ngFor="let customer of  customers | searchpartner:searchCustomer ">
+      <td>
+        {{customer.Name}} {{customer.Surname}}
+      </td>
+      <td class="actions">
+        <button class="btn btn-transparent" (click)="selectCustomer(customer)">Select</button>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <a (click)="addCustomer()">Create new customer</a>
+</p-dialog>

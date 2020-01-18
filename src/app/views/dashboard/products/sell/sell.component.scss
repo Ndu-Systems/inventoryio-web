@@ -84,14 +84,6 @@
   background: #f39c12;
 }
 
-// .action-btn{
-//   width: 10rem;
-// }
-
-.actions {
-  background: red;
-}
-
 .cart {
   position: fixed;
   right: 0;
@@ -128,7 +120,7 @@
 .customer {
   background: #eeeff9;
   padding: 1rem;
-  
+
 
   .list-filters {
     grid-template-columns: 80% auto;
@@ -142,6 +134,7 @@
       margin-bottom: 0;
       padding-bottom: 0;
     }
+
     .btn {
       padding: 4px 20px;
     }
@@ -167,27 +160,72 @@
       margin-top: 1rem;
       grid-template-columns: 20% 15% 10%;
       position: relative;
-      div{
+
+      div {
         // border: 1px solid black;
       }
 
       @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
+        width: 92%;
+
       }
     }
   }
 }
 
-.cutomer-details{
+.cutomer-details {
   display: grid;
-  grid-template-columns: 10% 30%;
+  grid-template-columns: 5% 30% 53% 12%;
   background: #fff;
-  padding: 1rem;
-  width: 100%;
-  img{
-    width: 3rem;
+  padding: .5rem 1rem;
+  width: 97.6666%;
+  border-radius: 1rem;
+  margin-left: 1rem;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns:100%;
+    width: 94%;
+    margin-left: .2rem;
   }
-  h3{
+
+  img {
+    width: 2rem;
+    margin-top: 20%;
+  }
+
+  .btn {
+    margin-top: .8rem;
+
+  }
+
+  h3 {
     text-align: left;
+  }
+}
+
+table {
+  width: 100%;
+
+  .actions {
+    text-align: right;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+
+
+::ng-deep {
+  body .ui-dialog .ui-dialog-titlebar {
+    background: #104CE5 !important;
+    color: #fff !important;
+  }
+
+  body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
+    color: #fff !important;
+
   }
 }
