@@ -54,16 +54,36 @@
 
 <div class="main nav-bar-mobile" *ngIf="showNav">
   <div (click)="toggleNav()" class="back">
-    <img src="assets/images/navigation/back-arrow.svg" alt="">
+    <img src="assets/images/navigation/back.svg" alt="">
   </div>
   <div class="nav-bar">
+
     <ul>
+      <h1 class="header">
+        Main
+      </h1>
       <li *ngFor="let item of models" (click)="toggleNav()">
         <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> <i
             [ngClass]="item.Icon"></i>{{item.Name}}</a>
       </li>
     </ul>
+    <ul>
+      <h1 class="header">
+        Sales
+      </h1>
+      <li *ngFor="let item of salesNavModels">
+        <span *ngIf="true">
+          <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <i [ngClass]="item.Icon"></i>
+            {{item.Name}}
+          </a>
+        </span>
+      </li>
+    </ul>
     <ul class="mt-20">
+      <h1 class="header">
+        Help
+      </h1>
       <li *ngFor="let profileItem of profileModels" (click)="toggleNav()">
         <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
           [routerLinkActiveOptions]="{exact: true}"> <i [ngClass]="profileItem.Icon"></i>{{profileItem.Name}}</a>
