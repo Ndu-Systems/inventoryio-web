@@ -14,7 +14,12 @@ export class ReportsService {
     return orders.filter(x => this.getDateTimeOnly(x.CreateDate) >= this.getDateTimeOnly(dateFrom) &&
       this.getDateTimeOnly(x.CreateDate) <= this.getDateTimeOnly(dateTo));
   }
+
   private getDateTimeOnly(date): number {
     return new Date(date.split(' ')[0]).getTime();
+  }
+
+  getDateDiffInDays(dateFrom: string, dateTo: string) {
+    return new Date(dateTo).getDate() - new Date(dateFrom).getDate();
   }
 }

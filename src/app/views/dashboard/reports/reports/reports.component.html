@@ -19,10 +19,10 @@
         </span>
       </h1>
     </div>
-  
+
     <div class="date-range">
-      <input class="date-selector"  [(ngModel)]="dateFrom" (change)="dateRangeChanged()" type="date">-
-      <input class="date-selector"  [(ngModel)]="dateTo"   (change)="dateRangeChanged()" type="date">
+      <input class="date-selector" [(ngModel)]="dateFrom" (change)="dateRangeChanged()" type="date">-
+      <input class="date-selector" [(ngModel)]="dateTo" (change)="dateRangeChanged()" type="date">
       <div class="tags">
         {{reportTag}}
       </div>
@@ -52,18 +52,18 @@
       <div class="stat-big">
         <div class="card">
           <h4>
-            Items Sold <span> R 8074.50</span>
+            Items Sold <span> VIEW</span>
 
           </h4>
-          <p>65</p>
+          <p>{{itemsSold}}</p>
         </div>
 
         <div class="card">
           <h4>
-            Items Quoted <span> R 00</span>
+            Items Quoted <span> {{quotesSum | currency:'R'}}</span>
           </h4>
 
-          <p>00</p>
+          <p>{{quotes?.length}}</p>
         </div>
       </div>
 
@@ -74,7 +74,7 @@
             TOTAL REVENUE
           </h4>
           <p>
-            R {{totalRev}}
+            R {{totalRev| currency:'R'}}
           </p>
         </div>
 
@@ -83,12 +83,14 @@
             Top Selling Items <span>View All</span>
           </h4>
           <table>
-            <tr *ngFor="let item of [0,0,0,0]">
+            <tr *ngFor="let item of topSellingTop5">
               <td>
-                Item
+                <span class="count">{{item.Quantity}}</span>
+                {{item.ProductName}}
+
               </td>
               <td class="value">
-                R200
+                {{item.Total | currency:'R'}}
               </td>
             </tr>
           </table>

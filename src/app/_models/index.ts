@@ -28,6 +28,7 @@ export * from './caterory.model';
 export * from './qoutation.model';
 export * from './qoute.product.model';
 export * from './service.model';
+export * from './topselling.model';
 
 
 

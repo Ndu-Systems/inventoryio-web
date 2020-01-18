@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Orders, Item, OrderProducts } from 'src/app/_models';
+import { Orders, Item, OrderProducts, TopSellingProduct } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SplashService } from '../splash.service';
@@ -17,6 +17,8 @@ export class OrdersService {
   public order: Observable<Orders>;
   private _orderProducts: BehaviorSubject<OrderProducts[]>;
   public orderProducts: Observable<OrderProducts[]>;
+  private _allOrderProducts: BehaviorSubject<TopSellingProduct[]>;
+  public allOrderProducts: Observable<TopSellingProduct[]>;
   url: string;
   constructor(
     private http: HttpClient,
@@ -28,6 +30,8 @@ export class OrdersService {
     this.order = this._order.asObservable();
     this._orderProducts = new BehaviorSubject<OrderProducts[]>(JSON.parse(localStorage.getItem('order_products')) || []);
     this.orderProducts = this._orderProducts.asObservable();
+    this._allOrderProducts = new BehaviorSubject<TopSellingProduct[]>(JSON.parse(localStorage.getItem('all_order_products')) || []);
+    this.allOrderProducts = this._allOrderProducts.asObservable();
     this.url = environment.API_URL;
   }
 
@@ -36,6 +40,9 @@ export class OrdersService {
   }
   public get currentProductOrdersValue(): OrderProducts[] {
     return this._orderProducts.value;
+  }
+  public get currentAllProductOrdersValue(): TopSellingProduct[] {
+    return this._allOrderProducts.value;
   }
   apendState(order: Orders) {
     const state = this.currentOrdersValue || [];
@@ -70,12 +77,16 @@ export class OrdersService {
     this._orderProducts.next(products);
     localStorage.setItem('order_products', JSON.stringify(products));
   }
+  updateAllOrderProductsState(products: TopSellingProduct[]) {
+    this._allOrderProducts.next(products);
+    localStorage.setItem('all_order_products', JSON.stringify(products));
+  }
 
   addOrder(data: Orders, items: Item[]) {
     return this.http.post<any>(`${this.url}/api/orders/add-orders.php`, data).subscribe(resp => {
       const order: Orders = resp;
       if (!order) { return false; }
-      this.addOrderProducts(items, order.OrdersId, order.CreateUserId);
+      this.addOrderProducts(items, order.OrdersId, order.CreateUserId, order.CompanyId);
       this.apendState(order);
       this.updateOrderState(order);
     }, error => {
@@ -102,12 +113,13 @@ export class OrdersService {
     });
   }
 
-  addOrderProducts(items: Item[], orderId: string, userId) {
+  addOrderProducts(items: Item[], orderId: string, userId, companyId) {
     const productItems: OrderProducts[] = [];
     items.forEach(item => {
       const productItem: OrderProducts = {
         OrderId: orderId,
         ProductId: item.prodcuId,
+        CompanyId: companyId,
         ProductName: item.name,
         UnitPrice: item.price,
         Quantity: item.quantity,
@@ -133,12 +145,10 @@ export class OrdersService {
   getOrders(companyId) {
     return this.http.get<any>(`${this.url}/api/orders/get-orders.php?CompanyId=${companyId}`).subscribe(resp => {
       const orders: Orders[] = resp;
-      localStorage.setItem('orders', JSON.stringify(orders));
-
-      // make the first order selected by defoult.
       if (orders.length) {
         this.updateOrderState(orders[0]);
         orders[0].CardClass.push('card-active');
+        this.getOrderProductsByCompanyId(companyId);
       }
       this._orders.next(orders);
     }, error => {
@@ -147,6 +157,17 @@ export class OrdersService {
         message: COMMON_CONN_ERR_MSG,
         class: `error`
       });
+    });
+  }
+  getOrderProductsByCompanyId(companyId) {
+    return this.http.get<any>(`${this.url}/api/order_products/get-order_products-by-companyId.php?
+    CompanyId=${companyId}`).subscribe(resp => {
+      const all: TopSellingProduct[] = resp;
+      if (all.length) {
+        this.updateAllOrderProductsState(all);
+      }
+    }, error => {
+      console.log(error);
     });
   }
 
