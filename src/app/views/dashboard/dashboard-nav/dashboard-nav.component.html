@@ -71,7 +71,7 @@
       <h1 class="header">
         Sales
       </h1>
-      <li *ngFor="let item of salesNavModels">
+      <li *ngFor="let item of salesNavModels" (click)="toggleNav()">
         <span *ngIf="true">
           <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
             <i [ngClass]="item.Icon"></i>
