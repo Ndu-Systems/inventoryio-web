@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Brand, Caterory, User, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { AccountService, ProductService, BrandService, CateroryService, BannerService } from 'src/app/_services';
+import { AccountService, ProductService, BrandService, CateroryService, BannerService, ScannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -21,6 +21,7 @@ export class ProductDetailsComponent implements OnInit {
   catergories$: Observable<Caterory[]>;
   product: Product;
   productId: string;
+  showScan: boolean;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -30,6 +31,8 @@ export class ProductDetailsComponent implements OnInit {
     private cateroryService: CateroryService,
     private messageService: MessageService,
     private bannerService: BannerService,
+    private scannerService: ScannerService,
+
   ) {
   }
 
@@ -50,6 +53,12 @@ export class ProductDetailsComponent implements OnInit {
 
     this.brands$ = this.brandService.brands;
     this.catergories$ = this.cateroryService.categories;
+    this.scannerService.scann.subscribe(scan => {
+      if (scan && window.location.href.includes('product-details')) {
+        this.showScan = scan.isOpen;
+        this.product.Code = scan.code;
+      }
+    });
   }
   initForm() {
     this.rForm = this.fb.group({
@@ -82,6 +91,9 @@ export class ProductDetailsComponent implements OnInit {
       detail: 'Product updated! '
     });
     this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
-}
+  }
+  scan() {
+    this.showScan = true;
+  }
 
 }

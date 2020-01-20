@@ -63,7 +63,7 @@
     <div class="group">
       <span>
         product Code
-        <!-- <span class="add btn" (click)="addbrand(rForm.value)">Scann</span> -->
+        <span class="add btn" (click)="scan()">Scan</span>
       </span>
       <input formControlName="Code" />
     </div>
@@ -78,8 +78,9 @@
     </div>
   </div>
 </div>
-<!--
-<pre>
-    {{rForm.value | json}}
-</pre>
-{{rForm.valid}} -->
+
+
+
+<div class="scanner-pluggin" *ngIf="showScan">
+  <app-scanner></app-scanner>
+</div>

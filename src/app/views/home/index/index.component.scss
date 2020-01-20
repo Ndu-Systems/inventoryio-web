@@ -369,9 +369,11 @@ footer {
   width: 25vw;
   margin: 0 auto;
   justify-content: center;
+  @media only screen and (max-width: 600px) {
+    width:60vw;
+      }
   button {
     width: 100%;
     background-color: #104CE5;
   }
 }
-

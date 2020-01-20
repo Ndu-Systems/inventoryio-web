@@ -23,6 +23,7 @@ export class QouteComponent implements OnInit {
   searchByCatergory;
   width: number;
   notFoundModel: NotFoundModel;
+  searchCustomer: string;
   // results = [];
 
   selectedCustomerId = '';

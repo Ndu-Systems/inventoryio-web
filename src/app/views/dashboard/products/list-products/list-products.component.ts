@@ -63,18 +63,21 @@ export class ListProductsComponent implements OnInit {
     };
 
     this.scannerService.scann.subscribe(scan => {
-      if (scan) {
+      if (scan  && window.location.href.includes('list-product')) {
         this.showScan = scan.isOpen;
-        const product = this.products.find(x => x.Code === scan.code);
-        if (product) {
-          this.details(product);
-        } else {
-          this.messageService.add({
-            severity: 'warn',
-            summary: `Barcode: ${scan.code}`,
-            detail: `Scanned product not found`
-          });
+        if (scan.code) {
+          const product = this.products.find(x => x.Code === scan.code);
+          if (product) {
+            this.details(product);
+          } else {
+            this.messageService.add({
+              severity: 'warn',
+              summary: `Barcode: ${scan.code}`,
+              detail: `Scanned product not found`
+            });
+          }
         }
+
       }
     });
     this.products = this.productService.currentProducts;

@@ -26,7 +26,10 @@ export class ScannerComponent implements OnInit {
   }
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
-    this.scannerService.updateCannState({ code: resultString, isOpen: false });
+    if (resultString) {
+      this.scannerService.updateCannState({ code: resultString, isOpen: false });
+      this.close();
+    }
   }
   scanErrorHandler(error: string) {
     this.splashService.update({

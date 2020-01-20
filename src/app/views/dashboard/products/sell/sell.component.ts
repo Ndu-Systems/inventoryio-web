@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product, SellModel, Orders, User, Item, NotFoundModel, Partner } from 'src/app/_models';
-import { ProductService, AccountService, BannerService, SaleService, OrdersService, PartnerService, ScannerService } from 'src/app/_services';
+import {
+  ProductService, AccountService, BannerService, SaleService, OrdersService,
+  PartnerService, ScannerService
+} from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { NotFoundConstants } from '../../shared';
@@ -75,7 +78,7 @@ export class SellComponent implements OnInit {
     this.scannerService.scann.subscribe(scan => {
       if (scan) {
         this.showScan = scan.isOpen;
-        if (scan.code) {
+        if (scan.code && window.location.href.includes('sell')) {
           const product = this.products.find(x => x.Code === scan.code);
           if (product) {
             this.doSell(product);
