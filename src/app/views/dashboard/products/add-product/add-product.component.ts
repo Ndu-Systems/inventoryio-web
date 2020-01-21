@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductService, AccountService, CateroryService, BrandService, BannerService, UploadService } from 'src/app/_services';
+import { ProductService, AccountService, CateroryService, BrandService, BannerService, UploadService, ScannerService } from 'src/app/_services';
 import { User, Product, Brand, Caterory } from 'src/app/_models';
 import { Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
@@ -20,6 +20,7 @@ export class AddProductComponent implements OnInit {
   brands$: Observable<Brand[]>;
   catergories$: Observable<Caterory[]>;
   prodcut: Product;
+  showScan: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +32,7 @@ export class AddProductComponent implements OnInit {
     private bannerService: BannerService,
     private uploadService: UploadService,
     private messageService: MessageService,
+    private scannerService: ScannerService,
 
   ) {
     this.bannerService.updateState({
@@ -79,7 +81,7 @@ export class AddProductComponent implements OnInit {
       UnitPrice: [this.prodcut.UnitPrice || ''],
       UnitCost: [this.prodcut.UnitCost || 0],
       Code: [this.prodcut.Code || ''],
-      SKU: [this.prodcut.SKU || 'na'],
+      SKU: [this.prodcut.SKU || ''],
       Quantity: [this.prodcut.Quantity || 1],
       LowStock: [this.prodcut.LowStock || 0],
       CompanyId: [user.CompanyId, Validators.required],
@@ -90,6 +92,15 @@ export class AddProductComponent implements OnInit {
 
     }
     );
+
+    this.scannerService.scann.subscribe(scan => {
+      if (scan && window.location.href.includes('add-product')) {
+        this.showScan = scan.isOpen;
+        if (scan.code) {
+          this.rForm.controls.Code.setValue(scan.code);
+        }
+      }
+    });
 
 
     this.brands$ = this.brandService.brands;
@@ -128,5 +139,8 @@ export class AddProductComponent implements OnInit {
     this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-catergory']);
 
+  }
+  scan() {
+    this.showScan = true;
   }
 }

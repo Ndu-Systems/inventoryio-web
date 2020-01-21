@@ -21,7 +21,8 @@
     </div>
 
     <div class="date-range">
-      <input class="date-selector" [(ngModel)]="dateFrom" (change)="dateRangeChanged()" type="date">-
+      <input class="date-selector" [(ngModel)]="dateFrom" (change)="dateRangeChanged()" type="date">
+      <span class="date-separator">to</span>
       <input class="date-selector" [(ngModel)]="dateTo" (change)="dateRangeChanged()" type="date">
       <div class="tags">
         {{reportTag}}
@@ -63,7 +64,7 @@
             Items Quoted <span> {{quotesSum | currency:'R'}}</span>
           </h4>
 
-          <p>{{quotes?.length}}</p>
+          <p>{{quotesToday?.length}}</p>
         </div>
       </div>
 
@@ -78,11 +79,12 @@
           </p>
         </div>
 
-        <div class="card">
+        <div class="card scroll-card">
           <h4>
-            Top Selling Items <span>View All</span>
+            Top Selling Items 
+            <!-- <span>View All</span> -->
           </h4>
-          <table>
+          <table class="top-selling">
             <tr *ngFor="let item of topSellingTop5">
               <td>
                 <span class="count">{{item.Quantity}}</span>
@@ -90,7 +92,9 @@
 
               </td>
               <td class="value">
+               <span>
                 {{item.Total | currency:'R'}}
+               </span>
               </td>
             </tr>
           </table>

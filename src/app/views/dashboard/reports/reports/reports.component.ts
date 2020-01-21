@@ -26,10 +26,11 @@ export class ReportsComponent implements OnInit {
   orders: Orders[];
   totalRev: any = '00';
   itemsSold: any = '00';
-  topSelling: TopSellingProduct[];
-  topSellingTop5: TopSellingProduct[] = [];
   quotes: Qoutation[];
   quotesSum: number;
+  allProductsSold: OrderProducts[];
+  topSellingTop5: TopSellingProduct[] = [];
+  quotesToday: any[]; // Qoutation
 
   constructor(
     private ordersService: OrdersService,
@@ -66,22 +67,21 @@ export class ReportsComponent implements OnInit {
     };
     this.initStyles();
     this.ordersService.getOrders(this.user.CompanyId);
+    this.ordersService.getOrderProductsByCompanyId(this.user.CompanyId);
     this.qoutationService.getQoutations(this.user.CompanyId);
     this.orders = this.ordersService.currentOrdersValue;
     this.ordersService.orders.subscribe(orders => {
       this.orders = orders;
     });
-    this.ordersService.allOrderProducts.subscribe(topSelling => {
-      this.topSelling = topSelling;
-      this.getTop5();
+    this.ordersService.allOrderProducts.subscribe(orders => {
+      this.allProductsSold = orders;
+      this.dateRangeChanged();
     });
+
     this.qoutationService.qoutations.subscribe(quotes => {
       this.quotes = quotes;
-      this.quotesSum = this.getTotal(quotes.map(x => Number(x.Total)));
     });
     this.dateRangeChanged();
-    this.topSelling = this.ordersService.currentAllProductOrdersValue;
-    this.getTop5();
   }
 
   getDate(date: Date) {
@@ -132,7 +132,6 @@ export class ReportsComponent implements OnInit {
   }
   dateRangeChanged() {
     const data = this.reportsService.getOrdersForARange(this.dateFrom, this.dateTo, this.orderOrderAsc(this.orders));
-    console.log('data data data', data);
     const vals = data.map(x => Number(x.Total));
     this.totalRev = this.getTotal(vals);
     this.itemsSold = vals.length;
@@ -140,6 +139,16 @@ export class ReportsComponent implements OnInit {
 
     this.intLineGraph(vals, labels);
     this.getTagValues();
+
+    // get to selling
+    const tops = this.reportsService.getProductsSalesForARange(this.dateFrom, this.dateTo,
+      this.orderProductsOrdersAsc(this.allProductsSold));
+    this.topSellingTop5 = this.orderTopSellingByTimesDesc(this.reportsService.groupTopSelling(tops));
+
+    // qoutes
+    this.quotesToday = this.reportsService.getOrdersForARange(this.dateFrom, this.dateTo, this.orderOrderAsc(this.quotes));
+    this.quotesSum = this.getTotal(this.quotesToday.map(x => Number(x.Total)));
+
   }
   getTotal(numbers: number[]) {
     let sum = 0;
@@ -155,9 +164,10 @@ export class ReportsComponent implements OnInit {
       const date = new Date(order.CreateDate);
       const day = this.getDayName(date.getDay());
       const time = order.CreateDate.split(' ')[1];
+      const dayMonth = `${date.getDate()} ${this.getMonthName(date.getMonth())}`;
       console.log(day);
 
-      results.push(`${day} ${time}`);
+      results.push(`${day}, ${dayMonth} ${time}`);
     });
     return results;
   }
@@ -170,8 +180,33 @@ export class ReportsComponent implements OnInit {
     return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][i];
   }
   orderOrderAsc(orders: Orders[]) {
+    if (!orders) {
+      return [];
+    }
     return orders.sort((a, b) => (a.OrderId > b.OrderId) ? 1 : ((b.OrderId > a.OrderId) ? -1 : 0));
   }
+  orderProductsOrdersAsc(orders: OrderProducts[]) {
+    if (!orders) {
+      return [];
+    }
+    return orders.sort((a, b) => (new Date(a.CreateDate).getDate() > new Date(b.CreateDate).getDate()) ? 1
+      : ((new Date(b.CreateDate).getDate() > new Date(a.CreateDate).getDate()) ? -1 : 0));
+  }
+  orderTopSellingADesc(orders: TopSellingProduct[]) {
+    if (!orders) {
+      return [];
+    }
+    return orders.sort((a, b) => (Number(a.Total) > Number(b.Total)) ? 1
+      : ((Number(b.Total) > Number(a.Total)) ? -1 : 0));
+  }
+  orderTopSellingByTimesDesc(orders: TopSellingProduct[]) {
+    if (!orders) {
+      return [];
+    }
+    return orders.sort((a, b) => (Number(a.Quantity) < Number(b.Quantity)) ? 1
+      : ((Number(b.Quantity) < Number(a.Quantity)) ? -1 : 0));
+  }
+
   getTagValues() {
     const days = this.reportsService.getDateDiffInDays(this.dateFrom, this.dateTo);
     this.reportTag = `PAST ${days} DAYS REPORT`;
@@ -183,18 +218,11 @@ export class ReportsComponent implements OnInit {
       this.reportTag = `yesterday REPORT`;
     }
   }
-  getTop5() {
-    this.topSellingTop5 = [];
-    if (this.topSelling.length <= 5) {
-      this.topSellingTop5 = this.topSelling;
-      return;
-    }
-    let index = 0;
-    this.topSelling.forEach(d => {
-      index++;
-      if (index <= 5) {
-        this.topSellingTop5.push(d)
-      }
-    });
+  getMonthName(monthIndex: number) {
+    const monthNames = ['Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep',
+      'Oct', 'Nov', 'Dec'];
+    return monthNames[monthIndex];
   }
 }

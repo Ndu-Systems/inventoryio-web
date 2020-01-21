@@ -53,12 +53,6 @@ export class ProductDetailsComponent implements OnInit {
 
     this.brands$ = this.brandService.brands;
     this.catergories$ = this.cateroryService.categories;
-    this.scannerService.scann.subscribe(scan => {
-      if (scan && window.location.href.includes('product-details')) {
-        this.showScan = scan.isOpen;
-        this.product.Code = scan.code;
-      }
-    });
   }
   initForm() {
     this.rForm = this.fb.group({
@@ -79,7 +73,17 @@ export class ProductDetailsComponent implements OnInit {
       ModifyUserId: [this.user.UserId, Validators.required],
     }
     );
+    this.scannerService.scann.subscribe(scan => {
+      if (scan && window.location.href.includes('product-details')) {
+        this.showScan = scan.isOpen;
+        this.product.Code = scan.code;
+        if (scan.code) {
+          this.rForm.controls.Code.setValue(scan.code);
+        }
+      }
+    });
   }
+
   get getFormValues() {
     return this.rForm.controls;
   }

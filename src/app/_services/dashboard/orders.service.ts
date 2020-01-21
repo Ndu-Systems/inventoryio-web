@@ -17,8 +17,8 @@ export class OrdersService {
   public order: Observable<Orders>;
   private _orderProducts: BehaviorSubject<OrderProducts[]>;
   public orderProducts: Observable<OrderProducts[]>;
-  private _allOrderProducts: BehaviorSubject<TopSellingProduct[]>;
-  public allOrderProducts: Observable<TopSellingProduct[]>;
+  private _allOrderProducts: BehaviorSubject<OrderProducts[]>;
+  public allOrderProducts: Observable<OrderProducts[]>;
   url: string;
   constructor(
     private http: HttpClient,
@@ -30,7 +30,7 @@ export class OrdersService {
     this.order = this._order.asObservable();
     this._orderProducts = new BehaviorSubject<OrderProducts[]>(JSON.parse(localStorage.getItem('order_products')) || []);
     this.orderProducts = this._orderProducts.asObservable();
-    this._allOrderProducts = new BehaviorSubject<TopSellingProduct[]>(JSON.parse(localStorage.getItem('all_order_products')) || []);
+    this._allOrderProducts = new BehaviorSubject<OrderProducts[]>(JSON.parse(localStorage.getItem('all_order_products')) || []);
     this.allOrderProducts = this._allOrderProducts.asObservable();
     this.url = environment.API_URL;
   }
@@ -41,7 +41,7 @@ export class OrdersService {
   public get currentProductOrdersValue(): OrderProducts[] {
     return this._orderProducts.value;
   }
-  public get currentAllProductOrdersValue(): TopSellingProduct[] {
+  public get currentAllProductOrdersValue(): OrderProducts[] {
     return this._allOrderProducts.value;
   }
   apendState(order: Orders) {
@@ -77,7 +77,7 @@ export class OrdersService {
     this._orderProducts.next(products);
     localStorage.setItem('order_products', JSON.stringify(products));
   }
-  updateAllOrderProductsState(products: TopSellingProduct[]) {
+  updateAllOrderProductsState(products: OrderProducts[]) {
     this._allOrderProducts.next(products);
     localStorage.setItem('all_order_products', JSON.stringify(products));
   }
@@ -160,9 +160,10 @@ export class OrdersService {
     });
   }
   getOrderProductsByCompanyId(companyId) {
-    return this.http.get<any>(`${this.url}/api/order_products/get-order_products-by-companyId.php?
-    CompanyId=${companyId}`).subscribe(resp => {
-      const all: TopSellingProduct[] = resp;
+    return this.http.get<any>(
+      `${this.url}/api/order_products/get-order_products-by-companyId.php?CompanyId=${companyId}`
+    ).subscribe(resp => {
+      const all: OrderProducts[] = resp;
       if (all.length) {
         this.updateAllOrderProductsState(all);
       }

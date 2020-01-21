@@ -65,8 +65,9 @@
      <div class="group">
        <span>
         Item Code
+        <span class="add btn" (click)="scan()">Scan</span>
        </span>
-       <input formControlName="SKU" />
+       <input formControlName="Code" />
      </div>
 
      <div class="cta col-1-of-2">
@@ -76,3 +77,8 @@
      </div>
    </div>
  </div>
+
+
+ <div class="scanner-pluggin" *ngIf="showScan">
+  <app-scanner></app-scanner>
+</div>
