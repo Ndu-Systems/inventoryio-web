@@ -5,6 +5,7 @@
   width: 99%;
   background: #3742FA;
   z-index: 9999;
+
   //mobile layout
   @media only screen and (max-width: 600px) {
     width: 100%;
@@ -126,6 +127,7 @@
     }
   }
 
+
   .mobile-nav {
     display: none;
 
@@ -135,59 +137,84 @@
       top: 0%;
       left: 0%;
       position: fixed;
-      background: #104CE5;
+      // background: #104CE5;
+      background: #104ce5db;
       height: 100vh;
       width: 100%;
-      z-index: 1;
+      z-index: 999;
       color: #ffffff;
-      // background-image: url(../../../assets/images/backlogimg2.PNG);
-      // background-repeat: no-repeat;
 
       ul {
-        line-height: 5rem;
-        align-content: center;
+        list-style: none;
 
-        img {
-
-          margin: 1rem;
-          vertical-align: middle;
-          margin-left: 0%;
+        &.nav-items {
+          position: absolute;
+          top: 10em;
         }
 
-      }
+        li {
+          margin: 2em 0;
 
-      li {
-        text-align: center;
-        list-style-type: none;
+          a {
+            color: #FFFFFF;
+            font-size: 30px;
+          }
 
-        .sign-up-for-free {
-          background: #FFFFFF;
-
-
-        }
-
-        .sign-up-for-free a {
-          background: #FFFFFF;
-          color: #104CE5;
-          padding: .4rem;
-          padding-right: 1.4rem;
-          padding-left: 1.4rem;
-          border-radius: 10px;
-          font-weight: 500;
-        }
-
-        a {
-          color: #FFFFFF;
+          &.sign-up-free {
+            background: #FFFFFF;
+            padding: 1em;
+            border-radius: 10px;
+            a {
+              font-size: 25px;
+              color: #0337BB;
+            }
+          }
         }
       }
+
+      // ul {
+      //   line-height: 5rem;
+      //   align-content: center;
+
+      //   img {
+
+      //     margin: 1rem;
+      //     vertical-align: middle;
+      //     margin-left: 0%;
+      //   }
+      // }
+
+      // li {
+      //   text-align: center;
+      //   list-style-type: none;
+
+      //   .sign-up-for-free {
+      //     background: #FFFFFF;
+      //   }
+
+      //   .sign-up-for-free a {
+      //     background: #FFFFFF;
+      //     color: #104CE5;
+      //     padding: .4rem;
+      //     padding-right: 1.4rem;
+      //     padding-left: 1.4rem;
+      //     border-radius: 10px;
+      //     font-weight: 500;
+      //   }
+
+      //   a {
+      //     color: #FFFFFF;
+      //   }
+      // }
     }
 
     .close {
 
-      // display: none;
       @media only screen and (max-width: 600px) {
         display: block;
+        position: fixed;
         float: right;
+        right: 0;
 
         img {
           width: 1.5rem;

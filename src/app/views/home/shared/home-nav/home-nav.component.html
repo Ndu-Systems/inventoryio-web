@@ -14,7 +14,15 @@
     <div class="close" (click)="toggleNav()">
       <img src="assets/images/close-mobilemenu.svg" alt="">
     </div>
-    <ul>
+    <ul class="nav-items">
+      <li><a (click)="toggleNav()" routerLink="/home">Home</a></li>
+      <li><a (click)="toggleNav()" routerLink="/how-it-works">How it works</a></li>
+      <li><a (click)="toggleNav()" routerLink="/pricing">Pricing</a></li>
+      <li><a (click)="toggleNav()" routerLink="/sign-in">Sign in</a></li>
+      <li class="sign-up-free"><a (click)="toggleNav()" routerLink="/sign-up">Sign up for free</a></li>
+    </ul>
+    <!--
+         <ul>
       <li><a (click)="toggleNav()" routerLink="/home"> <img src="assets/images/home-solid.svg" alt="">Home</a>
       </li>
       <li><a routerLink="/how-it-works" (click)="toggleNav()"> <img src="assets/images/settings-white.svg" alt="">
@@ -25,7 +33,8 @@
         </a></li>
       <li><span class="sign-up-for-free"> <a (click)="toggleNav()" routerLink="/sign-up">sign up for free</a> </span>
       </li>
-    </ul>
+    </ul> -->
+
   </div>
   <div class="ham-icon" (click)="toggleNav()">
     <img src="assets/images/ham.svg" alt="">
