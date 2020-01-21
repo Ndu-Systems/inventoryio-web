@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product, SellModel, User, NotFoundModel, Partner, Orders, Item } from 'src/app/_models';
-import { ProductService, AccountService, BannerService, SaleService, PartnerService } from 'src/app/_services';
+import { ProductService, AccountService, BannerService, SaleService, PartnerService, ScannerService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { NotFoundConstants } from '../../shared';
@@ -28,6 +28,9 @@ export class QouteComponent implements OnInit {
   selectedCustomerId = '';
   customers: Partner[] = [];
   customers$: Observable<Array<Partner>>;
+  showScan: boolean;
+  showChangeCustomer: boolean;
+  selectedPartner: Partner;
 
   constructor(
     private productService: ProductService,
@@ -37,7 +40,9 @@ export class QouteComponent implements OnInit {
     private saleService: SaleService,
     private messageService: MessageService,
     private qoutationService: QoutationService,
-    private partnerService: PartnerService
+    private partnerService: PartnerService,
+    private scannerService: ScannerService
+
 
 
   ) { }
@@ -69,6 +74,18 @@ export class QouteComponent implements OnInit {
       this.customers = data;
     });
     this.customers$ = this.partnerService.partners;
+    this.scannerService.scann.subscribe(scan => {
+      if (scan) {
+        this.showScan = scan.isOpen;
+        if (scan.code) {
+          const product = this.products.find(x => x.Code === scan.code);
+          if (product) {
+            this.doSell(product);
+          }
+        }
+
+      }
+    });
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
@@ -109,7 +126,7 @@ export class QouteComponent implements OnInit {
     this.qoutationService.updateQoutationState(null);
     const order: Orders = {
       CompanyId: this.user.CompanyId,
-      ParntersId: this.selectedCustomerId,
+      ParntersId: this.selectedPartner && this.selectedPartner.PartnerId || null,
       OrderType: 'Sell',
       Total: this.sale.total,
       Paid: 0,
@@ -162,5 +179,15 @@ export class QouteComponent implements OnInit {
       backto: `/dashboard/qoute-customer`,
     });
     this.router.navigate(['/dashboard/add-partner/customers']);
+  }
+  scann() {
+    this.showScan = true;
+  }
+  changeCustomer() {
+    this.showChangeCustomer = true;
+  }
+  selectCustomer(customer: Partner) {
+    this.selectedPartner = customer;
+    this.showChangeCustomer = false;
   }
 }

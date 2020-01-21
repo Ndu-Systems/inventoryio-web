@@ -23,6 +23,7 @@ export class SellComponent implements OnInit {
   searchByCatergory;
   width: number;
   notFoundModel: NotFoundModel;
+  searchCustomer;
   // results = [];
 
   selectedCustomerId = '';

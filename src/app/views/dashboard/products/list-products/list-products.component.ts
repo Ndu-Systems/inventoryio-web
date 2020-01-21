@@ -4,6 +4,7 @@ import { Product, NotFoundModel } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NotFoundConstants } from '../../shared';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-list-products',
@@ -15,6 +16,7 @@ export class ListProductsComponent implements OnInit {
   search = ``;
   searchByCatergory = ``;
   products$: Observable<Product[]>;
+  products: Product[];
   sum: number;
   totalPrice = 0;
   notFoundModel: NotFoundModel;
@@ -27,7 +29,8 @@ export class ListProductsComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
     private bannerService: BannerService,
-    private scannerService: ScannerService
+    private scannerService: ScannerService,
+    private messageService: MessageService
 
 
   ) { }
@@ -62,9 +65,19 @@ export class ListProductsComponent implements OnInit {
     this.scannerService.scann.subscribe(scan => {
       if (scan) {
         this.showScan = scan.isOpen;
-        this.search = scan.code;
+        const product = this.products.find(x => x.Code === scan.code);
+        if (product) {
+          this.details(product);
+        } else {
+          this.messageService.add({
+            severity: 'warn',
+            summary: `Barcode: ${scan.code}`,
+            detail: `Scanned product not found`
+          });
+        }
       }
     });
+    this.products = this.productService.currentProducts;
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);

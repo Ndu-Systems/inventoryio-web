@@ -36,7 +36,9 @@ export class ProductService {
     this.url = environment.API_URL;
   }
 
-
+  public get currentProducts() {
+    return this._products.value;
+  }
   // state
   appendState(product: Product) {
     let state = this._products.value || [];
