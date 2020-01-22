@@ -15,7 +15,8 @@
                 </div>
                 <select [(ngModel)]="searchByCatergory">
                   <option value="" selected>All sales orders</option>
-                  <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+                  <option [value]="status" *ngFor="let status of statuses | filterStrings: searchByCatergory">{{status}}
+                  </option>
                 </select>
               </div>
               <div class="search">
@@ -40,16 +41,18 @@
           <span *ngFor="let order of orders | searchproduct: search">
             <div [ngClass]="order.CardClass" (click)="select(order)">
               <div class="image">
-                <img  *ngIf="order.Customer" src="assets/images/order/user.svg" alt="">
-                <img  *ngIf="!order.Customer" src="assets/images/order/user-no-customer.svg" alt="">
+                <img *ngIf="order.Customer" src="assets/images/order/user.svg" alt="">
+                <img *ngIf="!order.Customer" src="assets/images/order/user-no-customer.svg" alt="">
                 <!-- <img src="../../../../../assets/ndu.jpg" alt=""> -->
               </div>
               <div class="name">
-                <h4 *ngIf="order.Customer"  class="customer-name">{{order.Customer.Name}}</h4>
+                <h4 *ngIf="order.Customer" class="customer-name">{{order.Customer.Name}}</h4>
                 <h4 *ngIf="!order.Customer" class="customer-name">No Customer</h4>
-                <h5 *ngIf="order.Status" class="order-status {{order.Status}}">{{order.Status}}</h5>
-                <h5 *ngIf="!order.Status"  class="order-status">Shipped</h5>
+                <h5 *ngIf="order.Status == 'new'" class="order-status new">{{order.Status}}</h5>
+                <h5 *ngIf="order.Status == 'Partially paid'" class="order-status partially-paid">{{order.Status}}</h5>
+                <h5 *ngIf="order.Status == 'Fully paid'" class="order-status fully-paid">{{order.Status}}</h5>
               </div>
+
               <div class="total">
                 <h4>
                   {{order.Total  | currency:'R'}}

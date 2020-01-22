@@ -78,6 +78,7 @@ import { QouteDetailsComponent } from './qouting/qoute/qoute-details/qoute-detai
 import { SpeechComponent } from './shared/speech/speech.component';
 import { ImportPartnersComponent } from './import-export/import/import-partners/import-partners.component';
 import { InventoryReportComponent } from './reports/reports/inventory-report/inventory-report.component';
+import { FilterStringsPipe } from 'src/app/_pipes/filter-strings.pipe';
 
 const routes: Routes = [
   {
@@ -224,7 +225,8 @@ export const declarations = [
   SearchProductByCatergoryPipe,
   UserFilterPipe,
   ConfigurationFilterPipe,
-  SearchPartnerPipe
+  SearchPartnerPipe,
+  FilterStringsPipe
 ];
 
 @NgModule({

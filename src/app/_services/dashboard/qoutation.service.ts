@@ -72,12 +72,32 @@ export class QoutationService {
   }
 
   addQoute(data: Qoutation, items: Item[]) {
-    return this.http.post<any>(`${this.url}/api/quotation/add-quotation.php`, data).subscribe(resp => {
-      const Qoute: Qoutation = resp;
-      if (!Qoute) { return false; }
-      this.addQouteProducts(items, Qoute.QuotationId, Qoute.CreateUserId);
-      this.apendState(Qoute);
-      this.updateQoutationState(Qoute);
+    const productItems: QouteProducts[] = [];
+    items.forEach(item => {
+      const productItem: QouteProducts = {
+        QuotationId: '00',
+        ProductId: item.prodcuId,
+        ProductName: item.name,
+        UnitPrice: item.price,
+        Quantity: item.quantity,
+        subTotal: item.subTotal,
+        CreateUserId: data.CreateUserId,
+        ModifyUserId: data.CreateUserId,
+        StatusId: 1
+      };
+      productItems.push(productItem);
+    });
+    return this.http.post<any>(`${this.url}/api/quotation/add-quotation.php`, { quote: data, products: productItems }).subscribe(resp => {
+      const qoutation: Qoutation[] = resp;
+      localStorage.setItem('quotation', JSON.stringify(qoutation));
+      this.updateQoutationState(qoutation[0]);
+
+      // make the first Qoute selected by defoult.
+      if (qoutation.length) {
+
+        qoutation[0].CardClass.push('card-active');
+      }
+      this._qoutations.next(qoutation);
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',

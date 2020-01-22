@@ -2,6 +2,7 @@
   .body {
     display: grid;
     grid-template-columns: 30% auto;
+
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%;
     }
@@ -17,6 +18,7 @@
             padding: 0.1rem;
             cursor: pointer;
             grid-template-columns: 14% 40% auto;
+
             @media only screen and (max-width: 600px) {
               grid-template-columns: 18% 40% auto;
 
@@ -51,6 +53,14 @@
 
               .new {
                 color: #3498db;
+              }
+
+              .partially-paid {
+                color: #a8890b;
+              }
+
+              .fully-paid {
+                color: #27ae60;
               }
 
 
@@ -91,6 +101,12 @@
               h5 {
                 color: #fff;
               }
+
+              .new,
+              .partially-paid,
+              .fully-paid {
+                color: #fff;
+              }
             }
 
             .total {
@@ -100,6 +116,9 @@
                 color: #fff;
               }
             }
+
+
+
           }
 
           .filter-card {

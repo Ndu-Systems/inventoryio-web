@@ -47,6 +47,33 @@
   color: #95a5a6;
 }
 
+.order-date {
+  display: block;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #95a5a6;
+}
+
+.order-status {
+  // display: block;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: #747d7e;
+  // width: 4rem;
+  padding: .3rem;
+  border-radius: .1rem .5rem;
+  text-align: center;
+}
+
+.partially-paid {
+  background: #a8890b;
+}
+
+.fully-paid {
+  background: #27ae60;
+}
+
 h1.date {
   font-size: 1rem;
 
@@ -176,6 +203,7 @@ h1.date {
 
 .col-1-of-2 {
   grid-template-columns: 50% auto;
+
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
 

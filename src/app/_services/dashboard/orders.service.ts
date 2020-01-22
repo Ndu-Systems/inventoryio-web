@@ -53,7 +53,7 @@ export class OrdersService {
     }
     state.push(order);
     state.sort((x, y) => {
-      return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+      return new Date(y.CreateDate).getDate() - new Date(x.CreateDate).getDate();
     });
     this._orders.next(state);
     localStorage.setItem('orders', JSON.stringify(state));
@@ -83,12 +83,30 @@ export class OrdersService {
   }
 
   addOrder(data: Orders, items: Item[]) {
-    return this.http.post<any>(`${this.url}/api/orders/add-orders.php`, data).subscribe(resp => {
-      const order: Orders = resp;
-      if (!order) { return false; }
-      this.addOrderProducts(items, order.OrdersId, order.CreateUserId, order.CompanyId);
-      this.apendState(order);
-      this.updateOrderState(order);
+    const productItems = [];
+    items.forEach(item => {
+      const productItem: OrderProducts = {
+        OrderId: '0',
+        ProductId: item.prodcuId,
+        CompanyId: data.CompanyId,
+        ProductName: item.name,
+        UnitPrice: item.price,
+        Quantity: item.quantity,
+        subTotal: item.subTotal,
+        CreateUserId: data.CreateUserId,
+        ModifyUserId: data.CreateUserId,
+        StatusId: 1
+      };
+      productItems.push(productItem);
+    });
+    return this.http.post<any>(`${this.url}/api/orders/add-orders.php`, { order: data, products: productItems }).subscribe(resp => {
+      const orders: Orders[] = resp;
+      if (orders.length) {
+        this.updateOrderState(orders[0]);
+        orders[0].CardClass.push('card-active');
+        this.getOrderProductsByCompanyId(data.CompanyId);
+      }
+      this._orders.next(orders);
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',

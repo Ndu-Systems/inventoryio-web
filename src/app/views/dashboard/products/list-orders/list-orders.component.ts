@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderProducts, Product, Orders, NotFoundModel } from 'src/app/_models';
+import { OrderProducts, Product, Orders, NotFoundModel, Caterory } from 'src/app/_models';
 import { OrdersService, AccountService, BannerService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -18,6 +18,8 @@ export class ListOrdersComponent implements OnInit {
   orders$: Observable<Orders[]>;
   showSearchOrder: any;
   notFoundModel: NotFoundModel;
+  searchByCatergory = '';
+  statuses: string[];
 
   constructor(
     private ordersService: OrdersService,
@@ -42,9 +44,21 @@ export class ListOrdersComponent implements OnInit {
       Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
       Message: NotFoundConstants.NOT_FOUND_ITEMS.message
     };
+    this.ordersService.orders.subscribe(data => {
+      this.statuses = this.cleanStatus(data.map(x => x.Status));
+    });
   }
   add() {
     this.router.navigate(['/dashboard/sell']);
+  }
+  cleanStatus(array: string[]) {
+    const data = [];
+    array.forEach(item => {
+      if (!data.find(x => x === item)) {
+        data.push(item);
+      }
+    });
+    return data;
   }
   searchOrder() {
     this.showSearchOrder = !this.showSearchOrder;

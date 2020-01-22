@@ -63,10 +63,10 @@ export class OrderDetailsComponent implements OnInit {
     this.router.navigate([`/dashboard/order-details`]);
   }
   print(order: Orders) {
-   // this.router.navigate(['/dashboard/print-invoice']);
-   const url = this.invoiceService.getInvoiceURL(order.OrdersId);
-   const win = window.open(url, '_blank');
-   win.focus();
+    // this.router.navigate(['/dashboard/print-invoice']);
+    const url = this.invoiceService.getInvoiceURL(order.OrdersId);
+    const win = window.open(url, '_blank');
+    win.focus();
   }
 
   cancelPayAction() {
@@ -75,7 +75,12 @@ export class OrderDetailsComponent implements OnInit {
   triggerPaymentAction() {
     this.paymentAction = true;
   }
-
+  getStatus(order: Orders) {
+    if (order.Due > 0) {
+      return 'Partially paid';
+    }
+    return 'Fully paid';
+  }
   savePayment(order: Orders) {
     order.Payment = this.amountPaid;
     if (!this.validatePaymentAmount(order)) {
@@ -86,7 +91,7 @@ export class OrderDetailsComponent implements OnInit {
       accept: () => {
         order.Paid = Number(order.Paid) + Number(order.Payment);
         order.Due = Number(order.Total) - Number(order.Paid);
-        order.Status = order.Status;
+        order.Status = this.getStatus(order);
 
         this.ordersService.uptadeOrder(order);
         this.messageService.add({
@@ -116,7 +121,7 @@ export class OrderDetailsComponent implements OnInit {
   }
   sendInvoice(order: Orders) {
     const subject = 9;
-   // const downloadLink = `${environment.BASE_URL}/#/download-invoice/${order.OrdersId}`;
+    // const downloadLink = `${environment.BASE_URL}/#/download-invoice/${order.OrdersId}`;
     const downloadLink = this.invoiceService.getInvoiceURL(order.OrdersId);
 
     if (!order.Customer) {
