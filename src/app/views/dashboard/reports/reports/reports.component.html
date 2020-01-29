@@ -1,14 +1,3 @@
-<!-- <p-chart type="doughnut" [data]="data"></p-chart> -->
-
-
-<!-- <p-toast [style]="{marginTop: '80px'}"></p-toast>
-
-<p-chart type="line" [data]="linedata" (onDataSelect)="selectData($event)"></p-chart> -->
-
-
-
-
-
 <div class="main">
   <div class="heading-grid">
     <div class="main-heading">
@@ -30,18 +19,7 @@
 
     </div>
   </div>
-  <!-- <div class="tabs">
-    <div class="tab">
-      <button class="btn">
-        <span class="">Sales Report</span>
-      </button>
-    </div>
-    <div class="tab">
-      <button class="btn btn-transparent" disabled>
-        <span class="">Inventory Report</span>
-      </button>
-    </div>
-  </div> -->
+
   <div class="col-1-of-2">
     <div class="graph">
       <h3>
@@ -53,7 +31,7 @@
       <div class="stat-big">
         <div class="card">
           <h4>
-            Items Sold <span> VIEW</span>
+            Orders <span> <a (click)="veiwItemsSold()">VIEW</a></span>
 
           </h4>
           <p>{{itemsSold}}</p>
@@ -61,7 +39,7 @@
 
         <div class="card">
           <h4>
-            Items Quoted <span> {{quotesSum | currency:'R'}}</span>
+            Quotes <span> {{quotesSum | currency:'R'}}</span>
           </h4>
 
           <p>{{quotesToday?.length}}</p>
@@ -75,14 +53,13 @@
             TOTAL REVENUE
           </h4>
           <p>
-          {{totalRev| currency:'R'}}
+            {{totalRev| currency:'R'}}
           </p>
         </div>
 
         <div class="card scroll-card">
           <h4>
-            Top Selling Items 
-            <!-- <span>View All</span> -->
+            Top Selling Items
           </h4>
           <table class="top-selling">
             <tr *ngFor="let item of topSellingTop5">
@@ -92,9 +69,9 @@
 
               </td>
               <td class="value">
-               <span>
-                {{item.Total | currency:'R'}}
-               </span>
+                <span>
+                  {{item.Total | currency:'R'}}
+                </span>
               </td>
             </tr>
           </table>
@@ -102,4 +79,171 @@
       </div>
     </div>
   </div>
+  <h3>
+    Sales overview
+  </h3>
+  <div class="col-1-of-2">
+
+    <div class="stat">
+      <div class="stat-big">
+        <div class="card">
+          <h4>
+            All Orders <a (click)="veiwItemsSold()"> {{allOrders.Value | currency:'R'}}</a>
+          </h4>
+          <p>{{allOrders.Count}}</p>
+        </div>
+
+        <div class="card">
+          <h4>
+            Unpaid orders <a (click)="veiwItemsSold('new')"> {{updaidOrders.Value | currency:'R'}}</a>
+
+          </h4>
+          <p>{{updaidOrders.Count}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-big">
+        <div class="card">
+          <h4>
+            Partially paid<a (click)="veiwItemsSold('Partially paid')"> {{partialyOrders.Value | currency:'R'}}</a>
+
+          </h4>
+          <p>{{partialyOrders.Count}}</p>
+        </div>
+
+        <div class="card">
+          <h4>
+            Fully paid <a (click)="veiwItemsSold('Fully paid')"> {{fullyOrders.Value | currency:'R'}}</a>
+
+          </h4>
+          <p>{{fullyOrders.Count}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <h3>
+    Stock overview
+  </h3>
+  <div class="col-1-of-2 w75-25">
+    <div class="top-selling-table">
+      <table>
+        <tr>
+          <td>
+            All Prodcts
+          </td>
+          <td class="value">
+            {{allproducts}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            All prodct items
+          </td>
+          <td class="value">
+            {{allProductsItems}}
+          </td>
+        </tr>
+        <tr>
+          <td class="danger">
+            Low stock products
+          </td>
+          <td class="value danger">
+            <a (click)="showLowStockItems()">
+              ⚠️{{lowProducts}}
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="stat">
+
+    </div>
+  </div>
 </div>
+
+
+
+
+<p-dialog [header]="stateHeader" [modal]="true" [(visible)]="canShowLowStockItems" [style]="{width: '30%'}">
+  <table class="modal-table">
+    <tr>
+      <th>
+        Product
+      </th>
+      <th>
+        Avl. Qnty
+      </th>
+      <th>
+        Low Stock⚠️
+      </th>
+      <th>
+        Unit Price
+      </th>
+    </tr>
+    <tr *ngFor="let item of  lowStocktems">
+      <td>
+        {{item.Name}}
+      </td>
+      <td>
+        {{item.Quantity}}
+      </td>
+      <td>
+        {{item.LowStock}}
+      </td>
+      <td>
+        {{item.UnitPrice | currency:'R'}}
+      </td>
+    </tr>
+  </table>
+</p-dialog>
+
+
+<p-dialog header="Items Sold" [modal]="true" [(visible)]="canShowItemsSold" [style]="{width: '40%'}">
+  <table class="modal-table">
+    <tr>
+      <th>
+        Customer
+      </th>
+      <th>
+        Oder No.
+      </th>
+      <th>
+        Status
+      </th>
+      <th>
+        Total
+      </th>
+      <th>
+        Paid
+      </th>
+      <th>
+        Due
+      </th>
+    </tr>
+    <tr *ngFor="let item of  itemsSoldList">
+      <td>
+        {{item.Customer?.Name || 'Guest'}}
+      </td>
+      <td>
+        ORD-{{item.OrderId}}
+      </td>
+      <td>
+        {{item.Status}}
+      </td>
+      <td>
+        {{item.Total | currency:'R'}}
+      </td>
+      <td>
+        {{item.Paid | currency:'R'}}
+      </td>
+      <td>
+        {{item.Due | currency:'R'}}
+      </td>
+    </tr>
+  </table>
+</p-dialog>

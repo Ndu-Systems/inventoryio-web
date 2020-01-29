@@ -124,10 +124,11 @@ $bedget : 1rem;
             }
 
             .value {
+
               // text-align: right;
-             span{
-              opacity: .4;
-             }
+              span {
+                opacity: .4;
+              }
             }
           }
         }
@@ -160,4 +161,58 @@ $bedget : 1rem;
 .scroll-card {
   max-height: 25vh;
   overflow-y: scroll;
+}
+
+.w75-25 {
+  grid-template-columns: 75% auto;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.top-selling-table {
+  background: #fff;
+  padding: 2rem;
+
+
+  table {
+    width: 100%;
+
+    tr td {
+      border-bottom: 1px solid #D3D8DF;
+      padding: .5rem;
+    }
+
+    .value {
+      span {
+        opacity: .4;
+      }
+
+      .danger {
+        color: #e74c3c;
+      }
+    }
+  }
+}
+
+a {
+  cursor: pointer;
+  &:hover{
+    font-weight: 500;
+  }
+}
+
+
+
+::ng-deep {
+  body .ui-dialog .ui-dialog-titlebar {
+    background: #104CE5 !important;
+    color: #fff !important;
+  }
+
+  body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
+    color: #fff !important;
+
+  }
 }

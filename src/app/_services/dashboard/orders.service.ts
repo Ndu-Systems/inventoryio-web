@@ -58,6 +58,14 @@ export class OrdersService {
     this._orders.next(state);
     localStorage.setItem('orders', JSON.stringify(state));
   }
+  updatOrdersState(orders: Orders[]) {
+    this.updateOrderState(orders[0]);
+    orders[0].CardClass.push('card-active');
+    this._orders.next(orders);
+    this.updateOrderState(orders[0]);
+    localStorage.setItem('orders', JSON.stringify(orders));
+
+  }
   updateOrderState(order: Orders) {
     this.clearSelectedClass();
     if (order) {
@@ -102,11 +110,8 @@ export class OrdersService {
     return this.http.post<any>(`${this.url}/api/orders/add-orders.php`, { order: data, products: productItems }).subscribe(resp => {
       const orders: Orders[] = resp;
       if (orders.length) {
-        this.updateOrderState(orders[0]);
-        orders[0].CardClass.push('card-active');
-        this.getOrderProductsByCompanyId(data.CompanyId);
+        this.updatOrdersState(orders);
       }
-      this._orders.next(orders);
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',

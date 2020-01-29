@@ -5,3 +5,8 @@ export interface TopSellingProduct {
     Quantity: number;
     Total: number;
 }
+
+export interface CountValueModel {
+    Count: any;
+    Value: any;
+}

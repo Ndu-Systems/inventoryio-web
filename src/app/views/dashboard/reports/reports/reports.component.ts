@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersService, AccountService, ReportsService } from 'src/app/_services';
-import { User, OrderProducts, Orders, TopSellingProduct, Qoutation } from 'src/app/_models';
+import { OrdersService, AccountService, ReportsService, ProductService } from 'src/app/_services';
+import { User, OrderProducts, Orders, TopSellingProduct, Qoutation, CountValueModel, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { QoutationService } from 'src/app/_services/dashboard/qoutation.service';
@@ -32,6 +32,22 @@ export class ReportsComponent implements OnInit {
   topSellingTop5: TopSellingProduct[] = [];
   quotesToday: any[]; // Qoutation
 
+  // sales overview
+  allOrders: CountValueModel;
+  updaidOrders: CountValueModel;
+  partialyOrders: CountValueModel;
+  fullyOrders: CountValueModel;
+
+  // stock 
+  allproducts = 0;
+  lowProducts = 0;
+  allProductsItems = 0;
+  canShowLowStockItems: boolean;
+  lowStocktems: any[];
+  canShowItemsSold: boolean;
+  itemsSoldList: Orders[];
+  stateHeader: string;
+
   constructor(
     private ordersService: OrdersService,
     private accountService: AccountService,
@@ -39,6 +55,7 @@ export class ReportsComponent implements OnInit {
     private messageService: MessageService,
     private reportsService: ReportsService,
     private qoutationService: QoutationService,
+    private productService: ProductService,
 
   ) {
     this.dateTo = this.shortDate(new Date());
@@ -82,6 +99,10 @@ export class ReportsComponent implements OnInit {
       this.quotes = quotes;
     });
     this.dateRangeChanged();
+
+    this.productService.products.subscribe(data => {
+      this.getStockOverview(data);
+    })
   }
 
   getDate(date: Date) {
@@ -135,6 +156,7 @@ export class ReportsComponent implements OnInit {
     const vals = data.map(x => Number(x.Total));
     this.totalRev = this.getTotal(vals);
     this.itemsSold = vals.length;
+    this.itemsSoldList = data;
     const labels = this.getLabels(data);
 
     this.intLineGraph(vals, labels);
@@ -149,6 +171,11 @@ export class ReportsComponent implements OnInit {
     this.quotesToday = this.reportsService.getOrdersForARange(this.dateFrom, this.dateTo, this.orderOrderAsc(this.quotes));
     this.quotesSum = this.getTotal(this.quotesToday.map(x => Number(x.Total)));
 
+    // sales overview
+    this.allOrders = this.getOverView(data, '');
+    this.updaidOrders = this.getOverView(data, 'new');
+    this.partialyOrders = this.getOverView(data, 'Partially paid');
+    this.fullyOrders = this.getOverView(data, 'Fully paid');
   }
   getTotal(numbers: number[]) {
     let sum = 0;
@@ -224,5 +251,54 @@ export class ReportsComponent implements OnInit {
       'Jul', 'Aug', 'Sep',
       'Oct', 'Nov', 'Dec'];
     return monthNames[monthIndex];
+  }
+  getOverView(orders: Orders[], status: string) {
+    let data = orders.filter(x => x.Status === status);
+    if (status === '') {
+      data = orders;
+    }
+    let total = 0;
+    if (status === 'Partially paid') {
+      total = this.getTotal(data.map(x => Number(x.Due)));
+
+    } else {
+      total = this.getTotal(data.map(x => Number(x.Total)));
+
+    }
+    const results: CountValueModel = {
+      Value: total,
+      Count: data.length
+    };
+    return results;
+  }
+  getStockOverview(prodcuts: Product[]) {
+    this.allproducts = prodcuts.length;
+    // all items
+    let totalItems = 0;
+    this.lowStocktems = [];
+    let lowStocktemsCount = 0;
+    prodcuts.forEach(item => {
+      totalItems += Number(item.Quantity);
+      if (Number(item.Quantity) < Number(item.LowStock)) {
+        lowStocktemsCount++;
+        this.lowStocktems.push(item);
+      }
+    });
+    this.allProductsItems = totalItems;
+    this.lowProducts = lowStocktemsCount;
+
+  }
+
+  showLowStockItems() {
+    this.canShowLowStockItems = true;
+  }
+  veiwItemsSold(status?: string) {
+    this.itemsSoldList = this.reportsService.getOrdersForARange(this.dateFrom, this.dateTo, this.orderOrderAsc(this.orders));
+    this.canShowItemsSold = true;
+    this.stateHeader = 'Items Sold';
+    if (status) {
+      this.itemsSoldList = this.itemsSoldList.filter(x => x.Status === status);
+      this.stateHeader = status;
+    }
   }
 }
