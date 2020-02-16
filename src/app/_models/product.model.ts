@@ -13,6 +13,7 @@ export interface Product {
     UnitCost: number;
     Code: string;
     SKU: string;
+    TrackInventory: boolean;
     Quantity: number;
     LowStock: number;
     CreateDate: string;

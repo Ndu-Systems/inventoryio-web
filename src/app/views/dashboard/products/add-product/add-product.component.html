@@ -48,27 +48,34 @@
          <input type="number" formControlName="UnitCost" />
        </div>
      </div>
-
-
-     <div class="two">
-       <div class="group">
-         <span>Quantity</span>
-         <input type="number" formControlName="Quantity" />
-       </div>
-
-       <div class="group">
-         <span>Low Stock Alert</span>
-         <input type="number" formControlName="LowStock" />
-       </div>
-     </div>
-
-     <div class="group">
+         <div class="group">
        <span>
         Item Code
         <span class="add btn" (click)="scan()">Scan</span>
        </span>
        <input formControlName="Code" />
      </div>
+
+
+     <div class="group">
+      <span>Track Inventory</span>
+      <input class="checkbox" type="checkbox" (onChange)="handleChange($event)" formControlName="TrackInventory"  /> 
+      <!-- <p-inputSwitch (onChange)="handleChange($event)" [(ngModel)]="isTrackInventory"></p-inputSwitch> -->
+
+    </div>
+     <div class="two">
+       <div class="group">
+         <span>Quantity</span>
+         <input type="number" formControlName="Quantity" [disabled]="isTrackInventory" />
+       </div>
+
+       <div class="group" >
+         <span>Low Stock Alert</span>
+         <input type="number" formControlName="LowStock"  [disabled]="isTrackInventory" />
+       </div>
+     </div>
+
+ 
 
      <div class="cta col-1-of-2">
        <input type="submit" class="btn save" (click)="onSubmit(rForm.value)" value="Save Item"
@@ -82,3 +89,5 @@
  <div class="scanner-pluggin" *ngIf="showScan">
   <app-scanner></app-scanner>
 </div>
+
+{{rForm.value | json}}

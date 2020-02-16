@@ -73,9 +73,13 @@
         background: #fff;
         font-size: 1rem;
 
-        &:invalid {
-          border-right: 1px solid #e74c3c;
-        }
+        // &:invalid {
+        //   border-right: 1px solid #e74c3c;
+        // }
+      }
+      .checkbox{
+        width: 1rem;
+        margin-top: .4rem;
       }
     }
 

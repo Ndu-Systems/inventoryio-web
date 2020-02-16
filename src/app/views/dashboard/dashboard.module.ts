@@ -18,6 +18,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {CalendarModule} from 'primeng/calendar';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {DialogModule} from 'primeng/dialog';
+import {InputSwitchModule} from 'primeng/inputswitch';
+
 // import { NgxBarcodeModule } from 'ngx-barcode';
 
 
@@ -42,6 +44,7 @@ import {DialogModule} from 'primeng/dialog';
     CalendarModule,
     ColorPickerModule,
     DialogModule,
+    InputSwitchModule
     // NgxBarcodeModule
 
   ],

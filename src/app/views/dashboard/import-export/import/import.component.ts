@@ -66,6 +66,7 @@ export class ImportComponent implements OnInit {
         UnitCost: fp.UnitCost || 0,
         Code: fp.Code || '',
         SKU: '',
+        TrackInventory: 1,
         Quantity: fp.Quantity || 0,
         LowStock: fp.LowStock || 0,
         CompanyId: this.user.CompanyId,

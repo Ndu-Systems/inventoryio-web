@@ -21,6 +21,7 @@ export class AddProductComponent implements OnInit {
   catergories$: Observable<Caterory[]>;
   prodcut: Product;
   showScan: boolean;
+  isTrackInventory: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -64,6 +65,7 @@ export class AddProductComponent implements OnInit {
         UnitCost: 0,
         Code: '',
         SKU: '',
+        TrackInventory: true,
         Quantity: 1,
         LowStock: 0,
         CreateDate: '',
@@ -83,6 +85,7 @@ export class AddProductComponent implements OnInit {
       Code: [this.prodcut.Code || ''],
       SKU: [this.prodcut.SKU || ''],
       Quantity: [this.prodcut.Quantity || 1],
+      TrackInventory: [this.prodcut.TrackInventory || true],
       LowStock: [this.prodcut.LowStock || 0],
       CompanyId: [user.CompanyId, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
@@ -143,4 +146,7 @@ export class AddProductComponent implements OnInit {
   scan() {
     this.showScan = true;
   }
+  handleChange(e) {
+    this.isTrackInventory = e.checked;
+}
 }
