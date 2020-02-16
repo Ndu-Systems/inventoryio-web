@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SmsModel, BulkSmsModel, From } from 'src/app/_models';
-import { BULK_SMS_API, BULK_SMS_KEY, BULK_SMS_USER } from 'src/app/_shared';
+import { BULK_SMS_API, BULK_SMS_KEY, BULK_SMS_USER, COMBINED_TOKEN } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,7 @@ export class SmsService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Username': BULK_SMS_USER,
-      'Password': BULK_SMS_KEY
+      'Authorization': `Bearer ${COMBINED_TOKEN}`
     })
   };
   constructor(private httpClient: HttpClient) { }
