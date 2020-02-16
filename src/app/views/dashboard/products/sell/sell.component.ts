@@ -158,6 +158,7 @@ export class SellComponent implements OnInit {
     items.forEach(item => {
       const product = this.products.find(x => x.ProductId === item.prodcuId);
       product.Quantity = Number(product.Quantity) - Number(item.quantity);
+      product.TrackInventory = true;
       products.push(product);
     });
     this.productService.updateProductRange(products);
