@@ -7,6 +7,7 @@ import { HomeNavComponent } from './shared/home-nav';
 import { IndexComponent, HomePageComponent, FeaturesComponent, HowItWorksComponent } from './index';
 import { SignUpComponent, SignInComponent } from './accounts';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
+import { ShopComponent } from './index/shop/shop.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'how-it-works', component: HowItWorksComponent },
       { path: 'pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
+      { path: 'shop/:id', component: ShopComponent },
       { path: 'sign-up', component: SignUpComponent },
 
     ]
@@ -33,7 +35,8 @@ export const declarations = [
   PricingComponent,
   HomeNavComponent,
   HomeSliderComponent,
-  HowItWorksComponent
+  HowItWorksComponent,
+  ShopComponent
 ];
 
 

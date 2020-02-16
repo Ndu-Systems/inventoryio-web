@@ -1,0 +1,63 @@
+.banner {
+    background: url(../../../../../assets/images/home/pricing-banner.svg);
+    background-size: cover;
+    height: 25rem;
+    width: 99.9%;
+  
+    .banner-body {
+      padding: 10rem 0;
+  
+      .heading {
+        text-transform: initial;
+        text-transform: initial;
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #F5F6FA;
+      }
+    }
+  
+  
+    @media only screen and (max-width: 600px) {
+      height: 20rem;
+  
+      .banner-body {
+        padding: 4rem 0;
+        padding-bottom: 1rem;
+  
+        .heading {
+          margin: 1rem;
+          padding: 1rem;
+          font-size: 1.8em;
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+  
+  .content {
+    padding: 5rem 10rem;
+    background: #FFFFFF;
+  
+    .card {
+      border-radius: 10px;
+      border: solid 1px #D3D8DF;
+      padding: 2rem;
+      background: white;
+      width: 85%;
+      margin: 0 auto;
+
+.image{
+    width: 100%;
+    text-align: center;
+    height: 20vh;
+    //  background: red;
+     overflow: hidden;
+    img{
+        width: 50%;
+    }
+}
+    }
+  
+
+  }

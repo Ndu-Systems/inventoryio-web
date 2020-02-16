@@ -1,0 +1,30 @@
+<div class="container" *ngIf="products$  | async as products">
+  <div class="banner">
+    <div class="banner-body">
+      <h1 class="heading">{{welocme}}</h1>
+      <!-- <h1 class="heading">Please pick a plan.</h1> -->
+    </div>
+  </div>
+  <div class="content">
+    <div class="col-1-of-3">
+      <div class="card" *ngFor="let item of products ">
+        <div class="image">
+          <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+          <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+        </div>
+        <div class="details">
+          <p class="name">
+            {{item.Name}}
+          </p>
+          <h3>
+            {{item.UnitPrice | currency:'R'}}
+          </h3>
+        </div>
+        <div class="price">
+
+          <button class="action-btn hover-shadow" (click)="details(item)">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
