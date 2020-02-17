@@ -12,11 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 export class ShopComponent implements OnInit {
   welocme = 'Welcome to Ndu Systems shopping page';
   products$: Observable<Product[]>;
-  companyId
+  companyId;
+  cart: Product[] = [];
 
-  constructor(private productService: ProductService,     private activatedRoute: ActivatedRoute,
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
 
-  ) { 
+  ) {
 
 
     this.activatedRoute.params.subscribe(r => {
@@ -27,6 +28,11 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  addToCart(product: Product) {
+    if (!this.cart.find(x => x.ProductId === product.ProductId)) {
+      this.cart.push(product);
+    }
   }
 
 }

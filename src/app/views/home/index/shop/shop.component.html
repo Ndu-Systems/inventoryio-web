@@ -6,7 +6,10 @@
     </div>
   </div>
   <div class="content">
-    <div class="col-1-of-3">
+    <div class="check-out">
+      <button class="action-btn  hover-shadow" (click)="details(item)"><i class="pi pi-shopping-cart"></i> Checkout {{cart.length}} Items</button>
+    </div>
+    <div class="col-1-of-4">
       <div class="card" *ngFor="let item of products ">
         <div class="image">
           <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
@@ -22,7 +25,7 @@
         </div>
         <div class="price">
 
-          <button class="action-btn hover-shadow" (click)="details(item)">View</button>
+          <button class="action-btn hover-shadow" (click)="addToCart(item)">Add to cart</button>
         </div>
       </div>
     </div>
