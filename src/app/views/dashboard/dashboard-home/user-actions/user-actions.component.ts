@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserActions, User } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-user-actions',
@@ -36,6 +38,11 @@ export class UserActionsComponent implements OnInit {
           image: 'assets/images/actions/listproducts.svg',
           link: 'dashboard/list-product'
         },
+        {
+          name: 'My Online Shop',
+          image: 'assets/images/actions/listproducts.svg',
+          link: `shop/${this.user.CompanyId}`
+        },
         // {
         //   name: 'Attributes',
         //   image: 'assets/images/actions/attributes.svg',
@@ -49,7 +56,11 @@ export class UserActionsComponent implements OnInit {
       );
     }
   }
-  openAction(link) {
+  openAction(link: string) {
+    if (link && link.includes('shop')) {
+      window.open(`${environment.BASE_URL}/#/${link}`, '_blank');
+      return;
+    }
     if (link) {
       this.router.navigate([link]);
     }

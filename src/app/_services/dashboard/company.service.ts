@@ -51,6 +51,8 @@ export class CompanyService {
   updateCompany(data: Company): Observable<Company> {
     return this.http.put<Company>(`${this.url}/api/company/edit-company.php`, data);
   }
-
+  getCompany(companyId) {
+    return this.http.get<any>(`${this.url}/api/company/get-company.php?CompanyId=${companyId}`);
+  }
 
 }

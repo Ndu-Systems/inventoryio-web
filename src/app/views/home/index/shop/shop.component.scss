@@ -39,28 +39,31 @@
 
 .content {
   padding: 5rem 10rem;
-  background: #FFFFFF;
+  background: $cloud-ligher;
+
+  @media only screen and (max-width: 600px) {
+    padding: 1%;
+  }
 
   .card {
     border-radius: 10px;
-    border: solid 1px #D3D8DF;
     padding: 0;
-    background: $cloud;
-    ;
+    background: $white-color;
     width: 85%;
-    margin: 0 auto;
     margin: 1rem;
-    border-radius: 0;
+    overflow: hidden;
+
+
+    @media only screen and (max-width: 600px) {
+      width: 94%;
+    }
 
     .image {
-      width: 94%;
+      width: 100%;
       text-align: center;
       height: 28vh;
-      margin: .5rem auto;
-      // background: red;
-      //  background: red;
       overflow: hidden;
-      border: 3px solid $cloud;
+      margin: 0;
 
       img {
         // width: 100%;
@@ -70,16 +73,29 @@
       }
     }
 
-    .price,
     .details {
-      padding: 1rem;
+      padding: .4rem;
+      margin: 1rem;
+
+      h1.name {
+        color: $dark-navy;
+        font-size: 1.2rem;
+      }
+
+      p.price {
+        color: strong-gray;
+      }
 
       .action-btn {
-        background: $cloud;
-        ;
-        border: 1px solid $black-color;
-        color: $black-color;
+        background: $primary-bg-color;
+        color: $white-color;
+        border-radius: 3px;
 
+      }
+      .white{
+        border: 2px solid $blue-gray;
+        color:$blue-gray;
+        background:  $white-color;;
       }
     }
 
@@ -96,5 +112,12 @@
     padding: 1rem;
     margin-right: 2.6666rem;
     font-size: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      margin-right: .3rem;
+      padding: .5rem;
+      margin-top: .5rem;
+
+    }
   }
 }
