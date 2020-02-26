@@ -1,0 +1,78 @@
+<div class="container" *ngIf="sale$ | async as sale">
+  <div class="banner">
+    <div class="banner-body">
+      <h1 class="heading">{{welocme}}</h1>
+      <!-- <h1 class="heading">Please pick a plan.</h1> -->
+    </div>
+  </div>
+  <div class="content">
+    <div class="check-out">
+      <button class="action-btn  hover-shadow" (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to
+        shoping</button>
+    </div>
+
+    <div class="col-1-2">
+      <div class="sale-sammary">
+        <div class="sale" >
+          <div class="sale-item" *ngFor="let item of sale.items">
+            <div class="remove ">
+              <i (click)="removeItem(item)" class="pi pi-trash"></i>
+            </div>
+            <div class="name-price">
+              <h1>
+                {{item.name}}
+                <span>
+                  {{item.subTotal| currency:'R'}}
+                </span>
+              </h1>
+            </div>
+            <div class="count">
+              <div class="qnty">
+
+                <div class="input">
+                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="item.quantity" (blur)="blur(item)">
+                  <!-- <input type="text" min="0" [(ngModel)]="item.quantity" (blur)="blur(item)" placeholder="search products"> -->
+                </div>
+
+                <div class="btns">
+                  <button class="add hover-shadow" (click)="add(item)">
+                    <i class="pi pi-plus"></i>
+                  </button>
+                  <button class="reduce hover-shadow" (click)="reduce(item)">
+                    <i class="pi pi-minus"></i>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="sammary-totals">
+        <div class="sell total">
+          <h4>
+            {{sale?.total | currency:'R'}}
+            <span>Total</span>
+          </h4>
+
+        </div>
+
+        <div class="list-filters">
+          <div class="add">
+            <button class="btn" (click)="onSubmit()">Save order</button>
+          </div>
+          <div class="add">
+            <button class="btn btn-warn" (click)="clear()">Clear form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<title>
+  {{welocme}}
+</title>

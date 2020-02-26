@@ -8,6 +8,7 @@ import { IndexComponent, HomePageComponent, FeaturesComponent, HowItWorksCompone
 import { SignUpComponent, SignInComponent } from './accounts';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { ShopComponent } from './index/shop/shop.component';
+import { ShoppingCartComponent } from './index/shop/shopping-cart/shopping-cart.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'shop/:id', component: ShopComponent },
+      { path: 'shopping-cart/:id', component: ShoppingCartComponent },
       { path: 'sign-up', component: SignUpComponent },
 
     ]
@@ -36,7 +38,8 @@ export const declarations = [
   HomeNavComponent,
   HomeSliderComponent,
   HowItWorksComponent,
-  ShopComponent
+  ShopComponent,
+  ShoppingCartComponent
 ];
 
 

@@ -4,6 +4,7 @@ import { HomeRoutingModule, declarations } from './home-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {GalleriaModule} from 'primeng/galleria';
 import { ToastModule } from 'primeng/toast';
+import {CardModule} from 'primeng/card';
 
 
 
@@ -12,7 +13,8 @@ import { ToastModule } from 'primeng/toast';
     CommonModule,
     HomeRoutingModule,
     FormsModule, ReactiveFormsModule,
-    GalleriaModule
+    GalleriaModule,
+    CardModule
   ],
   declarations: [
     ...declarations
