@@ -1,5 +1,6 @@
 import { Brand } from './brand.model';
 import { Caterory } from './caterory.model';
+import { Image } from './image.model';
 
 export interface Product {
     CompanyId?: string;
@@ -24,6 +25,6 @@ export interface Product {
     Catergory?: Caterory;
     Brand?: Brand;
     QuantityAvailable?: number;
-    Images?;
+    images?: Image[];
 
 }

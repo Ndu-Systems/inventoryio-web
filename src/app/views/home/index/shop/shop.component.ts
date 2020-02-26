@@ -83,7 +83,13 @@ export class ShopComponent implements OnInit {
     }
 
     this.productService.updateCurrentProduct(product);
-    this.shoppingService.doSellLogic({ prodcuId: product.ProductId, name: product.Name, price: Number(product.UnitPrice), quantity: 1 });
+    this.shoppingService.doSellLogic(
+      { prodcuId: product.ProductId,
+      name: product.Name,
+      price: Number(product.UnitPrice),
+      quantity: 1 ,
+      image: product.images && product.images[0].Url
+    });
   }
 
 }

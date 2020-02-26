@@ -115,7 +115,7 @@ export class AddProductComponent implements OnInit {
     return this.rForm.controls;
   }
   onSubmit(product: Product) {
-    product.Images = this.uploadService.currentImageValue;
+    product.images = this.uploadService.currentImageValue;
     console.log(product);
 
     this.productService.addProduct(product);

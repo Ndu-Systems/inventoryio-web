@@ -9,6 +9,7 @@ import { SignUpComponent, SignInComponent } from './accounts';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { ShopComponent } from './index/shop/shop.component';
 import { ShoppingCartComponent } from './index/shop/shopping-cart/shopping-cart.component';
+import { ShippingComponent } from './index/shop/shipping/shipping.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -39,7 +40,8 @@ export const declarations = [
   HomeSliderComponent,
   HowItWorksComponent,
   ShopComponent,
-  ShoppingCartComponent
+  ShoppingCartComponent,
+  ShippingComponent
 ];
 
 

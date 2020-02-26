@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product, Company, Item, SellModel, Orders } from 'src/app/_models';
-import { ProductService, CompanyService } from 'src/app/_services';
+import { ProductService, CompanyService, InvoiceService } from 'src/app/_services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
@@ -27,6 +27,7 @@ export class ShoppingCartComponent implements OnInit {
     private shoppingService: ShoppingService,
     private activatedRoute: ActivatedRoute,
     private companyService: CompanyService,
+    private invoiceService: InvoiceService,
     private router: Router,
     private titleService: Title
 
@@ -133,7 +134,15 @@ export class ShoppingCartComponent implements OnInit {
     console.log('items', this.sale.items);
     this.shoppingService.addOrder(order, this.sale.items).subscribe(response => {
       this.order = response;
+      this.print(this.order);
     });
   }
+
+  print(order: Orders) {
+    const url = this.invoiceService.getInvoiceURL(order.OrdersId);
+    const win = window.open(url, '_blank');
+    win.focus();
+  }
+
 
 }

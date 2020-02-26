@@ -6,6 +6,7 @@ export interface SellModel {
 export interface Item {
     prodcuId: string;
     name: string;
+    image?: string;
     price: number;
     subTotal?: number;
     quantity: number;
