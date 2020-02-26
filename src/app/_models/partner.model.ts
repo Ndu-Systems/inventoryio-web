@@ -8,9 +8,9 @@ export interface Partner {
     EmailAddress: string;
     Password: string;
     Address: string;
-    CreateDate: string;
+    CreateDate?: string;
     CreateUserId: string;
-    ModifyDate: string;
+    ModifyDate?: string;
     ModifyUserId: string;
     StatusId: string;
 }

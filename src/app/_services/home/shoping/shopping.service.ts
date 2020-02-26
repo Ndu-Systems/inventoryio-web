@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Orders, OrderProducts, Item, Product, SellModel } from 'src/app/_models';
+import { Orders, OrderProducts, Item, Product, SellModel, Partner } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
 import { SplashService } from '../../splash.service';
 import { environment } from 'src/environments/environment';
@@ -14,6 +14,10 @@ export class ShoppingService {
 
   private _sell: BehaviorSubject<SellModel>;
   public sell: Observable<SellModel>;
+
+  private _customer: BehaviorSubject<Partner>;
+  public customer: Observable<Partner>;
+
   url: string;
   constructor(
     private productService: ProductService,
@@ -22,6 +26,8 @@ export class ShoppingService {
   ) {
     this._sell = new BehaviorSubject<SellModel>(JSON.parse(localStorage.getItem('shop_sale')));
     this.sell = this._sell.asObservable();
+    this._customer = new BehaviorSubject<Partner>(JSON.parse(localStorage.getItem('shop_customer')));
+    this.customer = this._customer.asObservable();
     this.url = environment.API_URL;
 
   }
@@ -29,11 +35,21 @@ export class ShoppingService {
   public get currentSellModelValue(): SellModel {
     return this._sell.value;
   }
+
   updateState(data: SellModel) {
     if (data) {
       this.calculateTotal();
       this._sell.next(data);
       localStorage.setItem('shop_sale', JSON.stringify(data));
+    }
+
+  }
+
+  updateCustomerState(data: Partner) {
+    if (data) {
+      this.calculateTotal();
+      this._customer.next(data);
+      localStorage.setItem('shop_customer', JSON.stringify(data));
     }
 
   }
@@ -67,7 +83,7 @@ export class ShoppingService {
     } else {
       // item is on the sale already it just needs to be updated
       checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
-     // item.quantity++;
+      // item.quantity++;
       this.productService.appendState(product);
     }
     product.QuantityAvailable = product.Quantity - item.quantity;
@@ -115,6 +131,6 @@ export class ShoppingService {
       };
       productItems.push(productItem);
     });
-    return this.http.post<any>(`${this.url}/api/orders/shop.php`, { order: data, products: productItems });
+    return this.http.post<any>(`${this.url}/api/orders/shop.php`, { order: data, products: productItems});
   }
 }

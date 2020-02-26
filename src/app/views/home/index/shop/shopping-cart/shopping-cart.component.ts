@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, Company, Item, SellModel, Orders } from 'src/app/_models';
+import { Product, Company, Item, SellModel, Orders, Partner } from 'src/app/_models';
 import { ProductService, CompanyService, InvoiceService } from 'src/app/_services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -18,7 +18,7 @@ export class ShoppingCartComponent implements OnInit {
   company: Company;
   sale$: Observable<SellModel>;
   products: Product[];
-  selectedPartner: any;
+  selectedPartner: Partner;
   sale: any;
   order: Orders;
 
@@ -52,6 +52,11 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;
+      }
+    });
+    this.shoppingService.customer.subscribe(state => {
+      if (state) {
+        this.selectedPartner = state;
       }
     });
     this.productService.products.subscribe(r => {
@@ -120,7 +125,8 @@ export class ShoppingCartComponent implements OnInit {
     }
     const order: Orders = {
       CompanyId: this.companyId,
-      ParntersId: this.selectedPartner && this.selectedPartner.PartnerId || null,
+      Customer: this.selectedPartner  || null,
+      ParntersId: '',
       OrderType: 'Sell',
       Total: this.sale.total,
       Paid: 0,

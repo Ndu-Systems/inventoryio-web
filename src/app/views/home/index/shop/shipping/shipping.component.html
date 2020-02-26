@@ -1,13 +1,13 @@
 <div>
   <div class="group">
-    <input type="text"  [(ngModel)]="email" required="required" />
+    <input type="text"  [(ngModel)]="email" (blur)="saveCustomerState()" required="required" />
     <label>Email Address</label>
   </div>
   <div class="alert" *ngIf="email">
     <!-- A valid email is required -->
   </div>
   <div class="group">
-    <input type="text"  [(ngModel)]="cell" required="required" />
+    <input type="text"  [(ngModel)]="cell" (blur)="saveCustomerState()" required="required" />
     <label>Cell Phone Number</label>
   </div>
   <div class="alert" *ngIf="cell">
@@ -16,7 +16,7 @@
 
 
   <div class="group">
-    <input type="text"  [(ngModel)]="fullname" autofocus required="required" />
+    <input type="text"  [(ngModel)]="fullname" (blur)="saveCustomerState()" autofocus required="required" />
     <label>Full Name</label>
   </div>
   <div class="alert" *ngIf="fullname">
@@ -24,7 +24,7 @@
   </div>
 
   <div class="group">
-    <input type="text"  [(ngModel)]="address" required="required" />
+    <input type="text"  [(ngModel)]="address" (blur)="saveCustomerState()" required="required" />
     <label>delivery address</label>
   </div>
   <div class="alert" *ngIf="address">
@@ -33,3 +33,4 @@
 
 
 </div>
+

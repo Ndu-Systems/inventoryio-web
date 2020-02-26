@@ -1,5 +1,5 @@
 <div class="container" *ngIf="products$  | async as products">
-  <div class="banner">
+  <div class="banner" style="background-image: url('../../../../../assets/shop/shop.png');">
     <div class="banner-body">
       <h1 class="heading">{{welocme}}</h1>
     </div>
@@ -20,7 +20,7 @@
   <div>{{item.UnitPrice | currency:'R'}}</div>
   <p-footer>
     <button class="action-btn hover-shadow" (click)="doSell(item)">Add to cart</button>
-    <button class="action-btn hover-shadow white" (click)="addToCart(item)">Details</button>
+    <!-- <button class="action-btn hover-shadow white" (click)="addToCart(item)">Details</button> -->
   </p-footer>
 </p-card>
 </span>
