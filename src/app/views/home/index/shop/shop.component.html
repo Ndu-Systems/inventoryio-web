@@ -2,7 +2,6 @@
   <div class="banner">
     <div class="banner-body">
       <h1 class="heading">{{welocme}}</h1>
-      <!-- <h1 class="heading">Please pick a plan.</h1> -->
     </div>
   </div>
   <div class="content">
@@ -11,31 +10,10 @@
         {{cart.length}} Items</button>
     </div>
     <div class="col-1-of-4">
-      <!-- <div class="card" *ngFor="let item of products ">
-        <div class="image">
-          <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-          <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
-        </div>
-        <div class="details">
-          <h1 class="name">
-            {{item.Name}}
-          </h1>
-          <p class="price">
-            {{item.UnitPrice | currency:'R'}}
-          </p>
-          <div class="price">
-
-            <button class="action-btn hover-shadow" (click)="addToCart(item)">Add to cart</button>
-            <button class="action-btn hover-shadow white" (click)="addToCart(item)">Details</button>
-          </div>
-        </div>
-        
-      </div> -->
 <span *ngFor="let item of products ">
   <p-card [header]="item.Name" subheader="" [style]="{width: '360px' , margin: '5px', overflow : 'hidden', 'text-align': 'left'}"
   styleClass="ui-card-shadow" >
   <p-header>
-    <!-- <img src="Card" src="assets/showcase/images/usercard.png"> -->
     <img [src]="item.images[0].Url" alt="" *ngIf="item.images" style="height: 300px; width: auto; margin: 0 auto;" />
     <img src="assets/images/placeholder.png" *ngIf="!item.images" style="height: 300px" alt="" />
   </p-header>

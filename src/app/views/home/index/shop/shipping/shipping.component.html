@@ -1,35 +1,35 @@
-<form [formGroup]="rForm" (ngSubmit)="signUp()">
+<div>
   <div class="group">
-    <input type="text" formControlName="email" required="required" />
+    <input type="text"  [(ngModel)]="email" required="required" />
     <label>Email Address</label>
   </div>
-  <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched">
-    A valid email is required
+  <div class="alert" *ngIf="email">
+    <!-- A valid email is required -->
   </div>
   <div class="group">
-    <input type="text" formControlName="cell" required="required" />
+    <input type="text"  [(ngModel)]="cell" required="required" />
     <label>Cell Phone Number</label>
   </div>
-  <div class="alert" *ngIf="!rForm.controls['cell'].valid  && rForm.controls['cell'].touched">
-    Cell Phone Number is required
+  <div class="alert" *ngIf="cell">
+    <!-- Cell Phone Number is required -->
   </div>
 
 
   <div class="group">
-    <input type="text" formControlName="fullname" autofocus required="required" />
+    <input type="text"  [(ngModel)]="fullname" autofocus required="required" />
     <label>Full Name</label>
   </div>
-  <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched">
-    Full Name is required
+  <div class="alert" *ngIf="fullname">
+    <!-- Full Name is required -->
   </div>
 
   <div class="group">
-    <input type="text" formControlName="address" required="required" />
+    <input type="text"  [(ngModel)]="address" required="required" />
     <label>delivery address</label>
   </div>
-  <div class="alert" *ngIf="!rForm.controls['address'].valid  && rForm.controls['address'].touched">
-    Delivery address is required
+  <div class="alert" *ngIf="address">
+    <!-- Delivery address is required -->
   </div>
 
 
-</form>
+</div>
