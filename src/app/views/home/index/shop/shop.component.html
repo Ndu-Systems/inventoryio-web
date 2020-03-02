@@ -1,5 +1,6 @@
 <div class="container" *ngIf="products$  | async as products">
-  <div class="banner" style="background-image: url('../../../../../assets/shop/shop.png');">
+
+  <div  class="banner" [ngStyle]="{ 'background-image': ' linear-gradient(to bottom, rgba(86, 45, 98, 0.445), rgba(34, 17, 17, 0.555)), url(' + bannerImage + ')'}">
     <div class="banner-body">
       <h1 class="heading">{{welocme}}</h1>
     </div>
@@ -7,23 +8,34 @@
   <div class="content">
     <div class="check-out">
       <button class="action-btn  hover-shadow" (click)="viewCart()"><i class="pi pi-shopping-cart"></i> Checkout
-        {{cart.length}} Items</button>
+        {{cartItems}} Items</button>
     </div>
     <div class="col-1-of-4">
-<span *ngFor="let item of products ">
-  <p-card [header]="item.Name" subheader="" [style]="{width: '360px' , margin: '5px', overflow : 'hidden', 'text-align': 'left'}"
-  styleClass="ui-card-shadow" >
-  <p-header>
-    <img [src]="item.images[0].Url" alt="" *ngIf="item.images" style="height: 300px; width: auto; margin: 0 auto;" />
-    <img src="assets/images/placeholder.png" *ngIf="!item.images" style="height: 300px" alt="" />
-  </p-header>
-  <div>{{item.UnitPrice | currency:'R'}}</div>
-  <p-footer>
-    <button class="action-btn hover-shadow" (click)="doSell(item)">Add to cart</button>
-    <!-- <button class="action-btn hover-shadow white" (click)="addToCart(item)">Details</button> -->
-  </p-footer>
-</p-card>
-</span>
+      <span *ngFor="let item of products ">
+     <div class="shop-card">
+          <div class="image"  *ngIf="item.images"  [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
+
+          </div>
+          <div class="image"  *ngIf="!item.images"  [ngStyle]="{ 'background-image': 'url(' + placeholder + ')'}">
+
+          </div>
+
+          <div class="name">
+          <p>
+            {{item.Name}}
+          </p>
+          </div>
+          <div class="notes">
+          <p>
+            {{item.UnitPrice | currency:'R'}}
+          </p>
+          </div>
+
+          <div class="actions">
+            <button class="action-btn hover-shadow" (click)="doSell(item)">Add to cart</button>
+          </div>
+        </div>
+      </span>
 
     </div>
   </div>

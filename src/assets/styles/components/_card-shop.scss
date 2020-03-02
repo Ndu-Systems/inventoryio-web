@@ -1,0 +1,72 @@
+.shop-card {
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-template-rows: 250px 50px 50px 80px;
+  grid-template-areas: "image""name""notes""actions";
+  margin: 1rem;
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-rows: 130px 30px 30px 60px;
+    margin: .5rem;
+
+  }
+
+  .image {
+    grid-area: "image";
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-size: cover;
+    background-position: top left;
+    ;
+  }
+
+
+  .name {
+    grid-area: "name";
+    margin: 5px 15px;
+
+    @media only screen and (max-width: 600px) {
+      margin: 3px 7px;
+
+    }
+
+    // background: rgb(63, 4, 4);
+    p {
+      color: #2E344C;
+      font-weight: 700;
+      text-align: left;
+      font-size: 13px;
+    }
+  }
+
+  .notes {
+    grid-area: "notes";
+    margin: 5px 15px;
+
+    @media only screen and (max-width: 600px) {
+      margin: 3px 7px;
+
+    }
+
+    p {
+      color: #7B8C98;
+      font-weight: 600;
+      text-align: left;
+      font-size: 13px;
+    }
+  }
+
+  .actions {
+    grid-area: "actions";
+    margin: 5px 15px;
+    text-align: left;
+
+    button {
+      text-transform: capitalize;
+      margin: 0;
+    }
+  }
+}

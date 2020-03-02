@@ -1,3 +1,5 @@
+import { Image } from './image.model';
+
 export interface Company {
     CompanyId?: string;
     Name: string;
@@ -8,4 +10,5 @@ export interface Company {
     ModifyDate?: string;
     ModifyUserId: string;
     StatusId: string;
+    Banner?: Image[];
 }

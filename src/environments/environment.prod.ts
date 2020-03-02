@@ -6,5 +6,4 @@ export const environment = {
   // BASE_URL: 'https://inventoryio.co.za',
   ACCOUNT_TEST_EMAIL: null,
   ACCOUNT_TEST_PASSWORD: null
-
 };

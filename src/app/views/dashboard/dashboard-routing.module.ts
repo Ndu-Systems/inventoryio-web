@@ -79,6 +79,7 @@ import { SpeechComponent } from './shared/speech/speech.component';
 import { ImportPartnersComponent } from './import-export/import/import-partners/import-partners.component';
 import { InventoryReportComponent } from './reports/reports/inventory-report/inventory-report.component';
 import { FilterStringsPipe } from 'src/app/_pipes/filter-strings.pipe';
+import { AttributesComponent } from './products/attributes/attributes.component';
 
 const routes: Routes = [
   {
@@ -215,11 +216,8 @@ export const declarations = [
   QouteDetailsComponent,
   SpeechComponent,
   ImportPartnersComponent,
-  // SalesReportComponent,
   InventoryReportComponent,
-  // CompanyServicesComponent,
-  // AddCompanyServiceComponent,
-  // SellServiceComponent,
+  AttributesComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

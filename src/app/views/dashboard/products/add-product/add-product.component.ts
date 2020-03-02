@@ -22,6 +22,7 @@ export class AddProductComponent implements OnInit {
   prodcut: Product;
   showScan: boolean;
   isTrackInventory: boolean;
+  id = 'new';
 
   constructor(
     private fb: FormBuilder,
@@ -148,5 +149,5 @@ export class AddProductComponent implements OnInit {
   }
   handleChange(e) {
     this.isTrackInventory = e.checked;
-}
+  }
 }

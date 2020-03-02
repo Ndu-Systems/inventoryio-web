@@ -10,6 +10,7 @@ import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { ShopComponent } from './index/shop/shop.component';
 import { ShoppingCartComponent } from './index/shop/shopping-cart/shopping-cart.component';
 import { ShippingComponent } from './index/shop/shipping/shipping.component';
+import { ShopingSuccesfulComponent } from './index/shop/shoping-succesful/shoping-succesful.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'sign-in', component: SignInComponent },
       { path: 'shop/:id', component: ShopComponent },
       { path: 'shopping-cart/:id', component: ShoppingCartComponent },
+      { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
       { path: 'sign-up', component: SignUpComponent },
 
     ]
@@ -41,7 +43,8 @@ export const declarations = [
   HowItWorksComponent,
   ShopComponent,
   ShoppingCartComponent,
-  ShippingComponent
+  ShippingComponent,
+  ShopingSuccesfulComponent
 ];
 
 

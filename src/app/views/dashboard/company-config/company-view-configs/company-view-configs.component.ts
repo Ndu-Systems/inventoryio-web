@@ -102,6 +102,10 @@ export class CompanyViewConfigsComponent implements OnInit {
       this.type = 'logocolors';
       this.lebel = 'Invoice Logo';
     }
+    if (this.configType === 'coverimage') {
+      this.type = 'coverimage';
+      this.lebel = 'Upload Cover Image';
+    }
   }
   onSave() {
     if (this.isColorsConfig(this.fields)) {

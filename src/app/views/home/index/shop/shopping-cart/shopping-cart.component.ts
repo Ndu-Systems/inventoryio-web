@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, Company, Item, SellModel, Orders, Partner } from 'src/app/_models';
-import { ProductService, CompanyService, InvoiceService } from 'src/app/_services';
+import { Product, Company, Item, SellModel, Orders, Partner, Email } from 'src/app/_models';
+import { ProductService, CompanyService, EmailService, InvoiceService } from 'src/app/_services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
@@ -21,12 +21,15 @@ export class ShoppingCartComponent implements OnInit {
   selectedPartner: Partner;
   sale: any;
   order: Orders;
+  bannerImage = 'assets/placeholders/shopheader.jpg';
+
 
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
     private activatedRoute: ActivatedRoute,
     private companyService: CompanyService,
+    private emailService: EmailService,
     private invoiceService: InvoiceService,
     private router: Router,
     private titleService: Title
@@ -43,6 +46,10 @@ export class ShoppingCartComponent implements OnInit {
         this.company = r;
         this.welocme = `Welcome to '${this.company.Name}' shopping page `;
         this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
+
+        if (this.company.Banner) {
+          this.bannerImage = this.company.Banner[0].Url;
+        }
 
       });
     });
@@ -125,7 +132,7 @@ export class ShoppingCartComponent implements OnInit {
     }
     const order: Orders = {
       CompanyId: this.companyId,
-      Customer: this.selectedPartner  || null,
+      Customer: this.selectedPartner || null,
       ParntersId: '',
       OrderType: 'Sell',
       Total: this.sale.total,
@@ -140,15 +147,50 @@ export class ShoppingCartComponent implements OnInit {
     console.log('items', this.sale.items);
     this.shoppingService.addOrder(order, this.sale.items).subscribe(response => {
       this.order = response;
-      this.print(this.order);
+      this.shoppingService.updateOrderState(this.order);
+      this.succesful();
     });
   }
 
-  print(order: Orders) {
-    const url = this.invoiceService.getInvoiceURL(order.OrdersId);
-    const win = window.open(url, '_blank');
-    win.focus();
+  succesful() {
+    const email: Email = {
+      CompanyName: this.company.Name,
+      EmailType: '',
+      Email: this.order.Customer && this.order.Customer.EmailAddress,
+      ContactNumber: this.company.TelephoneNumber,
+      Subject: `${this.company.Name} Invoice to ${this.order.Customer && this.order.Customer.Name}`,
+      Message: '',
+      DownloadLink:  this.invoiceService.getInvoiceURL(this.order.OrdersId),
+      InvoiceDate: this.formatDate(this.order.CreateDate),
+      Customer: this.order.Customer && this.order.Customer.Name,
+    };
+    this.sendEmailNow(email);
+    this.shoppingService.updateOrderState(null);
+    this.router.navigate(['shoping-succesful', this.companyId]);
+  }
+  sendEmailNow(email: Email) {
+    this.emailService.sendEmailInvoice(email).subscribe(data => {
+      console.log(data);
+    });
   }
 
+  formatDate(d: string) {
+    const months = ['Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep',
+      'Oct', 'Nov', 'Dec'];
+
+    const days = ['Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'];
+
+    const date = new Date(d);
+
+    return `${date.getDate()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
+  }
 
 }

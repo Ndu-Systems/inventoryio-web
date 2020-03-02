@@ -1,0 +1,96 @@
+@import '../../../../../../assets/styles/variables';
+.main {
+  padding: 2rem;
+  box-sizing: border-box;
+  @media only screen and (max-width: 600px) {
+    padding: .2rem 0;
+
+  }
+
+  .modal {
+    margin: 8rem auto;
+    width: 70%;
+    background: #fff;
+    padding: 2rem;
+
+    @media only screen and (max-width: 600px) {
+      margin: 8rem auto;
+      width: 96%;
+      background: #fff;
+      padding: 1rem;
+    }
+  }
+
+  .head {
+    h1 {
+      @media only screen and (max-width: 600px) {
+        font-size: 120%;
+      }
+    }
+  }
+}
+
+
+// List items
+.items {
+  background: #f3f4f8;
+  padding: 1rem;
+  border-radius: 15px;
+  overflow-y: unset;
+  height: auto;
+  max-height: 1000vh;;
+
+  .item {
+    border-radius: 10px;
+    grid-template-columns: repeat(3, 30%);
+    grid-template-columns: repeat(4, 20%);
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+    }
+
+    .data {
+      .total {
+        font-size: 1.3rem;
+        font-weight: 500;
+      }
+
+      .tax {
+        font-size: .8rem;
+      }
+    }
+  }
+
+  .image {
+    img {
+      width: 3rem;
+    }
+  }
+}
+
+.check-out {
+  text-align: right;
+
+  button {
+    padding: 1rem;
+    margin-right: 2.6666rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      margin-right: 1rem;
+      padding: .4rem;
+      margin-top: .5rem;
+      font-size: .8rem;
+
+
+    }
+  }
+}
+
+
+.grey{
+  background:$white-color ;
+  border: 2px solid $gray-color;
+  color: $gray-color;
+}

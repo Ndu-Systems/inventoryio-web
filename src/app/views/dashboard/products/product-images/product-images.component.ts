@@ -99,7 +99,7 @@ export class ProductImagesComponent implements OnInit {
 
           // Resize the image
           const canvas = document.createElement('canvas');
-          const maxSize = 544; // TODO : pull max size from a site config
+          const maxSize = 700; // TODO : pull max size from a site config
           let width = image.width;
           let height = image.height;
           if (width > height) {

@@ -12,14 +12,17 @@ import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  welocme = `Welcome to 'ZALOE' shopping page`;
+  // welocme = `Welcome to 'ZALOE' shopping page`;
+  welocme = ``;
   products$: Observable<Product[]>;
   cart$: Observable<Product[]>;
   companyId;
   cart: Product[] = [];
   company: Company;
   sale: SellModel;
-
+  placeholder = 'assets/images/placeholder.png';
+  bannerImage = 'assets/placeholders/shopheader.jpg';
+  cartItems = 0;
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
@@ -38,19 +41,23 @@ export class ShopComponent implements OnInit {
 
       this.companyService.getCompany(this.companyId).subscribe(r => {
         this.company = r;
-        this.welocme = `Welcome to '${this.company.Name}' shopping page `;
+        this.welocme = `Shop with ${this.company.Name}`;
         this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
-        // this.shoppingService.cart.subscribe(data => {
-        //   if (data && data.length) {
-        //     this.cart = data;
-        //   }
-        // })
+        if (this.company.Banner) {
+          this.bannerImage = this.company.Banner[0].Url;
+        }
 
       });
     });
   }
 
   ngOnInit() {
+    this.shoppingService.sell.subscribe(data => {
+      if (data) {
+        this.sale = data;
+        this.cartItems = this.sale.items.length;
+      }
+    })
   }
 
 
@@ -62,18 +69,8 @@ export class ShopComponent implements OnInit {
   doSell(product: Product) {
     if (this.sale) {
       if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
-        // this.messageService.add({
-        //   severity: 'warn',
-        //   summary: 'Stock Alert.',
-        //   detail: `You have run out of  ${product.Name}`
-        // });
         return false;
       }
-      // this.messageService.add({
-      //   severity: 'success',
-      //   summary: 'Added to cart',
-      //   detail: `${product.Name} Added`
-      // });
       const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
       if (item) {
         item.quantity++;
@@ -84,12 +81,13 @@ export class ShopComponent implements OnInit {
 
     this.productService.updateCurrentProduct(product);
     this.shoppingService.doSellLogic(
-      { prodcuId: product.ProductId,
-      name: product.Name,
-      price: Number(product.UnitPrice),
-      quantity: 1 ,
-      image: product.images && product.images[0].Url
-    });
+      {
+        prodcuId: product.ProductId,
+        name: product.Name,
+        price: Number(product.UnitPrice),
+        quantity: 1,
+        image: product.images && product.images[0].Url
+      });
   }
 
 }

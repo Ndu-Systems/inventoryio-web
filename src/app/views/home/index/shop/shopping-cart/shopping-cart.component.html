@@ -1,5 +1,5 @@
 <div class="container" *ngIf="sale$ | async as sale">
-  <div class="banner" style="background-image: url('../../../../../assets/shop/shop.png');">
+  <div  class="banner" [ngStyle]="{ 'background-image': ' linear-gradient(to bottom, rgba(86, 45, 98, 0.445), rgba(34, 17, 17, 0.555)), url(' + bannerImage + ')'}">
     <div class="banner-body">
       <h1 class="heading">{{welocme}}</h1>
     </div>
@@ -12,7 +12,7 @@
 
     <div class="col-1-2">
       <div class="sale-sammary">
-        <h1>Shopping Cart</h1>
+        <h1 class="topic-heading">Shopping Cart</h1>
         <div>
           <div class=" col-1-5">
             <div class="head">Product details</div>
@@ -21,70 +21,98 @@
             <div class="head">Price</div>
             <div class="head">Total</div>
           </div>
-          <div class="sale-item col-1-5" *ngFor="let item of sale.items">
-            <div class="row image">
-              <img [src]="item.image" alt="" *ngIf="item.image" />
-              <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
+          <span *ngFor="let item of sale.items">
+            <div class="sale-item col-1-5">
+              <div class="row image">
+                <img [src]="item.image" alt="" *ngIf="item.image" />
+                <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
+              </div>
+
+              <div class="row name">
+                <h3>
+                  {{item.name}}
+                </h3>
+                <div class="remove">
+                  <button (click)="removeItem(item)">Remove</button>
+                </div>
+              </div>
+
+
+              <div class="row quantity">
+                <div class="col clicks" (click)="reduce(item)">
+                  <i class="pi pi-minus"></i>
+                </div>
+                <div class="col">
+                  <input type="text" [(ngModel)]="item.quantity" (blur)="blur(item)"> </div>
+                <div class="col clicks" (click)="add(item)">
+                  <i class="pi pi-plus"></i>
+                </div>
+              </div>
+
+              <div class="row price">
+                <h3>
+                  {{item.price| currency:'R'}}
+                </h3>
+              </div>
+
+              <div class="row total">
+                <h3>
+                  {{item.subTotal| currency:'R'}}
+                </h3>
+              </div>
+
+
+
             </div>
+            <div class=" col-1-5 sale-items-mobile">
+              <div class="top">
+                <div class="row image">
+                  <img [src]="item.image" alt="" *ngIf="item.image" />
+                  <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
+                </div>
 
-            <div class="row name">
-              <h3>
-                {{item.name}}
-              </h3>
-              <div class="remove">
-                <button (click)="removeItem(item)">Remove</button>
-              </div>
-            </div>
-
-
-            <div class="row quantity">
-              <div class="col clicks" (click)="reduce(item)">
-                <i class="pi pi-minus"></i>
-              </div>
-              <div  class="col">
-                <input type="text" [(ngModel)]="item.quantity" (blur)="blur(item)"> </div>
-              <div  class="col clicks" (click)="add(item)">
-                <i class="pi pi-plus"></i>
-              </div>
-              <!-- <div class="count">
-                <div class="qnty">
-
-                  <div class="input">
-                    <input type="text" pInputText pKeyFilter="int" [(ngModel)]="item.quantity" (blur)="blur(item)">
-                  </div>
-
-                  <div class="btns">
-                    <button class="add hover-shadow" (click)="add(item)">
-                      <i class="pi pi-plus"></i>
-                    </button>
-                    <button class="reduce hover-shadow" (click)="reduce(item)">
-                      <i class="pi pi-minus"></i>
-                    </button>
-
+                <div class="row name">
+                  <h3>
+                    {{item.name}}
+                  </h3>
+                  <div class="remove">
+                    <button (click)="removeItem(item)">Remove</button>
                   </div>
                 </div>
-              </div> -->
+                <div class="row price">
+                  <h3>
+                    {{item.price| currency:'R'}}
+                    <span class="label-span">Price</span>
+                  </h3>
+                </div>
+              </div>
+              <div class="bot">
+
+                <div class="row quantity">
+                  <div class="col clicks" (click)="reduce(item)">
+                    <i class="pi pi-minus"></i>
+                  </div>
+                  <div class="col">
+                    <input type="text" [(ngModel)]="item.quantity" (blur)="blur(item)"> </div>
+                  <div class="col clicks" (click)="add(item)">
+                    <i class="pi pi-plus"></i>
+                  </div>
+                </div>
+
+                <div class="row total">
+                  <h3>
+                    {{item.subTotal| currency:'R'}}
+                    <span class="label-span">Total</span>
+
+                  </h3>
+                </div>
+              </div>
             </div>
-
-            <div class="row price">
-              <h3>
-                {{item.subTotal| currency:'R'}}
-              </h3>
-            </div>
-
-            <div class="row total">
-              <h3>
-                {{item.subTotal| currency:'R'}}
-              </h3>
-            </div>
-
-
-
-          </div>
+          </span>
         </div>
 
       </div>
-      
+
       <div class="sammary-totals">
         <div class="shipping">
           <h3>
@@ -92,7 +120,7 @@
           </h3>
           <app-shipping></app-shipping>
         </div>
-        
+
         <div class="sell total">
           <h4>
             {{sale?.total | currency:'R'}}

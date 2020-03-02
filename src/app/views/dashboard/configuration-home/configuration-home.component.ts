@@ -13,6 +13,7 @@ export class ConfigurationHomeComponent implements OnInit {
   actions2: UserActions[] = [];
   partners: UserActions[] = [];
   invoices: UserActions[] = [];
+  shops: UserActions[] = [];
   user: User;
   constructor(
     private bannerService: BannerService,
@@ -96,6 +97,12 @@ export class ConfigurationHomeComponent implements OnInit {
         image: 'assets/images/actions/logo-and-colors.svg',
         link: 'dashboard/company-view-configs/logo-and-colors'
       }
+    );
+    this.shops.push({
+      name: 'Cover image',
+      image: 'assets/images/actions/shop.svg',
+      link: 'dashboard/company-view-configs/coverimage'
+    }
     );
   }
 }

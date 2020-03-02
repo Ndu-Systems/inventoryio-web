@@ -1,7 +1,9 @@
-<h1 class="heading">
+<h1 class="heading" *ngIf="type != 'coverimage'">
   invoice configurations</h1>
+<h1 class="heading" *ngIf="type == 'coverimage'">
+  shop configurations</h1>
 
-  <app-actions [actions]="invoices"></app-actions>
+  <app-actions *ngIf="type != 'coverimage'" [actions]="invoices"></app-actions>
 
 
 <div class="clean-from-body">
@@ -52,13 +54,20 @@
       </div>
     </span>
 
+    <span *ngIf="type == 'coverimage'">
+      <div class="group mt-1 longer">
+        <span>Images</span>
+        <app-product-images [productId]="user.CompanyId + 'banner'"></app-product-images>
+      </div>
+    </span>
 
 
 
 
 
 
-    <div class="cta col-1-of-2">
+
+    <div  *ngIf="type != 'coverimage'" class="cta col-1-of-2">
       <input type="submit" class="btn save" (click)="onSave()" value="Save Details" />
       <a routerLink="/dashboard/configurations" class="cancel">cancel</a>
     </div>

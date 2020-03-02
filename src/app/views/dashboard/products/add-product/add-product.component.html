@@ -74,6 +74,9 @@
          <input type="number" formControlName="LowStock"  [disabled]="isTrackInventory" />
        </div>
      </div>
+     <div class="two">
+     <app-attributes [id] = "id"></app-attributes>
+     </div>
 
  
 
@@ -90,4 +93,3 @@
   <app-scanner></app-scanner>
 </div>
 
-{{rForm.value | json}}

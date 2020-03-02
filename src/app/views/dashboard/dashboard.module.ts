@@ -19,6 +19,10 @@ import {CalendarModule} from 'primeng/calendar';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {DialogModule} from 'primeng/dialog';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {ChipsModule} from 'primeng/chips';
+import {InputTextModule} from 'primeng/inputtext';
+
+
 
 // import { NgxBarcodeModule } from 'ngx-barcode';
 
@@ -44,7 +48,9 @@ import {InputSwitchModule} from 'primeng/inputswitch';
     CalendarModule,
     ColorPickerModule,
     DialogModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ChipsModule,
+    InputTextModule
     // NgxBarcodeModule
 
   ],
