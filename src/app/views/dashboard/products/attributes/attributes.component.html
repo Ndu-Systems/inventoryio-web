@@ -1,55 +1,32 @@
-<div class="clean-from-body">
-  <button type="button" (click)="showModalDialog()" pButton icon="pi pi-external-link" label="Add Options"></button>
-  <div class="form">
-    <div class="two">
-      <div class="group" *ngFor="let field of attributes$  | async as fields">
-        <span>{{field.Name}}</span>
-        <!-- <input [type]="field.AttributeType" [(ngModel)]="field.Values[0]" /> -->
-        <p-chips [(ngModel)]="field.Values"></p-chips>
-
-      </div>
-    </div>
+<div class="group">
+  <span>
+    Options
+    <span class="add btn" (click)="showModalDialog()">Add option</span>
+  </span>
+  <div class="options" *ngFor="let attribute of attributes">
+    <span class="items main">
+      {{attribute?.Name}}
+    </span>
+    <span class="items" *ngFor="let item of attribute.Values">
+      {{item?.AttributeValue}}
+    </span>
   </div>
-
 </div>
-
-<h1>
-  {{id}}
-</h1>
-
-
-
-
-
-<p-dialog header="Variants" [(visible)]="displayModal" [style]="{width: '50vw'}" [baseZIndex]="10000" [modal]="true">
-  <!-- <div class="ui-g-12 ui-md-4">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-      <input type="text" [(ngModel)]="Name" pInputText placeholder="Username">
-    </div>
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-      <p-chips [(ngModel)]="Values"></p-chips>
-    </div>
+<p-dialog header="Variants" [(visible)]="displayModal" [style]="{width: '50vw', 'text-align-last': 'left'}"
+  [baseZIndex]="10000" [modal]="true">
+  <div class="group">
+    <span> Option Name
+    </span>
+    <input autofocus [(ngModel)]="optionsName" />
   </div>
 
-  <p-footer>
-    <button type="button" pButton icon="pi pi-check" (click)="displayBasic=false" label="Yes"></button>
-    <button type="button" pButton icon="pi pi-times" (click)="displayBasic=false" label="No"
-      class="ui-button-secondary"></button>
-  </p-footer> -->
+  <div class="mychip">
+    <span> Options
+    </span>
+    <p-chips [(ngModel)]="options"></p-chips>
+  </div>
+  <div class="save">
+    <button type="button" (click)="saveOptions()" pButton label="Save options"></button>
 
-  
-  <div class="two">
-    <div class="group">
-      <span>Option Name</span>
-      <input type="text"  [(ngModel)]="Name" />
-    </div>
-
-    <div class="group">
-      <span>Values</span>
-      <!-- <input type="number"  [(ngModel)]="UnitCost" /> -->
-      <p-chips  [style]="{width: '100%'}" [(ngModel)]="Values"></p-chips>
-    </div>
   </div>
 </p-dialog>

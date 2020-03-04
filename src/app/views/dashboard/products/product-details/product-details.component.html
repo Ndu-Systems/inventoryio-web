@@ -68,8 +68,11 @@
       <input formControlName="Code" />
     </div>
     <div class="group images">
-      <app-product-images [productId]="productId"></app-product-images>
+      <app-product-images [productId]="productId" *ngIf="productId"></app-product-images>
     </div>
+
+    <app-attributes [id] = "productId" *ngIf="productId"></app-attributes>
+
 
     <div class="cta col-1-of-2">
       <input type="submit" class="btn save" (click)="update(rForm.value)" value="Save changes"

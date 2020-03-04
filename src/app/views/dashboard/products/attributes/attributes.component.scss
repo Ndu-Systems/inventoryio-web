@@ -1,0 +1,64 @@
+@import '../../../../../assets/styles/variables';
+
+.main {
+  // background: red;
+  text-align: left;
+
+
+}
+
+
+.options {
+  padding: .5rem 0;
+  text-align: left;
+//   background: $cloud;
+  //   display: inline !important;
+
+  .items {
+    display: inline !important;
+    background: $black-color;
+    color: $white-color;
+    padding: .3rem;
+    font-weight: 700;
+    margin: .5rem .3rem;
+    border-radius: 8px;
+
+  }
+
+  .main {
+    background: $cloud;
+    color: $black-color;
+  }
+}
+
+
+::ng-deep {
+  body .ui-inputtext {
+    width: 100%;
+    border: none;
+  }
+
+  body .ui-chips>ul.ui-inputtext {
+    padding: 0.5145em 0.429em;
+    display: inline-block;
+  }
+
+  body .ui-dialog .ui-dialog-titlebar {
+    background: $primary-bg-color;
+    color: $white-color;
+    border: none;
+  }
+
+  body .ui-button {
+    float: right;
+  }
+}
+
+.mychip {
+  border: 1px solid #dbe0e3;
+  border-radius: 8px;
+  padding: .5rem;
+  margin: 1rem .5rem;
+  margin-right: 0;
+
+}

@@ -10,7 +10,7 @@ import { Attribute } from 'src/app/_models/Attribute.model';
 @Injectable({
   providedIn: 'root'
 })
-export class Attributeservice {
+export class AttributeService {
 
   private _attributes: BehaviorSubject<Attribute[]>;
   public attributes: Observable<Attribute[]>;

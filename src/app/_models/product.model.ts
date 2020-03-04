@@ -1,6 +1,7 @@
 import { Brand } from './brand.model';
 import { Caterory } from './caterory.model';
 import { Image } from './image.model';
+import { Attribute } from './Attribute.model';
 
 export interface Product {
     CompanyId?: string;
@@ -26,5 +27,6 @@ export interface Product {
     Brand?: Brand;
     QuantityAvailable?: number;
     images?: Image[];
+    Attributes?: Attribute[];
 
 }

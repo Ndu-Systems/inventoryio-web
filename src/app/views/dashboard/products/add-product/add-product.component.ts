@@ -6,6 +6,8 @@ import { User, Product, Brand, Caterory } from 'src/app/_models';
 import { Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { state } from '@angular/animations';
+import { AttributeService } from 'src/app/_services/dashboard/attribute.service';
+import { Attribute } from 'src/app/_models/Attribute.model';
 
 @Component({
   selector: 'app-add-product',
@@ -23,6 +25,7 @@ export class AddProductComponent implements OnInit {
   showScan: boolean;
   isTrackInventory: boolean;
   id = 'new';
+  attributes: Attribute[];
 
   constructor(
     private fb: FormBuilder,
@@ -35,6 +38,8 @@ export class AddProductComponent implements OnInit {
     private uploadService: UploadService,
     private messageService: MessageService,
     private scannerService: ScannerService,
+    private attributeService: AttributeService,
+
 
   ) {
     this.bannerService.updateState({
@@ -111,6 +116,12 @@ export class AddProductComponent implements OnInit {
     this.catergories$ = this.cateroryService.categories;
     this.uploadService.clearState();
 
+    this.attributeService.attributes.subscribe(data => {
+      if (data) {
+        this.attributes = data;
+      }
+    });
+
   }
   get getFormValues() {
     return this.rForm.controls;
@@ -118,14 +129,14 @@ export class AddProductComponent implements OnInit {
   onSubmit(product: Product) {
     product.images = this.uploadService.currentImageValue;
     console.log(product);
-
+    product.Attributes = this.attributes;
     this.productService.addProduct(product);
     this.messageService.add({
       severity: 'success',
       summary: 'Success!',
       detail: 'product created '
     });
-    this.routeTo.navigate([`/dashboard/list-product`]);
+    // this.routeTo.navigate([`/dashboard/list-product`]);
 
   }
   addbrand(data: Product) {

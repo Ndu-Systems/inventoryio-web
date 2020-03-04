@@ -1,26 +1,26 @@
 export interface AttributeItem {
-    Id: string;
-    AttributeId: string;
+    Id?: number;
+    AttributeId?: string;
     AttributeValue: string;
     AttributePrice?: any;
     CreateDate?: string;
     CreateUserId: string;
     ModifyDate?: string;
     ModifyUserId: string;
-    StatusId: string;
+    StatusId: number;
 }
 
 export interface Attribute {
-    AttributeId: string;
+    AttributeId?: string;
     Name: string;
     AttributeType: string;
     CompanyId: string;
     ProductId: string;
-    Shop: string;
+    Shop: number;
     CreateDate?: string;
     CreateUserId: string;
     ModifyDate?: string;
     ModifyUserId: string;
-    StatusId: string;
+    StatusId: number;
     Values?: AttributeItem[];
 }

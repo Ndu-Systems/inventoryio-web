@@ -92,6 +92,7 @@ export class ListProductsComponent implements OnInit {
     this.bannerService.updateState({
       backto: '/dashboard/list-product',
     });
+    debugger
     this.productService.updateCurrentProduct(product);
     this.router.navigate([`/dashboard/product-details`]);
   }

@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { SpinnerService } from '.';
 import { SplashService } from '../splash.service';
 import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
+import { Attribute } from 'src/app/_models/Attribute.model';
 
 @Injectable({
   providedIn: 'root'
