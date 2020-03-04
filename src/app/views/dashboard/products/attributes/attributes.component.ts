@@ -39,7 +39,6 @@ export class AttributesComponent implements OnInit {
         if (data && data.length) {
           this.product = data.find(x => x.ProductId === this.id);
           if (this.product) {
-            debugger
             this.attributes = this.product.Attributes || [];
           }
         }

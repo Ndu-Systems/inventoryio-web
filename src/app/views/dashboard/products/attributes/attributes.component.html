@@ -3,7 +3,8 @@
     Options
     <span class="add btn" (click)="showModalDialog()">Add option</span>
   </span>
-  <div class="options" *ngFor="let attribute of attributes">
+<div *ngIf="attributes.length; else noOptions">
+  <div class="options" *ngFor="let attribute of attributes" >
     <span class="items main">
       {{attribute?.Name}}
     </span>
@@ -11,6 +12,14 @@
       {{item?.AttributeValue}}
     </span>
   </div>
+</div>
+
+  <ng-template #noOptions>
+    <p class="notes">
+      You do not have options for this product, click Add Option to add new.
+    </p>
+  </ng-template>
+  
 </div>
 <p-dialog header="Variants" [(visible)]="displayModal" [style]="{width: '50vw', 'text-align-last': 'left'}"
   [baseZIndex]="10000" [modal]="true">
