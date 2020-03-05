@@ -1,0 +1,21 @@
+.main {
+  padding: 5% 10%;
+
+  .slider {
+    height: 25rem;
+
+    img {
+      height: 25rem;
+    }
+  }
+
+  .navigate-image {
+    display: inline;
+
+    img {
+      height: 3rem;
+      margin: .3rem;
+      cursor: pointer;
+    }
+  }
+}

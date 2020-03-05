@@ -1,17 +1,16 @@
 <div class="main">
   <div class="order" *ngIf=" this.product$ | async as  product;">
-    <!-- <div class="images">
+    <div class="images">
       <div class="slider">
-        <div class="image" *ngFor="let image of product.images">
-          <img [src]="image?.Url" alt="">
-        </div>
+        <img [src]="selectedImage?.Url" alt="">
       </div>
       <div class="navigate">
-
+        <div class="navigate-image" *ngFor="let image of product.images">
+          <img (click)="selectImage(image)" [src]="image?.Url" alt="">
+        </div>
       </div>
-    </div> -->
-    
+    </div>
+
   </div>
-  <p-galleria *ngIf="images" [images]="images" panelWidth="500" panelHeight="313" [showCaption]="true"></p-galleria>
 
 </div>
