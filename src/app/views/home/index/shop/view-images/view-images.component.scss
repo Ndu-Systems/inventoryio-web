@@ -1,11 +1,14 @@
 .main {
-  padding: 5% 10%;
 
   .slider {
     height: 25rem;
 
     img {
       height: 25rem;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
     }
   }
 

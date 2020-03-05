@@ -1,9 +1,58 @@
 @import '../../../../../../assets/styles/variables';
-.main {
-  padding: 2rem;
-  box-sizing: border-box;
-  @media only screen and (max-width: 600px) {
-    padding: .2rem 0;
 
+.main {
+  padding: 10rem 2rem;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 600px) {
+    padding: 20% 3%;
+
+  }
+
+  hr{
+    background-color: $blue-gray;
+  }
+  .product-details {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+
+    }
+
+    .detais {
+      h1.name {
+        font-size: 1.25rem;
+        font-weight: 500;
+
+      }
+      h1.price {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .options{
+        margin: 1rem 0;
+        border: 1px solid $blue-gray;
+        box-sizing: border-box;
+        padding: .5rem;
+
+        h1.option-name{
+          font-size: 1.1rem;
+          font-weight: 400;
+          margin: 0;
+        }
+      }
+      select{
+        padding: 0;
+      }
+    }
+
+    .action-btn{
+      padding: 1.5rem .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
   }
 }

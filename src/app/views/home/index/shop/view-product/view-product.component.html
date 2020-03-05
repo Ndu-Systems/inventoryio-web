@@ -1,6 +1,56 @@
 <div class="main">
 
   <div class="order" *ngIf=" this.product$ | async as  product;">
-    <app-view-images></app-view-images>
+    <div class="product-details">
+      <div class="images">
+        <app-view-images></app-view-images>
+      </div>
+      <div class="detais">
+        <h1 class="name">
+          {{product.Name}}
+        </h1>
+        <hr>
+        <h1 class="price">
+          {{product.UnitPrice | currency:'R'}}
+        </h1>
+        <hr>
+
+        <span *ngIf="product.Attributes">
+          <h1 class="name">
+            Select Options
+          </h1>
+          <div class="options" *ngFor="let attribute of product.Attributes">
+            <h1 class="option-name">
+              {{attribute.Name}} **
+            </h1>
+            <span *ngIf="attribute.Values">
+              <select>
+                <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
+                  {{item.AttributeValue}}</option>
+              </select>
+            </span>
+
+          </div>
+
+        </span>
+        
+        <div class="options">
+          <h1 class="option-name">
+            Quantity **
+          </h1>
+
+          <select>
+            <option *ngFor="let qnty of quantity" class="select-option" [value]="qnty">
+              {{qnty}}</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button class="action-btn hover-shadow" (click)="doSell(product)">Add to cart</button>
+        </div>
+
+
+      </div>
+    </div>
   </div>
 </div>

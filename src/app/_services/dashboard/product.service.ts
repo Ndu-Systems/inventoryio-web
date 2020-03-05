@@ -34,7 +34,7 @@ export class ProductService {
     this.products = this._products.asObservable();
 
     // Selected product
-    this._product = new BehaviorSubject<Product>(JSON.parse(localStorage.getItem('product')));
+    this._product = new BehaviorSubject<Product>(JSON.parse(localStorage.getItem('product')) || null);
     this.product = this._product.asObservable();
 
     this._sellItem = new BehaviorSubject<Product>(JSON.parse(localStorage.getItem('sell_item')));

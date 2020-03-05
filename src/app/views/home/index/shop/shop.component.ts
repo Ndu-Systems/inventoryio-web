@@ -65,31 +65,6 @@ export class ShopComponent implements OnInit {
     // this.shoppingService.setState(this.cart);
     this.router.navigate(['shopping-cart', this.companyId]);
   }
-
-  doSell(product: Product) {
-    if (this.sale) {
-      if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
-        return false;
-      }
-      const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
-      if (item) {
-        item.quantity++;
-        this.shoppingService.doSellLogic(item);
-        return;
-      }
-    }
-
-    this.productService.updateCurrentProduct(product);
-    this.shoppingService.doSellLogic(
-      {
-        prodcuId: product.ProductId,
-        name: product.Name,
-        price: Number(product.UnitPrice),
-        quantity: 1,
-        image: product.images && product.images[0].Url
-      });
-  }
-
   viewItem(product: Product) {
     this.productService.updateSellProductState(product);
     this.router.navigate(['view-product', product.ProductId]);
