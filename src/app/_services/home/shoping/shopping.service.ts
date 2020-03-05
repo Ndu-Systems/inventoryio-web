@@ -21,6 +21,9 @@ export class ShoppingService {
   private _order: BehaviorSubject<Orders>;
   public order: Observable<Orders>;
 
+
+
+
   url: string;
   constructor(
     private productService: ProductService,
@@ -29,10 +32,14 @@ export class ShoppingService {
   ) {
     this._sell = new BehaviorSubject<SellModel>(JSON.parse(localStorage.getItem('shop_sale')));
     this.sell = this._sell.asObservable();
+
     this._customer = new BehaviorSubject<Partner>(JSON.parse(localStorage.getItem('shop_customer')));
     this.customer = this._customer.asObservable();
+
     this._order = new BehaviorSubject<Orders>(JSON.parse(localStorage.getItem('shop_order')));
     this.order = this._order.asObservable();
+
+
     this.url = environment.API_URL;
 
   }
@@ -49,6 +56,7 @@ export class ShoppingService {
     }
 
   }
+
   updateOrderState(data: Orders) {
     if (data) {
       this._order.next(data);

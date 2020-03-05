@@ -20,6 +20,9 @@ export class ProductService {
   private _product: BehaviorSubject<Product>;
   public product: Observable<Product>;
 
+  private _sellItem: BehaviorSubject<Product>;
+  public sellItem: Observable<Product>;
+
   url: string;
   constructor(
     private http: HttpClient,
@@ -33,6 +36,10 @@ export class ProductService {
     // Selected product
     this._product = new BehaviorSubject<Product>(JSON.parse(localStorage.getItem('product')));
     this.product = this._product.asObservable();
+
+    this._sellItem = new BehaviorSubject<Product>(JSON.parse(localStorage.getItem('sell_item')));
+    this.sellItem = this._sellItem.asObservable();
+
 
     this.url = environment.API_URL;
   }
@@ -58,6 +65,13 @@ export class ProductService {
     localStorage.setItem('products', JSON.stringify(state));
 
   }
+
+  
+  updateSellProductState(data: Product) {
+    this._sellItem.next(data);
+    localStorage.setItem('sell_item', JSON.stringify(data));
+}
+
 
   updateState(products: Product[]) {
     // sort

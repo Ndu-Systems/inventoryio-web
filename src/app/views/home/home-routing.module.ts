@@ -11,6 +11,9 @@ import { ShopComponent } from './index/shop/shop.component';
 import { ShoppingCartComponent } from './index/shop/shopping-cart/shopping-cart.component';
 import { ShippingComponent } from './index/shop/shipping/shipping.component';
 import { ShopingSuccesfulComponent } from './index/shop/shoping-succesful/shoping-succesful.component';
+import { ViewProductComponent } from './index/shop/view-product/view-product.component';
+import { ProductImagesComponent } from '../dashboard/products/product-images/product-images.component';
+import { ViewImagesComponent } from './index/shop/view-images/view-images.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -23,6 +26,7 @@ const routes: Routes = [
       { path: 'shop/:id', component: ShopComponent },
       { path: 'shopping-cart/:id', component: ShoppingCartComponent },
       { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
+      { path: 'view-product/:id', component: ViewProductComponent },
       { path: 'sign-up', component: SignUpComponent },
 
     ]
@@ -44,7 +48,9 @@ export const declarations = [
   ShopComponent,
   ShoppingCartComponent,
   ShippingComponent,
-  ShopingSuccesfulComponent
+  ShopingSuccesfulComponent,
+  ViewProductComponent,
+  ViewImagesComponent
 ];
 
 

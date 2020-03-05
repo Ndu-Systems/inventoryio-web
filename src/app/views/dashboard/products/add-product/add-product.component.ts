@@ -136,7 +136,7 @@ export class AddProductComponent implements OnInit {
       summary: 'Success!',
       detail: 'product created '
     });
-    // this.routeTo.navigate([`/dashboard/list-product`]);
+    this.routeTo.navigate([`/dashboard/list-product`]);
 
   }
   addbrand(data: Product) {

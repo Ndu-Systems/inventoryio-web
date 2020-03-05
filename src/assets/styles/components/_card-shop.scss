@@ -1,12 +1,18 @@
 .shop-card {
   display: grid;
   grid-auto-columns: 100%;
-  grid-template-rows: 250px 50px 50px 80px;
+  // grid-template-rows: 250px 50px 50px 80px;
+  grid-template-rows: 250px 50px 50px 1px;
   grid-template-areas: "image""name""notes""actions";
   margin: 1rem;
   border-radius: 12px;
   background: #fff;
   text-align: center;
+  cursor: pointer;
+  &:hover{
+    border: 1px solid #95AFC0
+  }
+  
 
   @media only screen and (max-width: 600px) {
     grid-template-rows: 130px 30px 30px 60px;

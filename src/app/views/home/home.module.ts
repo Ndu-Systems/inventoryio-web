@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {GalleriaModule} from 'primeng/galleria';
 import { ToastModule } from 'primeng/toast';
 import {CardModule} from 'primeng/card';
+import {CarouselModule} from 'primeng/carousel';
 
 
 
@@ -14,7 +15,8 @@ import {CardModule} from 'primeng/card';
     HomeRoutingModule,
     FormsModule, ReactiveFormsModule,
     GalleriaModule,
-    CardModule
+    CardModule,
+    CarouselModule
   ],
   declarations: [
     ...declarations

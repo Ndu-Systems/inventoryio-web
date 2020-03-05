@@ -12,7 +12,7 @@
     </div>
     <div class="col-1-of-4">
       <span *ngFor="let item of products ">
-     <div class="shop-card">
+     <div class="shop-card"  (click)="viewItem(item)">
           <div class="image"  *ngIf="item.images"  [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
 
           </div>
@@ -32,7 +32,7 @@
           </div>
 
           <div class="actions">
-            <button class="action-btn hover-shadow" (click)="doSell(item)">Add to cart</button>
+            <!-- <button class="action-btn hover-shadow" (click)="doSell(item)">Add to cart</button> -->
           </div>
         </div>
       </span>

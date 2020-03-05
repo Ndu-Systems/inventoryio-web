@@ -90,4 +90,10 @@ export class ShopComponent implements OnInit {
       });
   }
 
+  viewItem(product: Product) {
+    this.productService.updateSellProductState(product);
+    this.router.navigate(['view-product', product.ProductId]);
+
+  }
+
 }
