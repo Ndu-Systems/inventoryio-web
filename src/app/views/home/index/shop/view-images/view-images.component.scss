@@ -1,14 +1,16 @@
 .main {
 
   .slider {
-    height: 25rem;
+    // height: 25rem;
+    box-sizing: border-box;
+    width: 25rem;
 
     img {
-      height: 25rem;
+      // height: 25rem;
+      width: 100%;
 
       @media only screen and (max-width: 600px) {
-        width: 100%;
-        height:auto;
+        height:auto
       }
     }
   }

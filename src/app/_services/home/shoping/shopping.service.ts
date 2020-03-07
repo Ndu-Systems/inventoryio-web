@@ -93,11 +93,12 @@ export class ShoppingService {
       sale = this.currentSellModelValue;
     }
     debugger;
-    const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId);
+    const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId &&
+      (JSON.stringify(item.itemOptions) === JSON.stringify(x.itemOptions)));
     const product = this.productService.getSigleProductFronState(item.prodcuId);
 
 
-    if (checkIfOtemExist && (JSON.stringify(item.itemOptions) === JSON.stringify(checkIfOtemExist.itemOptions))) {
+    if (checkIfOtemExist) {
       // item is on the sale already it just needs to be updated
       checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
       sale.items[sale.items.indexOf(item)] = checkIfOtemExist;

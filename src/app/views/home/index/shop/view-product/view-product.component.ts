@@ -63,44 +63,51 @@ export class ViewProductComponent implements OnInit {
   }
 
   doSell(product: Product) {
-    if (this.sale) {
-      if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
-        return false;
-      }
-      let isErross = false;
-
-      this.allOrderOptions.forEach(attribute => {
-        const checkIfExist = this.orderOptions.find(x => x.optionId === attribute.AttributeId);
-        if (!checkIfExist) {
-          alert(`${attribute.Name} must be selected.`);
-          isErross = true;
-        }
-
+    debugger
+    if (!this.sale) {
+      this.shoppingService.updateState({
+        items: [],
+        total: 0
       });
-      if (isErross) {
-        return false;
-      }
-
-      const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
-      if (item && (JSON.stringify(item.itemOptions) === JSON.stringify(this.orderOptions))) {
-        // check if options are still the same.
-        item.quantity++;
-        this.shoppingService.doSellLogic(item);
-        this.orderOptions = [];
-      } else {
-        this.shoppingService.doSellLogic(
-          {
-            prodcuId: product.ProductId,
-            name: product.Name,
-            price: Number(product.UnitPrice),
-            quantity: Number(this.itemQnty),
-            image: product.images && product.images[0].Url,
-            itemOptions: this.orderOptions
-          });
-        this.orderOptions = [];
-
-      }
     }
+    if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
+      alert('no stock')
+      return false;
+    }
+    let isErross = false;
+
+    this.allOrderOptions.forEach(attribute => {
+      const checkIfExist = this.orderOptions.find(x => x.optionId === attribute.AttributeId);
+      if (!checkIfExist) {
+        alert(`${attribute.Name} must be selected.`);
+        isErross = true;
+      }
+
+    });
+    if (isErross) {
+      return false;
+    }
+
+    const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
+    if (item && (JSON.stringify(item.itemOptions) === JSON.stringify(this.orderOptions))) {
+      // check if options are still the same.
+      item.quantity++;
+      this.shoppingService.doSellLogic(item);
+      this.orderOptions = [];
+    } else {
+      this.shoppingService.doSellLogic(
+        {
+          prodcuId: product.ProductId,
+          name: product.Name,
+          price: Number(product.UnitPrice),
+          quantity: Number(this.itemQnty),
+          image: product.images && product.images[0].Url,
+          itemOptions: this.orderOptions
+        });
+      this.orderOptions = [];
+
+    }
+
 
     this.productService.updateCurrentProduct(product);
 
