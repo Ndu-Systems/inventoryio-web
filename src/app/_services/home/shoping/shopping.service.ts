@@ -92,22 +92,25 @@ export class ShoppingService {
       });
       sale = this.currentSellModelValue;
     }
-
+    debugger;
     const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId);
     const product = this.productService.getSigleProductFronState(item.prodcuId);
 
 
-    if (!checkIfOtemExist) {
-      item.subTotal = item.price;
-      sale.items.push(item);
-    } else {
+    if (checkIfOtemExist && (JSON.stringify(item.itemOptions) === JSON.stringify(checkIfOtemExist.itemOptions))) {
       // item is on the sale already it just needs to be updated
       checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
-      // item.quantity++;
+      sale.items[sale.items.indexOf(item)] = checkIfOtemExist;
+      this.updateState(sale);
       this.productService.appendState(product);
+
+    } else {
+      item.subTotal = item.price * item.quantity;
+      sale.items.push(item);
+      this.updateState(sale);
+
     }
     product.QuantityAvailable = product.Quantity - item.quantity;
-    this.updateState(sale);
 
   }
   removeItem(item: Item) {
@@ -151,6 +154,6 @@ export class ShoppingService {
       };
       productItems.push(productItem);
     });
-    return this.http.post<any>(`${this.url}/api/orders/shop.php`, { order: data, products: productItems});
+    return this.http.post<any>(`${this.url}/api/orders/shop.php`, { order: data, products: productItems });
   }
 }

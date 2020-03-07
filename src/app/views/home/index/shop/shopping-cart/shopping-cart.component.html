@@ -31,6 +31,9 @@
               <div class="row name">
                 <h3>
                   {{item.name}}
+                  <span>
+                    {{item.itemOptions | formatOptions}}
+                  </span>
                 </h3>
                 <div class="remove">
                   <button (click)="removeItem(item)">Remove</button>

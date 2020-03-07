@@ -10,4 +10,16 @@ export interface Item {
     price: number;
     subTotal?: number;
     quantity: number;
+    itemOptions?: ItemOptions[];
+
+    // options
+
 }
+
+export interface ItemOptions {
+    optionId: string;
+    optionName: string;
+    valueId: number;
+    value: any;
+}
+

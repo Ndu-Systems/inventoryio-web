@@ -51,7 +51,7 @@ export class SaleService {
 
 
     if (!checkIfOtemExist) {
-      item.subTotal = item.price;
+      item.subTotal = item.price * item.quantity;
       sale.items.push(item);
     } else {
       // item is on the sale already it just needs to be updated

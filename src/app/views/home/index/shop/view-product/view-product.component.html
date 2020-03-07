@@ -15,40 +15,51 @@
         </h1>
         <hr>
 
-        <span *ngIf="product.Attributes">
-          <h1 class="name">
+        <div class="options" *ngIf="product.Attributes">
+          <h1 class="header">
             Select Options
           </h1>
-          <div class="options" *ngFor="let attribute of product.Attributes">
-            <h1 class="option-name">
-              {{attribute.Name}} **
-            </h1>
-            <span *ngIf="attribute.Values">
-              <select>
-                <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
-                  {{item.AttributeValue}}</option>
-              </select>
-            </span>
+          <div class="option-items">
+            <div class="options-item" *ngFor="let attribute of product.Attributes">
+              <div class="label">
+                {{attribute.Name}}:
+              </div>
 
+              <div class="input">
+                <span *ngIf="attribute.Values">
+                  <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
+                    <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
+                      {{item.AttributeValue}}</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+
+            <div class="options-item">
+              <div class="label">
+                Quantity
+              </div>
+
+              <div class="input">
+                <select [(ngModel)]="itemQnty">
+                  <option *ngFor="let qnty of quantity" class="select-option" [value]="qnty">
+                    {{qnty}}</option>
+                </select>
+              </div>
+            </div>
+         
           </div>
 
-        </span>
-        
-        <div class="options">
-          <h1 class="option-name">
-            Quantity **
-          </h1>
+          <div class="option-items">
+          
+            <div class="options-item full-row">
+              <div class="input no-border">
+                <button class="action-btn hover-shadow" (click)="doSell(product)">Add to cart</button>
+              </div>
+            </div>
+          </div>
 
-          <select>
-            <option *ngFor="let qnty of quantity" class="select-option" [value]="qnty">
-              {{qnty}}</option>
-          </select>
         </div>
-
-        <div class="actions">
-          <button class="action-btn hover-shadow" (click)="doSell(product)">Add to cart</button>
-        </div>
-
 
       </div>
     </div>

@@ -4,14 +4,27 @@
   padding: 10rem 2rem;
   box-sizing: border-box;
 
+
   @media only screen and (max-width: 600px) {
     padding: 20% 3%;
 
   }
 
-  hr{
+  .order {
+    width: 80%;
+    margin: 0 auto;
+    background: $white-color;
+    padding: 2rem;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+  }
+
+  hr {
     background-color: $blue-gray;
   }
+
   .product-details {
     display: grid;
     grid-template-columns: 30% 40% 30%;
@@ -27,29 +40,82 @@
         font-weight: 500;
 
       }
+
       h1.price {
         font-size: 1.5rem;
         font-weight: 700;
       }
 
-      .options{
-        margin: 1rem 0;
-        border: 1px solid $blue-gray;
+      .options {
+        margin: 2rem 0;
         box-sizing: border-box;
         padding: .5rem;
 
-        h1.option-name{
-          font-size: 1.1rem;
-          font-weight: 400;
-          margin: 0;
+        h1.header {
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 1rem;
         }
+
+        .option-items {
+          display: grid;
+          grid-template-columns: 50% auto;
+          height: 100%;
+          @media only screen and (max-width: 600px) {
+            grid-template-columns: 100%;
+          }
+
+          .options-item {
+            border: 1px solid $blue-gray;
+            display: grid;
+            grid-template-columns: 40% auto;
+            margin: 1rem 1.5rem;
+            margin-left: 0;
+
+
+            .label {
+              padding: .6rem 1rem;
+              font-weight: 700;
+              text-transform: uppercase;
+            }
+
+            .input {
+              padding: .6rem 1rem;
+
+              select {
+                margin: 0;
+                // width: 40%;
+                border: none;
+
+              }
+            }
+
+            .no-border {
+              padding-left: 0;
+            }
+          }
+
+          .full-row {
+            grid-template-columns: 100%;
+            border: none;
+            padding: 0;
+
+            .action-btn {
+              padding: 1rem 1rem;
+
+
+            }
+          }
+        }
+
       }
-      select{
+
+      select {
         padding: 0;
       }
     }
 
-    .action-btn{
+    .action-btn {
       padding: 1.5rem .8rem;
       font-weight: 700;
       text-transform: uppercase;

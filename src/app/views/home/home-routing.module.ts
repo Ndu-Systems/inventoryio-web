@@ -14,6 +14,7 @@ import { ShopingSuccesfulComponent } from './index/shop/shoping-succesful/shopin
 import { ViewProductComponent } from './index/shop/view-product/view-product.component';
 import { ProductImagesComponent } from '../dashboard/products/product-images/product-images.component';
 import { ViewImagesComponent } from './index/shop/view-images/view-images.component';
+import { FormatOptionsPipe } from 'src/app/_pipes/format-options.pipe';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -50,7 +51,8 @@ export const declarations = [
   ShippingComponent,
   ShopingSuccesfulComponent,
   ViewProductComponent,
-  ViewImagesComponent
+  ViewImagesComponent,
+  FormatOptionsPipe
 ];
 
 
