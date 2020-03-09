@@ -80,6 +80,7 @@ import { ImportPartnersComponent } from './import-export/import/import-partners/
 import { InventoryReportComponent } from './reports/reports/inventory-report/inventory-report.component';
 import { FilterStringsPipe } from 'src/app/_pipes/filter-strings.pipe';
 import { AttributesComponent } from './products/attributes/attributes.component';
+import { ProductImagesUncroppedComponent } from './products/product-images/product-images-uncropped/product-images-uncropped.component';
 
 const routes: Routes = [
   {
@@ -218,6 +219,7 @@ export const declarations = [
   ImportPartnersComponent,
   InventoryReportComponent,
   AttributesComponent,
+  ProductImagesUncroppedComponent,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

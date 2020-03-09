@@ -57,7 +57,42 @@
     <span *ngIf="type == 'coverimage'">
       <div class="group mt-1 longer">
         <span>Images</span>
-        <app-product-images [productId]="user.CompanyId + 'banner'"></app-product-images>
+        <app-product-images-uncropped [productId]="user.CompanyId + 'banner'"></app-product-images-uncropped>
+      </div>
+
+      
+      <div class="group mt-1 longer">
+        <span>Select shop promary color</span>
+
+        <div class="col-1-of-2">
+          <div>
+            <!-- <p-colorPicker [(ngModel)]="fontColor" [inline]="true"></p-colorPicker> -->
+            <p-colorPicker [(ngModel)]="shopPrimaryColor" [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
+          </div>
+          <div>
+            <input type="text"  [(ngModel)]="shopPrimaryColor" required="required" />
+          </div>
+        </div>
+      </div>
+
+       
+      <div class="group mt-1 longer">
+        <span>Select shop secondary color</span>
+
+        <div class="col-1-of-2">
+          <div>
+            <!-- <p-colorPicker [(ngModel)]="fontColor" [inline]="true"></p-colorPicker> -->
+            <p-colorPicker [(ngModel)]="shopSecondaryColor" [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
+          </div>
+          <div>
+            <input type="text"  [(ngModel)]="shopSecondaryColor" required="required" />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <input type="submit" class="btn save" (click)="saveShopDetails()" value="Save Details" />
+        <a routerLink="/dashboard/configurations" class="cancel">cancel</a>
       </div>
     </span>
 

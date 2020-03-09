@@ -22,6 +22,8 @@ export class CompanyViewConfigsComponent implements OnInit {
   fields$: Observable<Config[]>;
   lebel: string;
   backgroundColor = '#bdc3c7';
+  shopPrimaryColor = '#104CE5';
+  shopSecondaryColor = '#ffffff';
   fontColor = '#000000';
   valid = false;
 
@@ -119,6 +121,15 @@ export class CompanyViewConfigsComponent implements OnInit {
         this.updateConfigs(this.fields);
       }
     }
+  }
+
+  saveShopDetails() {
+    const data = {
+      primary: this.shopPrimaryColor,
+      secondary: this.shopSecondaryColor
+    };
+
+    alert(JSON.stringify(data));
   }
   isConfigValidToPost(configs: Config[]) {
     return configs.filter(x => x.IsRequired && !x.Value).length === 0;
