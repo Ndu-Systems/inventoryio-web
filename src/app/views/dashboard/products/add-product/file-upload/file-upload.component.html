@@ -1,14 +1,7 @@
 <div class="main">
-  
-<div class="images" *ngIf="imgURL">
 
-    <!-- <div class="image" *ngFor="let image of imgURL">
-      <img [src]="image" height="200">
-    </div> -->
-  
-
-    
-  <div class="cards">
+  <div class="images" *ngIf="imgURL">
+    <div class="cards">
       <span *ngFor="let image of imgURL">
         <div class="card">
           <div class="icon">
@@ -17,14 +10,14 @@
         </div>
       </span>
       <span>
-          <div class="card card-image">
-              <div class="file-drop-area">
-                  <span class="fake-btn">
-                    <img src="assets/add-image.svg" alt="">
-                  </span>
-                  <input class="file-input" type="file" multiple>
-                </div>
-            </div>
+        <div class="card card-image">
+          <div class="file-drop-area">
+            <span class="fake-btn">
+              <img src="assets/add-image.svg" alt="">
+            </span>
+            <input class="file-input" type="file" multiple>
+          </div>
+        </div>
       </span>
     </div>
   </div>

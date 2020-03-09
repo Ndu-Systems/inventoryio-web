@@ -81,6 +81,7 @@ export class AddProductComponent implements OnInit {
         StatusId: ''
       };
     }
+
     this.rForm = this.fb.group({
       Name: [this.prodcut.Name || '', Validators.required],
       BrandId: [this.prodcut.BrandId || ''],
@@ -97,10 +98,7 @@ export class AddProductComponent implements OnInit {
       CreateUserId: [user.UserId, Validators.required],
       StatusId: [1, Validators.required],
       ModifyUserId: [user.UserId, Validators.required],
-      image: new FormControl(null)
-
-    }
-    );
+      image: new FormControl(null)});
 
     this.scannerService.scann.subscribe(scan => {
       if (scan && window.location.href.includes('add-product')) {

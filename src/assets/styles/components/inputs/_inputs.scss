@@ -41,7 +41,6 @@ textarea {
   width: $width;
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid $muted-color;
   margin-top: 1rem;
 
   &:focus {
@@ -252,7 +251,8 @@ label {
   }
 
   select {
-    margin: 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
   }
 
   .group {

@@ -1,34 +1,28 @@
-<div class="group">
-  <span>
-    Options
-    <span class="add btn" (click)="showModalDialog()">Add option</span>
-  </span>
-<div *ngIf="attributes.length; else noOptions">
-  <div class="options" *ngFor="let attribute of attributes" >
-    <span class="items main">
-      {{attribute?.Name}}
-    </span>
-    <span class="items" *ngFor="let item of attribute.Values">
-      {{item?.AttributeValue}}
-    </span>
+<div class="attribute-main">
+  <div class="add btn" (click)="showModalDialog()">Add option</div>
+  <div *ngIf="attributes.length; else noOptions">
+    <div class="options" *ngFor="let attribute of attributes">
+      <span class="items main">
+        {{attribute?.Name}}
+      </span>
+      <span class="items" *ngFor="let item of attribute.Values">
+        {{item?.AttributeValue}}
+      </span>
+    </div>
   </div>
-</div>
-
   <ng-template #noOptions>
     <p class="notes">
       You do not have options for this product, click Add Option to add new.
     </p>
   </ng-template>
-  
 </div>
 <p-dialog header="Variants" [(visible)]="displayModal" [style]="{width: '50vw', 'text-align-last': 'left'}"
   [baseZIndex]="10000" [modal]="true">
-  <div class="group">
+  <div class="">
     <span> Option Name
     </span>
-    <input autofocus [(ngModel)]="optionsName" />
+    <input autofocus type="text" [(ngModel)]="optionsName" />
   </div>
-
   <div class="mychip">
     <span> Options
     </span>
@@ -36,6 +30,5 @@
   </div>
   <div class="save">
     <button type="button" (click)="saveOptions()" pButton label="Save options"></button>
-
   </div>
 </p-dialog>

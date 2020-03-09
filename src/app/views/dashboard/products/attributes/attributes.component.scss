@@ -6,13 +6,19 @@
 
 
 }
+.attribute-main {
+  padding: 1em;
+}
 
+.btn {
+  width: 10em;
+  padding: 0.6em;
+  text-align: center;
+}
 
 .options {
   padding: .5rem 0;
   text-align: left;
-//   background: $cloud;
-  //   display: inline !important;
 
   .items {
     display: inline !important;
@@ -54,16 +60,26 @@
   }
 }
 
+
+  input[type=text] {
+    border: 1px solid #dbe0e3;
+    border-radius: 8px;
+    background: #ffffff;
+    margin: 1em 0;
+    width: 100%;
+  }
+
+
+
 .mychip {
   border: 1px solid #dbe0e3;
   border-radius: 8px;
   padding: .5rem;
-  margin: 1rem .5rem;
   margin-right: 0;
 
 }
 
 
-.notes{
+.notes {
   text-align: left;
 }
