@@ -8,6 +8,7 @@
     position: fixed;
     left: 0;
     top: 0;
+    padding: 0 4%;
   
     //mobile layout
     @media only screen and (max-width: 600px) {
@@ -72,7 +73,7 @@
     .nav {
       display: flex;
       padding: 2rem;
-      width: 70%;
+      width: 63%;
       margin: auto;
       justify-content: right;
       margin-right: 0%;
@@ -127,6 +128,12 @@
           justify-content: right;
         }
   
+      }
+      .cart{
+        span{
+          border-radius: 100%;
+          color: #000;
+        }
       }
     }
   

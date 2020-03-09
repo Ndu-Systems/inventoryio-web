@@ -12,7 +12,7 @@
   </div>
   <div class="content">
     <div class="check-out">
-      <button class="action-btn  hover-shadow" (click)="viewCart()"><i class="pi pi-shopping-cart"></i> Checkout
+      <button class="action-btn  hover-shadow" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="viewCart()"><i class="pi pi-shopping-cart"></i> Checkout
         {{cartItems}} Items</button>
     </div>
     <div class="col-1-of-4">

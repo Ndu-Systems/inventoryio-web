@@ -55,7 +55,7 @@ export class CompanyViewConfigsComponent implements OnInit {
   }
   initScreen() {
     if (this.fields && this.fields.length) {
-      this.fields = this.fields.filter(x => x.Type === this.configType);
+      this.fields = this.fields.filter(x => x.Type === this.type);
       console.log(this.fields);
       if (this.type === 'logocolors' && this.fields.length) {
         this.backgroundColor = this.rgb2hex(this.fields[0].Value);
@@ -117,6 +117,7 @@ export class CompanyViewConfigsComponent implements OnInit {
     }
   }
   onSave() {
+    debugger
     if (this.isColorsConfig(this.fields)) {
       this.fields[0].Value = this.hexToRgbA(this.backgroundColor);
       this.fields[1].Value = this.hexToRgbA(this.fontColor);
@@ -161,9 +162,15 @@ export class CompanyViewConfigsComponent implements OnInit {
     ];
 
     if (this.isConfigValidToPost(shopConfigs)) {
-      if (this.isNewConfigs(shopConfigs)) {
+      if (this.fields.length === 0) {
         this.postConfigs(shopConfigs);
       } else {
+        shopConfigs[0].ConfigId = this.fields[0].ConfigId;
+        shopConfigs[this.fields.indexOf(this.fields.find(x => x.Name === 'shopPrimaryColor'))].ConfigId =
+          this.fields[this.fields.indexOf(this.fields.find(x => x.Name === 'shopPrimaryColor'))].ConfigId;
+
+        shopConfigs[this.fields.indexOf(this.fields.find(x => x.Name === 'shopSecondaryColor'))].ConfigId =
+          this.fields[this.fields.indexOf(this.fields.find(x => x.Name === 'shopSecondaryColor'))].ConfigId;
         this.updateConfigs(shopConfigs);
       }
     }

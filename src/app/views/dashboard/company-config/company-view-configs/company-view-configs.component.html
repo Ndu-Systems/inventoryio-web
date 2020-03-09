@@ -10,7 +10,7 @@
   <div class="form">
 
 
-    <span *ngIf="type != 'logocolors'">
+    <span *ngIf="type == 'address' || type == 'bank'">
 
       <div class="two">
         <div class="group" *ngFor="let field of fields$  | async as fields">
@@ -19,6 +19,8 @@
         </div>
       </div>
     </span>
+
+    
     <span *ngIf="type == 'logocolors'">
       <div class="group mt-1 longer">
         <span>Images</span>
