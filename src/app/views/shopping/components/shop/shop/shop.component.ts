@@ -23,6 +23,8 @@ export class ShopComponent implements OnInit {
   placeholder = 'assets/images/placeholder.png';
   bannerImage = 'assets/placeholders/shopheader.jpg';
   cartItems = 0;
+  shopPrimaryColor: string;
+  shopSecondaryColor: string;
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
@@ -45,6 +47,10 @@ export class ShopComponent implements OnInit {
         this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
         if (this.company.Banner) {
           this.bannerImage = this.company.Banner[0].Url;
+        }
+        if (this.company.Theme) {
+          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
         }
 
       });

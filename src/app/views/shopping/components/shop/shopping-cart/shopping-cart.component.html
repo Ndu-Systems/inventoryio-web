@@ -1,9 +1,9 @@
+<app-shopping-nav></app-shopping-nav>
+
 <div class="container" *ngIf="sale$ | async as sale">
-  <div  class="banner" [ngStyle]="{ 'background-image': ' linear-gradient(to bottom, rgba(86, 45, 98, 0.445), rgba(34, 17, 17, 0.555)), url(' + bannerImage + ')'}">
-    <div class="banner-body">
-      <h1 class="heading">{{welocme}}</h1>
-    </div>
-  </div>
+  <!-- <div class="cover-photo">
+    <img [src]="bannerImage" alt="">
+  </div> -->
   <div class="content">
     <div class="check-out">
       <button class="action-btn  hover-shadow" (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to

@@ -101,7 +101,7 @@ export class ConfigurationHomeComponent implements OnInit {
     this.shops.push({
       name: 'Cover image',
       image: 'assets/images/actions/shop.svg',
-      link: 'dashboard/company-view-configs/coverimage'
+      link: 'dashboard/company-view-configs/shop'
     }
     );
   }

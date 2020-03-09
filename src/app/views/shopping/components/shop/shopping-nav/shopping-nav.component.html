@@ -1,0 +1,30 @@
+<div class="top-bar"  [ngStyle]="{'background-color':shopPrimaryColor}">
+  <div class="logo">
+    <a routerLink="/home"><img src="assets/images/icons/logo-white.png" alt=""></a>
+  </div>
+  <div class="nav">
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/how-it-works">How it works</a></li>
+    <li><a routerLink="/pricing">Pricing</a></li>
+    <li><a routerLink="/sign-in">Sign in</a></li>
+    <li><span routerLink="/sign-up"><a>sign up for free</a> </span></li>
+  </div>
+
+  <div class="mobile-nav" *ngIf="showMobileNav">
+    <div class="close" (click)="toggleNav()">
+      <img src="assets/images/close-mobilemenu.svg" alt="">
+    </div>
+    <ul class="nav-items">
+      <li><a (click)="toggleNav()" routerLink="/home">Home</a></li>
+      <li><a (click)="toggleNav()" routerLink="/how-it-works">How it works</a></li>
+      <li><a (click)="toggleNav()" routerLink="/pricing">Pricing</a></li>
+      <li><a (click)="toggleNav()" routerLink="/sign-in">Sign in</a></li>
+      <li class="sign-up-free"><a (click)="toggleNav()" routerLink="/sign-up">Sign up for free</a></li>
+    </ul>
+  </div>
+  <div class="ham-icon" (click)="toggleNav()">
+    <img src="assets/images/ham.svg" alt="">
+  </div>
+</div>
+
+

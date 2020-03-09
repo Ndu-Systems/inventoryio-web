@@ -9,6 +9,7 @@ import { ShippingComponent } from './components/shop/shipping/shipping.component
 import { ViewImagesComponent } from './components/shop/view-images/view-images.component';
 import { ShoppingComponent } from './components/shop/shopping/shopping.component';
 import { ShopComponent } from './components/shop/shop/shop.component';
+import { ShoppingNavComponent } from './components/shop/shopping-nav/shopping-nav.component';
 const routes: Routes = [
   {
     path: '', component: ShoppingComponent,
@@ -31,6 +32,7 @@ export const declarations = [
   ViewProductComponent,
   ShippingComponent,
   ViewImagesComponent,
+  ShoppingNavComponent,
   FormatOptionsPipe
 ];
 

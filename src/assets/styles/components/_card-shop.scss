@@ -76,3 +76,17 @@
     }
   }
 }
+
+
+.cover-photo{
+  width: 100%;
+  padding-top: 4%;
+  @media only screen and (max-width: 600px) {
+    padding: 1%;
+    padding-top: 16%;
+
+  }
+  img{
+    width: 100%;
+  }
+}

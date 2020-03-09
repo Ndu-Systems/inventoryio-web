@@ -55,11 +55,18 @@ export class CompanyViewConfigsComponent implements OnInit {
   }
   initScreen() {
     if (this.fields && this.fields.length) {
-      this.fields = this.fields.filter(x => x.Type === this.type);
+      this.fields = this.fields.filter(x => x.Type === this.configType);
+      console.log(this.fields);
       if (this.type === 'logocolors' && this.fields.length) {
         this.backgroundColor = this.rgb2hex(this.fields[0].Value);
         this.fontColor = this.rgb2hex(this.fields[1].Value);
       }
+      if (this.configType === 'shop' && this.fields.length) {
+        this.shopPrimaryColor = this.fields.find(x => x.Name === 'shopPrimaryColor').Value;
+        this.shopSecondaryColor = this.fields.find(x => x.Name === 'shopSecondaryColor').Value;
+        this.fontColor = this.rgb2hex(this.fields[1].Value);
+      }
+
       this.companyConfigsService.updateState(this.fields);
       if (!this.fields.length) {
         this.createNewForm();
@@ -104,8 +111,8 @@ export class CompanyViewConfigsComponent implements OnInit {
       this.type = 'logocolors';
       this.lebel = 'Invoice Logo';
     }
-    if (this.configType === 'coverimage') {
-      this.type = 'coverimage';
+    if (this.configType === 'shop') {
+      this.type = 'shop';
       this.lebel = 'Upload Cover Image';
     }
   }
@@ -124,12 +131,43 @@ export class CompanyViewConfigsComponent implements OnInit {
   }
 
   saveShopDetails() {
-    const data = {
-      primary: this.shopPrimaryColor,
-      secondary: this.shopSecondaryColor
-    };
+    const shopConfigs = [
+      {
+        ConfigId: '',
+        CompanyId: this.user.CompanyId,
+        Name: 'shopPrimaryColor',
+        Label: 'Primary Color',
+        Type: 'shop',
+        Value: this.shopPrimaryColor,
+        IsRequired: true,
+        FieldType: 'string',
+        CreateUserId: this.user.UserId,
+        ModifyUserId: this.user.UserId,
+        StatusId: 1
+      },
+      {
+        ConfigId: '',
+        CompanyId: this.user.CompanyId,
+        Name: 'shopSecondaryColor',
+        Label: 'Secondary Color',
+        Type: 'shop',
+        Value: this.shopSecondaryColor,
+        IsRequired: true,
+        FieldType: 'string',
+        CreateUserId: this.user.UserId,
+        ModifyUserId: this.user.UserId,
+        StatusId: 1
+      }
+    ];
 
-    alert(JSON.stringify(data));
+    if (this.isConfigValidToPost(shopConfigs)) {
+      if (this.isNewConfigs(shopConfigs)) {
+        this.postConfigs(shopConfigs);
+      } else {
+        this.updateConfigs(shopConfigs);
+      }
+    }
+
   }
   isConfigValidToPost(configs: Config[]) {
     return configs.filter(x => x.IsRequired && !x.Value).length === 0;

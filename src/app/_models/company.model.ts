@@ -1,4 +1,5 @@
 import { Image } from './image.model';
+import { Config } from './Config';
 
 export interface Company {
     CompanyId?: string;
@@ -11,4 +12,5 @@ export interface Company {
     ModifyUserId: string;
     StatusId: string;
     Banner?: Image[];
+    Theme?: Config[];
 }
