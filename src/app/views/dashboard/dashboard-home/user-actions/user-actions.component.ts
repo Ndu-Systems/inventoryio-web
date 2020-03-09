@@ -41,7 +41,7 @@ export class UserActionsComponent implements OnInit {
         {
           name: 'My Online Shop',
           image: 'assets/images/actions/listproducts.svg',
-          link: `shop/${this.user.CompanyId}`
+          link: `shopping/shop/${this.user.CompanyId}`
         },
         // {
         //   name: 'Attributes',

@@ -73,7 +73,7 @@ export class ShoppingCartComponent implements OnInit {
 
   back() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shop', this.companyId]);
+    this.router.navigate(['shopping/shop', this.companyId]);
   }
 
   add(item: Item) {
@@ -166,7 +166,7 @@ export class ShoppingCartComponent implements OnInit {
     };
     this.sendEmailNow(email);
     this.shoppingService.updateOrderState(null);
-    this.router.navigate(['shoping-succesful', this.companyId]);
+    this.router.navigate(['shopping/shoping-succesful', this.companyId]);
   }
   sendEmailNow(email: Email) {
     this.emailService.sendEmailInvoice(email).subscribe(data => {

@@ -28,6 +28,7 @@
               <div class="input">
                 <span *ngIf="attribute.Values">
                   <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
+                    <option value=""></option>
                     <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
                       {{item.AttributeValue}}</option>
                   </select>

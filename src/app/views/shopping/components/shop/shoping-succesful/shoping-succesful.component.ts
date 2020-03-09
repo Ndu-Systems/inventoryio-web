@@ -50,7 +50,7 @@ export class ShopingSuccesfulComponent implements OnInit {
     const win = window.open(url, '_blank');
     win.focus();
   }
-  back(){
-    this.router.navigate(['shop', this.companyId]);
+  back() {
+    this.router.navigate(['shopping/shop', this.companyId]);
   }
 }

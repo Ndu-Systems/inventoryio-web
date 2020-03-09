@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PwaService } from './_services';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { SwPush, SwUpdate } from '@angular/service-worker';
+import { Title } from '@angular/platform-browser';
+import { filter } from 'rxjs/internal/operators/filter';
+import { map } from 'rxjs/internal/operators/map';
+
 
 @Component({
   selector: 'app-root',
@@ -17,6 +21,8 @@ export class AppComponent implements OnInit {
     private router: Router,
     private swPush: SwPush,
     private update: SwUpdate,
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute,
 
 
   ) {
@@ -38,7 +44,31 @@ export class AppComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
+    this.titleService.setTitle('Inventory io | inventorr | stock management system | online mall | shooping online');
+
+    const appTitle = this.titleService.getTitle();
+    this.router
+      .events.pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => {
+          let child = this.activatedRoute.firstChild;
+          while (child.firstChild) {
+            child = child.firstChild;
+          }
+          if (child.snapshot.data['title']) {
+            return child.snapshot.data['title'];
+          }
+          return appTitle;
+        })
+      ).subscribe((ttl: string) => {
+        this.titleService.setTitle(ttl);
+      });
   }
+
+  setDocTitle(title: string) {
+    console.log('current title:::::' + this.titleService.getTitle());
+    this.titleService.setTitle(title);
+ }
   installPwa(): void {
     this.pwaService.promptEvent.prompt();
   }
