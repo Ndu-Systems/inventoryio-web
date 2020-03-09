@@ -3,7 +3,7 @@
 
   .title-header {
     text-transform: initial;
-    font-weight: 600;
+    font-weight: 800;
   }
 
   .sub-header {
@@ -75,9 +75,8 @@
       border: 1px solid #d7d7d7;
       border-radius: 10px;
       padding-top: 25px;
-      padding: 12px;
-      margin: 0.5rem 0.5rem;
-
+      padding: 0px;
+      margin: 1em;
       .group {
         margin: 0;
         background: transparent;
@@ -95,6 +94,7 @@
         .label {
           font-weight: 700;
           text-transform: capitalize;
+          background-color: #FFFFFF;
         }
       }
     }
@@ -114,6 +114,7 @@
         color: #D3D8DF;
         font-size: 1.2em;
         text-transform: capitalize;
+        padding: 1em;
       }
     }
   }

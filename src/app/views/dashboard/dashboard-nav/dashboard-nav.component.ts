@@ -108,13 +108,15 @@ export class DashboardNavComponent implements OnInit {
         Name: 'configuration',
         Link: '/dashboard/configurations',
         Icon: `pi pi-cog`,
-        showItem: this.configRight
+        // showItem: this.configRight
+        showItem: true
       },
       {
         Name: 'support',
         Link: '/dashboard/support',
         Icon: `pi pi-comments`,
-        showItem: this.configRight
+        // showItem: this.configRight
+        showItem: true
       }
     ];
     this.profileMobileModels = [] = [
