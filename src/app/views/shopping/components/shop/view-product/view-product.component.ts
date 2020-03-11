@@ -30,6 +30,7 @@ export class ViewProductComponent implements OnInit {
   allOrderOptions: Attribute[] = [];
   shopPrimaryColor: string;
   shopSecondaryColor: string;
+  bannerImage = 'assets/placeholders/shopheader.jpg';
 
 
   constructor(
@@ -71,6 +72,9 @@ export class ViewProductComponent implements OnInit {
         if (this.company.Theme) {
           this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
           this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+        }
+        if (this.company.Banner) {
+          this.bannerImage = this.company.Banner[0].Url;
         }
       }
     });

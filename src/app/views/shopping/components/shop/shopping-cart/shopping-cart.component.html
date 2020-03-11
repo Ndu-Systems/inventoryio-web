@@ -1,20 +1,25 @@
-<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" ></app-shopping-nav>
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor"></app-shopping-nav>
 
 <div class="container" *ngIf="sale$ | async as sale">
-  <!-- <div class="cover-photo">
+  <div class="cover-photo">
     <img [src]="bannerImage" alt="">
-  </div> -->
+  </div>
   <div class="content">
-    <div class="check-out">
-      <button class="action-btn   hover-shadow"  [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"  (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to
+    <!-- <div class="check-out">
+      <button class="action-btn   hover-shadow"
+        [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"
+        (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to
         shoping</button>
-    </div>
+    </div> -->
+
+    <h3 class="small-heading">
+      Shopping cart
+    </h3>
 
     <div class="col-1-2">
       <div class="sale-sammary">
-        <h1 class="topic-heading">Shopping Cart</h1>
-        <div>
-          <div class=" col-1-5">
+        <div class="main-holder">
+          <div class="col-1-5">
             <div class="head">Product details</div>
             <div class="head"></div>
             <div class="head">Quantity</div>
@@ -119,11 +124,68 @@
       <div class="sammary-totals">
         <div class="shipping">
           <h3>
-            Shipping
+            Order summary
           </h3>
-          <app-shipping></app-shipping>
-        </div>
 
+          <div class="col-1-of-2">
+            <h4>
+              Items 3
+            </h4>
+
+            <h4>
+              {{sale?.total | currency:'R'}}
+
+            </h4>
+          </div>
+
+          <div class="shipping">
+
+            <div class="input">
+              <p>
+                shipping
+              </p>
+              <select class="input" (change)="deliveryChanged($event.target.value)" name="" id="">
+                <option value="delivery" selected>Standard delivery - R150.00 </option>
+                <option value="collect">I will collect </option>
+              </select>
+            </div>
+
+            <!-- <div class="input">
+              <p>
+                promo code
+              </p>
+              <input type="text">
+            </div>
+            <div class="input">
+              <div class="add">
+                <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                  (click)="onSubmit()">apply</button>
+              </div>
+            </div> -->
+
+            <div class="checkout">
+              <div class="col-1-of-2">
+                <h4>
+                  total cost
+                </h4>
+    
+                <h4>
+                  {{sale?.total + deliveryFee | currency:'R'}}
+    
+                </h4>
+              </div>
+
+              <div class="input">
+                <div class="add">
+                  <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                    (click)="checkout()">checkout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <app-shipping></app-shipping> -->
+        </div>
+<!-- 
         <div class="sell total">
           <h4>
             {{sale?.total | currency:'R'}}
@@ -134,12 +196,15 @@
 
         <div class="list-filters">
           <div class="add">
-            <button class="btn"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"  (click)="onSubmit()">Save order</button>
+            <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+              (click)="onSubmit()">Save order</button>
           </div>
           <div class="add">
-            <button class="btn btn-warn"  [ngStyle]="{'color':shopPrimaryColor,  background: 'none', border: '1px solid #000','border-color':shopPrimaryColor}" (click)="clear()">Clear form</button>
+            <button class="btn btn-warn"
+              [ngStyle]="{'color':shopPrimaryColor,  background: 'none', border: '1px solid #000','border-color':shopPrimaryColor}"
+              (click)="clear()">Clear form</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 

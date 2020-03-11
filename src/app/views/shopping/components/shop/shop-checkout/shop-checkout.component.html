@@ -1,0 +1,161 @@
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor"></app-shopping-nav>
+
+<div class="container" *ngIf="sale$ | async as sale">
+  <div class="cover-photo">
+    <img [src]="bannerImage" alt="">
+  </div>
+  <div class="content" >
+    <!-- <div class="content"  [ngStyle]="{color:shopPrimaryColor,  background: shopPrimaryColor}"> -->
+      <h3 class="small-heading">
+      Checkout and payments
+    </h3>
+
+    <!-- <div class="check-out">
+      <button class="action-btn   hover-shadow"
+        [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"
+        (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to
+        shoping</button>
+    </div> -->
+
+    <div class="col-1-of-3">
+      <div class="sammary-totals">
+        <div class="shipping">
+          <h3>
+            Select payment method
+          </h3>
+          <hr>
+
+          <div class="options">
+            <div class="input">
+
+              <select class="input-select-30" (change)="deliveryChanged($event.target.value)" name="" id="">
+                <option value="eft" selected>EFT Transfer</option>
+                <option value="cash"> Cash on delivery </option>
+              </select>
+            </div>
+
+            <div class="details-container">
+
+              <div class="bank-detais" *ngFor="let field of company.Bankings">
+                <div class="data">
+                  <p>{{field.Label}}</p>
+                  <h5>{{field.Value}}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <app-shipping></app-shipping> -->
+        </div>
+      </div>
+
+      <div class="sammary-totals">
+        <div class="shipping">
+          <h3>
+            Shipping address
+          </h3>
+          <hr>
+          <app-shipping></app-shipping>
+
+          <div class="input">
+            <div class="add">
+              <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                (click)="verify()">Verify</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="sammary-totals">
+        <div class="shipping">
+          <h3>
+            Order summary
+          </h3>
+          <hr>
+
+          <div class="col-1-of-2">
+            <h4>
+              Items 3
+            </h4>
+
+            <h4>
+              {{sale?.total | currency:'R'}}
+
+            </h4>
+          </div>
+
+          <div class="cart">
+            <div class="col-1-of-3">
+              <h4>
+                Item
+              </h4>
+              <h4>
+                Qty
+              </h4>
+              <h4>
+                Total
+              </h4>
+            </div>
+            <div class="col-1-of-3" *ngFor="let item of sale.items">
+              <h5>
+                {{item.name}}
+              </h5>
+              <h5>
+                {{item.quantity}}
+              </h5>
+              <h5 class="price">
+                {{item.subTotal| currency:'R'}}
+              </h5>
+            </div>
+          </div>
+
+          <div class="col-1-of-2">
+            <h4>
+              Shipping:
+            </h4>
+
+            <h5>
+              Standard delivery - R150.00
+            </h5>
+          </div>
+
+          <div class="col-1-of-2">
+            <h4>
+              Purchase Date:
+            </h4>
+
+            <h5>
+              Standard delivery - 11111
+            </h5>
+          </div>
+          <div class="col-1-of-2">
+            <h4>
+              TOTAL COST:
+            </h4>
+
+            <h2 class="price">
+              {{sale?.total + deliveryFee | currency:'R'}}
+            </h2>
+          </div>
+
+          <div class="input">
+            <div class="add">
+              <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                (click)="checkout()">Place your order</button>
+            </div>
+          </div>
+
+
+          <!-- <app-shipping></app-shipping> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<title>
+  {{welocme}}
+</title>

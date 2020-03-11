@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, Company, Item, SellModel, Orders, Partner, Email } from 'src/app/_models';
+import { Product, Company, SellModel, Partner, Orders, Item, Email } from 'src/app/_models';
 import { ProductService, CompanyService, EmailService, InvoiceService } from 'src/app/_services';
+import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 
 @Component({
-  selector: 'app-shopping-cart',
-  templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.scss']
+  selector: 'app-shop-checkout',
+  templateUrl: './shop-checkout.component.html',
+  styleUrls: ['./shop-checkout.component.scss']
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShopCheckoutComponent implements OnInit {
   welocme = `Welcome to 'ZALOE' shopping page`;
   products$: Observable<Product[]>;
   companyId;
@@ -24,6 +24,7 @@ export class ShoppingCartComponent implements OnInit {
   bannerImage = 'assets/placeholders/shopheader.jpg';
   shopPrimaryColor: string;
   shopSecondaryColor: string;
+  paymentMethod: string;
   deliveryFee = 150;
 
 
@@ -49,7 +50,6 @@ export class ShoppingCartComponent implements OnInit {
         this.company = r;
         this.welocme = `Welcome to '${this.company.Name}' shopping page `;
         this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
-
         if (this.company.Banner) {
           this.bannerImage = this.company.Banner[0].Url;
         }
@@ -217,12 +217,17 @@ export class ShoppingCartComponent implements OnInit {
 
     return `${date.getDate()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
   }
+
   deliveryChanged(data) {
-    if (data === 'delivery') {
-      this.deliveryFee = 150;
+    if (data === 'cash') {
+      this.paymentMethod = 'cash';
     }
-    if (data === 'collect') {
-      this.deliveryFee = 0;
+    if (data === 'eft') {
+      this.paymentMethod = 'eft';
     }
+  }
+
+  verify(){
+    
   }
 }

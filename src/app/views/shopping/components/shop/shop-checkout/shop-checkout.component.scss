@@ -54,7 +54,6 @@
     padding: 1%;
   }
 
-
   .col-1-2 {
     display: grid;
     grid-template-columns: 70% auto;
@@ -294,7 +293,6 @@
 .sammary-totals {
   background: $white-color;
   margin: .5rem;
-  margin-top: 0rem;
   padding: 1rem;
 
   @media only screen and (max-width: 600px) {
@@ -329,17 +327,68 @@
   grid-template-columns: 50% auto;
 }
 
+.details-container {
+  display: grid;
+  // grid-template-columns: 30% auto;
+  grid-template-columns: 100%;
+  padding: 2rem .5rem;
+
+  .data {
+
+    p,
+    h5 {
+      margin: .3rem;
+    }
+
+    h5 {
+      margin-bottom: .5rem;
+    }
+  }
+
+}
+
+
 .input {
 
   padding: .5rem;
+
   select,
   input {
     border: 1px solid $strong-gray;
 
   }
+
+  .input-select-30 {
+   border-radius: 3px;
+  }
 }
 
+.shipping {
 
-.main-holder{
-  background: $white-color;
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: .2555rem;
+    color: $gray-color;
+  }
+
+  h5,
+  h2 {
+    color: $black-color;
+  }
+
+  .cart,
+  .col-1-of-2 {
+    border-bottom: 1px solid $ligher-gray;
+  }
+
+  .price {
+    font-weight: 900;
+  }
+}
+
+hr{
+  border: .5px solid  $ligher-gray;
+  margin: 1.5rem 0rem;
 }

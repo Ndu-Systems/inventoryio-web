@@ -1,8 +1,10 @@
 @import '../../../../../../assets/styles/variables';
 
 .main {
-  padding: 10rem 2rem;
+  // padding: 10rem 2rem;
   box-sizing: border-box;
+  background: $cloud-ligher;
+  padding: 3rem;
 
 
   @media only screen and (max-width: 600px) {
@@ -113,8 +115,14 @@
           .tar{
             text-align: right;
             padding-right: 0;
+
+            @media only screen and (max-width: 600px) {
+              text-align: left;
+            }
           }
         }
+
+        
 
       }
 

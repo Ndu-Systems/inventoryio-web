@@ -1,12 +1,17 @@
 
 <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" ></app-shopping-nav>
+<div class="cover-photo">
+  <img [src]="bannerImage" alt="">
+</div>
+<div class="main"  *ngIf=" this.product$ | async as  product;">
 
-<div class="main">
-  <!-- <div class="cover-photo">
-    <img [src]="bannerImage" alt="">
-  </div> -->
-  <div class="order" *ngIf=" this.product$ | async as  product;">
-  
+
+  <h3 class="small-heading">
+    {{product.Name}}
+  </h3>
+  <div class="order">
+ 
+
     <div class="product-details">
       <div class="images">
         <app-view-images></app-view-images>
@@ -57,16 +62,18 @@
          
           </div>
 
-          <div class="option-items">
+          <div class="option-items mobile-col-1-of-2">
           
             <div class="options-item full-row">
               <div class="input no-border">
-                <button class="action-btn hover-shadow"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="doSell(product)">Add to cart</button>
+                <button class="action-btn hover-shadow back"  [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor}" (click)="back()">Back to shop</button>
+
               </div>
             </div>
             <div class="options-item full-row tar">
               <div class="input no-border tar">
-                <button class="action-btn hover-shadow back"  [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor}" (click)="back()">Back to shop</button>
+                <button class="action-btn hover-shadow"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="doSell(product)">Add to cart</button>
+
               </div>
             </div>
           </div>

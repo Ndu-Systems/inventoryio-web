@@ -10,6 +10,7 @@ import { ViewImagesComponent } from './components/shop/view-images/view-images.c
 import { ShoppingComponent } from './components/shop/shopping/shopping.component';
 import { ShopComponent } from './components/shop/shop/shop.component';
 import { ShoppingNavComponent } from './components/shop/shopping-nav/shopping-nav.component';
+import { ShopCheckoutComponent } from './components/shop/shop-checkout/shop-checkout.component';
 const routes: Routes = [
   {
     path: '', component: ShoppingComponent,
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'shopping-cart/:id', component: ShoppingCartComponent },
       { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
       { path: 'view-product/:id', component: ViewProductComponent },
+      { path: 'checkout/:id', component: ShopCheckoutComponent },
     ]
   }
 ];
@@ -33,6 +35,7 @@ export const declarations = [
   ShippingComponent,
   ViewImagesComponent,
   ShoppingNavComponent,
+  ShopCheckoutComponent,
   FormatOptionsPipe
 ];
 
