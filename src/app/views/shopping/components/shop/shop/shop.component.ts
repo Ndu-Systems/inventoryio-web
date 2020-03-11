@@ -43,6 +43,7 @@ export class ShopComponent implements OnInit {
 
       this.companyService.getCompany(this.companyId).subscribe(r => {
         this.company = r;
+        this.shoppingService.updateCompanyState(this.company);
         this.welocme = `Shop with ${this.company.Name}`;
         this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
         if (this.company.Banner) {

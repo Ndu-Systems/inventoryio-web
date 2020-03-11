@@ -22,6 +22,8 @@ export class ShoppingCartComponent implements OnInit {
   sale: any;
   order: Orders;
   bannerImage = 'assets/placeholders/shopheader.jpg';
+  shopPrimaryColor: string;
+  shopSecondaryColor: string;
 
 
   constructor(
@@ -68,6 +70,15 @@ export class ShoppingCartComponent implements OnInit {
     });
     this.productService.products.subscribe(r => {
       this.products = r;
+    });
+    this.shoppingService.company.subscribe(data => {
+      if (data) {
+        this.company = data;
+        if (this.company.Theme) {
+          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+        }
+      }
     });
   }
 
@@ -149,6 +160,15 @@ export class ShoppingCartComponent implements OnInit {
       this.order = response;
       this.shoppingService.updateOrderState(this.order);
       this.succesful();
+    });
+    this.shoppingService.company.subscribe(data => {
+      if (data) {
+        this.company = data;
+        if (this.company.Theme) {
+          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+        }
+      }
     });
   }
 

@@ -1,4 +1,4 @@
-<app-shopping-nav></app-shopping-nav>
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" ></app-shopping-nav>
 
 <div class="container" *ngIf="sale$ | async as sale">
   <!-- <div class="cover-photo">
@@ -6,7 +6,7 @@
   </div> -->
   <div class="content">
     <div class="check-out">
-      <button class="action-btn  hover-shadow" (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to
+      <button class="action-btn   hover-shadow"  [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"  (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to
         shoping</button>
     </div>
 
@@ -134,10 +134,10 @@
 
         <div class="list-filters">
           <div class="add">
-            <button class="btn" (click)="onSubmit()">Save order</button>
+            <button class="btn"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"  (click)="onSubmit()">Save order</button>
           </div>
           <div class="add">
-            <button class="btn btn-warn" (click)="clear()">Clear form</button>
+            <button class="btn btn-warn"  [ngStyle]="{'color':shopPrimaryColor,  background: 'none', border: '1px solid #000','border-color':shopPrimaryColor}" (click)="clear()">Clear form</button>
           </div>
         </div>
       </div>

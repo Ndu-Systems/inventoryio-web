@@ -1,11 +1,12 @@
 
-<app-shopping-nav></app-shopping-nav>
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" ></app-shopping-nav>
 
 <div class="main">
   <!-- <div class="cover-photo">
     <img [src]="bannerImage" alt="">
   </div> -->
   <div class="order" *ngIf=" this.product$ | async as  product;">
+  
     <div class="product-details">
       <div class="images">
         <app-view-images></app-view-images>
@@ -43,7 +44,7 @@
 
             <div class="options-item">
               <div class="label">
-                Quantity
+                QNTY 
               </div>
 
               <div class="input">
@@ -60,7 +61,12 @@
           
             <div class="options-item full-row">
               <div class="input no-border">
-                <button class="action-btn hover-shadow" (click)="doSell(product)">Add to cart</button>
+                <button class="action-btn hover-shadow"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="doSell(product)">Add to cart</button>
+              </div>
+            </div>
+            <div class="options-item full-row tar">
+              <div class="input no-border tar">
+                <button class="action-btn hover-shadow back"  [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor}" (click)="back()">Back to shop</button>
               </div>
             </div>
           </div>

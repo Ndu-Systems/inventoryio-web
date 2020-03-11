@@ -311,3 +311,9 @@
   text-align: right;
   text-transform: uppercase;
 }
+
+.container{
+  @media only screen and (max-width: 600px) {
+padding-top: 15%;
+  }
+}

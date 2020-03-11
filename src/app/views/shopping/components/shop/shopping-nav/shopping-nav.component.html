@@ -8,8 +8,8 @@
     <li><a  [ngStyle]="{'color':shopSecondaryColor}" routerLink="/pricing">Pricing</a></li>
     <li><a  [ngStyle]="{'color':shopSecondaryColor}" routerLink="/sign-in">Sign in</a></li>
     <li class="cart" (click)="viewCart()">
-      <span>
-        1
+      <span class="cart-span">
+        {{cartItems}}
         <i class="pi pi-shopping-cart"></i>
       </span>
    
@@ -29,6 +29,12 @@
     </ul>
   </div>
   <div class="ham-icon" (click)="toggleNav()">
+    <div class="harm-cart" (click)="viewCart()">
+      <span class="cart-span">
+        {{cartItems}}
+        <i class="pi pi-shopping-cart"></i>
+      </span>
+    </div>
     <img src="assets/images/ham.svg" alt="">
   </div>
 </div>

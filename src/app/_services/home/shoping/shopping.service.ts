@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Orders, OrderProducts, Item, Product, SellModel, Partner } from 'src/app/_models';
+import { Orders, OrderProducts, Item, Product, SellModel, Partner, Company } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
 import { SplashService } from '../../splash.service';
 import { environment } from 'src/environments/environment';
@@ -22,6 +22,10 @@ export class ShoppingService {
   public order: Observable<Orders>;
 
 
+  private _company: BehaviorSubject<Company>;
+  public company: Observable<Company>;
+
+
 
 
   url: string;
@@ -38,6 +42,10 @@ export class ShoppingService {
 
     this._order = new BehaviorSubject<Orders>(JSON.parse(localStorage.getItem('shop_order')));
     this.order = this._order.asObservable();
+
+
+    this._company = new BehaviorSubject<Company>(JSON.parse(localStorage.getItem('shop_company')));
+    this.company = this._company.asObservable();
 
 
     this.url = environment.API_URL;
@@ -61,6 +69,13 @@ export class ShoppingService {
     if (data) {
       this._order.next(data);
       localStorage.setItem('shop_order', JSON.stringify(data));
+    }
+
+  }
+  updateCompanyState(data: Company) {
+    if (data) {
+      this._company.next(data);
+      localStorage.setItem('shop_company', JSON.stringify(data));
     }
 
   }

@@ -6,6 +6,7 @@ import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Attribute } from 'src/app/_models/Attribute.model';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-view-product',
@@ -27,6 +28,8 @@ export class ViewProductComponent implements OnInit {
   itemQnty = 1;
   orderOptions: ItemOptions[] = [];
   allOrderOptions: Attribute[] = [];
+  shopPrimaryColor: string;
+  shopSecondaryColor: string;
 
 
   constructor(
@@ -35,7 +38,8 @@ export class ViewProductComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private companyService: CompanyService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private messageService: MessageService,
 
   ) {
 
@@ -60,10 +64,19 @@ export class ViewProductComponent implements OnInit {
         this.cartItems = this.sale.items.length;
       }
     });
+
+    this.shoppingService.company.subscribe(data => {
+      if (data) {
+        this.company = data;
+        if (this.company.Theme) {
+          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+        }
+      }
+    });
   }
 
   doSell(product: Product) {
-    debugger
     if (!this.sale) {
       this.shoppingService.updateState({
         items: [],
@@ -79,7 +92,11 @@ export class ViewProductComponent implements OnInit {
     this.allOrderOptions.forEach(attribute => {
       const checkIfExist = this.orderOptions.find(x => x.optionId === attribute.AttributeId);
       if (!checkIfExist) {
-        alert(`${attribute.Name} must be selected.`);
+        this.messageService.add({
+          severity: 'warn',
+          summary: `${attribute.Name} option needed`,
+          detail: `${attribute.Name} must be selected.`
+        });
         isErross = true;
       }
 
@@ -107,14 +124,18 @@ export class ViewProductComponent implements OnInit {
       this.orderOptions = [];
 
     }
-
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Added to cart',
+      detail: `${product.Name} Added`
+    });
 
     this.productService.updateCurrentProduct(product);
 
   }
 
   back() {
-    this.router.navigate(['shop', this.companyId]);
+    this.router.navigate(['shopping/shop', this.company.CompanyId]);
   }
 
   optionSelected(option, AttributeId) {
