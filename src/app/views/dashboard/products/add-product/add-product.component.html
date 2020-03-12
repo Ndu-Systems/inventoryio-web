@@ -16,7 +16,7 @@
 
       <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)" class="form col-1-of-2">
         <span>
-          <div class="col-1-of-1">
+          <div class="col-1-of-2">
             <span>
               <div class="form-group">
                 <div class="group">
@@ -26,6 +26,14 @@
               </div>
               <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
                 Item name is required
+              </div>
+            </span>
+            <span>
+              <div class="form-group">
+                <div class="group">
+                    <span class="add btn" (click)="scan()">Scan</span>
+                  <input formControlName="Code" placeholder="scan/write bar-code here" />
+                </div>
               </div>
             </span>
             <span>
@@ -130,4 +138,7 @@
       </form>
     </div>
   </div>
+</div>
+<div class="scanner-pluggin" *ngIf="showScan">
+  <app-scanner></app-scanner>
 </div>

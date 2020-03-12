@@ -1,21 +1,25 @@
 .main {
   // background: red;
-  height: 7.5rem;
+  // height: 7.5rem;
   padding: 0;
   margin: 0;
   width: 100%;
   overflow-x: scroll;
-
   &::-webkit-scrollbar {
-    display: none; // Safari and Chrome
+    display: block; // Safari and Chrome
+    // background: transparent;
   }
+  &::-webkit-scrollbar-thumb {
+    // background: #FF0000;
+}
 
   .images {
     position: relative;
     display: flex;
     // display: grid;
     // grid-template-columns: repeat(4,15%);
-    width: 50rem;
+    // width: 50rem;
+    width: 100%;
 
     .image {
       margin: .5rem;
@@ -72,7 +76,7 @@
     width: 100%;
     cursor: pointer;
     opacity: 0;
-  
+
     &:focus {
       outline: none;
     }
