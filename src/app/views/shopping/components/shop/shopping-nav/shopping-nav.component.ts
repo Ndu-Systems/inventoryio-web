@@ -15,7 +15,8 @@ export class ShoppingNavComponent implements OnInit {
   @Input() shopSecondaryColor = '#ffffff';
   sale: SellModel;
   cartItems = 0;
-  company: import("c:/NDU/apps/inventoryio-web/src/app/_models/company.model").Company;
+  company: import('C:/Users/freedom.khanyile/source/repos/inventoryio-web/src/app/_models').Company;
+  // company: import("c:/NDU/apps/inventoryio-web/src/app/_models/company.model").Company;
   constructor(private shoppingService: ShoppingService, private router: Router) { }
 
   ngOnInit() {
