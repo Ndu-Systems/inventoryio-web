@@ -17,6 +17,7 @@ export class ShoppingNavComponent implements OnInit {
   cartItems = 0;
   company: Company;
   logoUrl: string;
+  // company: import("c:/NDU/apps/inventoryio-web/src/app/_models/company.model").Company;
   constructor(private shoppingService: ShoppingService, private router: Router) { }
 
   ngOnInit() {

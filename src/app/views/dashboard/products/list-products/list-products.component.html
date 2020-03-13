@@ -48,32 +48,48 @@
       <div class="list-filters topbar">
         <div class="search-box">
           <div class="input-times">
-            <input type="text" class="roundInput"  [(ngModel)]="search" placeholder="🔎 search here ...">
+            <input type="text" class="roundInput" [(ngModel)]="search" placeholder="🔎 search here ...">
           </div>
         </div>
-       
+
         <div>
           <select [(ngModel)]="searchByCatergory" class="roundInput">
             <option value="" selected>All</option>
             <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
           </select>
         </div>
-        <div>
-          <button class="btn btn-transparent" (click)="scann()">
-            <span class=""><i class="pi pi-ticket"></i>Scan</span>
-          </button>
-        </div>
-        <div></div>
-        <div>
-          <button class="btn" (click)="add()">
-            <span class=""><i class="pi pi-plus"></i> Add Item</span>
-          </button>
-        </div>
-        <div>
-          <button class="btn btn-transparent" (click)="import()">
-            <span class=""><i class="pi pi-download"></i> Import</span>
-          </button>
-        </div>
+          <div class="desktop-icon">
+            <button class="btn btn-transparent" (click)="scann()">
+              <span class="desktop-icon"><i class="pi pi-ticket"></i>Scan</span>
+            </button>
+          </div>
+          <div></div>
+          <div class="desktop-icon">
+            <button class="btn" (click)="add()">
+              <span class="desktop-icon"><i class="pi pi-plus"></i> Add Item</span>
+            </button>
+          </div>
+          <div class="desktop-icon">
+            <button class="btn btn-transparent" (click)="import()">
+              <span><i class="pi pi-download"></i> Import</span>
+             </button>
+          </div>
+
+          <div class="mobile-icons col-1-of-3">
+
+            <button class="btn btn-transparent" (click)="scann()">
+              <span class="mobile-icon"><i class="pi pi-ticket"></i></span>
+            </button>
+
+            <button class="btn" (click)="add()">
+               <span class="mobile-icon"><i class="pi pi-plus"></i></span>
+            </button>
+
+            <button class="btn btn-transparent" (click)="import()">
+               <span class="mobile-icon"><i class="pi pi-download"></i></span>
+            </button>
+          </div>
+
       </div>
     </div>
   </div>

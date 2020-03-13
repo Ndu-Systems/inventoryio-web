@@ -52,10 +52,10 @@
 .small-cards {
   grid-template-columns: repeat(4, 25%);
 
-@media only screen and (max-width: 1024px) {
-  grid-template-columns: repeat(2, 50%);
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 50%);
 
-}
+  }
 
   @media only screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 50%);
@@ -85,7 +85,8 @@
       margin-top: 1rem;
       grid-template-columns: 20% 15% 7% 40% 10% 8%;
       position: relative;
-      div{
+
+      div {
         // border: 1px solid black;
       }
 
@@ -94,8 +95,38 @@
       }
     }
   }
+
   @media only screen and (max-width: 600px) {
     width: 100%;
     margin-left: 0;
+  }
+}
+
+.mobile-icons  {
+display: none;
+}
+@media only screen and (max-width: 600px) {
+  .mobile-icons {
+    display: block;
+    &.col-1-of-3
+    {
+      grid-template-columns: repeat(3, 33.33%);
+      display: grid;
+      margin: 1em 0;
+      .btn {
+        margin: 1em auto;
+        border-radius: 10px;
+      }
+      .pi {
+        font-size: 2em;
+        &.pi-ticket,&.pi-download {
+          color: #95AFC0;
+        }
+      }
+    }
+  }
+
+  .desktop-icon {
+    display: none;
   }
 }

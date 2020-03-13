@@ -29,7 +29,12 @@ form {
 textarea {
   resize: none;
 }
-
+input::placeholder {
+  color: #95AFC0;
+  font-size: 0.88em;
+  font-weight: 600;
+  opacity: .6;
+}
 input,
 select,
 textarea {
