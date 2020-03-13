@@ -28,6 +28,7 @@ export class UpdateCompanyComponent implements OnInit {
     this.company = this.user.Company;
     this.rForm = this.fb.group({
       Name: [this.company.Name, Validators.required],
+      Handler: [this.company.Handler],
       TelephoneNumber: [this.company.TelephoneNumber, Validators.required],
       Website: [this.company.Website, Validators.required],
       CompanyId: [this.company.CompanyId, Validators.required],
@@ -47,6 +48,7 @@ export class UpdateCompanyComponent implements OnInit {
         });
         this.companyService.updateState(response);
         this.company.Name = response.Name;
+        this.company.Handler = response.Handler;
         this.company.Website = response.Website;
         this.company.TelephoneNumber = response.TelephoneNumber;
         this.user.Company = this.company;
@@ -54,7 +56,7 @@ export class UpdateCompanyComponent implements OnInit {
         this.accountService.updateUserState(this.user);
       }
     });
-    this.routeTo.navigate(['/dashboard/profile'])
+    this.routeTo.navigate(['/dashboard/profile']);
 
   }
 

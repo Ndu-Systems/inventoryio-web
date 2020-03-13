@@ -33,13 +33,14 @@
   .logo {
     text-align: left;
     margin: 0.5rem auto;
+    width: 3.3rem;
 
     //mobile layout
     @media only screen and (max-width: 600px) {
       margin: 0.5rem auto;
 
       img {
-        width: 4rem;
+        width: 2.2rem;
       }
     }
 
@@ -172,40 +173,6 @@
         }
       }
 
-      // ul {
-      //   line-height: 5rem;
-      //   align-content: center;
-
-      //   img {
-
-      //     margin: 1rem;
-      //     vertical-align: middle;
-      //     margin-left: 0%;
-      //   }
-      // }
-
-      // li {
-      //   text-align: center;
-      //   list-style-type: none;
-
-      //   .sign-up-for-free {
-      //     background: #FFFFFF;
-      //   }
-
-      //   .sign-up-for-free a {
-      //     background: #FFFFFF;
-      //     color: #104CE5;
-      //     padding: .4rem;
-      //     padding-right: 1.4rem;
-      //     padding-left: 1.4rem;
-      //     border-radius: 10px;
-      //     font-weight: 500;
-      //   }
-
-      //   a {
-      //     color: #FFFFFF;
-      //   }
-      // }
     }
 
     .close {

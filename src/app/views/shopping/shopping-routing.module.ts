@@ -11,12 +11,13 @@ import { ShoppingComponent } from './components/shop/shopping/shopping.component
 import { ShopComponent } from './components/shop/shop/shop.component';
 import { ShoppingNavComponent } from './components/shop/shopping-nav/shopping-nav.component';
 import { ShopCheckoutComponent } from './components/shop/shop-checkout/shop-checkout.component';
+import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 const routes: Routes = [
   {
     path: '', component: ShoppingComponent,
     children: [
       { path: '', component: ShopsComponent },
-      { path: 'shop/:id', component: ShopComponent },
+      { path: 'at/:id', component: ShopComponent},
       { path: 'shopping-cart/:id', component: ShoppingCartComponent },
       { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
       { path: 'view-product/:id', component: ViewProductComponent },
@@ -44,4 +45,6 @@ export const declarations = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ShoppingRoutingModule { }
+export class ShoppingRoutingModule {
+  constructor(hoppingService: ShoppingService) { }
+}

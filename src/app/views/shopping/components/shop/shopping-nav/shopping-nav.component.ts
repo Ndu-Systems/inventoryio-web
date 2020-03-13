@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { Observable } from 'rxjs';
-import { SellModel } from 'src/app/_models';
+import { SellModel, Company } from 'src/app/_models';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,8 @@ export class ShoppingNavComponent implements OnInit {
   @Input() shopSecondaryColor = '#ffffff';
   sale: SellModel;
   cartItems = 0;
-  company: import("c:/NDU/apps/inventoryio-web/src/app/_models/company.model").Company;
+  company: Company;
+  logoUrl: string;
   constructor(private shoppingService: ShoppingService, private router: Router) { }
 
   ngOnInit() {
@@ -29,8 +30,8 @@ export class ShoppingNavComponent implements OnInit {
     this.shoppingService.company.subscribe(data => {
       if (data) {
         this.company = data;
-        if (this.company.Theme) {
-          // this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+        if (this.company.Logo) {
+          this.logoUrl = this.company.Logo[0].Url;
           // this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
         }
       }
@@ -40,6 +41,6 @@ export class ShoppingNavComponent implements OnInit {
     this.showMobileNav = !this.showMobileNav;
   }
   viewCart() {
-    this.router.navigate(['shopping/shopping-cart', this.company.CompanyId]);
+    this.router.navigate(['shop/shopping-cart', this.company.CompanyId]);
   }
 }

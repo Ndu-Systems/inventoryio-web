@@ -11,6 +11,12 @@
               <label class="label">Company name*</label>
             </div>
           </div>
+          <div class="form-group">
+            <div class="group">
+              <input type="text" formControlName="Handler" required="required" />
+              <label class="label">Company handler</label>
+            </div>
+          </div>
           <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
             Company name is required
           </div>

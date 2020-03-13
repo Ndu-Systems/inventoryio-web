@@ -45,7 +45,7 @@ export class ShopComponent implements OnInit {
         this.company = r;
         this.shoppingService.updateCompanyState(this.company);
         this.welocme = `Shop with ${this.company.Name}`;
-        this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
+        // this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
         if (this.company.Banner) {
           this.bannerImage = this.company.Banner[0].Url;
         }
@@ -70,11 +70,11 @@ export class ShopComponent implements OnInit {
 
   viewCart() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shopping/shopping-cart', this.companyId]);
+    this.router.navigate(['shop/shopping-cart', this.companyId]);
   }
   viewItem(product: Product) {
     this.productService.updateSellProductState(product);
-    this.router.navigate(['shopping/view-product', product.ProductId]);
+    this.router.navigate(['shop/view-product', product.ProductId]);
 
   }
 

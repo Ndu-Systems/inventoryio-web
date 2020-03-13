@@ -35,12 +35,13 @@ export class UserStatComponent implements OnInit {
     this.storesService.stores.subscribe(data => {
       if (!data) { return false; }
       this.stores = data;
-      this.pushStat({
-        name: 'Your stores',
-        value: this.stores.length,
-        image: 'assets/images/stat-store.svg',
-        link: 'dashboard/stores'
-      });
+   
+      // this.pushStat({
+      //   name: 'Your stores',
+      //   value: this.stores.length,
+      //   image: 'assets/images/stat-store.svg',
+      //   link: 'dashboard/stores'
+      // });
     });
     this.usersService.users.subscribe(data => {
       if (!data) { return false; }
@@ -51,6 +52,13 @@ export class UserStatComponent implements OnInit {
         image: 'assets/images/stat-users.svg',
         link: 'dashboard/users'
       });
+    });
+
+    this.pushStat({
+      name: 'Customers',
+      value: this.stores.length,
+      image: 'assets/images/stat-store.svg',
+      link: 'dashboard/partners/customers'
     });
     this.ordersService.orders.subscribe(data => {
       if (!data) { return false; }

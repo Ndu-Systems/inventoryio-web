@@ -85,7 +85,7 @@ export class ShoppingCartComponent implements OnInit {
 
   back() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shopping/shop', this.companyId]);
+    this.router.navigate(['shop/at', this.companyId]);
   }
 
   add(item: Item) {
@@ -187,7 +187,7 @@ export class ShoppingCartComponent implements OnInit {
     };
     this.sendEmailNow(email);
     this.shoppingService.updateOrderState(null);
-    this.router.navigate(['shopping/shoping-succesful', this.companyId]);
+    this.router.navigate(['shop/shoping-succesful', this.companyId]);
   }
   sendEmailNow(email: Email) {
     this.emailService.sendEmailInvoice(email).subscribe(data => {
@@ -197,7 +197,7 @@ export class ShoppingCartComponent implements OnInit {
 
 
   checkout() {
-    this.router.navigate(['shopping/checkout', this.companyId]);
+    this.router.navigate(['shop/checkout', this.companyId]);
   }
   formatDate(d: string) {
     const months = ['Jan', 'Feb', 'Mar',

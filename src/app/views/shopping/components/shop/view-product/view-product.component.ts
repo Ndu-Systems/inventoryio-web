@@ -139,7 +139,7 @@ export class ViewProductComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['shopping/shop', this.company.CompanyId]);
+    this.router.navigate(['shop/at', this.company.CompanyId]);
   }
 
   optionSelected(option, AttributeId) {

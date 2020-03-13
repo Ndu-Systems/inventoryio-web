@@ -172,4 +172,8 @@ export class ShoppingService {
     });
     return this.http.post<any>(`${this.url}/api/orders/shop.php`, { order: data, products: productItems });
   }
+
+  getTittle() {
+    return 'hey';
+  }
 }
