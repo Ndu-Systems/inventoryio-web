@@ -39,10 +39,9 @@ export class AppComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(r => {
       this.companyId = r.id;
-      debugger
       this.companyService.getCompany(this.companyId).subscribe(r => {
         this.company = r;
-        this.titleService.setTitle(`Shop @ ${this.company.Name}`);
+        // this.titleService.setTitle(`Shop @ ${this.company.Name}`);
       });
     });
   }

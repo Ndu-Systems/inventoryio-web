@@ -64,11 +64,7 @@ export class ShoppingCartComponent implements OnInit {
         this.sale = state;
       }
     });
-    this.shoppingService.customer.subscribe(state => {
-      if (state) {
-        this.selectedPartner = state;
-      }
-    });
+
     this.productService.products.subscribe(r => {
       this.products = r;
     });
@@ -85,7 +81,7 @@ export class ShoppingCartComponent implements OnInit {
 
   back() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shop/at', this.companyId]);
+    this.router.navigate(['shop/at',  this.company.Handler || this.company.CompanyId]);
   }
 
   add(item: Item) {

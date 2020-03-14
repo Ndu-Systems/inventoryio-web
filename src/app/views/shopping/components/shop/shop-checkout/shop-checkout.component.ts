@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, Company, SellModel, Partner, Orders, Item, Email } from 'src/app/_models';
+import { Product, Company, SellModel, Partner, Orders, Item, Email, ItemOptions } from 'src/app/_models';
 import { ProductService, CompanyService, EmailService, InvoiceService } from 'src/app/_services';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { OrderOptions } from 'src/app/_models/order.options.model';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-shop-checkout',
@@ -19,7 +21,7 @@ export class ShopCheckoutComponent implements OnInit {
   sale$: Observable<SellModel>;
   products: Product[];
   selectedPartner: Partner;
-  sale: any;
+  sale: SellModel;
   order: Orders;
   bannerImage = 'assets/placeholders/shopheader.jpg';
   shopPrimaryColor: string;
@@ -36,6 +38,7 @@ export class ShopCheckoutComponent implements OnInit {
     private emailService: EmailService,
     private invoiceService: InvoiceService,
     private router: Router,
+    private messageService: MessageService,
     private titleService: Title
 
   ) {
@@ -62,6 +65,7 @@ export class ShopCheckoutComponent implements OnInit {
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;
+        console.log('current order', state);
       }
     });
     this.shoppingService.customer.subscribe(state => {
@@ -85,7 +89,7 @@ export class ShopCheckoutComponent implements OnInit {
 
   back() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shop/at', this.companyId]);
+    this.router.navigate(['shop/at', this.company.Handler || this.companyId]);
   }
 
   add(item: Item) {
@@ -131,47 +135,6 @@ export class ShopCheckoutComponent implements OnInit {
     this.shoppingService.doSellLogic(item);
   }
 
-
-  onSubmit() {
-
-    if (!this.sale.total) {
-      // this.messageService.add({
-      //   severity: 'warn',
-      //   summary: 'Empty cart',
-      //   detail: 'Add items in the cart to continue'
-      // });
-      return false;
-    }
-    const order: Orders = {
-      CompanyId: this.companyId,
-      Customer: this.selectedPartner || null,
-      ParntersId: '',
-      OrderType: 'Sell',
-      Total: this.sale.total,
-      Paid: 0,
-      Due: this.sale.total,
-      CreateUserId: 'customer',
-      ModifyUserId: 'customer',
-      Status: 'new',
-      StatusId: 1
-    };
-    console.log(order);
-    console.log('items', this.sale.items);
-    this.shoppingService.addOrder(order, this.sale.items).subscribe(response => {
-      this.order = response;
-      this.shoppingService.updateOrderState(this.order);
-      this.succesful();
-    });
-    this.shoppingService.company.subscribe(data => {
-      if (data) {
-        this.company = data;
-        if (this.company.Theme) {
-          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-        }
-      }
-    });
-  }
 
   succesful() {
     const email: Email = {
@@ -227,7 +190,84 @@ export class ShopCheckoutComponent implements OnInit {
     }
   }
 
-  verify(){
-    
+  verify() {
+
   }
+
+  mapitemOptionsToOrderOptions(items: Item[]): OrderOptions[] {
+    const options: OrderOptions[] = [];
+    items.forEach(item => {
+
+      item.itemOptions.forEach(itemOpt => {
+        const optionsItem: OrderOptions = {
+          OrderId: '0',
+          OptionId: itemOpt.optionId,
+          ValueId: 1,
+          OptionValue: itemOpt.value,
+          OptionName: itemOpt.optionName,
+          ValuePrice: 0,
+          ValueIdQty: 0,
+          CompanyId: this.companyId,
+          CreateUserId: 'customer',
+          ModifyUserId: 'customer',
+          StatusId: 1
+        };
+        options.push(optionsItem);
+      });
+      // tslint:disable-next-line: one-variable-per-declaration
+
+    });
+    return options;
+  }
+
+  onSubmit() {
+
+    if (!this.sale.total) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Empty cart',
+        detail: 'Add items in the cart to continue'
+      });
+      return false;
+    }
+    if (!this.selectedPartner) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'shipping details missing',
+        detail: 'Please provide this shipping details.'
+      });
+      return false;
+    }
+    const order: Orders = {
+      CompanyId: this.companyId,
+      Customer: this.selectedPartner || null,
+      ParntersId: '',
+      OrderType: 'Sell',
+      Total: this.sale.total,
+      Paid: 0,
+      Due: this.sale.total,
+      CreateUserId: 'customer',
+      ModifyUserId: 'customer',
+      Status: 'new',
+      StatusId: 1,
+      options : this.mapitemOptionsToOrderOptions(this.sale.items)
+    };
+    console.log(order);
+    console.log('items', this.sale.items);
+    this.shoppingService.addOrder(order, this.sale.items).subscribe(response => {
+      this.order = response;
+      this.shoppingService.updateOrderState(this.order);
+      this.succesful();
+    });
+    this.shoppingService.company.subscribe(data => {
+      if (data) {
+        this.company = data;
+        if (this.company.Theme) {
+          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+        }
+      }
+    });
+  }
+
 }

@@ -144,13 +144,14 @@ export class SellComponent implements OnInit {
     };
     console.log(order);
     console.log('items', this.sale.items);
+    order.options = [];
     this.ordersService.addOrder(order, this.sale.items);
     this.updateProductsRange(this.sale.items);
     // clear state
     this.saleService.clearState();
     this.ordersService.updateOrderState(null);
     this.ordersService.updateOrderProductsState(null);
-    this.router.navigate(['/dashboard/list-orders']);
+    // this.router.navigate(['/dashboard/list-orders']);
   }
 
   updateProductsRange(items: Item[]) {
