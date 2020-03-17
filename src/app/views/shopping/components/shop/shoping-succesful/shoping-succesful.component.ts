@@ -51,6 +51,6 @@ export class ShopingSuccesfulComponent implements OnInit {
     win.focus();
   }
   back() {
-    this.router.navigate(['shop/shop', this.companyId]);
+    this.router.navigate(['shop/at', this.company.Handler || this.companyId]);
   }
 }

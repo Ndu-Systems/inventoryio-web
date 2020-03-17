@@ -9,6 +9,9 @@
   <h3 class="small-heading">
     {{product.Name}}
   </h3>
+
+  <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a>
+
   <div class="order">
  
 
@@ -39,7 +42,7 @@
               <div class="input">
                 <span *ngIf="attribute.Values">
                   <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
-                    <option value=""></option>
+                    <option value="" selected></option>
                     <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
                       {{item.AttributeValue}}</option>
                   </select>
@@ -64,12 +67,12 @@
 
           <div class="option-items mobile-col-1-of-2">
           
-            <div class="options-item full-row">
+            <!-- <div class="options-item full-row">
               <div class="input no-border">
                 <button class="action-btn hover-shadow back"  [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor}" (click)="back()">Back to shop</button>
 
               </div>
-            </div>
+            </div> -->
             <div class="options-item full-row tar">
               <div class="input no-border tar">
                 <button class="action-btn hover-shadow"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="doSell(product)">Add to cart</button>

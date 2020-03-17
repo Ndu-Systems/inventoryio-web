@@ -33,17 +33,13 @@ export class AppComponent implements OnInit {
   ) {
     update.available.subscribe(update => {
       console.log('an update');
-
     });
+    this.titleService.setTitle('Inventory io | inventory | stock management system | online mall | shooping online');
+    const loc: string = window.location.href;
+    if (loc.includes('shop')) {
+      this.setDocTitle(`Shop @ ${loc.split('/')[6]}`);
+    }
 
-
-    this.activatedRoute.params.subscribe(r => {
-      this.companyId = r.id;
-      this.companyService.getCompany(this.companyId).subscribe(r => {
-        this.company = r;
-        // this.titleService.setTitle(`Shop @ ${this.company.Name}`);
-      });
-    });
   }
   ngOnInit() {
     if (environment.production) {
@@ -58,32 +54,6 @@ export class AppComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
-    this.titleService.setTitle('Inventory io | inventory | stock management system | online mall | shooping online');
-
-    const appTitle = this.titleService.getTitle();
-    // this.router
-    //   .events.pipe(
-    //     filter(event => event instanceof NavigationEnd),
-    //     map(() => {
-    //       let child = this.activatedRoute.firstChild;
-    //       while (child.firstChild) {
-    //         child = child.firstChild;
-    //       }
-    //       debugger
-    //       if (child.snapshot.data['id']) {
-    //         // return child.snapshot.data['id'];
-    //         this.companyService.getCompany(child.snapshot.data['id']).subscribe(data => {
-    //           const company: Company = data;
-    //           if (company) {
-    //             this.setDocTitle(company.Name);
-    //           }
-    //         })
-    //       }
-    //       return appTitle;
-    //     })
-    //   ).subscribe((ttl: string) => {
-    //     this.titleService.setTitle(ttl);
-    //   });
   }
 
   setDocTitle(title: string) {

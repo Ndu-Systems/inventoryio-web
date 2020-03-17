@@ -2,69 +2,116 @@
 
 <div class="container" *ngIf="sale$ | async as sale">
   <div class="cover-photo">
-    <img [src]="bannerImage" alt="">
+    <!-- <img [src]="bannerImage" alt=""> -->
   </div>
-  <div class="content" >
-    <!-- <div class="content"  [ngStyle]="{color:shopPrimaryColor,  background: shopPrimaryColor}"> -->
-      <h3 class="small-heading">
+  <div class="content">
+    <h3 class="small-heading">
       Checkout and payments
     </h3>
+    <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a>
 
-    <!-- <div class="check-out">
-      <button class="action-btn   hover-shadow"
-        [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"
-        (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to
-        shoping</button>
-    </div> -->
+    <div class="col-1-of-2 col-70-30">
 
-    <div class="col-1-of-3">
-      <div class="sammary-totals">
-        <div class="shipping">
+
+      <div class="shipping">
+        <div class="shipping" *ngIf="step == '1'">
           <h3>
-            Select payment method
+            Your personal details
           </h3>
           <hr>
 
-          <div class="options">
-            <div class="input">
+          <app-shipping></app-shipping>
+          <div class="add">
+            <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+              (click)="nextStep(2)">Proceed to payment details</button>
+          </div>
+        </div>
 
-              <select class="input-select-30" (change)="deliveryChanged($event.target.value)" name="" id="">
-                <option value="eft" selected>EFT Transfer</option>
-                <option value="cash"> Cash on delivery </option>
-              </select>
-            </div>
+        <div class="payments"  *ngIf="step == '2'">
+          <div class="shipping">
+            <h3>
+              Payments method
+            </h3>
+            <hr>
+            <div class="options">
+              <div class="input">
 
-            <div class="details-container">
 
-              <div class="bank-detais" *ngFor="let field of company.Bankings">
-                <div class="data">
-                  <p>{{field.Label}}</p>
-                  <h5>{{field.Value}}</h5>
+                <p-selectButton [options]="paymentMethods" [(ngModel)]="selectedType" ></p-selectButton>
+
+              </div>
+
+              <div class="details-container" *ngIf="company.Bankings && selectedType == 'eft'">
+                <div class="disclaimer">
+                  <p>
+                    Please make eft payment to the seller's account bellow, you can also contact them to ensure you
+                    sending money to the right person
+                  </p>
+                 
+                  <div class="agree">
+                    <p-checkbox [(ngModel)]="checkedEft" binary="true"></p-checkbox> I agree to pay using EFT to the account bellow.
+                  </div>
+
                 </div>
+
+                <div class="bank-card">
+                  <div class="bank-name">
+                    <h1>
+                      <span>Bank name</span>
+                      {{company.Bankings[0].Value}}
+                    </h1>
+                  </div>
+                  <div class="bank-acno">
+                    <h1>
+                      {{company.Bankings[1].Value}}
+                    </h1>
+                  </div>
+                  <div class="bank-holder">
+                    <div class="p1">
+                      <h1>
+                        <span>
+                          Account Holder
+                        </span>
+                        {{company.Bankings[3].Value}}
+                      </h1>
+                    </div>
+                    <div class="p2">
+                      <h1>
+                        <span>
+                          Branch
+                        </span>
+                        {{company.Bankings[2].Value}}
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="details-container" *ngIf="selectedType == 'cash'">
+                <div class="disclimer">
+                  <p>
+                    Please make sure you have cash in hand on delivery
+                  </p>
+
+                  <div class="agree">
+                    <p-checkbox [(ngModel)]="checkedCash" binary="true"></p-checkbox> I agree to pay cash on delivery
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="add">
+
+                <a class="back-link back-link-btn" (click)="nextStep(1)"><i class="pi pi-arrow-left"></i> Back to personal details</a>
+                <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                  (click)="onSubmit()">Place Order</button>
               </div>
             </div>
           </div>
-
-
-          <!-- <app-shipping></app-shipping> -->
         </div>
-      </div>
 
-      <div class="sammary-totals">
-        <div class="shipping">
-          <h3>
-            Shipping address
-          </h3>
-          <hr>
-          <app-shipping></app-shipping>
 
-          <div class="input">
-            <div class="add">
-              <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-                (click)="verify()">Verify</button>
-            </div>
-          </div>
-        </div>
       </div>
 
 
@@ -127,7 +174,7 @@
             </h4>
 
             <h5>
-              Standard delivery - 11111
+             {{today | date:'fullDate'}}
             </h5>
           </div>
           <div class="col-1-of-2">
@@ -142,20 +189,12 @@
 
           <div class="input">
             <div class="add">
-              <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-                (click)="onSubmit()">Place your order</button>
+
             </div>
           </div>
 
-
-          <!-- <app-shipping></app-shipping> -->
         </div>
       </div>
+
     </div>
-
   </div>
-</div>
-
-<title>
-  {{welocme}}
-</title>

@@ -6,6 +6,9 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {CheckboxModule} from 'primeng/checkbox';
+
 
 @NgModule({
   imports: [
@@ -14,7 +17,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     FormsModule,
     ReactiveFormsModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    SelectButtonModule,
+    CheckboxModule
   ],
   declarations: [...declarations],
   providers: [MessageService, ConfirmationService]

@@ -55,6 +55,7 @@
   }
 
   .col-1-2 {
+    background: $white-color;
     display: grid;
     grid-template-columns: 70% auto;
 
@@ -325,6 +326,10 @@
 
 .col-1-of-2 {
   grid-template-columns: 50% auto;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
 }
 
 .details-container {
@@ -359,11 +364,19 @@
   }
 
   .input-select-30 {
-   border-radius: 3px;
+    border-radius: 3px;
   }
 }
 
 .shipping {
+  background: $white-color;
+  margin: 0 .53rem;
+  padding: 1rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: .3rem;
+
+  }
 
   h2,
   h3,
@@ -388,7 +401,79 @@
   }
 }
 
-hr{
-  border: .5px solid  $ligher-gray;
+hr {
+  border: .5px solid $ligher-gray;
   margin: 1.5rem 0rem;
+}
+
+.col-70-30 {
+  grid-template-columns: 60% auto;
+  
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.bank-detais {
+  display: grid;
+  grid-template: 30% 30% 30%;
+}
+
+
+.bank-card {
+  background: $primary-bg-color;
+  color: $white-color;
+  padding: 1.5rem;
+  border-radius: 9px;
+  width: 60%;
+
+  @media only screen and (max-width: 600px) {
+  width: 100%;
+  }
+
+  span {
+    display: block;
+    text-transform: uppercase;
+    font-size: .6rem;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    font-size: .9rem;
+    letter-spacing: .1rem;
+  }
+
+  .bank-acno {
+    h1 {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+
+    }
+  }
+
+  .bank-holder {
+    display: grid;
+    grid-template-columns: 70% auto;
+
+    @media only screen and (max-width: 600px) {
+
+      grid-template-columns: 100%;
+
+    }
+  }
+}
+
+
+.agree{
+  padding: 1rem 0;
+}
+
+.back-link{
+  padding: 1rem;
+  cursor: pointer;
+  margin: 1rem 0;
+  display: block;
+}
+.back-link-btn{
+  display: inline;
 }

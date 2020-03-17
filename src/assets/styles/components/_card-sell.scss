@@ -1,18 +1,16 @@
-.shop-card {
+.sell-card {
   display: grid;
   grid-auto-columns: 100%;
   // grid-template-rows: 250px 50px 50px 80px;
-  grid-template-rows: 320px 50px 50px 1px;
-  grid-template-areas: "image""name""notes""actions";
+  grid-template-rows: 190px 55px 35px auto 40px;
+  grid-template-areas: "image""name""notes""options""actions";
   margin: 1rem;
   border-radius: 12px;
   background: #fff;
   text-align: center;
   cursor: pointer;
-  &:hover{
-    border: 1px solid #95AFC0
-  }
-  
+
+
 
   @media only screen and (max-width: 600px) {
     grid-template-rows: 130px 50px 30px 60px;
@@ -37,7 +35,8 @@
 
     @media only screen and (max-width: 600px) {
       margin: 3px 7px;
-      p{
+
+      p {
         font-size: .6rem;
       }
 
@@ -69,6 +68,23 @@
     }
   }
 
+  .options {
+    // background: red;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    padding: .5rem 1rem;
+    grid-gap: 10px;
+
+    select {
+      margin: 0;
+      padding: 0;
+      font-size: .9rem;
+      border: 1px solid #D1D8E0;
+      border-radius: 5px;
+    }
+
+  }
+
   .actions {
     grid-area: "actions";
     margin: 5px 15px;
@@ -82,21 +98,23 @@
 }
 
 
-.cover-photo{
+.cover-photo {
   width: 100%;
   padding-top: 4%;
+
   @media only screen and (max-width: 600px) {
     padding: 1%;
     padding-top: 16%;
 
   }
-  img{
+
+  img {
     width: 100%;
   }
 }
 
 
-.small-heading{
+.small-heading {
   margin-top: 0;
   border-bottom: 1px solid $ligher-gray;
   padding-bottom: 2rem;

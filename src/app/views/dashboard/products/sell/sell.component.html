@@ -14,7 +14,7 @@
       {{sale?.total | currency:'R'}}
     </div>
   </div>
-  <div class="sell-grid">
+<div class="grid-70-30">
 
     <div class="products">
 
@@ -30,7 +30,8 @@
           <div *ngIf="selectedPartner">
             <h3>{{selectedPartner.Name}} {{selectedPartner.Surname}}</h3>
             <p>
-              {{selectedPartner.CellphoneNumber || 'No phone number'}} | {{selectedPartner.EmailAddress || 'No email address'}}
+              {{selectedPartner.CellphoneNumber || 'No phone number'}} |
+              {{selectedPartner.EmailAddress || 'No email address'}}
             </p>
             <p>
               {{selectedPartner.Address || 'No customer address'}}
@@ -75,103 +76,93 @@
 
       <div class="small-cards-body" *ngIf="products$  | async as products">
 
-        <div class="small-cards" *ngIf="products.length > 0; else notFound">
-          <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-            <div class="card">
-              <div class="image">
-                <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-                <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
-              </div>
-              <div class="details">
-                <p class="name">
-                  {{item.Name}}
-                  <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
-                </p>
+        <div class="col-1-of-4" *ngIf="products.length > 0; else notFound">
+          <div class="sell-card"
+            *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
+            <div class="image" *ngIf="item.images" [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
 
-              </div>
-              <div class="price">
-                <p>
-                  {{item.UnitPrice | currency:'R'}}
-                </p>
-                <button class="action-btn  hover-shadow" (click)="doSell(item)"><i
-                    class="pi pi-shopping-cart"></i></button>
-                <!-- <button class="action-btn hover-shadow" (click)="details(item)">
-                  <i class="pi pi-pencil"></i>
-                </button> -->
+            </div>
+            <div class="image" *ngIf="!item.images" [ngStyle]="{ 'background-image': 'url(' + placeholder + ')'}">
+
+            </div>
+
+            <div class="name">
+              <p>
+                {{item.Name}}
+              </p>
+            </div>
+            <div class="notes">
+              <p>
+                {{item.UnitPrice | currency:'R'}}
+              </p>
+            </div>
+
+            <div class="options" *ngIf="item.Attributes">
+              <div class="options-item" *ngFor="let attribute of item.Attributes">
+                <div class="input">
+                  <span *ngIf="attribute.Values">
+                    <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
+                      <option value="" selected>Select {{attribute.Name}} </option>
+                      <option *ngFor="let attr of attribute.Values" class="select-option" [value]="attr.Id">
+                        {{attr.AttributeValue}}</option>
+                    </select>
+                  </span>
+                </div>
               </div>
             </div>
 
-          </span>
+            <div class="actions">
+              <button class="action-btn hover-shadow" (click)="doSell(item)">Add to cart</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <ng-template #notFound>
+        <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            {{notFoundModel.Message}}
+            <span>
+              <a class="link-add" (click)="add()">add new product.</a>
+            </span>
+          </h1>
 
         </div>
-        <ng-template #notFound>
-          <div class="not-found">
-            <img [src]="notFoundModel.Image" alt="no items found">
-            <h1 class="message">
-              {{notFoundModel.Message}}
-              <span>
-                <a class="link-add" (click)="add()">add new product.</a>
-              </span>
-            </h1>
-
-          </div>
-        </ng-template>
-      </div>
+      </ng-template>
     </div>
-    <div class="summary" *ngIf="showCart">
-      <div class="back" (click)="toggleCart()">
-        <i class="pi pi-chevron-left"></i>
+  <div class="summary" *ngIf="showCart">
+    <div class="back" (click)="toggleCart()">
+      <i class="pi pi-chevron-left"></i>
+    </div>
+    <h3>
+      Cart
+    </h3>
+    <div class="sell">
+      <app-sale-sammary></app-sale-sammary>
+    </div>
+
+    <div class="sell total">
+      <h4>
+        {{sale?.total | currency:'R'}}
+        <span>Total</span>
+      </h4>
+
+    </div>
+
+    <div class="list-filters">
+      <div class="add">
+        <button class="btn" (click)="onSubmit()">Save order</button>
       </div>
-
-      <!-- <div class="customer">
-        <div class="list-filters">
-          <div>
-            <div class="select">
-              <div class="label">
-                <i class="pi pi-user"></i> <span class="pc-only"></span>
-              </div>
-              <div class="input">
-                <select [(ngModel)]="selectedCustomerId">
-                  <option value="" selected>Select customer</option>
-                  <option [value]="customer.PartnerId" *ngFor="let customer of customers$  | async as customers">
-                    {{customer.Name}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div>
-            <button class="btn" (click)="addCustomer()"><i class="pi pi-plus"></i></button>
-          </div>
-
-        </div>
-      </div> -->
-      <h3>
-        Cart
-      </h3>
-      <div class="sell">
-        <app-sale-sammary></app-sale-sammary>
-      </div>
-
-      <div class="sell total">
-        <h4>
-          {{sale?.total | currency:'R'}}
-          <span>Total</span>
-        </h4>
-
-      </div>
-
-      <div class="list-filters">
-        <div class="add">
-          <button class="btn" (click)="onSubmit()">Save order</button>
-        </div>
-        <div class="add">
-          <button class="btn btn-warn" (click)="clear()">Clear form</button>
-        </div>
+      <div class="add">
+        <button class="btn btn-warn" (click)="clear()">Clear form</button>
       </div>
     </div>
   </div>
-
 </div>
+</div>
+
 
 <div class="scanner-pluggin" *ngIf="showScan">
   <app-scanner></app-scanner>

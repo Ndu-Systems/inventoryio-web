@@ -1,24 +1,25 @@
 <div>
   <div class="group">
-    <input type="email"  [(ngModel)]="email" (blur)="saveCustomerState()" required="required" />
-    <label>Email Address</label>
-  </div>
-  <div class="alert" *ngIf="email">
-    <!-- A valid email is required -->
-  </div>
-  <div class="group">
-    <input type="tel"  [(ngModel)]="cell" (blur)="saveCustomerState()" required="required" />
-    <label>Cell Phone Number</label>
-  </div>
-  <div class="alert" *ngIf="cell">
-    <!-- Cell Phone Number is required -->
-  </div>
-
-
-  <div class="group">
     <input type="text"  [(ngModel)]="fullname" (blur)="saveCustomerState()" autofocus required="required" />
     <label>Full Name</label>
   </div>
+
+
+  <div class="col-1-of-2">
+    <div class="group two">
+      <input type="text"  [(ngModel)]="email" (blur)="saveCustomerState()" required="required" />
+      <label>Email Address</label>
+    </div>
+
+    <div class="group">
+      <input type="tel"  [(ngModel)]="cell" (blur)="saveCustomerState()" required="required" />
+      <label>Cell Phone Number</label>
+    </div>
+
+  </div>
+ 
+
+
   <div class="alert" *ngIf="fullname">
     <!-- Full Name is required -->
   </div>

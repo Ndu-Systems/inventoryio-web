@@ -28,6 +28,17 @@ export class ShopCheckoutComponent implements OnInit {
   shopSecondaryColor: string;
   paymentMethod: string;
   deliveryFee = 150;
+  selectedType = 'eft';
+  step = 1;
+  checkedEft: boolean;
+  checkedCash: boolean;
+
+  today = new Date();
+
+  paymentMethods = [
+    { label: 'EFT Transfer', value: 'eft' },
+    { label: ' Cash on delivery', value: 'cash' }
+  ];
 
 
   constructor(
@@ -181,19 +192,6 @@ export class ShopCheckoutComponent implements OnInit {
     return `${date.getDate()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
   }
 
-  deliveryChanged(data) {
-    if (data === 'cash') {
-      this.paymentMethod = 'cash';
-    }
-    if (data === 'eft') {
-      this.paymentMethod = 'eft';
-    }
-  }
-
-  verify() {
-
-  }
-
   mapitemOptionsToOrderOptions(items: Item[]): OrderOptions[] {
     const options: OrderOptions[] = [];
     items.forEach(item => {
@@ -222,11 +220,44 @@ export class ShopCheckoutComponent implements OnInit {
 
   onSubmit() {
 
+    if (this.selectedType === 'eft' && !this.checkedEft) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'EFT Agree',
+        detail: 'Please agree to pay using EFT to the account bellow.'
+      });
+      return false;
+    }
+
+    if (this.selectedType === 'cash' && !this.checkedCash) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Cash Agree',
+        detail: 'Please agree to pay cash'
+      });
+      return false;
+    }
     if (!this.sale.total) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Empty cart',
         detail: 'Add items in the cart to continue'
+      });
+      return false;
+    }
+    if (!this.selectedPartner) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'shipping details missing',
+        detail: 'Please provide  shipping details.'
+      });
+      return false;
+    }
+    if (!this.selectedPartner.EmailAddress) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Email address is needed',
+        detail: 'Please provide your email adress for invoicing.'
       });
       return false;
     }
@@ -250,13 +281,19 @@ export class ShopCheckoutComponent implements OnInit {
       ModifyUserId: 'customer',
       Status: 'new',
       StatusId: 1,
-      options : this.mapitemOptionsToOrderOptions(this.sale.items)
+      options: this.mapitemOptionsToOrderOptions(this.sale.items)
     };
     console.log(order);
     console.log('items', this.sale.items);
     this.shoppingService.addOrder(order, this.sale.items).subscribe(response => {
       this.order = response;
       this.shoppingService.updateOrderState(this.order);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Well done',
+        detail: 'Your order was created successfully, please download your invoice and make a payment if you have not done so already.',
+        life: 10000,
+      });
       this.succesful();
     });
     this.shoppingService.company.subscribe(data => {
@@ -268,6 +305,10 @@ export class ShopCheckoutComponent implements OnInit {
         }
       }
     });
+  }
+
+  nextStep(step) {
+    this.step = step
   }
 
 }
