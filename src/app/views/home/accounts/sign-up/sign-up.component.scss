@@ -2,182 +2,186 @@
   display: grid;
   grid-template-columns: 40% auto;
 
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 100%;
-  }
 }
-.pi {
-  margin-right: 2em;
-}
+
 .sign-in-background {
   background-color: #104CE5;
   background-image: url(../../../../../assets/images/account/account-bg.PNG);
   background-size: cover;
-
-  //mobile
-  @media only screen and (max-width: 600px) {
-    // background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-    background-size: 25rem;
-    height: 15rem;
-  }
-
-  //tablet layout
-  @media only screen and (min-width: 481px) and (max-width:768px) {
-    // background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-    // background-size: 125rem;
-  }
-
-  //ipad ro
-  @media only screen and (min-width: 1024px) and (max-width:1366px) {
-    // background-image: url(../../../../../assets/images/mobile-sign-backgrnd.svg);
-    // background-size: 145rem;
-  }
-
 }
 
-.section {
+.wrong-password {
+  display: none;
+  position: fixed;
   width: 100%;
-  padding-top: 5rem;
-  margin-left: 1rem;
-  justify-content: right;
-  margin: auto;
+  height: 100%;
+  background: #104CE5;
+  z-index: 100;
+  top: 0;
+  left: 0;
+
+  h1 {
+    margin-top: 80% auto;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+.sign-in-section {
   display: block;
+  float: right;
+  background: #ffffff;
+  padding: 0 2em;
+  padding-top: 6em;
 
-  //mobile
-  @media only screen and (max-width: 600px) {
-    width: 90%;
-    padding: 0%;
-    padding-top: 1rem;
-  }
 
-  //tablet layout
-  @media only screen and (min-width: 481px) and (max-width:768px) {
-    width: 80%;
-    padding-top: 8rem;
-  }
+  .portal {
+    &.col-1-of-2 {
+      grid-template-columns: 10% auto;
 
-  //ipad ro
-  @media only screen and (min-width: 1024px) and (max-width:1366px) {
-    width: 80%;
-    padding-top: 18rem;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+
+    h1 {
+      font-weight: 500;
+      color: #3742FA;
+      text-transform: uppercase;
+      font-size: 1em;
+    }
   }
 
   .access {
-    font-size: 1.8em;
-    padding: 0 3rem;
-
-    @media only screen and (max-width: 600px) {
-      padding: 0;
-      font-size: 1.3em;
-    }
-  }
-
-  .mobile-fingerprint-img {
-    display: none;
-
-    //mobile
-    @media only screen and (max-width: 600px) {}
-
+    font-size: 1.5rem;
+    margin: 3rem 0rem;
   }
 
   .form {
-    margin: 1rem 0;
-    width: 50%;
-    padding: 1rem;
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 24.875rem;
 
-    background: transparent;
-
-    form {
-      @media only screen and (max-width: 600px) {
-        margin: 10px auto;
-      }
-    }
-
-    //mobile
-    @media only screen and (max-width: 600px) {
+    .group {
+      background: none;
       width: 100%;
-      padding: 1rem;
-      margin: 2px auto;
+      margin: 3em auto;
+      margin-top: 0;
 
-      h1 {
-        padding: 0%;
-        margin: 0%;
-      }
-    }
-
-    //mobile
-    @media only screen and (max-width: 600px) {
-      .actions {
-        padding: 0%;
+      input[type=text],
+      input[type=password],
+      input[type=email] {
+        background: #ECF2F4;
+        border-radius: 10px;
+        border: solid 1px #D3D8DF;
+        width: 100%;
         margin: 0;
-        font-size: 1rem;
+      }
 
+      label {
+        left: 0px;
+        top: -20px;
+      }
+
+      .showPassword {
+        i {}
+      }
+
+      .alert {
+        padding: 0.21em 0;
+        font-size: 0.9rem;
+        font-weight: 800;
+        text-align: left;
+        color: #e74c3c;
+      }
+
+
+    }
+
+    .cta {
+      &.col-1-of-2 {
+        grid-template-columns: 50% auto;
       }
     }
 
-    //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-      margin: 4rem auto;
-    }
+    .sign-up {
+      &.col-1-of-2 {
+        grid-template-columns: 50% auto;
 
-    //ipad ro
-    @media only screen and (min-width: 1024px) and (max-width:1366px) {
-      margin: 80px auto;
-
-      .group {
-        width: 80%;
-        margin-top: 2rem;
       }
 
       h1 {
-        font-size: 1.5rem;
+        font-size: 0.713rem;
+        margin: 1.688rem;
       }
 
-      .sign-up {
-        font-size: 1.2rem;
+      .btn {
+        height: 3em;
+        width: 10em;
+        padding: 1rem;
+        margin: 0.777rem;
 
-        a {
-          font-size: 1.2rem;
+        &.btn-border {
+          background: none;
+          color: #3742FA;
+          border: solid 2px #3742FA;
+          border-radius: 7px;
         }
 
       }
     }
 
-    .btn {
-      box-shadow: none;
-    }
-
-    .btn-border {
-      background: none;
-      color: #3742FA;
-      border: solid 2px #3742FA;
-      border-radius: 7px;
-
-      @media only screen and (max-width: 600px) {
-        display: block;
-        text-align: center;
-      }
-    }
-    .sign-up {
-      font-weight: 600;
-
-      //mobile layout
-      @media only screen and (max-width: 600px) {
-        font-size: .6rem;
-      }
+    input[type=submit] {
+      border: none;
+      border-radius: 5px;
     }
 
   }
 
-  .image {
-    margin: auto;
+}
 
-    img {
-      width: 90%;
-      padding-top: 2rem;
-      padding-left: 4rem;
-    }
+// // mobile responsive part
 
+//mobile layout
+
+@media only screen and (max-width: 600px) {
+  .container {
+    grid-template-columns: 100%;
   }
 
+  .sign-in-background {
+    background-size: 25rem;
+    height: 15rem;
+  }
+
+  .sign-in-section {
+    margin: 0 auto;
+    padding-top: 0rem;
+    width: 100%;
+
+    .portal {
+      &.col-1-of-2 {
+        margin: 2em 0em;
+        grid-template-columns: 25% auto;
+      }
+    }
+
+    .access {
+
+      font-size: 1.222rem;
+      margin: 3rem 0;
+    }
+
+    .form {
+      width: 100%;
+
+      .sign-up {
+        h1 {
+          font-size: 0.725rem;
+          margin: 2rem 0;
+          font-weight: 400;
+        }
+      }
+    }
+  }
 }
