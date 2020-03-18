@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="sign-in-background"></div>
   <div class="section">
     <h1 class="access">Create your new free account.</h1>
@@ -19,13 +19,6 @@
         <div class="alert" *ngIf="!rForm.controls['companyName'].valid  && rForm.controls['companyName'].touched">
           Company name is required
         </div>
-        <!-- <div class="group">
-            <input type="text" formControlName="cell" required="required" />
-            <label>Cell Phone Number</label>
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['cell'].valid  && rForm.controls['cell'].touched">
-            Cell Phone Number is required
-          </div> -->
 
         <div class="group">
           <input type="text" formControlName="email" required="required" />
@@ -61,13 +54,67 @@
     </div>
 
   </div>
-</div>
+</div> -->
 
+<div class="container">
+  <div class="sign-in-background">
+  </div>
+   <div class="sign-in-section">
+    <div class="portal col-1-of-2">
+      <img src="assets/images/icons/portal.svg" alt="portal image">
+      <h1>client portal</h1>
+    </div>
+    <h1 class="access">Create your new free account.</h1>
+    <form class="form" [formGroup]="rForm" (ngSubmit)="Login()">
+      <div class="group">
+        <input type="text" autofocus formControlName="fullname" />
+        <label>Full Name</label>
+        <div class="alert" *ngIf="!rForm.controls['fullname'].valid  && rForm.controls['fullname'].touched ">
+          full name is required
+        </div>
+      </div>
+      <div class="group">
+        <input type="text" autofocus formControlName="companyName" />
+        <label>Company name</label>
+      </div>
+      <div class="group">
+        <input type="email" autofocus formControlName="email" />
+        <label>Email</label>
+        <div class="alert" *ngIf="!rForm.controls['email'].valid  && rForm.controls['email'].touched ">
+          Email is required
+        </div>
+      </div>
+      <div class="group">
+        <input type="password" [type]="hidePassword? 'password': 'text'" formControlName="password" />
+        <label>Password</label>
+        <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched ">
+          Password is required
+        </div>
+        <div class="showPassword" (click)="hidePassword = !hidePassword">
+          <i *ngIf="hidePassword" class="pi pi-eye-slash"></i>
+          <i *ngIf="!hidePassword" class="pi pi-eye"></i>
+        </div>
+
+      </div>
+      <div class="cta col-1-of-2">
+        <div class="group">
+          <input type="submit" value="Sign me in" class="btn" [disabled]="!rForm.valid" />
+        </div>
+      </div>
+      <div class="sign-up col-1-of-2">
+        <h1>
+          Already have an account?
+        </h1>
+        <a routerLink="/sign-in" class="btn btn-border">Sign in here</a>
+      </div>
+    </form>
+
+  </div>
+</div>
 
 <div class="home-loading" *ngIf="this.loading$| async as loading">
   <img class="logo" src="assets/images/white-icon.png" alt="">
   <h1>Creating your account, please wait</h1>
-
   <div class="lds-ellipsis">
     <div></div>
     <div></div>
