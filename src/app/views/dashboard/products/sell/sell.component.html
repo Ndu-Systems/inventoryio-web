@@ -101,7 +101,7 @@
               <div class="options-item" *ngFor="let attribute of item.Attributes">
                 <div class="input">
                   <span *ngIf="attribute.Values">
-                    <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
+                    <select (change)="optionSelected($event.target.value, attribute.AttributeId, item)">
                       <option value="" selected>Select {{attribute.Name}} </option>
                       <option *ngFor="let attr of attribute.Values" class="select-option" [value]="attr.Id">
                         {{attr.AttributeValue}}</option>
