@@ -91,8 +91,8 @@ export class ViewProductComponent implements OnInit {
       alert('no stock')
       return false;
     }
-    let isErross = false;
 
+    let isErross = false;
     this.allOrderOptions.forEach(attribute => {
       const checkIfExist = this.orderOptions.find(x => x.optionId === attribute.AttributeId);
       if (!checkIfExist) {

@@ -18,6 +18,7 @@ export interface Item {
 
 export interface ItemOptions {
     optionId: string;
+    productId?: string;
     optionName: string;
     valueId: number;
     value: any;

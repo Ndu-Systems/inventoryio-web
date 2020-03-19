@@ -1,4 +1,5 @@
 @import '../../../../../../assets/styles/variables';
+
 .banner {
   // background: linear-gradient(to bottom, rgba(86, 45, 98, 0.445), rgba(34, 17, 17, 0.438)), url(../../../../../assets/images/home/pricing-banner.svg);
   background-size: cover;
@@ -142,9 +143,8 @@
 }
 
 
-.col-1-of-4{
+.col-1-of-4 {
   @media only screen and (max-width: 600px) {
-grid-template-columns: 50% 50%;
+    grid-template-columns: 50% 50%;
   }
 }
-

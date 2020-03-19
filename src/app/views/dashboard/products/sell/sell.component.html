@@ -103,8 +103,8 @@
                   <span *ngIf="attribute.Values">
                     <select (change)="optionSelected($event.target.value, attribute.AttributeId, item)">
                       <option value="" selected>Select {{attribute.Name}} </option>
-                      <option *ngFor="let attr of attribute.Values" class="select-option" [value]="attr.Id">
-                        {{attr.AttributeValue}}</option>
+                      <option *ngFor="let attrValue of attribute.Values" class="select-option" [value]="attrValue.Id">
+                        {{attrValue.AttributeValue}}</option>
                     </select>
                   </span>
                 </div>

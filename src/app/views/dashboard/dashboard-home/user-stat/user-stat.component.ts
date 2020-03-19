@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserStat, User, Product, Orders, Store } from 'src/app/_models';
-import { AccountService, OrdersService, ProductService, StoresService, UsersService } from 'src/app/_services';
+import { UserStat, User, Product, Orders, Store, Partner } from 'src/app/_models';
+import { AccountService, OrdersService, ProductService, StoresService, UsersService, PartnerService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { StatusConstant } from '../../shared';
 import { BehaviorSubject } from 'rxjs';
@@ -17,6 +17,7 @@ export class UserStatComponent implements OnInit {
   products: Product[] = [];
   orders: Orders[] = [];
   stores: Store[] = [];
+  customers: Partner[] = [];
   today = new Date();
 
   statEmitter$ = new BehaviorSubject<UserStat[]>([]);
@@ -28,20 +29,27 @@ export class UserStatComponent implements OnInit {
     private productService: ProductService,
     private storesService: StoresService,
     private usersService: UsersService,
+    private partnerService: PartnerService,
   ) {
     this.user = this.accountService.currentUserValue;
     this.storesService.getAllStores(this.user.CompanyId, StatusConstant.ACTIVE_STATUS);
     this.usersService.getAllUsers(this.user.CompanyId, StatusConstant.ACTIVE_STATUS);
+    this.partnerService.getPartners(this.user.CompanyId);
+
     this.storesService.stores.subscribe(data => {
       if (!data) { return false; }
       this.stores = data;
-   
+
       // this.pushStat({
       //   name: 'Your stores',
       //   value: this.stores.length,
       //   image: 'assets/images/stat-store.svg',
       //   link: 'dashboard/stores'
       // });
+    });
+
+    this.partnerService.partners.subscribe(data => {
+      this.customers = data.filter(x => x.PartnerType === 'customer');
     });
     this.usersService.users.subscribe(data => {
       if (!data) { return false; }
@@ -56,7 +64,7 @@ export class UserStatComponent implements OnInit {
 
     this.pushStat({
       name: 'Customers',
-      value: this.stores.length,
+      value: this.customers.length,
       image: 'assets/images/stat-store.svg',
       link: 'dashboard/partners/customers'
     });

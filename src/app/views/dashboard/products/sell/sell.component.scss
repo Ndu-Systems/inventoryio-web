@@ -1,5 +1,4 @@
-
-
+@import '../../../../../assets/styles/variables';
 .list-filters {
   grid-template-columns: 50% auto;
   border: none;
@@ -115,7 +114,7 @@
   margin-left: 1rem;
 
   @media only screen and (max-width: 600px) {
-    grid-template-columns:100%;
+    grid-template-columns: 100%;
     width: 94%;
     margin-left: .2rem;
   }
@@ -158,5 +157,25 @@ a {
   body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
     color: #fff !important;
 
+  }
+}
+
+
+.col-1-of-4 {
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+.summary {
+  background: $white-color;
+  @media only screen and (max-width: 600px) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    z-index: 1000;
   }
 }

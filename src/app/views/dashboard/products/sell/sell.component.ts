@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, SellModel, Orders, User, Item, NotFoundModel, Partner } from 'src/app/_models';
+import { Product, SellModel, Orders, User, Item, NotFoundModel, Partner, ItemOptions } from 'src/app/_models';
 import {
   ProductService, AccountService, BannerService, SaleService, OrdersService,
   PartnerService, ScannerService
@@ -35,6 +35,10 @@ export class SellComponent implements OnInit {
   showScan: boolean;
   showChangeCustomer: boolean;
   selectedPartner: Partner;
+
+  // order options
+  productOptions: ItemOptions[] = [];
+
 
   constructor(
     private productService: ProductService,
@@ -99,6 +103,10 @@ export class SellComponent implements OnInit {
           summary: 'Stock Alert.',
           detail: `You have run out of  ${product.Name}`
         });
+        return false;
+      }
+
+      if (!this.checkIfProductOptionsAreSelected(product)) {
         return false;
       }
       this.messageService.add({
@@ -197,6 +205,64 @@ export class SellComponent implements OnInit {
   selectCustomer(customer: Partner) {
     this.selectedPartner = customer;
     this.showChangeCustomer = false;
+  }
+
+  optionSelected(valueId, attributeId, product: Product) {
+    // if (!this.checkIfPrevItemIsAddedToCart(product.ProductId)) {
+    //   return false;
+    // }
+
+    const selectValueId = Number(valueId);
+    if (this.productOptions.find(x => x.optionId === attributeId)) {
+      this.productOptions = this.productOptions.filter(x => x.optionId !== attributeId);
+    }
+    const attribute = product.Attributes.find(x => x.AttributeId === attributeId);
+    const itemOptionn: ItemOptions = {
+      optionId: attributeId,
+      productId: product.ProductId,
+      optionName: attribute.Name,
+      valueId: selectValueId,
+      value: attribute.Values.find(x => Number(x.Id) === selectValueId).AttributeValue
+    };
+    this.pushOptions(itemOptionn);
+    console.log(this.productOptions);
+
+  }
+
+  pushOptions(orderOption: ItemOptions) {
+    if (!this.productOptions.find(x => x.optionId === orderOption.optionId && x.valueId === orderOption.valueId)) {
+      this.productOptions.push(orderOption);
+    }
+  }
+
+  checkIfPrevItemIsAddedToCart(productId) {
+    if (this.productOptions.length > 0 && !this.productOptions.find(x => x.productId === productId)) {
+      const unsavedProduct = this.products.find(x => x.ProductId === this.productOptions[0].productId);
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Empty cart',
+        life: 10000,
+        detail: `Please ADD TO CART ${unsavedProduct.Name} first, or deselect all options.`
+      });
+
+      return false;
+    }
+    return true;
+  }
+
+
+  checkIfProductOptionsAreSelected(product: Product) {
+    if (product.Attributes.length !== this.productOptions.filter(x => x.productId === product.ProductId).length) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Empty cart',
+        life: 10000,
+        detail: `Please select all options for ${product.Name}, before adding it to cart.`
+      });
+
+      return false;
+    }
+    return true;
   }
 }
 
