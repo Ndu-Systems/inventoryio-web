@@ -107,7 +107,6 @@ export class ShoppingService {
       });
       sale = this.currentSellModelValue;
     }
-    debugger;
     const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId &&
       (JSON.stringify(item.itemOptions) === JSON.stringify(x.itemOptions)));
     const product = this.productService.getSigleProductFronState(item.prodcuId);

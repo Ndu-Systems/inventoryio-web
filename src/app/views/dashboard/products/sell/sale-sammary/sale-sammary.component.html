@@ -6,6 +6,12 @@
         <div class="name-price">
       <h1>
           {{item.name}}
+
+          <span class="options">
+            <span>
+              {{item.itemOptions | formatOptions}}
+            </span>
+          </span>
           <span>
               {{item.subTotal| currency:'R'}}
           </span>

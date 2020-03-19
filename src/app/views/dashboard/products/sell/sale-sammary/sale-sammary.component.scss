@@ -60,13 +60,17 @@
   .name-price {
     h1 {
       font-size: .8rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: capitalize;
 
       span {
         display: block;
         font-weight: 400;
 
+      }
+
+      span.options{
+        font-weight: 600;
       }
     }
   }

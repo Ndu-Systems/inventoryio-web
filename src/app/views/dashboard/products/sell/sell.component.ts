@@ -114,16 +114,35 @@ export class SellComponent implements OnInit {
         summary: 'Added to cart',
         detail: `${product.Name} Added`
       });
-      const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
-      if (item) {
-        item.quantity++;
-        this.saleService.doSellLogic(item);
-        return;
+
+      // find out if  I have the item in the cart already 
+
+      const items = this.sale.items.filter(x => x.prodcuId === product.ProductId);
+
+      //  does the product have  select options?
+      const selectedProductOptions = this.productOptions.filter(x => x.productId === product.ProductId);
+
+      // Does existing item have exatly match on the options?
+      const checkOptionMatch = items.find(x => JSON.stringify(x.itemOptions) === JSON.stringify(selectedProductOptions));
+
+      // if the item is a dublicate just inclease quantity
+      if (checkOptionMatch) {
+        checkOptionMatch.quantity++;
+        this.saleService.doSellLogic(checkOptionMatch);
+
+      } else {
+        // create a new item in to the cart
+        this.saleService.doSellLogic(
+          {
+            prodcuId: product.ProductId,
+            name: product.Name,
+            price: Number(product.UnitPrice),
+            quantity: Number(1),
+            image: product.images && product.images[0].Url,
+            itemOptions: JSON.parse(this.getProductSelectedItemsString(product))
+          });
       }
     }
-
-    this.productService.updateCurrentProduct(product);
-    this.saleService.doSellLogic({ prodcuId: product.ProductId, name: product.Name, price: Number(product.UnitPrice), quantity: 1 });
   }
   clear() {
     this.saleService.clearState();
@@ -263,6 +282,15 @@ export class SellComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  getProductSelectedItemsString(product: Product) {
+    const optionsForAproduct = this.productOptions.filter(x => x.productId === product.ProductId);
+    if (optionsForAproduct.length) {
+      return JSON.stringify(optionsForAproduct);
+    }
+
+    return '';
   }
 }
 

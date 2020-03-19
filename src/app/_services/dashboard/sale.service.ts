@@ -34,6 +34,37 @@ export class SaleService {
     });
   }
 
+  // doSellLogic(item: Item) {
+  //   let sale;
+  //   if (this.currentSellModelValue) {
+  //     sale = this.currentSellModelValue;
+  //   } else {
+  //     this.updateState({
+  //       items: [],
+  //       total: 0
+  //     });
+  //     sale = this.currentSellModelValue;
+  //   }
+
+  //   const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId);
+  //   const product = this.productService.getSigleProductFronState(item.prodcuId);
+
+
+  //   if (!checkIfOtemExist) {
+  //     item.subTotal = item.price * item.quantity;
+  //     sale.items.push(item);
+  //   } else {
+  //     // item is on the sale already it just needs to be updated
+  //     checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
+  //    // item.quantity++;
+  //     this.productService.appendState(product);
+  //   }
+  //   product.QuantityAvailable = product.Quantity - item.quantity;
+  //   this.updateState(sale);
+
+  // }
+
+
   doSellLogic(item: Item) {
     let sale;
     if (this.currentSellModelValue) {
@@ -45,22 +76,25 @@ export class SaleService {
       });
       sale = this.currentSellModelValue;
     }
-
-    const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId);
+    const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId &&
+      (JSON.stringify(item.itemOptions) === JSON.stringify(x.itemOptions)));
     const product = this.productService.getSigleProductFronState(item.prodcuId);
 
 
-    if (!checkIfOtemExist) {
-      item.subTotal = item.price * item.quantity;
-      sale.items.push(item);
-    } else {
+    if (checkIfOtemExist) {
       // item is on the sale already it just needs to be updated
       checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
-     // item.quantity++;
+      sale.items[sale.items.indexOf(item)] = checkIfOtemExist;
+      this.updateState(sale);
       this.productService.appendState(product);
+
+    } else {
+      item.subTotal = item.price * item.quantity;
+      sale.items.push(item);
+      this.updateState(sale);
+
     }
     product.QuantityAvailable = product.Quantity - item.quantity;
-    this.updateState(sale);
 
   }
   removeItem(item: Item) {
