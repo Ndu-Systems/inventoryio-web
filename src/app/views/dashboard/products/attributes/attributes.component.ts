@@ -18,12 +18,11 @@ export class AttributesComponent implements OnInit {
   attributes: Attribute[] = [];
   user: User;
 
-  items = [
-    { AttributeValue: 'L' },
-    { AttributeValue: 'S' },
-    { AttributeValue: 'M' },
-  ]
   product: Product;
+
+
+  // the whole new thing now
+  attributesToInit: Attribute[] = [];
 
   constructor(
     private accountService: AccountService,
@@ -44,6 +43,8 @@ export class AttributesComponent implements OnInit {
         }
       });
     }
+    //  the whole new thing now
+    this.initAttributes();
   }
   showModalDialog() {
     this.displayModal = true;
@@ -79,6 +80,77 @@ export class AttributesComponent implements OnInit {
       });
     });
     return values;
+  }
+
+  // the whole new thing now
+
+  initAttributes() {
+    const data: Attribute = {
+      AttributeId: `${new Date().getTime() + Math.ceil(Math.random() * 1000)}`,
+      Name: '',
+      AttributeType: 'text',
+      CompanyId: this.user.CompanyId,
+      ProductId: this.id,
+      Shop: 1,
+      CreateUserId: this.user.UserId,
+      ModifyUserId: this.user.UserId,
+      StatusId: 1,
+      Values: [],
+      AttributeValue: '',
+      AttributeQuantity: '',
+      AttributePrice: '',
+    };
+    this.attributesToInit.push(data);
+  }
+
+  copyDown(item: Attribute) {
+    const newItem = item;
+    const data: Attribute = {
+      AttributeId: `${new Date().getTime() + Math.ceil(Math.random() / 100000)}`,
+      Name: item.Name,
+      AttributeType: 'text',
+      CompanyId: this.user.CompanyId,
+      ProductId: this.id,
+      Shop: 1,
+      CreateUserId: this.user.UserId,
+      ModifyUserId: this.user.UserId,
+      StatusId: 1,
+      Values: [],
+      AttributeValue: '',
+      AttributeQuantity: item.AttributeQuantity,
+      AttributePrice: item.AttributePrice,
+    };
+    this.attributesToInit.push(data);
+    console.log(this.attributesToInit);
+
+  }
+  removeItem(item: Attribute) {
+    if (this.attributesToInit.length <= 1) {
+      return;
+    }
+    const index = this.attributesToInit.indexOf(this.attributesToInit.find(x => x.AttributeId === item.AttributeId));
+    this.attributesToInit.splice(index);
+  }
+
+  confirmOptions() {
+
+    this.attributesToInit.forEach(item => {
+      const optionsName = item.Name;
+    });
+    const data: Attribute = {
+      Name: this.optionsName,
+      AttributeType: 'text',
+      CompanyId: this.user.CompanyId,
+      ProductId: this.id,
+      Shop: 1,
+      CreateUserId: this.user.UserId,
+      ModifyUserId: this.user.UserId,
+      StatusId: 1,
+      Values: this.mapAttributeItems(this.options)
+    };
+    this.attributes.push(data);
+    console.log(this.attributes);
+    this.attributeService.updateState(this.attributes);
   }
 
 }

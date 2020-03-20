@@ -86,20 +86,27 @@
   padding: 2rem;
   background: $cloud-ligher;
 
-  .actions{
+  .actions {
     // background: red;
     display: grid;
-    grid-template-columns: 79% 10%  10%;
+    grid-template-columns: 79% 10% 10%;
     padding: .5rem;
 
-    .btn{
+    .btn {
       width: 8rem;
       margin-left: 2rem;
     }
-    .cancel{
+
+    .cancel {
       background: $strong-gray;
       color: $black-color;
       box-shadow: none;
     }
   }
+}
+
+.eg {
+  text-transform: lowercase;
+  font-style: italic;
+  color: $primary-bg-color;
 }

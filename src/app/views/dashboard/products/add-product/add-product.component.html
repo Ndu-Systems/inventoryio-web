@@ -1,13 +1,12 @@
 <div class="main-content">
   <h1 class="title-header">Add new item.</h1>
 
-  <!-- <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)"> -->
-  <form [formGroup]="rForm">
+  <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
     <div class="col-1-of-2">
       <div class="section">
         <div class="form-item">
           <label class="label">Item name*</label>
-          <input type="text" formControlName="Name" placeholder="Gold gift bag" required="required" />
+          <input type="text" formControlName="Name" placeholder="Gold gift bag" required="required" autofocus />
           <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
             Item name is required
           </div>
@@ -72,7 +71,7 @@
         </div>
 
 
-  
+
 
 
 
@@ -115,11 +114,13 @@
       </div>
 
       <div class="section">
-
+        <div class="form-item">
+          <label class="label">item options.<span class="eg"> e.g Color : red, blue</span></label>
+        </div>
         <div class="options">
           <app-attributes [id]="id"></app-attributes>
         </div>
-
+        <hr>
         <div class="images">
           <span>Images</span>
           <app-file-upload formControlName="image"></app-file-upload>
@@ -133,7 +134,7 @@
         <div class="div">
 
         </div>
-        
+
         <a routerLink="/dashboard/list-product" class="cancel">
           <input type="button" value="Cancel" class="btn cancel" />
         </a>
