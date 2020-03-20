@@ -103,7 +103,8 @@ export class OrdersService {
         subTotal: item.subTotal,
         CreateUserId: data.CreateUserId,
         ModifyUserId: data.CreateUserId,
-        StatusId: 1
+        StatusId: 1,
+        Options: item.options
       };
       productItems.push(productItem);
     });

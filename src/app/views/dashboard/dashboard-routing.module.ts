@@ -81,7 +81,7 @@ import { InventoryReportComponent } from './reports/reports/inventory-report/inv
 import { FilterStringsPipe } from 'src/app/_pipes/filter-strings.pipe';
 import { AttributesComponent } from './products/attributes/attributes.component';
 import { ProductImagesUncroppedComponent } from './products/product-images/product-images-uncropped/product-images-uncropped.component';
-import { FormatOptionsPipe } from 'src/app/_pipes/format-options.pipe';
+import { FormatDashBoardOptionsPipe } from 'src/app/_pipes/format-dashboard-options.pipe';
 
 const routes: Routes = [
   {
@@ -221,7 +221,7 @@ export const declarations = [
   InventoryReportComponent,
   AttributesComponent,
   ProductImagesUncroppedComponent,
-  FormatOptionsPipe,
+  FormatDashBoardOptionsPipe,
   // pipes
   SearchProductPipe,
   SearchProductByCatergoryPipe,

@@ -108,7 +108,7 @@ export class ShoppingService {
       sale = this.currentSellModelValue;
     }
     const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId &&
-      (JSON.stringify(item.itemOptions) === JSON.stringify(x.itemOptions)));
+      (JSON.stringify(item.options) === JSON.stringify(x.options)));
     const product = this.productService.getSigleProductFronState(item.prodcuId);
 
 
@@ -165,7 +165,8 @@ export class ShoppingService {
         subTotal: item.subTotal,
         CreateUserId: data.CreateUserId,
         ModifyUserId: data.CreateUserId,
-        StatusId: 1
+        StatusId: 1,
+        Options: item.options
       };
       productItems.push(productItem);
     });

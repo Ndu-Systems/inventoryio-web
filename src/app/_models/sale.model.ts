@@ -1,3 +1,5 @@
+import { OrderOptions } from './order.options.model';
+
 export interface SellModel {
     items: Item[];
     total: number;
@@ -10,17 +12,15 @@ export interface Item {
     price: number;
     subTotal?: number;
     quantity: number;
-    itemOptions?: ItemOptions[];
-
-    // options
+    options?: OrderOptions[];
 
 }
 
-export interface ItemOptions {
-    optionId: string;
-    productId?: string;
-    optionName: string;
-    valueId: number;
-    value: any;
-}
+// export interface ItemOptions {
+//     optionId: string;
+//     productId?: string;
+//     optionName: string;
+//     valueId: number;
+//     value: any;
+// }
 

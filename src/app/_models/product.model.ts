@@ -11,7 +11,7 @@ export interface Product {
     CatergoryId: string;
     Name: string;
     Description: string;
-    UnitPrice: string;
+    UnitPrice: any;
     UnitCost: number;
     Code: string;
     SKU: string;

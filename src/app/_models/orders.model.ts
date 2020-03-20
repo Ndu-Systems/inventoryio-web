@@ -1,6 +1,4 @@
 import { Partner } from './partner.model';
-import { ItemOptions } from '.';
-import { OrderOptions } from './order.options.model';
 
 export interface Orders {
     OrdersId?: string;
@@ -23,7 +21,6 @@ export interface Orders {
     Touched?: boolean;
     Paying?: boolean;
     Payment?: number;
-    options?: OrderOptions[];
     CardClass?: string[];
 
 

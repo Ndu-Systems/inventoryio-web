@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, Company, SellModel, Partner, Orders, Item, Email, ItemOptions } from 'src/app/_models';
+import { Product, Company, SellModel, Partner, Orders, Item, Email } from 'src/app/_models';
 import { ProductService, CompanyService, EmailService, InvoiceService } from 'src/app/_services';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -192,31 +192,33 @@ export class ShopCheckoutComponent implements OnInit {
     return `${date.getDate()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
   }
 
-  mapitemOptionsToOrderOptions(items: Item[]): OrderOptions[] {
-    const options: OrderOptions[] = [];
-    items.forEach(item => {
+  // mapitemOptionsToOrderOptions(items: Item[]): OrderOptions[] {
+  //   const options: OrderOptions[] = [];
+  //   items.forEach(item => {
 
-      item.itemOptions.forEach(itemOpt => {
-        const optionsItem: OrderOptions = {
-          OrderId: '0',
-          OptionId: itemOpt.optionId,
-          ValueId: 1,
-          OptionValue: itemOpt.value,
-          OptionName: itemOpt.optionName,
-          ValuePrice: 0,
-          ValueIdQty: 0,
-          CompanyId: this.companyId,
-          CreateUserId: 'customer',
-          ModifyUserId: 'customer',
-          StatusId: 1
-        };
-        options.push(optionsItem);
-      });
-      // tslint:disable-next-line: one-variable-per-declaration
+  //     item.itemOptions.forEach(itemOpt => {
+  //       const optionsItem: OrderOptions = {
+  //         OrderId: '0',
+  //         ProductId: itemOpt.productId,
+  //         OrderProductId: '0',
+  //         OptionId: itemOpt.optionId,
+  //         ValueId: itemOpt.valueId,
+  //         OptionValue: itemOpt.value,
+  //         OptionName: itemOpt.optionName,
+  //         ValuePrice: 0,
+  //         ValueIdQty: 0,
+  //         CompanyId: this.companyId,
+  //         CreateUserId: 'customer',
+  //         ModifyUserId: 'customer',
+  //         StatusId: 1
+  //       };
+  //       options.push(optionsItem);
+  //     });
+  //     // tslint:disable-next-line: one-variable-per-declaration
 
-    });
-    return options;
-  }
+  //   });
+  //   return options;
+  // }
 
   onSubmit() {
 
@@ -280,8 +282,7 @@ export class ShopCheckoutComponent implements OnInit {
       CreateUserId: 'customer',
       ModifyUserId: 'customer',
       Status: 'new',
-      StatusId: 1,
-      options: this.mapitemOptionsToOrderOptions(this.sale.items)
+      StatusId: 1
     };
     console.log(order);
     console.log('items', this.sale.items);
@@ -294,6 +295,12 @@ export class ShopCheckoutComponent implements OnInit {
         detail: 'Your order was created successfully, please download your invoice and make a payment if you have not done so already.',
         life: 10000,
       });
+      if (!this.sale) {
+        this.shoppingService.updateState({
+          items: [],
+          total: 0
+        });
+      }
       this.succesful();
     });
     this.shoppingService.company.subscribe(data => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, SellModel, Orders, User, Item, NotFoundModel, Partner, ItemOptions } from 'src/app/_models';
+import { Product, SellModel, Orders, User, Item, NotFoundModel, Partner } from 'src/app/_models';
 import {
   ProductService, AccountService, BannerService, SaleService, OrdersService,
   PartnerService, ScannerService
@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { NotFoundConstants } from '../../shared';
+import { OrderOptions } from 'src/app/_models/order.options.model';
 
 @Component({
   selector: 'app-sell',
@@ -37,7 +38,7 @@ export class SellComponent implements OnInit {
   selectedPartner: Partner;
 
   // order options
-  productOptions: ItemOptions[] = [];
+  productOptions: OrderOptions[] = [];
 
 
   constructor(
@@ -96,6 +97,12 @@ export class SellComponent implements OnInit {
     this.router.navigate(['/dashboard/add-product']);
   }
   doSell(product: Product) {
+    if (!this.sale) {
+      this.saleService.updateState({
+        items: [],
+        total: 0
+      });
+    }
     if (this.sale) {
       if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
         this.messageService.add({
@@ -120,10 +127,10 @@ export class SellComponent implements OnInit {
       const items = this.sale.items.filter(x => x.prodcuId === product.ProductId);
 
       //  does the product have  select options?
-      const selectedProductOptions = this.productOptions.filter(x => x.productId === product.ProductId);
+      const selectedProductOptions = this.productOptions.filter(x => x.ProductId === product.ProductId);
 
       // Does existing item have exatly match on the options?
-      const checkOptionMatch = items.find(x => JSON.stringify(x.itemOptions) === JSON.stringify(selectedProductOptions));
+      const checkOptionMatch = items.find(x => JSON.stringify(x.options) === JSON.stringify(selectedProductOptions));
 
       // if the item is a dublicate just inclease quantity
       if (checkOptionMatch) {
@@ -139,7 +146,7 @@ export class SellComponent implements OnInit {
             price: Number(product.UnitPrice),
             quantity: Number(1),
             image: product.images && product.images[0].Url,
-            itemOptions: JSON.parse(this.getProductSelectedItemsString(product))
+            options: JSON.parse(this.getProductSelectedItemsString(product))
           });
       }
     }
@@ -171,14 +178,13 @@ export class SellComponent implements OnInit {
     };
     console.log(order);
     console.log('items', this.sale.items);
-    order.options = [];
     this.ordersService.addOrder(order, this.sale.items);
     this.updateProductsRange(this.sale.items);
     // clear state
     this.saleService.clearState();
     this.ordersService.updateOrderState(null);
     this.ordersService.updateOrderProductsState(null);
-    this.router.navigate(['/dashboard/list-orders']);
+    // this.router.navigate(['/dashboard/list-orders']);
   }
 
   updateProductsRange(items: Item[]) {
@@ -232,31 +238,40 @@ export class SellComponent implements OnInit {
     // }
 
     const selectValueId = Number(valueId);
-    if (this.productOptions.find(x => x.optionId === attributeId)) {
-      this.productOptions = this.productOptions.filter(x => x.optionId !== attributeId);
+    if (this.productOptions.find(x => x.OptionId === attributeId)) {
+      this.productOptions = this.productOptions.filter(x => x.OptionId !== attributeId);
     }
     const attribute = product.Attributes.find(x => x.AttributeId === attributeId);
-    const itemOptionn: ItemOptions = {
-      optionId: attributeId,
-      productId: product.ProductId,
-      optionName: attribute.Name,
-      valueId: selectValueId,
-      value: attribute.Values.find(x => Number(x.Id) === selectValueId).AttributeValue
+    const itemOptionn: OrderOptions = {
+      Id: '1',
+      OrderId: 'na',
+      ProductId: product.ProductId,
+      OrderProductId: 'na',
+      OptionId: attributeId,
+      ValueId: selectValueId,
+      OptionValue: attribute.Values.find(x => Number(x.Id) === selectValueId).AttributeValue,
+      OptionName: attribute.Name,
+      ValuePrice: product.UnitPrice,
+      ValueIdQty: product.Quantity,
+      CompanyId: this.user.CompanyId,
+      CreateUserId: 'customer',
+      ModifyUserId: 'customer',
+      StatusId: 1
     };
     this.pushOptions(itemOptionn);
     console.log(this.productOptions);
 
   }
 
-  pushOptions(orderOption: ItemOptions) {
-    if (!this.productOptions.find(x => x.optionId === orderOption.optionId && x.valueId === orderOption.valueId)) {
+  pushOptions(orderOption: OrderOptions) {
+    if (!this.productOptions.find(x => x.OptionId === orderOption.OptionId && x.ValueId === orderOption.ValueId)) {
       this.productOptions.push(orderOption);
     }
   }
 
   checkIfPrevItemIsAddedToCart(productId) {
-    if (this.productOptions.length > 0 && !this.productOptions.find(x => x.productId === productId)) {
-      const unsavedProduct = this.products.find(x => x.ProductId === this.productOptions[0].productId);
+    if (this.productOptions.length > 0 && !this.productOptions.find(x => x.ProductId === productId)) {
+      const unsavedProduct = this.products.find(x => x.ProductId === this.productOptions[0].ProductId);
       this.messageService.add({
         severity: 'warn',
         summary: 'Empty cart',
@@ -271,7 +286,7 @@ export class SellComponent implements OnInit {
 
 
   checkIfProductOptionsAreSelected(product: Product) {
-    if (product.Attributes.length !== this.productOptions.filter(x => x.productId === product.ProductId).length) {
+    if (product.Attributes.length !== this.productOptions.filter(x => x.ProductId === product.ProductId).length) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Empty cart',
@@ -285,12 +300,62 @@ export class SellComponent implements OnInit {
   }
 
   getProductSelectedItemsString(product: Product) {
-    const optionsForAproduct = this.productOptions.filter(x => x.productId === product.ProductId);
+    const optionsForAproduct = this.productOptions.filter(x => x.ProductId === product.ProductId);
     if (optionsForAproduct.length) {
       return JSON.stringify(optionsForAproduct);
     }
 
     return '';
   }
+
+
+  // mapitemOptionsToOrderOptions(items: Item[]): OrderOptions[] {
+  //   const options: OrderOptions[] = [];
+  //   items.forEach(item => {
+
+  //     item.options.forEach(itemOpt => {
+  //       const optionsItem: OrderOptions = {
+  //         // OrderId: '0',
+  //         // ProductId: itemOpt.productId,
+  //         // OrderProductId: '0',
+  //         // OptionId: itemOpt.optionId,
+  //         // ValueId:  itemOpt.valueId,
+  //         // OptionValue: itemOpt.value,
+  //         // OptionName: itemOpt.optionName,
+  //         // ValuePrice: 0,
+  //         // ValueIdQty: 0,
+  //         // CompanyId: this.user.CompanyId,
+  //         // CreateUserId: 'customer',
+  //         // ModifyUserId: 'customer',
+  //         // StatusId: 1
+
+
+  //           Id: '1',
+  //           OrderId: 'bc2497d5-6a76-11ea-aee0-48f17f8d4d88',
+  //           ProductId: '10f18237-5dde-11ea-b68c-48f17f8d4d88',
+  //           OptionId: '10f2eb99-5dde-11ea-b68c-48f17f8d4d88',
+  //           // ValueId: itemOpt.ValueId,
+  //           OptionValue: 'L',
+  //           OptionName: 'Size',
+  //           ValuePrice: '0',
+  //           ValueIdQty: '0',
+  //           CompanyId: '94c5b3cf-d170-11e9-b97c-48f17f8d4d88',
+  //           CreateDate: '2020-03-20 08:47:58',
+  //           CreateUserId: 'customer',
+  //           ModifyDate: '2020-03-20 08:47:58',
+  //           ModifyUserId: 'customer',
+  //           StatusId: '1'
+
+  //       };
+
+
+  //       options.push(optionsItem);
+  //     });
+  //     // tslint:disable-next-line: one-variable-per-declaration
+
+  //   });
+  //   return options;
+  // }
+
 }
 

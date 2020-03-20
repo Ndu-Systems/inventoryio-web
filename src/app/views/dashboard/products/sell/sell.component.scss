@@ -1,4 +1,5 @@
 @import '../../../../../assets/styles/variables';
+
 .list-filters {
   grid-template-columns: 50% auto;
   border: none;
@@ -169,13 +170,22 @@ a {
 
 .summary {
   background: $white-color;
+  padding: 1rem;
+
   @media only screen and (max-width: 600px) {
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    padding: 1rem;
     z-index: 1000;
+  }
+}
+
+.back {
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    display: block;
   }
 }

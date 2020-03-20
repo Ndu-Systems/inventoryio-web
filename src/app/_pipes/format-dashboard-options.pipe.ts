@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { OrderOptions } from '../_models/order.options.model';
 
 @Pipe({
-  name: 'formatOptions'
+  name: 'formatDashboardOptions'
 })
-export class FormatOptionsPipe implements PipeTransform {
+export class FormatDashBoardOptionsPipe implements PipeTransform {
 
   transform(value: OrderOptions[] = []): any {
     let results = '';

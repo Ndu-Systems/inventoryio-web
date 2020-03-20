@@ -2,6 +2,8 @@
 export interface OrderOptions {
     Id?: string;
     OrderId: string;
+    ProductId: string;
+    OrderProductId: string;
     OptionId: string;
     ValueId: number;
     OptionValue: string;

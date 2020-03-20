@@ -1,3 +1,5 @@
+import { OrderOptions } from './order.options.model';
+
 export interface OrderProducts {
     Id?: string;
     OrderId: string;
@@ -12,4 +14,5 @@ export interface OrderProducts {
     ModifyDate?: string;
     ModifyUserId: string;
     StatusId: number;
+    Options?: OrderOptions[];
 }

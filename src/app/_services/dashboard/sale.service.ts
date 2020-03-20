@@ -77,7 +77,7 @@ export class SaleService {
       sale = this.currentSellModelValue;
     }
     const checkIfOtemExist = sale.items.find(x => x.prodcuId === item.prodcuId &&
-      (JSON.stringify(item.itemOptions) === JSON.stringify(x.itemOptions)));
+      (JSON.stringify(item.options) === JSON.stringify(x.options)));
     const product = this.productService.getSigleProductFronState(item.prodcuId);
 
 

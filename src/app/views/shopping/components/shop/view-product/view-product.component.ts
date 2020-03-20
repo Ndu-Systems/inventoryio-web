@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Orders, Company, Product, SellModel, ItemOptions } from 'src/app/_models';
+import { Orders, Company, Product, SellModel } from 'src/app/_models';
 import { ProductService, CompanyService, InvoiceService } from 'src/app/_services';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Attribute } from 'src/app/_models/Attribute.model';
 import { MessageService } from 'primeng/api';
+import { OrderOptions } from 'src/app/_models/order.options.model';
 
 @Component({
   selector: 'app-view-product',
@@ -26,7 +27,7 @@ export class ViewProductComponent implements OnInit {
   sale: SellModel;
   cartItems: number;
   itemQnty = 1;
-  orderOptions: ItemOptions[] = [];
+  orderOptions: OrderOptions[] = [];
   allOrderOptions: Attribute[] = [];
   shopPrimaryColor: string;
   shopSecondaryColor: string;
@@ -94,7 +95,7 @@ export class ViewProductComponent implements OnInit {
 
     let isErross = false;
     this.allOrderOptions.forEach(attribute => {
-      const checkIfExist = this.orderOptions.find(x => x.optionId === attribute.AttributeId);
+      const checkIfExist = this.orderOptions.find(x => x.OptionId === attribute.AttributeId);
       if (!checkIfExist) {
         this.messageService.add({
           severity: 'warn',
@@ -110,7 +111,7 @@ export class ViewProductComponent implements OnInit {
     }
 
     const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
-    if (item && (JSON.stringify(item.itemOptions) === JSON.stringify(this.orderOptions))) {
+    if (item && (JSON.stringify(item.options) === JSON.stringify(this.orderOptions))) {
       // check if options are still the same.
       item.quantity++;
       this.shoppingService.doSellLogic(item);
@@ -123,7 +124,7 @@ export class ViewProductComponent implements OnInit {
           price: Number(product.UnitPrice),
           quantity: Number(this.itemQnty),
           image: product.images && product.images[0].Url,
-          itemOptions: this.orderOptions
+          options: this.orderOptions
         });
       this.orderOptions = [];
 
@@ -142,22 +143,32 @@ export class ViewProductComponent implements OnInit {
     this.router.navigate(['shop/at', this.company.Handler || this.company.CompanyId]);
   }
 
-  optionSelected(option, AttributeId) {
+  optionSelected(option, attributeId) {
     const selectValueId = Number(option);
-    if (this.orderOptions.find(x => x.optionId === AttributeId)) {
-      this.orderOptions = this.orderOptions.filter(x => x.optionId !== AttributeId);
+    if (this.orderOptions.find(x => x.OptionId === attributeId)) {
+      this.orderOptions = this.orderOptions.filter(x => x.OptionId !== attributeId);
     }
-    const attribute = this.product.Attributes.find(x => x.AttributeId === AttributeId);
-    const itemOptionn: ItemOptions = {
-      optionId: AttributeId,
-      optionName: attribute.Name,
-      valueId: selectValueId,
-      value: attribute.Values.find(x => Number(x.Id) === selectValueId).AttributeValue
+    const attribute = this.product.Attributes.find(x => x.AttributeId === attributeId);
+    const itemOptionn: OrderOptions = {
+      Id: '1',
+      OrderId: 'na',
+      ProductId: this.product.ProductId,
+      OrderProductId: 'na',
+      OptionId: attributeId,
+      ValueId: selectValueId,
+      OptionValue: attribute.Values.find(x => Number(x.Id) === selectValueId).AttributeValue,
+      OptionName: attribute.Name,
+      ValuePrice: this.product.UnitPrice,
+      ValueIdQty: this.product.Quantity,
+      CompanyId: this.company.CompanyId,
+      CreateUserId: 'customer',
+      ModifyUserId: 'customer',
+      StatusId: 1
     };
     this.pushOptions(itemOptionn);
   }
-  pushOptions(orderOption: ItemOptions) {
-    if (!this.orderOptions.find(x => x.optionId === orderOption.optionId && x.valueId === orderOption.valueId)) {
+  pushOptions(orderOption: OrderOptions) {
+    if (!this.orderOptions.find(x => x.OptionId === orderOption.OptionId && x.ValueId === orderOption.ValueId)) {
       this.orderOptions.push(orderOption);
     }
   }
