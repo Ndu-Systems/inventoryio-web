@@ -184,7 +184,7 @@ export class SellComponent implements OnInit {
     this.saleService.clearState();
     this.ordersService.updateOrderState(null);
     this.ordersService.updateOrderProductsState(null);
-    // this.router.navigate(['/dashboard/list-orders']);
+    this.router.navigate(['/dashboard/list-orders']);
   }
 
   updateProductsRange(items: Item[]) {
@@ -305,7 +305,7 @@ export class SellComponent implements OnInit {
       return JSON.stringify(optionsForAproduct);
     }
 
-    return '';
+    return '[]';
   }
 
 

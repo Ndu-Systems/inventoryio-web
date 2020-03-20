@@ -295,12 +295,13 @@ export class ShopCheckoutComponent implements OnInit {
         detail: 'Your order was created successfully, please download your invoice and make a payment if you have not done so already.',
         life: 10000,
       });
-      if (!this.sale) {
-        this.shoppingService.updateState({
-          items: [],
-          total: 0
-        });
-      }
+
+
+      this.shoppingService.updateState({
+        items: [],
+        total: 0
+      });
+
       this.succesful();
     });
     this.shoppingService.company.subscribe(data => {
