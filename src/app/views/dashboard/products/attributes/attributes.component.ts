@@ -39,41 +39,23 @@ export class AttributesComponent implements OnInit {
           this.product = data.find(x => x.ProductId === this.id);
           if (this.product) {
             this.attributes = this.product.Attributes || [];
+            this.attributesToInit = this.mapAttributesForInit(this.attributes);
           }
         }
       });
+    } else {
+      this.initAttributes();
     }
-    //  the whole new thing now
-    this.initAttributes();
-  }
-  showModalDialog() {
-    this.displayModal = true;
   }
 
-  saveOptions() {
 
-    const data: Attribute = {
-      Name: this.optionsName,
-      AttributeType: 'text',
-      CompanyId: this.user.CompanyId,
-      ProductId: this.id,
-      Shop: 1,
-      CreateUserId: this.user.UserId,
-      ModifyUserId: this.user.UserId,
-      StatusId: 1,
-      Values: this.mapAttributeItems(this.options)
-    };
-    this.attributes.push(data);
-    console.log(this.attributes);
-    this.attributeService.updateState(this.attributes);
-  }
-
-  mapAttributeItems(options: string[]): AttributeItem[] {
+  mapAttributeItems(options: any[]): AttributeItem[] {
     const values: AttributeItem[] = [];
     options.forEach(item => {
       values.push({
-        AttributeValue: item,
-        AttributePrice: null,
+        AttributeValue: item.AttributeValue,
+        AttributePrice: item.AttributePrice,
+        AttributeQuantity: item.AttributeQuantity,
         CreateUserId: this.user.UserId,
         ModifyUserId: this.user.UserId,
         StatusId: 1
@@ -101,6 +83,31 @@ export class AttributesComponent implements OnInit {
       AttributePrice: '',
     };
     this.attributesToInit.push(data);
+  }
+
+  mapAttributesForInit(attributes: Attribute[]) {
+    const mappedAttributes: Attribute[] = [];
+    attributes.forEach(attribute => {
+      attribute.Values.forEach(value => {
+        const data: Attribute = {
+          AttributeId: attribute.AttributeId,
+          Name: attribute.Name,
+          AttributeType: 'text',
+          CompanyId: this.user.CompanyId,
+          ProductId: this.id,
+          Shop: 1,
+          CreateUserId: this.user.UserId,
+          ModifyUserId: this.user.UserId,
+          StatusId: 1,
+          Values: [],
+          AttributeValue: value.AttributeValue,
+          AttributeQuantity: value.AttributeQuantity,
+          AttributePrice: value.AttributePrice,
+        };
+        mappedAttributes.push(data);
+      });
+    });
+    return mappedAttributes;
   }
 
   copyDown(item: Attribute) {
@@ -133,22 +140,35 @@ export class AttributesComponent implements OnInit {
   }
 
   confirmOptions() {
-
+    this.attributes = [];
     this.attributesToInit.forEach(item => {
       const optionsName = item.Name;
+      const checkIfNameISAlreadyMaped = this.attributes.find(x => x.Name === optionsName);
+      if (!checkIfNameISAlreadyMaped) {
+        // find me all attributes of the same name . eg find me : Size = [S,M,L]
+        debugger
+        const allValues: any[] = this.attributesToInit.filter(x => x.Name === optionsName).map(x => {
+          return {
+            AttributeValue: x.AttributeValue,
+            AttributeQuantity: x.AttributePrice,
+            AttributePrice: x.AttributeQuantity,
+          };
+        });
+        const data: Attribute = {
+          Name: optionsName,
+          AttributeType: 'text',
+          CompanyId: this.user.CompanyId,
+          ProductId: this.id,
+          Shop: 1,
+          CreateUserId: this.user.UserId,
+          ModifyUserId: this.user.UserId,
+          StatusId: 1,
+          Values: this.mapAttributeItems(allValues)
+        };
+        this.attributes.push(data);
+      }
     });
-    const data: Attribute = {
-      Name: this.optionsName,
-      AttributeType: 'text',
-      CompanyId: this.user.CompanyId,
-      ProductId: this.id,
-      Shop: 1,
-      CreateUserId: this.user.UserId,
-      ModifyUserId: this.user.UserId,
-      StatusId: 1,
-      Values: this.mapAttributeItems(this.options)
-    };
-    this.attributes.push(data);
+
     console.log(this.attributes);
     this.attributeService.updateState(this.attributes);
   }

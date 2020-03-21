@@ -127,6 +127,7 @@ export class AddProductComponent implements OnInit {
   onSubmit(product: Product) {
     product.images = this.uploadService.currentImageValue;
     console.log(product);
+    debugger
     product.Attributes = this.attributes;
     this.productService.addProduct(product);
     this.messageService.add({
