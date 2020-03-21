@@ -34,5 +34,13 @@ export const NotFoundConstants = {
     NOT_FOUND_ITEMS: {
       image: 'assets/placeholders/no-items.svg',
       message: 'Sorry no work items, match your request'
+    },
+    NOT_FOUND_QUOTES: {
+      image: 'assets/placeholders/no-item-gen.svg',
+      message: 'There are no quotes at the moment'
+    },
+    NOT_FOUND_ORDERS: {
+      image: 'assets/placeholders/no-item-gen.svg',
+      message: 'You do not have orders on the system as yet'
     }
  };
