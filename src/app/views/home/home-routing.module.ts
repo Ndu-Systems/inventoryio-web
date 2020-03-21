@@ -4,8 +4,18 @@ import { HomeComponent } from './home.component';
 import { SplashHomeComponent } from '../dashboard/shared/splash-home/splash-home.component';
 import { PricingComponent } from './index/Pricing/Pricing.component';
 import { HomeNavComponent } from './shared/home-nav';
-import { IndexComponent, HomePageComponent, FeaturesComponent, HowItWorksComponent } from './index';
-import { SignUpComponent, SignInComponent } from './accounts';
+import {
+  IndexComponent,
+  HomePageComponent,
+  FeaturesComponent,
+  HowItWorksComponent
+} from './index';
+import {
+  SignUpComponent,
+  SignInComponent,
+  ForgotPasswordComponent,
+  ResetPasswordComponent
+} from './accounts';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 const routes: Routes = [
   {
@@ -17,7 +27,8 @@ const routes: Routes = [
       { path: 'pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent },
-
+      { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
     ]
   }
 ];
@@ -33,7 +44,9 @@ export const declarations = [
   PricingComponent,
   HomeNavComponent,
   HomeSliderComponent,
-  HowItWorksComponent
+  HowItWorksComponent,
+  ForgotPasswordComponent,
+  ResetPasswordComponent
 ];
 
 

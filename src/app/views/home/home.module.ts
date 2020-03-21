@@ -6,6 +6,7 @@ import {GalleriaModule} from 'primeng/galleria';
 import { ToastModule } from 'primeng/toast';
 import {CardModule} from 'primeng/card';
 import {CarouselModule} from 'primeng/carousel';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 
@@ -21,6 +22,8 @@ import {CarouselModule} from 'primeng/carousel';
   declarations: [
     ...declarations
   ],
+  providers: [MessageService, ConfirmationService]
+
 })
 export class HomeModule {
 
