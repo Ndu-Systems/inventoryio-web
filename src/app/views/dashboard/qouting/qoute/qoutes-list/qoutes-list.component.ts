@@ -41,8 +41,8 @@ export class QoutesListComponent implements OnInit {
     });
     this.qoutationService.getQoutations(user.CompanyId);
     this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
-      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+      Image: NotFoundConstants.NOT_FOUND_QUOTES.image,
+      Message: NotFoundConstants.NOT_FOUND_QUOTES.message
     };
   }
   add() {

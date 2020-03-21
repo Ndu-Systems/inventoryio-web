@@ -41,8 +41,8 @@ export class ListOrdersComponent implements OnInit {
     });
     this.ordersService.getOrders(user.CompanyId);
     this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_ITEMS.image,
-      Message: NotFoundConstants.NOT_FOUND_ITEMS.message
+      Image: NotFoundConstants.NOT_FOUND_ORDERS.image,
+      Message: NotFoundConstants.NOT_FOUND_ORDERS.message
     };
     this.ordersService.orders.subscribe(data => {
       this.statuses = this.cleanStatus(data.map(x => x.Status));

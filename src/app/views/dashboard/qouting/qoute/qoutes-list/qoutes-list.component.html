@@ -69,9 +69,9 @@
         <div class="not-found">
           <img [src]="notFoundModel.Image" alt="no items found">
           <h1 class="message">
-            You do not have orders on the system as yet.
+            {{notFoundModel.Message}}
             <span>
-              <a class="link-add" (click)="add()"> create new order.</a>
+              <a class="link-add" (click)="add()"> create new quote.</a>
             </span>
           </h1>
 

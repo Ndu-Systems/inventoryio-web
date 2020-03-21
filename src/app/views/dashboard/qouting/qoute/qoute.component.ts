@@ -67,8 +67,8 @@ export class QouteComponent implements OnInit {
     });
 
     this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_SALES.image,
-      Message: NotFoundConstants.NOT_FOUND_SALES.message
+      Image: NotFoundConstants.NOT_FOUND_PRODUCTS.image,
+      Message: NotFoundConstants.NOT_FOUND_PRODUCTS.message
     };
     this.partnerService.getPartners(this.user.CompanyId);
     this.partnerService.partners.subscribe(data => {
