@@ -43,8 +43,7 @@ export class ForgotPasswordComponent implements OnInit {
   onSubmit(model: ForgotPasswordModel) {
     this.accountService.forgotPassword(model).subscribe(data => {
       if (data === 1) {
-        alert('Nice!');
-        this.routeTo.navigate(['/reset-password']);
+         this.routeTo.navigate(['/reset-password']);
       }
     });
   }

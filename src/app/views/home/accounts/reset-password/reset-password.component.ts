@@ -50,8 +50,7 @@ export class ResetPasswordComponent implements OnInit {
     }
     this.accountService.changePassword(model).subscribe(data => {
       if (data === 1) {
-        alert('Nice!');
-        this.routeTo.navigate(['/sign-in']);
+         this.routeTo.navigate(['/sign-in']);
       }
     });
   }
