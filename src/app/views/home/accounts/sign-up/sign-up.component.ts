@@ -55,17 +55,6 @@ export class SignUpComponent implements OnInit {
     const companyName = this.getFormValues.companyName.value;
     const email = this.getFormValues.email.value;
     const password = this.getFormValues.password.value;
-    // const passwordConfirm = this.getFormValues.passwordConfirm.value;
-    // if (password !== passwordConfirm) {
-    //   this.error = `Password must match`;
-    //   this.splashService.update({
-    //     show: true, heading: 'Network Error',
-    //     message: this.error,
-    //     class: `error`
-    //   });
-    //   return false;
-    // }
-
     const data: User = {
       Email: email,
       Name: fullname.split(' ')[0],

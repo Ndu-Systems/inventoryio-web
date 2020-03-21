@@ -7,7 +7,8 @@ export const environment = {
   API_URL: 'http://localhost:8200/inventoryio-api',
   BASE_URL: 'http://localhost:4200',
   ACCOUNT_TEST_EMAIL: 'ndu@mail.com',
-  ACCOUNT_TEST_PASSWORD: '12345'
+  ACCOUNT_TEST_PASSWORD: '12345',
+  TEST_EMAIL_ACCOUNT: 'ndu@mail.com'
 };
 
 /*
