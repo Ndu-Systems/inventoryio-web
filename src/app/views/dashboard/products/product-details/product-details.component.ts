@@ -105,4 +105,6 @@ export class ProductDetailsComponent implements OnInit {
   back() {
     this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }
+  addcatergory(x) { }
+  addbrand(x) { }
 }
