@@ -8,7 +8,7 @@ export const environment = {
   BASE_URL: 'http://localhost:4200',
   ACCOUNT_TEST_EMAIL: 'ndu@mail.com',
   ACCOUNT_TEST_PASSWORD: '12345',
-  TEST_EMAIL_ACCOUNT: 'freedom.khanyile1@gmail.com'
+  TEST_EMAIL_ACCOUNT: 'ndu@mail.com'
 };
 
 /*
