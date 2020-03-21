@@ -22,6 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   product: Product;
   productId: string;
   showScan: boolean;
+  heading;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -55,6 +56,7 @@ export class ProductDetailsComponent implements OnInit {
     this.catergories$ = this.cateroryService.categories;
   }
   initForm() {
+    this.heading = this.product.Name || 'Product details';
     this.rForm = this.fb.group({
       ProductId: [this.product.ProductId, Validators.required],
       Name: [this.product.Name, Validators.required],
@@ -100,5 +102,7 @@ export class ProductDetailsComponent implements OnInit {
   scan() {
     this.showScan = true;
   }
-
+  back() {
+    this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
+  }
 }

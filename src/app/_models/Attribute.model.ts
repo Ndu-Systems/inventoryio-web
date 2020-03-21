@@ -3,6 +3,7 @@ export interface AttributeItem {
     AttributeId?: string;
     AttributeValue: string;
     AttributePrice?: any;
+    AttributeQuantity?: any;
     CreateDate?: string;
     CreateUserId: string;
     ModifyDate?: string;
@@ -23,4 +24,9 @@ export interface Attribute {
     ModifyUserId: string;
     StatusId: number;
     Values?: AttributeItem[];
+
+
+    AttributePrice?: any;
+    AttributeValue?: any;
+    AttributeQuantity?: any;
 }

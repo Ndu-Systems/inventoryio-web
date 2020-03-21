@@ -1,34 +1,42 @@
-<div class="attribute-main">
-  <div class="add btn" (click)="showModalDialog()">Add option</div>
-  <div *ngIf="attributes.length; else noOptions">
-    <div class="options" *ngFor="let attribute of attributes">
-      <span class="items main">
-        {{attribute?.Name}}
-      </span>
-      <span class="items" *ngFor="let item of attribute.Values">
-        {{item?.AttributeValue}}
-      </span>
+<div class="table">
+
+  <div class="col-1-of-5">
+    <div class="th">
+      Option Name
+    </div>
+    <div class="th">
+      Option Value
+    </div>
+    <div class="th">
+      Option Qny
+    </div>
+    <div class="th">
+      Option Price
+    </div>
+    <div class="th">
+      Actions
     </div>
   </div>
-  <ng-template #noOptions>
-    <p class="notes">
-      You do not have options for this product, click Add Option to add new.
-    </p>
-  </ng-template>
+  <div class="col-1-of-5" *ngFor="let item of attributesToInit">
+    <div class="td">
+      <input type="text" [(ngModel)]="item.Name" placeholder="e.g Size" />
+    </div>
+    <div class="td">
+      <input type="text" [(ngModel)]="item.AttributeValue" placeholder="Small" />
+    </div>
+    <div class="td">
+      <input type="text" [(ngModel)]="item.AttributeQuantity" placeholder="10" />
+    </div>
+    <div class="td">
+      <input type="text" [(ngModel)]="item.AttributePrice" placeholder="300" />
+    </div>
+    <div class="td">
+      <a class="btn-link" (click)="copyDown(item)">Copy |</a>
+      <a class="btn-link" (click)="removeItem(item)"> Rem</a>
+    </div>
+  </div>
+
+  <div class="finish" *ngIf="attributesToInit.length > 0" (click)="confirmOptions()">
+    <button>Confirm options</button>
+  </div>
 </div>
-<p-dialog header="Variants" [(visible)]="displayModal" [style]="{width: '50vw', 'text-align-last': 'left'}"
-  [baseZIndex]="10000" [modal]="true">
-  <div class="">
-    <span> Option Name
-    </span>
-    <input autofocus type="text" [(ngModel)]="optionsName" />
-  </div>
-  <div class="mychip">
-    <span> Options
-    </span>
-    <p-chips [(ngModel)]="options"></p-chips>
-  </div>
-  <div class="save">
-    <button type="button" (click)="saveOptions()" pButton label="Save options"></button>
-  </div>
-</p-dialog>

@@ -1,85 +1,71 @@
 @import '../../../../../assets/styles/variables';
 
-.main {
-  // background: red;
-  text-align: left;
+.table {
+  margin: 2rem .5rem;
+
+  .col-1-of-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    font-size: .8rem;
+
+    .th {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: .8rem;
+
+      @media only screen and (max-width: 600px) {
+        font-size: .6rem;
+      }
+    }
+
+    .td {
+      input {
+        margin: 0;
+        padding: 0;
+        font-size: .8rem;
+        width: 90%;
+        margin-top: .5rem;
+        padding-left: .5rem;
+
+        @media only screen and (max-width: 600px) {
+          font-size: .6rem;
+        }
+
+      }
+
+      .btn-link {
+        cursor: pointer;
+        font-weight: 600;
+
+        @media only screen and (max-width: 600px) {
+          font-size: .6rem;
+        }
 
 
+        &:hover {
+          opacity: .6;
+        }
+      }
+    }
+  }
 }
-.attribute-main {
-  padding: 1em;
-}
 
-.btn {
-  width: 10em;
-  padding: 0.6em;
-  text-align: center;
-}
+.finish {
+  text-align: right;
 
-.options {
-  padding: .5rem 0;
-  text-align: left;
-
-  .items {
-    display: inline !important;
+  button {
+    margin: 2rem 4.4rem;
     background: $black-color;
-    color: $white-color;
-    padding: .3rem;
-    font-weight: 700;
-    margin: .5rem .3rem;
-    border-radius: 8px;
-
-  }
-
-  .main {
-    background: $cloud;
-    color: $black-color;
-  }
-}
-
-
-::ng-deep {
-  body .ui-inputtext {
-    width: 100%;
+    background: $hl-color;
+    padding: .5rem;
     border: none;
-  }
-
-  body .ui-chips>ul.ui-inputtext {
-    padding: 0.5145em 0.429em;
-    display: inline-block;
-  }
-
-  body .ui-dialog .ui-dialog-titlebar {
-    background: $primary-bg-color;
     color: $white-color;
-    border: none;
+    margin-bottom: 0;
+
+    @media only screen and (max-width: 600px) {
+      margin: 2rem -0.6rem;
+      font-size: .6rem;
+
+    }
   }
-
-  body .ui-button {
-    float: right;
-  }
-}
-
-
-  input[type=text] {
-    border: 1px solid #dbe0e3;
-    border-radius: 8px;
-    background: #ffffff;
-    margin: 1em 0;
-    width: 100%;
-  }
-
-
-
-.mychip {
-  border: 1px solid #dbe0e3;
-  border-radius: 8px;
-  padding: .5rem;
-  margin-right: 0;
-
-}
-
-
-.notes {
-  text-align: left;
 }
