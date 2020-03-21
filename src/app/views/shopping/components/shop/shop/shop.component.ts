@@ -21,7 +21,7 @@ export class ShopComponent implements OnInit {
   company: Company;
   sale: SellModel;
   placeholder = 'assets/images/placeholder.png';
-  bannerImage = 'assets/placeholders/shopheader.jpg';
+  bannerImage;
   cartItems = 0;
   shopPrimaryColor: string;
   shopSecondaryColor: string;
@@ -35,7 +35,19 @@ export class ShopComponent implements OnInit {
 
   ) {
 
-
+    this.company = this.companyService.companyValue;
+    if (this.company) {
+      this.welocme = `Shop with ${this.company.Name}`;
+      if (this.company.Banner) {
+        this.bannerImage = this.company.Banner[0].Url;
+      } else {
+        this.bannerImage = 'assets/placeholders/shopheader.jpg';
+      }
+      if (this.company.Theme) {
+        this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+        this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+      }
+    }
     this.activatedRoute.params.subscribe(r => {
       this.companyId = r.id;
       this.productService.getProducts(this.companyId);
@@ -45,9 +57,10 @@ export class ShopComponent implements OnInit {
         this.company = r;
         this.shoppingService.updateCompanyState(this.company);
         this.welocme = `Shop with ${this.company.Name}`;
-        // this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
         if (this.company.Banner) {
           this.bannerImage = this.company.Banner[0].Url;
+        } else {
+          this.bannerImage = 'assets/placeholders/shopheader.jpg';
         }
         if (this.company.Theme) {
           this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;

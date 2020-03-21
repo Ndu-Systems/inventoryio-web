@@ -13,6 +13,7 @@ import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
 export class CompanyService {
   private currentCompanySubject: BehaviorSubject<Company>;
   public currentCompany: Observable<Company>;
+  companyValue;
   url: string;
   constructor(
     private http: HttpClient,
@@ -25,6 +26,9 @@ export class CompanyService {
 
   public get currentCompanyValue(): Company {
     return this.currentCompanySubject.value;
+  }
+  public get() {
+    return this.currentCompanySubject.value; 
   }
   updateState(company: Company) {
     localStorage.setItem('currentCompany', JSON.stringify(company));

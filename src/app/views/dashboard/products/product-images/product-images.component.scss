@@ -5,13 +5,15 @@
   margin: 0;
   width: 100%;
   overflow-x: scroll;
+
   &::-webkit-scrollbar {
     display: block; // Safari and Chrome
     // background: transparent;
   }
+
   &::-webkit-scrollbar-thumb {
     // background: #FF0000;
-}
+  }
 
   .images {
     position: relative;
@@ -26,7 +28,12 @@
       position: relative;
 
       img {
-        height: 6.5rem;
+        width: 12rem;
+
+        @media only screen and (max-width: 600px) {
+          height: 4rem;
+
+        }
       }
 
       .close {
@@ -68,6 +75,7 @@
       height: 5rem;
     }
   }
+
   .file-input {
     position: absolute;
     left: 0;

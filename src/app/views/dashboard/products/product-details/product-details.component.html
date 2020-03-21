@@ -1,4 +1,4 @@
-<div class="main-content">
+<!-- <div class="main-content">
   <h1 class="title-header">Item details.</h1>
   <div class="col-1-of-1">
     <div class="panel">
@@ -123,6 +123,170 @@
     </div>
   </div>
 </div>
+<div class="scanner-pluggin" *ngIf="showScan">
+  <app-scanner></app-scanner>
+</div> -->
+
+
+
+
+
+
+<div class="main-content">
+  <h1 class="title-header">{{heading}}</h1>
+
+  <form [formGroup]="rForm">
+    <!-- <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)"> -->
+    <div class="col-1-of-2">
+      <div class="section">
+        <div class="form-item">
+          <label class="label">Item name*</label>
+          <input type="text" formControlName="Name" placeholder="Gold gift bag" required="required" autofocus />
+          <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+            Item name is required
+          </div>
+        </div>
+
+        <div class="form-group-items">
+          <div class="form-item">
+            <label class="label">Selling price*</label>
+            <input type="text" placeholder="850.99" formControlName="UnitPrice" required="required" />
+            <div class="alert" *ngIf="!rForm.controls['UnitPrice'].valid && rForm.controls['UnitPrice'].touched">
+              Selling price is required
+            </div>
+          </div>
+
+          <div class="form-item">
+            <label class="label">Cost price</label>
+            <input type="text" formControlName="UnitCost" placeholder="500" required="required" />
+            <div class="alert" *ngIf="!rForm.controls['UnitCost'].valid && rForm.controls['UnitCost'].touched">
+              Unit cost is required
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div class="form-group-items">
+          <div class="form-item">
+            <div class="group-inputs">
+              <span>
+                <label class="label">Item brand</label>
+                <select formControlName="BrandId">
+                  <option value="">Select brand</option>
+                  <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
+                </select>
+              </span>
+              <button (click)="addbrand(rForm.value)">
+                +
+              </button>
+            </div>
+          </div>
+
+
+          <div class="form-item">
+            <div class="group-inputs">
+              <span>
+                <label class="label">Item category</label>
+                <select formControlName="CatergoryId">
+                  <option value="">Select Category</option>
+                  <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CatergoryId">
+                    {{catergory.Name}}
+                  </option>
+                </select>
+              </span>
+
+              <button (click)="addcatergory(rForm.value)">
+                +
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group-items">
+          <div class="form-item">
+            <label class="label">Quantity</label>
+            <input type="text" formControlName="Quantity" required="required" />
+            <div class="alert" *ngIf="!rForm.controls['UnitPrice'].valid && rForm.controls['UnitPrice'].touched">
+              Selling price is required
+            </div>
+          </div>
+
+          <div class="form-item">
+            <label class="label">Stock alert</label>
+            <input type="text" formControlName="LowStock" required="required" />
+            <div class="alert" *ngIf="!rForm.controls['UnitCost'].valid && rForm.controls['UnitCost'].touched">
+              Unit cost is required
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group-items">
+          <div class="form-item">
+            <div class="group-inputs g8020">
+              <span>
+                <label class="label">Item code</label>
+                <input formControlName="Code" placeholder="scan/write bar-code here" />
+
+              </span>
+              <button (click)="scan()">
+                SCAN
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <div class="section">
+        <div class="form-item">
+          <label class="label">item options.<span class="eg"> e.g Color : red, blue</span></label>
+        </div>
+        <div class="options">
+          <app-attributes [id]="productId" *ngIf="productId"></app-attributes>
+        </div>
+        <hr>
+        <div class="images">
+          <span>Images</span>
+          <app-product-images [productId]="productId" *ngIf="productId"></app-product-images>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="actions-footer">
+      <div class="actions">
+        <div class="div">
+
+        </div>
+        <div class="div">
+          <input type="button" (click)="back()" value="Cancel" class="action-btn cancel" />
+        </div>
+        <div class="div">
+          <input type="submit" value="Save item" (click)="update(rForm.value)" class="action-btn"
+            [disabled]="!rForm.valid" />
+        </div>
+
+
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
 <div class="scanner-pluggin" *ngIf="showScan">
   <app-scanner></app-scanner>
 </div>

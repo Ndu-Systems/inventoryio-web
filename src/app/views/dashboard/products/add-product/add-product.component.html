@@ -2,7 +2,7 @@
   <h1 class="title-header">Add new item.</h1>
 
   <form [formGroup]="rForm">
-  <!-- <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)"> -->
+    <!-- <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)"> -->
     <div class="col-1-of-2">
       <div class="section">
         <div class="form-item">
@@ -135,11 +135,13 @@
         <div class="div">
 
         </div>
-
-        <a routerLink="/dashboard/list-product" class="cancel">
-          <input type="button" value="Cancel" class="btn cancel" />
-        </a>
-        <input type="submit" value="Save item" (click)="onSubmit(rForm.value)" class="btn" [disabled]="!rForm.valid" />
+        <div class="div">
+          <input type="button" value="Cancel"  (click)="back()" class="action-btn cancel" />
+        </div>
+        <div class="div">
+          <input type="submit" value="Save item" (click)="onSubmit(rForm.value)" class="action-btn"
+            [disabled]="!rForm.valid" />
+        </div>
 
 
       </div>

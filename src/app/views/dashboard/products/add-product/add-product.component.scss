@@ -3,11 +3,22 @@
 .main-content {
   padding: 2rem;
 
+  @media only screen and (max-width: 600px) {
+    padding: .8rem;
+    margin-bottom: 10rem;
+
+
+  }
+
   .col-1-of-2 {
     display: grid;
-    // background: rgb(134, 134, 134);
     grid-template-columns: 50% 50%;
     margin: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      margin: .4rem;
+    }
 
     .section {
       background: $white-color;
@@ -16,11 +27,19 @@
       border-radius: 10px;
       display: block;
 
+      @media only screen and (max-width: 600px) {
+        width: 94%;
+      }
+
       .form-item {
         padding: 1rem;
         margin: .1rem;
         width: 100%;
         display: grid;
+
+        @media only screen and (max-width: 600px) {
+          padding: .4rem;
+        }
 
         input,
         select {
@@ -33,12 +52,6 @@
           }
         }
 
-        .label {
-          position: relative;
-          text-transform: uppercase;
-          font-weight: 700;
-          font-size: .8rem;
-        }
 
         .alert {
           padding-left: 0;
@@ -48,6 +61,11 @@
       .form-group-items {
         display: grid;
         grid-template-columns: 50% 50%;
+
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 100%;
+        }
+
       }
     }
   }
@@ -64,11 +82,17 @@
     margin: 0;
     padding: 0;
     position: relative;
-    top: 2.18888rem;
+    top: 2.08888rem;
     color: rgb(0, 0, 0);
     font-weight: 600;
     font-size: 1.2rem;
     cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      top: 1.88888rem;
+
+    }
   }
 }
 
@@ -89,17 +113,46 @@
   .actions {
     // background: red;
     display: grid;
-    grid-template-columns: 79% 10% 10%;
+    grid-template-columns: 65% 20% auto;
     padding: .5rem;
 
-    .btn {
-      width: 8rem;
-      margin-left: 2rem;
+    .div {
+      padding: 0 2rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 2% 45% auto;
+
+      .div {
+        padding: 0 .2rem;
+      }
+    }
+
+    .action-btn {
+      margin: .2rem 1rem;
+
+
+      &:disabled {
+        background: $muted-color;
+        cursor: none;
+
+        &:hover {
+          box-shadow: none;
+          cursor: no-drop;
+          background: $muted-color;
+
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        font-size: .8rem;
+        text-align: center;
+      }
     }
 
     .cancel {
       background: $strong-gray;
-      color: $black-color;
+      color: $white-color;
       box-shadow: none;
     }
   }
@@ -109,4 +162,21 @@
   text-transform: lowercase;
   font-style: italic;
   color: $primary-bg-color;
+}
+
+form {
+  margin: 0;
+}
+
+.label {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .8rem;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    text-align: left;
+    display: block;
+  }
 }
