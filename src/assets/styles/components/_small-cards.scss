@@ -52,7 +52,9 @@ $image-size:5rem;
     box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
 
     @media only screen and (max-width: 600px) {
-      margin: .3rem;
+      margin: .1rem;
+      padding: .2rem;
+
       //grid-template-columns: repeat(3, 33%);
 
     }

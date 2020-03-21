@@ -6,6 +6,11 @@
   border-bottom: 1px solid hsl(0, 0%, 78%);
   padding-bottom: 1rem;
 
+  @media only screen and (max-width: 600px) {
+    padding-bottom: 0.1rem;
+
+  }
+
   div {
     padding: 0;
     margin: 0;
@@ -20,6 +25,11 @@
     font-size: .8rem;
     padding: .5rem 1rem;
     margin: 0;
+
+    @media only screen and (max-width: 600px) {
+      padding: .2rem .5rem;
+      width: 96%;
+    }
   }
 
   .select {
@@ -57,9 +67,9 @@
     right: 4rem;
     top: .4rem;
     cursor: pointer;
+
     @media only screen and (max-width: 600px) {
       right: 1rem;
     }
   }
 }
-

@@ -91,7 +91,8 @@
       }
 
       @media only screen and (max-width: 600px) {
-        grid-template-columns: 100%;
+        grid-template-columns: 30% 30% 0% auto;
+        margin: 0
       }
     }
   }
@@ -102,24 +103,29 @@
   }
 }
 
-.mobile-icons  {
-display: none;
+.mobile-icons {
+  display: none;
 }
+
 @media only screen and (max-width: 600px) {
   .mobile-icons {
     display: block;
-    &.col-1-of-3
-    {
+
+    &.col-1-of-3 {
       grid-template-columns: repeat(3, 33.33%);
       display: grid;
-      margin: 1em 0;
+      // margin: 1em 0;
+
       .btn {
         margin: 1em auto;
         border-radius: 10px;
       }
+
       .pi {
         font-size: 2em;
-        &.pi-ticket,&.pi-download {
+
+        &.pi-ticket,
+        &.pi-download {
           color: #95AFC0;
         }
       }
@@ -128,5 +134,21 @@ display: none;
 
   .desktop-icon {
     display: none;
+  }
+}
+
+select,
+input {
+  width: 90%;
+  margin-right: 0;
+  border: 1px solid #c6c6c6;
+  font-size: .8rem;
+  padding: .5rem 1rem;
+  margin: 0;
+
+  @media only screen and (max-width: 600px) {
+    padding: .2rem .5rem;
+    width: 96%;
+    margin-top: 1rem;
   }
 }
