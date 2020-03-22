@@ -122,13 +122,13 @@ export class AddProductComponent implements OnInit {
     });
 
   }
+
   get getFormValues() {
     return this.rForm.controls;
   }
+
   onSubmit(product: Product) {
     product.images = this.uploadService.currentImageValue;
-    console.log(product);
-    debugger
     product.Attributes = this.attributes;
     this.productService.addProduct(product);
     this.messageService.add({
@@ -136,10 +136,12 @@ export class AddProductComponent implements OnInit {
       summary: 'Success!',
       detail: 'product created '
     });
+
     this.routeTo.navigate([`/dashboard/list-product`]);
 
   }
-  addbrand(data: Product) {
+
+  addBrand(data: Product) {
     this.bannerService.updateState({
       backto: '/dashboard/add-product'
     });
@@ -147,13 +149,12 @@ export class AddProductComponent implements OnInit {
     this.routeTo.navigate(['/dashboard/add-brand']);
   }
 
-  addcatergory(data: Product) {
+  addCatergory(data: Product) {
     this.bannerService.updateState({
       backto: '/dashboard/add-product'
     });
     this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-catergory']);
-
   }
   scan() {
     this.showScan = true;
