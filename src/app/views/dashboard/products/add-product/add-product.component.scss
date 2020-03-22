@@ -1,13 +1,10 @@
 @import '../../../../../assets/styles/variables';
 
 .main-content {
-  padding: 2rem;
+  padding: 0 2rem;
 
   @media only screen and (max-width: 600px) {
     padding: .8rem;
-    margin-bottom: 10rem;
-
-
   }
 
   .col-1-of-2 {
@@ -102,12 +99,9 @@
 }
 
 .actions-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: 4rem;
-  padding: .5rem 2rem;
+  height: 7rem;
+  padding: 1rem 2rem;
   background: $cloud-ligher;
 
   @media only screen and (max-width: 600px) {
@@ -119,19 +113,23 @@
   .actions {
     // background: red;
     display: grid;
-    grid-template-columns: 65% 20% auto;
+    grid-template-columns: 50% auto;
     padding: .5rem;
+    width: 50%;
+    float: right;
 
     .div {
       padding: 0 2rem;
     }
 
     @media only screen and (max-width: 600px) {
-      grid-template-columns: 2% 45% auto;
+      grid-template-columns: 50% auto;
 
       .div {
         padding: 0 .2rem;
       }
+      width: 100%;
+      float: none;
     }
 
     .action-btn {
@@ -153,8 +151,7 @@
       @media only screen and (max-width: 600px) {
         font-size: .8rem;
         text-align: center;
-        margin: .2rem .5rem;
-
+        margin: 0;
       }
     }
 
@@ -163,6 +160,10 @@
       color: $white-color;
       box-shadow: none;
     }
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 1rem 0;
   }
 }
 
