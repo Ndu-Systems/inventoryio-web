@@ -23,6 +23,8 @@
     display: block;
   }
 
+
+
   .nav-bar {
     height: 88vh;
 
@@ -118,6 +120,7 @@
     display: block;
     width: 15rem;
     padding: 0 2em;
+
     img {
       width: 50%;
       height: 3vh;
@@ -128,9 +131,11 @@
 
       ul {
         margin-top: 0;
+
         h1 {
           padding: 0;
         }
+
         li {
           font-size: 80%;
         }
@@ -167,4 +172,15 @@
       }
     }
   }
+}
+
+
+.nav-bar-desktop {
+  display: block;
+  position: fixed;
+  width: 10%;
+}
+
+.nav-bar-mobile {
+  position: fixed;
 }

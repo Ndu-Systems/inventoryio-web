@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService, BannerService, CompanyConfigsService } from 'src/app/_services';
 import { User, UserActions } from 'src/app/_models';
-import { Config, newBankArray, newAddressArray, newColorsArray } from 'src/app/_models/Config';
+import { Config, newBankArray, newAddressArray, newColorsArray, newShippingArray } from 'src/app/_models/Config';
 import { ConfigService } from 'src/app/_services/dashboard/config.service';
 import { Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
@@ -26,6 +26,7 @@ export class CompanyViewConfigsComponent implements OnInit {
   shopSecondaryColor = '#ffffff';
   fontColor = '#000000';
   valid = false;
+  shippingFileds: Config[][] = [];
 
 
   constructor(
@@ -67,6 +68,7 @@ export class CompanyViewConfigsComponent implements OnInit {
         this.fontColor = this.rgb2hex(this.fields[1].Value);
       }
 
+
       this.companyConfigsService.updateState(this.fields);
       if (!this.fields.length) {
         this.createNewForm();
@@ -81,11 +83,12 @@ export class CompanyViewConfigsComponent implements OnInit {
   abort() {
     this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }
-
+  cancel() {
+    this.routeTo.navigate(['dashboard/configurations']);
+  }
   createNewForm() {
     if (this.type === 'bank') {
       this.fields = newBankArray(this.user.CompanyId);
-
     }
     if (this.type === 'address') {
       this.fields = newAddressArray(this.user.CompanyId);
@@ -93,6 +96,11 @@ export class CompanyViewConfigsComponent implements OnInit {
     if (this.type === 'logocolors') {
       this.fields = newColorsArray(this.user.CompanyId);
     }
+
+    if (this.type === 'shipping') {
+      this.fields = newShippingArray(this.user.CompanyId);
+    }
+
     this.companyConfigsService.updateState(this.fields);
   }
   getCurrentConfigType() {
@@ -115,9 +123,12 @@ export class CompanyViewConfigsComponent implements OnInit {
       this.type = 'shop';
       this.lebel = 'Upload Cover Image';
     }
+    if (this.configType === 'shipping') {
+      this.type = 'shipping';
+      this.lebel = 'Upload Cover Image';
+    }
   }
   onSave() {
-    debugger
     if (this.isColorsConfig(this.fields)) {
       this.fields[0].Value = this.hexToRgbA(this.backgroundColor);
       this.fields[1].Value = this.hexToRgbA(this.fontColor);
@@ -132,12 +143,13 @@ export class CompanyViewConfigsComponent implements OnInit {
   }
 
   saveShopDetails() {
-    const shopConfigs = [
+    const shopConfigs: Config[] = [
       {
         ConfigId: '',
         CompanyId: this.user.CompanyId,
         Name: 'shopPrimaryColor',
         Label: 'Primary Color',
+        GroupKey: '',
         Type: 'shop',
         Value: this.shopPrimaryColor,
         IsRequired: true,
@@ -152,6 +164,7 @@ export class CompanyViewConfigsComponent implements OnInit {
         Name: 'shopSecondaryColor',
         Label: 'Secondary Color',
         Type: 'shop',
+        GroupKey: '',
         Value: this.shopSecondaryColor,
         IsRequired: true,
         FieldType: 'string',
@@ -197,7 +210,7 @@ export class CompanyViewConfigsComponent implements OnInit {
       this.fields = data;
       this.fields = this.fields.filter(x => x.Type === this.type);
 
-    })
+    });
   }
   updateConfigs(configs: Config[]) {
     this.messageService.add({
@@ -255,5 +268,75 @@ export class CompanyViewConfigsComponent implements OnInit {
       ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
       ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
       ('0' + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
+  }
+
+  addShippingRow() {
+    const companyId = this.user.CompanyId;
+    this.fields.push({
+      ConfigId: '',
+      CompanyId: companyId,
+      Name: 'name',
+      Label: 'Shipping Method Name',
+      Type: 'shipping',
+      GroupKey: 'shipping1',
+      Value: ' ',
+      IsRequired: true,
+      FieldType: 'string',
+      CreateUserId: 'system',
+      ModifyUserId: 'system',
+      StatusId: 1
+    },
+      {
+        ConfigId: '',
+        CompanyId: companyId,
+        Name: 'amount',
+        Label: 'Shipping Amount',
+        Type: 'shipping',
+        GroupKey: 'shipping1',
+        Value: ' ',
+        IsRequired: true,
+        FieldType: 'string',
+        CreateUserId: 'system',
+        ModifyUserId: 'system',
+        StatusId: 1
+      },
+      {
+        ConfigId: '',
+        CompanyId: companyId,
+        Name: 'notes',
+        Label: 'Shipping Notes',
+        Type: 'shipping',
+        GroupKey: 'shipping1',
+        Value: ' ',
+        IsRequired: true,
+        FieldType: 'string',
+        CreateUserId: 'system',
+        ModifyUserId: 'system',
+        StatusId: 1
+      },
+      {
+        ConfigId: '',
+        CompanyId: companyId,
+        Name: 'notes',
+        Label: 'Shipping Notes',
+        Type: 'shipping',
+        GroupKey: 'shipping1',
+        Value: ' ',
+        IsRequired: true,
+        FieldType: 'action',
+        CreateUserId: 'system',
+        ModifyUserId: 'system',
+        StatusId: 1
+      }
+    );
+  }
+
+  removeShippingItem(index) {
+    // alert(index);
+    this.fields.splice(index);
+    this.fields.splice(index--);
+    this.fields.splice(index--);
+    this.fields.splice(index--);
+    this.fields.splice(index--);
   }
 }

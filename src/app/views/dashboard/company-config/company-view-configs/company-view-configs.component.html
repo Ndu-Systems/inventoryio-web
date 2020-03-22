@@ -1,9 +1,11 @@
-<h1 class="heading" *ngIf="type != 'shop'">
+<h1 class="heading" *ngIf="type != 'shop' && type != 'shipping'">
   invoice configurations</h1>
 <h1 class="heading" *ngIf="type == 'shop'">
   shop configurations</h1>
+<h1 class="heading" *ngIf="type == 'shipping'">
+  Shipping methods and charges</h1>
 
-  <app-actions *ngIf="type != 'shop'" [actions]="invoices"></app-actions>
+<app-actions *ngIf="type != 'shop' && type != 'shipping'" [actions]="invoices"></app-actions>
 
 
 <div class="clean-from-body">
@@ -20,7 +22,7 @@
       </div>
     </span>
 
-    
+
     <span *ngIf="type == 'logocolors'">
       <div class="group mt-1 longer">
         <span>Images</span>
@@ -36,7 +38,7 @@
             <p-colorPicker [(ngModel)]="backgroundColor" [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
           </div>
           <div>
-            <input type="text"  [(ngModel)]="backgroundColor" required="required" />
+            <input type="text" [(ngModel)]="backgroundColor" class="color-inputs" required="required" />
           </div>
         </div>
       </div>
@@ -50,7 +52,7 @@
             <p-colorPicker [(ngModel)]="fontColor" [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
           </div>
           <div>
-            <input type="text"  [(ngModel)]="fontColor" required="required" />
+            <input type="text" [(ngModel)]="fontColor" class="color-inputs" required="required" />
           </div>
         </div>
       </div>
@@ -62,7 +64,7 @@
         <app-product-images-uncropped [productId]="user.CompanyId + 'banner'"></app-product-images-uncropped>
       </div>
 
-      
+
       <div class="group mt-1 longer">
         <span>Select shop promary color</span>
 
@@ -72,12 +74,12 @@
             <p-colorPicker [(ngModel)]="shopPrimaryColor" [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
           </div>
           <div>
-            <input type="text"  [(ngModel)]="shopPrimaryColor" required="required" />
+            <input type="text" [(ngModel)]="shopPrimaryColor" class="color-inputs" required="required" />
           </div>
         </div>
       </div>
 
-       
+
       <div class="group mt-1 longer">
         <span>Select shop secondary color</span>
 
@@ -87,24 +89,69 @@
             <p-colorPicker [(ngModel)]="shopSecondaryColor" [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
           </div>
           <div>
-            <input type="text"  [(ngModel)]="shopSecondaryColor" required="required" />
+            <!-- <label>You can enter color code here <i>e.g #000000</i> </label> -->
+            <input type="text" [(ngModel)]="shopSecondaryColor" class="color-inputs" required="required" />
           </div>
         </div>
       </div>
 
       <div>
         <input type="submit" class="btn save" (click)="saveShopDetails()" value="Save Details" />
-        <a routerLink="/dashboard/configurations" class="cancel">cancel</a>
+        <input type="submit" class="btn btn-cancel save" (click)="cancel()" value="Cancel" />
+      </div>
+    </span>
+
+
+    <span *ngIf="type == 'shipping'">
+
+
+      <div class="">
+        <div class="shipping-group">
+          <div class="table">
+            <div class="header col-1-of-4">
+              <div class="th">
+                Shipping Method Name
+              </div>
+              <div class="th">
+                Shipping Amount
+              </div>
+              <div class="th">
+                Shipping Notes
+              </div>
+              <div class="th">
+                Actions
+              </div>
+            </div>
+            <!-- <pre>
+              {{fields|json}}
+
+            </pre> -->
+            <div class="tbody col-1-of-4">
+              <div class="td" *ngFor="let field of fields; let i = index">
+                <input *ngIf="field.FieldType == 'string'" [type]="field.FieldType" [(ngModel)]="field.Value" />
+                <button class="remove" *ngIf="field.FieldType == 'action'" (click)=removeShippingItem(i)><i
+                    class="pi pi-trash"></i></button>
+              </div>
+            </div>
+            <div class="add-row">
+              <a class="addrow" (click)="addShippingRow()">Add row</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div>
+        <input type="submit" class="btn save" (click)="onSave()" value="Save Details" />
+        <input type="submit" class="btn btn-cancel save" (click)="cancel()" value="Cancel" />
       </div>
     </span>
 
 
 
 
-
-
-
-    <div  *ngIf="type != 'shop'" class="cta col-1-of-2">
+    <div *ngIf="type != 'shop' && type != 'shipping'" class="cta col-1-of-2">
       <input type="submit" class="btn save" (click)="onSave()" value="Save Details" />
       <a routerLink="/dashboard/configurations" class="cancel">cancel</a>
     </div>

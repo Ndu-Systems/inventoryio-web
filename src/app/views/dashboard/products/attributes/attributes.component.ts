@@ -32,6 +32,7 @@ export class AttributesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    debugger
     this.user = this.accountService.currentUserValue;
     if (this.id.length > 8) {
       this.productService.products.subscribe(data => {

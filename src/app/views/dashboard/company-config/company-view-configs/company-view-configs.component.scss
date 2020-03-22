@@ -1,21 +1,26 @@
+@import '../../../../../assets/styles/variables';
+
 .clean-from-body {
   background: #fff;
   width: 70%;
-  padding: 5rem 2rem;
+  padding: 2rem;
   margin: 1rem 2rem;
   border-radius: 10px;
 
   @media only screen and (max-width: 600px) {
-    width: 100%;
+    width: 94%;
     padding: 1rem;
 
-
+    padding: 1rem;
+    margin:.5rem;
   }
 
   .form {
     padding: 2rem;
     padding: 0;
     margin: 0 auto;
+    width: 100%;
+    margin-bottom: 5rem;
 
     .two {
       display: grid;
@@ -91,13 +96,6 @@
         }
       }
 
-      a.cancel {
-        margin-top: 1.5rem;
-        font-weight: 500;
-        color: #D3D8DF;
-        font-size: 1.2em;
-        text-transform: capitalize;
-      }
 
       @media only screen and (max-width: 600px) {
         width: 100%;
@@ -114,10 +112,18 @@
   height: 9rem !important;
 }
 
+.btn {
+  font-weight: 500;
+}
+
 .save {
   width: 10rem;
-  float: right;
   margin: 0.5rem 0rem;
+}
+
+.btn-cancel {
+  background: $gray-color;
+  margin: .5rem 1rem;
 }
 
 
@@ -132,4 +138,69 @@ span.images {
   text-transform: capitalize;
   color: #656D88;
   float: left;
+}
+
+.color-inputs {
+  border: 1px solid $gray-color !important;
+  width: 30% !important;
+  margin-left: 2rem !important;
+  padding: .3rem !important;
+}
+
+.shipping-group {
+  // border: 1px solid black;
+  display: block;
+  padding: 1rem;
+  width: 100%;
+
+  h4 {
+    text-align: left;
+  }
+
+  .col-1-of-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+
+    .td,
+    .th {
+      padding: .4rem;
+      border-bottom: 1px solid $ligher-gray;
+      text-align: left;
+      position: relative;
+
+    }
+
+    .th {
+      font-weight: 600;
+      text-transform: uppercase;
+
+      @media only screen and (max-width: 600px) {
+        font-size: .7rem;
+      }
+    }
+
+    .td {
+      margin: .2rem;
+
+      .remove {
+        color: $danger;
+        margin-left: 1rem;
+        background: $white-color;
+        border: 1px solid $danger;
+
+      }
+
+      input {
+        border: 1px solid $cloud;
+        width: 95%;
+
+        @media only screen and (max-width: 600px) {
+          width: 100%;
+          font-size: .7rem;
+          padding: .1rem;
+          margin: .1rem;
+        }
+      }
+    }
+  }
 }

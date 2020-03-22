@@ -3,6 +3,7 @@ export interface Config {
     CompanyId: string;
     Name: string;
     Type?: string;
+    GroupKey: string;
     Label: string;
     Value: string;
     IsRequired: boolean;
@@ -25,6 +26,7 @@ export function newBankArray(companyId: string): Config[] {
             Name: 'bankname',
             Label: 'BANK NAME',
             Type: 'bank',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -38,6 +40,7 @@ export function newBankArray(companyId: string): Config[] {
             Name: 'accountnumber',
             Label: 'account number',
             Type: 'bank',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -51,6 +54,7 @@ export function newBankArray(companyId: string): Config[] {
             Name: 'branchname',
             Label: 'branch name',
             Type: 'bank',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -64,6 +68,7 @@ export function newBankArray(companyId: string): Config[] {
             Name: 'acountholder',
             Label: 'Account Holder',
             Type: 'bank',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -84,6 +89,7 @@ export function newAddressArray(companyId: string): Config[] {
             Name: 'addressline1',
             Label: 'address line1',
             Type: 'address',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -97,6 +103,7 @@ export function newAddressArray(companyId: string): Config[] {
             Name: 'addressline2',
             Label: 'address line2',
             Type: 'address',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -110,6 +117,7 @@ export function newAddressArray(companyId: string): Config[] {
             Name: 'addressline3',
             Label: 'addressline3',
             Type: 'address',
+            GroupKey: '',
             Value: ' ',
             IsRequired: false,
             FieldType: 'string',
@@ -123,6 +131,7 @@ export function newAddressArray(companyId: string): Config[] {
             Name: 'email',
             Label: 'Email Address',
             Type: 'address',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -136,6 +145,7 @@ export function newAddressArray(companyId: string): Config[] {
             Name: 'phone',
             Label: 'Contact Number',
             Type: 'address',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -159,6 +169,7 @@ export function newColorsArray(companyId: string): Config[] {
             Name: 'bgcolor',
             Label: 'Background Color',
             Type: 'logocolors',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -172,6 +183,7 @@ export function newColorsArray(companyId: string): Config[] {
             Name: 'fontcolor',
             Label: 'Font Color',
             Type: 'logocolors',
+            GroupKey: '',
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -182,4 +194,69 @@ export function newColorsArray(companyId: string): Config[] {
 
     ];
 }
+
+
+// init colors
+
+export function newShippingArray(companyId: string): Config[] {
+    return [
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'name',
+            Label: 'Shipping Method Name',
+            Type: 'shipping',
+            GroupKey: 'shipping1',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        },
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'amount',
+            Label: 'Shipping Amount',
+            Type: 'shipping',
+            GroupKey: 'shipping1',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        },
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'notes',
+            Label: 'Shipping Notes',
+            Type: 'shipping',
+            GroupKey: 'shipping1',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'string',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        },
+        {
+            ConfigId: '',
+            CompanyId: companyId,
+            Name: 'notes',
+            Label: 'Shipping Notes',
+            Type: 'shipping',
+            GroupKey: 'shipping1',
+            Value: ' ',
+            IsRequired: true,
+            FieldType: 'action',
+            CreateUserId: 'system',
+            ModifyUserId: 'system',
+            StatusId: 1
+        }
+    ];
+}
+
 

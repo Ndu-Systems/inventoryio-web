@@ -66,11 +66,11 @@ export class ProductService {
 
   }
 
-  
+
   updateSellProductState(data: Product) {
     this._sellItem.next(data);
     localStorage.setItem('sell_item', JSON.stringify(data));
-}
+  }
 
 
   updateState(products: Product[]) {
@@ -164,5 +164,8 @@ export class ProductService {
         class: `error`
       });
     });
+  }
+  getProductObservable(productId) {
+    return this.http.get<any>(`${this.url}/api/product/get-detailed-product.php?ProductId=${productId}`);
   }
 }

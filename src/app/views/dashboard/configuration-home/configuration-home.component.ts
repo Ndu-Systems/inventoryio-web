@@ -98,11 +98,17 @@ export class ConfigurationHomeComponent implements OnInit {
         link: 'dashboard/company-view-configs/logo-and-colors'
       }
     );
-    this.shops.push({
-      name: 'Cover image',
-      image: 'assets/images/actions/shop.svg',
-      link: 'dashboard/company-view-configs/shop'
-    }
+    this.shops.push(
+      {
+        name: 'Shop cover image & colors',
+        image: 'assets/images/actions/shop.svg',
+        link: 'dashboard/company-view-configs/shop'
+      },
+      {
+        name: 'Shipping Methods',
+        image: 'assets/images/actions/shop.svg',
+        link: 'dashboard/company-view-configs/shipping'
+      }
     );
   }
 }

@@ -56,6 +56,10 @@ export class ShoppingService {
     return this._sell.value;
   }
 
+  public get currentCompany(): Company {
+    return this._company.value;
+  }
+
   updateState(data: SellModel) {
     if (data) {
       this.calculateTotal();

@@ -47,25 +47,83 @@ export class ViewProductComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(r => {
       this.productId = r.id;
-      this.companyService.getCompany(this.companyId).subscribe(r => {
-        this.productId = r;
-      });
+      // this.companyService.getCompany(this.companyId).subscribe(r => {
+      //   this.productId = r;
+      // });
     });
   }
 
   ngOnInit() {
     // this.order$ = this.shoppingService.order;
+    // get product by Id
+
     this.product$ = this.productService.sellItem;
-    this.product$.subscribe(data => {
-      this.product = data;
-      this.allOrderOptions = this.product.Attributes;
-    });
-    this.shoppingService.sell.subscribe(data => {
-      if (data) {
-        this.sale = data;
-        this.cartItems = this.sale.items.length;
+    this.product$.subscribe(product => {
+      // if (product && this.shoppingService.currentCompany && this.shoppingService.currentCompany.CompanyId === product.CompanyId) {
+      // if (product && this.productService.currentProducts && 
+      // this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
+      if (product && this.productService.currentProducts && this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
+        this.product = product;
+        this.allOrderOptions = this.product.Attributes;
+        this.shoppingService.sell.subscribe(data => {
+          if (data) {
+            this.sale = data;
+            this.cartItems = this.sale.items.length;
+          }
+        });
+
+        this.shoppingService.company.subscribe(company => {
+          if (company) {
+            this.company = company;
+            this.titleService.setTitle(`${this.product.Name} | ${this.company.Name}  | Inventory IO`);
+          } else {
+            this.titleService.setTitle(`${this.product.Name} | Inventory IO`);
+
+          }
+        });
+
+
+      } else {
+        // this mean the product is not in the proccess so the link was shared.
+        this.productService.getProductObservable(this.productId).subscribe(data => {
+          this.product = data;
+          this.productService.updateSellProductState(this.product);
+
+          this.allOrderOptions = this.product.Attributes;
+
+          this.companyService.getCompany(this.product.CompanyId).subscribe(r => {
+            if (r) {
+              this.company = r;
+              this.productService.getProducts(this.company.CompanyId);
+              this.shoppingService.updateCompanyState(this.company);
+              if (this.company.Banner) {
+                this.bannerImage = this.company.Banner[0].Url;
+              } else {
+                this.bannerImage = 'assets/placeholders/shopheader.jpg';
+              }
+              if (this.company.Theme) {
+                this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+                this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+              }
+              this.titleService.setTitle(`${this.product.Name} | ${this.company.Name}  | Inventory IO`);
+            }
+
+          });
+          this.messageService.add({
+            severity: 'success',
+            summary: `Hello, please check out this awesome ${this.product.Name}, and feel free to add to cart and browse more on our shop.`,
+            detail: `Click Back to shopping to view more.`,
+            life: 10000
+          });
+        });
+
+
+
       }
+
     });
+
+
 
     this.shoppingService.company.subscribe(data => {
       if (data) {
@@ -79,6 +137,7 @@ export class ViewProductComponent implements OnInit {
         }
       }
     });
+
   }
 
   doSell(product: Product) {
