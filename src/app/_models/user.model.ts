@@ -24,6 +24,7 @@ export interface User {
   Stores?: Store[];
   Role?: Role;
   Permissions?: SystemPermissionModel[];
+  SystemRole?: string;
 }
 
 // add user to a store

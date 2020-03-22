@@ -1,75 +1,131 @@
 <div class="main-content" *ngIf="user$ | async as user">
-  <h1 class="title-header">My Profile.</h1>
-  <div class="col-1-of-2">
+  <h1 class="title-header">My Profile.
+    &nbsp;&nbsp;&nbsp;
+    <span class="username">{{user.Name}} {{user.Surname}}
+    </span>
+    &nbsp;
+    <span class="sysRole">{{user.SystemRole}}</span>
+  </h1>
+  <div class="personal col-1-of-1">
     <div class="panel">
-      <div class="dp">
-        <img *ngIf="user.DP" [src]="user.DP.Url" alt="user Profile">
-        <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="placeholder">
-      </div>
-      <div class="upload-btn-wrapper">
-        <button class="btn">Upload a file</button>
-        <input type="file" name="myfile" (change)="onChange($event.target.files)" />
-      </div>
-      <div class="quick-info col-1-of-2">
-        <h1 class="main">Name</h1>
-        <h1 class="data">{{user.Name}} {{user.Surname}}</h1>
-      </div>
-      <div class="quick-info col-1-of-2">
-        <h1 class="main">Company</h1>
-        <h1 class="data">{{user.Company?.Name}}</h1>
-      </div>
-      <div class="quick-info col-1-of-2">
-        <h1 class="main">Company domain</h1>
-        <h1 class="data">{{user.Company?.Website}}</h1>
-      </div>
-      <div class="quick-info col-1-of-2">
-        <h1 class="main">Joining date</h1>
-        <h1 class="data">{{user.CreateDate | date}}</h1>
-      </div>
-    </div>
-    <span class="information">
-      <div class="col-1-of-1">
-        <div class="panel information">
-          <h1 class="heading">
-            personal information
-          </h1>
-          <span class="col-1-of-3">
-            <div class="quick-info">
-              <h1 class="main">Full Names</h1>
-              <h1 class="data">{{user.Name}} {{user.Surname}}</h1>
-            </div>
-            <div class="quick-info">
-              <h1 class="main">Cellphone Number</h1>
-              <h1 class="data">{{user.CellphoneNumber}}</h1>
-            </div>
-            <div class="quick-info">
-              <h1 class="main">Email Address</h1>
-              <h1 class="data">{{user.Email}}</h1>
-            </div>
-          </span>
+      <div class="col-1-of-2">
+        <div class="dp">
+          <div class="picture">
+            <img *ngIf="user.DP" [src]="user.DP.Url" alt="user Profile">
+            <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="placeholder">
+          </div>
+          <div class="upload">
+            <button class="btn">Upload a file</button>
+            <input type="file" name="myfile" (change)="onChange($event.target.files)" />
+          </div>
         </div>
-        <div class="panel information">
-          <h1 class="heading">
-            company information
-          </h1>
-          <span class="col-1-of-3">
-            <div class="quick-info">
-              <h1 class="main">Company Name</h1>
-              <h1 class="data">{{user.Company?.Name}}</h1>
+        <div class="information">
+          <div class="title">
+            <h1>
+              Personal Information
+            </h1>
+          </div>
+          <div class="col-1-of-3">
+            <div class="data">
+              <h1 data-title="Fullname" class="value">{{user.Name}} {{user.Surname}}
+                <span class="label">
+                  Fullname
+                </span>
+              </h1>
             </div>
-            <div class="quick-info">
-              <h1 class="main">Company Phone</h1>
-              <h1 class="data"> {{user.Company?.TelephoneNumber}}</h1>
+            <div class="data">
+              <h1 data-title="Cellphone" class="value">{{user.CellphoneNumber}}
+                <span class="label">
+                  Cellphone
+                </span>
+              </h1>
             </div>
-            <div class="quick-info">
-              <h1 class="main">Company Domain</h1>
-              <h1 class="data">{{user.Company?.Website}}</h1>
+            <div class="data">
+              <h1 data-title="Email" class="value">{{user.Email}}
+                <span class="label">
+                  Email
+                </span>
+              </h1>
             </div>
-          </span>
-          <div class="col-1-of-1">
-            <a routerLink="/dashboard/edit-company">update</a>
+            <div class="data">
+              <h1 data-title="Email" class="value">{{user.SystemRole}}
+                <span class="label">
+                  Role in the system
+                </span>
+              </h1>
+            </div>
+            <div class="data">
+              <h1 data-title="Email" class="value">{{user.CreateDate | date }}
+                <span class="label">
+                  Member since
+                </span>
+              </h1>
+            </div>
           </div>
         </div>
       </div>
-    </span>
+    </div>
+    <!-- <div class="panel">
+      <div class="title">
+        <h1>
+          Profile Options
+        </h1>
+      </div>
+      <p>short-cut section</p>
+    </div> -->
+  </div>
+  <div class="organizational col-1-of-1">
+    <!-- <div class="panel">
+      <div class="title">
+        <h1>
+          Shortcuts
+        </h1>
+      </div>
+      <p>short-cut section</p>
+    </div> -->
+    <div class="panel">
+      <div class="title">
+        <h1>
+          Company Information
+        </h1>
+      </div>
+      <div class="information">
+        <div class="col-1-of-3" *ngIf="user.Company">
+          <div class="data">
+            <h1 data-title="Company Name" class="value">{{user.Company.Name}}
+              <span class="label">
+                Company Name
+              </span>
+            </h1>
+          </div>
+
+          <div class="data">
+            <h1 data-title="Company Contact" class="value">{{user.Company.TelephoneNumber}}
+              <span class="label">
+                Company Contact #
+              </span>
+            </h1>
+          </div>
+
+          <div class="data">
+            <h1 data-title="Company Email" class="value">info@{{user.Company.Website}}
+              <span class="label">
+                Company Email
+              </span>
+            </h1>
+          </div>
+
+          <div class="data">
+            <h1 data-title="Company Website" class="value">{{user.Company.Website}}
+              <span class="label">
+                Company Website
+              </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="cta-section">
+        <a routerLink="/dashboard/edit-company">Update Company Information</a>
+      </div>
+    </div>
   </div>
