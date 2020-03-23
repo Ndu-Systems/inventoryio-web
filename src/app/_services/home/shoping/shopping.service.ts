@@ -151,6 +151,14 @@ export class ShoppingService {
       sale.items.forEach(item => {
         total += item.subTotal;
       });
+      if (sale.charges) {
+        sale.charges.forEach(x => {
+          if (!isNaN(x.amount)) {
+            total += Number(x.amount);
+          }
+
+        });
+      }
       sale.total = total;
     }
   }

@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { OrderOptions } from 'src/app/_models/order.options.model';
 import { MessageService } from 'primeng/api';
+import { Config } from 'src/app/_models/Config';
+import { ConfigService } from 'src/app/_services/dashboard/config.service';
 
 @Component({
   selector: 'app-shop-checkout',
@@ -50,6 +52,7 @@ export class ShopCheckoutComponent implements OnInit {
     private invoiceService: InvoiceService,
     private router: Router,
     private messageService: MessageService,
+    private configService: ConfigService,
     private titleService: Title
 
   ) {
@@ -67,6 +70,7 @@ export class ShopCheckoutComponent implements OnInit {
         if (this.company.Banner) {
           this.bannerImage = this.company.Banner[0].Url;
         }
+
 
       });
     });
@@ -286,6 +290,23 @@ export class ShopCheckoutComponent implements OnInit {
     };
     console.log(order);
     console.log('items', this.sale.items);
+
+    let shipment = {
+      ConfigId: '',
+      CompanyId: this.company.CompanyId,
+      Name: 'shippingFee',
+      Label: this.sale.charges[0] && this.sale.charges[0].line || '',
+      Type: 'shippingFee',
+      GroupKey: '',
+      Value: this.sale.charges[0] && this.sale.charges[0].amount || '',
+      IsRequired: true,
+      FieldType: 'string',
+      CreateUserId: 'system',
+      ModifyUserId: 'system',
+      StatusId: 1
+    };
+    order.Charges = [shipment];
+    // this.configService.addConfigsRange([shipment]);
     this.shoppingService.addOrder(order, this.sale.items).subscribe(response => {
       this.order = response;
       this.shoppingService.updateOrderState(this.order);

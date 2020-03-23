@@ -98,7 +98,8 @@ export class CompanyViewConfigsComponent implements OnInit {
     }
 
     if (this.type === 'shipping') {
-      this.fields = newShippingArray(this.user.CompanyId);
+      this.fields = newShippingArray(this.user.CompanyId, new Date().getDate() + Math.random() * 9587 + ''
+      );
     }
 
     this.companyConfigsService.updateState(this.fields);
@@ -272,13 +273,14 @@ export class CompanyViewConfigsComponent implements OnInit {
 
   addShippingRow() {
     const companyId = this.user.CompanyId;
+    const groupKey = new Date().getDate() + Math.random() * 9987 + '';
     this.fields.push({
       ConfigId: '',
       CompanyId: companyId,
       Name: 'name',
       Label: 'Shipping Method Name',
       Type: 'shipping',
-      GroupKey: 'shipping1',
+      GroupKey: groupKey,
       Value: ' ',
       IsRequired: true,
       FieldType: 'string',
@@ -292,7 +294,7 @@ export class CompanyViewConfigsComponent implements OnInit {
         Name: 'amount',
         Label: 'Shipping Amount',
         Type: 'shipping',
-        GroupKey: 'shipping1',
+        GroupKey: groupKey,
         Value: ' ',
         IsRequired: true,
         FieldType: 'string',
@@ -306,7 +308,7 @@ export class CompanyViewConfigsComponent implements OnInit {
         Name: 'notes',
         Label: 'Shipping Notes',
         Type: 'shipping',
-        GroupKey: 'shipping1',
+        GroupKey: groupKey,
         Value: ' ',
         IsRequired: true,
         FieldType: 'string',
@@ -320,7 +322,7 @@ export class CompanyViewConfigsComponent implements OnInit {
         Name: 'notes',
         Label: 'Shipping Notes',
         Type: 'shipping',
-        GroupKey: 'shipping1',
+        GroupKey: groupKey,
         Value: ' ',
         IsRequired: true,
         FieldType: 'action',

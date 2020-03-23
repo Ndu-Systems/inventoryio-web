@@ -141,15 +141,15 @@
             </h4>
           </div>
 
-          <div class="shipping">
+          <div class="shipping" *ngIf="shippingsList.length">
 
             <div class="input">
               <p>
                 shipping
               </p>
               <select class="input" (change)="deliveryChanged($event.target.value)" name="" id="">
-                <option value="delivery" selected>Standard delivery - R150.00 </option>
-                <option value="collect">I will collect </option>
+                <option value="delivery" selected>Please select</option>
+                <option [value]="ship.key" *ngFor="let ship of shippingsList">{{ship.line}}</option>
               </select>
             </div>
 
@@ -171,10 +171,10 @@
                 <h4>
                   total cost
                 </h4>
-    
+
                 <h4>
                   {{sale?.total + deliveryFee | currency:'R'}}
-    
+
                 </h4>
               </div>
 
@@ -188,7 +188,7 @@
           </div>
           <!-- <app-shipping></app-shipping> -->
         </div>
-<!-- 
+        <!-- 
         <div class="sell total">
           <h4>
             {{sale?.total | currency:'R'}}

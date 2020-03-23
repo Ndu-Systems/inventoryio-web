@@ -15,4 +15,5 @@ export interface Company {
     Banner?: Image[];
     Logo?: Image[];
     Theme?: Config[];
+    Shipping?: Config[];
 }
