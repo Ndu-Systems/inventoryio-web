@@ -36,11 +36,11 @@ export class ConfigurationHomeComponent implements OnInit {
 
   populateActions() {
     this.actions.push(
-      {
-        name: 'manage stores',
-        image: 'assets/images/actions/shop.svg',
-        link: 'dashboard/stores'
-      },
+      // {
+      //   name: 'manage stores',
+      //   image: 'assets/images/actions/shop.svg',
+      //   link: 'dashboard/stores'
+      // },
       {
         name: 'manage staff',
         image: 'assets/images/actions/staff.svg',

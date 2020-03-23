@@ -8,131 +8,149 @@ $dp-reduced : 6rem;
 
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
+  }
+}
 
+.title {
+  h1 {
+    font-size: 1.125rem;
+    font-weight: 900;
+  }
+}
+
+.information {
+
+  .data {
+    h1 {
+      font-size: 0.938rem;
+
+      &.value {
+        font-weight: 600;
+
+        .label {
+          font-weight: 900;
+          display: block;
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .col-1-of-3 {
+      grid-template-columns: 50% auto;
+    }
   }
 
 }
 
-.col-1-of-1 {}
+.cta-section {
+  a {
+    font-size: 1.125rem;
+    font-weight: 900;
+    color: #3742FA;
+    float: right;
+  }
 
-.panel {
-  padding: 6rem 2rem;
+  @media only screen and (max-width: 600px) {
+    a {
+      font-size: 0.813rem;
+      float: left;
+    }
+  }
+}
 
-  &.information {
-    padding: 3rem 2rem;
+.personal {
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+  width: 71%;
 
-    h1 {
-      &.heading {
-        padding-left: 0;
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #7B8C98;
+  &.col-1-of-2 {
+    grid-template-columns: 70% auto;
+  }
+
+  .dp {
+    .picture {
+      padding: 0;
+      margin: 0 auto;
+      display: block;
+      border-radius: $dp-width;
+      width: $dp-width;
+      height: $dp-width;
+      overflow: hidden;
+
+      img {
+        height: 100%;
       }
     }
 
-    @media only screen and (max-width: 600px) {
-      padding: 2rem 1rem;
+    .upload {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      margin: 1rem 5rem;
+
+      .btn {
+        border: 2px solid gray;
+        color: gray;
+        background-color: #F5F6FA;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: bold;
+      }
+
+      input[type=file] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
     }
   }
 
   @media only screen and (max-width: 600px) {
-    padding: 2rem 1rem;
-  }
-
-}
-
-.dp {
-  padding: 0;
-  margin: 0 2rem;
-  display: block;
-  border-radius: $dp-width;
-  width: $dp-width;
-  height: $dp-width;
-  overflow: hidden;
-  // border: .1rem solid #fff;
-
-  display: block;
-
-  @media only screen and (max-width: 768px) {}
-
-  @media only screen and (max-width: 600px) {
-    border-radius: $dp-reduced;
-    width: $dp-reduced;
-    height: $dp-reduced;
-    margin-left: 5rem;
-    margin-top: 1.5rem;
-  }
-
-
-  img {
     width: 100%;
-  }
+    padding: 0;
 
-  img.placeholder {
-    // width: 60%;
+    &.col-1-of-2 {
+      grid-template-columns: 100%;
+    }
 
-    display: block;
+    .dp {
+      .upload {
+        margin: 1rem 2.5rem;
 
-    @media only screen and (max-width: 600px) {}
-
-  }
-
-  img.mob {
-    display: none;
-
-    @media only screen and (max-width: 600px) {
-      display: block;
+        .btn {
+          font-size: 0.65rem;
+        }
+      }
     }
   }
 }
 
-.upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+.organizational {
+  padding: 0 2rem;
+  width: 71%;
+
+  &.col-1-of-2 {
+    grid-template-columns: 25% auto;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    padding: 0;
+
+    &.col-1-of-2 {
+      grid-template-columns: 100%;
+    }
+  }
+}
+
+.panel {
   padding: 2rem;
 
-  .btn {
-    border: 2px solid gray;
-    color: gray;
-    background-color: white;
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: bold;
+  @media only screen and (max-width: 600px) {
+    padding: 1rem;
   }
-
-  input[type=file] {
-    font-size: 100px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-  }
-}
-
-.quick-info {
-  &.col-1-of-2 {
-    grid-template-columns: 40% 60%;
-  }
-
-  h1 {
-    font-size: 1.1rem;
-
-    &.main {
-      font-weight: 900;
-    }
-
-    &.data {
-      font-weight: 500;
-    }
-  }
-
-}
-
-a {
-  font-weight: 600;
-  color: #104CE5;
-  text-transform: uppercase;
-  text-align: right;
 }
