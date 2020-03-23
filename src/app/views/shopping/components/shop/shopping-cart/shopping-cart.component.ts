@@ -30,6 +30,7 @@ export class ShoppingCartComponent implements OnInit {
   shippings: Config[] = [];
   shippingsList = [];
   selectedShippingMethod: any;
+  currency = 'R';
 
 
   constructor(
@@ -251,8 +252,11 @@ export class ShoppingCartComponent implements OnInit {
     // console.log('nn', groupedItems);
     groupedItems.forEach(x => {
       x.data.forEach(vals => { });
-      const item =
-        `${this.findConfigByName('name', x.data)}- ${this.findConfigByName('amount', x.data)}`;
+      let item =
+        `${this.findConfigByName('name', x.data)}-  ${this.currency}${this.findConfigByName('amount', x.data)}`;
+      if (isNaN(this.findConfigByName('amount', x.data))) {
+        item = `${this.findConfigByName('name', x.data)}- ${this.findConfigByName('amount', x.data)}`;
+      }
       this.shippingsList.push({
         line: item,
         amount: this.findConfigByName('amount', x.data),
@@ -263,7 +267,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   findConfigByName(name: string, items) {
-    return items.find(x => x.Name === name).Value;
+    return (items.find(x => x.Name === name).Value || '').trim();
   }
   findConfigKeyByName(name: string, items) {
     return items.find(x => x.Name === name).GroupKey;

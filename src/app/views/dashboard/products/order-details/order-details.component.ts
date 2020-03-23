@@ -48,7 +48,6 @@ export class OrderDetailsComponent implements OnInit {
       backto: '/dashboard/list-orders',
     });
     this.ordersService.order.subscribe(state => {
-      debugger
       if (!state) { return; }
       this.ordersService.getProductsForAnOrder(state.OrdersId);
       this.total = state.Total;

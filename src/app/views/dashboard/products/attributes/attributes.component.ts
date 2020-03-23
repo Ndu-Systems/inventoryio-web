@@ -32,7 +32,6 @@ export class AttributesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger
     this.user = this.accountService.currentUserValue;
     if (this.id.length > 8) {
       this.productService.products.subscribe(data => {
@@ -147,7 +146,6 @@ export class AttributesComponent implements OnInit {
       const checkIfNameISAlreadyMaped = this.attributes.find(x => x.Name === optionsName);
       if (!checkIfNameISAlreadyMaped) {
         // find me all attributes of the same name . eg find me : Size = [S,M,L]
-        debugger
         const allValues: any[] = this.attributesToInit.filter(x => x.Name === optionsName).map(x => {
           return {
             AttributeValue: x.AttributeValue,
