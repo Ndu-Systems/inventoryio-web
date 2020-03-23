@@ -153,7 +153,7 @@ export class ShoppingService {
       });
       if (sale.charges) {
         sale.charges.forEach(x => {
-          if (!isNaN(x.amount)) {
+          if (!isNaN(x && x.amount)) {
             total += Number(x.amount);
           }
 
