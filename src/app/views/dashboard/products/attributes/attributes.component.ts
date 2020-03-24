@@ -25,6 +25,7 @@ export class AttributesComponent implements OnInit {
 
   // the whole new thing now
   attributesToInit: Attribute[] = [];
+  lockConfirmedMessage: boolean;
 
   constructor(
     private accountService: AccountService,
@@ -168,12 +169,15 @@ export class AttributesComponent implements OnInit {
             life: 9000,
             detail: `${item.Name} ${item.AttributeValue} will be removed, please remember to press save button, when you done, thank you`
           });
-          return true;
+          this.lockConfirmedMessage = true;
+          this.confirmOptions();
+          this.lockConfirmedMessage = false;
+
         });
       }
     });
 
-
+    return true;
 
   }
 
@@ -207,11 +211,14 @@ export class AttributesComponent implements OnInit {
         this.attributes.push(data);
       }
     });
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Option Confirmed',
-      detail: `Please remember to press save button, when you done, thank you.`
-    });
+    if (!this.lockConfirmedMessage) {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Option Confirmed',
+        detail: `Please remember to press save button, when you done, thank you.`
+      });
+    }
+
     this.attributeService.updateState(this.attributes);
   }
 
