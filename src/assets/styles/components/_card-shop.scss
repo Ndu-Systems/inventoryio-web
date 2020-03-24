@@ -9,13 +9,14 @@
   background: #fff;
   text-align: center;
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     border: 1px solid #95AFC0
   }
-  
+
 
   @media only screen and (max-width: 600px) {
-    grid-template-rows: 130px 50px 30px 60px;
+    grid-template-rows: 130px 41px 40px 1px;
     margin: .5rem;
 
   }
@@ -37,7 +38,8 @@
 
     @media only screen and (max-width: 600px) {
       margin: 3px 7px;
-      p{
+
+      p {
         font-size: .6rem;
       }
 
@@ -48,7 +50,11 @@
       color: #2E344C;
       font-weight: 700;
       text-align: left;
-      font-size: 13px;
+      margin: 0;
+      margin-top: .3rem;
+      font-size: 12px;
+      margin: 0;
+      margin-top: .3rem;
     }
   }
 
@@ -65,7 +71,10 @@
       color: #7B8C98;
       font-weight: 600;
       text-align: left;
-      font-size: 13px;
+      font-size: 12px;
+      margin: 0;
+      margin-top: .3rem;
+      
     }
   }
 
@@ -82,22 +91,24 @@
 }
 
 
-.cover-photo{
+.cover-photo {
   width: 100%;
   padding-top: 4%;
   margin-bottom: -6px;
+
   @media only screen and (max-width: 600px) {
     padding: 1%;
     padding-top: 16%;
 
   }
-  img{
+
+  img {
     width: 100%;
   }
 }
 
 
-.small-heading{
+.small-heading {
   margin-top: 0;
   border-bottom: 1px solid $ligher-gray;
   padding-bottom: 2rem;
