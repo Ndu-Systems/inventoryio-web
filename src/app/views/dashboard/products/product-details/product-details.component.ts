@@ -5,6 +5,8 @@ import { Brand, Caterory, User, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { AccountService, ProductService, BrandService, CateroryService, BannerService, ScannerService } from 'src/app/_services';
 import { MessageService } from 'primeng/api';
+import { AttributeService } from 'src/app/_services/dashboard/attribute.service';
+import { Attribute } from 'src/app/_models/Attribute.model';
 
 @Component({
   selector: 'app-product-details',
@@ -23,6 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   productId: string;
   showScan: boolean;
   heading;
+  attributes: Attribute[];
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -33,6 +36,8 @@ export class ProductDetailsComponent implements OnInit {
     private messageService: MessageService,
     private bannerService: BannerService,
     private scannerService: ScannerService,
+    private attributeService: AttributeService,
+
 
   ) {
   }
@@ -54,6 +59,12 @@ export class ProductDetailsComponent implements OnInit {
 
     this.brands$ = this.brandService.brands;
     this.catergories$ = this.cateroryService.categories;
+
+    this.attributeService.attributes.subscribe(data => {
+      if (data) {
+        this.attributes = data;
+      }
+    });
   }
   initForm() {
     this.heading = this.product.Name || 'Product details';
@@ -91,6 +102,7 @@ export class ProductDetailsComponent implements OnInit {
     return this.rForm.controls;
   }
   update(product: Product) {
+    product.Attributes = this.attributes;
     this.productService.updateProduct(product);
     this.messageService.add({
       severity: 'success',

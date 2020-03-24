@@ -123,3 +123,61 @@
   font-weight: 900;
   font-size: 1.8rem;
 }
+
+
+.actions-footer {
+  width: 100%;
+  height: 7rem;
+  padding: 1rem 2rem;
+  background: $cloud-ligher;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  .actions {
+    // background: red;
+    display: grid;
+    grid-template-columns: 65% 20% auto;
+    padding: .5rem;
+
+    .div {
+      padding: 0 2rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 2% 45% auto;
+
+      .div {
+        padding: 0 .2rem;
+      }
+    }
+
+    .action-btn {
+      margin: .2rem 1rem;
+
+
+      &:disabled {
+        background: $muted-color;
+        cursor: none;
+
+        &:hover {
+          box-shadow: none;
+          cursor: no-drop;
+          background: $muted-color;
+
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        font-size: .8rem;
+        text-align: center;
+      }
+    }
+
+    .cancel {
+      background: $strong-gray;
+      color: $white-color;
+      box-shadow: none;
+    }
+  }
+}

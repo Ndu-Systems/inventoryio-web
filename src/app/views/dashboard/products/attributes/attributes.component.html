@@ -17,7 +17,7 @@
       Actions
     </div>
   </div>
-  <div class="col-1-of-5" *ngFor="let item of attributesToInit">
+  <div class="col-1-of-5" *ngFor="let item of attributesToInit; let i = index">
     <div class="td">
       <input type="text" [(ngModel)]="item.Name" placeholder="e.g Size" />
     </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="td">
       <a class="btn-link" (click)="copyDown(item)">Copy |</a>
-      <a class="btn-link" (click)="removeItem(item)"> Rem</a>
+      <a class="btn-link" (click)="removeItem(i)"> Rem</a>
     </div>
   </div>
 
@@ -40,3 +40,4 @@
     <button>Confirm options</button>
   </div>
 </div>
+<p-confirmDialog [header]="confirmDialogHeader"></p-confirmDialog>

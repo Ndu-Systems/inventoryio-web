@@ -69,3 +69,18 @@
     }
   }
 }
+
+
+
+
+::ng-deep {
+  body .ui-dialog .ui-dialog-titlebar {
+    background: #f39c12 !important;
+    color: #fff !important;
+  }
+
+  body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
+    color: #fff !important;
+
+  }
+}
