@@ -198,34 +198,6 @@ export class ShopCheckoutComponent implements OnInit {
     return `${date.getDate()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
   }
 
-  // mapitemOptionsToOrderOptions(items: Item[]): OrderOptions[] {
-  //   const options: OrderOptions[] = [];
-  //   items.forEach(item => {
-
-  //     item.itemOptions.forEach(itemOpt => {
-  //       const optionsItem: OrderOptions = {
-  //         OrderId: '0',
-  //         ProductId: itemOpt.productId,
-  //         OrderProductId: '0',
-  //         OptionId: itemOpt.optionId,
-  //         ValueId: itemOpt.valueId,
-  //         OptionValue: itemOpt.value,
-  //         OptionName: itemOpt.optionName,
-  //         ValuePrice: 0,
-  //         ValueIdQty: 0,
-  //         CompanyId: this.companyId,
-  //         CreateUserId: 'customer',
-  //         ModifyUserId: 'customer',
-  //         StatusId: 1
-  //       };
-  //       options.push(optionsItem);
-  //     });
-  //     // tslint:disable-next-line: one-variable-per-declaration
-
-  //   });
-  //   return options;
-  // }
-
   onSubmit() {
 
     if (this.selectedType === 'eft' && !this.checkedEft) {

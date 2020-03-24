@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { NotFoundConstants } from '../../shared';
 import { OrderOptions } from 'src/app/_models/order.options.model';
+import { Config } from 'src/app/_models/Config';
 
 @Component({
   selector: 'app-sell',
@@ -39,6 +40,12 @@ export class SellComponent implements OnInit {
 
   // order options
   productOptions: OrderOptions[] = [];
+  shippingsList = [];
+  selectedShippingMethod: any;
+  deliveryFee = 0;
+  shippings: Config[] = [];
+  currency = 'R';
+
 
 
   constructor(
@@ -92,6 +99,11 @@ export class SellComponent implements OnInit {
 
       }
     });
+
+    if (this.user.Company.Shipping) {
+      this.shippings = this.user.Company.Shipping;
+      this.groupShipping();
+    }
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
@@ -164,6 +176,17 @@ export class SellComponent implements OnInit {
       return false;
     }
     this.ordersService.updateOrderState(null);
+
+    if (!this.selectedShippingMethod && this.shippings.length > 0) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Shipping Method not selected',
+        detail: 'Please select shipping method before you checkout.'
+      });
+      return false;
+    }
+    this.sale.charges = [this.selectedShippingMethod];
+    this.saleService.updateState(this.sale);
     const order: Orders = {
       CompanyId: this.user.CompanyId,
       ParntersId: this.selectedPartner && this.selectedPartner.PartnerId || null,
@@ -176,6 +199,23 @@ export class SellComponent implements OnInit {
       Status: 'new',
       StatusId: 1
     };
+
+    let shipment = {
+      ConfigId: '',
+      CompanyId: this.user.CompanyId,
+      Name: 'shippingFee',
+      Label: this.sale.charges[0] && this.sale.charges[0].line || '',
+      Type: 'shippingFee',
+      GroupKey: '',
+      Value: this.sale.charges[0] && this.sale.charges[0].amount || '',
+      IsRequired: true,
+      FieldType: 'string',
+      CreateUserId: 'system',
+      ModifyUserId: 'system',
+      StatusId: 1
+    };
+    order.Charges = [shipment];
+
     console.log(order);
     console.log('items', this.sale.items);
     this.ordersService.addOrder(order, this.sale.items);
@@ -286,7 +326,8 @@ export class SellComponent implements OnInit {
 
 
   checkIfProductOptionsAreSelected(product: Product) {
-    if (product.Attributes.length !== this.productOptions.filter(x => x.ProductId === product.ProductId).length) {
+    if (product.Attributes.filter(x => x.Values && x.Values.length > 0).length
+      !== this.productOptions.filter(x => x.ProductId === product.ProductId).length) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Empty cart',
@@ -307,55 +348,55 @@ export class SellComponent implements OnInit {
 
     return '[]';
   }
+  deliveryChanged(data) {
+    if (data === 'delivery') {
+      this.selectedShippingMethod = undefined;
+      return false;
+    }
+    const cost = this.shippingsList.find(x => x.key === data);
+    if (cost && !isNaN(cost.amount)) {
+      this.deliveryFee = Number(cost.amount);
+      this.selectedShippingMethod = cost;
+    } else {
+      this.deliveryFee = 0;
+      this.selectedShippingMethod = cost;
+    }
+    console.log(cost);
 
 
-  // mapitemOptionsToOrderOptions(items: Item[]): OrderOptions[] {
-  //   const options: OrderOptions[] = [];
-  //   items.forEach(item => {
+  }
+  groupShipping() {
+    const groupedItems: { key: string, data: Config[] }[] = [];
+    this.shippings.forEach(item => {
+      if (!groupedItems.find(x => x.key === item.GroupKey)) {
+        groupedItems.push({
+          data: this.shippings.filter(x => x.GroupKey === item.GroupKey),
+          key: item.GroupKey
+        });
+      }
+    });
+    // console.log('nn', groupedItems);
+    groupedItems.forEach(x => {
+      x.data.forEach(vals => { });
+      let item =
+        `${this.findConfigByName('name', x.data)}-  ${this.currency}${this.findConfigByName('amount', x.data)}`;
+      if (isNaN(this.findConfigByName('amount', x.data))) {
+        item = `${this.findConfigByName('name', x.data)}- ${this.findConfigByName('amount', x.data)}`;
+      }
+      this.shippingsList.push({
+        line: item,
+        amount: this.findConfigByName('amount', x.data),
+        key: this.findConfigKeyByName('amount', x.data),
+      });
 
-  //     item.options.forEach(itemOpt => {
-  //       const optionsItem: OrderOptions = {
-  //         // OrderId: '0',
-  //         // ProductId: itemOpt.productId,
-  //         // OrderProductId: '0',
-  //         // OptionId: itemOpt.optionId,
-  //         // ValueId:  itemOpt.valueId,
-  //         // OptionValue: itemOpt.value,
-  //         // OptionName: itemOpt.optionName,
-  //         // ValuePrice: 0,
-  //         // ValueIdQty: 0,
-  //         // CompanyId: this.user.CompanyId,
-  //         // CreateUserId: 'customer',
-  //         // ModifyUserId: 'customer',
-  //         // StatusId: 1
+    });
+  }
 
-
-  //           Id: '1',
-  //           OrderId: 'bc2497d5-6a76-11ea-aee0-48f17f8d4d88',
-  //           ProductId: '10f18237-5dde-11ea-b68c-48f17f8d4d88',
-  //           OptionId: '10f2eb99-5dde-11ea-b68c-48f17f8d4d88',
-  //           // ValueId: itemOpt.ValueId,
-  //           OptionValue: 'L',
-  //           OptionName: 'Size',
-  //           ValuePrice: '0',
-  //           ValueIdQty: '0',
-  //           CompanyId: '94c5b3cf-d170-11e9-b97c-48f17f8d4d88',
-  //           CreateDate: '2020-03-20 08:47:58',
-  //           CreateUserId: 'customer',
-  //           ModifyDate: '2020-03-20 08:47:58',
-  //           ModifyUserId: 'customer',
-  //           StatusId: '1'
-
-  //       };
-
-
-  //       options.push(optionsItem);
-  //     });
-  //     // tslint:disable-next-line: one-variable-per-declaration
-
-  //   });
-  //   return options;
-  // }
-
+  findConfigByName(name: string, items) {
+    return (items.find(x => x.Name === name).Value || '').trim();
+  }
+  findConfigKeyByName(name: string, items) {
+    return items.find(x => x.Name === name).GroupKey;
+  }
 }
 

@@ -110,14 +110,33 @@ export class SaleService {
     }
   }
   calculateTotal() {
+    // if (this.currentSellModelValue) {
+    //   let total = 0;
+    //   const sale = this.currentSellModelValue;
+    //   sale.items.forEach(item => {
+    //     total += item.subTotal;
+    //   });
+    //   sale.total = total;
+    // }
+
     if (this.currentSellModelValue) {
       let total = 0;
       const sale = this.currentSellModelValue;
       sale.items.forEach(item => {
         total += item.subTotal;
       });
+      if (sale.charges) {
+        sale.charges.forEach(x => {
+          if (!isNaN(x && x.amount)) {
+            total += Number(x.amount);
+          }
+
+        });
+      }
       sale.total = total;
     }
   }
+
+  
 
 }
