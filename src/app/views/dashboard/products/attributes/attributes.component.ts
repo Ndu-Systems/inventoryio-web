@@ -20,7 +20,7 @@ export class AttributesComponent implements OnInit {
   user: User;
 
   product: Product;
-  confirmDialogHeader = 'Confirm Delete';
+  confirmDialogHeader = 'Confirm Delete Option';
 
 
   // the whole new thing now

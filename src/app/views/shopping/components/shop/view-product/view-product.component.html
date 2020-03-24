@@ -34,7 +34,7 @@
             Select Options
           </h1>
           <div class="option-items">
-            <div class="options-item" *ngFor="let attribute of product.Attributes">
+            <div class="options-item" *ngFor="let attribute of product.Attributes | removeNoValueAttributes">
               <div class="label">
                 {{attribute.Name}}:
               </div>

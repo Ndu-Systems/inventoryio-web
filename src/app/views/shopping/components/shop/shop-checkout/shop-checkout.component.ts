@@ -41,6 +41,7 @@ export class ShopCheckoutComponent implements OnInit {
     { label: 'EFT Transfer', value: 'eft' },
     { label: ' Cash on delivery', value: 'cash' }
   ];
+  cartItems: number;
 
 
   constructor(
@@ -80,6 +81,7 @@ export class ShopCheckoutComponent implements OnInit {
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;
+        this.cartItems = this.sale.items.length;
         console.log('current order', state);
       }
     });

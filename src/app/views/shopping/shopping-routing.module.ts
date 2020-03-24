@@ -12,6 +12,7 @@ import { ShopComponent } from './components/shop/shop/shop.component';
 import { ShoppingNavComponent } from './components/shop/shopping-nav/shopping-nav.component';
 import { ShopCheckoutComponent } from './components/shop/shop-checkout/shop-checkout.component';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
+import { RemoveNoValuesAttributesPipe } from 'src/app/_pipes/remove-no-values-attributes.pipe';
 const routes: Routes = [
   {
     path: '', component: ShoppingComponent,
@@ -37,7 +38,8 @@ export const declarations = [
   ViewImagesComponent,
   ShoppingNavComponent,
   ShopCheckoutComponent,
-  FormatOptionsPipe
+  FormatOptionsPipe,
+  RemoveNoValuesAttributesPipe
 ];
 
 

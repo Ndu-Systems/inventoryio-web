@@ -28,7 +28,7 @@ export class ViewProductComponent implements OnInit {
   cartItems: number;
   itemQnty = 1;
   orderOptions: OrderOptions[] = [];
-  allOrderOptions: Attribute[] = [];
+  allProductAttributes: Attribute[] = [];
   shopPrimaryColor: string;
   shopSecondaryColor: string;
   bannerImage = 'assets/placeholders/shopheader.jpg';
@@ -64,7 +64,7 @@ export class ViewProductComponent implements OnInit {
       // this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
       if (product && this.productService.currentProducts && this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
         this.product = product;
-        this.allOrderOptions = this.product.Attributes;
+        this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
         this.shoppingService.sell.subscribe(data => {
           if (data) {
             this.sale = data;
@@ -89,7 +89,7 @@ export class ViewProductComponent implements OnInit {
           this.product = data;
           this.productService.updateSellProductState(this.product);
 
-          this.allOrderOptions = this.product.Attributes;
+          this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
 
           this.companyService.getCompany(this.product.CompanyId).subscribe(r => {
             if (r) {
@@ -153,7 +153,7 @@ export class ViewProductComponent implements OnInit {
     }
 
     let isErross = false;
-    this.allOrderOptions.forEach(attribute => {
+    this.allProductAttributes.forEach(attribute => {
       const checkIfExist = this.orderOptions.find(x => x.OptionId === attribute.AttributeId);
       if (!checkIfExist) {
         this.messageService.add({

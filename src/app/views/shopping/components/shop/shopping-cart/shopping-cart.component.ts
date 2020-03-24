@@ -31,6 +31,7 @@ export class ShoppingCartComponent implements OnInit {
   shippingsList = [];
   selectedShippingMethod: any;
   currency = 'R';
+  cartItems: number;
 
 
   constructor(
@@ -69,6 +70,8 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;
+        this.cartItems = this.sale.items.length;
+
       }
     });
 
