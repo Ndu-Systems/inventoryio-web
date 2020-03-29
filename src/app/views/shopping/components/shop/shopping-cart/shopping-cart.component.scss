@@ -352,3 +352,12 @@
   margin: 1rem 0;
 
 }
+
+.action-btn {
+
+  @media only screen and (max-width: 600px) {
+    padding: 10px 8px;
+    font-size: .9rem;
+    font-weight: 500;
+  }
+}

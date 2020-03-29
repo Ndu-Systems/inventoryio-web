@@ -13,9 +13,10 @@
     </div> -->
 
     <h3 class="small-heading">
+      <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
       Shopping cart
     </h3>
-    <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a>
+    <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
 
 
 
@@ -167,7 +168,7 @@
 
               <div class="input">
                 <div class="add">
-                  <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                  <button class="btn action-btn " [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
                     (click)="checkout()">proceed to checkout</button>
                 </div>
               </div>

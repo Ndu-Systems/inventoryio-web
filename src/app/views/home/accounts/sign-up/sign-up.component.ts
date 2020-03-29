@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AccountService, RolesService } from 'src/app/_services';
 import { User } from 'src/app/_models';
 import { SplashService } from 'src/app/_services/splash.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-up',
@@ -24,10 +25,14 @@ export class SignUpComponent implements OnInit {
     private routeTo: Router,
     private accountService: AccountService,
     private splashService: SplashService,
+    private titleService: Title
+
   ) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle(`Create a new vendor account | Inventory io`);
+
     this.accountService.updateUserState(null);
     this.rForm = this.fb.group({
       email: new FormControl(

@@ -37,7 +37,7 @@ export class ShopComponent implements OnInit {
 
     this.company = this.companyService.companyValue;
     if (this.company) {
-      this.welocme = `Shop with ${this.company.Name}`;
+      this.welocme = `${this.company.Name} Shop : Inventory IO`;
       if (this.company.Banner) {
         this.bannerImage = this.company.Banner[0].Url;
       } else {
@@ -56,7 +56,7 @@ export class ShopComponent implements OnInit {
       this.companyService.getCompany(this.companyId).subscribe(r => {
         this.company = r;
         this.shoppingService.updateCompanyState(this.company);
-        this.welocme = `Shop with ${this.company.Name}`;
+        this.welocme = `${this.company.Name} Shop : Inventory IO`;
         if (this.company.Banner) {
           this.bannerImage = this.company.Banner[0].Url;
         } else {

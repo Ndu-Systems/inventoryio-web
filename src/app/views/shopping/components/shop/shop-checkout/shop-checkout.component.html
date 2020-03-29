@@ -6,9 +6,10 @@
   </div>
   <div class="content">
     <h3 class="small-heading">
+      <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
       Checkout and payments
     </h3>
-    <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a>
+    <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
 
     <div class="col-1-of-2 col-70-30">
 
@@ -22,7 +23,7 @@
 
           <app-shipping></app-shipping>
           <div class="add">
-            <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+            <button class="btn action-btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
               (click)="nextStep(2)">Proceed to payment details</button>
           </div>
         </div>
@@ -106,7 +107,7 @@
 
                 <a class="back-link back-link-btn" (click)="nextStep(1)"><i class="pi pi-arrow-left"></i> Back to
                   personal details</a>
-                <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                <button class="btn action-btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
                   (click)="onSubmit()">Place Order</button>
               </div>
             </div>
@@ -187,12 +188,6 @@
             <h2 class="price">
               {{sale?.total | currency:'R'}}
             </h2>
-          </div>
-
-          <div class="input">
-            <div class="add">
-
-            </div>
           </div>
 
         </div>

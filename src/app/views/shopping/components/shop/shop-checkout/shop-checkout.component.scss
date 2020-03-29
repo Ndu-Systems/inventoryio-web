@@ -477,3 +477,12 @@ hr {
 .back-link-btn{
   display: inline;
 }
+
+.action-btn {
+
+  @media only screen and (max-width: 600px) {
+    padding: 10px 8px;
+    font-size: .9rem;
+    font-weight: 500;
+  }
+}

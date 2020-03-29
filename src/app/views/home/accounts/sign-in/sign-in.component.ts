@@ -6,6 +6,7 @@ import { User } from 'src/app/_models';
 import { AccountService, RolesService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-in',
@@ -25,14 +26,16 @@ export class SignInComponent implements OnInit {
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
-    private roleService: RolesService
+    private roleService: RolesService,
+    private titleService: Title
+
   ) {
   }
 
 
   ngOnInit() {
+    this.titleService.setTitle(`Login to your vendor account | Inventory io`);
 
-    // this.accountService.logout();
     this.rForm = this.fb.group({
       Email: new FormControl(
         this.email,

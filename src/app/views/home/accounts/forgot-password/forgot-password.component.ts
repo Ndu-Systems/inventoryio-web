@@ -6,6 +6,7 @@ import { EmailService, SmsService, AccountService } from 'src/app/_services';
 import { FORGOT_PASSWORD_BODY, FORGOT_PASSWORD_SUBJECT } from 'src/app/_shared';
 import { ForgotPasswordModel } from 'src/app/_models/forgot-password.model';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-forgot-password',
@@ -24,10 +25,14 @@ export class ForgotPasswordComponent implements OnInit {
     private emailService: EmailService,
     private smsService: SmsService,
     private accountService: AccountService,
-    private routeTo: Router
+    private routeTo: Router,
+    private titleService: Title
+
   ) { }
 
   ngOnInit() {
+    this.titleService.setTitle(`Reset vendor account  password | Inventory io`);
+
     this.rForm = this.fb.group({
       Email: new FormControl(
         this.email,
