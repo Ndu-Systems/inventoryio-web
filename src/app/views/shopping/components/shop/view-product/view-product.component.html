@@ -1,9 +1,8 @@
-
-<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" ></app-shopping-nav>
-<div class="cover-photo">
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor"></app-shopping-nav>
+<!-- <div class="cover-photo">
   <img [src]="bannerImage" alt="">
-</div>
-<div class="main"  *ngIf=" this.product$ | async as  product;">
+</div> -->
+<div class="main" *ngIf=" this.product$ | async as  product;">
 
 
   <h3 class="small-heading">
@@ -15,7 +14,7 @@
   <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
 
   <div class="order">
- 
+
 
     <div class="product-details">
       <div class="images">
@@ -54,7 +53,7 @@
 
             <div class="options-item">
               <div class="label">
-                QNTY 
+                QNTY
               </div>
 
               <div class="input">
@@ -64,28 +63,35 @@
                 </select>
               </div>
             </div>
-         
+
           </div>
 
-          <div class="option-items mobile-col-1-of-2">
-          
-            <!-- <div class="options-item full-row">
-              <div class="input no-border">
-                <button class="action-btn hover-shadow back"  [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor}" (click)="back()">Back to shop</button>
 
-              </div>
-            </div> -->
-            <div class="options-item full-row">
-              <div class="input no-border">
-                <button class="action-btn hover-shadow"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="doSell(product)">Add to cart</button>
+        </div>
 
-              </div>
-            </div>
+        <div class="cta">
+          <div class="buy">
+            <button class="action-btn hover-shadow"
+              [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+              (click)="doSell(product)">Buy this item</button>
           </div>
-
+          <div class="browse-more">
+            <button class="action-btn hover-shadow"
+              [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"
+              (click)="back()">
+              Continue shopping
+            </button>
+          </div>
         </div>
 
       </div>
     </div>
+
+    <div class="more-product-details">
+      <hr>
+      <div [innerHTML]="product.Description"></div>
+
+    </div>
+
   </div>
 </div>

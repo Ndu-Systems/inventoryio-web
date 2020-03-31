@@ -179,3 +179,53 @@
   display: block;
   margin: 1rem 0;
 }
+
+
+.cta {
+  display: grid;
+  grid-template-columns: 30% auto;
+  padding: 0 1rem;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 50% auto;
+
+  }
+
+  .action-btn {
+    @media only screen and (max-width: 600px) {
+      font-size: .7222rem;
+      padding: .8rem .6rem !important;
+    }
+
+  }
+
+  .browse-more {
+    @media only screen and (max-width: 600px) {
+      text-align: right;
+    }
+  }
+}
+
+.more-product-details {
+  ::ng-deep {
+    .ql-size-huge {
+      font-weight: 900;
+      font-size: 2rem;
+
+      @media only screen and (max-width: 600px) {
+        font-weight: 700;
+        font-size: 1.4rem;
+
+      }
+    }
+    .ql-size-large {
+      font-weight: 800;
+      font-size: 1.8rem;
+      @media only screen and (max-width: 600px) {
+        font-weight: 600;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+}

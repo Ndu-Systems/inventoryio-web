@@ -63,8 +63,11 @@ export class ShopComponent implements OnInit {
           this.bannerImage = 'assets/placeholders/shopheader.jpg';
         }
         if (this.company.Theme) {
-          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+          if (this.shopPrimaryColor !== this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value &&
+            this.shopSecondaryColor !== this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value) {
+            this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+            this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+          }
         }
 
       });

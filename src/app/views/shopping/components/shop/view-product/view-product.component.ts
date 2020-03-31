@@ -32,7 +32,7 @@ export class ViewProductComponent implements OnInit {
   shopPrimaryColor: string;
   shopSecondaryColor: string;
   bannerImage = 'assets/placeholders/shopheader.jpg';
-
+  welcomed
 
   constructor(
     private productService: ProductService,
@@ -59,9 +59,6 @@ export class ViewProductComponent implements OnInit {
 
     this.product$ = this.productService.sellItem;
     this.product$.subscribe(product => {
-      // if (product && this.shoppingService.currentCompany && this.shoppingService.currentCompany.CompanyId === product.CompanyId) {
-      // if (product && this.productService.currentProducts && 
-      // this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
       if (product && this.productService.currentProducts && this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
         this.product = product;
         this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
@@ -81,7 +78,6 @@ export class ViewProductComponent implements OnInit {
 
           }
         });
-
 
       } else {
         // this mean the product is not in the proccess so the link was shared.
@@ -109,12 +105,17 @@ export class ViewProductComponent implements OnInit {
             }
 
           });
-          this.messageService.add({
-            severity: 'success',
-            summary: `Hello, please check out this awesome ${this.product.Name}, and feel free to add to cart and browse more on our shop.`,
-            detail: `Click Back to shopping to view more.`,
-            life: 10000
-          });
+          if (!this.welcomed) {
+            this.messageService.add({
+              severity: 'success',
+              summary: `Hello, please check out this awesome ${this.product.Name},
+              and feel free to add to cart and browse more on our shop.`,
+              detail: `Click Back to shopping to view more.`,
+              life: 10000
+            });
+            this.welcomed = true;
+          }
+
         });
 
 
@@ -148,7 +149,11 @@ export class ViewProductComponent implements OnInit {
       });
     }
     if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
-      alert('no stock')
+      this.messageService.add({
+        severity: 'warn',
+        summary: `This items run out of stock`,
+        detail: `Please contact the show ownwer`
+      });
       return false;
     }
 
