@@ -57,9 +57,8 @@
       }
 
       .options {
-        margin: 2rem 0;
+        margin: .5rem 0;
         box-sizing: border-box;
-        padding: .5rem;
 
         @media only screen and (max-width: 600px) {
 
@@ -90,7 +89,7 @@
             margin-left: 0;
 
             @media only screen and (max-width: 600px) {
-              margin: .2rem .5rem;
+              margin: .2rem 0;
             }
 
             .label {
@@ -206,6 +205,59 @@
   }
 }
 
+
+.quantity {
+  display: grid;
+  grid-template-columns: 30% auto;
+  margin: 1.2rem 0;
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 36% auto;
+
+  }
+
+  .qnty-group-btns {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    border: 1px solid $strong-gray;
+
+    .neg,
+    .pos {
+      padding: .6rem .01rem;
+      height: 2.4rem;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .val {
+      input {
+        width: 100%;
+        text-align: center;
+        height: 2.4rem;
+        border: 1px solid $strong-gray;
+        margin: 0;
+        border-top: none;
+        border-bottom: none;
+
+      }
+    }
+  }
+
+  .add-to-cart{
+    padding: .4rem .01rem;
+    height: 2.6rem;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 .5rem;
+    width: 12rem;
+  }
+}
+
+.back{
+  h4{
+    cursor: pointer;
+  }
+}
+
 .more-product-details {
   ::ng-deep {
     .ql-size-huge {
@@ -218,13 +270,19 @@
 
       }
     }
+
     .ql-size-large {
       font-weight: 800;
       font-size: 1.8rem;
+
       @media only screen and (max-width: 600px) {
         font-weight: 600;
         font-size: 1.3rem;
       }
+    }
+
+    p {
+      margin: 0;
     }
   }
 

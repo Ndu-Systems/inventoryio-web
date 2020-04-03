@@ -106,7 +106,7 @@ export class ShopCheckoutComponent implements OnInit {
 
   back() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shop/at', this.company.Handler || this.companyId]);
+    this.router.navigate(['shop/shopping-cart', this.company.CompanyId || this.companyId]);
   }
 
   add(item: Item) {

@@ -30,7 +30,7 @@
         </h1>
         <hr>
 
-        <div class="options" *ngIf="product.Attributes">
+        <div class="options" *ngIf="product.Attributes?.length > 0">
           <h1 class="header">
             Select Options
           </h1>
@@ -50,25 +50,38 @@
                 </span>
               </div>
             </div>
-
-            <div class="options-item">
-              <div class="label">
-                QNTY
-              </div>
-
-              <div class="input">
-                <select [(ngModel)]="itemQnty">
-                  <option *ngFor="let qnty of quantity" class="select-option" [value]="qnty">
-                    {{qnty}}</option>
-                </select>
-              </div>
-            </div>
-
           </div>
 
 
         </div>
 
+        <div class="quantity">
+          <div class="qnty-group-btns">
+            <div class="neg" (click)="changeItemQnty(-1)">
+              <i class="pi pi-minus-circle"></i>
+            </div>
+            <div class="val">
+              <input [(ngModel)]="itemQnty" type="text">
+            </div>
+            <div class="pos" (click)="changeItemQnty(1)">
+              <i class="pi pi-plus-circle"></i>
+            </div>
+          </div>
+
+          <div class="buy-this">
+            <div class="add-to-cart" (click)="doSell(product)"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
+              <i class="pi pi-check"></i> Buy this item
+            </div>
+          </div>
+        </div>
+
+        <div class="back">
+          <h4  [ngStyle]="{'color':shopPrimaryColor}" (click)="back()">
+            <i class="pi pi-arrow-left"></i>  Continue shopping
+          </h4>
+        </div>
+
+<!-- 
         <div class="cta">
           <div class="buy">
             <button class="action-btn hover-shadow"
@@ -82,7 +95,7 @@
               Continue shopping
             </button>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>

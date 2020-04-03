@@ -236,4 +236,11 @@ export class ViewProductComponent implements OnInit {
       this.orderOptions.push(orderOption);
     }
   }
+
+  changeItemQnty(count: number) {
+    if (count < 0 && this.itemQnty <= 1) {
+      return false;
+    }
+    this.itemQnty += count;
+  }
 }
