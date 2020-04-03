@@ -14,20 +14,27 @@ export class UpdateCompanyComponent implements OnInit {
   user: User;
   company: Company;
   rForm: FormGroup;
+  handerExample: any;
   constructor(private fb: FormBuilder,
-              private userService: UsersService,
-              private accountService: AccountService,
-              private messageService: MessageService,
-              private routeTo: Router,
-              private companyService: CompanyService) {
+    private userService: UsersService,
+    private accountService: AccountService,
+    private messageService: MessageService,
+    private routeTo: Router,
+    private companyService: CompanyService) {
 
   }
 
   ngOnInit() {
     this.user = this.userService.currentUserValue;
     this.company = this.user.Company;
+    if (this.company) {
+      this.handerExample = this.company.Name.replace(/\s/g, '').toLocaleLowerCase();
+    }
     this.rForm = this.fb.group({
       Name: [this.company.Name, Validators.required],
+      Description: [this.company.Description],
+      Type: [this.company.Type],
+      Shop: [this.company.Shop || 0],
       Handler: [this.company.Handler],
       TelephoneNumber: [this.company.TelephoneNumber, Validators.required],
       Website: [this.company.Website, Validators.required],
@@ -37,6 +44,7 @@ export class UpdateCompanyComponent implements OnInit {
     });
 
   }
+
 
   update(company: Company) {
     this.companyService.updateCompany(company).subscribe(response => {
@@ -56,8 +64,14 @@ export class UpdateCompanyComponent implements OnInit {
         this.accountService.updateUserState(this.user);
       }
     });
+    this.back();
+  }
+
+  back() {
     this.routeTo.navigate(['/dashboard/profile']);
 
   }
+
+
 
 }

@@ -1,0 +1,214 @@
+@import '../../../../../../assets/styles/variables';
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+
+.main-container {
+  background-image: url(../../../../../../assets/images/shop/shopbg.png);
+  height: 94.5vh;
+  position: relative;
+  box-sizing: border-box;
+
+  .intro {
+    // background: red;
+    padding: 8rem 0;
+    width: 30%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+
+    @media only screen and (max-width: 600px) {
+      width: 90%;
+    }
+
+    h1 {
+      text-transform: uppercase;
+      color: $white-color;
+      text-align: center;
+
+      span.thin {
+        font-weight: 300;
+        // background: rgba(0, 0, 0, 0.602);
+        display: block;
+
+
+      }
+
+      span.welcome {
+        font-family: 'Great Vibes', cursive;
+        text-transform: capitalize;
+        font-size: 5rem;
+
+        @media only screen and (max-width: 600px) {
+          font-size: 3rem;
+        }
+      }
+
+    }
+  }
+
+  .search-container {
+    width: 30%;
+    margin: 0 auto;
+    background: $white-color;
+    padding: 1rem;
+    border-radius: 9px;
+
+    @media only screen and (max-width: 600px) {
+      width: 90%;
+    }
+
+    .search {
+      display: grid;
+      grid-template-columns: 25% 65% 10%;
+      border: 1px solid $cloud;
+      border-radius: 50px;
+      height: 3.1rem;
+      padding-right: 0;
+
+      .type {
+        background: $cloud;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+
+        select {
+          margin: 3px;
+          width: 97%;
+        }
+      }
+
+      .input {
+        input {
+          margin: 3px;
+        }
+      }
+
+      .icon {
+        background: $white-color;
+        border-radius: 3rem;
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        padding: .6rem .4rem;
+        box-shadow: 0 7px 14px rgba(104, 104, 104, 0.18), 0 5px 5px rgba(128, 128, 128, 0.12);
+        position: relative;
+        right: -7px;
+
+        img {
+          width: 70%;
+        }
+      }
+    }
+  }
+
+  .all-shops {
+    background: $primary-bg-color;
+    color: $white-color;
+    width: 10%;
+    margin: 8rem auto;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      width: 70%;
+
+    }
+  }
+}
+
+.all-shops-container {
+  background: $cloud;
+  padding: .5rem 4rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: .5rem .1rem;
+  }
+
+  .shops {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: repeat(2, 50%);
+    }
+
+    .shop {
+      background: $white-color;
+      //   border: 9px solid $cloud;
+      border-radius: 10px;
+      margin: 1rem;
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      .image {
+        text-align: center;
+
+        img {
+          width: 100%;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+
+        }
+      }
+
+      .name {
+        padding: .2rem 1rem;
+
+        @media only screen and (max-width: 600px) {
+          padding: .2rem .3rem;
+        }
+
+        h1 {
+          //   text-align: center;
+          font-size: 1.255rem;
+
+          @media only screen and (max-width: 600px) {
+            font-size: .8rem;
+            font-weight: 800;
+          }
+        }
+      }
+
+      .details {
+        padding: .2rem 1rem;
+
+        @media only screen and (max-width: 600px) {
+          padding: .2rem .3rem;
+
+        }
+
+        p {
+
+          //   text-align: left;
+          @media only screen and (max-width: 600px) {
+            font-size: .78rem;
+          }
+        }
+      }
+
+      .action {
+        margin: 1rem;
+
+        .visit {
+          background: $primary-bg-color;
+          color: $white-color;
+          padding: .7rem;
+          cursor: pointer;
+          width: 40%;
+          text-align: center;
+
+          //   border-radius: 9px;
+          @media only screen and (max-width: 600px) {
+            width: 90%;
+            font-size: .7rem;
+            padding: .4rem;
+          }
+        }
+      }
+    }
+  }
+
+
+}

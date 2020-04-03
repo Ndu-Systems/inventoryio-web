@@ -1,3 +1,72 @@
-<p>
-  shops works!
-</p>
+<div class="main-container">
+  <div class="intro">
+    <h1>
+      <span class="main">
+        inventory io
+      </span>
+      <span class="thin">
+        digital mall
+      </span>
+      <span class="welcome">
+        Welcomes You.
+      </span>
+    </h1>
+  </div>
+
+  <div class="search-container">
+    <div class="search">
+      <div class="type">
+        <select name="" id="">
+          <option value="products">Products</option>
+          <option value="shops" selected>Shops</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <input type="text">
+      </div>
+
+      <div class="icon">
+        <img src="assets/images/shop/search.svg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="all-shops" (click)="scroll()">
+    View all shops
+  </div>
+</div>
+
+
+
+<div class="all-shops-container">
+  <h1>
+    All shops
+  </h1>
+
+  <div class="shops">
+    <div class="shop" *ngFor="let shop of shops; let i = index">
+      <div class="image">
+        <img [src]="shop.Banner[0].Url" alt="" *ngIf="shop.Banner" />
+        <img src="assets/images/place-shpper.png" *ngIf="!shop.Banner" alt="" />
+      </div>
+      <div class="name">
+        <h1>
+          {{shop?.Name}}
+        </h1>
+      </div>
+
+      <div class="details">
+        <p>
+          {{shop?.Description}}
+        </p>
+      </div>
+
+      <div class="action">
+        <div class="visit" (click)="visitShow(shop)">
+          Visit this shop
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>

@@ -185,7 +185,7 @@ export class ShoppingService {
     return this.http.post<any>(`${this.url}/api/orders/shop.php`, { order: data, products: productItems });
   }
 
-  getTittle() {
-    return 'hey';
+  getAllShops(): Observable<Company[]> {
+    return this.http.get<any>(`${this.url}/api/company/shops.php`);
   }
 }

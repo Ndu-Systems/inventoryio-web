@@ -1,11 +1,87 @@
-.main-content .form .cta .group .btn {
-  font-size: 13px;
+@import '../../../../../assets/styles/variables';
+
+.form-company {
+  .inputs-group {
+    padding: .5rem;
+    margin: .01rem 0;
+
+    .label {
+      position: relative;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: .8rem;
+      span{
+        font-style: italic;
+        font-size: 0.6rem;
+        text-transform: none;
+        font-weight: 600;
+        color: $hl-color;
+        margin-left: 1rem;
+      }
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        text-align: left;
+        display: block;
+      }
+
+    }
+
+    input,
+    select,textarea {
+      border: 1px solid $ligher-gray;
+
+      &::placeholder {
+        font-weight: 200;
+        font-style: italic;
+        font-size: .8rem;
+      }
+    }
+    textarea{
+      height: 3.5rem;
+    }
+
+  }
 }
 
-.cta.col-1-of-2 {
-  grid-template-columns: 40% 20%;
+.actions {
+  display: grid;
+  grid-template-columns: 20% auto;
+
+  .button {
+    text-align: left;
+
+    .btn {
+      width: 7rem;
+    }
+    .cancel{
+      background: $ligher-gray;
+      color: $black-color;
+    }
+  }
 }
 
-.main-content .form .cta a.cancel {
-  margin-top: 1.888rem;
+form{
+  margin: .5rem auto;
 }
+
+.options{
+  display: grid;
+  width: 50%;
+  grid-template-columns: 60% 20% auto;
+  div{
+    // background: red;
+    margin: .3rem;
+    display: flex;
+  }
+}
+
+.radio{
+  display: inline;
+}
+.radio{
+margin: 0;
+position: relative;
+top: .1rem;
+}
+
