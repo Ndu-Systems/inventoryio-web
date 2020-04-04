@@ -95,5 +95,9 @@ export class AttributeService {
     });
   }
 
+  deleteAttributeItem(id, attributeId) {
+    return this.http.get<any>(`${this.url}/api/attribute/delete-attribute-item.php?Id=${id}&AttributeId=${attributeId}`);
+  }
+
 
 }

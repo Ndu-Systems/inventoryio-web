@@ -59,13 +59,13 @@ export class DashboardNavComponent implements OnInit {
         Icon: `pi pi-chart-line`
       },
       {
-        Name: 'New Item',
+        Name: 'New product',
         Link: '/dashboard/add-product',
         Icon: `pi pi-plus`,
         showItem: true
       },
       {
-        Name: 'Items',
+        Name: 'My products',
         Link: '/dashboard/list-product',
         Icon: `pi pi-shopping-cart`,
         showItem: true

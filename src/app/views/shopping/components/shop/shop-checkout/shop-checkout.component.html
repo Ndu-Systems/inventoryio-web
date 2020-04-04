@@ -6,9 +6,10 @@
   </div>
   <div class="content">
     <h3 class="small-heading">
+      <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
       Checkout and payments
     </h3>
-    <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a>
+    <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
 
     <div class="col-1-of-2 col-70-30">
 
@@ -22,12 +23,12 @@
 
           <app-shipping></app-shipping>
           <div class="add">
-            <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+            <button class="btn action-btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
               (click)="nextStep(2)">Proceed to payment details</button>
           </div>
         </div>
 
-        <div class="payments"  *ngIf="step == '2'">
+        <div class="payments" *ngIf="step == '2'">
           <div class="shipping">
             <h3>
               Payments method
@@ -37,7 +38,7 @@
               <div class="input">
 
 
-                <p-selectButton [options]="paymentMethods" [(ngModel)]="selectedType" ></p-selectButton>
+                <p-selectButton [options]="paymentMethods" [(ngModel)]="selectedType"></p-selectButton>
 
               </div>
 
@@ -47,14 +48,15 @@
                     Please make eft payment to the seller's account bellow, you can also contact them to ensure you
                     sending money to the right person
                   </p>
-                 
+
                   <div class="agree">
-                    <p-checkbox [(ngModel)]="checkedEft" binary="true"></p-checkbox> I agree to pay using EFT to the account bellow.
+                    <p-checkbox [(ngModel)]="checkedEft" binary="true"></p-checkbox> I agree to pay using EFT to the
+                    account bellow.
                   </div>
 
                 </div>
 
-                <div class="bank-card"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
+                <div class="bank-card" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
                   <div class="bank-name">
                     <h1>
                       <span>Bank name</span>
@@ -103,8 +105,9 @@
 
               <div class="add">
 
-                <a class="back-link back-link-btn" (click)="nextStep(1)"><i class="pi pi-arrow-left"></i> Back to personal details</a>
-                <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                <a class="back-link back-link-btn" (click)="nextStep(1)"><i class="pi pi-arrow-left"></i> Back to
+                  personal details</a>
+                <button class="btn action-btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
                   (click)="onSubmit()">Place Order</button>
               </div>
             </div>
@@ -124,7 +127,7 @@
 
           <div class="col-1-of-2">
             <h4>
-              Items 3
+              Items {{cartItems}}
             </h4>
 
             <h4>
@@ -158,13 +161,13 @@
             </div>
           </div>
 
-          <div class="col-1-of-2">
+          <div class="col-1-of-2" *ngIf="sale.charges.length > 0">
             <h4>
               Shipping:
             </h4>
 
             <h5>
-              Standard delivery - R150.00
+              {{sale.charges[0]?.line}}
             </h5>
           </div>
 
@@ -174,7 +177,7 @@
             </h4>
 
             <h5>
-             {{today | date:'fullDate'}}
+              {{today | date:'fullDate'}}
             </h5>
           </div>
           <div class="col-1-of-2">
@@ -183,14 +186,8 @@
             </h4>
 
             <h2 class="price">
-              {{sale?.total + deliveryFee | currency:'R'}}
+              {{sale?.total | currency:'R'}}
             </h2>
-          </div>
-
-          <div class="input">
-            <div class="add">
-
-            </div>
           </div>
 
         </div>

@@ -3,6 +3,7 @@ import { AccountService, MessageService, ProductService, BannerService } from 's
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models';
 import { DEFAULT_PASSWORD } from '../shared';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -17,12 +18,14 @@ export class DashboardHomeComponent implements OnInit {
     private accountService: AccountService,
     private bannerService: BannerService,
     private router: Router,
+    private titleService: Title,
+
   ) { }
 
   ngOnInit() {
-
     this.user = this.accountService.currentUserValue;
     this.accountService.checkSession();
+    this.titleService.setTitle(`${this.user.Company.Name} Dashboard : Inventory IO`);
     if (this.user.Password === DEFAULT_PASSWORD && this.user.CompanyId) {
       this.router.navigate(['dashboard/reset-password']);
       this.bannerService.updateState({

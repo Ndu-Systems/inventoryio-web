@@ -29,4 +29,5 @@ export interface Attribute {
     AttributePrice?: any;
     AttributeValue?: any;
     AttributeQuantity?: any;
+    AttributeValueId?: any;
 }

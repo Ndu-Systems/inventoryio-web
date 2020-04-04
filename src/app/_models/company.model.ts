@@ -4,6 +4,9 @@ import { Config } from './Config';
 export interface Company {
     CompanyId?: string;
     Name: string;
+    Description?: string;
+    Type?: string;
+    Shop?: string;
     Handler?: string;
     Website: string;
     TelephoneNumber: string;
@@ -15,4 +18,5 @@ export interface Company {
     Banner?: Image[];
     Logo?: Image[];
     Theme?: Config[];
+    Shipping?: Config[];
 }

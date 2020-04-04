@@ -16,6 +16,7 @@ export interface Orders {
     Status: string;
     StatusId: number;
     Customer?: Partner;
+    Charges?: any;
     // local
     Disable?: boolean;
     Touched?: boolean;

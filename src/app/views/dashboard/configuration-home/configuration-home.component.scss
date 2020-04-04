@@ -1,3 +1,7 @@
+.main {
+  background: #f5f6fa;
+  height: 100%;
+}
 
 
 .actions {
@@ -13,11 +17,11 @@
 }
 
 @media only screen and (max-width: 768px) {
-   .actions {
-     h1 {
-       padding-left: 1rem;
-     }
-   }
+  .actions {
+    h1 {
+      padding-left: 1rem;
+    }
+  }
 }
 
 
@@ -33,6 +37,7 @@
       font-weight: 400;
       text-transform: capitalize;
     }
+
     .heading {
       margin: 2rem 2rem;
     }

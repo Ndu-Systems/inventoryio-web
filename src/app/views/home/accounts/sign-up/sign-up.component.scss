@@ -68,6 +68,10 @@
       margin: 3em auto;
       margin-top: 0;
 
+      // @media only screen and (max-width: 600px) {
+      //   margin: .3em auto;
+      // }
+
       input[type=text],
       input[type=password],
       input[type=email] {
@@ -124,8 +128,13 @@
         &.btn-border {
           background: none;
           color: #3742FA;
-          border: solid 2px #3742FA;
+          border: solid 2px rgba(55, 65, 250, 0.849);
           border-radius: 7px;
+          text-align: center;
+          padding: .8rem .2rem;
+          @media only screen and (max-width: 600px) {
+            padding: .6rem .2rem;
+          }
         }
 
       }
@@ -183,5 +192,21 @@
         }
       }
     }
+  }
+}
+
+
+.login-btn {
+
+  @media only screen and (max-width: 600px) {
+    padding: 10px 8px;
+    font-size: .9rem;
+    font-weight: 500;
+  }
+}
+
+.no-margin {
+  @media only screen and (max-width: 600px) {
+    margin: .1rem 0;
   }
 }

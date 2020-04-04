@@ -8,5 +8,3 @@ export const environment = {
   ACCOUNT_TEST_PASSWORD: null,
   TEST_EMAIL_ACCOUNT: null
 };
-
-

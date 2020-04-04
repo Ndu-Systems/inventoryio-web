@@ -151,6 +151,14 @@ export class ShoppingService {
       sale.items.forEach(item => {
         total += item.subTotal;
       });
+      if (sale.charges) {
+        sale.charges.forEach(x => {
+          if (!isNaN(x && x.amount)) {
+            total += Number(x.amount);
+          }
+
+        });
+      }
       sale.total = total;
     }
   }
@@ -177,7 +185,7 @@ export class ShoppingService {
     return this.http.post<any>(`${this.url}/api/orders/shop.php`, { order: data, products: productItems });
   }
 
-  getTittle() {
-    return 'hey';
+  getAllShops(): Observable<Company[]> {
+    return this.http.get<any>(`${this.url}/api/company/shops.php`);
   }
 }

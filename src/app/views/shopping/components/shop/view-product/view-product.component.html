@@ -1,19 +1,20 @@
-
-<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" ></app-shopping-nav>
-<div class="cover-photo">
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor"></app-shopping-nav>
+<!-- <div class="cover-photo">
   <img [src]="bannerImage" alt="">
-</div>
-<div class="main"  *ngIf=" this.product$ | async as  product;">
+</div> -->
+<div class="main" *ngIf=" this.product$ | async as  product;">
 
 
   <h3 class="small-heading">
+    <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
+
     {{product.Name}}
   </h3>
 
-  <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a>
+  <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
 
   <div class="order">
- 
+
 
     <div class="product-details">
       <div class="images">
@@ -29,12 +30,12 @@
         </h1>
         <hr>
 
-        <div class="options" *ngIf="product.Attributes">
+        <div class="options" *ngIf="product.Attributes?.length > 0">
           <h1 class="header">
             Select Options
           </h1>
           <div class="option-items">
-            <div class="options-item" *ngFor="let attribute of product.Attributes">
+            <div class="options-item" *ngFor="let attribute of product.Attributes | removeNoValueAttributes">
               <div class="label">
                 {{attribute.Name}}:
               </div>
@@ -49,41 +50,61 @@
                 </span>
               </div>
             </div>
-
-            <div class="options-item">
-              <div class="label">
-                QNTY 
-              </div>
-
-              <div class="input">
-                <select [(ngModel)]="itemQnty">
-                  <option *ngFor="let qnty of quantity" class="select-option" [value]="qnty">
-                    {{qnty}}</option>
-                </select>
-              </div>
-            </div>
-         
           </div>
 
-          <div class="option-items mobile-col-1-of-2">
-          
-            <!-- <div class="options-item full-row">
-              <div class="input no-border">
-                <button class="action-btn hover-shadow back"  [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor}" (click)="back()">Back to shop</button>
-
-              </div>
-            </div> -->
-            <div class="options-item full-row tar">
-              <div class="input no-border tar">
-                <button class="action-btn hover-shadow"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="doSell(product)">Add to cart</button>
-
-              </div>
-            </div>
-          </div>
 
         </div>
 
+        <div class="quantity">
+          <div class="qnty-group-btns">
+            <div class="neg" (click)="changeItemQnty(-1)">
+              <i class="pi pi-minus-circle"></i>
+            </div>
+            <div class="val">
+              <input [(ngModel)]="itemQnty" type="text">
+            </div>
+            <div class="pos" (click)="changeItemQnty(1)">
+              <i class="pi pi-plus-circle"></i>
+            </div>
+          </div>
+
+          <div class="buy-this">
+            <div class="add-to-cart" (click)="doSell(product)"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
+              <i class="pi pi-check"></i> Buy this item
+            </div>
+          </div>
+        </div>
+
+        <div class="back">
+          <h4  [ngStyle]="{'color':shopPrimaryColor}" (click)="back()">
+            <i class="pi pi-arrow-left"></i>  Continue shopping
+          </h4>
+        </div>
+
+<!-- 
+        <div class="cta">
+          <div class="buy">
+            <button class="action-btn hover-shadow"
+              [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+              (click)="doSell(product)">Buy this item</button>
+          </div>
+          <div class="browse-more">
+            <button class="action-btn hover-shadow"
+              [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"
+              (click)="back()">
+              Continue shopping
+            </button>
+          </div>
+        </div> -->
+
       </div>
     </div>
+
+    <div class="more-product-details">
+      <hr>
+      <div [innerHTML]="product.Description"></div>
+
+    </div>
+
   </div>
 </div>

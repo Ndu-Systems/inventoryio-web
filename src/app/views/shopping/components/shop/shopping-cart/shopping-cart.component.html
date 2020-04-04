@@ -1,9 +1,9 @@
 <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor"></app-shopping-nav>
 
 <div class="container" *ngIf="sale$ | async as sale">
-  <div class="cover-photo">
+  <!-- <div class="cover-photo">
     <img [src]="bannerImage" alt="">
-  </div>
+  </div> -->
   <div class="content">
     <!-- <div class="check-out">
       <button class="action-btn   hover-shadow"
@@ -13,9 +13,10 @@
     </div> -->
 
     <h3 class="small-heading">
+      <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
       Shopping cart
     </h3>
-    <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a>
+    <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
 
 
 
@@ -132,7 +133,7 @@
 
           <div class="col-1-of-2">
             <h4>
-              Items 3
+              Items {{cartItems}}
             </h4>
 
             <h4>
@@ -143,71 +144,37 @@
 
           <div class="shipping">
 
-            <div class="input">
+            <div class="input"  *ngIf="shippingsList.length">
               <p>
                 shipping
               </p>
               <select class="input" (change)="deliveryChanged($event.target.value)" name="" id="">
-                <option value="delivery" selected>Standard delivery - R150.00 </option>
-                <option value="collect">I will collect </option>
+                <option value="delivery" selected>Please select</option>
+                <option [value]="ship.key" *ngFor="let ship of shippingsList">{{ship.line}}</option>
               </select>
             </div>
-
-            <!-- <div class="input">
-              <p>
-                promo code
-              </p>
-              <input type="text">
-            </div>
-            <div class="input">
-              <div class="add">
-                <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-                  (click)="onSubmit()">apply</button>
-              </div>
-            </div> -->
 
             <div class="checkout">
               <div class="col-1-of-2">
                 <h4>
                   total cost
                 </h4>
-    
+
                 <h4>
                   {{sale?.total + deliveryFee | currency:'R'}}
-    
+
                 </h4>
               </div>
 
               <div class="input">
                 <div class="add">
-                  <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-                    (click)="checkout()">checkout</button>
+                  <button class="btn action-btn " [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                    (click)="checkout()">proceed to checkout</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- <app-shipping></app-shipping> -->
         </div>
-<!-- 
-        <div class="sell total">
-          <h4>
-            {{sale?.total | currency:'R'}}
-            <span>Total</span>
-          </h4>
-
-        </div>
-
-        <div class="list-filters">
-          <div class="add">
-            <button class="btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-              (click)="onSubmit()">Save order</button>
-          </div>
-          <div class="add">
-            <button class="btn btn-warn"
-              [ngStyle]="{'color':shopPrimaryColor,  background: 'none', border: '1px solid #000','border-color':shopPrimaryColor}"
-              (click)="clear()">Clear form</button>
-          </div>
-        </div> -->
       </div>
     </div>
 

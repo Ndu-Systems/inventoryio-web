@@ -34,10 +34,10 @@ export class AppComponent implements OnInit {
     update.available.subscribe(update => {
       console.log('an update');
     });
-    this.titleService.setTitle('Inventory io | inventory | stock management system | online mall | shooping online');
+    this.titleService.setTitle(`Inventory IO: Selling and buying platform`);
     const loc: string = window.location.href;
     if (loc.includes('shop')) {
-      this.setDocTitle(`Shop @ ${loc.split('/')[6]}`);
+      this.setDocTitle(`${loc.split('/')[6]} Shop | Inventory IO`);
     }
 
   }

@@ -28,11 +28,11 @@ export class ViewProductComponent implements OnInit {
   cartItems: number;
   itemQnty = 1;
   orderOptions: OrderOptions[] = [];
-  allOrderOptions: Attribute[] = [];
+  allProductAttributes: Attribute[] = [];
   shopPrimaryColor: string;
   shopSecondaryColor: string;
   bannerImage = 'assets/placeholders/shopheader.jpg';
-
+  welcomed
 
   constructor(
     private productService: ProductService,
@@ -59,12 +59,9 @@ export class ViewProductComponent implements OnInit {
 
     this.product$ = this.productService.sellItem;
     this.product$.subscribe(product => {
-      // if (product && this.shoppingService.currentCompany && this.shoppingService.currentCompany.CompanyId === product.CompanyId) {
-      // if (product && this.productService.currentProducts && 
-      // this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
       if (product && this.productService.currentProducts && this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
         this.product = product;
-        this.allOrderOptions = this.product.Attributes;
+        this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
         this.shoppingService.sell.subscribe(data => {
           if (data) {
             this.sale = data;
@@ -82,14 +79,13 @@ export class ViewProductComponent implements OnInit {
           }
         });
 
-
       } else {
         // this mean the product is not in the proccess so the link was shared.
         this.productService.getProductObservable(this.productId).subscribe(data => {
           this.product = data;
           this.productService.updateSellProductState(this.product);
 
-          this.allOrderOptions = this.product.Attributes;
+          this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
 
           this.companyService.getCompany(this.product.CompanyId).subscribe(r => {
             if (r) {
@@ -109,12 +105,17 @@ export class ViewProductComponent implements OnInit {
             }
 
           });
-          this.messageService.add({
-            severity: 'success',
-            summary: `Hello, please check out this awesome ${this.product.Name}, and feel free to add to cart and browse more on our shop.`,
-            detail: `Click Back to shopping to view more.`,
-            life: 10000
-          });
+          if (!this.welcomed) {
+            this.messageService.add({
+              severity: 'success',
+              summary: `Hello, please check out this awesome ${this.product.Name},
+              and feel free to add to cart and browse more on our shop.`,
+              detail: `Click Back to shopping to view more.`,
+              life: 10000
+            });
+            this.welcomed = true;
+          }
+
         });
 
 
@@ -148,12 +149,16 @@ export class ViewProductComponent implements OnInit {
       });
     }
     if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
-      alert('no stock')
+      this.messageService.add({
+        severity: 'warn',
+        summary: `This items run out of stock`,
+        detail: `Please contact the show ownwer`
+      });
       return false;
     }
 
     let isErross = false;
-    this.allOrderOptions.forEach(attribute => {
+    this.allProductAttributes.forEach(attribute => {
       const checkIfExist = this.orderOptions.find(x => x.OptionId === attribute.AttributeId);
       if (!checkIfExist) {
         this.messageService.add({
@@ -230,5 +235,12 @@ export class ViewProductComponent implements OnInit {
     if (!this.orderOptions.find(x => x.OptionId === orderOption.OptionId && x.ValueId === orderOption.ValueId)) {
       this.orderOptions.push(orderOption);
     }
+  }
+
+  changeItemQnty(count: number) {
+    if (count < 0 && this.itemQnty <= 1) {
+      return false;
+    }
+    this.itemQnty += count;
   }
 }

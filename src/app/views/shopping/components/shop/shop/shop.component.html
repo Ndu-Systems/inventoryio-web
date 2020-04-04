@@ -1,32 +1,29 @@
-<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" ></app-shopping-nav>
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor"></app-shopping-nav>
 <div class="container" *ngIf="products$  | async as products">
   <div class="cover-photo">
     <img [src]="bannerImage" alt="">
   </div>
   <div class="content">
     <div class="check-out">
-      <button class="action-btn  hover-shadow" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="viewCart()"><i class="pi pi-shopping-cart"></i> Checkout
+      <button class="action-btn  hover-shadow"
+        [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="viewCart()"><i
+          class="pi pi-shopping-cart"></i> cart
         {{cartItems}} Items</button>
     </div>
     <div class="col-1-of-4">
       <span *ngFor="let item of products ">
-     <div class="shop-card"  (click)="viewItem(item)">
-          <div class="image"  *ngIf="item.images"  [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
-
+        <div class="shop-card" (click)="viewItem(item)">
+          <div class="image" *ngIf="item.images" [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
           </div>
-          <div class="image"  *ngIf="!item.images"  [ngStyle]="{ 'background-image': 'url(' + placeholder + ')'}">
-
-          </div>
-
           <div class="name">
-          <p>
-            {{item.Name}}
-          </p>
+            <p>
+              {{item.Name}}
+            </p>
           </div>
           <div class="notes">
-          <p>
-            {{item.UnitPrice | currency:'R'}}
-          </p>
+            <p>
+              {{item.UnitPrice | currency:'R'}}
+            </p>
           </div>
 
           <div class="actions">

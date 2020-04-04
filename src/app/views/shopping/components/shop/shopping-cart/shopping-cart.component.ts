@@ -5,6 +5,8 @@ import { ProductService, CompanyService, EmailService, InvoiceService } from 'sr
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
+import { Config } from 'src/app/_models/Config';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -19,12 +21,17 @@ export class ShoppingCartComponent implements OnInit {
   sale$: Observable<SellModel>;
   products: Product[];
   selectedPartner: Partner;
-  sale: any;
+  sale: SellModel;
   order: Orders;
   bannerImage = 'assets/placeholders/shopheader.jpg';
   shopPrimaryColor: string;
   shopSecondaryColor: string;
-  deliveryFee = 150;
+  deliveryFee = 0;
+  shippings: Config[] = [];
+  shippingsList = [];
+  selectedShippingMethod: any;
+  currency = 'R';
+  cartItems: number;
 
 
   constructor(
@@ -35,6 +42,7 @@ export class ShoppingCartComponent implements OnInit {
     private emailService: EmailService,
     private invoiceService: InvoiceService,
     private router: Router,
+    private messageService: MessageService,
     private titleService: Title
 
   ) {
@@ -62,6 +70,8 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;
+        this.cartItems = this.sale.items.length;
+
       }
     });
 
@@ -75,23 +85,22 @@ export class ShoppingCartComponent implements OnInit {
           this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
           this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
         }
+        if (this.company.Shipping) {
+          this.shippings = this.company.Shipping;
+          this.groupShipping();
+        }
       }
     });
   }
 
   back() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shop/at',  this.company.Handler || this.company.CompanyId]);
+    this.router.navigate(['shop/at', this.company.Handler || this.company.CompanyId]);
   }
 
   add(item: Item) {
     const product = this.products.find(x => x.ProductId === item.prodcuId);
     if (Number(product.Quantity) - Number(item.quantity) <= 0) {
-      // this.messageService.add({
-      //   severity: 'warn',
-      //   summary: 'Stock Alert.',
-      //   detail: `You run out of ${product.Name}`
-      // });
       return false;
     }
     item.quantity++;
@@ -116,11 +125,6 @@ export class ShoppingCartComponent implements OnInit {
 
     const product = this.products.find(x => x.ProductId === item.prodcuId);
     if (Number(product.Quantity) - Number(item.quantity) <= 0) {
-      // this.messageService.add({
-      //   severity: 'warn',
-      //   summary: 'Stock Alert.',
-      //   detail: `You run out of ${product.Name}`
-      // });
       item.quantity = product.Quantity;
       return false;
     }
@@ -131,11 +135,6 @@ export class ShoppingCartComponent implements OnInit {
   onSubmit() {
 
     if (!this.sale.total) {
-      // this.messageService.add({
-      //   severity: 'warn',
-      //   summary: 'Empty cart',
-      //   detail: 'Add items in the cart to continue'
-      // });
       return false;
     }
     const order: Orders = {
@@ -187,12 +186,25 @@ export class ShoppingCartComponent implements OnInit {
   }
   sendEmailNow(email: Email) {
     this.emailService.sendEmailInvoice(email).subscribe(data => {
-      console.log(data);
+      // console.log(data);
     });
   }
 
 
   checkout() {
+    if (!this.selectedShippingMethod && this.shippings.length > 0) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Shipping Method not selected',
+        detail: 'Please select shipping method before you checkout.'
+      });
+      return false;
+    }
+    this.sale.charges = [this.selectedShippingMethod];
+    this.shoppingService.updateState(this.sale);
+    // save order shipping details
+
+
     this.router.navigate(['shop/checkout', this.companyId]);
   }
   formatDate(d: string) {
@@ -215,10 +227,52 @@ export class ShoppingCartComponent implements OnInit {
   }
   deliveryChanged(data) {
     if (data === 'delivery') {
-      this.deliveryFee = 150;
+      this.selectedShippingMethod = undefined;
+      return false;
     }
-    if (data === 'collect') {
+    const cost = this.shippingsList.find(x => x.key === data);
+    if (cost && !isNaN(cost.amount)) {
+      this.deliveryFee = Number(cost.amount);
+      this.selectedShippingMethod = cost;
+    } else {
       this.deliveryFee = 0;
+      this.selectedShippingMethod = cost;
     }
+    console.log(cost);
+
+
+  }
+  groupShipping() {
+    const groupedItems: { key: string, data: Config[] }[] = [];
+    this.shippings.forEach(item => {
+      if (!groupedItems.find(x => x.key === item.GroupKey)) {
+        groupedItems.push({
+          data: this.shippings.filter(x => x.GroupKey === item.GroupKey),
+          key: item.GroupKey
+        });
+      }
+    });
+    // console.log('nn', groupedItems);
+    groupedItems.forEach(x => {
+      x.data.forEach(vals => { });
+      let item =
+        `${this.findConfigByName('name', x.data)}-  ${this.currency}${this.findConfigByName('amount', x.data)}`;
+      if (isNaN(this.findConfigByName('amount', x.data))) {
+        item = `${this.findConfigByName('name', x.data)}- ${this.findConfigByName('amount', x.data)}`;
+      }
+      this.shippingsList.push({
+        line: item,
+        amount: this.findConfigByName('amount', x.data),
+        key: this.findConfigKeyByName('amount', x.data),
+      });
+
+    });
+  }
+
+  findConfigByName(name: string, items) {
+    return (items.find(x => x.Name === name).Value || '').trim();
+  }
+  findConfigKeyByName(name: string, items) {
+    return items.find(x => x.Name === name).GroupKey;
   }
 }

@@ -6,8 +6,9 @@
     <li><a routerLink="/home">Home</a></li>
     <li><a routerLink="/how-it-works">How it works</a></li>
     <li><a routerLink="/pricing">Pricing</a></li>
+    <li><a routerLink="/shop">Shops</a></li>
     <li><a routerLink="/sign-in">Sign in</a></li>
-    <li><span routerLink="/sign-up"><a>sign up for free</a> </span></li>
+    <li><span routerLink="/sign-up"><a>Create vendor account</a> </span></li>
   </div>
 
   <div class="mobile-nav" *ngIf="showMobileNav">
@@ -18,24 +19,11 @@
       <li><a (click)="toggleNav()" routerLink="/home">Home</a></li>
       <li><a (click)="toggleNav()" routerLink="/how-it-works">How it works</a></li>
       <li><a (click)="toggleNav()" routerLink="/pricing">Pricing</a></li>
+      <li><a (click)="toggleNav()" routerLink="/pricing">Shops</a></li>
       <li><a (click)="toggleNav()" routerLink="/sign-in">Sign in</a></li>
-      <li class="sign-up-free"><a (click)="toggleNav()" routerLink="/sign-up">Sign up for free</a></li>
+      <li class="sign-up-free"><a (click)="toggleNav()" routerLink="/sign-up">Create vendor account</a></li>
     </ul>
-    <!--
-         <ul>
-      <li><a (click)="toggleNav()" routerLink="/home"> <img src="assets/images/home-solid.svg" alt="">Home</a>
-      </li>
-      <li><a routerLink="/how-it-works" (click)="toggleNav()"> <img src="assets/images/settings-white.svg" alt="">
-        How it works</a></li>
-      <li><a routerLink="/pricing" (click)="toggleNav()"> <img src="assets/images/tag-solid.svg" alt="">
-          Pricing</a></li>
-      <li><a routerLink="/sign-in" (click)="toggleNav()"> <img src="assets/images/sign-in-alt-solid.svg" alt=""> Sign in
-        </a></li>
-      <li><span class="sign-up-for-free"> <a (click)="toggleNav()" routerLink="/sign-up">sign up for free</a> </span>
-      </li>
-    </ul> -->
-
-  </div>
+   </div>
   <div class="ham-icon" (click)="toggleNav()">
     <img src="assets/images/ham.svg" alt="">
   </div>

@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { OrderOptions } from 'src/app/_models/order.options.model';
 import { MessageService } from 'primeng/api';
+import { Config } from 'src/app/_models/Config';
+import { ConfigService } from 'src/app/_services/dashboard/config.service';
 
 @Component({
   selector: 'app-shop-checkout',
@@ -39,6 +41,7 @@ export class ShopCheckoutComponent implements OnInit {
     { label: 'EFT Transfer', value: 'eft' },
     { label: ' Cash on delivery', value: 'cash' }
   ];
+  cartItems: number;
 
 
   constructor(
@@ -50,6 +53,7 @@ export class ShopCheckoutComponent implements OnInit {
     private invoiceService: InvoiceService,
     private router: Router,
     private messageService: MessageService,
+    private configService: ConfigService,
     private titleService: Title
 
   ) {
@@ -68,6 +72,7 @@ export class ShopCheckoutComponent implements OnInit {
           this.bannerImage = this.company.Banner[0].Url;
         }
 
+
       });
     });
   }
@@ -76,6 +81,7 @@ export class ShopCheckoutComponent implements OnInit {
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;
+        this.cartItems = this.sale.items.length;
         console.log('current order', state);
       }
     });
@@ -100,7 +106,7 @@ export class ShopCheckoutComponent implements OnInit {
 
   back() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shop/at', this.company.Handler || this.companyId]);
+    this.router.navigate(['shop/shopping-cart', this.company.CompanyId || this.companyId]);
   }
 
   add(item: Item) {
@@ -192,34 +198,6 @@ export class ShopCheckoutComponent implements OnInit {
     return `${date.getDate()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
   }
 
-  // mapitemOptionsToOrderOptions(items: Item[]): OrderOptions[] {
-  //   const options: OrderOptions[] = [];
-  //   items.forEach(item => {
-
-  //     item.itemOptions.forEach(itemOpt => {
-  //       const optionsItem: OrderOptions = {
-  //         OrderId: '0',
-  //         ProductId: itemOpt.productId,
-  //         OrderProductId: '0',
-  //         OptionId: itemOpt.optionId,
-  //         ValueId: itemOpt.valueId,
-  //         OptionValue: itemOpt.value,
-  //         OptionName: itemOpt.optionName,
-  //         ValuePrice: 0,
-  //         ValueIdQty: 0,
-  //         CompanyId: this.companyId,
-  //         CreateUserId: 'customer',
-  //         ModifyUserId: 'customer',
-  //         StatusId: 1
-  //       };
-  //       options.push(optionsItem);
-  //     });
-  //     // tslint:disable-next-line: one-variable-per-declaration
-
-  //   });
-  //   return options;
-  // }
-
   onSubmit() {
 
     if (this.selectedType === 'eft' && !this.checkedEft) {
@@ -286,6 +264,23 @@ export class ShopCheckoutComponent implements OnInit {
     };
     console.log(order);
     console.log('items', this.sale.items);
+
+    let shipment = {
+      ConfigId: '',
+      CompanyId: this.company.CompanyId,
+      Name: 'shippingFee',
+      Label: this.sale.charges[0] && this.sale.charges[0].line || '',
+      Type: 'shippingFee',
+      GroupKey: '',
+      Value: this.sale.charges[0] && this.sale.charges[0].amount || '',
+      IsRequired: true,
+      FieldType: 'string',
+      CreateUserId: 'system',
+      ModifyUserId: 'system',
+      StatusId: 1
+    };
+    order.Charges = [shipment];
+    // this.configService.addConfigsRange([shipment]);
     this.shoppingService.addOrder(order, this.sale.items).subscribe(response => {
       this.order = response;
       this.shoppingService.updateOrderState(this.order);

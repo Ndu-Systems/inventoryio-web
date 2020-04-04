@@ -82,7 +82,7 @@ export class UserStatComponent implements OnInit {
       if (!data) { return false; }
       this.products = data;
       this.pushStat({
-        name: 'Items ',
+        name: 'My Products',
         value: this.products.length,
         image: 'assets/images/stat-stock-and-hand.svg',
         link: 'dashboard/list-product'

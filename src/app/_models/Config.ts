@@ -198,7 +198,7 @@ export function newColorsArray(companyId: string): Config[] {
 
 // init colors
 
-export function newShippingArray(companyId: string): Config[] {
+export function newShippingArray(companyId: string, groupKey: string): Config[] {
     return [
         {
             ConfigId: '',
@@ -206,7 +206,7 @@ export function newShippingArray(companyId: string): Config[] {
             Name: 'name',
             Label: 'Shipping Method Name',
             Type: 'shipping',
-            GroupKey: 'shipping1',
+            GroupKey: groupKey,
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -220,7 +220,7 @@ export function newShippingArray(companyId: string): Config[] {
             Name: 'amount',
             Label: 'Shipping Amount',
             Type: 'shipping',
-            GroupKey: 'shipping1',
+            GroupKey: groupKey,
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -234,7 +234,7 @@ export function newShippingArray(companyId: string): Config[] {
             Name: 'notes',
             Label: 'Shipping Notes',
             Type: 'shipping',
-            GroupKey: 'shipping1',
+            GroupKey: groupKey,
             Value: ' ',
             IsRequired: true,
             FieldType: 'string',
@@ -248,7 +248,7 @@ export function newShippingArray(companyId: string): Config[] {
             Name: 'notes',
             Label: 'Shipping Notes',
             Type: 'shipping',
-            GroupKey: 'shipping1',
+            GroupKey: groupKey,
             Value: ' ',
             IsRequired: true,
             FieldType: 'action',

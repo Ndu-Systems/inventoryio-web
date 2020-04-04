@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService, BannerService } from 'src/app/_services';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-index',
@@ -11,9 +12,13 @@ export class IndexComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private bannerService: BannerService,
+    private titleService: Title
+
   ) { }
 
   ngOnInit() {
+    this.titleService.setTitle(`Inventory IO: Selling and buying platform`);
+
     this.accountService.logout();
     this.bannerService.resetBannerState();
   }

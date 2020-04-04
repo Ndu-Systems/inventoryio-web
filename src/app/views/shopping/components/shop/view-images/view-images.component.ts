@@ -19,7 +19,7 @@ export class ViewImagesComponent implements OnInit {
     this.product$ = this.productService.sellItem;
     this.productService.sellItem.subscribe(data => {
       this.images = data.images;
-      this.selectedImage = this.images[0];
+      this.selectedImage =  this.images && this.images[0];
     });
 
   }

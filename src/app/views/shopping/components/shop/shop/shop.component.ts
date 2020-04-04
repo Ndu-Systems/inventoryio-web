@@ -20,7 +20,7 @@ export class ShopComponent implements OnInit {
   cart: Product[] = [];
   company: Company;
   sale: SellModel;
-  placeholder = 'assets/images/placeholder.png';
+  placeholder;
   bannerImage;
   cartItems = 0;
   shopPrimaryColor: string;
@@ -37,11 +37,9 @@ export class ShopComponent implements OnInit {
 
     this.company = this.companyService.companyValue;
     if (this.company) {
-      this.welocme = `Shop with ${this.company.Name}`;
+      this.welocme = `${this.company.Name} Shop : Inventory IO`;
       if (this.company.Banner) {
         this.bannerImage = this.company.Banner[0].Url;
-      } else {
-        this.bannerImage = 'assets/placeholders/shopheader.jpg';
       }
       if (this.company.Theme) {
         this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
@@ -56,15 +54,16 @@ export class ShopComponent implements OnInit {
       this.companyService.getCompany(this.companyId).subscribe(r => {
         this.company = r;
         this.shoppingService.updateCompanyState(this.company);
-        this.welocme = `Shop with ${this.company.Name}`;
+        this.welocme = `${this.company.Name} Shop : Inventory IO`;
         if (this.company.Banner) {
           this.bannerImage = this.company.Banner[0].Url;
-        } else {
-          this.bannerImage = 'assets/placeholders/shopheader.jpg';
         }
         if (this.company.Theme) {
-          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+          if (this.shopPrimaryColor !== this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value &&
+            this.shopSecondaryColor !== this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value) {
+            this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+            this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+          }
         }
 
       });

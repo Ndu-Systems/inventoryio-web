@@ -14,37 +14,56 @@
       {{sale?.total | currency:'R'}}
     </div>
   </div>
-<div class="grid-70-30">
+  <div class="grid-70-30">
 
     <div class="products">
 
       <div class="small-cards small-cards-filter">
-        <div class="cutomer-details">
-          <div class="img">
-            <img *ngIf="selectedPartner" src="assets/images/order/user.svg" alt="">
-            <img *ngIf="!selectedPartner" src="assets/images/order/user-no-customer.svg" alt="">
+        <div class="customer-and-shipping-grid">
+          <div class="cutomer-details">
+            <div class="img">
+              <img *ngIf="selectedPartner" src="assets/images/order/user.svg" alt="">
+              <img *ngIf="!selectedPartner" src="assets/images/order/user-no-customer.svg" alt="">
+            </div>
+
+            <div *ngIf="!selectedPartner">
+              <h3>Guest Customer</h3>
+            </div>
+
+            <div *ngIf="selectedPartner" class="customer-rended">
+              <h3>{{selectedPartner.Name}} {{selectedPartner.Surname}}</h3>
+              <p>
+                <b> Phone No. :</b> {{selectedPartner.CellphoneNumber || 'No phone number'}}
+              </p>
+              <p class="email">
+                <b> Email:</b> {{selectedPartner.EmailAddress || 'No email address'}}
+              </p>
+              <p>
+                <b> Address:</b> {{selectedPartner.Address || 'No customer address'}}
+              </p>
+            </div>
+
+
+            <div>
+              <button class="btn btn-transparent" (click)="changeCustomer()">
+                <span class=""> <i class="pi pi-refresh"></i>Change</span>
+              </button>
+            </div>
+
           </div>
-          <div *ngIf="!selectedPartner">
-            <h3>Guest Customer</h3>
-          </div>
-          <div *ngIf="selectedPartner">
-            <h3>{{selectedPartner.Name}} {{selectedPartner.Surname}}</h3>
-            <p>
-              {{selectedPartner.CellphoneNumber || 'No phone number'}} |
-              {{selectedPartner.EmailAddress || 'No email address'}}
-            </p>
-            <p>
-              {{selectedPartner.Address || 'No customer address'}}
-            </p>
-          </div>
-          <div></div>
-          <div>
-            <!-- <button class="btn btn-transparent" (click)="scann()">
-              <span class=""> <i class="pi pi-user-edit"></i>Edit</span>
-            </button> -->
-            <button class="btn btn-transparent" (click)="changeCustomer()">
-              <span class=""> <i class="pi pi-refresh"></i>Change</span>
-            </button>
+
+          <div class="shipping cutomer-details" *ngIf="shippingsList?.length">
+            <div>
+              <p>
+                Shipping
+              </p>
+            </div>
+            <div>
+              <select class="input" (change)="deliveryChanged($event.target.value)" name="" id="">
+                <option value="delivery" selected>Please select</option>
+                <option [value]="ship.key" *ngFor="let ship of shippingsList">{{ship.line}}</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -132,35 +151,35 @@
         </div>
       </ng-template>
     </div>
-  <div class="summary" *ngIf="showCart">
-    <div class="back" (click)="toggleCart()">
-      <i class="pi pi-chevron-left"></i>
-    </div>
-    <h3>
-      Cart
-    </h3>
-    <div class="sell">
-      <app-sale-sammary></app-sale-sammary>
-    </div>
-
-    <div class="sell total">
-      <h4>
-        {{sale?.total | currency:'R'}}
-        <span>Total</span>
-      </h4>
-
-    </div>
-
-    <div class="list-filters">
-      <div class="add">
-        <button class="btn" (click)="onSubmit()">Save order</button>
+    <div class="summary" *ngIf="showCart">
+      <div class="back" (click)="toggleCart()">
+        <i class="pi pi-chevron-left"></i>
       </div>
-      <div class="add">
-        <button class="btn btn-warn" (click)="clear()">Clear form</button>
+      <h3>
+        Cart
+      </h3>
+      <div class="sell">
+        <app-sale-sammary></app-sale-sammary>
+      </div>
+
+      <div class="sell total">
+        <h4>
+          {{sale?.total + deliveryFee | currency:'R'}}
+          <span>Total</span>
+        </h4>
+
+      </div>
+
+      <div class="list-filters">
+        <div class="add">
+          <button class="btn" (click)="onSubmit()">Save order</button>
+        </div>
+        <div class="add">
+          <button class="btn btn-warn" (click)="clear()">Clear form</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 

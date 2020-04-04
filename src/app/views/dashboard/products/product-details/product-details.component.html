@@ -261,15 +261,36 @@
           <app-product-images [productId]="productId" *ngIf="productId"></app-product-images>
 
         </div>
+        <hr>
+        <div class="editor">
+          <span>More Description </span>
+
+          <p-editor formControlName="Description" [style]="{'height':'220px'}">
+            <p-header>
+              <span class="ql-formats">
+                  <button class="ql-bold" aria-label="Bold"></button>
+                  <button class="ql-italic" aria-label="Italic"></button>
+                  <button class="ql-underline" aria-label="Underline"></button>
+              </span>
+
+              <span class="ql-toolbar">
+                <select class="ql-size">
+                  <option value="small"></option>
+                  <option selected></option>
+                  <option value="large"></option>
+                  <option value="huge"></option>
+                </select>
+              </span>
+          </p-header>
+        </p-editor>
+
+        </div>
       </div>
     </div>
 
 
     <div class="actions-footer">
       <div class="actions">
-        <div class="div">
-
-        </div>
         <div class="div">
           <input type="button" (click)="back()" value="Cancel" class="action-btn cancel" />
         </div>
