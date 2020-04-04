@@ -53,7 +53,7 @@
     border-radius: 9px;
 
     @media only screen and (max-width: 600px) {
-      width: 90%;
+      width: 94%;
     }
 
     .search {
@@ -72,12 +72,20 @@
         select {
           margin: 3px;
           width: 97%;
+
+          @media only screen and (max-width: 600px) {
+            font-size: .8rem;
+          }
         }
       }
 
       .input {
         input {
           margin: 3px;
+
+          @media only screen and (max-width: 600px) {
+            font-size: .8rem;
+          }
         }
       }
 
@@ -216,4 +224,36 @@
   }
 
 
+}
+
+
+.result-cards {
+  display: flex;
+  width: 30rem;
+  overflow-x: hidden;
+
+  .result-card {
+    width: 10rem;
+    margin: 1rem 2rem;
+    padding: .5rem;
+    border: 1px solid $cloud;
+    cursor: pointer;
+
+    .image {
+      img {
+        width: 8.4rem;
+      }
+    }
+
+    .name {
+      h1 {
+        font-size: .6rem;
+      }
+    }
+    .details {
+      p {
+        font-size: .5rem;
+      }
+    }
+  }
 }

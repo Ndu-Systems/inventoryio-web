@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
-import { Company } from 'src/app/_models';
+import { Company, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,11 @@ import { Router } from '@angular/router';
 })
 export class ShopsComponent implements OnInit {
   shops: Company[] = [];
+  searchType = 'shops';
+  showResultBox: boolean;
+  searchResults: Company[] = [];
+  searchResultsProducts: Product[] = [];
+  products: Product[] = [];
   constructor(private shoppingService: ShoppingService, private router: Router,
 
   ) { }
@@ -17,12 +22,49 @@ export class ShopsComponent implements OnInit {
   ngOnInit() {
     this.shoppingService.getAllShops().subscribe(data => {
       this.shops = data;
+      if (this.shops) {
+        this.mapProducts();
+      }
+
     });
   }
   visitShow(shop: Company) {
     this.router.navigate(['shop/at', shop.Handler || shop.CompanyId]);
   }
+  visitProduct(product: Product) {
+    this.router.navigate(['shop/view-product', product.ProductId]);
+  }
   scroll() {
     window.scrollBy(0, 1100);
+  }
+  search(keyword: string) {
+    if (keyword.length >= 1 && this.searchType === 'shops') {
+      this.showResultBox = true;
+      this.searchResults = [];
+      this.searchResults = this.shops.filter(
+        x => x.Name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase()) ||
+          (x.Description || '').toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));
+      console.log(this.searchResults);
+    }
+
+    if (keyword.length >= 1 && this.searchType === 'products') {
+      this.showResultBox = true;
+      this.searchResults = [];
+
+      this.searchResultsProducts = this.products.filter(
+        x => x.Name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase()) ||
+          (x.Description || '').toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));
+    }
+  }
+
+  mapProducts() {
+    this.shops.map(x => x.Products).forEach(x => {
+      if (x && x.length) {
+        x.forEach(p => {
+          this.products.push(p);
+        });
+      }
+    });
+    console.log('   this.products', this.products);
   }
 }

@@ -1,5 +1,6 @@
 import { Image } from './image.model';
 import { Config } from './Config';
+import { Product } from './product.model';
 
 export interface Company {
     CompanyId?: string;
@@ -19,4 +20,5 @@ export interface Company {
     Logo?: Image[];
     Theme?: Config[];
     Shipping?: Config[];
+    Products?: Product[];
 }

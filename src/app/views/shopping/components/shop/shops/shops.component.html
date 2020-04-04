@@ -16,19 +16,71 @@
   <div class="search-container">
     <div class="search">
       <div class="type">
-        <select name="" id="">
-          <option value="products">Products</option>
+        <select [(ngModel)]="searchType">
+          <option value="products" selected>Products</option>
           <option value="shops" selected>Shops</option>
         </select>
       </div>
 
       <div class="input">
-        <input type="text">
+        <input type="text" (keydown)="search($event.target.value)">
       </div>
 
       <div class="icon">
         <img src="assets/images/shop/search.svg" alt="">
       </div>
+    </div>
+    <div class="results">
+
+      <!-- Search shops -->
+      <span *ngIf="searchType == 'shops'">
+        <div class="result-cards">
+          <div class="result-card" *ngFor="let shop of searchResults; let i = index">
+            <span (click)="visitShow(shop)">
+              <div class="image">
+                <img [src]="shop.Banner[0].Url" alt="" *ngIf="shop.Banner" />
+                <img src="assets/images/place-shpper.png" *ngIf="!shop.Banner" alt="" />
+              </div>
+
+              <div class="name">
+                <h1>
+                  {{shop?.Name}}
+                </h1>
+              </div>
+              <div class="details">
+                <p>
+                  {{shop?.Description}}
+                </p>
+              </div>
+            </span>
+          </div>
+        </div>
+      </span>
+
+         <!-- Search products -->
+         <span *ngIf="searchType == 'products'">
+          <div class="result-cards">
+            <div class="result-card" *ngFor="let product of searchResultsProducts; let i = index">
+              <span (click)="visitProduct(product)">
+                <div class="image">
+                  <img [src]="product.Images[0].Url" alt="" *ngIf="product.Images" />
+                  <img src="assets/images/place-shpper.png" *ngIf="!product.Images" alt="" />
+                </div>
+  
+                <div class="name">
+                  <h1>
+                    {{product?.Name}}
+                  </h1>
+                </div>
+                <div class="details">
+                  <p>
+                    {{product.UnitPrice | currency:'R'}}
+                  </p>
+                </div>
+              </span>
+            </div>
+          </div>
+        </span>
     </div>
   </div>
 
@@ -68,5 +120,5 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
