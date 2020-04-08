@@ -69,6 +69,7 @@ export class ForgotPasswordComponent implements OnInit {
               detail: 'Please check your email',
               life: 100000
             });
+            this.routeTo.navigate(['']);
           }
         });
       } else {
