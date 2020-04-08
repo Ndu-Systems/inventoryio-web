@@ -105,12 +105,21 @@ export class AccountService {
     });
   }
 
-  forgotPassword(model: ForgotPasswordModel): Observable<any> {
-    return this.http.post<any>(`${this.url}/api/account/forgot-password.php`, model);
+  forgotPassword(model: ForgotPasswordModel): Observable<User> {
+    return this.http.post<User>(`${this.url}/api/account/forgot-password.php`, model);
+  }
+
+  generateForgotPasswordReturnUrl(token: string): string {
+    return `${this.url}/reset-password?token=${token}`;
+  }
+
+  getUserByToken(token: string) {
+    return this.http.get<any>(`${this.url}/api/user/get-by-token.php?Token=${token}`);
   }
   changePassword(model: ForgotPasswordModel): Observable<any> {
     return this.http.post<any>(`${this.url}/api/account/change-password.php`, model);
   }
+
   logout() {
     localStorage.clear();
     this.updateUserState(null);

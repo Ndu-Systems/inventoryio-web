@@ -17,6 +17,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     FormsModule, ReactiveFormsModule,
     GalleriaModule,
     CardModule,
+    ToastModule,
     CarouselModule
   ],
   declarations: [

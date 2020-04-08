@@ -1,3 +1,4 @@
+import { SEND_EMAIL_RESET_PASSWORD } from './../../_shared/config';
 import { Injectable } from '@angular/core';
 import { Email } from 'src/app/_models';
 import { Observable } from 'rxjs';
@@ -16,6 +17,10 @@ export class EmailService {
   }
   sendEmailInvoice(data: Email): Observable<any> {
     return this.http.post<any>(SEND_EMAIL_INVOICE, data);
+  }
+
+  sendResetPasswordEmail(data: Email): Observable<any> {
+    return this.http.post<any>(SEND_EMAIL_RESET_PASSWORD, data);
   }
 
 }
