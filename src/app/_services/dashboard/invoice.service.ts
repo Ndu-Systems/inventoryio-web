@@ -14,7 +14,6 @@ export class InvoiceService {
     this.url = environment.API_URL;
     this.invoiceUrl = INVOICE_URL;
     this.quotationUrl =  QUOTATION_URL;
-
   }
   getInvoiceURL(orderId: string) {
     return `${this.url}/api/${this.invoiceUrl}?guid=${orderId}`;

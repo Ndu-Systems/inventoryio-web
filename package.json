@@ -46,7 +46,7 @@
     "@angular/cli": "^7.3.10",
     "@angular/compiler-cli": "^7.2.16",
     "@angular/language-service": "^7.2.16",
-    "@types/chart.js": "^2.9.19",
+    "@types/chart.js": "^2.9.18",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "~8.9.4",

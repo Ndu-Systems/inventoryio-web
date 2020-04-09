@@ -7,6 +7,8 @@ import { FORGOT_PASSWORD_BODY, FORGOT_PASSWORD_SUBJECT } from 'src/app/_shared';
 import { ForgotPasswordModel } from 'src/app/_models/forgot-password.model';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { MessageService } from 'primeng/api';
+import { Email } from 'src/app/_models';
 
 @Component({
   selector: 'app-forgot-password',
@@ -26,6 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
     private smsService: SmsService,
     private accountService: AccountService,
     private routeTo: Router,
+    private messageService: MessageService,
     private titleService: Title
 
   ) { }
@@ -47,8 +50,35 @@ export class ForgotPasswordComponent implements OnInit {
   }
   onSubmit(model: ForgotPasswordModel) {
     this.accountService.forgotPassword(model).subscribe(data => {
-      if (data === 1) {
-         this.routeTo.navigate(['/reset-password']);
+      if (data.UserId) {
+        //  this.routeTo.navigate(['/reset-password']);
+        const email: Email = {
+          CompanyName: '',
+          EmailType: '',
+          Email: model.Email,
+          ContactNumber: data.CellphoneNumber,
+          Subject: `${model.Subject} for ${data.Name} ${data.Surname}`,
+          Message: '',
+          DownloadLink: this.accountService.generateForgotPasswordReturnUrl(data.SecurityToken)
+        };
+        this.emailService.sendResetPasswordEmail(email).subscribe( data => {
+          if (data) {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Account validated',
+              detail: 'Please check your email',
+              life: 100000
+            });
+            this.routeTo.navigate(['']);
+          }
+        });
+      } else {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Invalid account!',
+          detail: 'Email entered does not exist',
+          life: 7000
+        });
       }
     });
   }

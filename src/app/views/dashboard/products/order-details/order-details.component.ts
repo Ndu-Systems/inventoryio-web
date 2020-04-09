@@ -149,8 +149,7 @@ export class OrderDetailsComponent implements OnInit {
   }
   sendEmailNow(email: Email) {
     this.emailService.sendEmailInvoice(email).subscribe(data => {
-      console.log(data);
-      this.messageService.add({
+       this.messageService.add({
         severity: 'success',
         summary: `Invoice sent`,
         detail: 'Customer invoice was sent successful!'
