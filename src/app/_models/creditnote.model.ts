@@ -2,7 +2,8 @@ export interface CreditNote {
     CreditnoteId?: string;
     CompanyId: string;
     OrderId: string;
-    Total: string;
+    Total: number;
+    Reason: string;
     CreateDate?: string;
     CreateUserId: string;
     ModifyDate?: string;

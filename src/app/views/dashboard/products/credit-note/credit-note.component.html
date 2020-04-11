@@ -1,46 +1,37 @@
 <div class="main-content" if="order$ | async as order">
-  <h1 class="title-header">New credit note for order {{order?.OrderId}}</h1>
+  <h1 class="title-header">New credit note for order: <i>{{prefix}}-{{order?.OrderId}}</i></h1>
 
-  <pre>
-    {{order | json}}
-  </pre>
   <form [formGroup]="rForm">
-    <!-- <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)"> -->
     <div class="col-1-of-2">
       <div class="section">
         <div class="form-item">
-
-          <div class="group-inputs">
-            <span>
-              <label class="label">Credit note reason</label>
-              <select formControlName="BrandId">
-                <option value="">Select reason</option>
-                <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
-              </select>
-            </span>
-            <button (click)="addBrand(rForm.value)">
-              +
-            </button>
-          </div>
+          <label class="label">Credit note/cancellation reason</label>
+          <select formControlName="Reason">
+            <option value="">Select reason</option>
+            <option value="order incorrect">Order incorrect</option>
+            <option value="customer overcharged">Customer overcharged</option>
+            <option value="customer undercharged">Customer undercharged</option>
+            <option value="goods returned">Goods returned</option>
+          </select>
         </div>
+
+
 
         <div class="form-item">
           <label class="label">Order Number</label>
-          <input type="text" formControlName="Name" placeholder="Gold gift bag" required="required" autofocus />
+          <input type="text" formControlName="OrderNo" placeholder="Gold gift bag" required="required" disabled
+            autofocus />
         </div>
 
         <div class="form-group-items">
           <div class="form-item">
             <label class="label">Order Total</label>
-            <input type="text" placeholder="850.99" formControlName="UnitPrice" required="required" />
+            <input type="text" placeholder="850.99" formControlName="Total" disabled required="required" />
           </div>
 
           <div class="form-item">
             <label class="label">Order date</label>
-            <input type="text" formControlName="UnitCost" placeholder="500" required="required" />
-            <div class="alert" *ngIf="!rForm.controls['UnitCost'].valid && rForm.controls['UnitCost'].touched">
-              Unit cost is required
-            </div>
+            <input type="text" formControlName="CreateDate" placeholder="500" disabled required="required" />
           </div>
 
         </div>
