@@ -201,11 +201,8 @@ export class OrdersService {
       const products: OrderProducts[] = resp;
       this.updateOrderProductsState(products);
     }, error => {
-      this.splashService.update({
-        show: true, heading: 'Network Error',
-        message: COMMON_CONN_ERR_MSG,
-        class: `error`
-      });
+      console.log(error);
+
     });
   }
 

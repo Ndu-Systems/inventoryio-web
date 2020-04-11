@@ -82,6 +82,7 @@ import { FilterStringsPipe } from 'src/app/_pipes/filter-strings.pipe';
 import { AttributesComponent } from './products/attributes/attributes.component';
 import { ProductImagesUncroppedComponent } from './products/product-images/product-images-uncropped/product-images-uncropped.component';
 import { FormatDashBoardOptionsPipe } from 'src/app/_pipes/format-dashboard-options.pipe';
+import { CreditNoteComponent } from './products/credit-note/credit-note.component';
 
 const routes: Routes = [
   {
@@ -137,6 +138,7 @@ const routes: Routes = [
       { path: 'qoute-details', component: QouteDetailsComponent },
       { path: 'company-view-configs/:id', component: CompanyViewConfigsComponent },
       { path: 'import-partners/:id', component: ImportPartnersComponent },
+      { path: 'credit-note', component: CreditNoteComponent },
       // { path: 'company-services', component: CompanyServicesComponent },
       // { path: 'add-company-service', component: AddCompanyServiceComponent },
       // { path: 'order-service', component: SellServiceComponent },
@@ -228,7 +230,8 @@ export const declarations = [
   UserFilterPipe,
   ConfigurationFilterPipe,
   SearchPartnerPipe,
-  FilterStringsPipe
+  FilterStringsPipe,
+  CreditNoteComponent
 ];
 
 @NgModule({

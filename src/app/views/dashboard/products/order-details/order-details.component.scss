@@ -5,12 +5,12 @@
     grid-template-columns: 100%;
 
     .topbar {
-      width: 40%;
+      width: 65%;
       margin-right: 1rem;
       border: none;
       margin-top: 1rem;
       grid-template-columns: repeat(4, 25%);
-      grid-template-columns: repeat(3, 33.3333%);
+      // grid-template-columns: repeat(3, 33.3333%);
       position: relative;
 
       @media only screen and (max-width: 600px) {

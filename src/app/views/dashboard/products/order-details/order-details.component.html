@@ -17,9 +17,9 @@
             <button class="btn btn-transparent" (click)="triggerPaymentAction()"><i class="pi pi-money-bill"></i>
               Pay</button>
           </div>
-          <!-- <div>
-            <button class="btn btn-transparent" (click)="print()"><i class="pi pi-pencil"></i> Edit</button>
-          </div> -->
+          <div>
+            <button class="btn btn-transparent" (click)="createCreditNote(order)"><i class="pi pi-pencil"></i> Create credit note</button>
+          </div>
           <div>
             <button class="btn btn-transparent" (click)="print(order)"><i class="pi pi-print"></i> Print</button>
           </div>
@@ -94,9 +94,9 @@
       </div>
     </div>
 
-    <div class="cards" *ngIf="products$  | async as products">
+    <div class="cards" *ngIf="order.Products">
       <div class="items">
-        <span *ngFor="let item of products | searchproduct: search">
+        <span *ngFor="let item of order.Products | searchproduct: search">
 
           <div class="item">
             <div class="image">

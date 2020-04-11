@@ -15,12 +15,14 @@ export class UpdateCompanyComponent implements OnInit {
   company: Company;
   rForm: FormGroup;
   handerExample: any;
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private userService: UsersService,
     private accountService: AccountService,
     private messageService: MessageService,
     private routeTo: Router,
-    private companyService: CompanyService) {
+    private companyService: CompanyService
+  ) {
 
   }
 
@@ -32,12 +34,14 @@ export class UpdateCompanyComponent implements OnInit {
     }
     this.rForm = this.fb.group({
       Name: [this.company.Name, Validators.required],
-      Description: [this.company.Description],
-      Type: [this.company.Type],
+      Description: [this.company.Description || ''],
+      Type: [this.company.Type || ''],
       Shop: [this.company.Shop || 0],
-      Handler: [this.company.Handler],
+      Handler: [this.company.Handler || ''],
       TelephoneNumber: [this.company.TelephoneNumber, Validators.required],
-      Website: [this.company.Website, Validators.required],
+      Prefix: [this.company.Prefix || ''],
+      ParentId: [this.company.ParentId || ''],
+      Website: [this.company.Website || '', Validators.required],
       CompanyId: [this.company.CompanyId, Validators.required],
       ModifyUserId: [this.user.UserId, Validators.required],
       StatusId: [this.company.StatusId]

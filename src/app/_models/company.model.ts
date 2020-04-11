@@ -3,6 +3,7 @@ import { Config } from './Config';
 import { Product } from './product.model';
 
 export interface Company {
+
     CompanyId?: string;
     Name: string;
     Description?: string;
@@ -11,6 +12,8 @@ export interface Company {
     Handler?: string;
     Website: string;
     TelephoneNumber: string;
+    Prefix?: string;
+    ParentId?: string;
     CreateDate?: string;
     CreateUserId: string;
     ModifyDate?: string;

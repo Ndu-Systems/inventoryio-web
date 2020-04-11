@@ -1,0 +1,81 @@
+<div class="main-content" if="order$ | async as order">
+  <h1 class="title-header">New credit note for order {{order?.OrderId}}</h1>
+
+  <pre>
+    {{order | json}}
+  </pre>
+  <form [formGroup]="rForm">
+    <!-- <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)"> -->
+    <div class="col-1-of-2">
+      <div class="section">
+        <div class="form-item">
+
+          <div class="group-inputs">
+            <span>
+              <label class="label">Credit note reason</label>
+              <select formControlName="BrandId">
+                <option value="">Select reason</option>
+                <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
+              </select>
+            </span>
+            <button (click)="addBrand(rForm.value)">
+              +
+            </button>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label class="label">Order Number</label>
+          <input type="text" formControlName="Name" placeholder="Gold gift bag" required="required" autofocus />
+        </div>
+
+        <div class="form-group-items">
+          <div class="form-item">
+            <label class="label">Order Total</label>
+            <input type="text" placeholder="850.99" formControlName="UnitPrice" required="required" />
+          </div>
+
+          <div class="form-item">
+            <label class="label">Order date</label>
+            <input type="text" formControlName="UnitCost" placeholder="500" required="required" />
+            <div class="alert" *ngIf="!rForm.controls['UnitCost'].valid && rForm.controls['UnitCost'].touched">
+              Unit cost is required
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="section">
+        <div class="form-item">
+          <label class="label">Order products</label>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div class="actions-footer">
+      <div class="actions">
+        <!-- <div class="div">
+        </div> -->
+        <div class="div">
+          <input type="button" value="Cancel" (click)="back()" class="action-btn cancel" />
+        </div>
+        <div class="div">
+          <input type="submit" value="Save item" (click)="onSubmit(rForm.value)" class="action-btn"
+            [disabled]="!rForm.valid" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+<div class="scanner-pluggin" *ngIf="showScan">
+  <app-scanner></app-scanner>
+</div>

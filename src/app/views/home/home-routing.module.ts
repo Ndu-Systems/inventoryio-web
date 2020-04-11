@@ -17,6 +17,7 @@ import {
   ResetPasswordComponent
 } from './accounts';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
+import { InlineHomeLoaderComponent } from './inline-home-loader/inline-home-loader.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -46,7 +47,8 @@ export const declarations = [
   HomeSliderComponent,
   HowItWorksComponent,
   ForgotPasswordComponent,
-  ResetPasswordComponent
+  ResetPasswordComponent,
+  InlineHomeLoaderComponent
 ];
 
 

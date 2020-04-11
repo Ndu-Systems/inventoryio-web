@@ -49,7 +49,6 @@ export class OrderDetailsComponent implements OnInit {
     });
     this.ordersService.order.subscribe(state => {
       if (!state) { return; }
-      this.ordersService.getProductsForAnOrder(state.OrdersId);
       this.total = state.Total;
       this.finalTotal = Number(state.Total) + (state.Total * this.companyTax);
     });
@@ -59,7 +58,6 @@ export class OrderDetailsComponent implements OnInit {
   }
   details(order: Orders) {
     this.ordersService.updateOrderState(order);
-    this.ordersService.getProductsForAnOrder(order.OrdersId);
     this.router.navigate([`/dashboard/order-details`]);
   }
   print(order: Orders) {
@@ -68,6 +66,7 @@ export class OrderDetailsComponent implements OnInit {
     const win = window.open(url, '_blank');
     win.focus();
   }
+
 
   cancelPayAction() {
     this.paymentAction = false;
@@ -149,7 +148,7 @@ export class OrderDetailsComponent implements OnInit {
   }
   sendEmailNow(email: Email) {
     this.emailService.sendEmailInvoice(email).subscribe(data => {
-       this.messageService.add({
+      this.messageService.add({
         severity: 'success',
         summary: `Invoice sent`,
         detail: 'Customer invoice was sent successful!'
@@ -174,5 +173,10 @@ export class OrderDetailsComponent implements OnInit {
     const date = new Date(d);
 
     return `${date.getDay()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
+  }
+  createCreditNote(order: Orders) {
+    this.ordersService.updateOrderState(order);
+    this.router.navigate(['/dashboard/credit-note']);
+
   }
 }

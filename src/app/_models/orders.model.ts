@@ -1,4 +1,5 @@
 import { Partner } from './partner.model';
+import { Product } from './product.model';
 
 export interface Orders {
     OrdersId?: string;
@@ -17,6 +18,7 @@ export interface Orders {
     StatusId: number;
     Customer?: Partner;
     Charges?: any;
+    Products?: Product[];
     // local
     Disable?: boolean;
     Touched?: boolean;

@@ -1,0 +1,123 @@
+@import '../../../../../assets/styles/variables';
+
+.main-content {
+  padding: 1rem 2rem;
+  padding-bottom: 0;
+
+  @media only screen and (max-width: 600px) {
+    padding: .8rem;
+  }
+
+  .col-1-of-2 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      margin: .4rem;
+    }
+
+    .section {
+      background: $white-color;
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      display: block;
+
+      @media only screen and (max-width: 600px) {
+        width: 94%;
+      }
+
+      .form-item {
+        padding: 1rem;
+        margin: .1rem;
+        width: 100%;
+        display: grid;
+
+        @media only screen and (max-width: 600px) {
+          padding: .4rem;
+        }
+
+        input,
+        select {
+          border: 1px solid $ligher-gray;
+
+          &::placeholder {
+            font-weight: 200;
+            font-style: italic;
+            font-size: .8rem;
+          }
+        }
+
+
+        .alert {
+          padding-left: 0;
+        }
+      }
+
+      .form-group-items {
+        display: grid;
+        grid-template-columns: 50% 50%;
+
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 100%;
+        }
+
+      }
+    }
+  }
+}
+
+.group-inputs {
+  display: grid;
+  grid-template-columns: 90% 10%;
+
+  button {
+    background: #D1D8E0;
+    border: 1px solid #D1D8E0;
+    height: 2.777777rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 2.08888rem;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      top: 1.88888rem;
+
+    }
+  }
+}
+
+
+.g8020 {
+  grid-template-columns: 75% auto;
+}
+
+.eg {
+  text-transform: lowercase;
+  font-style: italic;
+  color: $primary-bg-color;
+}
+
+form {
+  margin: 0;
+}
+
+.label {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .8rem;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    text-align: left;
+    display: block;
+  }
+}
