@@ -4,6 +4,8 @@ export interface CreditNote {
     OrderId: string;
     Total: number;
     Reason: string;
+    OtherReason?: string;
+    Notes?: string;
     CreateDate?: string;
     CreateUserId: string;
     ModifyDate?: string;

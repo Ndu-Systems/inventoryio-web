@@ -134,3 +134,19 @@ form {
 
   }
 }
+
+textarea{
+  border: 1px solid #D1D8E0;
+}
+
+.items{
+  .item{
+    display: grid;
+    grid-template-columns: 10% 40% 25% 20% ;
+    .image{
+      img{
+        width: 1.8rem;
+      }
+    }
+  }
+}

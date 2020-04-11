@@ -12,10 +12,23 @@
             <option value="customer overcharged">Customer overcharged</option>
             <option value="customer undercharged">Customer undercharged</option>
             <option value="goods returned">Goods returned</option>
+            <option value="other">Other</option>
           </select>
         </div>
 
 
+
+        <div class="form-item">
+          <label class="label">Other Reason <span class="eg"> (If you selected other, please specify)</span></label>
+          <input type="text" formControlName="OtherReason" placeholder="Gold gift bag" />
+        </div>
+
+        <div class="form-item">
+          <label class="label">additional notes</label>
+
+
+          <textarea formControlName="Notes"></textarea>
+        </div>
 
         <div class="form-item">
           <label class="label">Order Number</label>
@@ -25,7 +38,7 @@
 
         <div class="form-group-items">
           <div class="form-item">
-            <label class="label">Order Total</label>
+            <label class="label">Order Total - ZAR</label>
             <input type="text" placeholder="850.99" formControlName="Total" disabled required="required" />
           </div>
 
@@ -42,6 +55,51 @@
         <div class="form-item">
           <label class="label">Order products</label>
         </div>
+
+        
+    <div class="cards" *ngIf="order.Products">
+      <div class="items">
+        <span *ngFor="let item of order.Products | searchproduct: search">
+
+          <div class="item">
+            <div class="image">
+              <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+              <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
+            </div>
+
+            <div class="data">
+              <span class="value">{{item.ProductName}}</span>
+              <!-- <span class="label"> Product Name</span> -->
+              <span class="label"> {{item.Options | formatDashboardOptions}}</span>
+            </div>
+
+            <div class="data">
+              <span class="value"> {{item.Quantity}} x {{item.UnitPrice  | currency:'R'}} <br></span>
+              <span class="label"> QNTY x Price</span>
+            </div>
+
+            <div class="data">
+              <span class="value"> {{item.subTotal  | currency:'R'}} <br></span>
+              <span class="label"> Total</span>
+            </div>
+          </div>
+        </span>
+      </div>
+
+      <div class="taxis spaccing">
+        <div class="data">
+          <span class="value total">
+           <b> Total:{{total | currency:'R'}} </b>
+          </span>
+          <!-- <span class="value tax" *ngIf="order.Charges">
+            <span *ngFor="let charge of order.Charges"><i>Inc. </i> {{charge.Label}}
+            </span>
+          </span> -->
+        </div>
+      </div>
+
+    </div>
+
 
 
       </div>
@@ -64,10 +122,4 @@
   </form>
 </div>
 
-
-
-
-<div class="scanner-pluggin" *ngIf="showScan">
-  <app-scanner></app-scanner>
-</div>
-<p-confirmDialog  header="Confirm cancellation"></p-confirmDialog>
+<p-confirmDialog header="Confirm cancellation"></p-confirmDialog>

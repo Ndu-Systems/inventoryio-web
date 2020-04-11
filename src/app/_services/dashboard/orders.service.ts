@@ -172,7 +172,7 @@ export class OrdersService {
       if (orders.length) {
         this.updateOrderState(orders[0]);
         orders[0].CardClass.push('card-active');
-        this.getOrderProductsByCompanyId(companyId);
+        // this.getOrderProductsByCompanyId(companyId);
       }
       this._orders.next(orders);
     }, error => {

@@ -69,6 +69,7 @@ export class OrderDetailsComponent implements OnInit {
   }
 
 
+
   cancelPayAction() {
     this.paymentAction = false;
   }
@@ -178,6 +179,10 @@ export class OrderDetailsComponent implements OnInit {
   createCreditNote(order: Orders) {
     this.ordersService.updateOrderState(order);
     this.router.navigate(['/dashboard/credit-note']);
-
+  }
+  viewCreditNote(order: Orders) {
+    const url = this.invoiceService.getCrediNoteURL(order.OrdersId);
+    const win = window.open(url, '_blank');
+    win.focus();
   }
 }

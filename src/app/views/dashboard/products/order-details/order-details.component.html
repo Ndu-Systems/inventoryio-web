@@ -42,7 +42,7 @@
           <span class="order-status" *ngIf="order.Status == 'new'"> {{order.Status}}</span>
           <span class="order-status partially-paid" *ngIf="order.Status == 'Partially paid'"> {{order.Status}}</span>
           <span class="order-status fully-paid" *ngIf="order.Status == 'Fully paid'"> {{order.Status}}</span>
-          <span class="order-status cancelled" *ngIf="order.Status == 'Cancelled'"> {{order.Status}}</span>
+          <span class="order-status cancelled" *ngIf="order.Status == 'Cancelled'"> {{order.Status}} - {{order.Creditnotes?.Reason}}</span>
         </h1>
         <!-- <h1 class="date">
             <span class="label"> Order Date</span>

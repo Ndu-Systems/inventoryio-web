@@ -20,6 +20,10 @@ export class CreditNoteComponent implements OnInit {
   prefix = 'INV';
   order$: Observable<Orders>;
   order: Orders;
+  total: number;
+  finalTotal: number;
+  companyTax: number;
+  products: Product[];
 
   constructor(
     private fb: FormBuilder,
@@ -29,6 +33,7 @@ export class CreditNoteComponent implements OnInit {
     private messageService: MessageService,
     private ordersService: OrdersService,
     private confirmationService: ConfirmationService,
+    private productService: ProductService
 
 
 
@@ -47,8 +52,10 @@ export class CreditNoteComponent implements OnInit {
     this.rForm = this.fb.group({
       OrderId: [this.order.OrdersId || ''],
       OrderNo: [`${this.prefix}${this.order.OrderId}` || ''],
-      Total: [this.order.Total || 0],
+      Total: [`-R ${this.order.Total}` || 0],
       Reason: [null, Validators.required],
+      OtherReason: [null],
+      Notes: [null],
       CompanyId: [this.order.CompanyId, Validators.required],
       CreateDate: [this.order.CreateDate, Validators.required],
       CreateUserId: [user.UserId, Validators.required],
@@ -56,14 +63,35 @@ export class CreditNoteComponent implements OnInit {
       StatusId: [1, Validators.required]
     });
 
+    this.productService.products.subscribe(p => { this.products = p; });
+    this.productService.getProducts(this.order.CompanyId);
+
+    this.ordersService.order.subscribe(state => {
+      if (!state) { return; }
+      this.total = state.Total;
+      this.finalTotal = Number(state.Total) + (state.Total * this.companyTax);
+    });
+
   }
 
 
   onSubmit(creditNote: CreditNote) {
-
+    if (creditNote.Reason === 'other') {
+      if (creditNote.OtherReason) {
+        creditNote.Reason = creditNote.OtherReason;
+      } else {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Other reason is required!',
+          detail: 'Please enter other reason to save'
+        });
+        return false;
+      }
+    }
     this.confirmationService.confirm({
       message: 'Are you sure that you want to cancel this order?',
       accept: () => {
+        creditNote.Total = this.order.Total * -1;
         this.creditNoteService.addCreditNote(creditNote).subscribe(data => {
           console.log(data);
           this.messageService.add({
@@ -73,6 +101,7 @@ export class CreditNoteComponent implements OnInit {
           });
           this.order.Status = 'Cancelled';
           this.ordersService.uptadeOrder(this.order);
+          this.updateProductsRange();
           this.back();
         });
       }
@@ -80,7 +109,16 @@ export class CreditNoteComponent implements OnInit {
 
   }
 
-
+  updateProductsRange() {
+    const products: Product[] = [];
+    this.order.Products.forEach(item => {
+      const product = this.products.find(x => x.ProductId === item.ProductId);
+      product.Quantity = Number(product.Quantity) + Number(item.Quantity);
+      product.TrackInventory = true;
+      products.push(product);
+    });
+    this.productService.updateProductRange(products);
+  }
   back() {
     this.routeTo.navigate([`/dashboard/list-orders`]);
   }
