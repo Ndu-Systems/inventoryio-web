@@ -69,7 +69,10 @@ export class OrdersService {
   updateOrderState(order: Orders) {
     this.clearSelectedClass();
     if (order) {
-      order.CardClass.push('card-active');
+      if (!order.CardClass) {
+        order.CardClass = ['card'];
+      }
+      (order.CardClass).push('card-active');
     }
     this._order.next(order);
     localStorage.setItem('order', JSON.stringify(order));
@@ -170,9 +173,15 @@ export class OrdersService {
     return this.http.get<any>(`${this.url}/api/orders/get-orders.php?CompanyId=${companyId}`).subscribe(resp => {
       const orders: Orders[] = resp;
       if (orders.length) {
-        this.updateOrderState(orders[0]);
-        orders[0].CardClass.push('card-active');
-        // this.getOrderProductsByCompanyId(companyId);
+        if (!this._order.value) {
+          this.updateOrderState(orders[0]);
+          orders[0].CardClass.push('card-active');
+        } else {
+          const order = orders.find(x => x.OrdersId === this._order.value.OrdersId);
+          this.updateOrderState(order);
+          order.CardClass.push('card-active');
+        }
+
       }
       this._orders.next(orders);
     }, error => {

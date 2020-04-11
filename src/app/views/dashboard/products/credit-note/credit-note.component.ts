@@ -100,7 +100,7 @@ export class CreditNoteComponent implements OnInit {
             detail: 'Credit Note created '
           });
           this.order.Status = 'Cancelled';
-          this.ordersService.uptadeOrder(this.order);
+          // this.ordersService.uptadeOrder(this.order);
           this.updateProductsRange();
           this.back();
         });
