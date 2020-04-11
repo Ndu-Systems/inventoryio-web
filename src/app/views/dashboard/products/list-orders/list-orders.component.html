@@ -1,6 +1,6 @@
 <div class="main">
   <h1 class="heading">
-    Sales orders
+    Sales invoices
   </h1>
   <div class="body">
 
@@ -14,7 +14,7 @@
                   <i class="pi pi-filter"></i>
                 </div>
                 <select [(ngModel)]="searchByCatergory">
-                  <option value="" selected>All sales orders</option>
+                  <option value="" selected>All sales </option>
                   <option [value]="status" *ngFor="let status of statuses">{{status}}
                   </option>
                 </select>
@@ -43,7 +43,6 @@
               <div class="image">
                 <img *ngIf="order.Customer" src="assets/images/order/user.svg" alt="">
                 <img *ngIf="!order.Customer" src="assets/images/order/user-no-customer.svg" alt="">
-                <!-- <img src="../../../../../assets/ndu.jpg" alt=""> -->
               </div>
               <div class="name">
                 <h4 *ngIf="order.Customer" class="customer-name">{{order.Customer.Name}}</h4>
@@ -51,6 +50,7 @@
                 <h5 *ngIf="order.Status == 'new'" class="order-status new">{{order.Status}}</h5>
                 <h5 *ngIf="order.Status == 'Partially paid'" class="order-status partially-paid">{{order.Status}}</h5>
                 <h5 *ngIf="order.Status == 'Fully paid'" class="order-status fully-paid">{{order.Status}}</h5>
+                <h5 *ngIf="order.Status == 'Cancelled'" class="order-status cancelled">{{order.Status}}</h5>
               </div>
 
               <div class="total">
@@ -58,7 +58,7 @@
                   {{order.Total  | currency:'R'}}
                 </h4>
                 <h6>
-                  ORD-{{order.OrderId}}
+                  {{prefix}} {{order.OrderId}}
                 </h6>
               </div>
             </div>

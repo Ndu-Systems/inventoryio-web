@@ -24,6 +24,7 @@ export class OrderDetailsComponent implements OnInit {
   paymentAction: boolean;
   amountPaid: number;
   user: User;
+  prefix = 'INV';
 
   constructor(
     private ordersService: OrdersService,

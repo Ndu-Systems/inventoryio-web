@@ -20,7 +20,7 @@ export class ListOrdersComponent implements OnInit {
   notFoundModel: NotFoundModel;
   searchByCatergory = '';
   statuses: string[];
-
+  prefix = 'INV';
   constructor(
     private ordersService: OrdersService,
     private router: Router,

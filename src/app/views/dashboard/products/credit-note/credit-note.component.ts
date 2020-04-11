@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { Brand, Caterory, Product, User, Orders } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { AccountService, ProductService, BannerService, OrdersService } from 'src/app/_services';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
+import { CreditNoteService } from 'src/app/_services/dashboard/credit-note.service';
+import { CreditNote } from 'src/app/_models/creditnote.model';
 
 @Component({
   selector: 'app-credit-note',
@@ -15,7 +17,7 @@ export class CreditNoteComponent implements OnInit {
 
   rForm: FormGroup;
   error: string;
-  prefix = 'ORD';
+  prefix = 'INV';
   order$: Observable<Orders>;
   order: Orders;
 
@@ -23,9 +25,10 @@ export class CreditNoteComponent implements OnInit {
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
-    private productService: ProductService,
+    private creditNoteService: CreditNoteService,
     private messageService: MessageService,
     private ordersService: OrdersService,
+    private confirmationService: ConfirmationService,
 
 
 
@@ -43,7 +46,7 @@ export class CreditNoteComponent implements OnInit {
 
     this.rForm = this.fb.group({
       OrderId: [this.order.OrdersId || ''],
-      OrderNo: [`${this.prefix}-${this.order.OrderId}` || ''],
+      OrderNo: [`${this.prefix}${this.order.OrderId}` || ''],
       Total: [this.order.Total || 0],
       Reason: [null, Validators.required],
       CompanyId: [this.order.CompanyId, Validators.required],
@@ -56,15 +59,24 @@ export class CreditNoteComponent implements OnInit {
   }
 
 
-  onSubmit(product: Product) {
-    this.productService.addProduct(product);
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success!',
-      detail: 'product created '
-    });
+  onSubmit(creditNote: CreditNote) {
 
-    this.routeTo.navigate([`/dashboard/list-product`]);
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to cancel this order?',
+      accept: () => {
+        this.creditNoteService.addCreditNote(creditNote).subscribe(data => {
+          console.log(data);
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success!',
+            detail: 'Credit Note created '
+          });
+          this.order.Status = 'Cancelled';
+          this.ordersService.uptadeOrder(this.order);
+          this.back();
+        });
+      }
+    });
 
   }
 
