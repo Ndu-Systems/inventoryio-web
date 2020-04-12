@@ -174,12 +174,14 @@ export class OrdersService {
       const orders: Orders[] = resp;
       if (orders.length) {
         if (!this._order.value) {
-          this.updateOrderState(orders[0]);
           orders[0].CardClass.push('card-active');
+          orders[0].Show = true;
+          this.updateOrderState(orders[0]);
         } else {
           const order = orders.find(x => x.OrdersId === this._order.value.OrdersId);
-          this.updateOrderState(order);
           order.CardClass.push('card-active');
+          order.Show = true;
+          this.updateOrderState(order);
         }
 
       }
