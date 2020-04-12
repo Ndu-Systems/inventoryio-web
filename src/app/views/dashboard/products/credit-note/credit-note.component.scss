@@ -135,16 +135,21 @@ form {
   }
 }
 
-textarea{
+textarea {
   border: 1px solid #D1D8E0;
 }
 
-.items{
-  .item{
+.items {
+  .item {
     display: grid;
-    grid-template-columns: 10% 40% 25% 20% ;
-    .image{
-      img{
+    grid-template-columns: 10% 40% 25% 20%;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+    }
+
+    .image {
+      img {
         width: 1.8rem;
       }
     }

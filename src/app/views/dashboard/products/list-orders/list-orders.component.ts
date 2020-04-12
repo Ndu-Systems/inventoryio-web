@@ -107,6 +107,7 @@ export class ListOrdersComponent implements OnInit {
     this.searchOrder();
   }
   select(order: Orders) {
+    order.Show = true;
     this.ordersService.updateOrderState(order);
   }
 }

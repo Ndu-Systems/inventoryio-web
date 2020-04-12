@@ -24,6 +24,7 @@ export interface Orders {
     Touched?: boolean;
     Paying?: boolean;
     Payment?: number;
+    Show?: boolean;
     CardClass?: string[];
 
 

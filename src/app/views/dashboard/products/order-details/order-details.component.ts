@@ -16,6 +16,7 @@ export class OrderDetailsComponent implements OnInit {
 
   search: string;
   order$: Observable<Orders>;
+  order: Orders;
   products$: Observable<OrderProducts[]>;
   total: number;
   companyTax = 0.1;
@@ -25,6 +26,7 @@ export class OrderDetailsComponent implements OnInit {
   amountPaid: number;
   user: User;
   prefix = 'INV';
+  showDetials = true;
 
   constructor(
     private ordersService: OrdersService,
@@ -52,15 +54,14 @@ export class OrderDetailsComponent implements OnInit {
       if (!state) { return; }
       this.total = state.Total;
       this.finalTotal = Number(state.Total) + (state.Total * this.companyTax);
+      this.showDetials = state.Show;
+      this.order = state;
     });
   }
   add() {
     this.router.navigate(['/dashboard/sell']);
   }
-  details(order: Orders) {
-    this.ordersService.updateOrderState(order);
-    this.router.navigate([`/dashboard/order-details`]);
-  }
+
   print(order: Orders) {
     // this.router.navigate(['/dashboard/print-invoice']);
     const url = this.invoiceService.getInvoiceURL(order.OrdersId);
@@ -184,5 +185,9 @@ export class OrderDetailsComponent implements OnInit {
     const url = this.invoiceService.getCrediNoteURL(order.OrdersId);
     const win = window.open(url, '_blank');
     win.focus();
+  }
+  closeDetails() {
+    this.order.Show = false;
+    this.ordersService.updateOrderState(this.order);
   }
 }

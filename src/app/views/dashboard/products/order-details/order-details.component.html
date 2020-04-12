@@ -1,5 +1,8 @@
-<div class="main" *ngIf="order$ | async as order;">
-  <div class="body">
+<div class="main" *ngIf="showDetials">
+  <div class="back">
+    <h5 (click)="closeDetails()"><i class="pi pi-arrow-left"></i>Back</h5>
+  </div>
+  <div class="body" *ngIf="order$ | async as order;">
     <div class="small-cards">
       <div class="card filter-card">
         <div class="list-filters topbar">
@@ -14,19 +17,23 @@
             </div>
           </div>
           <div>
-            <button class="btn btn-transparent" (click)="triggerPaymentAction()"><i class="pi pi-money-bill"></i>
-              Pay</button>
+            <button class="btn btn-transparent" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid' "
+              (click)="triggerPaymentAction()"><i class="pi pi-money-bill"></i>
+              Payment</button>
           </div>
           <div>
-            <button class="btn btn-transparent"  *ngIf="order.Status != 'Cancelled'" (click)="createCreditNote(order)"><i class="pi pi-pencil"></i> Create credit note</button>
-            <button class="btn btn-transparent"  *ngIf="order.Status == 'Cancelled'" (click)="viewCreditNote(order)"><i class="pi pi-pencil"></i> View credit note</button>
+            <button class="btn btn-transparent" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid'"
+              (click)="createCreditNote(order)"><i class="pi pi-pencil"></i> Create credit note</button>
+            <button class="btn btn-transparent" *ngIf="order.Status == 'Cancelled'" (click)="viewCreditNote(order)"><i
+                class="pi pi-print"></i> Print credit note</button>
           </div>
           <div>
-            <button class="btn btn-transparent" (click)="print(order)"><i class="pi pi-print"></i> Print</button>
+            <button class="btn btn-transparent" (click)="print(order)"><i class="pi pi-print"></i> Print
+              Invoice</button>
           </div>
           <div>
             <button class="btn btn-transparent" (click)="sendInvoice(order)"><i class="pi pi-envelope"></i>
-              Email</button>
+              Email Invoice</button>
           </div>
         </div>
       </div>
@@ -42,7 +49,8 @@
           <span class="order-status" *ngIf="order.Status == 'new'"> {{order.Status}}</span>
           <span class="order-status partially-paid" *ngIf="order.Status == 'Partially paid'"> {{order.Status}}</span>
           <span class="order-status fully-paid" *ngIf="order.Status == 'Fully paid'"> {{order.Status}}</span>
-          <span class="order-status cancelled" *ngIf="order.Status == 'Cancelled'"> {{order.Status}} - {{order.Creditnotes?.Reason}}</span>
+          <span class="order-status cancelled" *ngIf="order.Status == 'Cancelled'"> {{order.Status}} -
+            {{order.Creditnotes?.Reason}}</span>
         </h1>
         <!-- <h1 class="date">
             <span class="label"> Order Date</span>
@@ -53,10 +61,12 @@
             <div class="image">
               <img class="ordrer-heading-icons" src="assets/images/pending.svg" alt="">
             </div>
-            <h1 class="date">
-              <span class="label">Outstanding balance</span>
-              {{order.Due | currency:'R'}}
-            </h1>
+            <div>
+              <h1 class="date">
+                <span class="label">Outstanding balance</span>
+                {{order.Due | currency:'R'}}
+              </h1>
+            </div>
           </div>
           <div class="col-1-of-2 s10-20">
             <div class="image">
@@ -152,4 +162,5 @@
 
 
   </div>
-  <p-confirmDialog header="Confirmation Payment"></p-confirmDialog>
+</div>
+<p-confirmDialog header="Confirmation Payment"></p-confirmDialog>
