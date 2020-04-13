@@ -19,7 +19,10 @@ export class PurchaseOrderComponent implements OnInit {
   notes;
   products: Product[];
   productRows: Product[] = [];
+  productsSuggestions: Product[] = [];
+  supplierSuggestions: Product[] = [];
   user: User;
+  currentIndex: number;
 
   constructor(
     private routeTo: Router,
@@ -54,10 +57,10 @@ export class PurchaseOrderComponent implements OnInit {
       CatergoryId: '',
       CompanyId: '',
       SupplierId: '',
-      Name: `2l coke x 12`,
+      Name: ``,
       Description: '',
       UnitPrice: null,
-      UnitCost: 3500,
+      UnitCost: null,
       Code: '',
       SKU: '',
       TrackInventory: true,
@@ -90,9 +93,10 @@ export class PurchaseOrderComponent implements OnInit {
     let subTot = 0;
 
     this.productRows.forEach(item => {
+      const findProducts = this.products.find(x => x.ProductId === item.ProductId);
       products.push({
         OrderId: '0',
-        ProductId: item.ProductId || 'new',
+        ProductId: findProducts && findProducts.ProductId || 'new',
         CompanyId: this.user.CompanyId,
         ProductName: item.Name,
         UnitPrice: item.UnitCost,
@@ -122,8 +126,28 @@ export class PurchaseOrderComponent implements OnInit {
 
     this.ordersService.addPurchaseOrder(order, products).subscribe(response => {
       console.log(response);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Order created',
+        detail: `Purchase Order was created successfully`,
+        life: 10000
+      });
+      this.routeTo.navigate(['/dashboard/purchase-orders-list']);
+
     });
   }
-
+  searchProduct(key: string, index: number) {
+    this.currentIndex = index;
+    if (key) {
+      this.productsSuggestions = this.products.filter(x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()));
+    }
+  }
+  selectSuggestion(index, selectdProduct: Product, ) {
+    this.productRows[index].Name = selectdProduct.Name;
+    this.productRows[index].UnitCost = selectdProduct.UnitCost;
+    this.productRows[index].ProductId = selectdProduct.ProductId;
+    this.productsSuggestions = [];
+    this.currentIndex = undefined;
+  }
 
 }

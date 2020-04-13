@@ -7,7 +7,11 @@
         <div class="form-item">
           <label class="label">supplier</label>
           <input type="text" [(ngModel)]="supplier" placeholder="Gold gift bag" />
-          <div class="dropdown"></div>
+          <div class="dropdown" *ngIf="supplierSuggestions.length > 0">
+            <p *ngFor="let item of supplierSuggestions">
+              {{item.Name}}
+            </p>
+          </div>
         </div>
 
 
@@ -36,11 +40,17 @@
           </div>
           <div class="body" *ngFor="let product of productRows; let i = index">
             <div class="body-item">
-              <input type="text" [(ngModel)]="product.Name" placeholder="Enter a product name" />
+              <input type="text" [(ngModel)]="product.Name" placeholder="Enter a product name"
+                (keyup)="searchProduct($event.target.value, i)" />
+              <div class="dropdown" *ngIf="productsSuggestions.length > 0 && currentIndex == i">
+                <p *ngFor="let item of productsSuggestions">
+                  <span (click)="selectSuggestion(i,item)">{{item.Name}}</span>
+                </p>
+              </div>
+
             </div>
             <div class="body-item">
               <input type="number" [(ngModel)]="product.UnitCost" placeholder="450" />
-
             </div>
             <div class="body-item tac">
 

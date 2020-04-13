@@ -178,6 +178,8 @@ textarea {
 
 
     .body-item {
+      position: relative;
+
       input {
         border: 1px solid $ligher-gray;
         font-weight: 500;
@@ -258,7 +260,28 @@ textarea {
 .dropdown {
   position: absolute;
   width: 96%;
-  left: 1rem;
-  top: 5.7rem;
+  left: .1rem;
+  top: 3.2rem;
   z-index: 100;
+  background: #fff;
+  border: 1px solid $ligher-gray;
+  max-height: 12rem;
+  overflow-y: scroll;
+  padding: .6rem;
+
+  span {
+    display: block;
+    cursor: pointer;
+    font-weight: 500;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
 }
+
+// .actions-footer{
+//   position: relative;
+//   bottom: 0;
+//   background: red;
+// }

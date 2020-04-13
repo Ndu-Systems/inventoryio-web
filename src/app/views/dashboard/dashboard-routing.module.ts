@@ -85,6 +85,7 @@ import { FormatDashBoardOptionsPipe } from 'src/app/_pipes/format-dashboard-opti
 import { CreditNoteComponent } from './products/credit-note/credit-note.component';
 import { PurchaseOrderComponent } from './orders/purchase-order/purchase-order/purchase-order.component';
 import { ListPurchaseOrderComponent } from './orders/purchase-order/list-purchase-order/list-purchase-order.component';
+import { PurchaseOrderDetailsComponent } from './orders/purchase-order/purchase-order-details/purchase-order-details.component';
 
 const routes: Routes = [
   {
@@ -237,7 +238,8 @@ export const declarations = [
   FilterStringsPipe,
   CreditNoteComponent,
   ListPurchaseOrderComponent,
-  PurchaseOrderComponent
+  PurchaseOrderComponent,
+  PurchaseOrderDetailsComponent
 ];
 
 @NgModule({
