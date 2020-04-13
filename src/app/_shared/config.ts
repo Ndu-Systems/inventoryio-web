@@ -11,3 +11,5 @@ export const INVOICE_URL = '0c4c3f54-22f8-11ea-bb26-48f17f8d4d88/48f1/48f17f8d4d
 export const QUOTATION_URL = '0c4c3f54-22f8-11ea-bb26-48f17f8d4d88/48f1/55878781.php';
 export const CREDIT_NOTE_URL = '0c4c3f54-22f8-11ea-bb26-48f17f8d4d88/48f1/558787833.php';
 export const COMBINED_TOKEN = 'A35503D9B94F46AE8C3F44974A120B6D-01-7:t*_SPd4mY00KGYlgOp8HdlDL4Inny';
+export const ORDER_SELL = 'Sell';
+export const ORDER_PURCHASE = 'Purchase';

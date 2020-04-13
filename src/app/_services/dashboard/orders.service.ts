@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SplashService } from '../splash.service';
 import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
+import { type } from 'os';
 
 @Injectable({
   providedIn: 'root'
@@ -59,12 +60,10 @@ export class OrdersService {
     localStorage.setItem('orders', JSON.stringify(state));
   }
   updatOrdersState(orders: Orders[]) {
-    this.updateOrderState(orders[0]);
-    orders[0].CardClass.push('card-active');
-    this._orders.next(orders);
-    this.updateOrderState(orders[0]);
-    localStorage.setItem('orders', JSON.stringify(orders));
-
+    if(orders){
+      this._orders.next(orders);
+      localStorage.setItem('orders', JSON.stringify(orders));
+    }
   }
   updateOrderState(order: Orders) {
     this.clearSelectedClass();
@@ -175,22 +174,29 @@ export class OrdersService {
     });
   }
 
+  loadCurrentOrder(orders: Orders[], orderType: string) {
+    if (orders.length) {
+      orders = orders.filter(x => x.OrderType === orderType);
+      this._orders.next(orders);
+
+
+      if (this._order.value && this._order.value.OrderType === orderType) {
+        const order = orders.find(x => x.OrdersId === this._order.value.OrdersId);
+        order.CardClass.push('card-active');
+        order.Show = true;
+        this.updateOrderState(order);
+      } else {
+        orders[0].CardClass.push('card-active');
+        orders[0].Show = true;
+        this.updateOrderState(orders[0]);
+      }
+
+
+    }
+  }
   getOrders(companyId) {
     return this.http.get<any>(`${this.url}/api/orders/get-orders.php?CompanyId=${companyId}`).subscribe(resp => {
       const orders: Orders[] = resp;
-      if (orders.length) {
-        if (!this._order.value) {
-          orders[0].CardClass.push('card-active');
-          orders[0].Show = true;
-          this.updateOrderState(orders[0]);
-        } else {
-          const order = orders.find(x => x.OrdersId === this._order.value.OrdersId);
-          order.CardClass.push('card-active');
-          order.Show = true;
-          this.updateOrderState(order);
-        }
-
-      }
       this._orders.next(orders);
     }, error => {
       this.splashService.update({
@@ -199,6 +205,9 @@ export class OrdersService {
         class: `error`
       });
     });
+  }
+  getOrdersForType(companyId): Observable<Orders[]> {
+    return this.http.get<Orders[]>(`${this.url}/api/orders/get-orders.php?CompanyId=${companyId}`);
   }
   getOrderProductsByCompanyId(companyId) {
     return this.http.get<any>(
