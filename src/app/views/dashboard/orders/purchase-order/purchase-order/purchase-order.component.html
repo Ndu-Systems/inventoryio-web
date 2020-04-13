@@ -1,0 +1,102 @@
+<div class="main-content" if="order$ | async as order">
+  <h1 class="title-header">New purchase order</h1>
+
+  <div>
+    <div class="col-1-of-2">
+      <div class="section">
+        <div class="form-item">
+          <label class="label">supplier</label>
+          <input type="text" [(ngModel)]="supplier" placeholder="Gold gift bag" />
+          <div class="dropdown"></div>
+        </div>
+
+
+
+
+
+        <div class="form-item">
+          <label class="label">notes to supplier </label>
+          <textarea [(ngModel)]="notes"></textarea>
+        </div>
+
+        <div class="table">
+          <div class="header">
+            <div class="header-item">
+              Product name
+            </div>
+            <div class="header-item">
+              Price
+            </div>
+            <div class="header-item tac">
+              QTY
+            </div>
+            <div class="header-item tar">
+              Actions
+            </div>
+          </div>
+          <div class="body" *ngFor="let product of productRows; let i = index">
+            <div class="body-item">
+              <input type="text" [(ngModel)]="product.Name" placeholder="Enter a product name" />
+            </div>
+            <div class="body-item">
+              <input type="number" [(ngModel)]="product.UnitCost" placeholder="450" />
+
+            </div>
+            <div class="body-item tac">
+
+              <div class="qnty">
+                <div class="min">
+                  <button class="add hover-shadow" (click)="reduce(-1, i)">
+                    <i class="pi pi-minus"></i>
+                  </button>
+                </div>
+                <div class="input">
+                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="product.Quantity" (blur)="blur(item)">
+                </div>
+
+                <div class="plus">
+                  <button class="reduce hover-shadow" (click)="reduce(1, i)">
+                    <i class="pi pi-plus"></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+            <div class="body-item tar">
+              <button (click)="removeItem(i)">
+                <!-- <i class="pi pi-trash"></i> -->
+                <i class="pi pi-ellipsis-h"></i>
+              </button>
+            </div>
+          </div>
+          <div class="actions">
+            <a (click)="addNewLine()">Add row</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- 
+      <div class="section">
+        <pre>
+          {{productRows | json}}
+        </pre>
+      </div> -->
+    </div>
+
+
+    <div class="actions-footer">
+      <div class="actions">
+        <!-- <div class="div">
+        </div> -->
+        <div class="div">
+          <input type="button" value="Cancel" (click)="back()" class="action-btn cancel" />
+        </div>
+        <div class="div">
+          <input type="submit" value="Save item" (click)="onSubmit()" class="action-btn" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-confirmDialog header="Confirm cancellation"></p-confirmDialog>

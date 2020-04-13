@@ -125,6 +125,12 @@ export class OrdersService {
     });
   }
 
+
+  addPurchaseOrder(data: Orders, items: OrderProducts[]): Observable<any> {
+    return this.http.post<any>(`${this.url}/api/orders/add-orders.php`, { order: data, products: items });
+  }
+
+
   uptadeOrder(data: Orders) {
     return this.http.post<any>(`${this.url}/api/orders/update-order.php`, data).subscribe(resp => {
       const order: Orders = resp;

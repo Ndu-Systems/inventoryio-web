@@ -83,6 +83,8 @@ import { AttributesComponent } from './products/attributes/attributes.component'
 import { ProductImagesUncroppedComponent } from './products/product-images/product-images-uncropped/product-images-uncropped.component';
 import { FormatDashBoardOptionsPipe } from 'src/app/_pipes/format-dashboard-options.pipe';
 import { CreditNoteComponent } from './products/credit-note/credit-note.component';
+import { PurchaseOrderComponent } from './orders/purchase-order/purchase-order/purchase-order.component';
+import { ListPurchaseOrderComponent } from './orders/purchase-order/list-purchase-order/list-purchase-order.component';
 
 const routes: Routes = [
   {
@@ -139,6 +141,8 @@ const routes: Routes = [
       { path: 'company-view-configs/:id', component: CompanyViewConfigsComponent },
       { path: 'import-partners/:id', component: ImportPartnersComponent },
       { path: 'credit-note', component: CreditNoteComponent },
+      { path: 'new-purchase-order', component: PurchaseOrderComponent },
+      { path: 'purchase-orders-list', component: ListPurchaseOrderComponent },
       // { path: 'company-services', component: CompanyServicesComponent },
       // { path: 'add-company-service', component: AddCompanyServiceComponent },
       // { path: 'order-service', component: SellServiceComponent },
@@ -231,7 +235,9 @@ export const declarations = [
   ConfigurationFilterPipe,
   SearchPartnerPipe,
   FilterStringsPipe,
-  CreditNoteComponent
+  CreditNoteComponent,
+  ListPurchaseOrderComponent,
+  PurchaseOrderComponent
 ];
 
 @NgModule({

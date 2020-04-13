@@ -98,7 +98,19 @@ export class DashboardNavComponent implements OnInit {
         Link: '/dashboard/qoutes-list',
         Icon: `pi pi-align-left`,
         showItem: true
-      }
+      },
+      {
+        Name: 'New Purchaser Order',
+        Link: '/dashboard/new-purchase-order',
+        Icon: `pi pi-plus`,
+        showItem: true
+      },
+      {
+        Name: 'Purchaser Orders',
+        Link: '/dashboard/purchase-orders-list',
+        Icon: `pi pi-align-left`,
+        showItem: true
+      },
     ];
   }
   populateProfileNav() {

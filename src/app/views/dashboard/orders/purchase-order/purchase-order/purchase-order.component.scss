@@ -1,0 +1,264 @@
+@import '../../../../../../assets/styles/variables';
+
+.main-content {
+  padding: 1rem 2rem;
+  padding-bottom: 0;
+
+  @media only screen and (max-width: 600px) {
+    padding: .8rem;
+  }
+
+  .col-1-of-2 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
+    width: 60%;
+    margin: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      margin: .4rem;
+    }
+
+    .section {
+      background: $white-color;
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      display: block;
+
+      @media only screen and (max-width: 600px) {
+        width: 94%;
+      }
+
+      .form-item {
+        padding: 1rem;
+        margin: .1rem;
+        width: 100%;
+        display: grid;
+        position: relative;
+
+        @media only screen and (max-width: 600px) {
+          padding: .4rem;
+        }
+
+        input,
+        select {
+          border: 1px solid $ligher-gray;
+
+          &::placeholder {
+            font-weight: 200;
+            font-style: italic;
+            font-size: .8rem;
+          }
+        }
+
+
+        .alert {
+          padding-left: 0;
+        }
+      }
+
+      .form-group-items {
+        display: grid;
+        grid-template-columns: 50% 50%;
+
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 100%;
+        }
+
+      }
+    }
+  }
+}
+
+.group-inputs {
+  display: grid;
+  grid-template-columns: 90% 10%;
+
+  button {
+    background: #D1D8E0;
+    border: 1px solid #D1D8E0;
+    height: 2.777777rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 2.08888rem;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      top: 1.88888rem;
+
+    }
+  }
+}
+
+
+.g8020 {
+  grid-template-columns: 75% auto;
+}
+
+.eg {
+  text-transform: lowercase;
+  font-style: italic;
+  color: $primary-bg-color;
+}
+
+form {
+  margin: 0;
+}
+
+.label {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .8rem;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    text-align: left;
+    display: block;
+  }
+}
+
+
+::ng-deep {
+  body .ui-dialog .ui-dialog-titlebar {
+    background: rgb(197, 105, 0) !important;
+    color: #fff !important;
+  }
+
+  body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
+    color: #fff !important;
+
+  }
+}
+
+textarea {
+  border: 1px solid #D1D8E0;
+}
+
+.table {
+  padding: .5rem 1rem;
+
+  .tar {
+    text-align: right;
+    padding-right: .5rem;
+  }
+
+  .tac {
+    text-align: center;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 40% 15% 25% 18%;
+    grid-gap: .5rem;
+    border-bottom: 3px solid $ligher-gray;
+
+    .header-item {
+      font-weight: 800;
+      padding: .5rem;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 40% 15% 25% 18%;
+    grid-gap: .5rem;
+    border-bottom: 1px solid $ligher-gray;
+    padding: .3rem 0;
+
+
+
+    .body-item {
+      input {
+        border: 1px solid $ligher-gray;
+        font-weight: 500;
+        padding: .3rem;
+        font-size: .8rem;
+        border: none;
+
+
+        &::placeholder {
+          font-weight: 500;
+          font-size: .8rem;
+
+        }
+      }
+
+      button {
+        background: $danger;
+        color: $white-color;
+        padding: .5rem;
+        margin-top: .8555rem;
+        border: none;
+        cursor: pointer;
+      }
+
+      .qnty {
+        display: grid;
+        grid-template-columns: repeat(3, 33.3333%);
+        padding: .2rem;
+        border: 2px solid $primary-bg-color;
+        width: 7.2rem;
+        margin: .5rem auto;
+
+
+        button,
+        input {
+          height: 1.2rem;
+          margin: 0;
+          width: 100%;
+          text-align: center;
+        }
+
+        button {
+          color: $white-color;
+          background: $primary-bg-color;
+          border: none;
+          width: 1.2rem;
+          border-radius: 1.2rem;
+          padding: 0;
+          padding-top: .12rem;
+        }
+
+        input {
+          border: none;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+
+  .actions {
+    width: 100%;
+    text-align: right;
+    margin-top: 1.5rem;
+
+    a {
+      padding: .2rem .7rem;
+      color: $primary-bg-color;
+      border: 2px solid $primary-bg-color;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: .8rem;
+
+    }
+  }
+}
+
+
+.dropdown {
+  position: absolute;
+  width: 96%;
+  left: 1rem;
+  top: 5.7rem;
+  z-index: 100;
+}
