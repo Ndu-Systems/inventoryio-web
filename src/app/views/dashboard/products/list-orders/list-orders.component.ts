@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { NotFoundConstants } from '../../shared';
+import { ORDER_SELL } from 'src/app/_shared';
 
 @Component({
   selector: 'app-list-orders',
@@ -21,6 +22,7 @@ export class ListOrdersComponent implements OnInit {
   searchByCatergory = '';
   statuses: string[];
   prefix = 'INV';
+  orders: Orders[];
   constructor(
     private ordersService: OrdersService,
     private router: Router,
@@ -35,18 +37,28 @@ export class ListOrdersComponent implements OnInit {
     if (!user.UserId) { this.router.navigate(['sign-in']); }
     this.orders$ = this.ordersService.orders;
 
+    this.ordersService.getOrdersForType(user.CompanyId).subscribe(data => {
+      if (data) {
+        this.orders = data.filter(x => x.OrderType === ORDER_SELL);
+        this.ordersService.updatOrdersState(this.orders);
+        this.ordersService.loadCurrentOrder(data, ORDER_SELL);
+
+      }
+    });
+
     this.bannerService.updateState({
       heading: 'Orders',
       backto: '/dashboard',
     });
-    this.ordersService.getOrders(user.CompanyId);
+    // this.ordersService.getOrders(user.CompanyId);
     this.notFoundModel = {
       Image: NotFoundConstants.NOT_FOUND_ORDERS.image,
       Message: NotFoundConstants.NOT_FOUND_ORDERS.message
     };
-    this.ordersService.orders.subscribe(data => {
-      this.statuses = this.cleanStatus(data.map(x => x.Status));
-    });
+    // this.ordersService.orders.subscribe(data => {
+    //   this.ordersService.loadCurrentOrder(data, ORDER_SELL);
+    //   this.statuses = this.cleanStatus(data.map(x => x.Status));
+    // });
   }
   add() {
     this.router.navigate(['/dashboard/sell']);
