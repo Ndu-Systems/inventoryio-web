@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="455" height="776" viewBox="0 0 455 776">
+  <defs>
+    <filter id="Rectangle_617" x="0" y="0" width="455" height="776" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="11" result="blur"/>
+      <feFlood flood-color="#95afc0" flood-opacity="0.239"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="price-2" transform="translate(-737 -3590)">
+    <g transform="matrix(1, 0, 0, 1, 737, 3590)" filter="url(#Rectangle_617)">
+      <rect id="Rectangle_617-2" data-name="Rectangle 617" width="389" height="710" rx="10" transform="translate(33 33)" fill="#fff"/>
+    </g>
+    <path id="Path_1309" data-name="Path 1309" d="M10,0H379c5.523,0,10,3.791,10,8.467V237.912c0,4.676-102.9-20.16-190.426-24.13S0,237.912,0,237.912V8.467C0,3.791,4.477,0,10,0Z" transform="translate(770 3623)" fill="#3742fa"/>
+    <text id="Inventoryio_standard" data-name="Inventoryio standard" transform="translate(1074 3741)" fill="#ecf2f4" font-size="20" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="-219.46" y="0">Inventoryio standard</tspan></text>
+    <path id="Path_1310" data-name="Path 1310" d="M0,0S15.37-3.633,24.422-3.184,40.706-.236,49.1,0,67.9-3.4,77.768-3.184,93.693-.184,103.512,0s16.313-3.184,26.755-3.184S144.846,0,158.112,0s11.664-3.184,25.219-3.184S198.991,0,212.332,0s13.746-3.184,24.362-3.184A50.6,50.6,0,0,1,254.8,0" transform="translate(837.499 3758.5)" fill="none" stroke="#f3f4f9" stroke-linecap="round" stroke-width="1"/>
+    <g id="Group_1219" data-name="Group 1219" transform="translate(501 271)">
+      <text id="p.m" transform="translate(516 3633)" fill="#95afc0" font-size="15" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">p.m</tspan></text>
+      <text id="R350.00" transform="translate(385 3634)" fill="#2e344c" font-size="30" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">R350.00</tspan></text>
+    </g>
+    <g id="Group_1220" data-name="Group 1220" transform="translate(492 271)">
+      <rect id="Rectangle_618" data-name="Rectangle 618" width="389" height="44" transform="translate(278 3684)" fill="#a1cdfb" opacity="0.1"/>
+      <text id="Up_to_5_users" data-name="Up to 5 users" transform="translate(423 3712)" fill="#2e344c" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Up to 5 users</tspan></text>
+    </g>
+    <rect id="Rectangle_618-2" data-name="Rectangle 618" width="389" height="44" transform="translate(770 3999)" fill="#fff" opacity="0.1"/>
+    <text id="Max_50_items" data-name="Max 50 items" transform="translate(915 4027)" fill="#2e344c" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Max 50 items</tspan></text>
+    <rect id="Rectangle_618-3" data-name="Rectangle 618" width="389" height="44" transform="translate(770 4043)" fill="#a1cdfb" opacity="0.1"/>
+    <text id="_50_Sale_orders_p.m" data-name="50 Sale orders p.m" transform="translate(894 4071)" fill="#2e344c" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">50 Sale orders p.m</tspan></text>
+    <rect id="Rectangle_618-4" data-name="Rectangle 618" width="389" height="44" transform="translate(770 4087)" fill="#fff" opacity="0.1"/>
+    <rect id="Rectangle_619" data-name="Rectangle 619" width="389" height="44" transform="translate(770 4175)" fill="#fff" opacity="0.1"/>
+    <text id="_2_module" data-name="2 module" transform="translate(930 4115)" fill="#2f2e41" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">2 module</tspan></text>
+    <text id="Communications" transform="translate(898 4203)" fill="#2f2e41" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Communications</tspan></text>
+    <rect id="Rectangle_618-5" data-name="Rectangle 618" width="389" height="44" transform="translate(770 4131)" fill="#a1cdfb" opacity="0.1"/>
+    <text id="_50_Reports" data-name="50 Reports" transform="translate(923 4159)" fill="#2f2e41" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">50 Reports</tspan></text>
+    <g id="Group_1225" data-name="Group 1225" transform="translate(567 3499)">
+      <rect id="Rectangle_610" data-name="Rectangle 610" width="196" height="50" rx="10" transform="translate(300 751)" fill="#104ce5"/>
+      <text id="Get_started" data-name="Get started" transform="translate(356 781)" fill="#fff" font-size="13" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">Get started</tspan></text>
+    </g>
+    <path id="send_1_" data-name="send (1)" d="M33.207.286A1.048,1.048,0,0,0,32.1.075L.662,12.65A1.048,1.048,0,0,0,.4,14.441l10.086,8.072v5.78a1.048,1.048,0,0,0,1.629.872l3.056-2.038,6.1,6.1a1.049,1.049,0,0,0,.741.307,1.072,1.072,0,0,0,.241-.028A1.049,1.049,0,0,0,23,32.817L33.481,1.38A1.046,1.046,0,0,0,33.207.286Zm-5.07,3.631L11.45,20.6,3.109,13.928ZM12.578,26.336v-1.8l1.078,1.078Zm8.972,4.21-8.541-8.538,17.08-17.08Z" transform="translate(947.997 3801.531)" fill="#fff"/>
+  </g>
+</svg>

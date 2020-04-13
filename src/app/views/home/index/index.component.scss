@@ -1,379 +1,139 @@
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #E4E4E4;
-  margin: 4rem;
-}
+@import '../../../../assets/styles/variables';
 
 .main-container {
-  // background-image: url(../../../../assets/images/bg.svg);
-  // width: 100%;
-  // background-repeat: no-repeat;
-  // background-position: top right;
-  // background-size: 42%;
-  // background-color: #F5F6FA;
-  // margin: auto;
-  // padding-bottom: 2rem;
-  // padding-top: 2rem;
+  padding: 3rem 6rem;
 
-  //mobile layout
-  @media only screen and (max-width: 600px) {
-    // background-image: url(../../../../assets/images/backgroundmobilehome.svg);
-    // background-size: 100%;
-    // background-position: top left;
+  .col-1-of-2 {
+    grid-template-columns: 50% auto;
   }
 
-  //tablet layout
-  @media only screen and (min-width: 481px) and (max-width:768px) {
-    background-size: 55%;
-  }
-  //ipad pro
-  @media only screen and (min-width: 1024px) and (max-width:1366px){
-    background-size: 50%;
-  }
-}
+  .home-banner {
+    width: 45rem;
 
-.content {
-  width: 50%;
-  margin: auto;
-  margin-top: 15rem;
-
-  //mobile layout
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-    margin-top: 7rem;
-  }
-
-  .main-heading{
-    width: 50%;
-    @media only screen and (max-width: 600px){
-      width: 100%;
-    }
-  }
-
-  h1 {
-    color: #104ce5;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-      font-size: 1.2rem;
-      line-height: 1.8rem;
-      color: #F5F6FA;
-      text-align: center;
-    }
-    span {
-      display: block;
-      font-size: 18px;
-      color: #2e344c;
-      font-weight: 500;
-      margin-top: 15px;
-
-      //mobile layout
-      @media only screen and (max-width: 600px){
-        color: #F5F6FA;
-        background: #104CE5;
-        display: flex;
-        padding: 1.5rem;
-        text-align: left;
-
-      }
-    }
-    //ipad pro layout
-    @media only screen and (min-width: 1024px) and (max-width:1366px){
-      text-align: center;
-      padding-top: 12rem;
-    }
-  }
-
-  //tablet layout
-  @media only screen and (min-width: 481px) and (max-width:768px) {
-    width: 100%;
-    text-align: center;
-    margin-top: 22rem;
     h1 {
-      // font-size: 1.8rem;
-      text-align: center;
-    }
-  }
+      font-size: 3.438rem;
 
-  //ipad pro
-  @media only screen and (min-width: 1024px) and (max-width:1366px){
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
+      .dot {
+        color: $primary-bg-color;
+      }
 
-  button {
-    background: #104CE5;
-    color: #FFFFFF;
-    border: none;
-    width: 50%;
-    border-radius: 10px;
-    text-transform: uppercase;
-    font-size: 1.2rem;
-    padding: 1rem;
-    cursor: pointer;
-    font-weight: 400;
-    -webkit-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 26px -13px rgba(0, 0, 0, 0.75);
-
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-      width: 90%;
-      margin: auto;
-      color: #104CE5;
-      background: #FFFFFF;
-      padding: 1rem;
-      margin-left: 1.2rem;
-      text-transform: none;
-    }
-    //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px){
-      font-size: 1rem;
-      padding: 1rem;
+      &.text {
+        font-size: 1.22rem;
+        width: 28rem;
+        font-weight: 400;
+        line-height: 30px;
+      }
     }
 
-    &:hover {
-      -webkit-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
-      -moz-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
-      box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
-    }
-  }
+    .cta {
+      margin: 4rem 0;
 
-  .mobile-house {
-    display: none;
-
-    @media only screen and (max-width: 600px) {
-      display: flex;
-      justify-content: center;
-
-      img {
-        width: 77%;
-        margin-top: 2.2rem;
+      .btn {
+        margin: 1rem 0;
+        padding: 22px 75px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 10px;
       }
 
     }
   }
-}
 
-.cards {
-  display: grid;
-  grid-template-columns: 23% 23% 23% 23%;
-  text-align: center;
-  margin: auto;
-  // margin-top: 15rem;
-  justify-content: center;
-  width: 80%;
-  margin-bottom: 4rem;
-  //mobile layout
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 100%;
-    width: 100%;
-    grid-gap: 1rem;
-    background: #F5F6FA;
-    margin-top: 2rem;
-  }
-  //tablet layout
-  @media only screen and (min-width: 481px) and (max-width:768px){
-    grid-template-columns: 50% 50%;
-    margin-top: 8rem;
-    width: 100%;
-
-  }
-  //ipdad pro
-  @media only screen and (min-width: 1024px) and (max-width:1366px){
-    grid-template-columns:50% 50%;
-
-  }
-  .card {
-    background: #FFFFFF;
-    cursor: pointer;
-    align-content: center;
-    margin: 1.5rem;
-    padding: 1rem;
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-      width: 80%;
-      margin: 0% auto;
-      padding: .5rem;
-    }
-    //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px){
-      margin: 1rem;
-    }
-    &:hover {
-      -webkit-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
-      -moz-box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
-      box-shadow: 0px 0px 11px -3px rgba(101, 109, 136, 1);
-      border-bottom: #104CE5 solid 5px;
-
-    }
-
-    img {
-      width: 20%;
-      margin-top: 3rem;
-      transform: scaleX(-1);
-    }
-
-    span img {
-      transform: scaleX(1);
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      color: #2E344C;
-      text-transform: capitalize;
-    }
-
-    p {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
-    //ipad pro
-    @media only screen and (min-width: 1024px) and (max-width:1366px){
-      margin: 1rem;
-      padding: 0%;
-      img{
-        width: 10%;
-      }
-    }
-  }
-  //ipad ro
-  @media only screen and (min-width: 1024px) and (max-width:1366px){
-    width:100%;
-    margin: 0%;
-    margin-top: 5rem;
-  }
-}
-footer {
-  background: #F5F6FA;
-  padding: 4rem;
-  padding-bottom: 10rem;
-  //mobile layout
-  @media only screen and (max-width: 600px) {
-    padding: 0%;
-  }
-  //tablet layout
-  @media only screen and (min-width: 481px) and (max-width:768px){
-    padding: 0%;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  //ipad pro
-  @media only screen and (min-width: 1024px) and (max-width:1366px){
-    padding: 0%;
-    padding-top: 2rem;
-
-  }
-  h1 {
-    color: #3F3D56;
-    margin-top: 0%;
-    width: 40%;
-    margin: auto;
-    border-bottom: .2rem solid #104CE5;
-    padding-bottom: 1rem;
-    margin-bottom: 4rem;
-    text-align: center;
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-      width: 90%;
-      margin: 0%;
-      font-size: 1rem;
-      margin: auto;
-      margin-bottom: 2rem;
-      border-bottom: .1rem solid #104CE5;
-    }
-    //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px){
-      width: 100%;
-      font-size: 1.7rem;
-    }
-    //ipad pro
-  @media only screen and (min-width: 1024px) and (max-width:1366px){
-    width: 95%;
+  .steps {
+    background: #a1cdfb17;
     padding: 2rem;
-    font-size: 1.5rem;
-   padding-bottom: 1rem;
-  }
-  }
-  .textbox {
-    display: flex;
-    width: 40%;
-    margin: auto;
-    background: #ffff;
-    border-radius: 10px;
-    -webkit-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
-    box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.19);
 
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-      width: 90%;
-      margin-bottom: 3rem;
-    }
-    //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px){
-      width: 80%;
+    h1 {
+      font-size: 1.875rem;
+      width: 59.875rem;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
 
-    ::placeholder {
-      font-size: .7rem;
-      color: #656D88;
-      letter-spacing: .1rem;
-      text-transform: none;
+    .col-1-of-4 {
+      margin: 0 auto;
+      width: 90rem;
+    }
 
-      @media only screen and (max-width: 600px) {
-        font-size: .6rem;
+    .step {
+      width: 270px;
+
+      .point {
+        margin-bottom: 1rem;
+        margin: 1rem auto;
+        padding: 1rem 0;
         text-align: center;
-        letter-spacing: 0ch;
+        color: $white-color;
+        font-weight: 600;
+        text-transform: capitalize;
+        background: $primary-bg-color;
+        width: 4.75rem;
+        border-radius: 10px;
+      }
 
+      .text {
+        font-size: 0.938rem;
+        width: 100%;
+        font-weight: 400;
       }
     }
+  }
 
-    input[type=text] {
-      border: none;
-      padding: 1rem;
-      //mobile layout
-      @media only screen and (max-width: 600px) {
-        padding: 0%;
-      }
+  .mockup {
+    padding: 2rem;
+
+    .col-1-of-2 {
+      margin: 2rem 0;
     }
 
-    button {
-      width: 40%;
-      text-transform: none;
-      font-size: 1rem;
-      border-radius:0 10px 10px 0;
-      //mobile layout
-      @media only screen and (max-width: 600px) {
-        width: 50%;
-        font-size: .8rem;
+    .type-face {
+      width: 29.375rem;
+      margin: 4rem 0;
+
+      .main {
+        text-transform: capitalize;
+        font-weight: 700;
       }
-      //tablet layout
-      @media only screen and (min-width: 481px) and (max-width:768px){
-        width: 50%;
-        font-size: .8rem;
+
+      .text {
+        font-size: 0.938rem;
+        width: 100%;
+        font-weight: 400;
       }
-      //ipad pro
-     @media only screen and (min-width: 1024px) and (max-width:1366px){
-       font-size: .8rem;
-       padding: 0%;
-     }
+    }
+  }
+
+  .pricing {
+    padding: 2rem;
+    margin-bottom: 5rem;
+    h1 {
+      font-size: 1.875rem;
+      width: 59.875rem;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .prices {
+      cursor: pointer;
+      img {
+        height: 710px;
+      }
     }
   }
 }
 
-.cta {
-  padding: 1em;
-  width: 25vw;
-  margin: 0 auto;
-  justify-content: center;
-  @media only screen and (max-width: 600px) {
-    width:60vw;
-      }
-  button {
-    width: 100%;
-    background-color: #104CE5;
-  }
+//mobile layout
+@media only screen and (max-width: 600px) {
+
+  .home-banner {}
+
+  .home-image {}
 }
+
+//tablet layout
+@media only screen and (min-width: 481px) and (max-width:768px) {}
+
+//ipad pro
+@media only screen and (min-width: 1024px) and (max-width:1366px) {}
