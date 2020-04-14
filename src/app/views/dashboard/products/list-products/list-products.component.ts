@@ -23,6 +23,7 @@ export class ListProductsComponent implements OnInit {
   categories: any[];
   showScan: boolean;
   productBarcode: string;
+  searchByStock: string;
 
   constructor(
     private productService: ProductService,

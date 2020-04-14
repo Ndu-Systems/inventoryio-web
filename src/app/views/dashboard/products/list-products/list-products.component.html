@@ -1,113 +1,34 @@
-<div class="main-content">
-
-  <h1 class="heading">
-    Inventory
-    <span class="number">{{sum}} </span>
-    <span class="number"> | {{totalPrice | currency:'R'}}</span>
-  </h1>
-
-  <div class="small-cards small-cards-filter">
-    <div class="card filter-card">
-      <div class="list-filters topbar">
-        <div class="search-box">
-          <div class="input-times">
-            <input type="text" class="roundInput" [(ngModel)]="search" placeholder="🔎 search here ...">
-          </div>
-        </div>
-
-        <div>
-          <select [(ngModel)]="searchByCatergory" class="roundInput">
-            <option value="" selected>All</option>
-            <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
-          </select>
-        </div>
-          <div class="desktop-icon">
-            <button class="btn btn-transparent" (click)="scann()">
-              <span class="desktop-icon"><i class="pi pi-ticket"></i>Scan</span>
-            </button>
-          </div>
-          <div></div>
-          <div class="desktop-icon">
-            <button class="btn" (click)="add()">
-              <span class="desktop-icon"><i class="pi pi-plus"></i> Add Item</span>
-            </button>
-          </div>
-          <div class="desktop-icon">
-            <button class="btn btn-transparent" (click)="import()">
-              <span><i class="pi pi-download"></i> Import</span>
-             </button>
-          </div>
-
-          <div class="mobile-icons col-1-of-3">
-
-            <button class="btn btn-transparent" (click)="scann()">
-              <span class="mobile-icon"><i class="pi pi-ticket"></i></span>
-            </button>
-
-            <button class="btn" (click)="add()">
-               <span class="mobile-icon"><i class="pi pi-plus"></i></span>
-            </button>
-
-            <button class="btn btn-transparent" (click)="import()">
-               <span class="mobile-icon"><i class="pi pi-download"></i></span>
-            </button>
-          </div>
-
-      </div>
+<div class="products-page">
+  <div class="list-header">
+    <div class="heading">
+      <h1>
+        Products ({{sum}})
+      </h1>
     </div>
-  </div>
 
-
-
-
-
-
-
-  <div class="sell-grid">
-    <!-- <div class="list-body"> -->
-    <div class="small-cards-body" *ngIf="products$  | async as products">
-
-      <div class="small-cards" *ngIf="products.length > 0; else notFound">
-
-        <div class="card"
-          *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-          <div class="image">
-            <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-            <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
-          </div>
-          <div class="details">
-            <p class="name">
-              {{item.Name}}
-              <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
-
-            </p>
-
-          </div>
-          <div class="price">
-            <p>
-              {{item.UnitPrice | currency:'R'}}
-            </p>
-            <button class="action-btn hover-shadow" (click)="details(item)">View</button>
-          </div>
-        </div>
-
-      </div>
-      <ng-template #notFound>
-        <div class="not-found">
-          <img [src]="notFoundModel.Image" alt="no items found">
-          <h1 class="message">
-            {{notFoundModel.Message}}
-            <span>
-              <a class="link-add" (click)="add()"> add new product.</a>
-            </span>
-          </h1>
-        </div>
-      </ng-template>
-      <!-- </div> -->
+    <div class="search">
+      <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
     </div>
-  </div>
-</div>
 
-<div class="scanner-pluggin" *ngIf="showScan">
-  <app-scanner></app-scanner>
+    <div class="search">
+      <select [(ngModel)]="searchByCatergory" class="roundInput">
+        <option value="" selected>All categories</option>
+        <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+      </select>
+    </div>
+
+    <div class="search">
+      <select [(ngModel)]="searchByStock" class="roundInput">
+        <option value="" selected>All Stock</option>
+        <option value="low" selected>Low Stock</option>
+      </select>
+    </div>
+    <div class="search">
+      <select [(ngModel)]="searchByStock" class="roundInput">
+        <option value="" selected>All Stock</option>
+        <option value="low" selected>Low Stock</option>
+      </select>
+    </div>
+
+  </div>
 </div>
