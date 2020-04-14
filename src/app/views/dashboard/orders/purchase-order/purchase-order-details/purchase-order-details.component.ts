@@ -61,8 +61,7 @@ export class PurchaseOrderDetailsComponent implements OnInit {
   }
 
   print(order: Orders) {
-    // this.router.navigate(['/dashboard/print-invoice']);
-    const url = this.invoiceService.getInvoiceURL(order.OrdersId);
+    const url = this.invoiceService.gePurchaseOrderURL(order.OrdersId);
     const win = window.open(url, '_blank');
     win.focus();
   }
