@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="455" height="776" viewBox="0 0 455 776">
+  <defs>
+    <filter id="Rectangle_617" x="0" y="0" width="455" height="776" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="11" result="blur"/>
+      <feFlood flood-color="#95afc0" flood-opacity="0.239"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="price-3" transform="translate(-1212 -3590)">
+    <g transform="matrix(1, 0, 0, 1, 1212, 3590)" filter="url(#Rectangle_617)">
+      <rect id="Rectangle_617-2" data-name="Rectangle 617" width="389" height="710" rx="10" transform="translate(33 33)" fill="#fff"/>
+    </g>
+    <path id="Path_1309" data-name="Path 1309" d="M10,0H379c5.523,0,10,3.791,10,8.467V237.912c0,4.676-102.9-20.16-190.426-24.13S0,237.912,0,237.912V8.467C0,3.791,4.477,0,10,0Z" transform="translate(1245 3623)" fill="#104ce5"/>
+    <text id="Inventoryio_premium" data-name="Inventoryio premium" transform="translate(1551 3741)" fill="#ecf2f4" font-size="20" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="-221.98" y="0">Inventoryio premium</tspan></text>
+    <path id="Path_1310" data-name="Path 1310" d="M0,0S14.465-3.633,22.984-3.184,38.31-.236,46.212,0s17.7-3.4,26.979-3.184S88.178-.184,97.419,0,112.772-3.184,122.6-3.184,136.321,0,148.806,0s10.977-3.184,23.734-3.184S187.279,0,199.835,0s12.937-3.184,22.929-3.184A45.21,45.21,0,0,1,239.8,0" transform="translate(1319.5 3758.5)" fill="none" stroke="#f3f4f9" stroke-linecap="round" stroke-width="1"/>
+    <g id="Group_1219" data-name="Group 1219" transform="translate(983 276)">
+      <text id="p.m" transform="translate(506 3631)" fill="#95afc0" font-size="15" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">p.m</tspan></text>
+      <text id="R750.00" transform="translate(377 3629)" fill="#2e344c" font-size="30" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">R750.00</tspan></text>
+    </g>
+    <g id="Group_1220" data-name="Group 1220" transform="translate(967 271)">
+      <rect id="Rectangle_618" data-name="Rectangle 618" width="389" height="44" transform="translate(278 3684)" fill="#a1cdfb" opacity="0.1"/>
+      <text id="Up_to_10_users" data-name="Up to 10 users" transform="translate(419 3712)" fill="#2e344c" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Up to 10 users</tspan></text>
+    </g>
+    <rect id="Rectangle_618-2" data-name="Rectangle 618" width="389" height="44" transform="translate(1245 3999)" fill="#fff" opacity="0.1"/>
+    <text id="Unlimited_items" data-name="Unlimited items" transform="translate(1366 4027)" fill="#2e344c" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Unlimited items</tspan></text>
+    <rect id="Rectangle_618-3" data-name="Rectangle 618" width="389" height="44" transform="translate(1245 4043)" fill="#a1cdfb" opacity="0.1"/>
+    <text id="Unlimited_Sale_orders_p.m" data-name="Unlimited Sale orders p.m" transform="translate(1340 4071)" fill="#2e344c" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Unlimited Sale orders p.m</tspan></text>
+    <rect id="Rectangle_618-4" data-name="Rectangle 618" width="389" height="44" transform="translate(1245 4087)" fill="#fff" opacity="0.1"/>
+    <rect id="Rectangle_619" data-name="Rectangle 619" width="389" height="44" transform="translate(1245 4175)" fill="#fff" opacity="0.1"/>
+    <text id="Unlimited_module" data-name="Unlimited module" transform="translate(1369 4115)" fill="#2f2e41" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Unlimited module</tspan></text>
+    <text id="Communications" transform="translate(1373 4203)" fill="#2f2e41" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Communications</tspan></text>
+    <rect id="Rectangle_618-5" data-name="Rectangle 618" width="389" height="44" transform="translate(1245 4131)" fill="#a1cdfb" opacity="0.1"/>
+    <text id="Unlimited_Reports" data-name="Unlimited Reports" transform="translate(1369 4159)" fill="#2f2e41" font-size="15" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Unlimited Reports</tspan></text>
+    <g id="Group_1225" data-name="Group 1225" transform="translate(1042 3499)">
+      <rect id="Rectangle_610" data-name="Rectangle 610" width="196" height="50" rx="10" transform="translate(300 751)" fill="#d3d8df"/>
+      <text id="Get_started" data-name="Get started" transform="translate(356 781)" fill="#fff" font-size="13" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">Get started</tspan></text>
+    </g>
+    <g id="start-button_1_" data-name="start-button (1)" transform="translate(1422 3795.123)">
+      <path id="Path_1314" data-name="Path 1314" d="M34.838,2.6A2.711,2.711,0,0,0,32.275.041a26.924,26.924,0,0,0-13.5,2.7A26.5,26.5,0,0,0,11.04,9.159l-.082.1L5.85,9.653A2.7,2.7,0,0,0,3.8,10.862L.311,16.133a1.868,1.868,0,0,0,1.272,2.876l4.3.667c-.015.084-.03.167-.044.251a2.71,2.71,0,0,0,.76,2.357L12.6,28.277a2.716,2.716,0,0,0,1.917.8,2.671,2.671,0,0,0,.44-.037l.251-.044.667,4.3a1.866,1.866,0,0,0,2.876,1.272l5.271-3.485a2.7,2.7,0,0,0,1.209-2.055l.395-5.108.1-.082A26.5,26.5,0,0,0,32.136,16.1a26.926,26.926,0,0,0,2.7-13.5ZM22.889,29.379l-5.042,3.333-.65-4.194a22.891,22.891,0,0,0,6.247-2.974l-.257,3.327a.666.666,0,0,1-.3.507Zm-8.849-2.546L8.046,20.838a.662.662,0,0,1-.189-.575,17.579,17.579,0,0,1,.8-3.036l8.994,8.994a17.653,17.653,0,0,1-3.034.8.663.663,0,0,1-.575-.189ZM6.007,11.691l3.327-.257A22.89,22.89,0,0,0,6.36,17.681l-4.194-.65L5.5,11.989A.666.666,0,0,1,6.007,11.691Zm18.4,10.578a23.429,23.429,0,0,1-4.73,3.094L9.515,15.2a23.834,23.834,0,0,1,3.094-4.73,24.386,24.386,0,0,1,7.107-5.91A24.856,24.856,0,0,1,32.163,2.082a.67.67,0,0,1,.634.634,24.854,24.854,0,0,1-2.476,12.447,24.386,24.386,0,0,1-5.91,7.107Z" transform="translate(0 0)" fill="#fff"/>
+      <path id="Path_1315" data-name="Path 1315" d="M280.832,96.532a5.1,5.1,0,1,0-3.613-1.494A5.094,5.094,0,0,0,280.832,96.532Zm-2.168-7.274a3.065,3.065,0,1,1-.9,2.168A3.056,3.056,0,0,1,278.664,89.258Z" transform="translate(-256.94 -80.438)" fill="#fff"/>
+      <path id="Path_1316" data-name="Path 1316" d="M1.323,348.344a1.018,1.018,0,0,0,.723-.3l3.336-3.336a1.022,1.022,0,1,0-1.445-1.445L.6,346.6a1.022,1.022,0,0,0,.723,1.744Z" transform="translate(-0.281 -319.601)" fill="#fff"/>
+      <path id="Path_1317" data-name="Path 1317" d="M8.159,388.145a1.022,1.022,0,0,0-1.445,0L.3,394.559A1.022,1.022,0,1,0,1.745,396l6.414-6.414A1.022,1.022,0,0,0,8.159,388.145Z" transform="translate(-0.001 -361.424)" fill="#fff"/>
+      <path id="Path_1318" data-name="Path 1318" d="M93.7,433.026l-3.336,3.336a1.022,1.022,0,1,0,1.445,1.445l3.336-3.336a1.022,1.022,0,0,0-1.445-1.445Z" transform="translate(-83.927 -403.248)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

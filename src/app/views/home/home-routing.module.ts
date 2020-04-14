@@ -18,6 +18,7 @@ import {
 } from './accounts';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { InlineHomeLoaderComponent } from './inline-home-loader/inline-home-loader.component';
+import { HomeFooterComponent } from './home-footer';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -48,7 +49,8 @@ export const declarations = [
   HowItWorksComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  InlineHomeLoaderComponent
+  InlineHomeLoaderComponent,
+  HomeFooterComponent
 ];
 
 

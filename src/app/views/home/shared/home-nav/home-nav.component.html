@@ -1,30 +1,42 @@
-<div class="top-bar">
-  <div class="logo">
-    <a routerLink="/home"><img class="logo" src="assets/images/logo-full-bg.png" alt=""></a>
-  </div>
-  <div class="nav">
-    <li><a routerLink="/home">Home</a></li>
-    <li><a routerLink="/how-it-works">How it works</a></li>
-    <li><a routerLink="/pricing">Pricing</a></li>
-    <li><a routerLink="/shop">Shops</a></li>
-    <li><a routerLink="/sign-in">Sign in</a></li>
-    <li><span routerLink="/sign-up"><a>Create vendor account</a> </span></li>
+<nav>
+  <ul>
+    <li>
+      <a routerLink="/home"><img class="logo" src="assets/images/logo-beta.svg" alt="logo main"></a>
+    </li>
+  </ul>
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">home</a></li>
+    <!-- <li><a routerLink="/home" routerLinkActive="active-link">our modules</a></li> -->
+    <!-- <li><a routerLink="/shop" routerLinkActive="active-link">Shops</a></li> -->
+    <li><a routerLink="/pricing" routerLinkActive="active-link">Pricing</a></li>
+  </ul>
+  <ul>
+    <li><a routerLink="/sign-in" routerLinkActive="active-link" class="login">Log in</a></li>
+    <li><a routerLink="/sign-up" routerLinkActive="active-link" class="register">Create vendor account</a></li>
+  </ul>
+</nav>
+<div class="mobile-nav" *ngIf="showMobileNav">
+  <div class="close" (click)="toggleNav()">
+    <img src="assets/images/close-mobilemenu.svg" alt="">
   </div>
 
-  <div class="mobile-nav" *ngIf="showMobileNav">
-    <div class="close" (click)="toggleNav()">
-      <img src="assets/images/close-mobilemenu.svg" alt="">
-    </div>
-    <ul class="nav-items">
-      <li><a (click)="toggleNav()" routerLink="/home">Home</a></li>
-      <li><a (click)="toggleNav()" routerLink="/how-it-works">How it works</a></li>
-      <li><a (click)="toggleNav()" routerLink="/pricing">Pricing</a></li>
-      <li><a (click)="toggleNav()" routerLink="/shop">Shops</a></li>
-      <li><a (click)="toggleNav()" routerLink="/sign-in">Sign in</a></li>
-      <li class="sign-up-free"><a (click)="toggleNav()" routerLink="/sign-up">Create vendor account</a></li>
-    </ul>
-   </div>
+  <ul class="nav-items">
+    <li><a (click)="toggleNav()" routerLink="/home" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+    <!-- <li><a (click)="toggleNav()" routerLink="/shop" routerLinkActive="active-link">Shops</a></li> -->
+    <li><a (click)="toggleNav()" routerLink="/pricing" routerLinkActive="active-link">Pricing</a></li>
+  </ul>
+  <ul class="nav-items access">
+    <li><a (click)="toggleNav()" class="login" routerLink="/sign-in" routerLinkActive="active-link">Log in</a></li>
+    <li><a (click)="toggleNav()" class="register" routerLink="/sign-up" routerLinkActive="active-link">Create vendor
+        account</a></li>
+  </ul>
+</div>
+<div class="mobile-header">
   <div class="ham-icon" (click)="toggleNav()">
     <img src="assets/images/ham.svg" alt="">
+  </div>
+  <div class="mobile-logo">
+    <a routerLink="/home"><img class="logo" src="assets/images/logo-beta.svg" alt="logo main"></a>
   </div>
 </div>
