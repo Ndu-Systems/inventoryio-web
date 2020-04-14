@@ -1,16 +1,15 @@
 <nav>
+
   <ul>
     <li>
-      <a routerLink="/home"><img class="logo" src="assets/images/logo-beta.svg" alt="logo main"></a>
+      <a routerLink="/home" class="logo"><img src="assets/images/logo-beta.png" alt="logo main"></a>
     </li>
-  </ul>
-  <ul>
     <li><a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">home</a></li>
     <!-- <li><a routerLink="/home" routerLinkActive="active-link">our modules</a></li> -->
     <!-- <li><a routerLink="/shop" routerLinkActive="active-link">Shops</a></li> -->
     <li><a routerLink="/pricing" routerLinkActive="active-link">Pricing</a></li>
   </ul>
-  <ul>
+  <ul class="account">
     <li><a routerLink="/sign-in" routerLinkActive="active-link" class="login">Log in</a></li>
     <li><a routerLink="/sign-up" routerLinkActive="active-link" class="register">Create vendor account</a></li>
   </ul>
@@ -37,6 +36,6 @@
     <img src="assets/images/ham.svg" alt="">
   </div>
   <div class="mobile-logo">
-    <a routerLink="/home"><img class="logo" src="assets/images/logo-beta.svg" alt="logo main"></a>
+    <a routerLink="/home"><img class="logo" src="assets/images/logo-beta.png" alt="logo main"></a>
   </div>
 </div>
