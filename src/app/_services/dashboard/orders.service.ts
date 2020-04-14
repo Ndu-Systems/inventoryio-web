@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SplashService } from '../splash.service';
 import { COMMON_CONN_ERR_MSG } from 'src/app/_shared';
-import { type } from 'os';
 
 @Injectable({
   providedIn: 'root'
