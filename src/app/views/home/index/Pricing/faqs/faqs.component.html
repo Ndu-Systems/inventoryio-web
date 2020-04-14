@@ -1,0 +1,9 @@
+<div class="faqs">
+  <div *ngFor="let item of data;let i = index;">
+    <button class="accordion" (click)="toggleAccordian($event, i)"> {{item.parentName}} </button>
+    <div class="panel" *ngFor="let child of item.childProperties" hide="!item.isActive">
+      <p> {{child.propertyName}} </p>
+    </div>
+  </div>
+</div>
+
