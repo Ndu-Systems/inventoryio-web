@@ -1,4 +1,4 @@
-<div class="products-page">
+<div class="products-page" *ngIf="products$  | async as products">
   <div class="list-header">
     <div class="heading">
       <h1>
@@ -7,7 +7,7 @@
     </div>
 
     <div class="search">
-      <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
+      <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
     </div>
 
     <div class="search">
@@ -18,17 +18,75 @@
     </div>
 
     <div class="search">
-      <select [(ngModel)]="searchByStock" class="roundInput">
-        <option value="" selected>All Stock</option>
-        <option value="low" selected>Low Stock</option>
-      </select>
     </div>
-    <div class="search">
-      <select [(ngModel)]="searchByStock" class="roundInput">
-        <option value="" selected>All Stock</option>
-        <option value="low" selected>Low Stock</option>
-      </select>
+    <div class="search tar">
+      <button> <i class="pi pi-plus"></i> Add</button>
+      <button> <i class="pi pi-download"></i> Import</button>
     </div>
 
   </div>
+  <div class="table" *ngIf="products.length > 0; else notFound">
+    <div class="header">
+      <div class="header-item">
+        Image
+      </div>
+      <div class="header-item">
+        Product name
+      </div>
+
+      <div class="header-item ">
+        Price
+      </div>
+      <div class="header-item tac">
+        Stock
+      </div>
+      <div class="header-item tar">
+        Actions
+      </div>
+    </div>
+    <div class="body"
+      *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
+      <div class="body-item">
+        <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+        <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+
+      </div>
+      <div class="body-item">
+        <p>
+          {{item.Name}}
+        </p>
+      </div>
+      <div class="body-item">
+        <p>
+          {{item.UnitPrice | currency:'R'}}
+        </p>
+
+      </div>
+      <div class="body-item tac">
+        <p>
+          <span [ngClass]="item.Class">{{item.Quantity}}</span> </p>
+      </div>
+      <div class="body-item tar">
+        <button class="btn-primary" (click)="removeItem(i)">
+          <i class="pi pi-pencil"></i> Edit
+        </button>
+      </div>
+    </div>
+    <div class="actions">
+      <a (click)="addNewLine()">Add row</a>
+    </div>
+  </div>
+
+  <ng-template #notFound>
+    <div class="not-found">
+      <img [src]="notFoundModel.Image" alt="no items found">
+      <h1 class="message">
+        {{notFoundModel.Message}}
+        <span>
+          <a class="link-add" (click)="add()"> add new product.</a>
+        </span>
+      </h1>
+    </div>
+  </ng-template>
+
 </div>

@@ -1,22 +1,32 @@
 @import '../../../../../assets/styles/variables';
 
 .products-page {
-  padding: 2rem;
-  width: 60%;
+  padding: 4rem;
+  width: 75%;
 
   .list-header {
     width: 100%;
     display: grid;
-    grid-template-columns: 25% 15% 15% 15% auto;
+    grid-template-columns: 45% 15% 15% 5% auto;
+    border-bottom: 1px solid $blue-gray;
+    padding-bottom: 2rem;
+
     div {
       margin: .2rem;
       padding: 0;
-      border: 1px solid rgb(175, 175, 175);
+      text-align: left;
+      // border: 1px solid rgb(230, 229, 229);
+    }
+
+    .tar {
+      text-align: right;
     }
 
     .heading {
       h1 {
         font-size: 1.6rem;
+        margin: 0;
+        padding: 0;
       }
     }
 
@@ -28,15 +38,33 @@
         padding: .5rem .8rem;
         width: 96%;
         display: inline-block;
-        margin: .5rem;
+        margin: 0;
         border-radius: .2rem;
-        padding: .2rem 1rem;
+        padding: .5rem;
         font-size: .9rem;
 
         &::placeholder {
           font-weight: 400;
         }
       }
+
+
+
+      button {
+        padding: .5rem;
+        background: $primary-bg-color;
+        color: $white-color;
+        font-weight: 700;
+        border: none;
+        margin: 0 .3rem;
+      }
     }
   }
+}
+
+
+//  table
+.header,
+.body {
+  grid-template-columns: 10% 30% 15% 15% 15%;
 }
