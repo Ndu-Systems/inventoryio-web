@@ -29,11 +29,11 @@
           </div>
           <div>
             <button class="btn btn-transparent" (click)="print(order)"><i class="pi pi-print"></i> Print
-              Invoice</button>
+              Order</button>
           </div>
           <div>
             <button class="btn btn-transparent" (click)="sendInvoice(order)"><i class="pi pi-envelope"></i>
-              Email Invoice</button>
+              Email Order</button>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@
 
             <div class="data">
               <span class="value"> {{item.Quantity}} x {{item.UnitPrice  | currency:'R'}} <br></span>
-              <span class="label"> QNTY x Price</span>
+              <span class="label"> QNTY x Cost Price</span>
             </div>
 
             <div class="data">
@@ -134,11 +134,11 @@
           </div>
         </span>
 
-        <div class="item spaccing">
+        <div class="total spaccing">
           <div class="data">
-            <span class="value total">
-              Total:{{total | currency:'R'}}
-            </span>
+            <h3>
+              Total Price:<span>{{total | currency:'R'}}</span>
+            </h3>
             <span class="value tax" *ngIf="order.Charges">
               <span *ngFor="let charge of order.Charges"><i>Inc. </i> {{charge.Label}}
               </span>

@@ -134,18 +134,18 @@
           </div>
         </span>
 
-        <div class="item spaccing">
+     
+        <div class="total spaccing">
           <div class="data">
-            <span class="value total">
-              Total:{{total | currency:'R'}}
-            </span>
+            <h3>
+              Total Cost:<span>{{total | currency:'R'}}</span>
+            </h3>
             <span class="value tax" *ngIf="order.Charges">
               <span *ngFor="let charge of order.Charges"><i>Inc. </i> {{charge.Label}}
               </span>
             </span>
           </div>
         </div>
-
       </div>
 
 

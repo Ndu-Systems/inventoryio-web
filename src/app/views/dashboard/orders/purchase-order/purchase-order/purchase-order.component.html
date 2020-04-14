@@ -6,15 +6,17 @@
       <div class="section">
         <div class="form-item">
           <label class="label">supplier</label>
-          <input type="text" [(ngModel)]="supplier" placeholder="Gold gift bag" />
-          <div class="dropdown" *ngIf="supplierSuggestions.length > 0">
-            <p *ngFor="let item of supplierSuggestions">
-              {{item.Name}}
+          <input type="text" [(ngModel)]="supplier"   (keyup)="searchSuppliers($event.target.value, i)"  placeholder="Gold gift bag" />
+          <div class="dropdown  suppliers" *ngIf="supplierSuggestions.length > 0">
+            <p *ngFor="let item of supplierSuggestions; let i = index">
+              <span (click)="selectSupplierSuggestion(item)">{{item.Name}} {{item.Surname}}</span>
             </p>
           </div>
         </div>
+<!-- <pre>
+  {{suppliers| json}}
 
-
+</pre> -->
 
 
 

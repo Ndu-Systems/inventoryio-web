@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Orders, Product, User, OrderProducts } from 'src/app/_models';
+import { Orders, Product, User, OrderProducts, Partner } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { AccountService, OrdersService, ProductService, SaleService } from 'src/app/_services';
+import { AccountService, OrdersService, ProductService, SaleService, PartnerService } from 'src/app/_services';
 import { CreditNoteService } from 'src/app/_services/dashboard/credit-note.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CreditNote } from 'src/app/_models/creditnote.model';
@@ -20,9 +20,12 @@ export class PurchaseOrderComponent implements OnInit {
   products: Product[];
   productRows: Product[] = [];
   productsSuggestions: Product[] = [];
-  supplierSuggestions: Product[] = [];
+  supplierSuggestions: Partner[] = [];
+  suppliers: Partner[] = [];
   user: User;
   currentIndex: number;
+  selectdPartnerId: string;
+
 
   constructor(
     private routeTo: Router,
@@ -31,6 +34,8 @@ export class PurchaseOrderComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private productService: ProductService,
     private ordersService: OrdersService,
+    private partnerService: PartnerService,
+
   ) {
   }
 
@@ -41,6 +46,14 @@ export class PurchaseOrderComponent implements OnInit {
 
     this.productService.products.subscribe(p => { this.products = p; });
     this.productService.getProducts(this.user.CompanyId);
+
+    this.partnerService.getPartners(this.user.CompanyId);
+    this.partnerService.partners.subscribe(data => {
+      if (data) {
+        this.suppliers = data.filter(x => x.PartnerType === 'supplier');
+      }
+    });
+
 
     this.addNewLine();
 
@@ -112,7 +125,7 @@ export class PurchaseOrderComponent implements OnInit {
 
     const order: Orders = {
       CompanyId: this.user.CompanyId,
-      ParntersId: null,
+      ParntersId: this.selectdPartnerId || '',
       OrderType: 'Purchase',
       Total: subTot,
       Paid: 0,
@@ -142,12 +155,26 @@ export class PurchaseOrderComponent implements OnInit {
       this.productsSuggestions = this.products.filter(x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()));
     }
   }
-  selectSuggestion(index, selectdProduct: Product, ) {
+  searchSuppliers(key: string, index: number) {
+    this.currentIndex = index;
+    if (key) {
+      this.supplierSuggestions = this.suppliers.filter(
+        x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()) ||
+          x.Surname.toLocaleLowerCase().includes(key.toLocaleLowerCase())
+      );
+    }
+  }
+  selectSuggestion(index, selectdProduct: Product) {
     this.productRows[index].Name = selectdProduct.Name;
     this.productRows[index].UnitCost = selectdProduct.UnitCost;
     this.productRows[index].ProductId = selectdProduct.ProductId;
     this.productsSuggestions = [];
     this.currentIndex = undefined;
+  }
+  selectSupplierSuggestion(selectdPartner: Partner) {
+    this.selectdPartnerId = selectdPartner.PartnerId;
+    this.supplier = `${selectdPartner.Name} ${selectdPartner.Surname}`;
+    this.supplierSuggestions = [];
   }
 
 }
