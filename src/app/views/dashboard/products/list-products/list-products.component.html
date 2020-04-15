@@ -30,14 +30,14 @@
       <div class="header-item">
         Image
       </div>
-      <div class="header-item">
+      <div class="header-item" (click)="sort(products, 'name')">
         Product name
       </div>
 
-      <div class="header-item ">
+      <div class="header-item " (click)="sort(products, 'price')">
         Price
       </div>
-      <div class="header-item tac">
+      <div class="header-item tac" (click)="sort(products, 'quantity')">
         Stock
       </div>
       <div class="header-item tar">

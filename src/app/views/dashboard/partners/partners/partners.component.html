@@ -1,44 +1,93 @@
+<div class="products-page" *ngIf="partners$ | async as partners">
+  <div class="list-header">
+    <div class="heading">
+      <h1>
+        {{type}}
+      </h1>
+    </div>
 
-<div class="main-content">
-  <h1 class="title-header">Your {{type}} in the system.</h1>
-  <div class="panel col-1-of-3">
-    <div class="input-card">
-      <div class="search-box">
-        <div class="input-times">
-          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
-          <div class="times" (click)="clearSearch()">
-            <i class="pi pi-times"></i>
-          </div>
-        </div>
+    <div class="search">
+    </div>
+
+    <div class="search">
+      <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+    </div>
+
+    <div class="search">
+    </div>
+    <div class="search tar">
+      <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
+      <button (click)="import()"> <i class="pi pi-download"></i> Import</button>
+    </div>
+
+  </div>
+  <div class="table" *ngIf="(partners| searchpartner: searchType).length > 0;else notFound">
+    <div class="header">
+      <div class="header-item">
+        Image
+      </div>
+      <div class="header-item">
+        Name
+      </div>
+
+      <div class="header-item ">
+        Email
+      </div>
+      <div class="header-item tac">
+        Phone No
+      </div>
+      <div class="header-item tar">
+        Actions
       </div>
     </div>
-    <div class="input-card">
-    </div>
-    <div class="cta">
-      <button class="btn" (click)="add()">
-        <span class=""><i class="pi pi-plus"></i> Add {{type}}</span>
-      </button>
-      <button class="btn btn-transparent" (click)="import()">
-        <span class=""><i class="pi pi-download"></i> Import</span>
-      </button>
-    </div>
-  </div>
-  <div *ngIf="partners$ | async as partners">
-    <span class="cards-betta" *ngIf="(partners| searchpartner: searchType).length > 0;else notFound">
-      <span *ngFor="let partner of partners | searchpartner: search | searchpartner: searchType">
-        <app-partner-card [partner]="partner"></app-partner-card>
-      </span>
-    </span>
-    <ng-template #notFound>
-      <div class="not-found">
-        <img [src]="notFoundModel.Image" alt="no items found">
-        <h1 class="message">
-          {{notFoundModel.Message}}
-          <span>
-            <a class="link-add" (click)="add()"> add new...</a>
-          </span>
-        </h1>
+    <div class="body" *ngFor="let item of partners | searchpartner: search | searchpartner: searchType">
+      <div class="body-item">
+        <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+        <img src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
+
       </div>
-    </ng-template>
+      <div class="body-item">
+        <p>
+          {{item.Name}} {{item.Surname}}
+        </p>
+      </div>
+      <div class="body-item">
+        <p>
+          <a href="mailto:{{item.EmailAddress}}">
+            {{item.EmailAddress}}
+          </a>
+        </p>
+
+      </div>
+
+
+      <div class="body-item tac">
+        <p>
+          <a href="tel:{{item.CellphoneNumber}}">
+            {{item.CellphoneNumber}}
+          </a>
+        </p>
+
+      </div>
+
+      <div class="body-item tar">
+        <button class="btn-primary" (click)="edit(item)">
+          <i class="pi pi-pencil"></i> Edit
+        </button>
+      </div>
+    </div>
   </div>
+
+  <ng-template #notFound>
+    <div class="not-found">
+      <img [src]="notFoundModel.Image" alt="no items found">
+      <h1 class="message">
+        {{notFoundModel.Message}}
+        <span>
+          <a class="link-add" (click)="add()"> add new product.</a>
+        </span>
+      </h1>
+    </div>
+  </ng-template>
+
 </div>

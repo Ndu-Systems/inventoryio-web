@@ -44,6 +44,7 @@ export class ListProductsComponent implements OnInit {
 
     this.productService.products.subscribe(state => {
       if (state) {
+        this.products = state;
         this.bannerService.updateState({
           heading: 'My Products',
           backto: '/dashboard',
@@ -64,7 +65,7 @@ export class ListProductsComponent implements OnInit {
     };
 
     this.scannerService.scann.subscribe(scan => {
-      if (scan  && window.location.href.includes('list-product')) {
+      if (scan && window.location.href.includes('list-product')) {
         this.showScan = scan.isOpen;
         if (scan.code) {
           const product = this.products.find(x => x.Code === scan.code);
@@ -104,5 +105,21 @@ export class ListProductsComponent implements OnInit {
   }
   scann() {
     this.showScan = true;
+  }
+  sort(products: Product[], type: string) {
+    if (type === 'name') {
+      products.sort((a, b) => a.Name.localeCompare(b.Name));
+      this.productService.updateStateNoSort(products);
+    }
+    if (type === 'price') {
+      products.sort((a, b) => a.UnitPrice.localeCompare(b.UnitPrice));
+      this.productService.updateStateNoSort(products);
+    }
+    if (type === 'quantity') {
+      products.sort((x, y) => {
+        return y.Quantity - x.Quantity;
+      });
+      this.productService.updateStateNoSort(products);
+    }
   }
 }

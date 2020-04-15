@@ -85,6 +85,19 @@ export class ProductService {
     localStorage.setItem('products', JSON.stringify(products));
 
   }
+
+  updateStateNoSort(products: Product[]) {
+    // sort
+    if (!products) {
+      products = [];
+    }
+    // products.sort((x, y) => {
+    //   return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+    // });
+    this._products.next(products);
+    localStorage.setItem('products', JSON.stringify(products));
+
+  }
   getSigleProductFronState(id: string) {
     return this._products.value.find(x => x.ProductId === id);
   }

@@ -3,6 +3,11 @@
 .products-page {
   padding: 4rem;
   width: 75%;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    padding: .6rem;
+
+  }
 
   .list-header {
     width: 100%;
@@ -70,4 +75,8 @@
 .header,
 .body {
   grid-template-columns: 10% 30% 15% 15% 15%;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
 }

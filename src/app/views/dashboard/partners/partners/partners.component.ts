@@ -58,6 +58,13 @@ export class PartnersComponent implements OnInit {
     });
     this.routeTo.navigate([`dashboard/add-partner/${this.type}`]);
   }
+
+  edit() {
+    this.bannerService.updateState({
+      backto: `/dashboard/partners/${this.type}`,
+    });
+    this.routeTo.navigate([`dashboard/add-partner/${this.type}`]);
+  }
   showAdd() {
     this.showForm = !this.showForm;
   }
