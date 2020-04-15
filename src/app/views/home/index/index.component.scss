@@ -1,17 +1,17 @@
 @import '../../../../assets/styles/variables';
 
 .main-container {
-  padding: 3rem 6rem;
+  padding: 3rem 0;
 
   .col-1-of-2 {
     grid-template-columns: 50% auto;
   }
 
   .home-banner {
-    width: 45rem;
+    width: 40rem;
 
     h1 {
-      font-size: 3.438rem;
+      font-size: 3rem;
 
       .dot {
         color: $primary-bg-color;
@@ -22,6 +22,25 @@
         width: 28rem;
         font-weight: 400;
         line-height: 30px;
+      }
+    }
+
+    .bullets {
+      margin-top: 4rem;
+
+      .bullet {
+        &.col-1-of-2 {
+          grid-template-columns: auto 90%;
+        }
+
+        img {
+          margin: 1rem 0;
+        }
+
+        h1 {
+          font-weight: 600;
+          font-size: 0.938rem;
+        }
       }
     }
 
@@ -42,13 +61,13 @@
   .steps {
     background: #a1cdfb17;
     padding: 2rem;
+    margin: 4rem 0;
 
     h1 {
-      font-size: 1.875rem;
+      font-size: 1.75rem;
       width: 59.875rem;
-      margin: 0 auto;
+      margin: 2rem auto;
       text-align: center;
-      margin-bottom: 1.5rem;
     }
 
     .col-1-of-4 {
@@ -75,7 +94,7 @@
       .text {
         font-size: 0.938rem;
         width: 100%;
-        font-weight: 400;
+        font-weight: 500;
       }
     }
   }
@@ -107,18 +126,20 @@
   .pricing {
     padding: 2rem;
     margin-bottom: 5rem;
+
     h1 {
-      font-size: 1.875rem;
+      font-size: 1.75rem;
       width: 59.875rem;
-      margin: 0 auto;
+      margin: 5rem auto;
       text-align: center;
-      margin-bottom: 1.5rem;
+
     }
 
     .prices {
       cursor: pointer;
+
       img {
-        height: 710px;
+        height: 44.375rem;
       }
     }
   }
@@ -126,10 +147,115 @@
 
 //mobile layout
 @media only screen and (max-width: 600px) {
+  .main-container {
+    .col-1-of-2 {
+      grid-template-columns: 100%;
+    }
 
-  .home-banner {}
+    .home-banner {
+      width: 20rem;
 
-  .home-image {}
+      h1 {
+        font-size: 1.563rem;
+
+        &.text {
+          font-size: 0.938rem;
+          width: 100%;
+          font-weight: 400;
+          line-height: 19px;
+        }
+      }
+
+      .bullets {
+        margin-top: 2rem;
+      }
+    }
+
+    .home-image {
+      img {
+        width: 100%;
+      }
+    }
+
+    .steps {
+      margin: 2rem 0;
+      padding: 1rem;
+
+      .col-1-of-4 {
+        grid-template-columns: 50% auto;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 0.938rem;
+        width: 100%;
+      }
+
+      .step {
+        margin: 1rem 0;
+        width: 100%;
+
+        .point {
+          margin: 0rem auto;
+          font-size: 0.688rem;
+        }
+
+        .text {
+          font-size: 0.625rem;
+        }
+      }
+    }
+
+    .mockup {
+      padding: 1rem;
+
+      .col-1-of-2 {
+        margin: 1rem 0;
+      }
+
+      .img {
+        img {
+          width: 100%;
+        }
+      }
+
+      .type-face {
+        width: 100%;
+        margin: 2rem 0;
+
+        .main {
+          font-size: 1.563rem;
+          text-align: center;
+        }
+
+        .text {
+          text-align: center;
+          font-size: 0.625rem;
+          font-weight: 500;
+
+        }
+      }
+    }
+
+    .pricing {
+      padding: 1rem;
+
+      h1 {
+        font-size: 1.563rem;
+        width: 100%;
+      }
+      .prices {
+        cursor: pointer;
+
+        img {
+          height: 30rem;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+
 }
 
 //tablet layout

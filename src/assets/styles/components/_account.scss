@@ -1,181 +1,179 @@
-.mobile-background {
-    @media only screen and (max-width: 600px) {
-        background: #FFFFFF;
-    }
-}
+.accounts {
+  width: 346px;
+  margin: 0 auto;
 
-.sign-in-background {
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: top right;
-    height: 96.5vh;
+  h1 {
+    text-align: left;
 
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-        padding: 0%;
-        height: 100vh;
+    &.header {
+      font-size: 2.188rem;
+      font-weight: 900;
     }
 
-    //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-        height: 100vh;
+    &.text {
+      font-size: 0.938rem;
+      font-weight: 600;
+      color: $strong-gray;
     }
 
-    //ipad pro
-    @media only screen and (min-width: 1024px) and (max-width:1366px) {
+    .dot,
+    .span {
+      color: $primary-bg-color;
+    }
+  }
+
+  .form {
+    text-align: left;
+    width: 100%;
+    padding: 2rem 0rem;
+    margin: 0 auto;
+
+    .form-control {
+      border-radius: 2px;
+      border: none;
+      border-bottom: 1px solid #E0E0E0;
+      box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-control:focus {
+      box-shadow: 0 1px 5px -2px #42A5F5;
+      border-bottom: 1px solid #2196F3;
+    }
+
+    .form-group {
+      margin: 1rem 0;
+
+      label {
+        color: #616161;
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 0.4rem;
+        font-weight: 600;
+        font-size: 17px;
+        color: $dark-navy;
+        opacity: 0.5;
+      }
+
+      input[type=text],
+      input[type=password],
+      input[type=checkbox],
+      input[type=email] {
+        border: solid 1px $gray-color;
+        border-radius: 0.313rem;
         width: 100%;
-        height: 100vh;
-    }
-}
+        margin: 1rem auto;
+        margin-top: 0.5rem;
+        letter-spacing: normal;
+
+        &::placeholder {
+          font-weight: normal;
+          opacity: 0.5;
+        }
+      }
 
 
-.form {
-    text-align: right;
-    background: #ffffff;
-    width: 80%;
-    margin: auto;
-    padding: 2rem;
-    margin-top: 15rem;
-    border-radius: 10px;
-    &.sign-up {
+      .showPassword {
+        float: right;
+        cursor: pointer;
+        color: $blue-gray;
+      }
+
+      .alert {
         padding: 0;
-    }
-
-    //mobile layout
-    @media only screen and (max-width: 600px) {
-        width: 90%;
-        margin-top: 2%;
-        margin-bottom: 0%;
-    }
-
-    //tablet layout
-    @media only screen and (min-width: 481px) and (max-width:768px) {
-        width: 80%;
-
-    }
-
-    //ipad pro
-    @media only screen and (min-width: 1024px) and (max-width:1366px) {
-        width: 60%;
-        margin-top: 20rem;
-
-    }
-
-    h1 {
-        width: 80%;
-        font-size: 1.2rem;
-        margin: auto;
-        margin-top: 1.5rem;
-        color: #656D88;
-        text-align: center;
-
-
-        @media only screen and (max-width: 600px) {
-            font-size: 1.1rem;
-            width: 100%;
-            margin-bottom: 0%;
-        }
-    }
-
-    input[type=submit] {
-        border: none;
-        border-radius: 10px;
-    }
-
-    input[type=text],
-    input[type=password] {
-        border: none;
-        width: 80%;
-        margin-top: 2rem;
-
-        @media only screen and (max-width: 600px) {
-            width: 80%;
-        }
-    }
-
-    .group {
-        background: #ECF2F4;
-        width: 85%;
-        margin: auto;
-
-        @media only screen and (max-width: 600px) {
-            width: 100%;
-            margin: 0;
-        }
-
-        label {
-            color: #656D88;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-    }
-
-    .reset-pass {
-        width: 80%;
-        margin: auto;
-        text-align: center;
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-
-        @media only screen and (max-width: 600px) {
-            width: 100%;
-            margin-bottom: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        a {
-            padding-top: 2rem;
-            padding: 5rem;
-            font-weight: 500;
-            color: #656D88;
-
-            @media only screen and (max-width: 600px) {
-                padding: 0%;
-            }
-        }
-    }
-
-    .actions {
+        font-size: .85rem;
         text-align: left;
-        width: 80%;
-        margin: auto;
-        margin-bottom: 2rem;
+        color: $danger;
+        margin: 0.5rem 0;
+      }
 
-
-        @media only screen and (max-width: 600px) {
-            width: 100%;
-            font-size: .8rem;
-        }
-
+      &.forgot {
         a {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-left: .5rem;
-            margin-top: .5rem;
-
-            @media only screen and (max-width: 600px) {
-                font-size: 1rem;
-                font-weight: 800;
-            }
+          font-weight: 600;
+          font-size: 0.813rem;
+          color: $blue-gray;
         }
+      }
 
-        h3 {
-            display: none;
-        }
-
-        @media only screen and (max-width: 600px) {
-            width: 100%;
-            margin: 0%;
-
-            h5 {
-                display: none;
-            }
-        }
     }
 
-    i {
-      cursor: pointer;
+    .col-1-of-2 {
+      grid-template-columns: 50% auto;
+      text-align: center;
+      margin: 3.5rem 0;
+
+      .btn {
+        border-radius: 5px;
+        box-shadow: none;
+        &:hover {
+          box-shadow: none;
+        }
+
+        &.btn-border {
+          background: transparent;
+          color: $primary-bg-color;
+          box-shadow: none;
+          border: solid 2px $primary-bg-color;
+          font-size: 0.9rem;
+          &:hover {
+            box-shadow: none;
+          }
+        }
+      }
+
+      &.cta {
+        h1 {
+          font-size: 0.813rem;
+          margin: 0;
+          width: 100%;
+        }
+      }
     }
+
+    .col-1-of-1 {
+      margin: 3.5rem 0;
+      .btn {
+        border-radius: 5px;
+        box-shadow: none;
+        &:hover {
+          box-shadow: none;
+        }
+
+        &.btn-border {
+          background: transparent;
+          color: $primary-bg-color;
+          box-shadow: none;
+          border: solid 2px $primary-bg-color;
+          font-size: 0.9rem;
+          &:hover {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+
+  }
+
 }
 
 
+@media only screen and (max-width: 600px) {
+   .accounts {
+    width: 100%;
+
+    .form {
+      .col-1-of-2 {
+        .btn {
+          font-size: 14px;
+          padding: 0.5rem;
+        }
+      }
+      .col-1-of-1 {
+        .btn {
+          font-size: 14px;
+          padding: 0.5rem;
+        }
+      }
+    }
+   }
+}

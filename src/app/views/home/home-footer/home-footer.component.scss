@@ -1,9 +1,9 @@
 @import '../../../../assets/styles/variables';
 
 .footer {
-  padding: 3rem 5rem;
+  padding: 3rem 15rem;
   background: $primary-bg-color;
-
+  height: 40vh;
   img {
     height: 3.938rem;
   }
@@ -43,5 +43,12 @@
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    padding: 0 2rem;
+    padding-bottom: 2.5rem;
   }
 }

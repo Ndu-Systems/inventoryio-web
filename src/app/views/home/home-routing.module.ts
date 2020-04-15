@@ -8,7 +8,8 @@ import {
   IndexComponent,
   HomePageComponent,
   FeaturesComponent,
-  HowItWorksComponent
+  HowItWorksComponent,
+  FaqsComponent
 } from './index';
 import {
   SignUpComponent,
@@ -50,7 +51,8 @@ export const declarations = [
   ForgotPasswordComponent,
   ResetPasswordComponent,
   InlineHomeLoaderComponent,
-  HomeFooterComponent
+  HomeFooterComponent,
+  FaqsComponent
 ];
 
 

@@ -7,7 +7,7 @@
   <g id="home-landing" transform="translate(-1145 -209)">
     <rect id="Rectangle_611" data-name="Rectangle 611" width="640" height="673" transform="translate(1280 302)" fill="#a1cdfb" opacity="0.1"/>
     <rect id="Rectangle_612" data-name="Rectangle 612" width="640" height="673" transform="translate(1145 209)" fill="#104ce5"/>
-    <rect id="Group_1172" data-name="Group 1172" width="640" height="533" transform="translate(1145 209)" fill="url(#pattern)"/>
-    <text id="Intelligent_inventory_management_system" data-name="Intelligent inventory management system" transform="translate(1197 817)" fill="#fff" font-size="25" font-family="Montserrat-Medium, Montserrat" font-weight="500"><tspan x="0" y="0">Intelligent inventory management system</tspan></text>
+    <rect id="Group_1172" data-name="Group 1172" width="640" height="612" transform="translate(1145 209)" fill="url(#pattern)"/>
+    <text id="Intelligent_inventory_management_system" data-name="Intelligent inventory management system" transform="translate(1229 859)" fill="#fff" font-size="22" font-family="Montserrat-Medium, Montserrat" font-weight="500"><tspan x="0" y="0">Intelligent inventory management system</tspan></text>
   </g>
 </svg>

@@ -2,23 +2,26 @@
 
 nav {
 
-  display: grid;
-  grid-template-columns: auto 60% 30%;
+  display: flex;
   overflow: hidden;
   background-color: $white-color;
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
-  padding: 1rem;
-  padding-bottom: 0;
+  padding: 0 12rem;
+  z-index: 9999;
 
   ul {
     display: inline-block;
     text-align: center;
     list-style-type: none;
-    margin: 0 3rem;
     padding: 15px;
+
+    &.account {
+      position: absolute;
+      right: 12rem;
+    }
 
     li {
       display: inline;
@@ -41,9 +44,12 @@ nav {
           border-bottom: solid 2px $primary-bg-color;
         }
 
-        .logo {
-          text-align: left;
-          width: 7rem;
+        &.logo {
+          &:hover{ border-bottom: none;}
+          img {
+            text-align: left;
+            width: 7rem;
+          }
         }
 
         &.login {

@@ -1,295 +1,36 @@
-.banner {
-  background: url(../../../../../assets/images/home/pricing-banner.svg);
-  background-size: cover;
-  height: 25rem;
-  width: 99.9%;
+@import '../../../../../assets/styles/variables';
+$midnight: #2c3e50;
+$clouds: #ecf0f1;
 
-  .banner-body {
-    padding: 10rem 0;
+.main-container {
+  padding: 3rem 0;
 
-    .heading {
-      text-transform: initial;
-      text-transform: initial;
-      font-size: 2.5em;
-      font-weight: 700;
-      color: #F5F6FA;
-    }
-  }
-
-
-  @media only screen and (max-width: 600px) {
-    height: 20rem;
-
-    .banner-body {
-      padding: 4rem 0;
-      padding-bottom: 1rem;
-
-      .heading {
-        margin: 1rem;
-        padding: 1rem;
-        font-size: 1.8em;
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-    }
-  }
-}
-
-.content {
-  padding: 5rem 10rem;
-  background: #FFFFFF;
-
-  .card {
-    border-radius: 10px;
-    border: solid 1px #D3D8DF;
-    padding: 2rem;
-    background: white;
-    width: 85%;
-    margin: 0 auto;
-
-    .card-icon {
+  .header {
+    h1 {
+      color: $dark-navy;
       text-align: center;
+      font-size: 1.563rem;
+      font-weight: 900;
 
-      img {
-        height: 4rem;
-      }
-    }
-
-    .card-title {
-      h1 {
-        text-transform: capitalize;
-        text-align: center;
-
-        &.description {
-          font-size: 1.6em;
-        }
-
-        &.amount {
-          font-size: 2em;
-
-          .month {
-            font-size: 0.4em;
-            display: block;
-          }
-        }
-      }
-    }
-
-    .card-body {
-      ul {
-        list-style: none;
-        padding: 1rem 5rem;
-
-        li {
-          font-weight: 600;
-          margin: 1rem 0;
-
-          &.gray {
-            color: #7B8C98;
-            font-weight: 400;
-          }
-        }
-      }
-    }
-
-    .card-actions {
-      text-align: center;
-
-      a {
-        font-weight: 700;
-        color: #3742FA;
-      }
-    }
-
-    &.recommended {
-      background: #3742FA;
-      border: solid 1px #3742FA;
-      box-shadow: 2px 1px 14px 5px rgba(0, 0, 0, 0.14);
-
-      h1 {
-        color: #F5F6FA;
+      &.text {
+        font-size: 0.938rem;
+        color: $strong-gray;
+        font-weight: 600;
       }
 
-      .card-body {
-        ul {
-          li {
-            color: #F5F6FA;
-
-            &.gray {
-              color: #7B8C98;
-              font-weight: 400;
-            }
-          }
-        }
-      }
-
-      .card-actions {
-        text-align: center;
-
-        a {
-          font-weight: 700;
-          color: #F5F6FA;
-        }
+      .free {
+        color: $primary-bg-color;
       }
     }
   }
 
-  .terms {
-    font-weight: 400;
-    color: #7B8C98;
-    font-size: 1em;
-    padding: 1rem 2rem;
-    width: 50rem;
-  }
-
-  .panel {
-    padding: 2rem;
-
-    .col-1-of-2 {
-      grid-template-columns: 25% auto;
-
-    }
+  .price-list {
+    margin: 6.25rem 0;
 
     img {
-      height: 20rem;
-    }
-
-    .heading {
-      font-weight: 600;
-      padding: 0;
-    }
-
-    p {
-      width: 40rem;
-      color: #7B8C98;
-    }
-
-    .buttons {
-      display: grid;
-      grid-template-columns: 50% auto;
-      grid-gap: 2em;
-      width: 50%;
-      margin: 3rem 0;
-
-      .btn {
-        text-align: center;
-      }
-
-      .btn-border {
-        background: none;
-        color: #3742FA;
-        border: solid 2px #3742FA;
-        border-radius: 7px;
-
-        @media only screen and (max-width: 600px) {
-          display: block;
-          text-align: center;
-        }
-      }
-    }
-
-  }
-
-  @media only screen and (max-width: 600px) {
-    padding: 1rem;
-
-    .card {
-      margin-bottom: 1rem;
-      padding: 1rem 0;
-
-      .card-icon {
-        img {
-          height: 2rem;
-        }
-      }
-
-      .card-title {
-        h1 {
-          &.description {
-            font-size: 1em;
-          }
-
-          &.amount {
-            font-size: 1.5em;
-          }
-        }
-      }
-
-      .card-body {
-        ul {
-          padding: 1rem 2rem;
-        }
-      }
-    }
-
-    .terms {
-      font-size: 0.8em;
-      width: 22rem;
-      padding: 0 1rem;
-    }
-
-    .panel {
-      padding: 0;
-
-      .col-1-of-2 {
-        grid-template-columns: 100%;
-      }
-
-      img {
-        height: 10rem;
-        margin: 0 auto;
-      }
-
-      .heading {
-        margin: 0.5rem 0;
-      }
-
-      p {
-        width: 20rem;
-      }
-      .buttons {
-        width: 100%;
-        grid-gap: 5px;
-      }
-    }
-  }
-}
-
-.enterprise {
-  .col-1-of-2 {
-    grid-template-columns: 60% auto;
-  }
-
-  .plan {
-    padding: 2rem 4rem;
-
-    p {
-      color: #7B8C98;
+      width: 100%;
     }
   }
 
-  .cta {
-    padding: 7rem 0;
-
-    .btn {
-      text-transform: initial;
-      border-radius: 5px;
-      padding: 15px 30px;
-    }
-  }
-
-  @media only screen and (max-width: 600px) {
-    .col-1-of-2 {
-      grid-template-columns: 100%;
-    }
-
-    .plan {
-      padding: 2rem 0.5rem;
-    }
-
-    .cta {
-      padding: 2rem 0.5rem;
-    }
-  }
 
 }
