@@ -1,5 +1,8 @@
 .table {
-  padding: .5rem 0;
+  padding: 1rem .5rem;
+  background: $white-color;
+  height: 70vh;
+  overflow-y: scroll;
 
   .tar {
     text-align: right;
@@ -58,6 +61,8 @@
         margin-top: .8555rem;
         border: none;
         cursor: pointer;
+        border-radius: .2rem;
+
       }
 
       .btn-primary {
@@ -98,7 +103,7 @@
       }
 
       img {
-        width: 3rem;
+        width: 3.5rem;
       }
     }
   }

@@ -20,8 +20,8 @@
     <div class="search">
     </div>
     <div class="search tar">
-      <button> <i class="pi pi-plus"></i> Add</button>
-      <button> <i class="pi pi-download"></i> Import</button>
+      <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
+      <button (click)="import()"> <i class="pi pi-download"></i> Import</button>
     </div>
 
   </div>
@@ -58,22 +58,25 @@
       </div>
       <div class="body-item">
         <p>
-          {{item.UnitPrice | currency:'R'}}
+          <b>
+            {{item.UnitPrice | currency:'R'}}
+          </b>
         </p>
 
       </div>
       <div class="body-item tac">
         <p>
-          <span [ngClass]="item.Class">{{item.Quantity}}</span> </p>
+          <span [ngClass]="item.Class">
+            <b>
+              {{item.Quantity}}
+            </b>
+          </span> </p>
       </div>
       <div class="body-item tar">
-        <button class="btn-primary" (click)="removeItem(i)">
+        <button class="btn-primary" (click)="details(item)">
           <i class="pi pi-pencil"></i> Edit
         </button>
       </div>
-    </div>
-    <div class="actions">
-      <a (click)="addNewLine()">Add row</a>
     </div>
   </div>
 
