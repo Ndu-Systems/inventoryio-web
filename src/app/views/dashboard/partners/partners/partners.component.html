@@ -21,6 +21,21 @@
     </div>
 
   </div>
+
+  <div class="list-header-mobile">
+    <h4>
+      {{type}} ({{(partners| searchpartner: searchType).length}})
+    </h4>
+
+    <div class="actions">
+      <div class="search">
+        <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+      </div>
+      <div class="search">
+        <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
+      </div>
+    </div>
+  </div>
   <div class="table" *ngIf="(partners| searchpartner: searchType).length > 0;else notFound">
     <div class="header">
       <div class="header-item">
@@ -88,8 +103,8 @@
         <div class="item" (click)="details(item)">
           <div class="image-name">
             <div class="image">
-              <img  class="image-mt"  [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-              <img  class="image-mt"  src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
+              <img class="image-mt" [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+              <img class="image-mt" src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
             </div>
             <div class="name">
               <p>

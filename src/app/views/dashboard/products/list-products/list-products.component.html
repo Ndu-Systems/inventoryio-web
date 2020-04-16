@@ -25,6 +25,31 @@
     </div>
 
   </div>
+
+
+  <div class="list-header-mobile">
+    <h4>
+      Products ({{sum}})
+    </h4>
+
+    <div class="actions">
+      <div class="search">
+        <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+      </div>
+      <div class="search">
+        <select [(ngModel)]="searchByCatergory" class="roundInput">
+          <option value="" selected>All categories</option>
+          <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+        </select>
+      </div>
+      <div class="search">
+        <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
+      </div>
+    </div>
+  </div>
+
+
+
   <div class="table" *ngIf="products.length > 0; else notFound">
     <div class="header">
       <div class="header-item">
@@ -91,10 +116,10 @@
   <div class="mobile-table">
     <div class="items">
       <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-        <div class="item"  (click)="details(item)">
+        <div class="item" (click)="details(item)">
           <div class="image-name">
             <div class="image">
-              <img  [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+              <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
               <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
             </div>
             <div class="name">
