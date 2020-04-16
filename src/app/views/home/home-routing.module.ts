@@ -20,6 +20,7 @@ import {
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { InlineHomeLoaderComponent } from './inline-home-loader/inline-home-loader.component';
 import { HomeFooterComponent } from './home-footer';
+import { ShopsComponent } from '../shopping/components/shop/shops/shops.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'sign-up', component: SignUpComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'reset-password', component: ResetPasswordComponent },
+      { path: 'shop', component: ShopsComponent },
     ]
   }
 ];
@@ -52,7 +54,8 @@ export const declarations = [
   ResetPasswordComponent,
   InlineHomeLoaderComponent,
   HomeFooterComponent,
-  FaqsComponent
+  FaqsComponent,
+  ShopsComponent
 ];
 
 
