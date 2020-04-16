@@ -79,7 +79,8 @@
   .list-header-mobile {
     display: none;
     border-bottom: 1px solid $blue-gray;
-    padding-bottom: 1.5rem;
+    padding: 1rem 0;
+    padding-top: 3rem;
     margin-bottom: 1rem;
 
     @media only screen and (max-width: 600px) {
@@ -142,5 +143,12 @@
     .pc-only {
       display: none;
     }
+  }
+}
+
+.mobile-table {
+  .image-name {
+    display: grid;
+    grid-template-columns: 15% 10% 50% 5% auto;
   }
 }

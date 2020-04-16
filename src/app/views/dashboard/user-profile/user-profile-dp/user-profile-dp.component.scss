@@ -1,6 +1,6 @@
 @import '../../../../../assets/styles/variables';
-$dp-width : 4rem;
-$dp-reduced : 3rem;
+$dp-width : 3rem;
+$dp-reduced : 2rem;
 
 .main {
   // background: $primary-bg-color;
@@ -12,10 +12,11 @@ $dp-reduced : 3rem;
 
 
   @media only screen and (max-width: 1024px) {
-     width: 50%;
+    width: 50%;
   }
+
   @media only screen and (max-width: 768px) {
-     width: 50%;
+    width: 50%;
   }
 
   @media only screen and (max-width: 600px) {
@@ -28,13 +29,14 @@ $dp-reduced : 3rem;
       grid-template-columns: 30% 30% auto;
       margin-top: -1.5rem;
 
-      .text{
+      .text {
         font-weight: 500;
         font-size: 0.8rem;
       }
 
       @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
+
         h1 {
           display: none;
         }
@@ -57,13 +59,7 @@ $dp-reduced : 3rem;
       width: $dp-width;
       height: $dp-width;
       overflow: hidden;
-      border: .1rem solid #fff;
-
-      display: block;
-
-      @media only screen and (max-width: 768px) {
-
-      }
+      text-align: center;
 
       @media only screen and (max-width: 600px) {
         border-radius: $dp-reduced;
@@ -71,10 +67,15 @@ $dp-reduced : 3rem;
         height: $dp-reduced;
         margin-left: 5rem;
         margin-top: 1.5rem;
+
+        img {
+          height: 2rem;
+        }
       }
 
       img {
-        width: 100%;
+        // width: 100%;
+        height: $dp-width;
       }
 
       img.placeholder {
