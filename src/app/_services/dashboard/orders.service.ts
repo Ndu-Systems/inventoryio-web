@@ -59,7 +59,7 @@ export class OrdersService {
     localStorage.setItem('orders', JSON.stringify(state));
   }
   updatOrdersState(orders: Orders[]) {
-    if(orders){
+    if (orders) {
       this._orders.next(orders);
       localStorage.setItem('orders', JSON.stringify(orders));
     }
@@ -174,7 +174,7 @@ export class OrdersService {
   }
 
   loadCurrentOrder(orders: Orders[], orderType: string) {
-    if (orders.length) {
+    if (orders.length > 0) {
       orders = orders.filter(x => x.OrderType === orderType);
       this._orders.next(orders);
 
@@ -185,9 +185,14 @@ export class OrdersService {
         order.Show = true;
         this.updateOrderState(order);
       } else {
-        orders[0].CardClass.push('card-active');
-        orders[0].Show = true;
-        this.updateOrderState(orders[0]);
+        if (orders[0]) {
+          orders[0].CardClass.push('card-active');
+          orders[0].Show = true;
+          this.updateOrderState(orders[0]);
+        } else {
+          this._order.next(null);
+          localStorage.removeItem('order');
+        }
       }
 
 

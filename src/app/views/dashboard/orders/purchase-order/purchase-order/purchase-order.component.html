@@ -6,14 +6,15 @@
       <div class="section">
         <div class="form-item">
           <label class="label">supplier</label>
-          <input type="text" [(ngModel)]="supplier"   (keyup)="searchSuppliers($event.target.value, i)"  placeholder="Gold gift bag" />
+          <input type="text" [(ngModel)]="supplier" (keyup)="searchSuppliers($event.target.value, i)"
+            placeholder="Gold gift bag" />
           <div class="dropdown  suppliers" *ngIf="supplierSuggestions.length > 0">
             <p *ngFor="let item of supplierSuggestions; let i = index">
               <span (click)="selectSupplierSuggestion(item)">{{item.Name}} {{item.Surname}}</span>
             </p>
           </div>
         </div>
-<!-- <pre>
+        <!-- <pre>
   {{suppliers| json}}
 
 </pre> -->
@@ -40,45 +41,47 @@
               Actions
             </div>
           </div>
-          <div class="body" *ngFor="let product of productRows; let i = index">
-            <div class="body-item">
-              <input type="text" [(ngModel)]="product.Name" placeholder="Enter a product name"
-                (keyup)="searchProduct($event.target.value, i)" />
-              <div class="dropdown" *ngIf="productsSuggestions.length > 0 && currentIndex == i">
-                <p *ngFor="let item of productsSuggestions">
-                  <span (click)="selectSuggestion(i,item)">{{item.Name}}</span>
-                </p>
+          <div class="body-container">
+            <div class="body" *ngFor="let product of productRows; let i = index">
+              <div class="body-item">
+                <input type="text" [(ngModel)]="product.Name" placeholder="Enter a product name"
+                  (keyup)="searchProduct($event.target.value, i)" />
+                <div class="dropdown-products" *ngIf="productsSuggestions.length > 0 && currentIndex == i">
+                  <p *ngFor="let item of productsSuggestions">
+                    <span (click)="selectSuggestion(i,item)">{{item.Name}}</span>
+                  </p>
+                </div>
+
               </div>
-
-            </div>
-            <div class="body-item">
-              <input type="number" [(ngModel)]="product.UnitCost" placeholder="450" />
-            </div>
-            <div class="body-item tac">
-
-              <div class="qnty">
-                <div class="min">
-                  <button class="add hover-shadow" (click)="reduce(-1, i)">
-                    <i class="pi pi-minus"></i>
-                  </button>
-                </div>
-                <div class="input">
-                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="product.Quantity" (blur)="blur(item)">
-                </div>
-
-                <div class="plus">
-                  <button class="reduce hover-shadow" (click)="reduce(1, i)">
-                    <i class="pi pi-plus"></i>
-                  </button>
-                </div>
+              <div class="body-item">
+                <input type="number" [(ngModel)]="product.UnitCost" placeholder="450" />
               </div>
+              <div class="body-item tac">
 
-            </div>
-            <div class="body-item tar">
-              <button (click)="removeItem(i)">
-                <!-- <i class="pi pi-trash"></i> -->
-                <i class="pi pi-ellipsis-h"></i>
-              </button>
+                <div class="qnty">
+                  <div class="min">
+                    <button class="add hover-shadow" (click)="reduce(-1, i)">
+                      <i class="pi pi-minus"></i>
+                    </button>
+                  </div>
+                  <div class="input">
+                    <input type="text" pInputText pKeyFilter="int" [(ngModel)]="product.Quantity" (blur)="blur(item)">
+                  </div>
+
+                  <div class="plus">
+                    <button class="reduce hover-shadow" (click)="reduce(1, i)">
+                      <i class="pi pi-plus"></i>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+              <div class="body-item tar">
+                <button (click)="removeItem(i)">
+                  <!-- <i class="pi pi-trash"></i> -->
+                  <i class="pi pi-ellipsis-h"></i>
+                </button>
+              </div>
             </div>
           </div>
           <div class="actions">

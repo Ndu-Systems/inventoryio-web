@@ -60,7 +60,7 @@ export class ListPurchaseOrderComponent implements OnInit {
     // });
   }
   add() {
-    this.router.navigate(['/dashboard/sell']);
+    this.router.navigate(['/dashboard/new-purchase-order']);
   }
   cleanStatus(array: string[]) {
     const data = [];
