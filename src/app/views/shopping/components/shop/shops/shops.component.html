@@ -33,24 +33,28 @@
           <!-- Search shops -->
           <span *ngIf="searchType == 'shops'">
             <div class="result-cards">
-              <div class="result-card" *ngFor="let shop of searchResults; let i = index">
-                <span (click)="visitShow(shop)">
-                  <div class="image">
-                    <img [src]="shop.Banner[0].Url" alt="" *ngIf="shop.Banner" />
-                    <img src="assets/images/place-shpper.png" *ngIf="!shop.Banner" alt="" />
-                  </div>
+              <div class="scroller">
 
-                  <div class="name">
-                    <h1>
-                      {{shop?.Name}}
-                    </h1>
-                  </div>
-                  <div class="details">
-                    <p>
-                      {{shop?.Description}}
-                    </p>
-                  </div>
-                </span>
+                <div class="result-card" *ngFor="let shop of searchResults; let i = index">
+                  <span (click)="visitShow(shop)">
+                    <div class="image">
+                      <img [src]="shop.Banner[0].Url" alt="" *ngIf="shop.Banner" />
+                      <!-- <img src="assets/images/place-shpper.png" *ngIf="!shop.Banner" alt="" /> -->
+                      <img src="assets/images/store-placeholder.svg" *ngIf="!shop.Banner" alt="" />
+                    </div>
+
+                    <div class="name">
+                      <h1>
+                        {{shop?.Name}}
+                      </h1>
+                    </div>
+                    <div class="details">
+                      <p>
+                        {{shop?.Description}}
+                      </p>
+                    </div>
+                  </span>
+                </div>
               </div>
             </div>
           </span>
@@ -58,24 +62,26 @@
           <!-- Search products -->
           <span *ngIf="searchType == 'products'">
             <div class="result-cards">
-              <div class="result-card" *ngFor="let product of searchResultsProducts; let i = index">
-                <span (click)="visitProduct(product)">
-                  <div class="image">
-                    <img [src]="product.Images[0].Url" alt="" *ngIf="product.Images" />
-                    <img src="assets/images/place-shpper.png" *ngIf="!product.Images" alt="" />
-                  </div>
+              <div class="scroller">
+                <div class="result-card" *ngFor="let product of searchResultsProducts; let i = index">
+                  <span (click)="visitProduct(product)">
+                    <div class="image">
+                      <img [src]="product.Images[0].Url" alt="" *ngIf="product.Images" />
+                      <img src="assets/images/store-placeholder.svg" *ngIf="!product.Images" alt="" />
+                    </div>
 
-                  <div class="name">
-                    <h1>
-                      {{product?.Name}}
-                    </h1>
-                  </div>
-                  <div class="details">
-                    <p>
-                      {{product.UnitPrice | currency:'R'}}
-                    </p>
-                  </div>
-                </span>
+                    <div class="name">
+                      <h1>
+                        {{product?.Name}}
+                      </h1>
+                    </div>
+                    <div class="details">
+                      <p>
+                        {{product.UnitPrice | currency:'R'}}
+                      </p>
+                    </div>
+                  </span>
+                </div>
               </div>
             </div>
           </span>
@@ -102,7 +108,7 @@
       <div class="shop" *ngFor="let shop of shops; let i = index">
         <div class="image">
           <img [src]="shop.Banner[0].Url" alt="" *ngIf="shop.Banner" />
-          <img src="assets/images/place-shpper.png" *ngIf="!shop.Banner" alt="" />
+          <img src="assets/images/store-placeholder.svg" *ngIf="!shop.Banner" alt="" />
         </div>
         <div class="name">
           <h1>

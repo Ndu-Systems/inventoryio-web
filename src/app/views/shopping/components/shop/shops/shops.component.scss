@@ -13,6 +13,7 @@
       h1 {
         font-size: 3rem;
       }
+
       .dot {
         color: $primary-bg-color;
         font-size: 5rem;
@@ -115,9 +116,11 @@
       background: $white-color;
       //   border: 9px solid $cloud;
       border-radius: 10px;
+      position: relative;
       margin: 1rem;
       -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.2);
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.2);
+      padding-bottom: 3rem;
 
       h1,
       p {
@@ -144,7 +147,8 @@
 
         h1 {
           //   text-align: center;
-          font-size: 1.255rem;
+          font-size: 1.155rem;
+          margin-top: 1rem;
 
           @media only screen and (max-width: 600px) {
             font-size: .8rem;
@@ -174,13 +178,17 @@
         margin: 1rem;
 
         .visit {
-          background: $primary-bg-color;
-          color: $white-color;
+          // background: $primary-bg-color;
+          // color: $white-color;
+          color: $hl-color;
           padding: .6rem;
           cursor: pointer;
           width: 60%;
           text-align: center;
           border-radius: 7px;
+          position: absolute;
+          right: 0;
+          bottom: 0;
 
           //   border-radius: 9px;
           @media only screen and (max-width: 600px) {
@@ -198,33 +206,49 @@
 
 
 .result-cards {
-  display: flex;
-  width: 30rem;
+  width: 33rem;
   overflow-x: hidden;
+  max-height: 12rem;
+  padding: .5rem;
 
-  .result-card {
-    width: 10rem;
-    margin: 1rem 2rem;
-    padding: .5rem;
-    border: 1px solid $cloud;
-    cursor: pointer;
+  .scroller {
+    width: 1000rem;
+    display: flex;
+    overflow-x: scroll;
 
-    .image {
-      img {
-        width: 8.4rem;
+    .result-card {
+      width: 10rem;
+      margin: .6rem;
+      padding: .1rem;
+      border: 1px solid $cloud;
+      cursor: pointer;
+      background: $white-color;
+      box-sizing: border-box;
+      text-align: center;
+
+      .image {
+        overflow: hidden;
+        height: 4rem;
+
+        img {
+          width: 100%;
+        }
       }
-    }
 
-    .name {
-      h1 {
-        font-size: .6rem;
+      .name {
+        h1 {
+          font-size: .6rem;
+        }
       }
-    }
 
-    .details {
-      p {
-        font-size: .5rem;
+      .details {
+        p {
+          font-size: .7rem;
+          margin: 0;
+          text-align: left;
+        }
       }
     }
   }
+
 }
