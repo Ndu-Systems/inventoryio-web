@@ -31,52 +31,92 @@
         Image
       </div>
       <div class="header-item" (click)="sort(products, 'name')">
+        <i *ngIf="!nameAsc" class="pi pi-sort-alpha-up"></i>
+        <i *ngIf="nameAsc" class="pi pi-sort-alpha-down-alt"></i>
         Product name
       </div>
 
       <div class="header-item " (click)="sort(products, 'price')">
+        <i *ngIf="priceAsc" class="pi pi-sort-numeric-up-alt"></i>
+        <i *ngIf="!priceAsc" class="pi pi-sort-numeric-down"></i>
         Price
       </div>
       <div class="header-item tac" (click)="sort(products, 'quantity')">
+        <i *ngIf="quantityAsc" class="pi pi-sort-numeric-up-alt"></i>
+        <i *ngIf="!quantityAsc" class="pi pi-sort-numeric-down"></i>
         Stock
       </div>
       <div class="header-item tar">
         Actions
       </div>
     </div>
-    <div class="body"
-      *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-      <div class="body-item">
-        <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-        <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+    <div class="body-container">
+      <div class="body"
+        *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
+        <div class="body-item">
+          <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+          <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
 
-      </div>
-      <div class="body-item">
-        <p>
-          {{item.Name}}
-        </p>
-      </div>
-      <div class="body-item">
-        <p>
-          <b>
-            {{item.UnitPrice | currency:'R'}}
-          </b>
-        </p>
-
-      </div>
-      <div class="body-item tac">
-        <p>
-          <span [ngClass]="item.Class">
+        </div>
+        <div class="body-item">
+          <p>
+            {{item.Name}}
+          </p>
+        </div>
+        <div class="body-item">
+          <p>
             <b>
-              {{item.Quantity}}
+              {{item.UnitPrice | currency:'R'}}
             </b>
-          </span> </p>
+          </p>
+
+        </div>
+        <div class="body-item tac">
+          <p>
+            <span [ngClass]="item.Class">
+              <b>
+                {{item.Quantity}}
+              </b>
+            </span> </p>
+        </div>
+        <div class="body-item tar">
+          <button class="btn-primary" (click)="details(item)">
+            <i class="pi pi-pencil"></i> Edit
+          </button>
+        </div>
       </div>
-      <div class="body-item tar">
-        <button class="btn-primary" (click)="details(item)">
-          <i class="pi pi-pencil"></i> Edit
-        </button>
-      </div>
+    </div>
+  </div>
+
+  <div class="mobile-table">
+    <div class="items">
+      <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
+        <div class="item"  (click)="details(item)">
+          <div class="image-name">
+            <div class="image">
+              <img  [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+              <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+            </div>
+            <div class="name">
+              <p>
+                <span>
+                  {{item.Quantity}}
+                </span>
+                {{item.Name}}
+              </p>
+            </div>
+            <div class="qty">
+
+            </div>
+            <div class="price">
+              <p>
+                {{item.UnitPrice | currency:'R'}}
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </span>
     </div>
   </div>
 

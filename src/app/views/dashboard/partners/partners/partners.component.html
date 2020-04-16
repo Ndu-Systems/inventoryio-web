@@ -2,7 +2,7 @@
   <div class="list-header">
     <div class="heading">
       <h1>
-        {{type}}
+        {{type}} ({{(partners| searchpartner: searchType).length}})
       </h1>
     </div>
 
@@ -40,41 +40,84 @@
         Actions
       </div>
     </div>
-    <div class="body" *ngFor="let item of partners | searchpartner: search | searchpartner: searchType">
-      <div class="body-item">
-        <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-        <img src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
+    <div class="body-container">
 
+      <div class="body" *ngFor="let item of partners | searchpartner: search | searchpartner: searchType">
+        <div class="body-item">
+          <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+          <img src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
+
+        </div>
+        <div class="body-item">
+          <p>
+            {{item.Name}} {{item.Surname}}
+          </p>
+        </div>
+        <div class="body-item">
+          <p>
+            <a href="mailto:{{item.EmailAddress}}">
+              {{item.EmailAddress}}
+            </a>
+          </p>
+
+        </div>
+
+
+        <div class="body-item tac">
+          <p>
+            <a href="tel:{{item.CellphoneNumber}}">
+              {{item.CellphoneNumber}}
+            </a>
+          </p>
+
+        </div>
+
+        <div class="body-item tar">
+          <button class="btn-primary" (click)="edit(item)">
+            <i class="pi pi-pencil"></i> Edit
+          </button>
+        </div>
       </div>
-      <div class="body-item">
-        <p>
-          {{item.Name}} {{item.Surname}}
-        </p>
-      </div>
-      <div class="body-item">
-        <p>
-          <a href="mailto:{{item.EmailAddress}}">
-            {{item.EmailAddress}}
-          </a>
-        </p>
-
-      </div>
+    </div>
+  </div>
 
 
-      <div class="body-item tac">
-        <p>
-          <a href="tel:{{item.CellphoneNumber}}">
-            {{item.CellphoneNumber}}
-          </a>
-        </p>
+  <div class="mobile-table">
+    <div class="items">
+      <span *ngFor="let item of partners | searchpartner: search | searchpartner: searchType">
+        <div class="item" (click)="details(item)">
+          <div class="image-name">
+            <div class="image">
+              <img  class="image-mt"  [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+              <img  class="image-mt"  src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
+            </div>
+            <div class="name">
+              <p>
+                {{item.Name}} {{item.Surname}}
+                <span class="details">
+                  <a href="mailto:{{item.EmailAddress}}">
+                    {{item.EmailAddress}}
+                  </a>
+                </span>
+                <span class="details">
+                  <a href="tel:{{item.CellphoneNumber}}">
+                    {{item.CellphoneNumber}}
+                  </a>
+                </span>
+              </p>
+            </div>
+            <div class="qty">
 
-      </div>
+            </div>
+            <div class="price">
+              <p>
+                {{item.UnitPrice | currency:'R'}}
 
-      <div class="body-item tar">
-        <button class="btn-primary" (click)="edit(item)">
-          <i class="pi pi-pencil"></i> Edit
-        </button>
-      </div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </span>
     </div>
   </div>
 

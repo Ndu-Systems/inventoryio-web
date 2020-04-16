@@ -22,6 +22,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {ChipsModule} from 'primeng/chips';
 import {InputTextModule} from 'primeng/inputtext';
 import {EditorModule} from 'primeng/editor';
+import {TooltipModule} from 'primeng/tooltip';
 
 
 // import { NgxBarcodeModule } from 'ngx-barcode';

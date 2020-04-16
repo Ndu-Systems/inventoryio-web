@@ -1,8 +1,11 @@
 .table {
   padding: 1rem .5rem;
   background: $white-color;
-  height: 70vh;
-  overflow-y: scroll;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+
 
   .tar {
     text-align: right;
@@ -19,6 +22,8 @@
     grid-gap: .5rem;
     border-bottom: 3px solid $ligher-gray;
 
+
+
     .header-item {
       font-weight: 800;
       padding: .5rem;
@@ -27,86 +32,93 @@
     }
   }
 
-  .body {
-    display: grid;
-    grid-template-columns: 40% 15% 25% 18%;
-    grid-gap: .5rem;
-    border-bottom: 1px solid $ligher-gray;
-    padding: .3rem 0;
+  .body-container {
+    max-height: 70vh;
+    overflow-y: scroll;
+
+    .body {
+      display: grid;
+      grid-template-columns: 40% 15% 25% 18%;
+      grid-gap: .5rem;
+      border-bottom: 1px solid $ligher-gray;
+      padding: .3rem 0;
 
 
 
-    .body-item {
-      position: relative;
 
-      input {
-        border: 1px solid $ligher-gray;
-        font-weight: 500;
-        padding: .3rem;
-        font-size: .8rem;
-        border: none;
+      .body-item {
+        position: relative;
 
-
-        &::placeholder {
-          font-weight: 500;
-          font-size: .8rem;
-
-        }
-      }
-
-      button {
-        background: $danger;
-        color: $white-color;
-        padding: .5rem;
-        margin-top: .8555rem;
-        border: none;
-        cursor: pointer;
-        border-radius: .2rem;
-
-      }
-
-      .btn-primary {
-        background: $primary-bg-color
-      }
-
-      .qnty {
-        display: grid;
-        grid-template-columns: repeat(3, 33.3333%);
-        padding: .2rem;
-        border: 2px solid $primary-bg-color;
-        width: 7.2rem;
-        margin: .5rem auto;
-
-
-        button,
         input {
-          height: 1.2rem;
-          margin: 0;
-          width: 100%;
-          text-align: center;
+          border: 1px solid $ligher-gray;
+          font-weight: 500;
+          padding: .3rem;
+          font-size: .8rem;
+          border: none;
+
+
+          &::placeholder {
+            font-weight: 500;
+            font-size: .8rem;
+
+          }
         }
 
         button {
+          background: $danger;
           color: $white-color;
-          background: $primary-bg-color;
+          padding: .5rem;
+          margin-top: .8555rem;
           border: none;
-          width: 1.2rem;
-          border-radius: 1.2rem;
-          padding: 0;
-          padding-top: .12rem;
+          cursor: pointer;
+          border-radius: .2rem;
+
         }
 
-        input {
-          border: none;
-          font-weight: 900;
+        .btn-primary {
+          background: $primary-bg-color
         }
-      }
 
-      img {
-        width: 3.5rem;
+        .qnty {
+          display: grid;
+          grid-template-columns: repeat(3, 33.3333%);
+          padding: .2rem;
+          border: 2px solid $primary-bg-color;
+          width: 7.2rem;
+          margin: .5rem auto;
+
+
+          button,
+          input {
+            height: 1.2rem;
+            margin: 0;
+            width: 100%;
+            text-align: center;
+          }
+
+          button {
+            color: $white-color;
+            background: $primary-bg-color;
+            border: none;
+            width: 1.2rem;
+            border-radius: 1.2rem;
+            padding: 0;
+            padding-top: .12rem;
+          }
+
+          input {
+            border: none;
+            font-weight: 900;
+          }
+        }
+
+        img {
+          width: 3.5rem;
+        }
       }
     }
   }
+
 
   .actions {
     width: 100%;
@@ -147,4 +159,105 @@
       font-weight: 600;
     }
   }
+}
+
+
+.mobile-table {
+  display: none;
+  padding: .5rem;
+
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
+
+  .items {
+    padding: 0;
+    margin: 0;
+
+    .item {
+      padding: .5rem;
+      margin: 0;
+
+      .image-name {
+        display: grid;
+        grid-template-columns: 15% 50% 10% auto;
+        padding: 0;
+        margin: 0;
+        grid-gap: 0;
+
+        .image {
+          width: 2.5rem;
+          height: 2.5rem;
+          // background: red;
+          box-sizing: border-box;
+          overflow: hidden;
+
+          img {
+            width: 2.5rem;
+          }
+          .image-mt{
+            margin-top: .7rem;
+          }
+        }
+
+        .name {
+          p {
+            padding: 0;
+            margin: .5rem 0;
+            font-weight: 700;
+            font-size: .75rem;
+
+            span {
+              width: 1.7rem;
+              height: 1.7rem;
+              border-radius: 1.7rem;
+              font-size: .6rem;
+              text-align: center;
+              padding: .23rem;
+              font-weight: 500;
+              margin-right: .3rem;
+              background: $primary-bg-color;
+              color: $white-color;
+            }
+
+            .details {
+              display: block;
+              background: none;
+              color: $primary-bg-color;
+              width: 100%;
+              padding: 0;
+              margin: .2rem 0;
+              height: auto;
+              font-size: .75rem;
+            }
+          }
+        }
+
+        .qty {
+          span {
+            width: 1.7rem;
+            height: 1.7rem;
+            border-radius: 2rem;
+            display: block;
+            font-size: .6rem;
+            text-align: center;
+            padding-top: .4rem;
+            padding-left: .3rem;
+            background: $primary-bg-color;
+            color: $white-color;
+          }
+        }
+
+        .price {
+          p {
+            padding: 0;
+            margin: .5rem 0;
+            font-weight: 700;
+            font-size: .8rem;
+          }
+        }
+      }
+    }
+  }
+
 }

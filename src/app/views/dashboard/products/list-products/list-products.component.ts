@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent implements OnInit {
+  [x: string]: any;
 
   search = ``;
   searchByCatergory = ``;
@@ -24,6 +25,8 @@ export class ListProductsComponent implements OnInit {
   showScan: boolean;
   productBarcode: string;
   searchByStock: string;
+  quantityAsc: any;
+  priceAsc: any;
 
   constructor(
     private productService: ProductService,
@@ -108,17 +111,44 @@ export class ListProductsComponent implements OnInit {
   }
   sort(products: Product[], type: string) {
     if (type === 'name') {
-      products.sort((a, b) => a.Name.localeCompare(b.Name));
+
+
+      if (!this.nameAsc) {
+        products.sort((a, b) => a.Name.localeCompare(b.Name));
+        this.nameAsc = true;
+      } else {
+        products.sort((a, b) => b.Name.localeCompare(a.Name));
+        this.nameAsc = false;
+      }
       this.productService.updateStateNoSort(products);
     }
     if (type === 'price') {
-      products.sort((a, b) => a.UnitPrice.localeCompare(b.UnitPrice));
+      if (!this.priceAsc) {
+        products.sort((x, y) => {
+          return x.UnitPrice - y.UnitPrice;
+        });
+        this.priceAsc = true;
+      } else {
+        products.sort((x, y) => {
+          return y.UnitPrice - x.UnitPrice;
+        });
+        this.priceAsc = false;
+      }
       this.productService.updateStateNoSort(products);
     }
     if (type === 'quantity') {
-      products.sort((x, y) => {
-        return y.Quantity - x.Quantity;
-      });
+      if (!this.quantityAsc) {
+        products.sort((x, y) => {
+          return y.Quantity - x.Quantity;
+        });
+        this.quantityAsc = true;
+      } else {
+        products.sort((x, y) => {
+          return x.Quantity - y.Quantity;
+        });
+        this.quantityAsc = false;
+      }
+
       this.productService.updateStateNoSort(products);
     }
   }

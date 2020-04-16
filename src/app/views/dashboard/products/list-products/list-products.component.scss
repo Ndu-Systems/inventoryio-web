@@ -2,7 +2,8 @@
 
 .products-page {
   padding: 4rem;
-  width: 75%;
+  width: 65%;
+
   @media only screen and (max-width: 600px) {
     width: 100%;
     padding: .6rem;
@@ -72,11 +73,16 @@
 
 
 //  table
-.header,
-.body {
-  grid-template-columns: 10% 30% 15% 15% 15%;
+.header {
+  grid-template-columns: 10% 40% 15% 15% auto;
+}
 
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 100%;
+.body-container {
+  .body {
+    grid-template-columns: 10% 40% 15% 15% auto;
+
+    .pc-only {
+      display: none;
+    }
   }
 }
