@@ -1,6 +1,93 @@
 @import '../../../../../../assets/styles/variables';
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
+.main {
+  padding-top: 7rem;
+
+  .banner {
+    display: grid;
+    grid-template-columns: 60% auto;
+    margin-bottom: 3rem;
+
+    .heading {
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-weight: 400;
+      }
+    }
+
+    .search-container {
+      width: 72%;
+      background: $white-color;
+      padding: 1rem 3rem;
+      border-radius: 9px;
+
+      @media only screen and (max-width: 600px) {
+        width: 94%;
+      }
+
+      .search {
+        display: grid;
+        grid-template-columns: 25% 65% 10%;
+        border: 1px solid $cloud;
+        border-radius: 50px;
+        height: 3.1rem;
+        padding-right: 0;
+        -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.2);
+
+        .type {
+          background: $cloud;
+          border-top-left-radius: 50px;
+          border-bottom-left-radius: 50px;
+
+          select {
+            margin: 3px;
+            width: 97%;
+
+            @media only screen and (max-width: 600px) {
+              font-size: .8rem;
+            }
+          }
+        }
+
+        .input {
+          input {
+            margin: 3px;
+
+            @media only screen and (max-width: 600px) {
+              font-size: .8rem;
+            }
+          }
+        }
+
+        .icon {
+          background: $white-color;
+          border-radius: 3rem;
+          width: 3rem;
+          height: 3rem;
+          text-align: center;
+          padding: .6rem .4rem;
+          box-shadow: 0 7px 14px rgba(104, 104, 104, 0.18), 0 5px 5px rgba(128, 128, 128, 0.12);
+          position: relative;
+          right: -7px;
+
+          @media only screen and (max-width: 600px) {
+            right: 7px;
+
+          }
+
+          img {
+            width: 70%;
+          }
+        }
+      }
+    }
+  }
+}
 
 .main-container {
   background-image: url(../../../../../../assets/images/shop/shopbg.png);
@@ -45,72 +132,7 @@
     }
   }
 
-  .search-container {
-    width: 30%;
-    margin: 0 auto;
-    background: $white-color;
-    padding: 1rem;
-    border-radius: 9px;
 
-    @media only screen and (max-width: 600px) {
-      width: 94%;
-    }
-
-    .search {
-      display: grid;
-      grid-template-columns: 25% 65% 10%;
-      border: 1px solid $cloud;
-      border-radius: 50px;
-      height: 3.1rem;
-      padding-right: 0;
-
-      .type {
-        background: $cloud;
-        border-top-left-radius: 50px;
-        border-bottom-left-radius: 50px;
-
-        select {
-          margin: 3px;
-          width: 97%;
-
-          @media only screen and (max-width: 600px) {
-            font-size: .8rem;
-          }
-        }
-      }
-
-      .input {
-        input {
-          margin: 3px;
-
-          @media only screen and (max-width: 600px) {
-            font-size: .8rem;
-          }
-        }
-      }
-
-      .icon {
-        background: $white-color;
-        border-radius: 3rem;
-        width: 3rem;
-        height: 3rem;
-        text-align: center;
-        padding: .6rem .4rem;
-        box-shadow: 0 7px 14px rgba(104, 104, 104, 0.18), 0 5px 5px rgba(128, 128, 128, 0.12);
-        position: relative;
-        right: -7px;
-
-        @media only screen and (max-width: 600px) {
-          right: 7px;
-
-        }
-
-        img {
-          width: 70%;
-        }
-      }
-    }
-  }
 
   .all-shops {
     background: $primary-bg-color;
@@ -250,6 +272,7 @@
         font-size: .6rem;
       }
     }
+
     .details {
       p {
         font-size: .5rem;
