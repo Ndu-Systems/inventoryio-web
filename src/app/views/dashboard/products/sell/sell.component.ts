@@ -112,7 +112,8 @@ export class SellComponent implements OnInit {
     if (!this.sale) {
       this.saleService.updateState({
         items: [],
-        total: 0
+        total: 0,
+        companyId: ''
       });
     }
     if (this.sale) {
@@ -154,6 +155,7 @@ export class SellComponent implements OnInit {
         this.saleService.doSellLogic(
           {
             prodcuId: product.ProductId,
+            companyId: this.user.CompanyId,
             name: product.Name,
             price: Number(product.UnitPrice),
             quantity: Number(1),

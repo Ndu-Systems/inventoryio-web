@@ -96,18 +96,20 @@ export class ShoppingService {
   clearState() {
     this.updateState({
       items: [],
-      total: 0
+      total: 0,
+      companyId: ''
     });
   }
 
-  doSellLogic(item: Item) {
-    let sale;
+  doSellLogic(item: Item, CompanyId: string) {
+    let sale: SellModel;
     if (this.currentSellModelValue) {
       sale = this.currentSellModelValue;
     } else {
       this.updateState({
         items: [],
-        total: 0
+        total: 0,
+        companyId: ''
       });
       sale = this.currentSellModelValue;
     }
@@ -120,12 +122,18 @@ export class ShoppingService {
       // item is on the sale already it just needs to be updated
       checkIfOtemExist.subTotal = checkIfOtemExist.quantity * item.price;
       sale.items[sale.items.indexOf(item)] = checkIfOtemExist;
+      if (CompanyId === item.companyId) {
+        sale.companyId = CompanyId;
+      }
       this.updateState(sale);
       this.productService.appendState(product);
 
     } else {
       item.subTotal = item.price * item.quantity;
       sale.items.push(item);
+      if (CompanyId === item.companyId) {
+        sale.companyId = CompanyId;
+      }
       this.updateState(sale);
 
     }

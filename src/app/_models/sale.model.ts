@@ -3,11 +3,13 @@ import { OrderOptions } from './order.options.model';
 export interface SellModel {
     items: Item[];
     total: number;
+    companyId: string;
     charges?: Charges[];
 }
 
 export interface Item {
     prodcuId: string;
+    companyId: string;
     name: string;
     image?: string;
     price: number;
@@ -23,12 +25,3 @@ export interface Charges {
     key: string;
 
 }
-
-// export interface ItemOptions {
-//     optionId: string;
-//     productId?: string;
-//     optionName: string;
-//     valueId: number;
-//     value: any;
-// }
-

@@ -110,7 +110,10 @@ export class QouteComponent implements OnInit {
     }
 
     this.productService.updateCurrentProduct(product);
-    this.saleService.doSellLogic({ prodcuId: product.ProductId, name: product.Name, price: Number(product.UnitPrice), quantity: 1 });
+    this.saleService.doSellLogic({
+      prodcuId: product.ProductId, companyId: product.CompanyId,
+      name: product.Name, price: Number(product.UnitPrice), quantity: 1
+    });
   }
   clear() {
     this.saleService.clearState();

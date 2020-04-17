@@ -104,7 +104,7 @@ export class ShoppingCartComponent implements OnInit {
       return false;
     }
     item.quantity++;
-    this.shoppingService.doSellLogic(item);
+    this.shoppingService.doSellLogic(item, this.companyId);
   }
   reduce(item: Item) {
     if (item.quantity <= 0) {
@@ -112,7 +112,7 @@ export class ShoppingCartComponent implements OnInit {
       return;
     }
     item.quantity--;
-    this.shoppingService.doSellLogic(item);
+    this.shoppingService.doSellLogic(item, this.companyId);
   }
   removeItem(item: Item) {
     this.shoppingService.removeItem(item);
@@ -128,7 +128,7 @@ export class ShoppingCartComponent implements OnInit {
       item.quantity = product.Quantity;
       return false;
     }
-    this.shoppingService.doSellLogic(item);
+    this.shoppingService.doSellLogic(item, this.companyId);
   }
 
 

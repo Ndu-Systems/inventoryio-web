@@ -1,4 +1,4 @@
-<div class="top-bar"  [ngStyle]="{'background-color':shopPrimaryColor}">
+<div class="top-bar" [ngStyle]="{'background-color':shopPrimaryColor}">
   <div class="logo">
     <a routerLink="/home"><img class="logo" src="assets/images/logo-full-bg.png" alt=""></a>
   </div>
@@ -6,16 +6,43 @@
     <a routerLink="/home"><img *ngIf="logoUrl" class="logo" [src]="logoUrl" alt=""></a>
   </div>
   <div class="nav">
-    <li><a  [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">Home</a></li>
-    <li><a  [ngStyle]="{'color':shopSecondaryColor}" routerLink="/how-it-works">How it works</a></li>
-    <li><a  [ngStyle]="{'color':shopSecondaryColor}" routerLink="/pricing">Pricing</a></li>
-    <li><a  [ngStyle]="{'color':shopSecondaryColor}" routerLink="/sign-in">Sign in</a></li>
-    <li class="cart" (click)="viewCart()">
+    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">Home</a></li>
+    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/how-it-works">How it works</a></li>
+    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/pricing">Pricing</a></li>
+    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/sign-in">Sign in</a></li>
+    <li class="cart" (mouseover)="showCart=true">
       <span class="cart-span">
         {{cartItems}}
         <i class="pi pi-shopping-cart"></i>
       </span>
-   
+      <div class="cart-view" *ngIf="sale && sale.items.length >0 && showCart">
+        <h4>Your cart</h4>
+        <div class="cart-items">
+          <div class="close">
+            <i (click)="showCart=false" class="pi pi-times"></i>
+          </div>
+          <div class="col-1-of-4" *ngFor="let item of sale.items">
+            <div class="row image">
+              <img [src]="item.image" alt="" *ngIf="item.image" />
+              <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
+            </div>
+            <h5>
+              <span>{{item.quantity}}</span>
+            </h5>
+            <h5>
+              {{item.name}}
+            </h5>
+
+            <h5 class="price">
+              {{item.subTotal| currency:'R'}}
+            </h5>
+          </div>
+        </div>
+
+        <div class="action">
+          <a (click)="viewCart()"> Go to cart</a>
+        </div>
+      </div>
     </li>
   </div>
 
@@ -24,7 +51,7 @@
       <img src="assets/images/close-mobilemenu.svg" alt="">
     </div>
     <ul class="nav-items">
-      <li><a  [ngStyle]="{'color':shopSecondaryColor}" (click)="toggleNav()" routerLink="/home">Home</a></li>
+      <li><a [ngStyle]="{'color':shopSecondaryColor}" (click)="toggleNav()" routerLink="/home">Home</a></li>
       <li><a (click)="toggleNav()" routerLink="/how-it-works">How it works</a></li>
       <li><a (click)="toggleNav()" routerLink="/pricing">Pricing</a></li>
       <li><a (click)="toggleNav()" routerLink="/sign-in">Sign in</a></li>
@@ -37,9 +64,8 @@
         {{cartItems}}
         <i class="pi pi-shopping-cart"></i>
       </span>
+
     </div>
     <img src="assets/images/ham.svg" alt="">
   </div>
 </div>
-
-

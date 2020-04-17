@@ -179,6 +179,9 @@ export class ProductService {
     });
   }
   getProductObservable(productId) {
-    return this.http.get<any>(`${this.url}/api/product/get-detailed-product.php?ProductId=${productId}`);
+    return this.http.get<any>(`${this.url}/api/shopping/load-products.php?ProductId=${productId}`);
+  }
+  getProductsInitShopObservable(productId) {
+    return this.http.get<any>(`${this.url}/api/shopping/init-shop.php?ProductId=${productId}`);
   }
 }

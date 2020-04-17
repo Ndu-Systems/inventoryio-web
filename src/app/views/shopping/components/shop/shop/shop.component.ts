@@ -74,11 +74,22 @@ export class ShopComponent implements OnInit {
     this.shoppingService.sell.subscribe(data => {
       if (data) {
         this.sale = data;
-        this.cartItems = this.sale.items.length;
+        this.cartItems = 0;
+        this.sale.items.forEach(x => {
+          this.cartItems += Number(x.quantity);
+        });
       }
     })
   }
 
+  initScreen(companyId) {
+    this.productService.getProductsInitShopObservable(companyId).subscribe(data => {
+      if (data) {
+        const products = data.products;
+        this.company = data.company;
+      }
+    });
+  }
 
   viewCart() {
     // this.shoppingService.setState(this.cart);

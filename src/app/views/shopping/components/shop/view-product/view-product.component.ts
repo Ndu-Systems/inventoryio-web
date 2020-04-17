@@ -21,7 +21,6 @@ export class ViewProductComponent implements OnInit {
   productId: string;
   thankyou = 'Thank you for shopping with us';
   company: Company;
-  product$: Observable<Product>;
   product: Product;
   quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   sale: SellModel;
@@ -32,7 +31,7 @@ export class ViewProductComponent implements OnInit {
   shopPrimaryColor: string;
   shopSecondaryColor: string;
   bannerImage = 'assets/placeholders/shopheader.jpg';
-  welcomed
+  welcomed;
 
   constructor(
     private productService: ProductService,
@@ -47,106 +46,71 @@ export class ViewProductComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(r => {
       this.productId = r.id;
-      // this.companyService.getCompany(this.companyId).subscribe(r => {
-      //   this.productId = r;
-      // });
+      this.initScreen(this.productId);
     });
   }
 
   ngOnInit() {
-    // this.order$ = this.shoppingService.order;
-    // get product by Id
 
-    this.product$ = this.productService.sellItem;
-    this.product$.subscribe(product => {
-      if (product && this.productService.currentProducts && this.productService.currentProducts.find(x => x.ProductId === this.productId)) {
-        this.product = product;
-        this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
-        this.shoppingService.sell.subscribe(data => {
-          if (data) {
-            this.sale = data;
-            this.cartItems = this.sale.items.length;
-          }
-        });
+  }
 
-        this.shoppingService.company.subscribe(company => {
-          if (company) {
-            this.company = company;
-            this.titleService.setTitle(`${this.product.Name} | ${this.company.Name}  | Inventory IO`);
-          } else {
-            this.titleService.setTitle(`${this.product.Name} | Inventory IO`);
-
-          }
-        });
-
-      } else {
-        // this mean the product is not in the proccess so the link was shared.
-        this.productService.getProductObservable(this.productId).subscribe(data => {
-          this.product = data;
-          this.productService.updateSellProductState(this.product);
-
-          this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
-
-          this.companyService.getCompany(this.product.CompanyId).subscribe(r => {
-            if (r) {
-              this.company = r;
-              this.productService.getProducts(this.company.CompanyId);
-              this.shoppingService.updateCompanyState(this.company);
-              if (this.company.Banner) {
-                this.bannerImage = this.company.Banner[0].Url;
-              } else {
-                this.bannerImage = 'assets/placeholders/shopheader.jpg';
-              }
-              if (this.company.Theme) {
-                this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-                this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-              }
-              this.titleService.setTitle(`${this.product.Name} | ${this.company.Name}  | Inventory IO`);
-            }
-
-          });
-          if (!this.welcomed) {
-            this.messageService.add({
-              severity: 'success',
-              summary: `Hello, please check out this awesome ${this.product.Name},
-              and feel free to add to cart and browse more on our shop.`,
-              detail: `Click Back to shopping to view more.`,
-              life: 10000
-            });
-            this.welcomed = true;
-          }
-
-        });
-
-
-
-      }
-
-    });
-
-
-
-    this.shoppingService.company.subscribe(data => {
+  initScreen(productId) {
+    this.productService.getProductObservable(productId).subscribe(data => {
       if (data) {
-        this.company = data;
-        if (this.company.Theme) {
-          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-        }
-        if (this.company.Banner) {
-          this.bannerImage = this.company.Banner[0].Url;
-        }
+        this.product = data.product;
+        this.company = data.company;
+        this.companyId = this.company.CompanyId;
+        this.dataReady();
+        this.productService.updateSellProductState(this.product);
+        this.getCurrentCart();
       }
     });
+  }
 
+  dataReady() {
+    this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
+    if (this.company) {
+      this.titleService.setTitle(`${this.product.Name} | ${this.company.Name}  | Inventory IO`);
+      if (this.company.Theme) {
+        this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+        this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+      }
+      if (this.company.Banner) {
+        this.bannerImage = this.company.Banner[0].Url;
+      }
+    }
+  }
+
+  getCurrentCart() {
+    this.shoppingService.sell.subscribe(data => {
+      if (data) {
+        if (data.companyId === '') {
+          this.sale = data;
+          return true;
+        }
+        if (data.companyId === this.product.CompanyId) {
+          this.sale = data;
+        } else {
+          this.sale = {
+            items: [],
+            total: 0,
+            companyId: ''
+          };
+          this.shoppingService.updateState(this.sale);
+        }
+        this.cartItems = this.sale.items.length;
+      }
+    });
   }
 
   doSell(product: Product) {
     if (!this.sale) {
-      this.shoppingService.updateState({
+      this.sale = {
         items: [],
-        total: 0
-      });
+        total: 0,
+        companyId: ''
+      };
+      this.shoppingService.updateState(this.sale);
     }
     if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
       this.messageService.add({
@@ -178,19 +142,20 @@ export class ViewProductComponent implements OnInit {
     if (item && (JSON.stringify(item.options) === JSON.stringify(this.orderOptions))) {
       // check if options are still the same.
       item.quantity++;
-      this.shoppingService.doSellLogic(item);
-      this.orderOptions = [];
+      this.shoppingService.doSellLogic(item, this.companyId);
+      // this.orderOptions = [];
     } else {
       this.shoppingService.doSellLogic(
         {
           prodcuId: product.ProductId,
+          companyId: product.CompanyId,
           name: product.Name,
           price: Number(product.UnitPrice),
           quantity: Number(this.itemQnty),
           image: product.images && product.images[0].Url,
           options: this.orderOptions
-        });
-      this.orderOptions = [];
+        }, this.companyId);
+      // this.orderOptions = [];
 
     }
     this.messageService.add({

@@ -2,7 +2,7 @@
 <!-- <div class="cover-photo">
   <img [src]="bannerImage" alt="">
 </div> -->
-<div class="main" *ngIf=" this.product$ | async as  product;">
+<div class="main" *ngIf="product">
 
 
   <h3 class="small-heading">
@@ -69,19 +69,20 @@
           </div>
 
           <div class="buy-this">
-            <div class="add-to-cart" (click)="doSell(product)"  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
+            <div class="add-to-cart" (click)="doSell(product)"
+              [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
               <i class="pi pi-check"></i> Buy this item
             </div>
           </div>
         </div>
 
         <div class="back">
-          <h4  [ngStyle]="{'color':shopPrimaryColor}" (click)="back()">
-            <i class="pi pi-arrow-left"></i>  Continue shopping
+          <h4 [ngStyle]="{'color':shopPrimaryColor}" (click)="back()">
+            <i class="pi pi-arrow-left"></i> Continue shopping
           </h4>
         </div>
 
-<!-- 
+        <!-- 
         <div class="cta">
           <div class="buy">
             <button class="action-btn hover-shadow"

@@ -120,7 +120,7 @@ export class ShopCheckoutComponent implements OnInit {
       return false;
     }
     item.quantity++;
-    this.shoppingService.doSellLogic(item);
+    this.shoppingService.doSellLogic(item, this.companyId);
   }
   reduce(item: Item) {
     if (item.quantity <= 0) {
@@ -128,7 +128,7 @@ export class ShopCheckoutComponent implements OnInit {
       return;
     }
     item.quantity--;
-    this.shoppingService.doSellLogic(item);
+    this.shoppingService.doSellLogic(item, this.companyId);
   }
   removeItem(item: Item) {
     this.shoppingService.removeItem(item);
@@ -149,7 +149,7 @@ export class ShopCheckoutComponent implements OnInit {
       item.quantity = product.Quantity;
       return false;
     }
-    this.shoppingService.doSellLogic(item);
+    this.shoppingService.doSellLogic(item, this.companyId);
   }
 
 
@@ -294,7 +294,8 @@ export class ShopCheckoutComponent implements OnInit {
 
       this.shoppingService.updateState({
         items: [],
-        total: 0
+        total: 0,
+        companyId: ''
       });
 
       this.succesful();

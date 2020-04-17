@@ -30,7 +30,8 @@ export class SaleService {
   clearState() {
     this.updateState({
       items: [],
-      total: 0
+      total: 0,
+      companyId: ''
     });
   }
 
@@ -72,7 +73,8 @@ export class SaleService {
     } else {
       this.updateState({
         items: [],
-        total: 0
+        total: 0,
+        companyId: ''
       });
       sale = this.currentSellModelValue;
     }
@@ -137,6 +139,6 @@ export class SaleService {
     }
   }
 
-  
+
 
 }

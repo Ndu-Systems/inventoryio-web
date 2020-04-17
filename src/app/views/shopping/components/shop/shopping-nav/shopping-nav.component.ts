@@ -17,6 +17,7 @@ export class ShoppingNavComponent implements OnInit {
   cartItems = 0;
   company: Company;
   logoUrl: string;
+  showCart: boolean;
   // company: import("c:/NDU/apps/inventoryio-web/src/app/_models/company.model").Company;
   constructor(private shoppingService: ShoppingService, private router: Router) { }
 
@@ -24,7 +25,10 @@ export class ShoppingNavComponent implements OnInit {
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;
-        this.cartItems = this.sale.items.length;
+        this.cartItems = 0;
+        this.sale.items.forEach(x => {
+          this.cartItems += Number(x.quantity);
+        });
       }
     });
 
@@ -42,6 +46,7 @@ export class ShoppingNavComponent implements OnInit {
     this.showMobileNav = !this.showMobileNav;
   }
   viewCart() {
+    this.showCart = false;
     this.router.navigate(['shop/shopping-cart', this.company.CompanyId]);
   }
 }
