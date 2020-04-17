@@ -14,7 +14,7 @@ import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service
 export class ShopComponent implements OnInit {
   // welocme = `Welcome to 'ZALOE' shopping page`;
   welocme = ``;
-  products$: Observable<Product[]>;
+  products: Product[];
   cart$: Observable<Product[]>;
   companyId;
   cart: Product[] = [];
@@ -34,39 +34,9 @@ export class ShopComponent implements OnInit {
     private router: Router
 
   ) {
-
-    this.company = this.companyService.companyValue;
-    if (this.company) {
-      this.welocme = `${this.company.Name} Shop : Inventory IO`;
-      if (this.company.Banner) {
-        this.bannerImage = this.company.Banner[0].Url;
-      }
-      if (this.company.Theme) {
-        this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-        this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-      }
-    }
     this.activatedRoute.params.subscribe(r => {
       this.companyId = r.id;
-      this.productService.getProducts(this.companyId);
-      this.products$ = this.productService.products;
-
-      this.companyService.getCompany(this.companyId).subscribe(r => {
-        this.company = r;
-        this.shoppingService.updateCompanyState(this.company);
-        this.welocme = `${this.company.Name} Shop : Inventory IO`;
-        if (this.company.Banner) {
-          this.bannerImage = this.company.Banner[0].Url;
-        }
-        if (this.company.Theme) {
-          if (this.shopPrimaryColor !== this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value &&
-            this.shopSecondaryColor !== this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value) {
-            this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-            this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-          }
-        }
-
-      });
+      this.initScreen(this.companyId);
     });
   }
 
@@ -85,14 +55,27 @@ export class ShopComponent implements OnInit {
   initScreen(companyId) {
     this.productService.getProductsInitShopObservable(companyId).subscribe(data => {
       if (data) {
-        const products = data.products;
+        this.products = data.products;
         this.company = data.company;
+        this.dataReady();
       }
     });
   }
 
+  dataReady() {
+    if (this.company.Banner) {
+      this.bannerImage = this.company.Banner[0].Url;
+    }
+    if (this.company.Theme) {
+      if (this.shopPrimaryColor !== this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value &&
+        this.shopSecondaryColor !== this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value) {
+        this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+        this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+      }
+    }
+  }
+
   viewCart() {
-    // this.shoppingService.setState(this.cart);
     this.router.navigate(['shop/shopping-cart', this.companyId]);
   }
   viewItem(product: Product) {
