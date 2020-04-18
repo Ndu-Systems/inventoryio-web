@@ -2,11 +2,23 @@
 
 .main-container {
   padding: 3rem 0;
-
+.banner { margin-bottom: 25rem;}
   .col-1-of-2 {
     grid-template-columns: 50% auto;
   }
-
+  .home-image {
+    img {
+      position: absolute;
+      right: 0;
+      height: 100%;
+      &.desktop {
+        display: block;
+      }
+      &.mobile {
+        display: none;
+      }
+    }
+  }
   .home-banner {
     width: 40rem;
 
@@ -61,7 +73,6 @@
   .steps {
     background: #a1cdfb17;
     padding: 2rem;
-    margin: 4rem 0;
 
     h1 {
       font-size: 1.75rem;
@@ -151,6 +162,9 @@
     .col-1-of-2 {
       grid-template-columns: 100%;
     }
+    .banner {
+      margin-bottom: 30rem;
+    }
 
     .home-banner {
       width: 20rem;
@@ -174,6 +188,13 @@
     .home-image {
       img {
         width: 100%;
+        top: 35rem;
+        &.desktop {
+          display: none;
+        }
+        &.mobile {
+          display: block;
+        }
       }
     }
 
