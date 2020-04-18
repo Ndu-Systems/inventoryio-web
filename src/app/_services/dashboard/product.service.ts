@@ -50,7 +50,7 @@ export class ProductService {
   // state
   appendState(product: Product) {
     let state = this._products.value || [];
-    const existingProduct = state.find(x => x.ProductId === product.ProductId);
+    const existingProduct = state.find(x => x && x.ProductId === product.ProductId);
     if (existingProduct) {
       state = state.filter(x => x.ProductId !== product.ProductId);
       state.push(product);
@@ -99,7 +99,7 @@ export class ProductService {
 
   }
   getSigleProductFronState(id: string) {
-    return this._products.value.find(x => x.ProductId === id);
+    return this._products.value && this._products.value.find(x => x && x.ProductId === id) || null;
   }
   // state
   updateCurrentProduct(product: Product) {

@@ -32,6 +32,7 @@ export class ViewProductComponent implements OnInit {
   shopSecondaryColor: string;
   bannerImage = 'assets/placeholders/shopheader.jpg';
   welcomed;
+  products: Product[];
 
   constructor(
     private productService: ProductService,
@@ -59,10 +60,12 @@ export class ViewProductComponent implements OnInit {
       if (data) {
         this.product = data.product;
         this.company = data.company;
+        this.products = data.products;
         this.companyId = this.company.CompanyId;
         this.dataReady();
         this.productService.updateSellProductState(this.product);
         this.getCurrentCart();
+        this.productService.updateState(this.products);
       }
     });
   }

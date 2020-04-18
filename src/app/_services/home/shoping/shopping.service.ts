@@ -137,7 +137,6 @@ export class ShoppingService {
       this.updateState(sale);
 
     }
-    product.QuantityAvailable = product.Quantity - item.quantity;
 
   }
   removeItem(item: Item) {
