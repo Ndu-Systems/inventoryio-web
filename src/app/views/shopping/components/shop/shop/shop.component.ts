@@ -49,7 +49,7 @@ export class ShopComponent implements OnInit {
           this.cartItems += Number(x.quantity);
         });
       }
-    })
+    });
   }
 
   initScreen(companyId) {

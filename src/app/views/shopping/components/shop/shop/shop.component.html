@@ -13,7 +13,10 @@
     <div class="col-1-of-4">
       <span *ngFor="let item of products ">
         <div class="shop-card" (click)="viewItem(item)">
-          <div class="image" *ngIf="item.images" [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
+          <!-- <div class="image" *ngIf="item.images" [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
+          </div> -->
+          <div class="image" *ngIf="item.images">
+            <img [src]="item.images[0].Url" alt="">
           </div>
           <div class="name">
             <p>

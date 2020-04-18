@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { Company, Product } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-shops',
@@ -15,9 +16,12 @@ export class ShopsComponent implements OnInit {
   searchResults: Company[] = [];
   searchResultsProducts: Product[] = [];
   products: Product[] = [];
-  constructor(private shoppingService: ShoppingService, private router: Router,
+  constructor(private shoppingService: ShoppingService, private router: Router, private titleService: Title,
 
-  ) { }
+
+  ) {
+    this.titleService.setTitle(`Inventory IO: Digital Mall`);
+  }
 
   ngOnInit() {
     this.shoppingService.getAllShops().subscribe(data => {

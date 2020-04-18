@@ -6,7 +6,8 @@
     <a routerLink="/home"><img *ngIf="logoUrl" class="logo" [src]="logoUrl" alt=""></a>
   </div>
   <div class="nav">
-    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">Home</a></li>
+    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">
+    </a></li>
     <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/how-it-works">How it works</a></li>
     <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/pricing">Pricing</a></li>
     <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/sign-in">Sign in</a></li>
@@ -38,6 +39,9 @@
             </h5>
           </div>
         </div>
+        <h5>
+          {{sale?.total | currency:'R'}}
+        </h5>
 
         <div class="action">
           <a (click)="viewCart()"> Go to cart</a>

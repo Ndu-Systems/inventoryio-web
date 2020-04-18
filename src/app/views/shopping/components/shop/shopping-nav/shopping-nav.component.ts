@@ -47,6 +47,6 @@ export class ShoppingNavComponent implements OnInit {
   }
   viewCart() {
     this.showCart = false;
-    this.router.navigate(['shop/shopping-cart', this.company.CompanyId]);
+    this.router.navigate(['shop/shopping-cart', this.sale.companyId]);
   }
 }
