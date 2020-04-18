@@ -4,19 +4,37 @@
 .main {
   padding-top: 7rem;
 
+  @media only screen and (max-width: 600px) {
+    padding-top: 1rem;
+  }
+
   .banner {
     display: grid;
     grid-template-columns: 60% auto;
     margin-bottom: 3rem;
 
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      margin-bottom: 1rem;
+
+    }
+
     .heading {
       h1 {
         font-size: 3rem;
+
+        @media only screen and (max-width: 600px) {
+          font-size: 1.8rem;
+        }
       }
 
       .dot {
         color: $primary-bg-color;
         font-size: 5rem;
+
+        @media only screen and (max-width: 600px) {
+          font-size: 1.8rem;
+        }
       }
 
       p {
@@ -33,6 +51,8 @@
 
       @media only screen and (max-width: 600px) {
         width: 94%;
+        padding: 1rem .5rem;
+
       }
 
       .search {
@@ -88,8 +108,20 @@
 
           img {
             width: 70%;
+
+
           }
         }
+      }
+    }
+
+    .image {
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
+
+      img {
+        width: 80%;
       }
     }
   }
@@ -99,6 +131,12 @@
 .all-shops-container {
   // background: $cloud;
   padding: .5rem 4rem;
+
+  h1 {
+    @media only screen and (max-width: 600px) {
+      margin: .5rem;
+    }
+  }
 
   @media only screen and (max-width: 600px) {
     padding: .5rem .1rem;

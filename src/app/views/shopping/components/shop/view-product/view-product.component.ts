@@ -63,9 +63,9 @@ export class ViewProductComponent implements OnInit {
         this.products = data.products;
         this.companyId = this.company.CompanyId;
         this.dataReady();
-        this.productService.updateSellProductState(this.product);
         this.getCurrentCart();
         this.productService.updateState(this.products);
+        this.productService.updateSellProductState(this.product);
       }
     });
   }

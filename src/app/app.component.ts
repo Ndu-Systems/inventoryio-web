@@ -31,15 +31,7 @@ export class AppComponent implements OnInit {
 
 
   ) {
-    update.available.subscribe(update => {
-      console.log('an update');
-    });
     this.titleService.setTitle(`Inventory IO: Selling and buying platform`);
-    const loc: string = window.location.href;
-    if (loc.includes('shop')) {
-      this.setDocTitle(`${loc.split('/')[6]} Shop | Inventory IO`);
-    }
-
   }
   ngOnInit() {
     if (environment.production) {
