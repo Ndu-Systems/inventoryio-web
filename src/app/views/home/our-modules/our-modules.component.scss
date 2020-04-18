@@ -1,0 +1,163 @@
+@import '../../../../assets/styles/variables';
+
+.main-container {
+  padding: 3rem 0;
+
+  .col-1-of-2 {
+    grid-template-columns: 40% auto;
+
+    .banner {
+      padding: 1rem;
+
+      h1 {
+        font-size: 45px;
+
+        .dot {
+          color: $primary-bg-color;
+        }
+
+        .text {
+          margin-top: 1rem;
+          display: block;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 30px;
+        }
+      }
+
+
+      .bullets {
+        margin-top: 4rem;
+
+        .bullet {
+          &.col-1-of-2 {
+            grid-template-columns: auto 90%;
+          }
+
+          img {
+            margin: 1rem 0;
+          }
+
+          h1 {
+            font-weight: 600;
+            font-size: 0.938rem;
+          }
+        }
+      }
+
+
+      .cta {
+        margin: 4rem 0;
+
+        .btn {
+          margin: 1rem 0;
+          padding: 22px 75px;
+          font-size: 18px;
+          font-weight: 600;
+          border-radius: 10px;
+        }
+      }
+    }
+
+  }
+
+
+  .banner-img {
+    img {
+      width: 67.25rem;
+    }
+  }
+
+
+  .mockup {
+
+    padding: 2rem;
+    margin: 10rem 0;
+    .col-1-of-2 {
+      margin: 2rem 0;
+    }
+
+    .type-face {
+      width: 29.375rem;
+      margin: 4rem 0;
+
+      .main {
+        text-transform: capitalize;
+        font-weight: 700;
+      }
+
+      .text {
+        font-size: 0.938rem;
+        width: 100%;
+        font-weight: 400;
+      }
+    }
+  }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+  .main-container {
+    .col-1-of-2 {
+      grid-template-columns: 100%;
+
+      .banner {
+        padding: 0;
+
+        h1 {
+          font-size: 1.563rem;
+
+          &.text {
+            font-size: 0.938rem;
+            width: 100%;
+            font-weight: 400;
+            line-height: 19px;
+          }
+        }
+
+        .bullets {
+          margin-top: 2rem;
+        }
+      }
+    }
+
+    .banner-img {
+      img {
+        width: 100%;
+      }
+    }
+    .mockup {
+      padding: 1rem;
+      margin: 5rem 0;
+      .col-1-of-2 {
+        margin: 1rem 0;
+      }
+
+      .img {
+        img {
+          width: 100%;
+        }
+      }
+
+      .type-face {
+        width: 100%;
+        margin: 2rem 0;
+
+        .main {
+          font-size: 1.563rem;
+          text-align: center;
+        }
+
+        .text {
+          text-align: center;
+          font-size: 0.625rem;
+          font-weight: 500;
+
+        }
+      }
+    }
+
+  }
+
+}

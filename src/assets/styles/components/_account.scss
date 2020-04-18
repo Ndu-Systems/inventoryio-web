@@ -105,6 +105,7 @@
       .btn {
         border-radius: 5px;
         box-shadow: none;
+
         &:hover {
           box-shadow: none;
         }
@@ -115,16 +116,23 @@
           box-shadow: none;
           border: solid 2px $primary-bg-color;
           font-size: 0.9rem;
+
           &:hover {
             box-shadow: none;
+          }
+          @media only screen and (max-width: 600px) {
+            height: 69%;
+            margin: 1rem 0;
           }
         }
       }
 
       &.cta {
+        cursor: text;
+
         h1 {
           font-size: 0.813rem;
-          margin: 0;
+          margin: 1rem 0;
           width: 100%;
         }
       }
@@ -132,9 +140,11 @@
 
     .col-1-of-1 {
       margin: 3.5rem 0;
+
       .btn {
         border-radius: 5px;
         box-shadow: none;
+
         &:hover {
           box-shadow: none;
         }
@@ -145,9 +155,13 @@
           box-shadow: none;
           border: solid 2px $primary-bg-color;
           font-size: 0.9rem;
+
           &:hover {
             box-shadow: none;
           }
+
+
+
         }
       }
     }
@@ -158,9 +172,14 @@
 
 
 @media only screen and (max-width: 600px) {
-   .accounts {
+  .accounts {
     width: 100%;
+    h1 {
+      &.header {
+        font-size: 1.563rem
+      }
 
+    }
     .form {
       .col-1-of-2 {
         .btn {
@@ -168,6 +187,7 @@
           padding: 0.5rem;
         }
       }
+
       .col-1-of-1 {
         .btn {
           font-size: 14px;
@@ -175,5 +195,5 @@
         }
       }
     }
-   }
+  }
 }

@@ -21,13 +21,14 @@ import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { InlineHomeLoaderComponent } from './inline-home-loader/inline-home-loader.component';
 import { HomeFooterComponent } from './home-footer';
 import { ShopsComponent } from '../shopping/components/shop/shops/shops.component';
+import { OurModulesComponent } from './our-modules';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
       { path: 'home', component: IndexComponent },
       { path: '', component: SignInComponent },
-      { path: 'how-it-works', component: HowItWorksComponent },
+      { path: 'modules', component: OurModulesComponent },
       { path: 'pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent },
@@ -55,8 +56,9 @@ export const declarations = [
   InlineHomeLoaderComponent,
   HomeFooterComponent,
   FaqsComponent,
-  ShopsComponent
-];
+  ShopsComponent,
+  OurModulesComponent
+ ];
 
 
 @NgModule({

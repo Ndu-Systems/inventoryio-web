@@ -1,0 +1,48 @@
+<div class="main-container">
+  <span *ngIf="selectedModule">
+    <div class="col-1-of-2">
+      <div class="banner">
+        <h1 class="header">
+          {{selectedModule.BannerHeader}}<span class="dot">.</span>
+          <span class="text">
+            {{selectedModule.BannerText}}
+          </span>
+        </h1>
+        <div class="bullets col-1-of-2" *ngIf="selectedModule.Bullets">
+          <span *ngFor="let item of selectedModule.Bullets">
+            <div class="bullet col-1-of-2">
+              <img src="assets/images/correct.svg" alt="bullet check">
+              <h1 class="text">
+                {{item.point}}
+              </h1>
+            </div>
+          </span>
+        </div>
+        <div class="cta">
+          <a routerLink="/sign-up" class="btn">Get started</a>
+        </div>
+      </div>
+      <div class="banner-img">
+        <img [src]="selectedModule.BannerImage" alt="desktop image">
+      </div>
+    </div>
+    <div class="mockup" *ngIf="selectedModule.Mockups">
+      <span *ngFor="let item of selectedModule.Mockups">
+        <div class="col-1-of-2">
+          <div class="type-face">
+            <h1 class="main">
+              {{item.main}}
+            </h1>
+            <h1 class="text">
+              {{item.text}}
+            </h1>
+          </div>
+          <div class="img">
+            <img [src]="item.img" alt="mockup 1">
+          </div>
+        </div>
+      </span>
+    </div>
+  </span>
+
+</div>
