@@ -61,17 +61,20 @@ export class ShopCheckoutComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(r => {
       this.companyId = r.id;
-      this.productService.getProducts(this.companyId);
-      // this.products$ = this.shoppingService.cart;
 
-      this.companyService.getCompany(this.companyId).subscribe(r => {
-        this.company = r;
-        this.welocme = `Welcome to '${this.company.Name}' shopping page `;
-        this.titleService.setTitle(`${this.welocme} | inventoryio shopping`);
-        if (this.company.Banner) {
-          this.bannerImage = this.company.Banner[0].Url;
+      this.companyService.getCompany(this.companyId).subscribe(data => {
+        if (data) {
+          this.company = data;
+          this.company = data;
+          if (this.company.Theme) {
+            this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+            this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+          }
+          // if (this.company.Shipping) {
+          //   this.shippings = this.company.Shipping;
+          //   this.groupShipping();
+          // }
         }
-
 
       });
     });
@@ -92,15 +95,6 @@ export class ShopCheckoutComponent implements OnInit {
     });
     this.productService.products.subscribe(r => {
       this.products = r;
-    });
-    this.shoppingService.company.subscribe(data => {
-      if (data) {
-        this.company = data;
-        if (this.company.Theme) {
-          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-        }
-      }
     });
   }
 
