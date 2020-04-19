@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavModuleServiceService } from 'src/app/_services';
 
 
 @Component({
@@ -8,12 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-nav.component.scss']
 })
 export class HomeNavComponent implements OnInit {
-
   showMobileNav;
   showModules;
 
   constructor(
-    private routeTo: Router
+    private routeTo: Router,
+    private navService: NavModuleServiceService
   ) { }
 
   ngOnInit() {
@@ -30,8 +31,9 @@ export class HomeNavComponent implements OnInit {
       this.showModules = false;
     }
   }
+
   selectedModule(key) {
-    localStorage.setItem('Key', key);
+    this.navService.changeNav(key);
     this.routeTo.navigate(['/modules']);
     this.closeModule();
   }
