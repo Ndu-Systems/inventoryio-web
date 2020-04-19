@@ -42,6 +42,7 @@ export class ShopCheckoutComponent implements OnInit {
     { label: ' Cash on delivery', value: 'cash' }
   ];
   cartItems: number;
+  logoUrl: string;
 
 
   constructor(
@@ -69,6 +70,9 @@ export class ShopCheckoutComponent implements OnInit {
           if (this.company.Theme) {
             this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
             this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+          }
+          if (this.company.Logo && this.company.Logo.length) {
+            this.logoUrl = this.company.Logo[0].Url;
           }
           // if (this.company.Shipping) {
           //   this.shippings = this.company.Shipping;

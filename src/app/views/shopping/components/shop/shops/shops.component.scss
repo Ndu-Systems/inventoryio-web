@@ -145,6 +145,7 @@
   .shops {
     display: grid;
     grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(3, 33.333%);
 
     @media only screen and (max-width: 600px) {
       grid-template-columns: repeat(2, 50%);
@@ -216,17 +217,17 @@
         margin: 1rem;
 
         .visit {
-          // background: $primary-bg-color;
-          // color: $white-color;
+          background: $primary-bg-color;
           color: $hl-color;
+          color: $white-color;
           padding: .6rem;
           cursor: pointer;
-          width: 60%;
+          width: 35%;
           text-align: center;
           border-radius: 7px;
           position: absolute;
-          right: 0;
-          bottom: 0;
+          right: .5rem;
+          bottom: .5rem;
 
           //   border-radius: 9px;
           @media only screen and (max-width: 600px) {

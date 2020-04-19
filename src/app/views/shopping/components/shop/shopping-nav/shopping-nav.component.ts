@@ -13,10 +13,10 @@ export class ShoppingNavComponent implements OnInit {
   showMobileNav: boolean;
   @Input() shopPrimaryColor = '#104CE5';
   @Input() shopSecondaryColor = '#ffffff';
+  @Input() logoUrl;
   sale: SellModel;
   cartItems = 0;
   company: Company;
-  logoUrl: string;
   showCart: boolean;
   // company: import("c:/NDU/apps/inventoryio-web/src/app/_models/company.model").Company;
   constructor(private shoppingService: ShoppingService, private router: Router) { }

@@ -25,6 +25,7 @@ export class ShopComponent implements OnInit {
   cartItems = 0;
   shopPrimaryColor: string;
   shopSecondaryColor: string;
+  logoUrl: string;
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
@@ -72,6 +73,10 @@ export class ShopComponent implements OnInit {
         this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
         this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
       }
+    }
+
+    if (this.company.Logo && this.company.Logo.length) {
+      this.logoUrl = this.company.Logo[0].Url;
     }
   }
 
