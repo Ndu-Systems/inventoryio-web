@@ -161,6 +161,11 @@
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.2);
       padding-bottom: 3rem;
 
+      @media only screen and (max-width: 600px) {
+        margin: .5rem;
+
+      }
+
       h1,
       p {
         margin: 0;

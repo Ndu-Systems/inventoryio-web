@@ -155,8 +155,7 @@ export class PurchaseOrderComponent implements OnInit {
       this.productsSuggestions = this.products.filter(x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()));
     }
   }
-  searchSuppliers(key: string, index: number) {
-    this.currentIndex = index;
+  searchSuppliers(key: string) {
     if (key) {
       this.supplierSuggestions = this.suppliers.filter(
         x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()) ||
