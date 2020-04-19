@@ -30,6 +30,7 @@ export * from './qoute.product.model';
 export * from './service.model';
 export * from './topselling.model';
 export * from './forgot-password.model';
+export * from './our-module.model';
 
 
 
