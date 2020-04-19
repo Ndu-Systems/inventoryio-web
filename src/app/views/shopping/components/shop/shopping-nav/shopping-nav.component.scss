@@ -106,6 +106,7 @@
     margin: auto;
     justify-content: right;
     margin-right: 0%;
+    text-align: right;
 
     //mobile layout
     @media only screen and (max-width: 600px) {
@@ -124,6 +125,16 @@
       width: 70%;
       padding: 0%;
 
+    }
+
+    ul {
+      display: block;
+      width: 100%;
+      margin: 0;
+
+      li {
+        display: inline;
+      }
     }
 
     li {
@@ -175,6 +186,9 @@
         background: $white-color;
         padding: .8rem;
         padding-bottom: 1.5rem;
+        padding: 1.8rem;
+        padding-bottom: 1.5rem;
+        right: 9rem;
 
         .close {
           position: absolute;
@@ -249,29 +263,29 @@
     @media only screen and (max-width: 600px) {
       display: grid;
       top: 0%;
-      left: 0%;
+      /* left: 0%; */
+      right: 0;
       position: fixed;
-      // background: #104CE5;
-      background: #104ce5db;
+      background: #ffffff;
       height: 100vh;
-      width: 100%;
+      width: 53%;
       z-index: 999;
-      color: #ffffff;
+      color: #040404;
 
       ul {
         list-style: none;
 
         &.nav-items {
           position: absolute;
-          top: 10em;
+          top: .5rem;
         }
 
         li {
           margin: 2em 0;
 
           a {
-            color: #FFFFFF;
-            font-size: 30px;
+            color: rgb(0, 0, 0);
+            font-size: .9rem;
           }
 
           &.sign-up-free {

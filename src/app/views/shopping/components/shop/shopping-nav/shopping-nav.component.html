@@ -3,63 +3,63 @@
     <a routerLink="/home"><img class="logo" src="assets/images/logo-full-bg.png" alt=""></a>
   </div>
   <div class="logo shop-logo">
-    <a ><img class="logo" [src]="logoUrl" alt=""></a>
+    <a><img class="logo" [src]="logoUrl" alt=""></a>
   </div>
   <div class="nav">
-    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">
-    </a></li>
-    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/how-it-works">How it works</a></li>
-    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/pricing">Pricing</a></li>
-    <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/sign-in">Sign in</a></li>
-    <li class="cart" (mouseover)="showCart=true">
-      <span class="cart-span">
-        {{cartItems}}
-        <i class="pi pi-shopping-cart"></i>
-      </span>
-      <div class="cart-view" *ngIf="sale && sale.items.length >0 && showCart">
-        <h4>Your cart</h4>
-        <div class="cart-items">
-          <div class="close">
-            <i (click)="showCart=false" class="pi pi-times"></i>
-          </div>
-          <div class="col-1-of-4" *ngFor="let item of sale.items">
-            <div class="row image">
-              <img [src]="item.image" alt="" *ngIf="item.image" />
-              <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
+    <ul>
+      <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">
+        </a></li>
+      <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/shop">Back to all shops</a></li>
+      <!-- <li><a [ngStyle]="{'color':shopSecondaryColor}">
+          Shopping at {{company?.Name}}
+        </a></li> -->
+      <li class="cart" (mouseover)="showCart=true">
+        <span class="cart-span">
+          {{cartItems}}
+          <i class="pi pi-shopping-cart"></i>
+        </span>
+        <div class="cart-view" *ngIf="sale && sale.items.length >0 && showCart">
+          <h4>Your cart</h4>
+          <div class="cart-items">
+            <div class="close">
+              <i (click)="showCart=false" class="pi pi-times"></i>
             </div>
-            <h5>
-              <span>{{item.quantity}}</span>
-            </h5>
-            <h5>
-              {{item.name}}
-            </h5>
+            <div class="col-1-of-4" *ngFor="let item of sale.items">
+              <div class="row image">
+                <img [src]="item.image" alt="" *ngIf="item.image" />
+                <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
+              </div>
+              <h5>
+                <span>{{item.quantity}}</span>
+              </h5>
+              <h5>
+                {{item.name}}
+              </h5>
 
-            <h5 class="price">
-              {{item.subTotal| currency:'R'}}
-            </h5>
+              <h5 class="price">
+                {{item.subTotal| currency:'R'}}
+              </h5>
+            </div>
+          </div>
+          <h5>
+            {{sale?.total | currency:'R'}}
+          </h5>
+
+          <div class="action">
+            <a (click)="viewCart()"> Go to cart</a>
           </div>
         </div>
-        <h5>
-          {{sale?.total | currency:'R'}}
-        </h5>
+      </li>
 
-        <div class="action">
-          <a (click)="viewCart()"> Go to cart</a>
-        </div>
-      </div>
-    </li>
+    </ul>
   </div>
 
-  <div class="mobile-nav" *ngIf="showMobileNav">
+  <div class="mobile-nav" *ngIf="showMobileNav" [ngStyle]="{'background-color':shopPrimaryColor}">
     <div class="close" (click)="toggleNav()">
       <img src="assets/images/close-mobilemenu.svg" alt="">
     </div>
     <ul class="nav-items">
-      <li><a [ngStyle]="{'color':shopSecondaryColor}" (click)="toggleNav()" routerLink="/home">Home</a></li>
-      <li><a (click)="toggleNav()" routerLink="/how-it-works">How it works</a></li>
-      <li><a (click)="toggleNav()" routerLink="/pricing">Pricing</a></li>
-      <li><a (click)="toggleNav()" routerLink="/sign-in">Sign in</a></li>
-      <li class="sign-up-free"><a (click)="toggleNav()" routerLink="/sign-up">Create vendor account</a></li>
+      <li><a [ngStyle]="{'color':shopSecondaryColor}" (click)="toggleNav()"  routerLink="/shop">Back to all shops</a></li>
     </ul>
   </div>
   <div class="ham-icon" (click)="toggleNav()">
