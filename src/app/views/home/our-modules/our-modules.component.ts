@@ -1,13 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { OurModuleModel } from 'src/app/_models';
+import { NavModuleServiceService } from 'src/app/_services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-our-modules',
   templateUrl: './our-modules.component.html',
   styleUrls: ['./our-modules.component.scss']
 })
-export class OurModulesComponent implements OnInit {
-  Key: string;
+export class OurModulesComponent implements OnInit, OnDestroy {
+  keyItem: string;
+  subscription: Subscription;
 
   data: OurModuleModel[] =
     [
@@ -238,16 +241,28 @@ export class OurModulesComponent implements OnInit {
         ]
       },
     ];
+
   selectedModule: OurModuleModel;
-  constructor() { }
+  constructor(
+    private navService: NavModuleServiceService
+  ) { }
 
   ngOnInit() {
-    this.Key = localStorage.getItem('Key');
-    this.data.forEach((item) => {
-      if (item.Key === this.Key) {
-        this.selectedModule = item;
-      }
+
+    this.subscription = this.navService.navItem$.subscribe(key => {
+      this.keyItem = key;
+      this.data.forEach((item) => {
+        if (item.Key === this.keyItem) {
+          this.selectedModule = item;
+        }
+      });
     });
+
+  }
+
+  ngOnDestroy() {
+    // prevent memory leak when component is destroyed
+    this.subscription.unsubscribe();
   }
 
 }

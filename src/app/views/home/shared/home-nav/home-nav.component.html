@@ -2,10 +2,12 @@
 
   <ul>
     <li>
-      <a routerLink="/home" (click)="closeModule()" class="logo"><img src="assets/images/logo-beta.png" alt="logo main"></a>
+      <a routerLink="/home" (click)="closeModule()" class="logo"><img src="assets/images/logo-beta.png"
+          alt="logo main"></a>
     </li>
-    <li><a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">home</a></li>
-    <li class="showModules"><a  (click)="showModule()"  routerLinkActive="active-link">our modules</a></li>
+    <li><a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">home</a></li>
+    <li class="showModules"><a (click)="showModule()" routerLinkActive="active-link">our modules</a></li>
     <!-- <li><a routerLink="/shop" routerLinkActive="active-link">Shops</a></li> -->
     <li><a routerLink="/shop" (click)="closeModule()" routerLinkActive="active-link">explore shops</a></li>
     <li><a routerLink="/pricing" (click)="closeModule()" routerLinkActive="active-link">pricing</a></li>
@@ -31,10 +33,10 @@
     </div>
     <div class="module col-1-of-2">
       <img src="assets/images/home/shop.svg" alt="">
-      <a class="cta"  (click)="selectedModule('sales')">
+      <a class="cta" (click)="selectedModule('sales')">
         <h1 class="header">
           sales management
-           <span class="text">
+          <span class="text">
             Make sales and generate quotes for your clients.
           </span>
         </h1>
@@ -42,7 +44,7 @@
     </div>
     <div class="module col-1-of-2">
       <img src="assets/images/home/crm.svg" alt="">
-      <a class="cta"  (click)="selectedModule('crm')">
+      <a class="cta" (click)="selectedModule('crm')">
         <h1 class="header">
           crm management
           <span class="text">
@@ -75,7 +77,6 @@
     </div>
     <a class="collapse" (click)="closeModule()">collapse</a>
   </div>
-
 </div>
 <div class="mobile-nav" *ngIf="showMobileNav">
   <div class="close" (click)="toggleNav()">
@@ -85,6 +86,7 @@
   <ul class="nav-items">
     <li><a (click)="toggleNav()" routerLink="/home" routerLinkActive="active-link"
         [routerLinkActiveOptions]="{exact: true}">home</a></li>
+    <li class="showModules"><a (click)="showModule();toggleNav()" routerLinkActive="active-link">our modules</a></li>
     <li><a (click)="toggleNav()" routerLink="/shop" routerLinkActive="active-link">explore shops</a></li>
     <li><a (click)="toggleNav()" routerLink="/pricing" routerLinkActive="active-link">pricing</a></li>
 
