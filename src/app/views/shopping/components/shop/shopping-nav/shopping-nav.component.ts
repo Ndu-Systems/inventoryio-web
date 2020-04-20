@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ShoppingNavComponent implements OnInit {
   showMobileNav: boolean;
-  @Input() shopPrimaryColor = '#104CE5';
+  @Input() shopPrimaryColor = 'red';
   @Input() shopSecondaryColor = '#ffffff';
   @Input() logoUrl;
   sale: SellModel;

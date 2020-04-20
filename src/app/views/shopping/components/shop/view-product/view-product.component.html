@@ -1,3 +1,4 @@
+<span *ngIf="!loading" class="ghost" >
 <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor"></app-shopping-nav>
 <!-- <div class="cover-photo">
   <img [src]="bannerImage" alt="">
@@ -109,3 +110,9 @@
 
   </div>
 </div>
+</span>
+
+<span *ngIf="loading" class="ghost" >
+  <div class="overlay"></div>
+  <img  src="assets/images/shopghost.svg" alt="">
+</span>

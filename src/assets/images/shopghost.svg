@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="1184" height="514" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-shopghost">
+      <rect width="1280" height="800"/>
+    </clipPath>
+  </defs>
+  <g id="shopghost" clip-path="url(#clip-shopghost)">
+    <rect width="1280" height="800" fill="#fff"/>
+    <rect id="Rectangle_41" data-name="Rectangle 41" width="1280" height="50" fill="#e9e9e9"/>
+    <rect id="Rectangle_42" data-name="Rectangle 42" width="1252" height="247" transform="translate(14 60)" fill="#e9e9e9"/>
+    <g id="Repeat_Grid_1" data-name="Repeat Grid 1" transform="translate(48 326)" clip-path="url(#clip-path)">
+      <g transform="translate(-14 -400)">
+        <rect id="Rectangle_43" data-name="Rectangle 43" width="270" height="237" rx="13" transform="translate(14 400)" fill="#e9e9e9"/>
+      </g>
+      <g transform="translate(286 -400)">
+        <rect id="Rectangle_43-2" data-name="Rectangle 43" width="270" height="237" rx="13" transform="translate(14 400)" fill="#e9e9e9"/>
+      </g>
+      <g transform="translate(586 -400)">
+        <rect id="Rectangle_43-3" data-name="Rectangle 43" width="270" height="237" rx="13" transform="translate(14 400)" fill="#e9e9e9"/>
+      </g>
+      <g transform="translate(886 -400)">
+        <rect id="Rectangle_43-4" data-name="Rectangle 43" width="270" height="237" rx="13" transform="translate(14 400)" fill="#e9e9e9"/>
+      </g>
+      <g transform="translate(-14 -133)">
+        <rect id="Rectangle_43-5" data-name="Rectangle 43" width="270" height="237" rx="13" transform="translate(14 400)" fill="#e9e9e9"/>
+      </g>
+      <g transform="translate(286 -133)">
+        <rect id="Rectangle_43-6" data-name="Rectangle 43" width="270" height="237" rx="13" transform="translate(14 400)" fill="#e9e9e9"/>
+      </g>
+      <g transform="translate(586 -133)">
+        <rect id="Rectangle_43-7" data-name="Rectangle 43" width="270" height="237" rx="13" transform="translate(14 400)" fill="#e9e9e9"/>
+      </g>
+      <g transform="translate(886 -133)">
+        <rect id="Rectangle_43-8" data-name="Rectangle 43" width="270" height="237" rx="13" transform="translate(14 400)" fill="#e9e9e9"/>
+      </g>
+    </g>
+  </g>
+</svg>

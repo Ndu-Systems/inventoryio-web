@@ -33,6 +33,7 @@ export class ViewProductComponent implements OnInit {
   bannerImage = 'assets/placeholders/shopheader.jpg';
   welcomed;
   products: Product[];
+  loading = true;
 
   constructor(
     private productService: ProductService,
@@ -66,6 +67,7 @@ export class ViewProductComponent implements OnInit {
         this.getCurrentCart();
         this.productService.updateState(this.products);
         this.productService.updateSellProductState(this.product);
+        this.loading = false;
       }
     });
   }

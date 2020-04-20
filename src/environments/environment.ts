@@ -4,12 +4,8 @@
 
 export const environment = {
   production: false,
-  // API_URL: 'http://localhost:8200/inventoryio-api',
-  // BASE_URL: 'http://localhost:4200',
-  // API_URL: 'https://dev.inventoryio.co.za/api',
-  // BASE_URL: 'https://dev.inventoryio.co.za',
-  API_URL: 'https://inventoryio.co.za/api',
-  BASE_URL: 'https://inventoryio.co.za',
+  API_URL: 'http://localhost:8200/inventoryio-api',
+  BASE_URL: 'http://localhost:4200',
   ACCOUNT_TEST_EMAIL: 'ndu@mail.com',
   ACCOUNT_TEST_PASSWORD: '12345',
   TEST_EMAIL_ACCOUNT: 'ndu@mail.com'

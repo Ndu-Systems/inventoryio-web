@@ -26,6 +26,7 @@ export class ShopComponent implements OnInit {
   shopPrimaryColor: string;
   shopSecondaryColor: string;
   logoUrl: string;
+  loading = true;
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
@@ -59,6 +60,7 @@ export class ShopComponent implements OnInit {
         this.products = data.products;
         this.company = data.company;
         this.dataReady();
+        this.loading = false;
       }
     });
   }
