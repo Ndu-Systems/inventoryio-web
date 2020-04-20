@@ -13,8 +13,8 @@
     <li><a routerLink="/pricing" (click)="closeModule()" routerLinkActive="active-link">pricing</a></li>
   </ul>
   <ul class="account">
-    <li><a routerLink="/sign-in" routerLinkActive="active-link" class="login">Log in</a></li>
-    <li><a routerLink="/sign-up" routerLinkActive="active-link" class="register">Create vendor account</a></li>
+    <li><a routerLink="/sign-in" (click)="closeModule()" routerLinkActive="active-link" class="login">Log in</a></li>
+    <li><a routerLink="/sign-up" (click)="closeModule()" routerLinkActive="active-link" class="register">Create vendor account</a></li>
   </ul>
 
 </nav>
