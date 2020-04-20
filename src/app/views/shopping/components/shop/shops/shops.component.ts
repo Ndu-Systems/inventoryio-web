@@ -16,6 +16,7 @@ export class ShopsComponent implements OnInit {
   searchResults: Company[] = [];
   searchResultsProducts: Product[] = [];
   products: Product[] = [];
+  loading = true;
   constructor(private shoppingService: ShoppingService, private router: Router, private titleService: Title,
 
 
@@ -28,6 +29,7 @@ export class ShopsComponent implements OnInit {
       this.shops = data;
       if (this.shops) {
         this.mapProducts();
+        this.loading = false;
       }
 
     });

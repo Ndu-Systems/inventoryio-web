@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <clipPath id="clip-shops">
+      <rect width="1280" height="800"/>
+    </clipPath>
+  </defs>
+  <g id="shops" clip-path="url(#clip-shops)">
+    <rect width="1280" height="800" fill="#fff"/>
+    <rect id="Rectangle_43" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(99 66)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-2" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(474 66)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-3" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(849 66)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-4" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(99 217)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-5" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(474 217)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-6" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(849 217)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-7" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(99 368)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-8" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(474 368)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-9" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(849 368)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-10" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(99 519)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-11" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(474 519)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-12" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(849 519)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-13" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(99 670)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-14" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(474 670)" fill="#e9e9e9"/>
+    <rect id="Rectangle_43-15" data-name="Rectangle 43" width="319" height="131" rx="13" transform="translate(849 670)" fill="#e9e9e9"/>
+  </g>
+</svg>

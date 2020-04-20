@@ -103,6 +103,7 @@
     <h1>
       All shops
     </h1>
+    <span *ngIf="!loading">
 
     <div class="shops">
       <div class="shop" *ngFor="let shop of shops; let i = index">
@@ -129,6 +130,11 @@
         </div>
       </div>
     </div>
+  </span>
+    <span *ngIf="loading" class="ghost" >
+      <div class="overlay"></div>
+      <img  src="assets/images/shops.svg" alt="">
+    </span>
   </div>
 
 </div>

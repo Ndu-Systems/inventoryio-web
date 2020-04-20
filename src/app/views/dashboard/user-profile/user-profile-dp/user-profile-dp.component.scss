@@ -28,9 +28,10 @@ $dp-reduced : 2rem;
       display: grid;
       grid-template-columns: 30% 30% auto;
       margin-top: -1.5rem;
+      text-align: right;
 
       .text {
-        font-weight: 500;
+        font-weight: 700;
         font-size: 0.8rem;
       }
 
@@ -100,11 +101,15 @@ $dp-reduced : 2rem;
     h2,
     h3 {
       color: #fff;
+      color: $black-color;
+
       text-align: center;
       font-size: .9rem;
       margin: 0;
       padding: 0;
       margin-top: 1.3rem;
+
+    
 
       @media only screen and (max-width: 600px) {
 
@@ -115,6 +120,9 @@ $dp-reduced : 2rem;
     }
 
     h1 {
+      span{
+        font-weight: 700;
+      }
       @media only screen and (max-width: 600px) {
         margin-top: 1rem;
         ;

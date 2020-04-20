@@ -33,18 +33,18 @@ export class UpdateCompanyComponent implements OnInit {
       this.handerExample = this.company.Name.replace(/\s/g, '').toLocaleLowerCase();
     }
     this.rForm = this.fb.group({
-      Name: [this.company.Name, Validators.required],
-      Description: [this.company.Description || ''],
-      Type: [this.company.Type || ''],
-      Shop: [this.company.Shop || 0],
-      Handler: [this.company.Handler || ''],
-      TelephoneNumber: [this.company.TelephoneNumber, Validators.required],
-      Prefix: [this.company.Prefix || ''],
-      ParentId: [this.company.ParentId || ''],
-      Website: [this.company.Website || '', Validators.required],
-      CompanyId: [this.company.CompanyId, Validators.required],
+      Name: [this.company && this.company.Name || '', Validators.required],
+      Description: [this.company && this.company.Description || ''],
+      Type: [this.company && this.company.Type || ''],
+      Shop: [this.company && this.company.Shop || 0],
+      Handler: [this.company && this.company.Handler || ''],
+      TelephoneNumber: [this.company && this.company.TelephoneNumber, Validators.required],
+      Prefix: [this.company && this.company.Prefix || ''],
+      ParentId: [this.company && this.company.ParentId || ''],
+      Website: [this.company && this.company.Website || '', Validators.required],
+      CompanyId: [this.company && this.company.CompanyId, Validators.required],
       ModifyUserId: [this.user.UserId, Validators.required],
-      StatusId: [this.company.StatusId]
+      StatusId: [this.company && this.company.StatusId]
     });
 
   }
@@ -59,11 +59,7 @@ export class UpdateCompanyComponent implements OnInit {
           detail: `Company updated successfully`
         });
         this.companyService.updateState(response);
-        this.company.Name = response.Name;
-        this.company.Handler = response.Handler;
-        this.company.Website = response.Website;
-        this.company.TelephoneNumber = response.TelephoneNumber;
-        this.user.Company = this.company;
+        this.user.Company = response;
         this.userService.updateUserState(this.user, 'user');
         this.accountService.updateUserState(this.user);
       }
