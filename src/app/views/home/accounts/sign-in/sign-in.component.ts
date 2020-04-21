@@ -7,6 +7,8 @@ import { AccountService, RolesService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { Title } from '@angular/platform-browser';
+import { AuthService, SocialUser, GoogleLoginProvider, FacebookLoginProvider } from 'ng4-social-login';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -22,12 +24,14 @@ export class SignInComponent implements OnInit {
   password = environment.ACCOUNT_TEST_PASSWORD;
   hidePassword = true;
 
+  public socialUser: any = SocialUser;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
     private roleService: RolesService,
-    private titleService: Title
+    private titleService: Title,
+    private authService: AuthService,
 
   ) {
   }
@@ -64,6 +68,24 @@ export class SignInComponent implements OnInit {
 
   toggleNav() {
     this.showMobileNav = !this.showMobileNav;
+  }
+
+  fbLogin() {
+    this.authService.signIn(
+      FacebookLoginProvider.PROVIDER_ID
+    )
+      .then(userData => {
+        this.socialUser = userData;
+      });
+  }
+
+  googleLogin() {
+    this.authService.signIn(
+      GoogleLoginProvider.PROVIDER_ID
+    )
+      .then(userData => {
+        this.socialUser = userData;
+      });
   }
 
 }

@@ -27,7 +27,7 @@ const routes: Routes = [
     path: '', component: HomeComponent,
     children: [
       { path: 'home', component: IndexComponent },
-      { path: '', component: SignInComponent },
+      { path: '', component: IndexComponent },
       { path: 'modules', component: OurModulesComponent },
       { path: 'pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
