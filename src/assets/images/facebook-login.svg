@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="597" height="162" viewBox="0 0 597 162">
+  <defs>
+    <filter id="Rectangle_62" x="0" y="0" width="597" height="162" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="facebook-login" transform="translate(-138.5 -387.5)">
+    <g transform="matrix(1, 0, 0, 1, 138.5, 387.5)" filter="url(#Rectangle_62)">
+      <rect id="Rectangle_62-2" data-name="Rectangle 62" width="552" height="117" rx="21" transform="translate(22.5 19.5)" fill="#fff"/>
+    </g>
+    <text id="Facebook" transform="translate(379 489)" fill="#07359f" font-size="69" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Facebook</tspan></text>
+    <g id="facebook_1_" data-name="facebook (1)" transform="translate(216 424)">
+      <path id="Path_16" data-name="Path 16" d="M77.783,0H4.54A4.543,4.543,0,0,0,0,4.544V77.787a4.543,4.543,0,0,0,4.544,4.541H77.783a4.543,4.543,0,0,0,4.544-4.542V4.541A4.543,4.543,0,0,0,77.783,0Zm0,0" transform="translate(0 0)" fill="#4267b2"/>
+      <path id="Path_17" data-name="Path 17" d="M230.557,147.218V115.381H241.29l1.608-12.462H230.557V94.982c0-3.6,1-6.052,6.161-6.052h6.542V77.814a87.94,87.94,0,0,0-9.587-.49c-9.487,0-15.98,5.789-15.98,16.424v9.171H207v12.462h10.693v31.838Zm0,0" transform="translate(-173.715 -64.891)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

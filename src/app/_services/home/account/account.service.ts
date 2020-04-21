@@ -63,6 +63,26 @@ export class AccountService {
       });
     });
   }
+  socialLogin(data) {
+    this._loading.next(true);
+
+    return this.http.post<any>(`${this.url}/api/account/social-login.php`, data).subscribe(resp => {
+      const user: User = resp;
+      localStorage.clear();
+      this.updateUserState(user);
+      this._loading.next(false);
+      user.CompanyId = 'n/a';
+      this.router.navigate(['dashboard']);
+    }, error => {
+      this._loading.next(false);
+      console.log(error);
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: COMMON_CONN_ERR_MSG,
+        class: `error`,
+      });
+    });
+  }
 
   updateUser(user: User) {
     return this.http.post<any>(`${this.url}/api/user/update-user.php`, user).subscribe(resp => {

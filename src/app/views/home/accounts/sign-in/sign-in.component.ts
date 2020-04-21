@@ -2,10 +2,8 @@ import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/_models';
 import { AccountService, RolesService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { MessageService } from 'primeng/api';
 import { Title } from '@angular/platform-browser';
 import { AuthService, SocialUser, GoogleLoginProvider, FacebookLoginProvider } from 'ng4-social-login';
 
@@ -76,6 +74,7 @@ export class SignInComponent implements OnInit {
     )
       .then(userData => {
         this.socialUser = userData;
+        this.accountService.socialLogin(userData);
       });
   }
 
@@ -85,6 +84,8 @@ export class SignInComponent implements OnInit {
     )
       .then(userData => {
         this.socialUser = userData;
+        this.accountService.socialLogin(userData);
+
       });
   }
 

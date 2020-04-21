@@ -359,44 +359,24 @@ span.step {
     width: 100%;
   }
 
+  .pc {
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  .mobile {
+    display: none;
+
+    @media only screen and (max-width: 600px) {
+      display: block;
+    }
+  }
+
 }
 
 
 @keyframes ghostMove {
-  // 10% {
-  //   left: 0;
-  // }
-
-  // 20% {
-  //   left: 10%;
-  // }
-  // 30%{
-  //   left: 20%;
-  // }
-
-  // 40%{
-  //   left: 30%;
-  // }
-
-  // 50% {
-  //   left: 40%;
-  // }
-
-  // 60% {
-  //   left: 60%;
-  // }
-
-  // 80% {
-  //   left: 40%;
-  // }
-  // 90%{
-  //   left:10%
-  // }
-
-  // 100% {
-  //   left:0;
-  // }
-
   0% {
     left: 0;
   }

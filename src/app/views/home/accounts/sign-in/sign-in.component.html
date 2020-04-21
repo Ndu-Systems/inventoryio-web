@@ -4,8 +4,14 @@
     <h1 class="text">
       To <span class="span">access</span> your virtual store or organization and make sales right away.
     </h1>
+
+    <div class="social-login">
+      <p>Social media login</p>
+     <img (click)="googleLogin()" src="assets/images/google-login.svg" alt="">
+      <img (click)="fbLogin()" src="assets/images/facebook-login.svg" alt="">
+    </div>
     <form class="form" [formGroup]="rForm" (ngSubmit)="Login()">
-           <div class="form-group">
+      <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input type="email" class="form-control" formControlName="Email" id="exampleInputEmail1"
           placeholder="Enter email">
@@ -15,7 +21,8 @@
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" [type]="hidePassword? 'password': 'text'"  class="form-control" formControlName="Password" id="exampleInputPassword1" placeholder="Password">
+        <input type="password" [type]="hidePassword? 'password': 'text'" class="form-control" formControlName="Password"
+          id="exampleInputPassword1" placeholder="Password">
         <div class="showPassword" (click)="hidePassword = !hidePassword">
           <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
             Password is required
@@ -38,11 +45,7 @@
         </h1>
         <a routerLink="/sign-up" class="btn btn-border">Sign up here</a>
       </div>
-      <div class="col-1-of-2 cta">
-        <p>Social  media login</p> <p></p>
-        <a (click)="fbLogin()" class="btn btn-border"><b>f</b> Facebook</a>
-        <a (click)="googleLogin()"  class="btn btn-border"><i class="pi pi-google"></i> Google</a>
-      </div>
+   
     </form>
   </div>
 </div>
@@ -63,4 +66,3 @@
     <div></div>
   </div>
 </div>
-

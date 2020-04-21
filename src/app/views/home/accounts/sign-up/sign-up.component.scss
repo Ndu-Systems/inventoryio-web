@@ -1,3 +1,19 @@
 .main-container {
   padding: 3rem 0;
 }
+
+.social-login {
+  p {
+    display: block;
+  }
+
+  img {
+    width: 10rem;
+    cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      width: 7.5rem;
+    }
+
+  }
+}

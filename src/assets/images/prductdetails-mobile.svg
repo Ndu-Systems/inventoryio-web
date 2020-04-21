@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="414" height="896" viewBox="0 0 414 896">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="56" height="19" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-prductdetails-mobile">
+      <rect width="414" height="896"/>
+    </clipPath>
+  </defs>
+  <g id="prductdetails-mobile" clip-path="url(#clip-prductdetails-mobile)">
+    <rect width="414" height="896" fill="#fff"/>
+    <g id="Group_35" data-name="Group 35" transform="translate(-36 -94)">
+      <rect id="Rectangle_63" data-name="Rectangle 63" width="397" height="21" transform="translate(43 101)" fill="#f4f4f4"/>
+    </g>
+    <g id="Group_38" data-name="Group 38" transform="translate(-34 11)">
+      <rect id="Rectangle_63-2" data-name="Rectangle 63" width="397" height="383" transform="translate(43 101)" fill="#f4f4f4"/>
+    </g>
+    <rect id="Rectangle_63-3" data-name="Rectangle 63" width="56" height="52" transform="translate(15 513)" fill="#f4f4f4"/>
+    <rect id="Rectangle_63-4" data-name="Rectangle 63" width="56" height="52" transform="translate(91 513)" fill="#f4f4f4"/>
+    <rect id="Rectangle_63-5" data-name="Rectangle 63" width="56" height="52" transform="translate(167 513)" fill="#f4f4f4"/>
+    <rect id="Rectangle_63-6" data-name="Rectangle 63" width="56" height="52" transform="translate(243 513)" fill="#f4f4f4"/>
+    <g id="Group_36" data-name="Group 36" transform="translate(-36 -65)">
+      <rect id="Rectangle_63-7" data-name="Rectangle 63" width="234" height="30" transform="translate(43 101)" fill="#f4f4f4"/>
+    </g>
+    <g id="Group_39" data-name="Group 39" transform="translate(-28 495)">
+      <rect id="Rectangle_63-8" data-name="Rectangle 63" width="234" height="30" transform="translate(43 101)" fill="#f4f4f4"/>
+    </g>
+    <g id="Group_40" data-name="Group 40" transform="translate(-35 496)">
+      <rect id="Rectangle_63-9" data-name="Rectangle 63" width="163" height="30" transform="translate(50 157)" fill="#f4f4f4"/>
+    </g>
+    <g id="Group_43" data-name="Group 43" transform="translate(-35 627.677)">
+      <rect id="Rectangle_63-10" data-name="Rectangle 63" width="163" height="7" transform="translate(50 157.323)" fill="#f4f4f4"/>
+    </g>
+    <g id="Repeat_Grid_4" data-name="Repeat Grid 4" transform="translate(15 721)" clip-path="url(#clip-path)">
+      <g id="Group_41" data-name="Group 41" transform="translate(-50 -157.157)">
+        <rect id="Rectangle_63-11" data-name="Rectangle 63" width="18" height="19" transform="translate(50 157.157)" fill="#f4f4f4"/>
+      </g>
+      <g id="Group_41-2" data-name="Group 41" transform="translate(-31 -157.157)">
+        <rect id="Rectangle_63-12" data-name="Rectangle 63" width="18" height="19" transform="translate(50 157.157)" fill="#f4f4f4"/>
+      </g>
+      <g id="Group_41-3" data-name="Group 41" transform="translate(-12 -157.157)">
+        <rect id="Rectangle_63-13" data-name="Rectangle 63" width="18" height="19" transform="translate(50 157.157)" fill="#f4f4f4"/>
+      </g>
+    </g>
+    <g id="Group_42" data-name="Group 42" transform="translate(35 563.843)">
+      <rect id="Rectangle_63-14" data-name="Rectangle 63" width="67" height="19" transform="translate(50 157.157)" fill="#f4f4f4"/>
+    </g>
+  </g>
+</svg>

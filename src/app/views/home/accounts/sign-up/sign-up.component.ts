@@ -6,6 +6,7 @@ import { AccountService, RolesService } from 'src/app/_services';
 import { User } from 'src/app/_models';
 import { SplashService } from 'src/app/_services/splash.service';
 import { Title } from '@angular/platform-browser';
+import { AuthService, SocialUser, GoogleLoginProvider, FacebookLoginProvider } from 'ng4-social-login';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,13 +20,17 @@ export class SignUpComponent implements OnInit {
   loading$ = this.accountService.loading;
   role: Role;
   hidePassword = true;
+  public socialUser: any = SocialUser;
+
 
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
     private splashService: SplashService,
-    private titleService: Title
+    private titleService: Title,
+    private authService: AuthService,
+
 
   ) {
   }
@@ -75,5 +80,27 @@ export class SignUpComponent implements OnInit {
     this.accountService.addUser(data);
 
   }
+
+  fbLogin() {
+    this.authService.signIn(
+      FacebookLoginProvider.PROVIDER_ID
+    )
+      .then(userData => {
+        this.socialUser = userData;
+        this.accountService.socialLogin(userData);
+      });
+  }
+
+  googleLogin() {
+    this.authService.signIn(
+      GoogleLoginProvider.PROVIDER_ID
+    )
+      .then(userData => {
+        this.socialUser = userData;
+        this.accountService.socialLogin(userData);
+
+      });
+  }
+
 
 }

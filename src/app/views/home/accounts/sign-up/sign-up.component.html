@@ -4,6 +4,12 @@
     <h1 class="text">
       Register a <span class="span">new account</span> with us and enjoy the benefits of inventory IO.
     </h1>
+
+    <div class="social-login">
+      <p>Social media login</p>
+      <img (click)="googleLogin()" src="assets/images/google-login.svg" alt="">
+      <img (click)="fbLogin()" src="assets/images/facebook-login.svg" alt="">
+    </div>
     <form class="form" [formGroup]="rForm" (ngSubmit)="signUp()">
       <div class="form-group">
         <label for="exampleFullName">Full Name</label>

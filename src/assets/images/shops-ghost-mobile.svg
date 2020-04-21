@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="414" height="896" viewBox="0 0 414 896">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="339" height="911" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-shops-ghost-mobile">
+      <rect width="414" height="896"/>
+    </clipPath>
+  </defs>
+  <g id="shops-ghost-mobile" clip-path="url(#clip-shops-ghost-mobile)">
+    <rect width="414" height="896" fill="#fff"/>
+    <g id="Repeat_Grid_3" data-name="Repeat Grid 3" transform="translate(38 34)" clip-path="url(#clip-path)">
+      <g id="Group_34" data-name="Group 34" transform="translate(-36 -163)">
+        <rect id="Rectangle_63" data-name="Rectangle 63" width="163" height="180" rx="15" transform="translate(36 163)" fill="#f4f4f4"/>
+        <rect id="Rectangle_64" data-name="Rectangle 64" width="163" height="180" rx="15" transform="translate(212 163)" fill="#f4f4f4"/>
+      </g>
+      <g id="Group_34-2" data-name="Group 34" transform="translate(-36 37)">
+        <rect id="Rectangle_63-2" data-name="Rectangle 63" width="163" height="180" rx="15" transform="translate(36 163)" fill="#f4f4f4"/>
+        <rect id="Rectangle_64-2" data-name="Rectangle 64" width="163" height="180" rx="15" transform="translate(212 163)" fill="#f4f4f4"/>
+      </g>
+      <g id="Group_34-3" data-name="Group 34" transform="translate(-36 237)">
+        <rect id="Rectangle_63-3" data-name="Rectangle 63" width="163" height="180" rx="15" transform="translate(36 163)" fill="#f4f4f4"/>
+        <rect id="Rectangle_64-3" data-name="Rectangle 64" width="163" height="180" rx="15" transform="translate(212 163)" fill="#f4f4f4"/>
+      </g>
+      <g id="Group_34-4" data-name="Group 34" transform="translate(-36 437)">
+        <rect id="Rectangle_63-4" data-name="Rectangle 63" width="163" height="180" rx="15" transform="translate(36 163)" fill="#f4f4f4"/>
+        <rect id="Rectangle_64-4" data-name="Rectangle 64" width="163" height="180" rx="15" transform="translate(212 163)" fill="#f4f4f4"/>
+      </g>
+      <g id="Group_34-5" data-name="Group 34" transform="translate(-36 637)">
+        <rect id="Rectangle_63-5" data-name="Rectangle 63" width="163" height="180" rx="15" transform="translate(36 163)" fill="#f4f4f4"/>
+        <rect id="Rectangle_64-5" data-name="Rectangle 64" width="163" height="180" rx="15" transform="translate(212 163)" fill="#f4f4f4"/>
+      </g>
+    </g>
+  </g>
+</svg>
