@@ -14,14 +14,19 @@
       }
     }
   }
-
+.navigate{
+  display: flex;
   .navigate-image {
-    display: inline;
+    width: 3.5rem;
+    overflow: hidden;
+    margin-right: .5rem;
 
     img {
-      height: 3rem;
-      margin: .3rem;
+      width: 100%;
+      margin: .3rem 0;
       cursor: pointer;
     }
   }
+}
+
 }

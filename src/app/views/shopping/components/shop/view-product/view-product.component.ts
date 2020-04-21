@@ -34,6 +34,7 @@ export class ViewProductComponent implements OnInit {
   welcomed;
   products: Product[];
   loading = true;
+  logoUrl: string;
 
   constructor(
     private productService: ProductService,
@@ -82,6 +83,9 @@ export class ViewProductComponent implements OnInit {
       }
       if (this.company.Banner) {
         this.bannerImage = this.company.Banner[0].Url;
+      }
+      if (this.company.Logo && this.company.Logo.length) {
+        this.logoUrl = this.company.Logo[0].Url;
       }
     }
   }
