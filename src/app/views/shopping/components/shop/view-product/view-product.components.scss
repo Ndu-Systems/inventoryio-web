@@ -287,3 +287,24 @@
   }
 
 }
+
+.footer {
+  padding: 1rem .5rem;
+  margin-top: 0;
+
+  h1,
+  h2,
+  address, span {
+    color: $white-color;
+  }
+
+  h1 {
+    margin: 0;
+    font-weight: 500;
+  }
+  h2{
+    font-weight: 400;
+    text-decoration: underline;
+
+  }
+}

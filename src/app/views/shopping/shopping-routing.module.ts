@@ -13,6 +13,9 @@ import { ShoppingNavComponent } from './components/shop/shopping-nav/shopping-na
 import { ShopCheckoutComponent } from './components/shop/shop-checkout/shop-checkout.component';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { RemoveNoValuesAttributesPipe } from 'src/app/_pipes/remove-no-values-attributes.pipe';
+import { CustomerPortalComponent } from './components/customer-portal/customer-portal.component';
+import { CustomerLoginComponent } from './components/customer-login/customer-login.component';
+import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
 const routes: Routes = [
   {
     path: '', component: ShoppingComponent,
@@ -23,6 +26,8 @@ const routes: Routes = [
       { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
       { path: 'view-product/:id', component: ViewProductComponent },
       { path: 'checkout/:id', component: ShopCheckoutComponent },
+      { path: 'customer-login/:id', component: CustomerLoginComponent },
+      { path: 'customer-signup/:id', component: CustomerSignupComponent },
     ]
   }
 ];
@@ -39,7 +44,10 @@ export const declarations = [
   ShoppingNavComponent,
   ShopCheckoutComponent,
   FormatOptionsPipe,
-  RemoveNoValuesAttributesPipe
+  RemoveNoValuesAttributesPipe,
+  CustomerPortalComponent,
+  CustomerLoginComponent,
+  CustomerSignupComponent
 ];
 
 

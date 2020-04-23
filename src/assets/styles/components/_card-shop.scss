@@ -2,7 +2,7 @@
   display: grid;
   grid-auto-columns: 100%;
   // grid-template-rows: 250px 50px 50px 80px;
-  grid-template-rows: 320px 50px 50px 1px;
+  grid-template-rows: 200px 50px 50px 1px;
   grid-template-areas: "image""name""notes""actions";
   margin: 1rem;
   border-radius: 12px;
@@ -31,7 +31,7 @@
     background-position: top left;
     // background: rgb(249, 190, 59);
     padding: 0;
-    height: 320px;
+    height: 200px;
     text-align: center;
     overflow: hidden;
 
@@ -44,6 +44,7 @@
     img {
       // height: 320px;
       width: 100%;
+      
     }
 
   }

@@ -9,12 +9,10 @@
     <ul>
       <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">
         </a></li>
-      <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/shop">Back to all shops</a></li>
-      <!-- <li><a [ngStyle]="{'color':shopSecondaryColor}">
-          Shopping at {{company?.Name}}
-        </a></li> -->
+      <li><a  routerLink="/shop">Back to all shops</a></li>
+      <li><a [ngStyle]="{'color':shopSecondaryColor,'border':'2px solid '+shopSecondaryColor, 'padding':'.5rem'}" routerLink="/shop/customer-login/home">Login & Register</a></li>
       <li class="cart" (mouseover)="showCart=true">
-        <span class="cart-span">
+        <span class="cart-span"> 
           {{cartItems}}
           <i class="pi pi-shopping-cart"></i>
         </span>
@@ -60,6 +58,8 @@
     </div>
     <ul class="nav-items">
       <li><a [ngStyle]="{'color':shopSecondaryColor}" (click)="toggleNav()"  routerLink="/shop">Back to all shops</a></li>
+      <li><a [ngStyle]="{'color':shopSecondaryColor,'border':'2px solid '+shopSecondaryColor, 'padding':'.5rem'}" routerLink="/shop">Login & Register</a></li>
+
     </ul>
   </div>
   <div class="ham-icon" (click)="toggleNav()">
@@ -72,4 +72,8 @@
     </div>
     <img src="assets/images/ham.svg" alt="">
   </div>
+</div>
+
+<div *ngIf="showPortal" class="customer-portal">
+  <app-customer-portal></app-customer-portal>
 </div>

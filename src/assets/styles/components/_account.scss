@@ -54,7 +54,7 @@
         color: $dark-navy;
         opacity: 0.5;
       }
-
+      textarea,
       input[type=text],
       input[type=password],
       input[type=checkbox],
@@ -116,6 +116,7 @@
           box-shadow: none;
           border: solid 2px $primary-bg-color;
           font-size: 0.9rem;
+          border: none;
 
           &:hover {
             box-shadow: none;
@@ -154,6 +155,7 @@
           color: $primary-bg-color;
           box-shadow: none;
           border: solid 2px $primary-bg-color;
+          border: none;
           font-size: 0.9rem;
 
           &:hover {

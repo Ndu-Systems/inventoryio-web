@@ -3,7 +3,7 @@
 <!-- <div class="cover-photo">
   <img [src]="bannerImage" alt="">
 </div> -->
-<div class="main" *ngIf="product">
+<div class="main" *ngIf="product"  [ngStyle]="{'border':'6px solid '+shopPrimaryColor}">
 
 
   <h3 class="small-heading">
@@ -14,7 +14,7 @@
 
   <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
 
-  <div class="order">
+  <div class="order" >
 
 
     <div class="product-details">
@@ -109,6 +109,39 @@
     </div>
 
   </div>
+
+</div>
+<div *ngIf="company" class="footer" [ngStyle]="{'background-color':shopPrimaryColor}" class="footer">
+  <h1>
+    Thanks for visting {{company?.Name}}
+  </h1>
+  <span *ngIf="company.TelephoneNumber && company.TelephoneNumber.length > 6">
+    <h2>
+      Contact details
+    </h2>
+    <address>
+      Email:{{company?.TelephoneNumber}} <br>
+    </address>
+  </span>
+  <span *ngIf="company.Shipping">
+    <h2>
+      Shipping method(s)
+    </h2>
+    <span *ngFor="let ship of company.Shipping">
+      <span *ngIf="ship.Name === 'name'">{{ship?.Value}}
+        {{ship?.TelephoneNumber}}</span>
+      <span *ngIf="ship.Name === 'amount'"> <b>R {{ship?.Value}}
+         </b> <br></span>
+    </span>
+  </span>
+  <span>
+    <h2>
+      Payment methods
+    </h2>
+    <span>
+      Cash | EFT
+    </span>
+  </span>
 </div>
 </span>
 

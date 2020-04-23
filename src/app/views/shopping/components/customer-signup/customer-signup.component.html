@@ -1,0 +1,83 @@
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
+</app-shopping-nav>
+<div class="main-container">
+  <div class="accounts">
+    <h1 class="header">Create your new free customer account<span class="dot">.</span></h1>
+    <h1 class="text">
+      To <span class="span">track</span> your access your orders, shipping addresses and wish list.
+    </h1>
+
+    <div class="social-login">
+      <p>Social media login</p>
+      <img (click)="googleLogin()" src="assets/images/google-login.svg" alt="">
+      <img (click)="fbLogin()" src="assets/images/facebook-login.svg" alt="">
+    </div>
+    <form *ngIf="rForm" class="form" [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Full Name</label>
+        <input type="email" class="form-control" formControlName="Name" id="exampleInputEmail1"
+          placeholder="John Doe">
+        <div class="alert" *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
+          Full Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Full Address</label> <i>For Shipping</i>
+
+          <textarea name="" id=""  formControlName="Address"   placeholder="01 Room, Complex, City , 4444"></textarea>
+        <div class="alert" *ngIf="!rForm.controls['Address'].valid  && rForm.controls['Address'].touched ">
+          Address is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" formControlName="EmailAddress" id="exampleInputEmail1"
+          placeholder="Enter email">
+        <div class="alert" *ngIf="!rForm.controls['EmailAddress'].valid  && rForm.controls['EmailAddress'].touched ">
+          Email is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" [type]="hidePassword? 'password': 'text'" class="form-control" formControlName="Password"
+          id="exampleInputPassword1" placeholder="Password">
+        <div class="showPassword" (click)="hidePassword = !hidePassword">
+          <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+            Password is required
+          </div>
+          <i *ngIf="hidePassword" class="pi pi-eye-slash"></i>
+          <i *ngIf="!hidePassword" class="pi pi-eye"></i>
+        </div>
+      </div>
+      <div class="col-1-of-2">
+        <div class="form-group">
+          <input type="submit" value="Register" class="btn" [disabled]="!rForm.valid" />
+        </div>
+      </div>
+      <div class="col-1-of-2 cta">
+        <h1>
+          Already Have An Account?
+        </h1>
+        <a routerLink="/shop/customer-login/home" class="btn btn-border btn-border">Login now</a>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<pre>
+  {{socialUser |json}}
+</pre>
+
+
+
+<div class="home-loading" *ngIf="this.loading$| async as loading">
+  <img class="logo" src="assets/images/white-icon.png" alt="">
+  <h1>Signing you in, please wait</h1>
+  <div class="lds-ellipsis">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>

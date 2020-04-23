@@ -48,8 +48,10 @@
 }
 
 .content {
-  padding: 5rem 10rem;
+  padding: 2rem 0rem;
+  padding-bottom: 0;
   background: $cloud-ligher;
+  ;
 
   @media only screen and (max-width: 600px) {
     padding: 3%;
@@ -144,7 +146,32 @@
 
 
 .col-1-of-4 {
+  margin-bottom: 0;
+
   @media only screen and (max-width: 600px) {
     grid-template-columns: 50% 50%;
+  }
+}
+
+.footer {
+  padding: 1rem .5rem;
+  margin-top: 3rem;
+
+  h1,
+  h2,
+  address,
+  span {
+    color: $white-color;
+  }
+
+  h1 {
+    margin: 0;
+    font-weight: 500;
+
+  }
+
+  h2 {
+    font-weight: 400;
+    text-decoration: underline;
   }
 }

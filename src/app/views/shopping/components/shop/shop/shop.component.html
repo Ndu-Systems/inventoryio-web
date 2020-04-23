@@ -5,7 +5,7 @@
     <div class="cover-photo">
       <img [src]="bannerImage" alt="">
     </div>
-    <div class="content">
+    <div class="content" [ngStyle]="{'border':'6px solid '+shopPrimaryColor}">
       <div class="check-out">
         <button class="action-btn  hover-shadow"
           [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="viewCart()"><i
@@ -38,6 +38,39 @@
         </span>
 
       </div>
+
+      <div *ngIf="company" class="footer" [ngStyle]="{'background-color':shopPrimaryColor}" class="footer">
+        <h1>
+          Thanks for visting {{company?.Name}}
+        </h1>
+        <span *ngIf="company.TelephoneNumber && company.TelephoneNumber.length > 6">
+          <h2>
+            Contact details
+          </h2>
+          <address>
+            Email:{{company?.TelephoneNumber}} <br>
+          </address>
+        </span>
+        <span *ngIf="company.Shipping">
+          <h2>
+            Shipping method(s)
+          </h2>
+          <span *ngFor="let ship of company.Shipping">
+            <span *ngIf="ship.Name === 'name'">{{ship?.Value}}
+              {{ship?.TelephoneNumber}}</span>
+            <span *ngIf="ship.Name === 'amount'"> <b>R {{ship?.Value}}
+              </b> <br></span>
+          </span>
+        </span>
+        <span>
+          <h2>
+            Payment methods
+          </h2>
+          <span>
+            Cash | EFT
+          </span>
+        </span>
+      </div>
     </div>
   </div>
 
@@ -47,8 +80,8 @@
 
 </span>
 
-<span *ngIf="loading" class="ghost" >
+<span *ngIf="loading" class="ghost">
   <div class="overlay"></div>
-  <img class="pc"  src="assets/images/shopghost.svg" alt="">
-  <img class="mobile"  src="assets/images/shop-ghost-mobile.svg" alt="">
+  <img class="pc" src="assets/images/shopghost.svg" alt="">
+  <img class="mobile" src="assets/images/shop-ghost-mobile.svg" alt="">
 </span>
