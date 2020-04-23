@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SocialUser, AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'ng4-social-login';
 import { Router } from '@angular/router';
-import { AccountService, RolesService, PartnerService } from 'src/app/_services';
+import { AccountService, RolesService, PartnerService, UsersService } from 'src/app/_services';
 import { Title } from '@angular/platform-browser';
 import { StatusConstant } from 'src/app/views/dashboard/shared/config';
-import { Partner } from 'src/app/_models';
+import { Partner, User } from 'src/app/_models';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -35,28 +35,30 @@ export class CustomerSignupComponent implements OnInit {
     private titleService: Title,
     private authService: AuthService,
     private messageService: MessageService,
+    private userService: UsersService,
 
   ) {
   }
 
 
   ngOnInit() {
-    this.titleService.setTitle(`Login to your vendor account | Inventory io`);
+    this.titleService.setTitle(`Create customer account | Inventory io`);
 
     this.rForm = this.fb.group({
-      EmailAddress: new FormControl(
+      Email : new FormControl(
         null,
         Validators.compose([
           Validators.required,
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])
       ),
-      Name: [null, Validators.required],
-      CellphoneNumber: [''],
       Surname: [''],
+      Name: ['', Validators.required],
+      CellphoneNumber: [''],
+      SecondaryContactNumber: [null],
+      Address: [null],
       Password: [''],
-      Address: [''],
-      PartnerType: [this.partnerType],
+      RoleId: ['3', Validators.required],
       CompanyId: ['customer-page', Validators.required],
       CreateUserId: ['customer-page', Validators.required],
       ModifyUserId: ['customer-page', Validators.required],
@@ -70,12 +72,12 @@ export class CustomerSignupComponent implements OnInit {
     return this.rForm.controls;
   }
 
-  onSubmit(partner: Partner) {
-    this.partnerService.addPartner(partner);
+  onSubmit(user: User) {
+    this.userService.addSystemUser(user);
     this.messageService.add({
       severity: 'success',
       summary: 'Success.',
-      detail: `${this.partnerType} ${partner.Name} added successfully`
+      detail: `User ${user.Name} added successfully`
     });
     // this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }

@@ -28,6 +28,7 @@ const routes: Routes = [
       { path: 'checkout/:id', component: ShopCheckoutComponent },
       { path: 'customer-login/:id', component: CustomerLoginComponent },
       { path: 'customer-signup/:id', component: CustomerSignupComponent },
+      { path: 'customer-portal/:id', component: CustomerPortalComponent },
     ]
   }
 ];

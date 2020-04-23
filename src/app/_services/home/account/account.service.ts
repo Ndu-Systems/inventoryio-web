@@ -106,7 +106,12 @@ export class AccountService {
         localStorage.clear();
         this.updateUserState(user);
         this._loading.next(false);
-        this.router.navigate(['dashboard']);
+        if (Number(user.RoleId) === 3) {
+          this.router.navigate(['shop/customer-portal/home']);
+        } else {
+          this.router.navigate(['dashboard']);
+
+        }
       } else {
         this._loading.next(false);
         this.splashService.update({
