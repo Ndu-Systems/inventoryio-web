@@ -85,8 +85,8 @@
           display: grid;
           grid-template-columns: repeat(3, 33.3333%);
           padding: .2rem;
-          border: 2px solid $primary-bg-color;
-          width: 7.2rem;
+          // border: 2px solid $primary-bg-color;
+          width: 6.5rem;
           margin: .5rem auto;
 
 
@@ -111,11 +111,18 @@
           input {
             border: none;
             font-weight: 900;
+            border: 1px solid $gray-color;
+
           }
         }
 
         img {
-          width: 3.5rem;
+          width: 3rem;
+        }
+
+        p{
+          font-size: .78rem;
+          font-weight: 500;
         }
       }
     }

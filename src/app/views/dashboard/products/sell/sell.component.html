@@ -1,4 +1,202 @@
-<div class="main">
+<div class="sell-page">
+  <div class="selling">
+    <div class="customer">
+
+    </div>
+
+
+
+    <div class="products-page" *ngIf="products$  | async as products">
+      <div class="list-header">
+        <div class="heading">
+          <h1>
+            Create Sales Order<span class="dot">.</span>
+          </h1>
+        </div>
+      </div>
+
+
+      <div class="list-header-mobile">
+        <h4>
+          Products ({{sum}})
+        </h4>
+
+        <div class="actions">
+          <div class="search">
+            <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+          </div>
+          <div class="search">
+            <select [(ngModel)]="searchByCatergory" class="roundInput">
+              <option value="" selected>All categories</option>
+              <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+            </select>
+          </div>
+          <div class="search">
+            <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="search-table">
+        <div class="search">
+          <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+        </div>
+
+        <div class="search">
+          <select [(ngModel)]="searchByCatergory" class="roundInput">
+            <option value="" selected>All categories</option>
+            <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="table" *ngIf="products.length > 0; else notFound">
+        <div class="header">
+          <div class="header-item">
+            Image
+          </div>
+          <div class="header-item" (click)="sort(products, 'name')">
+            <i *ngIf="!nameAsc" class="pi pi-sort-alpha-up"></i>
+            <i *ngIf="nameAsc" class="pi pi-sort-alpha-down-alt"></i>
+            Product name
+          </div>
+
+          <div class="header-item " (click)="sort(products, 'price')">
+            <i *ngIf="priceAsc" class="pi pi-sort-numeric-up-alt"></i>
+            <i *ngIf="!priceAsc" class="pi pi-sort-numeric-down"></i>
+            Price
+          </div>
+          <div class="header-item tac" (click)="sort(products, 'quantity')">
+            <!-- <i *ngIf="quantityAsc" class="pi pi-sort-numeric-up-alt"></i>
+            <i *ngIf="!quantityAsc" class="pi pi-sort-numeric-down"></i>
+            Stock -->
+          </div>
+          <div class="header-item tar">
+            Actions
+          </div>
+        </div>
+        <div class="body-container">
+          <div class="body"
+            *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory; let i = index">
+            <div class="body-item">
+              <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+              <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+
+            </div>
+            <div class="body-item">
+              <p>
+                {{item.Name}}
+              </p>
+            </div>
+            <div class="body-item">
+              <p>
+             
+                  {{item.UnitPrice | currency:'R'}}
+             
+              </p>
+
+            </div>
+            <div class="body-item tac">
+
+        
+
+            </div>
+            <div class="body-item tar">
+              <button class="btn-primary" (click)="doSell(item)">
+                <i class="pi pi-shopping-cart"></i> Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-table">
+        <div class="items">
+          <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
+            <div class="item" (click)="details(item)">
+              <div class="image-name">
+                <div class="image">
+                  <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+                  <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+                </div>
+                <div class="name">
+                  <p>
+                    <span>
+                      {{item.Quantity}}
+                    </span>
+                  </p>
+                </div>
+                <div class="name">
+                  <p>
+
+                    {{item.Name}}
+                  </p>
+                </div>
+                <div class="qty">
+
+                </div>
+                <div class="price">
+                  <p>
+                    {{item.UnitPrice | currency:'R'}}
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </span>
+        </div>
+      </div>
+
+      <ng-template #notFound>
+        <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            {{notFoundModel.Message}}
+            <span>
+              <a class="link-add" (click)="add()"> add new product.</a>
+            </span>
+          </h1>
+        </div>
+      </ng-template>
+
+    </div>
+
+  </div>
+
+  <div class="cart">
+    <div class="list-header">
+      <div class="heading">
+        <h1>
+          Cart<span class="dot">.</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="cart-items">
+      <app-sale-sammary></app-sale-sammary>
+
+      <div class="total">
+        <h4>
+          Total:  {{sale?.total + deliveryFee | currency:'R'}}
+        </h4>
+      </div>
+      <div class="actions">
+        <div>
+          <button class="btn" (click)="onSubmit()">Save order</button>
+        </div>
+
+        <div>
+          <button class="btn btn-transparent" (click)="clear()">Crear All</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="main">
   <h1 class="heading">
     Create sales order
   </h1>
@@ -213,4 +411,4 @@
   <br>
   <br>
   <a (click)="addCustomer()">Create new customer</a>
-</p-dialog>
+</p-dialog> -->

@@ -38,7 +38,7 @@
 
 
 
-
+@import '../../../../../../assets/styles/variables';
 
 .sale-item {
   display: grid;
@@ -76,42 +76,83 @@
   }
 
   .count {
+    // .qnty {
+    //   display: grid;
+    //   grid-template-columns: 60% 40%;
+    //   border: 3px solid #104CE5;
+    //   padding:0;
+    //   height: 2.7rem;
+    //   width: 4rem;
+
+    //   .input {
+    //     padding:0;
+    //     input {
+    //       border: none;
+    //       margin: 0;
+    //       padding:0;
+    //       margin-top: .5rem;
+    //       margin-left: .6rem;
+    //     }
+
+    //   }
+
+    //   .btns {
+    //     button {
+    //       display: block;
+    //       width:100%;
+    //       // height: 1.5rem;
+    //       text-align: center;
+    //       float: right;
+    //       margin: 0;
+    //       background: #104CE5;
+    //       color: #fff;
+    //       border: none;
+    //       font-weight: 700;
+    //       font-size: .8rem;
+    //     }
+    //   }
+    // }
+
     .qnty {
       display: grid;
-      grid-template-columns: 60% 40%;
-      border: 3px solid #104CE5;
-      padding:0;
-      height: 2.7rem;
-      width: 4rem;
+      grid-template-columns: repeat(3, 33.3333%);
+      padding: .2rem;
+      // border: 2px solid $primary-bg-color;
+      width: 6.5rem;
+      margin: .5rem auto;
 
-      .input {
-        padding:0;
-        input {
-          border: none;
-          margin: 0;
-          padding:0;
-          margin-top: .5rem;
-          margin-left: .6rem;
-        }
 
+      button,
+      input {
+        height: 1.2rem;
+        margin: 0;
+        width: 100%;
+        text-align: center;
       }
 
-      .btns {
-        button {
-          display: block;
-          width:100%;
-          // height: 1.5rem;
-          text-align: center;
-          float: right;
-          margin: 0;
-          background: #104CE5;
-          color: #fff;
-          border: none;
-          font-weight: 700;
-          font-size: .8rem;
-        }
+      button {
+        color: $white-color;
+        background: $primary-bg-color;
+        border: none;
+        width: 1.2rem;
+        border-radius: 1.2rem;
+        padding: 0;
+        padding-top: .12rem;
+        margin: 0 auto;
+      }
+
+      .plus{
+        padding-left: .5rem;
+      }
+
+      input {
+        border: none;
+        font-weight: 900;
+        border: 1px solid $gray-color;
+
       }
     }
+
   }
 }
 

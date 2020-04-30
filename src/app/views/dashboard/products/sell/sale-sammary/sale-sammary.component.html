@@ -18,7 +18,7 @@
       </h1>
         </div>
         <div class="count">
-            <div class="qnty">
+            <!-- <div class="qnty">
 
                 <div class="input">
                     <input type="text" pInputText pKeyFilter="int"  [(ngModel)]="item.quantity" (blur)="blur(item)">
@@ -32,6 +32,23 @@
                       <i class="pi pi-minus"></i>
                     </button>
 
+                </div>
+              </div> -->
+
+              <div class="qnty">
+                <div class="min">
+                  <button class="add hover-shadow" (click)="reduce(item)">
+                    <i class="pi pi-minus"></i>
+                  </button>
+                </div>
+                <div class="input">
+                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="item.quantity" (blur)="blur(item)">
+                </div>
+
+                <div class="plus">
+                  <button class="reduce hover-shadow" (click)="add(item)">
+                    <i class="pi pi-plus"></i>
+                  </button>
                 </div>
               </div>
         </div>

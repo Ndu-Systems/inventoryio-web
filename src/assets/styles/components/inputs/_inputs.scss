@@ -180,7 +180,8 @@ label {
 
 .btn-transparent {
   background: #fff;
-  color: #000;
+  color: $primary-bg-color;
+  border: 1px solid $primary-bg-color;
 
   &:hover {
     background: darken(#eee, 5%);

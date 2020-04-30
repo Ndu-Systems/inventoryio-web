@@ -374,7 +374,12 @@ span.step {
   }
 
 }
-
+.dot {
+  color: $primary-bg-color;
+  font-size: 5rem;
+  line-height: 0;
+  letter-spacing: 0;
+}
 
 .customer-portal {
   margin-top: 1rem;
