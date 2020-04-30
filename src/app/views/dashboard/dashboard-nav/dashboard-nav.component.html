@@ -1,4 +1,33 @@
-<div class="main nav-bar-desktop">
+<div class="nav">
+  <div class="items">
+    <ul>
+      <li *ngFor="let item of models; let i = index">
+        <div class="item" [ngStyle]="item.Style">
+          <div class="icon">
+            <img *ngIf="!item.Active" [src]="item.Icon" alt="">
+            <img *ngIf="item.Active" [src]="item.ActiveIcon" alt="">
+          </div>
+          <div class="link">
+            <a [ngStyle]="item.Style" (click)="selectLink(item,i)" [routerLink]="item.Link"
+              routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+              {{item.Name}}
+            </a>
+          </div>
+          <div class="add">
+            <a *ngIf="item.AddUrl" (click)="selectLink(item,i)" [routerLink]="item.AddUrl" routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{exact: true}">
+              <img src="../../../../assets/images/dashboard-nav-icons/plus.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+<!-- <div class="main nav-bar-desktop">
   <div (click)="toggleNav()" class="back">
     <img src="assets/images/navigation/back-arrow.svg" alt="">
   </div>
@@ -96,4 +125,4 @@
 </div>
 <div class="burger-menu" (click)="toggleNav()">
   <img src="assets/images/ham.svg" alt="burger menu">
-</div>
+</div> -->

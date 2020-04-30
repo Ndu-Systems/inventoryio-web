@@ -191,8 +191,12 @@ export class ShoppingService {
     });
     return this.http.post<any>(`${this.url}/api/orders/shop.php`, { order: data, products: productItems });
   }
+  getOrderById(orderId): Observable<any> {
+    return this.http.get<any>(`${this.url}/api/orders/get-order-by-id.php?OrderId=${orderId}`);
+  }
 
   getAllShops(): Observable<Company[]> {
     return this.http.get<any>(`${this.url}/api/company/shops.php`);
   }
+  
 }

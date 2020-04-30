@@ -1,3 +1,35 @@
-<p>
-  customer-portal works!
-</p>
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
+</app-shopping-nav>
+<div class="customer-portal" *ngIf="user">
+  <div class="nav">
+    <app-customer-nav-bar></app-customer-nav-bar>
+  </div>
+
+
+  <div class="body">
+    <h1>
+      Account Overview
+    </h1>
+
+    <p>
+      <b>
+        Personal Details
+      </b> <br>
+      {{user.Name}} <br>
+      {{user.Email}} <br>
+      {{user.CellphoneNumber}} <br>
+
+    </p>
+    <hr>
+    <p>
+      <b>
+        Address
+      </b> <br>
+      {{user.Address}} <br>
+      <br>
+
+      <a routerLink="">Edit my profile</a>
+    </p>
+
+  </div>
+</div>

@@ -1,3 +1,55 @@
+<div class="top-navigation">
+  <div class="logo">
+    <img src="assets/images/logo-beta.png" alt="">
+  </div>
+
+  <div class="logo">
+
+  </div>
+  <div class="search">
+    <div class="input-group">
+      <div>
+        <input type="text" placeholder="Type your query...">
+      </div>
+      <div class="icon">
+        <img src="assets/images/search.svg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="back">
+    <p>
+      <span> <i class="pi pi-arrow-left"></i> </span> Back to shopping
+    </p>
+  </div>
+  <div class="back">
+
+  </div>
+
+  <div class="profile">
+    <div class="image">
+      <img src="assets/images/customer-icon.svg" alt="">
+    </div>
+    <div class="name">
+      <h3>
+        Hello Ndu
+      </h3>
+    </div>
+  </div>
+
+  <div class="cart">
+    <div class="image">
+      <img src="assets/images/smart-cart.svg" alt="">
+      <span>10</span>
+    </div>
+    <div class="name">
+      <h3>Cart</h3>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="top-bar" [ngStyle]="{'background-color':shopPrimaryColor || '#104CE5'}">
   <div class="logo">
     <a routerLink="/home"><img class="logo" src="assets/images/logo-full-bg.png" alt=""></a>
@@ -9,10 +61,11 @@
     <ul>
       <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">
         </a></li>
-      <li><a  routerLink="/shop">Back to all shops</a></li>
-      <li><a [ngStyle]="{'color':shopSecondaryColor,'border':'2px solid '+shopSecondaryColor, 'padding':'.5rem'}" routerLink="/shop/customer-login/home">Login & Register</a></li>
+      <li><a routerLink="/shop">Back to all shops</a></li>
+      <li><a [ngStyle]="{'color':shopSecondaryColor,'border':'2px solid '+shopSecondaryColor, 'padding':'.5rem'}"
+          routerLink="/shop/customer-login/home">Login & Register</a></li>
       <li class="cart" (mouseover)="showCart=true">
-        <span class="cart-span"> 
+        <span class="cart-span">
           {{cartItems}}
           <i class="pi pi-shopping-cart"></i>
         </span>
@@ -57,8 +110,10 @@
       <img src="assets/images/close-mobilemenu.svg" alt="">
     </div>
     <ul class="nav-items">
-      <li><a [ngStyle]="{'color':shopSecondaryColor}" (click)="toggleNav()"  routerLink="/shop">Back to all shops</a></li>
-      <li><a [ngStyle]="{'color':shopSecondaryColor,'border':'2px solid '+shopSecondaryColor, 'padding':'.5rem'}" routerLink="/shop">Login & Register</a></li>
+      <li><a [ngStyle]="{'color':shopSecondaryColor}" (click)="toggleNav()" routerLink="/shop">Back to all shops</a>
+      </li>
+      <li><a [ngStyle]="{'color':shopSecondaryColor,'border':'2px solid '+shopSecondaryColor, 'padding':'.5rem'}"
+          routerLink="/shop">Login & Register</a></li>
 
     </ul>
   </div>

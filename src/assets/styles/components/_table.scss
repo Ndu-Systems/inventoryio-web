@@ -1,5 +1,5 @@
 .table {
-  padding: 1rem .5rem;
+  padding: 0;
   background: $white-color;
 
   @media only screen and (max-width: 600px) {
@@ -21,19 +21,20 @@
     grid-template-columns: 40% 15% 25% 18%;
     grid-gap: .5rem;
     border-bottom: 3px solid $ligher-gray;
+    background: #D7DBE4;
 
 
 
     .header-item {
-      font-weight: 800;
+      font-weight: 600;
       padding: .5rem;
       text-transform: uppercase;
-      font-size: .8rem;
+      font-size: .7rem;
     }
   }
 
   .body-container {
-    max-height: 70vh;
+    max-height: 65vh;
     overflow-y: scroll;
     overflow-x: hidden;
 

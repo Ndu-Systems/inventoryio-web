@@ -1,0 +1,111 @@
+@import '../../../../assets/styles/variables';
+
+.top-navigation {
+  display: grid;
+  grid-template-columns: 10% 10% 30% 10% 20% 5% auto;
+  -webkit-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+  // border-radius: $box-border-radius;
+  border-radius: 0;
+  padding: .5rem 1rem;
+  position: relative;
+  z-index: 1000;
+
+  div {
+    // border: 1px solid black;
+  }
+
+  .logo {
+    padding-top: .6rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .search {
+    .input-group {
+      padding: .5rem;
+      height: 3rem;
+      display: grid;
+      grid-template-columns: 90% auto;
+
+      input {
+        height: 2rem;
+        margin: 0;
+        padding: .2rem 1.5rem;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        background: $white-color;
+        border: 2px solid $primary-bg-color;
+
+        &::placeholder {
+          font-weight: 200;
+        }
+
+      }
+
+      .icon {
+        background: $primary-bg-color;
+        padding: .6rem .5rem;
+        height: 2rem;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+
+        img {
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  .back {
+    padding: .3rem 1rem;
+
+    p {
+      font-weight: 700;
+      font-size: .8rem;
+      margin: 0;
+      border: 1px solid $black-color;
+      border-radius: 1rem;
+      position: relative;
+      left: 1rem;
+      width: auto;
+      padding: .2rem .5rem;
+      top: .5rem;
+      text-align: center;
+
+      span {
+        position: relative;
+        top: .2rem;
+      }
+    }
+
+  }
+
+  .profile {
+    display: grid;
+    grid-template-columns: 85% auto;
+    padding-top: .8rem;
+    text-align: right;
+    cursor: pointer;
+
+    .image {
+      img {
+        width: 1.9rem;
+        border-radius: 100%;
+        position: relative;
+        top: -5px;
+        border: 2px solid $primary-bg-color;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      padding: 0 .5rem;
+      font-size: .8rem;
+      color: $primary-bg-color;
+    }
+  }
+
+}

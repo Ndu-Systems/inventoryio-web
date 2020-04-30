@@ -376,6 +376,15 @@ span.step {
 }
 
 
+.customer-portal {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 20% auto;
+  background: $default-bg;
+  padding: .5rem;
+  border-radius: $box-border-radius;
+}
+
 @keyframes ghostMove {
   0% {
     left: 0;

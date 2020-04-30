@@ -25,6 +25,7 @@ export class PurchaseOrderComponent implements OnInit {
   user: User;
   currentIndex: number;
   selectdPartnerId: string;
+  selectdPartnerEmail: string;
 
 
   constructor(
@@ -126,6 +127,7 @@ export class PurchaseOrderComponent implements OnInit {
     const order: Orders = {
       CompanyId: this.user.CompanyId,
       ParntersId: this.selectdPartnerId || '',
+      ParntersEmail: this.selectdPartnerEmail || '',
       OrderType: 'Purchase',
       Total: subTot,
       Paid: 0,
@@ -172,6 +174,7 @@ export class PurchaseOrderComponent implements OnInit {
   }
   selectSupplierSuggestion(selectdPartner: Partner) {
     this.selectdPartnerId = selectdPartner.PartnerId;
+    this.selectdPartnerEmail = selectdPartner.EmailAddress;
     this.supplier = `${selectdPartner.Name} ${selectdPartner.Surname}`;
     this.supplierSuggestions = [];
   }

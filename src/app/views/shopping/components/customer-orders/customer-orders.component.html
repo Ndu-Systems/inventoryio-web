@@ -1,0 +1,88 @@
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
+</app-shopping-nav>
+<div class="customer-portal" *ngIf="user">
+  <div class="nav">
+    <app-customer-nav-bar></app-customer-nav-bar>
+  </div>
+
+
+  <div class="body">
+    <h1>
+      My orders
+    </h1>
+
+
+    <div class="table" *ngIf="orders.length > 0; else notFound">
+      <div class="header">
+        <div class="header-item">
+          Products
+        </div>
+        <div class="header-item">
+          Total
+        </div>
+
+        <div class="header-item ">
+          Date
+        </div>
+        <div class="header-item ">
+          Status
+        </div>
+        <div class="header-item tar">
+          Actions
+        </div>
+      </div>
+      <div class="body-container">
+        <div class="body" *ngFor="let item of orders">
+          <div class="body-item">
+          
+
+            <span *ngIf="item.Products">
+              <span *ngFor="let product of item.Products">
+                <span class="product-images">
+                  <img [src]="product.Images[0].Url" alt="" *ngIf="product.Images" />
+                  <img src="assets/images/placeholder.png" *ngIf="!product.Images" alt="" />
+                </span>
+        
+              </span>
+            </span>
+
+          </div>
+          <div class="body-item">
+            <p>
+              <b>
+                {{item.Total  | currency:'R'}}
+              </b>
+            </p>
+          </div>
+          <div class="body-item">
+            <p>
+
+              {{item.CreateDate | date:'shortDate'}}
+
+            </p>
+
+          </div>
+          <div class="body-item">
+            <p>
+
+              {{item.Status}}
+
+            </p>
+
+          </div>
+          <div class="body-item tar">
+            <button class="btn-primary" (click)="details(item)">
+              <i class="pi pi-eye"></i> View
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- 
+    <div class="orders">
+      <pre>
+  {{orders | json}}
+</pre>
+    </div> -->
+  </div>
+</div>

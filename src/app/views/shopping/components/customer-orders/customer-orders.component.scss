@@ -1,0 +1,48 @@
+@import '../../../../../assets/styles/variables';
+
+.body {
+  background: $white-color;
+  margin: .5rem;
+  border-radius: $box-border-radius;
+  padding: 0 1rem;
+
+
+  //  table
+  .header {
+    grid-template-columns: 30% 25% 15% 15% auto;
+  }
+
+  .body-container {
+    .body {
+      grid-template-columns: 30% 25% 15% 15% auto;
+
+      .pc-only {
+        display: none;
+      }
+    }
+
+  }
+
+  .mobile-table {
+    .image-name {
+      display: grid;
+      grid-template-columns: 15% 10% 50% 5% auto;
+    }
+  }
+}
+
+.product-images {
+  display: block;
+  position: relative;
+
+  img {
+   display: flex;
+   float: left;
+   border: 1px solid $cloud;
+   height: 3rem;
+   margin-right: .4rem;
+   border-radius: 5px;
+  }
+
+
+}

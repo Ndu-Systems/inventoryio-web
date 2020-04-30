@@ -210,6 +210,9 @@ export class OrdersService {
       });
     });
   }
+  getOrdersByEmail(ParntersEmail) {
+    return this.http.get<any>(`${this.url}/api/orders/get-orders-for-customer.php?ParntersEmail=${ParntersEmail}`);
+  }
   getOrdersForType(companyId): Observable<Orders[]> {
     return this.http.get<Orders[]>(`${this.url}/api/orders/get-orders.php?CompanyId=${companyId}`);
   }

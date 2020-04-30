@@ -86,6 +86,7 @@ import { CreditNoteComponent } from './products/credit-note/credit-note.componen
 import { PurchaseOrderComponent } from './orders/purchase-order/purchase-order/purchase-order.component';
 import { ListPurchaseOrderComponent } from './orders/purchase-order/list-purchase-order/list-purchase-order.component';
 import { PurchaseOrderDetailsComponent } from './orders/purchase-order/purchase-order-details/purchase-order-details.component';
+import { DasboardTopNavBarComponent } from './dasboard-top-nav-bar/dasboard-top-nav-bar.component';
 
 const routes: Routes = [
   {
@@ -239,7 +240,8 @@ export const declarations = [
   CreditNoteComponent,
   ListPurchaseOrderComponent,
   PurchaseOrderComponent,
-  PurchaseOrderDetailsComponent
+  PurchaseOrderDetailsComponent,
+  DasboardTopNavBarComponent
 ];
 
 @NgModule({

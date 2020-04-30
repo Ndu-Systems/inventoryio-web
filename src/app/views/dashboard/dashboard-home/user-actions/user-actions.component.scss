@@ -4,7 +4,7 @@
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(10, 10%);
+    grid-template-columns: repeat(6, 15%);
 
     @media only screen and (max-width: 1024px) {
       grid-gap: 0rem;

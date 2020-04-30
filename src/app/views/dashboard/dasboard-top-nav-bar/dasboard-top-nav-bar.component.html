@@ -1,0 +1,43 @@
+<div class="top-navigation" *ngIf="user$ | async as user">
+  <div class="logo">
+    <a routerLink="/dashboard">
+      <img src="assets/images/logo-beta.png" alt="">
+    </a>
+  </div>
+  <div class="empty"></div>
+  <div class="search">
+    <div class="input-group">
+      <div>
+        <input type="text" placeholder="Type your query...">
+      </div>
+      <div class="icon">
+        <img src="assets/images/search.svg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="empty"></div>
+
+
+  <div class="back">
+    <p>
+      {{user.Company?.Name}}
+    </p>
+  </div>
+  <div class="back">
+
+  </div>
+
+  <div class="profile" (click)="toProfile(user)">
+    <div class="name">
+      <h3>
+        Hello, {{user.Name}}
+      </h3>
+    </div>
+    <div class="image">
+      <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
+      <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="">
+    </div>
+
+  </div>
+</div>

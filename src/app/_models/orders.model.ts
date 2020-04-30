@@ -6,6 +6,7 @@ export interface Orders {
     OrderId?: number;
     CompanyId: string;
     ParntersId: string;
+    ParntersEmail?: string;
     OrderType: string;
     Total: number;
     Paid: number;

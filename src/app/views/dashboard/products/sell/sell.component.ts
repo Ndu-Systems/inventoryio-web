@@ -192,6 +192,7 @@ export class SellComponent implements OnInit {
     const order: Orders = {
       CompanyId: this.user.CompanyId,
       ParntersId: this.selectedPartner && this.selectedPartner.PartnerId || null,
+      ParntersEmail: this.selectedPartner && this.selectedPartner.EmailAddress || null,
       OrderType: 'Sell',
       Total: this.sale.total,
       Paid: 0,

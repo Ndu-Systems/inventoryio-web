@@ -16,12 +16,16 @@ import { RemoveNoValuesAttributesPipe } from 'src/app/_pipes/remove-no-values-at
 import { CustomerPortalComponent } from './components/customer-portal/customer-portal.component';
 import { CustomerLoginComponent } from './components/customer-login/customer-login.component';
 import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
+import { CustomerOrdersComponent } from './components/customer-orders/customer-orders.component';
+import { CustomerNavBarComponent } from './components/customer-nav-bar/customer-nav-bar.component';
+import { CustomerOrderDetailsComponent } from './components/customer-order-details/customer-order-details.component';
+import { FormatDashBoardOptionsPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
 const routes: Routes = [
   {
     path: '', component: ShoppingComponent,
     children: [
       // { path: '', component: ShopsComponent },
-      { path: 'at/:id', component: ShopComponent},
+      { path: 'at/:id', component: ShopComponent },
       { path: 'shopping-cart/:id', component: ShoppingCartComponent },
       { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
       { path: 'view-product/:id', component: ViewProductComponent },
@@ -29,6 +33,8 @@ const routes: Routes = [
       { path: 'customer-login/:id', component: CustomerLoginComponent },
       { path: 'customer-signup/:id', component: CustomerSignupComponent },
       { path: 'customer-portal/:id', component: CustomerPortalComponent },
+      { path: 'customer-orders/:id', component: CustomerOrdersComponent },
+      { path: 'customer-order-details/:id', component: CustomerOrderDetailsComponent },
     ]
   }
 ];
@@ -48,7 +54,11 @@ export const declarations = [
   RemoveNoValuesAttributesPipe,
   CustomerPortalComponent,
   CustomerLoginComponent,
-  CustomerSignupComponent
+  CustomerSignupComponent,
+  CustomerOrdersComponent,
+  CustomerNavBarComponent,
+  CustomerOrderDetailsComponent,
+  FormatDashBoardOptionsPipeCustomer
 ];
 
 

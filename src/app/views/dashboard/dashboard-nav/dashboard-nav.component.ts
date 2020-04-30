@@ -42,103 +42,87 @@ export class DashboardNavComponent implements OnInit {
     this.getUserRole(user);
     this.getDeviceSize();
     this.populateSideNav();
-    this.populateSalesNav();
   }
 
   populateSideNav() {
     this.models = [] = [
       {
-        Name: 'Dashboard',
+        Name: 'Overview',
         Link: '/dashboard/',
-        Icon: `pi pi-home`,
+        Icon: `assets/images/dashboard-nav-icons/dashboard.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/dashboard-white.svg`,
         showItem: true
       },
       {
         Name: 'Reports',
         Link: '/dashboard/reports',
-        Icon: `pi pi-chart-line`
+        Icon: `assets/images/dashboard-nav-icons/reports.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/reports-white.svg`,
       },
       {
-        Name: 'New product',
-        Link: '/dashboard/add-product',
-        Icon: `pi pi-plus`,
-        showItem: true
-      },
-      {
-        Name: 'My products',
+        Name: 'Products',
         Link: '/dashboard/list-product',
-        Icon: `pi pi-shopping-cart`,
-        showItem: true
-      }
-    ];
-  }
-  populateSalesNav() {
-    this.salesNavModels = [] = [
-
-      {
-        Name: 'New Sales Order',
-        Link: '/dashboard/sell',
-        Icon: `pi pi-plus`,
-        showItem: true
+        Icon: `assets/images/dashboard-nav-icons/products.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/products-white.svg`,
+        showItem: true,
+        AddUrl: '/dashboard/add-product'
       },
       {
-        Name: 'sales orders',
+        Name: 'Sales invoices',
         Link: '/dashboard/list-orders',
-        Icon: `pi pi-align-left`,
-        showItem: true
+        Icon: `assets/images/dashboard-nav-icons/sales.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/sale-white.svg`,
+        showItem: true,
+        AddUrl: '/dashboard/sell'
       },
       {
-        Name: 'New Quote',
-        Link: '/dashboard/qoute-customer',
-        Icon: `pi pi-plus`,
-        showItem: true
-      },
-      {
-        Name: 'View Quotes',
+        Name: 'Quotes',
         Link: '/dashboard/qoutes-list',
-        Icon: `pi pi-align-left`,
-        showItem: true
-      },
-      {
-        Name: 'New Purchaser Order',
-        Link: '/dashboard/new-purchase-order',
-        Icon: `pi pi-plus`,
-        showItem: true
+        Icon: `assets/images/dashboard-nav-icons/qoute.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/qoute-white.svg`,
+        showItem: true,
+        AddUrl: '/dashboard/qoute-customer'
       },
       {
         Name: 'Purchaser Orders',
         Link: '/dashboard/purchase-orders-list',
-        Icon: `pi pi-align-left`,
-        showItem: true
+        Icon: `assets/images/dashboard-nav-icons/purchase-order.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/purchase-order-white.svg`,
+        showItem: true,
+        AddUrl: '/dashboard/new-purchase-order'
       },
-    ];
-  }
-  populateProfileNav() {
-    this.profileModels = [] = [
-
       {
-        Name: 'configuration',
+        Name: 'Settings',
         Link: '/dashboard/configurations',
-        Icon: `pi pi-cog`,
-        // showItem: this.configRight
+        Icon: `assets/images/dashboard-nav-icons/settings.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/settings-white.svg`,
         showItem: true
       },
       {
-        Name: 'support',
+        Name: 'Support',
         Link: '/dashboard/support',
-        Icon: `pi pi-comments`,
-        // showItem: this.configRight
+        Icon: `assets/images/dashboard-nav-icons/support.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/support-white.svg`,
+        showItem: true
+      },
+      {
+        Name: 'Sign out',
+        Link: '/',
+        Icon: `assets/images/dashboard-nav-icons/power.svg`,
         showItem: true
       }
     ];
-    this.profileMobileModels = [] = [
-      {
-        Name: 'sign out',
-        Link: '/',
-        Icon: ``
-      }
-    ];
   }
+
+  selectLink(item: NavModel, index: number) {
+    this.models.forEach(x => {
+      x.Active = false;
+      x.Style = {};
+    });
+    this.models[index].Active = true;
+    this.models[index].Style = { background: 'blue', color: 'white', 'border-radius': '5px' };
+  }
+
 
   linkEvent(profileItem: NavModel) {
     if (profileItem.Link === '/') {
@@ -175,8 +159,6 @@ export class DashboardNavComponent implements OnInit {
         this.rolePermissions = [];
         this.rolePermissions = data;
         this.canConfigure();
-        this.populateProfileNav();
-
       }
     });
   }

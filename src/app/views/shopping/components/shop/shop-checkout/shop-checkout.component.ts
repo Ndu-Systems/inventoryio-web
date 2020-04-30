@@ -251,6 +251,7 @@ export class ShopCheckoutComponent implements OnInit {
       CompanyId: this.companyId,
       Customer: this.selectedPartner || null,
       ParntersId: '',
+      ParntersEmail: this.selectedPartner && this.selectedPartner.EmailAddress || null,
       OrderType: 'Sell',
       Total: this.sale.total,
       Paid: 0,
