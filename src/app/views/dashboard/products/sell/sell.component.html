@@ -1,10 +1,5 @@
 <div class="sell-page">
   <div class="selling">
-    <div class="customer">
-
-    </div>
-
-
 
     <div class="products-page" *ngIf="products$  | async as products">
       <div class="list-header">
@@ -34,6 +29,37 @@
           <div class="search">
             <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
           </div>
+        </div>
+      </div>
+
+      <div class="customer" *ngIf="selectedPartner">
+        <div class="input">
+          <div class="customer-search">
+            <span>Customer Name</span>
+            <input type="text" [(ngModel)]="selectedPartner.Name" (keyup)="searchCustomers($event.target.value)" class="roundInput" placeholder="Search customer ...">
+            <div class="dropdown  result" *ngIf="customerSuggestions.length > 0">
+              <p *ngFor="let item of customerSuggestions; let i = index">
+                <span (click)="selectCustomer(item)">{{item.Name}} {{item.Surname}}</span>
+              </p>
+            </div>
+          </div>
+
+
+          <br>
+          <div *ngIf="shippingsList?.length">
+            <span>Shipping Method</span>
+            <select (change)="deliveryChanged($event.target.value)" class="roundInput">
+              <option value="delivery" selected>Please select</option>
+              <option [value]="ship.key" *ngFor="let ship of shippingsList">{{ship.line}}</option>
+            </select>
+          </div>
+        </div>
+
+
+
+        <div class="input">
+          <span>Customer Address</span>
+          <textarea class="roundInput" [(ngModel)]="selectedPartner.Address" name="" id="" cols="30" rows="10"></textarea>
         </div>
       </div>
 
@@ -90,15 +116,15 @@
             </div>
             <div class="body-item">
               <p>
-             
-                  {{item.UnitPrice | currency:'R'}}
-             
+
+                {{item.UnitPrice | currency:'R'}}
+
               </p>
 
             </div>
             <div class="body-item tac">
 
-        
+
 
             </div>
             <div class="body-item tar">
@@ -177,7 +203,7 @@
 
       <div class="total">
         <h4>
-          Total:  {{sale?.total + deliveryFee | currency:'R'}}
+          Total: {{sale?.total + deliveryFee | currency:'R'}}
         </h4>
       </div>
       <div class="actions">

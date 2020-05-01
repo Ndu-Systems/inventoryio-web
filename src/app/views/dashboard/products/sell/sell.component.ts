@@ -25,10 +25,11 @@ export class SellComponent implements OnInit {
   products: Product[];
   categories: string[] = [];
   showCart = true;
-  searchByCatergory;
+  searchByCatergory = '';
   width: number;
   notFoundModel: NotFoundModel;
   searchCustomer;
+  customerSuggestions = [];
   // results = [];
 
   selectedCustomerId = '';
@@ -104,6 +105,23 @@ export class SellComponent implements OnInit {
       this.shippings = this.user.Company.Shipping;
       this.groupShipping();
     }
+    
+    this.selectedPartner = {
+      PartnerId: '',
+      CompanyId: '',
+      PartnerType: '',
+      Name: '',
+      Surname: '',
+      CellphoneNumber: '',
+      EmailAddress: '',
+      Password: '',
+      Address: '',
+      CreateDate: '',
+      CreateUserId: '',
+      ModifyDate: '',
+      ModifyUserId: '',
+      StatusId: '1'
+    };
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
@@ -271,9 +289,11 @@ export class SellComponent implements OnInit {
     this.showChangeCustomer = true;
   }
   selectCustomer(customer: Partner) {
+    this.selectedCustomerId = customer.PartnerId;
     this.selectedPartner = customer;
-    this.showChangeCustomer = false;
+    this.customerSuggestions = [];
   }
+
 
   optionSelected(valueId, attributeId, product: Product) {
     // if (!this.checkIfPrevItemIsAddedToCart(product.ProductId)) {
@@ -400,6 +420,14 @@ export class SellComponent implements OnInit {
   }
   findConfigKeyByName(name: string, items) {
     return items.find(x => x.Name === name).GroupKey;
+  }
+  searchCustomers(key: string) {
+    if (key) {
+      this.customerSuggestions = this.customers.filter(
+        x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()) ||
+          x.Surname.toLocaleLowerCase().includes(key.toLocaleLowerCase())
+      );
+    }
   }
 }
 

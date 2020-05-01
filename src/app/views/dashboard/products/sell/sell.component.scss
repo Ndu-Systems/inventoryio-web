@@ -6,8 +6,48 @@
 
   .selling {
 
+    .customer {
+      display: grid;
+      grid-template-columns: 50% auto;
+      background: $white-color;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      margin-top: 1.2rem;
+
+      .customer-search {
+        position: relative;
+
+        .result {
+          position: absolute;
+          // top: 0;
+          // left: 0;
+        }
+      }
+
+      .input {
+        span {
+          display: block;
+          color: $black-color;
+          font-weight: 700;
+          text-transform: uppercase;
+          font-size: .8rem;
+          padding-left: .5rem;
+        }
+
+        textarea {
+          height: 7rem;
+          width: 96%;
+        }
+
+        input {
+          // margin-bottom: 1.5rem;
+        }
+      }
+
+    }
+
     .products-page {
-      padding: 1rem 4rem;
+      padding: 1rem;
       width: 100%;
 
       @media only screen and (max-width: 600px) {
@@ -203,6 +243,8 @@
     }
 
     .body-container {
+      max-height: 40vh;
+
       .body {
         grid-template-columns: 10% 35% 15% 20% auto;
 
@@ -231,6 +273,8 @@
       margin-bottom: .5rem;
 
       .heading {
+        padding-left: 0;
+
         h1 {
           font-size: 1.6rem;
           margin: 0;
@@ -244,6 +288,7 @@
     .cart-items {
       background: $white-color;
       padding: 1rem;
+      height: 90%;
 
       .total {
         h4 {
