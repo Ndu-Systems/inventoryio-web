@@ -26,6 +26,7 @@ export interface Product {
     Catergory?: Caterory;
     Brand?: Brand;
     QuantityAvailable?: number;
+    QuantitySelected?: number;
     images?: Image[];
     Attributes?: Attribute[];
 

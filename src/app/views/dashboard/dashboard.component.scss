@@ -1,26 +1,15 @@
 @import '../../../assets/styles/variables';
 
 .dashboard-module {
-  // padding: 1rem 14rem;
-  padding: 0rem 8rem;
-
   .dashboard {
-    // margin-top: 1rem;
     display: grid;
-    grid-template-columns: 20% auto;
+    grid-template-columns: 15% auto;
     background: $default-bg;
     padding: 0;
-    // border-radius: $box-border-radius;
 
-    .body{
-      // background: $white-color;
-      background: $default-bg;
-
-      // margin: .5rem;
-      // border-radius: $box-border-radius;
-      height: 95%;
-      // -webkit-box-shadow: $box-shadow;
-      // box-shadow: $box-shadow;
+    .body {
+      background:$default-bg;
+      height: 90vh;
     }
   }
 }

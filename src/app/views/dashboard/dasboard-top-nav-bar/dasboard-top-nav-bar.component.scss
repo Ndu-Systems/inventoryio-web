@@ -2,19 +2,17 @@
 
 .top-navigation {
   display: grid;
-  grid-template-columns: 10% 10% 30% 10% 20% 5% auto;
-  -webkit-box-shadow: $box-shadow;
-  box-shadow: $box-shadow;
-  // border-radius: $box-border-radius;
-
-  -webkit-box-shadow: 1px 15px 5px 0px rgba(0, 0, 0, 0.03);
-  -moz-box-shadow: 1px 15px 5px 0px rgba(0, 0, 0, 0.03);
-  box-shadow: 1px 15px 5px 0px rgba(0, 0, 0, 0.03);
+  grid-template-columns: 20% 10% 20% 10% 20% 5% auto;
+  background: $default-bg;
+  ;
 
   border-radius: 0;
-  padding: .5rem 1rem;
+  padding: 1rem;
   position: relative;
   z-index: 1000;
+  top: -7px;
+  border-bottom: 1px solid $border-color;
+  //   left: -16px;
 
   div {
     // border: 1px solid black;
@@ -30,19 +28,19 @@
 
   .search {
     .input-group {
-      padding: .5rem;
-      height: 3rem;
+      padding: .1rem .8rem;
+      height: 2.5rem;
       display: grid;
-      grid-template-columns: 90% auto;
+      grid-template-columns: 14% auto;
+      background: $default-bg;
+      border: 2px solid $gray-color;
+      border-radius: 28px;
 
       input {
         height: 2rem;
         margin: 0;
         padding: .2rem 1.5rem;
-        border-top-left-radius: 1rem;
-        border-bottom-left-radius: 1rem;
-        background: $white-color;
-        border: 2px solid $primary-bg-color;
+        background: $default-bg;
 
         &::placeholder {
           font-weight: 200;
@@ -51,15 +49,19 @@
       }
 
       .icon {
-        background: $primary-bg-color;
-        padding: .6rem .5rem;
+        background: $default-bg;
+        padding: .3555rem .5rem;
         height: 2rem;
-        border-top-right-radius: 1rem;
-        border-bottom-right-radius: 1rem;
 
         img {
-          width: 80%;
+          width: 100%;
         }
+      }
+
+      .dropdown {
+        left: 0.8rem;
+        width: 30rem;
+        top: 55px;
       }
     }
   }
@@ -76,7 +78,7 @@
       position: relative;
       left: 1rem;
       width: auto;
-      padding: .2rem .5rem;
+      padding: .4rem .5rem;
       top: .5rem;
       text-align: center;
 
@@ -101,7 +103,7 @@
         border-radius: 100%;
         position: relative;
         top: -5px;
-        border: 2px solid $primary-bg-color;
+        border: 2px solid $black-color;
       }
     }
 
@@ -109,7 +111,15 @@
       margin: 0;
       padding: 0 .5rem;
       font-size: .8rem;
-      color: $primary-bg-color;
+      color: $black-color;
+      ;
+
+      span {
+        display: block;
+        // text-align: left;
+        font-weight: 500;
+
+      }
     }
   }
 

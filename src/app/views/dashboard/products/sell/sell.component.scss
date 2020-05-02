@@ -18,9 +18,11 @@
         position: relative;
 
         .result {
-          position: absolute;
-          // top: 0;
-          // left: 0;
+          width: 15rem;
+          left: 0.5rem;
+          border-radius: 9px;
+          border-top-right-radius: 0;
+          border-top-left-radius: 0;
         }
       }
 
@@ -303,6 +305,73 @@
         display: grid;
         grid-template-columns: 50% auto;
       }
+    }
+  }
+}
+
+.select-attributes-modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10001;
+  background: rgba(0, 0, 0, 0.281);
+  top: 0;
+  left: 0;
+
+  .modal {
+    width: 30%;
+    margin: 15% auto;
+
+    .header {
+      background: $primary-bg-color;
+      padding: .5rem;
+      display: grid;
+      grid-template-columns: 95% auto;
+
+      h1 {
+        color: $white-color;
+        font-size: 1.4rem;
+        margin: 0;
+      }
+
+      .close {
+        cursor: pointer;
+      }
+    }
+
+    .body {
+      background: $white-color;
+      display: grid;
+      grid-template-columns: 30% auto;
+      padding: .5rem;
+
+      .image {
+        img {
+          width: 100%;
+        }
+      }
+
+      .item-options {
+        padding: .5rem;
+
+        .label {
+          text-transform: capitalize;
+          display: block;
+          padding-left: .5rem;
+        }
+
+        .actions {
+          display: grid;
+          grid-template-columns: 30% auto;
+          padding: 1rem .5rem;
+        }
+      }
+
+      .qnty {
+        margin-left: 0;
+      }
+
+
     }
   }
 }

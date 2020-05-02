@@ -46,6 +46,8 @@ export class SellComponent implements OnInit {
   deliveryFee = 0;
   shippings: Config[] = [];
   currency = 'R';
+  productForAttributes: Product;
+  selectProductQnty = 1;
 
 
 
@@ -77,6 +79,26 @@ export class SellComponent implements OnInit {
 
     this.saleService.sell.subscribe(state => {
       this.sale = state;
+      if (this.sale && this.sale.Customer) {
+        this.selectedPartner = this.sale.Customer;
+      } else {
+        this.selectedPartner = {
+          PartnerId: '',
+          CompanyId: '',
+          PartnerType: '',
+          Name: '',
+          Surname: '',
+          CellphoneNumber: '',
+          EmailAddress: '',
+          Password: '',
+          Address: '',
+          CreateDate: '',
+          CreateUserId: '',
+          ModifyDate: '',
+          ModifyUserId: '',
+          StatusId: '1'
+        };
+      }
     });
 
     this.notFoundModel = {
@@ -105,23 +127,7 @@ export class SellComponent implements OnInit {
       this.shippings = this.user.Company.Shipping;
       this.groupShipping();
     }
-    
-    this.selectedPartner = {
-      PartnerId: '',
-      CompanyId: '',
-      PartnerType: '',
-      Name: '',
-      Surname: '',
-      CellphoneNumber: '',
-      EmailAddress: '',
-      Password: '',
-      Address: '',
-      CreateDate: '',
-      CreateUserId: '',
-      ModifyDate: '',
-      ModifyUserId: '',
-      StatusId: '1'
-    };
+
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
@@ -165,7 +171,7 @@ export class SellComponent implements OnInit {
 
       // if the item is a dublicate just inclease quantity
       if (checkOptionMatch) {
-        checkOptionMatch.quantity++;
+        checkOptionMatch.quantity += Number(product.QuantitySelected);
         this.saleService.doSellLogic(checkOptionMatch);
 
       } else {
@@ -176,13 +182,16 @@ export class SellComponent implements OnInit {
             companyId: this.user.CompanyId,
             name: product.Name,
             price: Number(product.UnitPrice),
-            quantity: Number(1),
+            quantity: Number(product.QuantitySelected),
             image: product.images && product.images[0].Url,
             options: JSON.parse(this.getProductSelectedItemsString(product))
           });
       }
     }
+    this.closeOptions();
+    this.productOptions = [];
   }
+
   clear() {
     this.saleService.clearState();
   }
@@ -197,14 +206,14 @@ export class SellComponent implements OnInit {
     }
     this.ordersService.updateOrderState(null);
 
-    if (!this.selectedShippingMethod && this.shippings.length > 0) {
-      this.messageService.add({
-        severity: 'warn',
-        summary: 'Shipping Method not selected',
-        detail: 'Please select shipping method before you checkout.'
-      });
-      return false;
-    }
+    // if (!this.selectedShippingMethod && this.shippings.length > 0) {
+    //   this.messageService.add({
+    //     severity: 'warn',
+    //     summary: 'Shipping Method not selected',
+    //     detail: 'Please select shipping method before you checkout.'
+    //   });
+    //   return false;
+    // }
     this.sale.charges = [this.selectedShippingMethod];
     this.saleService.updateState(this.sale);
     const order: Orders = {
@@ -290,16 +299,16 @@ export class SellComponent implements OnInit {
   }
   selectCustomer(customer: Partner) {
     this.selectedCustomerId = customer.PartnerId;
+    customer.Name = customer.Name + ' ' + customer.Surname;
     this.selectedPartner = customer;
     this.customerSuggestions = [];
+    if (this.sale) {
+      this.sale.Customer = customer;
+    }
   }
 
 
   optionSelected(valueId, attributeId, product: Product) {
-    // if (!this.checkIfPrevItemIsAddedToCart(product.ProductId)) {
-    //   return false;
-    // }
-
     const selectValueId = Number(valueId);
     if (this.productOptions.find(x => x.OptionId === attributeId)) {
       this.productOptions = this.productOptions.filter(x => x.OptionId !== attributeId);
@@ -351,13 +360,8 @@ export class SellComponent implements OnInit {
   checkIfProductOptionsAreSelected(product: Product) {
     if (product.Attributes.filter(x => x.Values && x.Values.length > 0).length
       !== this.productOptions.filter(x => x.ProductId === product.ProductId).length) {
-      this.messageService.add({
-        severity: 'warn',
-        summary: 'Empty cart',
-        life: 10000,
-        detail: `Please select all options for ${product.Name}, before adding it to cart.`
-      });
-
+      this.productForAttributes = product;
+      this.productForAttributes.QuantitySelected = product.QuantitySelected || 1;
       return false;
     }
     return true;
@@ -427,6 +431,22 @@ export class SellComponent implements OnInit {
         x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()) ||
           x.Surname.toLocaleLowerCase().includes(key.toLocaleLowerCase())
       );
+    }
+  }
+
+  closeOptions() {
+    this.productForAttributes = null;
+  }
+  selectProductQntyAdjust(product: Product, key) {
+    if (!product.QuantitySelected) {
+      product.QuantitySelected = 1;
+    }
+    if (Number(key) === 1) {
+      product.QuantitySelected++;
+    } else {
+      if (this.selectProductQnty > 0) {
+        product.QuantitySelected--;
+      }
     }
   }
 }

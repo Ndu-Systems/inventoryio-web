@@ -1,5 +1,10 @@
 <div class="nav">
   <div class="items">
+    <div class="logo">
+      <a routerLink="/dashboard">
+        <img src="assets/images/logo-beta.png" alt="">
+      </a>
+    </div>
     <ul>
       <li *ngFor="let item of models; let i = index">
         <div class="item" [ngStyle]="item.Style">

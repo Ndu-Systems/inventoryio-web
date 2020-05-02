@@ -1,10 +1,13 @@
 import { OrderOptions } from './order.options.model';
+import { Partner } from '.';
 
 export interface SellModel {
     items: Item[];
     total: number;
     companyId: string;
     charges?: Charges[];
+    Customer?: Partner;
+
 }
 
 export interface Item {

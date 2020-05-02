@@ -202,7 +202,7 @@ export class ShopCheckoutComponent implements OnInit {
       this.messageService.add({
         severity: 'warn',
         summary: 'EFT Agree',
-        detail: 'Please agree to pay using EFT to the account bellow.'
+        detail: 'Please agree to pay using EFT to the account below.'
       });
       return false;
     }

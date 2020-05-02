@@ -23,7 +23,7 @@
           </div>
           <div>
             <button class="btn btn-transparent" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid'"
-              (click)="createCreditNote(order)"><i class="pi pi-pencil"></i> Create credit note</button>
+              (click)="createCreditNote(order)"><i class="pi pi-trash"></i>Cancel</button>
             <button class="btn btn-transparent" *ngIf="order.Status == 'Cancelled'" (click)="viewCreditNote(order)"><i
                 class="pi pi-print"></i> Print credit note</button>
           </div>

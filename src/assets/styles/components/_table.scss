@@ -1,6 +1,6 @@
 .table {
   padding: 0;
-  background: $white-color;
+  // background: $white-color;
 
   @media only screen and (max-width: 600px) {
     display: none;
@@ -23,6 +23,11 @@
     border-bottom: 3px solid $ligher-gray;
     background: #D7DBE4;
 
+    margin: .5rem .4rem;
+    background: #fff;
+    padding: 0.3rem;
+    border-radius: 6px;
+
 
 
     .header-item {
@@ -42,8 +47,10 @@
       display: grid;
       grid-template-columns: 40% 15% 25% 18%;
       grid-gap: .5rem;
-      border-bottom: 1px solid $ligher-gray;
-      padding: .3rem 0;
+      margin: .5rem .4rem;
+      background: #fff;
+      padding: 0.3rem;
+      border-radius: 6px;
 
 
 

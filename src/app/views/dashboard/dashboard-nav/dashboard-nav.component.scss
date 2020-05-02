@@ -2,15 +2,22 @@
 
 .nav {
   background: $white-color;
-  margin-right: 1rem;
-  // border-radius: $box-border-radius;
-  height: 95%;
-  // -webkit-box-shadow: $box-shadow;
-  // box-shadow: $box-shadow;
+  height: 100%;
 
   .items {
     padding-top: .1rem;
     max-height: 80vh;
+  }
+
+  .logo {
+    padding: 1rem;
+    text-align: left;
+
+    a {
+      img {
+        width: 9rem;
+      }
+    }
   }
 
   ul {
@@ -27,8 +34,11 @@
         display: grid;
         grid-template-columns: 15% 70% auto;
         padding: .7rem .5rem;
-        .icon{
-          img{
+        border: none;
+        margin-bottom: 1rem;
+
+        .icon {
+          img {
             width: 1.2rem;
           }
         }

@@ -36,8 +36,9 @@
         <div class="input">
           <div class="customer-search">
             <span>Customer Name</span>
-            <input type="text" [(ngModel)]="selectedPartner.Name" (keyup)="searchCustomers($event.target.value)" class="roundInput" placeholder="Search customer ...">
-            <div class="dropdown  result" *ngIf="customerSuggestions.length > 0">
+            <input type="search" autocomplete="off" [(ngModel)]="selectedPartner.Name"
+              (keyup)="searchCustomers($event.target.value)" class="roundInput" placeholder="Search customer ...">
+            <div class="dropdown  result" *ngIf="customerSuggestions.length > 0 && selectedPartner.Name">
               <p *ngFor="let item of customerSuggestions; let i = index">
                 <span (click)="selectCustomer(item)">{{item.Name}} {{item.Surname}}</span>
               </p>
@@ -59,7 +60,8 @@
 
         <div class="input">
           <span>Customer Address</span>
-          <textarea class="roundInput" [(ngModel)]="selectedPartner.Address" name="" id="" cols="30" rows="10"></textarea>
+          <textarea class="roundInput" [(ngModel)]="selectedPartner.Address" name="" id="" cols="30"
+            rows="10"></textarea>
         </div>
       </div>
 
@@ -81,21 +83,15 @@
           <div class="header-item">
             Image
           </div>
-          <div class="header-item" (click)="sort(products, 'name')">
-            <i *ngIf="!nameAsc" class="pi pi-sort-alpha-up"></i>
-            <i *ngIf="nameAsc" class="pi pi-sort-alpha-down-alt"></i>
+          <div class="header-item">
             Product name
           </div>
 
-          <div class="header-item " (click)="sort(products, 'price')">
-            <i *ngIf="priceAsc" class="pi pi-sort-numeric-up-alt"></i>
-            <i *ngIf="!priceAsc" class="pi pi-sort-numeric-down"></i>
+          <div class="header-item ">
             Price
           </div>
-          <div class="header-item tac" (click)="sort(products, 'quantity')">
-            <!-- <i *ngIf="quantityAsc" class="pi pi-sort-numeric-up-alt"></i>
-            <i *ngIf="!quantityAsc" class="pi pi-sort-numeric-down"></i>
-            Stock -->
+          <div class="header-item tac">
+            Qty
           </div>
           <div class="header-item tar">
             Actions
@@ -125,6 +121,22 @@
             <div class="body-item tac">
 
 
+              <div class="qnty">
+                <div class="min">
+                  <button class="add hover-shadow" (click)="selectProductQntyAdjust(item,-1)">
+                    <i class="pi pi-minus"></i>
+                  </button>
+                </div>
+                <div class="input">
+                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="item.QuantitySelected" (blur)="blur(item)">
+                </div>
+
+                <div class="plus">
+                  <button class="reduce hover-shadow" (click)="selectProductQntyAdjust(item,1)">
+                    <i class="pi pi-plus"></i>
+                  </button>
+                </div>
+              </div>
 
             </div>
             <div class="body-item tar">
@@ -219,222 +231,72 @@
   </div>
 </div>
 
+<div class="select-attributes-modal" *ngIf="productForAttributes">
+  <div class="modal">
+    <div class="header">
+      <h1>
+        Select Product Options
+      </h1>
 
-
-
-<!-- <div class="main">
-  <h1 class="heading">
-    Create sales order
-  </h1>
-</div>
-
-
-<div class="main">
-
-
-  <div class="cart phone-only">
-    <i (click)="toggleCart()" class="pi pi-shopping-cart"></i>
-    <div class="amount">
-      {{sale?.total | currency:'R'}}
+      <div class="close" (click)="closeOptions()">
+        <img src=" assets/images/close-options.svg" alt="">
+      </div>
     </div>
-  </div>
-  <div class="grid-70-30">
 
-    <div class="products">
+    <div class="body">
+      <div class="image">
+        <img *ngIf="productForAttributes.images" [src]="productForAttributes.images[0].Url" alt="">
+        <img *ngIf="!productForAttributes.images" src="assets/images/placeholder.png" alt="">
+      </div>
 
-      <div class="small-cards small-cards-filter">
-        <div class="customer-and-shipping-grid">
-          <div class="cutomer-details">
-            <div class="img">
-              <img *ngIf="selectedPartner" src="assets/images/order/user.svg" alt="">
-              <img *ngIf="!selectedPartner" src="assets/images/order/user-no-customer.svg" alt="">
-            </div>
-
-            <div *ngIf="!selectedPartner">
-              <h3>Guest Customer</h3>
-            </div>
-
-            <div *ngIf="selectedPartner" class="customer-rended">
-              <h3>{{selectedPartner.Name}} {{selectedPartner.Surname}}</h3>
-              <p>
-                <b> Phone No. :</b> {{selectedPartner.CellphoneNumber || 'No phone number'}}
-              </p>
-              <p class="email">
-                <b> Email:</b> {{selectedPartner.EmailAddress || 'No email address'}}
-              </p>
-              <p>
-                <b> Address:</b> {{selectedPartner.Address || 'No customer address'}}
-              </p>
-            </div>
-
-
-            <div>
-              <button class="btn btn-transparent" (click)="changeCustomer()">
-                <span class=""> <i class="pi pi-refresh"></i>Change</span>
-              </button>
-            </div>
-
-          </div>
-
-          <div class="shipping cutomer-details" *ngIf="shippingsList?.length">
-            <div>
-              <p>
-                Shipping
-              </p>
-            </div>
-            <div>
-              <select class="input" (change)="deliveryChanged($event.target.value)" name="" id="">
-                <option value="delivery" selected>Please select</option>
-                <option [value]="ship.key" *ngFor="let ship of shippingsList">{{ship.line}}</option>
+      <div class="item-options">
+        <div class="options-item" *ngFor="let attribute of productForAttributes.Attributes">
+          <div class="input">
+            <span *ngIf="attribute.Values">
+              <span class="label">{{attribute.Name}}</span>
+              <select class="roundInput"
+                (change)="optionSelected($event.target.value, attribute.AttributeId, productForAttributes)">
+                <option value="">Choose one..</option>
+                <option *ngFor="let attrValue of attribute.Values" class="select-option" [value]="attrValue.Id">
+                  {{attrValue.AttributeValue}}</option>
               </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="small-cards small-cards-filter">
-        <div class="card filter-card">
-          <div class="list-filters topbar">
-            <div class="search-box">
-              <div class="input-times">
-                <input type="text" class="roundInput" [(ngModel)]="search" placeholder="🔎 search here ...">
-              </div>
-            </div>
-
-            <div>
-              <select [(ngModel)]="searchByCatergory" class="roundInput">
-                <option value="" selected>All</option>
-                <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
-              </select>
-            </div>
-            <div>
-              <button class="btn btn-transparent" (click)="scann()">
-                <span class=""><i class="pi pi-ticket"></i>Scan</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="small-cards-body" *ngIf="products$  | async as products">
-
-        <div class="col-1-of-4" *ngIf="products.length > 0; else notFound">
-          <div class="sell-card"
-            *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-            <div class="image" *ngIf="item.images" [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
-
-            </div>
-            <div class="image" *ngIf="!item.images" [ngStyle]="{ 'background-image': 'url(' + placeholder + ')'}">
-
-            </div>
-
-            <div class="name">
-              <p>
-                {{item.Name}}
-              </p>
-            </div>
-            <div class="notes">
-              <p>
-                {{item.UnitPrice | currency:'R'}}
-              </p>
-            </div>
-
-            <div class="options" *ngIf="item.Attributes">
-              <div class="options-item" *ngFor="let attribute of item.Attributes">
-                <div class="input">
-                  <span *ngIf="attribute.Values">
-                    <select (change)="optionSelected($event.target.value, attribute.AttributeId, item)">
-                      <option value="" selected>Select {{attribute.Name}} </option>
-                      <option *ngFor="let attrValue of attribute.Values" class="select-option" [value]="attrValue.Id">
-                        {{attrValue.AttributeValue}}</option>
-                    </select>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="actions">
-              <button class="action-btn hover-shadow" (click)="doSell(item)">Add to cart</button>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-      <ng-template #notFound>
-        <div class="not-found">
-          <img [src]="notFoundModel.Image" alt="no items found">
-          <h1 class="message">
-            {{notFoundModel.Message}}
-            <span>
-              <a class="link-add" (click)="add()">add new product.</a>
             </span>
-          </h1>
-
+          </div>
         </div>
-      </ng-template>
-    </div>
-    <div class="summary" *ngIf="showCart">
-      <div class="back" (click)="toggleCart()">
-        <i class="pi pi-chevron-left"></i>
-      </div>
-      <h3>
-        Cart
-      </h3>
-      <div class="sell">
-        <app-sale-sammary></app-sale-sammary>
-      </div>
+        <div>
+          <br><br>
+          <span class="label">QTY</span>
+          <div class="qnty">
+            <div class="min">
+              <button class="add hover-shadow" (click)="selectProductQntyAdjust(productForAttributes,-1)">
+                <i class="pi pi-minus"></i>
+              </button>
+            </div>
+            <div class="input">
+              <input type="text" pInputText pKeyFilter="int" [(ngModel)]="productForAttributes.QuantitySelected"
+                (blur)="blur(productForAttributes)">
+            </div>
 
-      <div class="sell total">
-        <h4>
-          {{sale?.total + deliveryFee | currency:'R'}}
-          <span>Total</span>
-        </h4>
-
-      </div>
-
-      <div class="list-filters">
-        <div class="add">
-          <button class="btn" (click)="onSubmit()">Save order</button>
+            <div class="plus">
+              <button class="reduce hover-shadow" (click)="selectProductQntyAdjust(productForAttributes,1)">
+                <i class="pi pi-plus"></i>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="add">
-          <button class="btn btn-warn" (click)="clear()">Clear form</button>
+
+        <div class="actions">
+          <div>
+            <button class="btn" (click)="doSell(productForAttributes)">
+              <i class="pi pi-shopping-cart"></i> Cart
+            </button>
+          </div>
+
+          <div>
+            <button class="btn btn-transparent" (click)="closeOptions()">Cancel</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<div class="scanner-pluggin" *ngIf="showScan">
-  <app-scanner></app-scanner>
-</div>
-
-
-<p-dialog header="Selct a customer" [modal]="true" [(visible)]="showChangeCustomer" [style]="{width: '30%'}">
-  <div class="input-times">
-    <input type="text" class="roundInput" [(ngModel)]="searchCustomer" placeholder="🔎 search customer ...">
-  </div>
-  <table *ngIf="customers$  | async as customers">
-    <tr>
-      <td>
-        Guest Customer
-      </td>
-      <td class="actions">
-        <button class="btn" (click)="selectCustomer(null)">Select</button>
-      </td>
-    </tr>
-    <tr *ngFor="let customer of  customers | searchpartner:searchCustomer ">
-      <td>
-        {{customer.Name}} {{customer.Surname}}
-      </td>
-      <td class="actions">
-        <button class="btn btn-transparent" (click)="selectCustomer(customer)">Select</button>
-      </td>
-    </tr>
-  </table>
-  <br>
-  <br>
-  <a (click)="addCustomer()">Create new customer</a>
-</p-dialog> -->

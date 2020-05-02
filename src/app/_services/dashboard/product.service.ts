@@ -81,6 +81,7 @@ export class ProductService {
     products.sort((x, y) => {
       return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
     });
+    products.map(x => x.QuantitySelected = 1);
     this._products.next(products);
     localStorage.setItem('products', JSON.stringify(products));
 

@@ -1,186 +1,185 @@
 .main {
-    .body {
-      display: grid;
-      grid-template-columns: 30% auto;
-  
-      @media only screen and (max-width: 600px) {
-        grid-template-columns: 100%;
-      }
-  
-      .list {
-        .small-cards-body {
-          padding: 0 1rem;
-  
-          .small-cards {
-            grid-template-columns: 100%;
-  
-            .card {
-              padding: 0.1rem;
-              cursor: pointer;
-              grid-template-columns: 14% 40% auto;
-  
-              @media only screen and (max-width: 600px) {
-                grid-template-columns: 18% 40% auto;
-  
-              }
-  
-              // &:hover {
-              //   background: #104ce534;
-              // }
-  
-              .image {
-                img {
-                  width: 3rem;
-                  border-radius: 100%;
-                  // border: 2px solid #2980b9;
-                }
-              }
-  
-              .name {
-                padding-top: 1rem;
-  
-                h4,
-                h5 {
-                  margin: 0;
-                }
-  
-                .customer-name {}
-  
-                .order-status {
-                  text-transform: uppercase;
-                  font-size: .6rem;
-                }
-  
-                .new {
-                  color: #3498db;
-                }
-  
-                .partially-paid {
-                  color: #a8890b;
-                }
-  
-                .fully-paid {
-                  color: #27ae60;
-                }
-  
-                .cancelled {
-                  color: #d81010;
-                }
-  
-  
-              }
-  
-              .total {
-                padding-top: 1rem;
-  
-                h4,
-                h6 {
-                  margin: 0;
-                }
-  
-                h4 {
-                  font-weight: 400;
-  
-                }
-  
-                h6 {
-                  color: #95a5a6;
-                }
-              }
-            }
-  
-            .card-active {
-              background: #104ce5;
-              color: #fff;
-  
-              .image {
-                img {
-                  background: #fff;
-                }
-              }
-  
-              .name {
-  
-                h4,
-                h5 {
-                  color: #fff;
-                }
-  
-                .new,
-                .partially-paid,
-                .fully-paid {
-                  color: #fff;
-                }
-              }
-  
-              .total {
-  
-                h4,
-                h6 {
-                  color: #fff;
-                }
-              }
-  
-  
-  
-            }
-  
-            .filter-card {
-              grid-template-columns: 100%;
-              padding: .5rem;
-              padding-top: 1rem;
-              position: relative;
-  
-              .list-filters {
-                grid-template-columns: 60% 20% auto;
-                border: none;
-  
-                .select {
-                  border: none;
-                  padding-top: .2rem;
-                  grid-template-columns: 10% auto;
-  
-                  select {
-                    font-weight: 700;
-                    display: inline;
-                  }
-                }
-  
-              }
-  
-              .search-box {
-                position: absolute;
-                background: #fff;
-                width: 100%;
-                height: 100%;
-                padding: 1% 4%;
-  
-                .input-times {
-                  input {
-                    border: none;
-                  }
-                }
-  
-              }
-            }
-          }
-        }
-  
-      }
-  
-      .order-details {
-        .small-cards-body {
-          .small-cards {
-            grid-template-columns: 100%;
-          }
-        }
-      }
-  
+  .body {
+    display: grid;
+    grid-template-columns: 30% auto;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
     }
-  
+
+    .list {
+      .small-cards-body {
+        padding: 0 1rem;
+
+        .small-cards {
+          grid-template-columns: 100%;
+
+          .card {
+            padding: 0.1rem;
+            cursor: pointer;
+            grid-template-columns: 14% 40% auto;
+
+            @media only screen and (max-width: 600px) {
+              grid-template-columns: 18% 40% auto;
+
+            }
+
+            // &:hover {
+            //   background: #104ce534;
+            // }
+
+            .image {
+              img {
+                width: 2rem;
+                border-radius: 100%;
+                // border: 2px solid #2980b9;
+              }
+            }
+
+            .name {
+              padding-top: .4rem;
+
+              h4,
+              h5 {
+                margin: 0;
+              }
+
+              .customer-name {}
+
+              .order-status {
+                text-transform: uppercase;
+                font-size: .6rem;
+              }
+
+              .new {
+                color: #3498db;
+              }
+
+              .partially-paid {
+                color: #a8890b;
+              }
+
+              .fully-paid {
+                color: #27ae60;
+              }
+
+              .cancelled {
+                color: #d81010;
+              }
+
+
+            }
+
+            .total {
+              padding-top: .4rem;
+
+              h4,
+              h6 {
+                margin: 0;
+              }
+
+              h4 {
+                font-weight: 400;
+
+              }
+
+              h6 {
+                color: #95a5a6;
+              }
+            }
+          }
+
+          .card-active {
+            background: #104ce5;
+            color: #fff;
+
+            .image {
+              img {
+                background: #fff;
+              }
+            }
+
+            .name {
+
+              h4,
+              h5 {
+                color: #fff;
+              }
+
+              .new,
+              .partially-paid,
+              .fully-paid {
+                color: #fff;
+              }
+            }
+
+            .total {
+
+              h4,
+              h6 {
+                color: #fff;
+              }
+            }
+
+
+
+          }
+
+          .filter-card {
+            grid-template-columns: 100%;
+            padding: .5rem;
+            padding-top: 1rem;
+            position: relative;
+
+            .list-filters {
+              grid-template-columns: 60% 20% auto;
+              border: none;
+
+              .select {
+                border: none;
+                padding-top: .2rem;
+                grid-template-columns: 10% auto;
+
+                select {
+                  font-weight: 700;
+                  display: inline;
+                }
+              }
+
+            }
+
+            .search-box {
+              position: absolute;
+              background: #fff;
+              width: 100%;
+              height: 100%;
+              padding: 1% 4%;
+
+              .input-times {
+                input {
+                  border: none;
+                }
+              }
+
+            }
+          }
+        }
+      }
+
+    }
+
+    .order-details {
+      .small-cards-body {
+        .small-cards {
+          grid-template-columns: 100%;
+        }
+      }
+    }
+
   }
-  
-  .not-found {
-    margin-left: 20rem;
-  }
-  
+
+}
+
+.not-found {
+  margin-left: 20rem;
+}
