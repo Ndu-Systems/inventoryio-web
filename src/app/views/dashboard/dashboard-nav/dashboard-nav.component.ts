@@ -65,7 +65,17 @@ export class DashboardNavComponent implements OnInit {
         Icon: `assets/images/dashboard-nav-icons/products.svg`,
         ActiveIcon: `assets/images/dashboard-nav-icons/products-white.svg`,
         showItem: true,
-        AddUrl: '/dashboard/add-product'
+        AddUrl: '/dashboard/add-product',
+        SecondaryName: 'customer'
+      },
+      {
+        Name: 'Customers',
+        Link: '/dashboard/partners/customers',
+        Icon: `assets/images/dashboard-nav-icons/group.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/group-white.svg`,
+        showItem: true,
+        AddUrl: '/dashboard/add-partner/customers',
+        SecondaryName: 'customer'
       },
       {
         Name: 'Sales invoices',
@@ -114,13 +124,24 @@ export class DashboardNavComponent implements OnInit {
     ];
   }
 
-  selectLink(item: NavModel, index: number) {
-    this.models.forEach(x => {
-      x.Active = false;
-      x.Style = {};
-    });
-    this.models[index].Active = true;
-    this.models[index].Style = { background: 'blue', color: 'white', 'border-radius': '5px' };
+  selectLink(item: NavModel, index: number, secondary = 0) {
+    if (Number(secondary) === 1) {
+      this.models.map(x => { x.ShowModal = undefined; x.Active = false, x.Style = {}; });
+      this.models[index].Active = true;
+      this.models[index].Style = { background: 'blue', color: 'white', 'border-radius': '5px' };
+      item.ShowModal = false;
+
+      return true;
+    }
+    if (item.AddUrl) {
+      this.models.map(x => x.ShowModal = false);
+      item.ShowModal = true;
+    } else {
+      this.models.map(x => { x.ShowModal = false; x.Active = false, x.Style = {} });
+      this.models[index].Active = true;
+      this.models[index].Style = { background: 'blue', color: 'white', 'border-radius': '5px' };
+      this.routeTo.navigate([item.Link]);
+    }
   }
 
 

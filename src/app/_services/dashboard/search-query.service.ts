@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SearchQuery } from 'src/app/_models/serach.query.model';
+import { SearchQuery, SearchQueryGroup } from 'src/app/_models/serach.query.model';
 import { Product } from 'src/app/_models';
 import { ProductService } from './product.service';
+import { OrdersService } from './orders.service';
+import { PartnerService } from './partner.service';
+import { stat } from 'fs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchQueryService {
-  private currentSearchQuerySubject: BehaviorSubject<SearchQuery[]>;
-  public currentsSearchQuery: Observable<SearchQuery[]>;
+  private currentSearchQuerySubject: BehaviorSubject<SearchQueryGroup[]>;
+  public currentsSearchQuery: Observable<SearchQueryGroup[]>;
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private ordersService: OrdersService,
+    private partnerService: PartnerService,
   ) {
-    this.currentSearchQuerySubject = new BehaviorSubject<SearchQuery[]>([]);
+    this.currentSearchQuerySubject = new BehaviorSubject<SearchQueryGroup[]>([]);
     this.currentsSearchQuery = this.currentSearchQuerySubject.asObservable();
   }
 
-  public get currentSearchQueryValue(): SearchQuery[] {
+  public get currentSearchQueryValue(): SearchQueryGroup[] {
     return this.currentSearchQuerySubject.value;
   }
-  updateState(data: SearchQuery[]) {
+  updateState(data: SearchQueryGroup[]) {
     this.currentSearchQuerySubject.next(data);
+  }
+  clear() {
+    this.currentSearchQuerySubject.next([]);
   }
 
   resetSearchQueryState() {
@@ -31,23 +39,69 @@ export class SearchQueryService {
   mapProducts() {
     this.productService.products.subscribe(products => {
       if (products && products.length) {
-        const searchQuery = this.currentSearchQueryValue || [];
+        const searchQuery: SearchQuery[] = [];
         products.forEach(product => {
           searchQuery.push({
             Id: product.ProductId,
-            Name: product.Name + ' R' + product.UnitPrice,
+            Name: product.Name,
             Keyword: product.Name + ' ' + product.Description + ' ' + product.UnitPrice,
             Type: 'products',
             Item: product,
           });
         });
-        this.updateState(searchQuery);
+
+
+        const state = this.currentSearchQueryValue || [];
+        state[0] = { SearchQuery: searchQuery, Type: 'products' };
+        this.updateState(state);
+      }
+    });
+  }
+
+  mapPartners() {
+    this.partnerService.partners.subscribe(partners => {
+      if (partners && partners.length) {
+        const searchQuery = [];
+        partners.forEach(partner => {
+          searchQuery.push({
+            Id: partner.PartnerId,
+            Name: partner.Name + ' ' + partner.Surname,
+            Keyword: partner.Name + ' ' + partner.Surname + ' ' + partner.Address,
+            Type: 'partners',
+            Item: partner,
+          });
+        });
+
+        const state = this.currentSearchQueryValue || [];
+        state[1] = { SearchQuery: searchQuery, Type: 'partners' };
+        this.updateState(state);
+      }
+    });
+  }
+  mapOrders() {
+    this.ordersService.orders.subscribe(orders => {
+      if (orders && orders.length) {
+        const searchQuery = [];
+        orders.forEach(order => {
+          if (order.Customer) {
+            searchQuery.push({
+              Id: order.OrdersId,
+              Name: (order.Customer && order.Customer.Name) + ' INV' + order.OrderId,
+              Keyword: order.Customer && order.Customer.Name + ' invoice INV' + order.OrderId,
+              Type: 'orders',
+              Item: order,
+            });
+          }
+        });
+        const state = this.currentSearchQueryValue || [];
+        state[3] = { SearchQuery: searchQuery, Type: 'orders' };
+        this.updateState(state);
       }
     });
   }
 
   mapLinks() {
-    const searchQuery = this.currentSearchQueryValue || [];
+    const searchQuery = [];
     searchQuery.push(
       {
         Id: 'addproduct',
@@ -99,6 +153,8 @@ export class SearchQueryService {
         Item: 'dashboard/company-view-configs/shop'
       },
     );
-    this.updateState(searchQuery);
+    const state = this.currentSearchQueryValue || [];
+    state[2] = { SearchQuery: searchQuery, Type: 'link' };
+    this.updateState(state);
   }
 }

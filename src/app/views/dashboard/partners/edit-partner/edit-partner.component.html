@@ -5,7 +5,7 @@
 
     <div class="header">
       <h1>
-        Add a new {{partnerType}} <span class="dot">.</span>
+        Edit {{partnerType}} details<span class="dot">.</span>
       </h1>
     </div>
 
@@ -47,13 +47,18 @@
         <textarea class="roundInput" type="text" formControlName="Address"></textarea>
       </div>
 
+      <div class="form-item">
+        <label class="label">{{partnerType}} Image</label>
+        <app-product-images [productId]="parnerId" *ngIf="parnerId"></app-product-images>
+      </div>
+
       <div class="actions">
         <div>
-          <button [disabled]="!rForm.valid" type="submit" class="btn"> Add {{partnerType}} </button>
+          <button [disabled]="!rForm.valid" type="submit" class="btn"> Save changes</button>
         </div>
 
         <div>
-          <a routerLink="/dashboard/partners/{{type}}"> <button class="btn btn-transparent">Crear All</button></a>
+          <a routerLink="/dashboard/partners/{{partnerType}}"> <button class="btn btn-transparent">Cancel</button></a>
         </div>
       </div>
     </form>

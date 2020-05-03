@@ -7,23 +7,36 @@
     </div>
     <ul>
       <li *ngFor="let item of models; let i = index">
-        <div class="item" [ngStyle]="item.Style">
+        <div class="item" [ngStyle]="item.Style" (click)="selectLink(item,i)">
           <div class="icon">
             <img *ngIf="!item.Active" [src]="item.Icon" alt="">
             <img *ngIf="item.Active" [src]="item.ActiveIcon" alt="">
           </div>
           <div class="link">
-            <a [ngStyle]="item.Style" (click)="selectLink(item,i)" [routerLink]="item.Link"
-              routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <a [ngStyle]="item.Style">
               {{item.Name}}
             </a>
           </div>
           <div class="add">
-            <a *ngIf="item.AddUrl" (click)="selectLink(item,i)" [routerLink]="item.AddUrl" routerLinkActive="active-link"
-              [routerLinkActiveOptions]="{exact: true}">
-              <img src="../../../../assets/images/dashboard-nav-icons/plus.svg" alt="">
-            </a>
+            <div *ngIf="item.AddUrl">
+              <img src="../../../../assets/images/dashboard-nav-icons/expand.svg" alt="">
+            </div>
+
           </div>
+        </div>
+
+        <div class="modal" *ngIf="item.ShowModal">
+          <p>
+
+            <a (click)="selectLink(item,i, 1)" [routerLink]="item.AddUrl">
+              Add {{item.SecondaryName}}
+            </a>
+          </p>
+          <p>
+            <a (click)="selectLink(item,i,1)" [routerLink]="item.Link">
+              View {{item.Name}}
+            </a>
+          </p>
         </div>
       </li>
     </ul>

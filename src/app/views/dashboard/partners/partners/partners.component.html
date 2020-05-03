@@ -59,93 +59,96 @@
 
       <div class="body" *ngFor="let item of partners | searchpartner: search | searchpartner: searchType">
         <div class="body-item">
-          <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-          <img src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
-
-        </div>
-        <div class="body-item">
-          <p>
-            {{item.Name}} {{item.Surname}}
-          </p>
-        </div>
-        <div class="body-item">
-          <p>
-            <a href="mailto:{{item.EmailAddress}}">
-              {{item.EmailAddress}}
-            </a>
-          </p>
-
+          <div class="circular-img">
+          <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+          <img src="assets/images/user-placeholder.png" *ngIf="!item.Images" alt="" />
         </div>
 
 
-        <div class="body-item tac">
-          <p>
-            <a href="tel:{{item.CellphoneNumber}}">
-              {{item.CellphoneNumber}}
-            </a>
-          </p>
+      </div>
+      <div class="body-item">
+        <p>
+          {{item.Name}} {{item.Surname}}
+        </p>
+      </div>
+      <div class="body-item">
+        <p>
+          <a href="mailto:{{item.EmailAddress}}">
+            {{item.EmailAddress}}
+          </a>
+        </p>
 
-        </div>
+      </div>
 
-        <div class="body-item tar">
-          <button class="btn-primary" (click)="edit(item)">
-            <i class="pi pi-pencil"></i> Edit
-          </button>
-        </div>
+
+      <div class="body-item tac">
+        <p>
+          <a href="tel:{{item.CellphoneNumber}}">
+            {{item.CellphoneNumber}}
+          </a>
+        </p>
+
+      </div>
+
+      <div class="body-item tar">
+        <button class="btn-primary" (click)="edit(item)">
+          <i class="pi pi-pencil"></i> Edit
+        </button>
       </div>
     </div>
   </div>
+</div>
 
 
-  <div class="mobile-table">
-    <div class="items">
-      <span *ngFor="let item of partners | searchpartner: search | searchpartner: searchType">
-        <div class="item" (click)="details(item)">
-          <div class="image-name">
-            <div class="image">
-              <img class="image-mt" [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-              <img class="image-mt" src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
-            </div>
-            <div class="name">
-              <p>
-                {{item.Name}} {{item.Surname}}
-                <span class="details">
-                  <a href="mailto:{{item.EmailAddress}}">
-                    {{item.EmailAddress}}
-                  </a>
-                </span>
-                <span class="details">
-                  <a href="tel:{{item.CellphoneNumber}}">
-                    {{item.CellphoneNumber}}
-                  </a>
-                </span>
-              </p>
-            </div>
-            <div class="qty">
+<div class="mobile-table">
+  <div class="items">
+    <span *ngFor="let item of partners | searchpartner: search | searchpartner: searchType">
+      <div class="item" (click)="details(item)">
+        <div class="image-name">
+          <div class="image">
+            <img class="image-mt" [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+            <img class="image-mt" src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
+          </div>
+          <div class="name">
+            <p>
+              {{item.Name}} {{item.Surname}}
+              <span class="details">
+                <a href="mailto:{{item.EmailAddress}}">
+                  {{item.EmailAddress}}
+                </a>
+              </span>
+              <span class="details">
+                <a href="tel:{{item.CellphoneNumber}}">
+                  {{item.CellphoneNumber}}
+                </a>
+              </span>
+            </p>
+          </div>
+          <div class="qty">
 
-            </div>
-            <div class="price">
-              <p>
-                {{item.UnitPrice | currency:'R'}}
+          </div>
+          <div class="price">
+            <p>
+              {{item.UnitPrice | currency:'R'}}
 
-              </p>
-            </div>
+            </p>
           </div>
         </div>
-      </span>
-    </div>
+      </div>
+    </span>
   </div>
+</div>
 
-  <ng-template #notFound>
-    <div class="not-found">
-      <img [src]="notFoundModel.Image" alt="no items found">
-      <h1 class="message">
-        {{notFoundModel.Message}}
-        <span>
-          <a class="link-add" (click)="add()"> add new product.</a>
-        </span>
-      </h1>
-    </div>
-  </ng-template>
+<ng-template #notFound>
+  <div class="not-found">
+    <img [src]="notFoundModel.Image" alt="no items found">
+    <h1 class="message">
+      {{notFoundModel.Message}}
+      <span>
+        <a class="link-add" (click)="add()"> add new product.</a>
+      </span>
+    </h1>
+  </div>
+</ng-template>
 
 </div>

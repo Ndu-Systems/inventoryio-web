@@ -35,13 +35,33 @@
         grid-template-columns: 15% 70% auto;
         padding: .7rem .5rem;
         border: none;
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
 
         .icon {
           img {
             width: 1.2rem;
           }
         }
+
+        .add {
+          position: relative;
+
+
+        }
+      }
+
+      .modal {
+        background: #fff;
+        width: 8rem;
+        // border: 1px solid #bfbcbc;
+        z-index: 100000;
+        padding: 0.2rem;
+        position: absolute;
+        top: 17rem;
+        left: 10rem;
+        margin: 0 auto;
+        box-shadow: $box-shadow;
+        border-radius: 6px;
       }
 
       a {

@@ -31,10 +31,10 @@
       padding: .1rem .8rem;
       height: 2.5rem;
       display: grid;
-      grid-template-columns: 14% auto;
+      grid-template-columns: 12% auto;
       background: $default-bg;
       border: 2px solid $gray-color;
-      border-radius: 28px;
+      border-radius: 5px;
 
       input {
         height: 2rem;
@@ -50,7 +50,7 @@
 
       .icon {
         background: $default-bg;
-        padding: .3555rem .5rem;
+        padding: .4555rem .5rem;
         height: 2rem;
 
         img {
@@ -62,6 +62,37 @@
         left: 0.8rem;
         width: 30rem;
         top: 55px;
+        max-height: 48rem;
+
+        .top-layer {
+          h3 {
+            text-decoration: underline;
+            text-transform: capitalize;
+            margin: .5rem 0;
+          }
+
+          .inner-layer {
+            .result-item {
+              display: grid;
+              grid-template-columns: 10% auto;
+              margin: .6rem 0;
+
+              .image {
+                img {
+                  width: 2rem;
+                }
+              }
+
+              p {
+                margin: 0;
+
+                span {
+                  font-size: .7rem;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -90,6 +121,21 @@
 
   }
 
+  .bell {
+    text-align: right;
+    .icon {
+      width: 2rem;
+      position: relative;
+      top: .8rem;
+      left: 2rem;
+
+      img {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+
   .profile {
     display: grid;
     grid-template-columns: 85% auto;
@@ -98,12 +144,15 @@
     cursor: pointer;
 
     .image {
+      display: inline-block;
+      border-radius: 50%;
+      height: 2.4rem;
+      width: 2.4rem;
+      overflow: hidden;
+      border: 1px solid #F2F5F9;
+
       img {
-        width: 1.9rem;
-        border-radius: 100%;
-        position: relative;
-        top: -5px;
-        border: 2px solid $black-color;
+        width: 100%
       }
     }
 

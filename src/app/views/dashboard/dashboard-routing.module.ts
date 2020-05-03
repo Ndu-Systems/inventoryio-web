@@ -87,6 +87,9 @@ import { PurchaseOrderComponent } from './orders/purchase-order/purchase-order/p
 import { ListPurchaseOrderComponent } from './orders/purchase-order/list-purchase-order/list-purchase-order.component';
 import { PurchaseOrderDetailsComponent } from './orders/purchase-order/purchase-order-details/purchase-order-details.component';
 import { DasboardTopNavBarComponent } from './dasboard-top-nav-bar/dasboard-top-nav-bar.component';
+import { SearchOrderByCustomerPipe } from 'src/app/_pipes/search-order-by-customer.pipe';
+import { EditPartnerComponent } from './partners/edit-partner/edit-partner.component';
+import { FormatSearchListPipe } from 'src/app/_pipes/format-search-result.pipe';
 
 const routes: Routes = [
   {
@@ -145,6 +148,7 @@ const routes: Routes = [
       { path: 'credit-note', component: CreditNoteComponent },
       { path: 'new-purchase-order', component: PurchaseOrderComponent },
       { path: 'purchase-orders-list', component: ListPurchaseOrderComponent },
+      { path: 'edit-partner/:id', component: EditPartnerComponent },
       // { path: 'company-services', component: CompanyServicesComponent },
       // { path: 'add-company-service', component: AddCompanyServiceComponent },
       // { path: 'order-service', component: SellServiceComponent },
@@ -241,7 +245,10 @@ export const declarations = [
   ListPurchaseOrderComponent,
   PurchaseOrderComponent,
   PurchaseOrderDetailsComponent,
-  DasboardTopNavBarComponent
+  DasboardTopNavBarComponent,
+  SearchOrderByCustomerPipe,
+  EditPartnerComponent,
+  FormatSearchListPipe
 ];
 
 @NgModule({

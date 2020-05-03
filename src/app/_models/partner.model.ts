@@ -1,3 +1,5 @@
+import { Image } from './image.model';
+
 export interface Partner {
     PartnerId: string;
     CompanyId: string;
@@ -13,4 +15,5 @@ export interface Partner {
     ModifyDate?: string;
     ModifyUserId: string;
     StatusId: string;
+    Images?: Image[];
 }

@@ -6,3 +6,9 @@ export interface SearchQuery {
     Item: any;
 }
 
+export interface SearchQueryGroup {
+    Type?: string;
+    SearchQuery: SearchQuery[];
+
+}
+

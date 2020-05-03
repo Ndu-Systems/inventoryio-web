@@ -122,4 +122,5 @@ export class ListOrdersComponent implements OnInit {
     order.Show = true;
     this.ordersService.updateOrderState(order);
   }
+  sort(a,b){}
 }

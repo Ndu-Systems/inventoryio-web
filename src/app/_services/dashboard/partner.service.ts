@@ -57,6 +57,23 @@ export class PartnerService {
 
     });
   }
+  updatePartner(data: Partner) {
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/partner/update-partner.php`, data).subscribe(resp => {
+      this.spinnerService.hide();
+
+      const partner: Partner = resp;
+      this.apendState(partner);
+    }, error => {
+      this.spinnerService.hide();
+      this.splashService.update({
+        show: true, heading: 'Network Error',
+        message: COMMON_CONN_ERR_MSG,
+        class: `error`
+      });
+
+    });
+  }
   addPartnersRange(data: Partner[]): Observable<any> {
     this.spinnerService.show();
     return this.http.post<any>(`${this.url}/api/partner/add-partners-range.php`, { partners: data });
@@ -74,5 +91,8 @@ export class PartnerService {
       });
 
     });
+  }
+  getPartner(partnerId): Observable<Partner> {
+    return this.http.get<Partner>(`${this.url}/api/partner/get-partner-by-id.php?PartnerId=${partnerId}`);
   }
 }

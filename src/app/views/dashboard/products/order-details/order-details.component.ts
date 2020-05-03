@@ -27,6 +27,7 @@ export class OrderDetailsComponent implements OnInit {
   user: User;
   prefix = 'INV';
   showDetials = true;
+  error: string;
 
   constructor(
     private ordersService: OrdersService,
@@ -117,6 +118,7 @@ export class OrderDetailsComponent implements OnInit {
         detail: 'Payment cannot be more the total amount',
         life: 7000
       });
+      this.error = 'Payment cannot be more the total amount';
       return false;
     }
     return true;
