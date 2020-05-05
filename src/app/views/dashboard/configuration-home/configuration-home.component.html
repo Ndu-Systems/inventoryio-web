@@ -1,27 +1,86 @@
-<div class="main">
-   <div class="actions">
-    <h1 class="heading">
-        business configurations
-    </h1>
-    <app-actions [actions]="actions"></app-actions>
+<div class="settings">
+  <div class="item-link">
+    <b>
+      business configurations
+    </b> <br>
+
+    <div class="contianer-link" *ngFor="let item of actions">
+      <div class="link">
+        <div class="icon">
+          <img [src]="item.image" alt="">
+        </div>
+        <div class="link-tag">
+          <a [routerLink]="item.link">{{item.name}}</a>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <div class="item-link">
+    <b>
+      roles & permissions
+    </b> <br>
 
+    <div class="contianer-link" *ngFor="let item of actions2">
+      <div class="link">
+        <div class="icon">
+          <img [src]="item.image" alt="">
+        </div>
+        <div class="link-tag">
+          <a [routerLink]="item.link">{{item.name}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div class="actions">
-    <h1 class="heading">roles & permissions</h1>
-    <app-actions [actions]="actions2"></app-actions>
+  <div class="item-link">
+    <b>
+      customers & suppliers
+    </b> <br>
+
+    <div class="contianer-link" *ngFor="let item of partners">
+      <div class="link">
+        <div class="icon">
+          <img [src]="item.image" alt="">
+        </div>
+        <div class="link-tag">
+          <a [routerLink]="item.link">{{item.name}}</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    <h1 class="heading">customers & suppliers</h1>
-    <app-actions [actions]="partners"></app-actions>
+
+  <div class="item-link">
+    <b>
+      invoice configurations
+    </b> <br>
+
+    <div class="contianer-link" *ngFor="let item of invoices">
+      <div class="link">
+        <div class="icon">
+          <img [src]="item.image" alt="">
+        </div>
+        <div class="link-tag">
+          <a [routerLink]="item.link">{{item.name}}</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    <h1 class="heading">invoice configurations</h1>
-    <app-actions [actions]="invoices"></app-actions>
-  </div>
-  <div class="actions">
-    <h1 class="heading">Shop & Order configurations</h1>
-    <app-actions [actions]="shops"></app-actions>
+
+  <div class="item-link">
+    <b>
+      Shop & Order configurations
+    </b> <br>
+
+    <div class="contianer-link" *ngFor="let item of shops">
+      <div class="link">
+        <div class="icon">
+          <img [src]="item.image" alt="">
+        </div>
+        <div class="link-tag">
+          <a [routerLink]="item.link">{{item.name}}</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

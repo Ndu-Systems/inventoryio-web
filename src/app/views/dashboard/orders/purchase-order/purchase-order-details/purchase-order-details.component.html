@@ -1,166 +1,175 @@
-<div class="main" *ngIf="showDetials">
-  <div class="back">
-    <h5 (click)="closeDetails()"><i class="pi pi-arrow-left"></i>Back</h5>
+<div class="order-details" *ngIf="order">
+  <h4>
+    Purchase Order Details
+  </h4>
+  <div class="actions">
+    <div class="action" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid' "
+      (click)="triggerPaymentAction()">
+      <img src="assets/images/btn-payment.svg" alt="">
+    </div>
+    <div class="action" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid'"
+      (click)="createCreditNote(order)">
+      <img src="assets/images/btn-cancel-order.svg" alt="">
+    </div>
+    <div class="action" *ngIf="order.Status == 'Cancelled'" (click)="viewCreditNote(order)">
+      <img src="assets/images/btn-print-credit-note.svg" alt="">
+    </div>
+    <div class="action" (click)="print(order)">
+      <img src="assets/images/btn-print-purchase-order.svg" alt="">
+    </div>
+    <div class="action" (click)="sendInvoice(order)">
+      <img src="assets/images/btn-email-purchase-order.svg" alt="">
+    </div>
+
   </div>
-  <div class="body" *ngIf="order$ | async as order;">
-    <div class="small-cards">
-      <div class="card filter-card">
-        <div class="list-filters topbar">
-          <div class="search-box pay" *ngIf="paymentAction">
-            <div class="input-times">
-              <!-- Payment Amount ZAR -->
-              <input type="text" class="input-box" [(ngModel)]="amountPaid" placeholder="💵 Amount customer paid">
-            </div>
-            <div class="buttons">
-              <button class="btn btn-transparent" (click)="cancelPayAction()">Abort</button>
-              <button class="btn" (click)="savePayment(order)" [disabled]="!amountPaid">Save</button>
-            </div>
+
+  <div class="details">
+    <div class="date">
+      <p class="date-status">
+        <span class="order-date">{{order.CreateDate | date:'fullDate'}} |
+          {{ order.CreateDate  | date:'shortTime' }}</span>
+        <span class="no"> {{prefix}}{{order.OrderId}}</span>
+        <span class="order-status new" *ngIf="order.Status == 'new'"> Unpaid</span>
+        <span class="order-status partially-paid" *ngIf="order.Status == 'Partially paid'"> {{order.Status}}</span>
+        <span class="order-status fully-paid" *ngIf="order.Status == 'Fully paid'"> {{order.Status}}</span>
+        <span class="order-status cancelled" *ngIf="order.Status == 'Cancelled'"> {{order.Status}} -
+          {{order.Creditnotes?.Reason}}</span>
+      </p>
+
+
+      <div class="amounts">
+        <p>
+          <span class="label"> Amount paid: </span>
+          {{order.Paid | currency:'R'}}
+        </p>
+        <p>
+          <span class="label">Outstanding balance: </span>
+          {{order.Due | currency:'R'}}
+        </p>
+      </div>
+    </div>
+
+    <div class="bill-to" *ngIf="order.Customer">
+      <h4>Billing to</h4>
+      <p>
+        {{order.Customer.Name}} {{order.Customer.Surname}} <br>
+        {{order.Customer.CellphoneNumber}} <br>
+        {{order.Customer.EmailAddress}} <br>
+        {{order.Customer.Address}}
+      </p>
+    </div>
+  </div>
+
+  <div class="order-products">
+    <h4>Products</h4>
+    <div class="table" *ngIf="order.Products">
+      <div class="header">
+        <div></div>
+        <div class="header-item">
+          Product name
+        </div>
+        <div class="header-item">
+          Quantity
+        </div>
+
+        <div class="header-item ">
+          Price
+        </div>
+        <div class="header-item tac">
+          Sub Total
+        </div>
+      </div>
+      <div class="body-container">
+        <div class="body" *ngFor="let item of order.Products | searchproduct: search">
+          <div class="body-item">
+            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+            <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
           </div>
-          <div>
-            <button class="btn btn-transparent" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid' "
-              (click)="triggerPaymentAction()"><i class="pi pi-money-bill"></i>
-              Payment</button>
+          <div class="body-item">
+            <p>
+              {{item.ProductName}}
+              <span class="row-details"> {{item.Options | formatDashboardOptions}}</span>
+            </p>
           </div>
-          <div>
-            <button class="btn btn-transparent" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid'"
-              (click)="createCreditNote(order)"><i class="pi pi-pencil"></i> Create credit note</button>
-            <button class="btn btn-transparent" *ngIf="order.Status == 'Cancelled'" (click)="viewCreditNote(order)"><i
-                class="pi pi-print"></i> Print credit note</button>
+          <div class="body-item">
+            <p>
+              {{item.Quantity}}
+            </p>
+
           </div>
-          <div>
-            <button class="btn btn-transparent" (click)="print(order)"><i class="pi pi-print"></i> Print
-              Order</button>
+          <div class="body-item tac">
+            <p>
+              <b>
+                {{item.UnitPrice | currency:'R'}}
+              </b>
+            </p>
           </div>
-          <div>
-            <button class="btn btn-transparent" (click)="sendInvoice(order)"><i class="pi pi-envelope"></i>
-              Email Order</button>
+          <div class="body-item tar">
+            <p>
+              {{item.subTotal  | currency:'R'}}
+            </p>
           </div>
+        </div>
+        <div class="total">
+          <h3>Total   {{order.Total  | currency:'R'}}</h3>
         </div>
       </div>
     </div>
-    <div class="col-1-of-2 upper-conatiner">
 
-      <div class="order-data">
-        <h1 class="heading">
-          Purchase order details
-          <span class="order-date">{{order.CreateDate | date:'fullDate'}} |
-            {{ order.CreateDate  | date:'shortTime' }}</span>
-          <span class="order-number"> {{prefix}}{{order.OrderId}}</span>
-          <span class="order-status" *ngIf="order.Status == 'new'"> {{order.Status}}</span>
-          <span class="order-status partially-paid" *ngIf="order.Status == 'Partially paid'"> {{order.Status}}</span>
-          <span class="order-status fully-paid" *ngIf="order.Status == 'Fully paid'"> {{order.Status}}</span>
-          <span class="order-status cancelled" *ngIf="order.Status == 'Cancelled'"> {{order.Status}} -
-            {{order.Creditnotes?.Reason}}</span>
+  </div>
+
+</div>
+
+
+<div class="popup" *ngIf="paymentAction">
+  <div class="modal">
+    <div class="modal">
+      <div class="header">
+        <h1>
+          Record a payment for {{prefix}}{{order.OrderId}}
         </h1>
-        <!-- <h1 class="date">
-            <span class="label"> Order Date</span>
-            {{order.CreateDate | date:'short'}}
-          </h1> -->
-        <div class="more-details col-1-of-2">
-          <div class="col-1-of-2 s10-20">
-            <div class="image">
-              <img class="ordrer-heading-icons" src="assets/images/pending.svg" alt="">
-            </div>
+
+        <div class="close" (click)="cancelPayAction()">
+          <img src=" assets/images/close-options.svg" alt="">
+        </div>
+      </div>
+
+      <div class="body">
+
+        <div class="amounts">
+          <p>
+            <span class="label"> Amount paid: </span>
+            {{order.Paid | currency:'R'}}
+          </p>
+          <p>
+            <span class="label">Outstanding balance: </span>
+            {{order.Due | currency:'R'}}
+          </p>
+        </div>
+        <div class="">
+          <input type="number" class="roundInput" [(ngModel)]="amountPaid" placeholder="Amount customer paid">
+
+          <div class="error">
+            {{error}}
+          </div>
+        </div>
+
+        <div class="item-options">
+
+          <div class="actions">
             <div>
-              <h1 class="date">
-                <span class="label">Outstanding balance</span>
-                {{order.Due | currency:'R'}}
-              </h1>
+              <button class="btn" [disabled]="!amountPaid" (click)="savePayment(order)">
+                <i class="pi pi-check"></i> Save
+              </button>
             </div>
-          </div>
-          <div class="col-1-of-2 s10-20">
-            <div class="image">
-              <img class="ordrer-heading-icons" src="assets/images/paid.svg" alt="">
-            </div>
-            <h1 class="date">
-              <span class="label"> Amount paid</span>
-              {{order.Paid | currency:'R'}}
-            </h1>
-          </div>
-        </div>
 
-      </div>
-      <div class="billto" *ngIf="order.Customer">
-        <h3>Billing to</h3>
-        <div class="customer">
-          <div class="image">
-            <img src="assets/user2.svg" alt="">
-            <!-- <img src="../../../../../assets/ndu.jpg" alt=""> -->
-          </div>
-          <div class="name">
-            <h1>
-              {{order.Customer.Name}}
-            </h1>
-          </div>
-          <div class="phone">
-            <h1>
-              {{order.Customer.CellphoneNumber}} <br> {{order.Customer.EmailAddress}}
-            </h1>
-          </div>
-          <div class="address">
-            <h1>
-              {{order.Customer.Address}}
-            </h1>
+            <div>
+              <button class="btn btn-transparent" (click)="cancelPayAction()">Cancel</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="cards" *ngIf="order.Products">
-      <div class="items">
-        <span *ngFor="let item of order.Products | searchproduct: search">
-
-          <div class="item">
-            <div class="image">
-              <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-              <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
-            </div>
-
-            <div class="data">
-              <span class="value">{{item.ProductName}}</span>
-              <!-- <span class="label"> Product Name</span> -->
-              <span class="label"> {{item.Options | formatDashboardOptions}}</span>
-            </div>
-
-            <div class="data">
-              <span class="value"> {{item.Quantity}} x {{item.UnitPrice  | currency:'R'}} <br></span>
-              <span class="label"> QNTY x Cost Price</span>
-            </div>
-
-            <div class="data">
-              <span class="value"> {{item.subTotal  | currency:'R'}} <br></span>
-              <span class="label"> Total</span>
-            </div>
-          </div>
-        </span>
-
-        <div class="total spaccing">
-          <div class="data">
-            <h3>
-              Total Price:<span>{{total | currency:'R'}}</span>
-            </h3>
-            <span class="value tax" *ngIf="order.Charges">
-              <span *ngFor="let charge of order.Charges"><i>Inc. </i> {{charge.Label}}
-              </span>
-            </span>
-          </div>
-        </div>
-
-      </div>
-
-
-
-    </div>
-
-
-
-
-
-    <div>
-
-    </div>
-
-
   </div>
 </div>
 <p-confirmDialog header="Confirmation Payment"></p-confirmDialog>

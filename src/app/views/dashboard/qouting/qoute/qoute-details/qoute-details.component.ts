@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { Observable } from 'rxjs';
-import { User, Email, Qoutation, QouteProducts } from 'src/app/_models';
-import { AccountService, BannerService, EmailService, InvoiceService } from 'src/app/_services';
+import { User, Email, Qoutation, Orders } from 'src/app/_models';
+import { AccountService, BannerService, EmailService, InvoiceService, OrdersService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { QoutationService } from 'src/app/_services/dashboard/qoutation.service';
 
@@ -15,7 +15,6 @@ export class QouteDetailsComponent implements OnInit {
 
   search: string;
   order$: Observable<Qoutation>;
-  products$: Observable<QouteProducts[]>;
   total: number;
   companyTax = 0.1;
   finalTotal: number;
@@ -32,6 +31,7 @@ export class QouteDetailsComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private emailService: EmailService,
     private invoiceService: InvoiceService,
+    private ordersService: OrdersService,
 
   ) { }
 
@@ -39,17 +39,10 @@ export class QouteDetailsComponent implements OnInit {
     this.user = this.accountService.currentUserValue;
     if (!this.user.UserId) { this.router.navigate(['sign-in']); }
     this.order$ = this.qoutationService.qoute;
-    this.products$ = this.qoutationService.qouteProducts;
 
     this.bannerService.updateState({
       heading: 'Order Items',
       backto: '/dashboard/list-qoutation',
-    });
-    this.qoutationService.qoute.subscribe(state => {
-      if (!state) { return; }
-      this.qoutationService.getProductsForAnQoute(state.QuotationId);
-      this.total = state.Total;
-      this.finalTotal = Number(state.Total) + (state.Total * this.companyTax);
     });
   }
   add() {
@@ -63,13 +56,34 @@ export class QouteDetailsComponent implements OnInit {
   }
 
   invoiceQuote(qoute: Qoutation) {
-    //  create order
+    this.ordersService.updateOrderState(null);
+    const order: Orders = {
+      CompanyId: this.user.CompanyId,
+      ParntersId: qoute.Customer && qoute.Customer.PartnerId || null,
+      ParntersEmail: qoute.Customer && qoute.Customer.EmailAddress || null,
+      OrderType: 'Sell',
+      Total: qoute.Total,
+      Paid: 0,
+      Due: qoute.Total,
+      CreateUserId: this.user.UserId,
+      ModifyUserId: this.user.UserId,
+      Status: 'new',
+      Products: qoute.Products,
+      Charges: [],
+      StatusId: 1
+    };
+    this.ordersService.addOrderFromQoute(order).subscribe(data => {
+      qoute.Status = 'Invoiced';
+      qoute.StatusId = 2;
+      // this.qoutationService.uptadeQoute(qoute);
+      // this.updateProductsRange(this.sale.items);
+      console.log(qoute);
+    });
 
-    // update quotation status to invoiced
-    qoute.Status = 'Invoiced';
-    qoute.StatusId = 2;
-    this.qoutationService.uptadeQoute(qoute);
+
   }
+
+
 
   sendInvoice(order: Qoutation) {
     if (!order.Customer) {

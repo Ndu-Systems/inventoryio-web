@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="151" height="34" viewBox="0 0 151 34">
-  <g id="btn-print-credit-note" transform="translate(-0.032 -0.252)">
-    <g id="Rectangle_222" data-name="Rectangle 222" transform="translate(0.032 0.252)" fill="#f0f1f6" stroke="#333" stroke-width="1">
+  <g id="btn-print-quote" transform="translate(-0.032 -0.488)">
+    <g id="Rectangle_222" data-name="Rectangle 222" transform="translate(0.032 0.488)" fill="#f0f1f6" stroke="#333" stroke-width="1">
       <rect width="151" height="34" rx="17" stroke="none"/>
       <rect x="0.5" y="0.5" width="150" height="33" rx="16.5" fill="none"/>
     </g>
@@ -8,6 +8,6 @@
       <path id="Path_617" data-name="Path 617" d="M10,0A10,10,0,1,1,0,10,10,10,0,0,1,10,0Z" fill="#0337bb"/>
       <path id="Path_616" data-name="Path 616" d="M13122.314-20254.432c.545.486,5.527,4.131,5.527,4.131l-1.832,1.35-3.7,2.721" transform="translate(-13114.814 20259.934)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
     </g>
-    <text id="Print_credit_note" data-name="Print credit note" transform="translate(19.032 21.252)" fill="#333" font-size="11" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">Print credit note</tspan></text>
+    <text id="Print_Quote" data-name="Print Quote" transform="translate(19.032 21.488)" fill="#333" font-size="11" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">Print Quote</tspan></text>
   </g>
 </svg>

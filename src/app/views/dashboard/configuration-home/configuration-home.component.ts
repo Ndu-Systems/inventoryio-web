@@ -44,70 +44,70 @@ export class ConfigurationHomeComponent implements OnInit {
       {
         name: 'manage staff',
         image: 'assets/images/actions/staff.svg',
-        link: 'dashboard/users'
+        link: '/dashboard/users'
       },
       {
         name: 'manage brands',
         image: 'assets/images/actions/brands.svg',
-        link: 'dashboard/list-brands'
+        link: '/dashboard/list-brands'
       },
       {
         name: 'manage categories',
         image: 'assets/images/actions/maintenance.svg',
-        link: 'dashboard/list-categories'
+        link: '/dashboard/list-categories'
       }
 
     );
     this.actions2.push({
       name: 'manage roles',
       image: 'assets/images/actions/role.svg',
-      link: 'dashboard/roles'
+      link: '/dashboard/roles'
     },
       {
         name: 'permissions',
         image: 'assets/images/actions/permission.svg',
-        link: 'dashboard/permissions'
+        link: '/dashboard/permissions'
       }
     );
 
     this.partners.push({
       name: 'manage customers',
       image: 'assets/images/actions/cutomer.svg',
-      link: 'dashboard/partners/customers'
+      link: '/dashboard/partners/customers'
     },
       {
         name: 'manage suppliers',
         image: 'assets/images/actions/suplier.svg',
-        link: 'dashboard/partners/suppliers'
+        link: '/dashboard/partners/suppliers'
       }
     );
 
     this.invoices.push({
       name: 'banking details',
       image: 'assets/images/actions/save-money.svg',
-      link: 'dashboard/company-view-configs/bank-details'
+      link: '/dashboard/company-view-configs/bank-details'
     },
       {
         name: 'address details',
         image: 'assets/images/actions/companyaddress.svg',
-        link: 'dashboard/company-view-configs/address-details'
+        link: '/dashboard/company-view-configs/address-details'
       },
       {
         name: 'Logo and colors',
         image: 'assets/images/actions/logo-and-colors.svg',
-        link: 'dashboard/company-view-configs/logo-and-colors'
+        link: '/dashboard/company-view-configs/logo-and-colors'
       }
     );
     this.shops.push(
       {
         name: 'Shop cover image & colors',
         image: 'assets/images/actions/shop.svg',
-        link: 'dashboard/company-view-configs/shop'
+        link: '/dashboard/company-view-configs/shop'
       },
       {
         name: 'Shipping Methods',
         image: 'assets/images/actions/shop.svg',
-        link: 'dashboard/company-view-configs/shipping'
+        link: '/dashboard/company-view-configs/shipping'
       }
     );
   }

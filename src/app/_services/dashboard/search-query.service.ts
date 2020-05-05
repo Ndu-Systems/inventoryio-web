@@ -5,7 +5,6 @@ import { Product } from 'src/app/_models';
 import { ProductService } from './product.service';
 import { OrdersService } from './orders.service';
 import { PartnerService } from './partner.service';
-import { stat } from 'fs';
 
 @Injectable({
   providedIn: 'root'

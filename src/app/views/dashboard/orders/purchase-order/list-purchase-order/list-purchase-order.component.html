@@ -1,89 +1,115 @@
-<div class="main">
-  <h1 class="heading">
-    Purchase orders
-  </h1>
-  <div class="body">
-
-    <div class="list" *ngIf="orders$  | async as orders">
-      <div class="small-cards-body" *ngIf="orders.length > 0; else notFound">
-        <div class="small-cards">
-          <div class="card filter-card">
-            <div class="list-filters">
-              <div class="input select">
-                <div>
-                  <i class="pi pi-filter"></i>
-                </div>
-                <select [(ngModel)]="searchByCatergory">
-                  <option value="" selected>All sales </option>
-                  <option [value]="status" *ngFor="let status of statuses">{{status}}
-                  </option>
-                </select>
-              </div>
-              <div class="search">
-                <button class="btn btn-transparent" (click)="searchOrder()"><i class="pi pi-search"></i></button>
-              </div>
-              <div class="add">
-                <button class="btn" (click)="add()"><i class="pi pi-plus"></i></button>
-              </div>
-            </div>
-            <div class="search-box" *ngIf="showSearchOrder">
-              <div class="input-times">
-                <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
-                <div class="times" (click)="clearSearch()">
-                  <i class="pi pi-times"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="small-cards">
-          <span *ngFor="let order of orders | searchproduct: search | filterStrings: searchByCatergory">
-            <div [ngClass]="order.CardClass" (click)="select(order)">
-              <div class="image">
-                <img *ngIf="order.Customer" src="assets/images/order/user.svg" alt="">
-                <img *ngIf="!order.Customer" src="assets/images/order/user-no-customer.svg" alt="">
-              </div>
-              <div class="name">
-                <h4 *ngIf="order.Customer" class="customer-name">{{order.Customer.Name}}</h4>
-                <h4 *ngIf="!order.Customer" class="customer-name">Guest</h4>
-                <h5 *ngIf="order.Status == 'new'" class="order-status new">{{order.Status}}</h5>
-                <h5 *ngIf="order.Status == 'Partially paid'" class="order-status partially-paid">{{order.Status}}</h5>
-                <h5 *ngIf="order.Status == 'Fully paid'" class="order-status fully-paid">{{order.Status}}</h5>
-                <h5 *ngIf="order.Status == 'Cancelled'" class="order-status cancelled">{{order.Status}}</h5>
-              </div>
-
-              <div class="total">
-                <h4>
-                  {{order.Total  | currency:'R'}}
-                </h4>
-                <h6>
-                  {{prefix}} {{order.OrderId}}
-                </h6>
-              </div>
-            </div>
-
-          </span>
-        </div>
-
+<div class="order-list" *ngIf="orders$  | async as orders">
+  <div class="list">
+    <div class="list-header">
+      <div class="heading">
+        <h1>
+          Purchase orders<span class="dot">.</span>
+        </h1>
       </div>
 
-      <ng-template #notFound>
-        <div class="not-found">
-          <img [src]="notFoundModel.Image" alt="no items found">
-          <h1 class="message">
-            {{notFoundModel.Message}}
-            <span>
-              <a class="link-add" (click)="add()"> create new order.</a>
-            </span>
-          </h1>
+      <div class="search">
+        <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+      </div>
 
+      <div class="search">
+        <select [(ngModel)]="searchByCatergory" class="roundInput">
+          <option value="" selected>All</option>
+          <option value="new" selected>Unpaid</option>
+          <option value="Partially paid" selected>Partially paid</option>
+          <option value="Fully paid" selected>Partially paid</option>
+          <option value="Cancelled" selected>Cancelled</option>
+
+        </select>
+      </div>
+
+      <div class="search">
+      </div>
+      <div class="search tar">
+        <button (click)="add()"> <i class="pi pi-plus"></i> New Sale</button>
+      </div>
+
+    </div>
+    <div class="table" *ngIf="orders.length > 0; else notFound">
+      <div class="header">
+        <div class="header-item"></div>
+        <div class="header-item">
+          Customer
         </div>
-      </ng-template>
+        <div class="header-item">
+          Invioce #
+        </div>
+        <div class="header-item">
+          Date
+        </div>
 
-    </div>
-    <div class="order-details">
-      <app-purchase-order-details></app-purchase-order-details>
+        <div class="header-item " (click)="sort(orders, 'price')">
+          <!-- <i *ngIf="priceAsc" class="pi pi-sort-numeric-up-alt"></i>
+            <i *ngIf="!priceAsc" class="pi pi-sort-numeric-down"></i> -->
+          Paid
+        </div>
+        <div class="header-item tac" (click)="sort(orders, 'quantity')">
+          <!-- <i *ngIf="quantityAsc" class="pi pi-sort-numeric-up-alt"></i>
+            <i *ngIf="!quantityAsc" class="pi pi-sort-numeric-down"></i> -->
+          Total
+        </div>
+        <div class="header-item tar">
+          Actions
+        </div>
+      </div>
+      <div class="body-container">
+        <div class="body"
+          *ngFor="let item of orders | searchorderbucustomer: search | filterStrings: searchByCatergory">
+          <span class="marker" [ngClass]="item.CardClass"></span>
+
+          <div class="body-item">
+            <div class="circular-img" *ngIf="item.Customer">
+              <img *ngIf="item.Customer.Images" [src]="item.Customer.Images[0].Url" alt="" />
+              <img *ngIf="!item.Customer.Images" src="assets/images/user-placeholder.png" alt="" />
+            </div>
+            <div class="circular-img" *ngIf="!item.Customer">
+              <img src="assets/images/user-placeholder.png" *ngIf="!item.Images" alt="" />
+            </div>
+          </div>
+          <div class="body-item">
+            <p *ngIf="item.Customer" class="customer-name">{{item.Customer.Name}} {{item.Customer.Surname}}</p>
+            <p *ngIf="!item.Customer" class="customer-name">Guest</p>
+            <span></span>
+          </div>
+          <div class="body-item">
+            <p>
+              {{prefix}} {{item.OrderId}}
+            </p>
+          </div>
+          <div class="body-item">
+            <p>
+              {{item.CreateDate | date:'shortDate'}}
+            </p>
+          </div>
+          <div class="body-item">
+            <p *ngIf="item.Status == 'new'" class="order-status new">Unpaid</p>
+            <p *ngIf="item.Status == 'Partially paid'" class="order-status partially-paid">{{item.Status}}</p>
+            <p *ngIf="item.Status == 'Fully paid'" class="order-status fully-paid">{{item.Status}}</p>
+            <p *ngIf="item.Status == 'Cancelled'" class="order-status cancelled">{{item.Status}}</p>
+            <p>
+            </p>
+
+          </div>
+          <div class="body-item tac">
+            <p>
+              {{item.Total  | currency:'R'}}
+            </p>
+          </div>
+          <div class="body-item tar">
+            <button class="btn-primary" (click)="select(item)">
+              <i class="pi pi-eye"></i> View
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="order-details">
+    <app-purchase-order-details></app-purchase-order-details>
   </div>
+</div>

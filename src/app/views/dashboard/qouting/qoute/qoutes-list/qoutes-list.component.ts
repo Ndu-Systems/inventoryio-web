@@ -51,11 +51,7 @@ export class QoutesListComponent implements OnInit {
   searchOrder() {
     this.showSearchOrder = !this.showSearchOrder;
   }
-  details(order: Orders) {
-    this.qoutationService.updateQoutationState(order);
-    this.qoutationService.getProductsForAnQoute(order.OrdersId);
-    this.router.navigate([`/dashboard/order-details`]);
-  }
+
   onPay(order: Orders) {
     if ((order.Total - order.Payment < 0) || Number(order.Due) < 0) {
       this.messageService.add({
@@ -100,9 +96,7 @@ export class QoutesListComponent implements OnInit {
     this.searchOrder();
   }
   select(qoute: Qoutation) {
-    // order.CardClass.push('card-active');
     this.qoutationService.updateQoutationState(qoute);
-    this.qoutationService.getProductsForAnQoute(qoute.QuotationId);
   }
 
 }

@@ -122,6 +122,9 @@ export class OrdersService {
       });
     });
   }
+  addOrderFromQoute(data: Orders) {
+    return this.http.post<any>(`${this.url}/api/orders/add-orders.php`, { order: data, products: data.Products });
+  }
 
 
   addPurchaseOrder(data: Orders, items: OrderProducts[]): Observable<any> {

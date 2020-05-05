@@ -1,111 +1,166 @@
-<div class="main" *ngIf="order$ | async as order;">
-  <div class="body">
-    <div class="small-cards">
-      <div class="card filter-card">
-        <div class="list-filters topbar">
-          <div>
-            <button class="btn btn-transparent" (click)="invoiceQuote(order)"><i class="pi pi-money-bill"></i> Invoice</button>
-          </div>
-          <!-- <div>
-            <button class="btn btn-transparent" (click)="print()"><i class="pi pi-pencil"></i> Edit</button>
-          </div> -->
-          <div>
-            <button class="btn btn-transparent" (click)="print(order)"><i class="pi pi-print"></i> Print</button>
-          </div>
-          <div>
-            <button class="btn btn-transparent" (click)="sendInvoice(order)"><i class="pi pi-envelope"></i> Email</button>
-          </div>
-        </div>
-      </div>
+<div class="order-details" *ngIf="order$ | async as order;">
+  <h4>
+    Quotations details
+  </h4>
+  <div class="actions">
+    <div class="action" (click)="invoiceQuote(order)">
+      <img src="assets/images/btn-invoice-quote.svg" alt="">
     </div>
-    <div class="col-1-of-2 upper-conatiner">
-
-      <div class="order-data">
-        <h1 class="heading">
-          Quotation details
-          <span class="order-number"> ORD-{{order.QuoteId}}</span>
-          <span class="order-status"> {{order.Status}}</span>
-        </h1>
-    
-
-      </div>
-      <div class="billto" *ngIf="order.Customer">
-        <h3>Quotation to</h3>
-        <div class="customer">
-          <div class="image">
-            <img src="assets/user2.svg" alt="">
-            <!-- <img src="../../../../../assets/ndu.jpg" alt=""> -->
-          </div>
-          <div class="name">
-            <h1>
-              {{order.Customer.Name}}
-            </h1>
-          </div>
-          <div class="phone">
-            <h1>
-              {{order.Customer.CellphoneNumber}} <br> {{order.Customer.EmailAddress}}
-            </h1>
-          </div>
-          <div class="address">
-            <h1>
-              {{order.Customer.Address}}
-            </h1>
-          </div>
-        </div>
-      </div>
+    <div class="action" (click)="print(order)">
+      <img src="assets/images/btn-print-quote.svg" alt="">
     </div>
-
-    <div class="cards" *ngIf="products$  | async as products">
-      <div class="items">
-        <span *ngFor="let item of products | searchproduct: search">
-
-          <div class="item">
-            <div class="image">
-              <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-              <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
-            </div>
-
-            <div class="data">
-              <span class="value">{{item.ProductName}}</span>
-              <span class="label"> Product Name</span>
-            </div>
-
-            <div class="data">
-              <span class="value"> {{item.Quantity}} x {{item.UnitPrice  | currency:'R'}} <br></span>
-              <span class="label"> QNTY x Price</span>
-            </div>
-
-            <div class="data">
-              <span class="value"> {{item.subTotal  | currency:'R'}} <br></span>
-              <span class="label"> Total</span>
-            </div>
-          </div>
-        </span>
-
-        <div class="item spaccing">
-          <div class="data">
-            <span class="value total">
-              Total:{{total | currency:'R'}}
-            </span>
-            <span class="value tax">
-              <!-- Tax paid {{companyTax * 100}}%: {{total*companyTax | currency:'R'}} -->
-            </span>
-          </div>
-        </div>
-
-      </div>
-
-
-
+    <div class="action" (click)="sendInvoice(order)">
+      <img src="assets/images/btn-email-quote.svg" alt="">
     </div>
-
-
-
-
-
-    <div>
-
-    </div>
-
 
   </div>
+
+  <div class="details">
+    <div class="date">
+      <p class="date-status">
+        <span class="order-date">{{order.CreateDate | date:'fullDate'}} |
+          {{ order.CreateDate  | date:'shortTime' }}</span>
+        <span class="no"> {{prefix}}{{order.OrderId}}</span>
+        <span class="order-status new" *ngIf="order.Status == 'new'"> Quoted</span>
+        <span class="order-status  fully-paid" *ngIf="order.Status == 'Invoiced'"> {{order.Status}}</span>
+        <span class="order-status cancelled" *ngIf="order.Status == 'Cancelled'"> {{order.Status}} -
+          {{order.Creditnotes?.Reason}}</span>
+      </p>
+
+
+      <div class="amounts">
+        <p>
+          <span class="label"> Amount paid: </span>
+          {{order.Paid | currency:'R'}}
+        </p>
+        <p>
+          <span class="label">Outstanding balance: </span>
+          {{order.Due | currency:'R'}}
+        </p>
+      </div>
+    </div>
+
+    <div class="bill-to" *ngIf="order.Customer">
+      <h4>Billing to</h4>
+      <p>
+        {{order.Customer.Name}} {{order.Customer.Surname}} <br>
+        {{order.Customer.CellphoneNumber}} <br>
+        {{order.Customer.EmailAddress}} <br>
+        {{order.Customer.Address}}
+      </p>
+    </div>
+  </div>
+
+  <div class="order-products">
+    <h4>Products</h4>
+    <div class="table" *ngIf="order.Products">
+      <div class="header">
+        <div></div>
+        <div class="header-item">
+          Product name
+        </div>
+        <div class="header-item">
+          Quantity
+        </div>
+
+        <div class="header-item ">
+          Price
+        </div>
+        <div class="header-item tac">
+          Sub Total
+        </div>
+      </div>
+      <div class="body-container">
+        <div class="body" *ngFor="let item of order.Products | searchproduct: search">
+          <div class="body-item">
+            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+            <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
+          </div>
+          <div class="body-item">
+            <p>
+              {{item.ProductName}}
+              <span class="row-details"> {{item.Options | formatDashboardOptions}}</span>
+            </p>
+          </div>
+          <div class="body-item">
+            <p>
+              {{item.Quantity}}
+            </p>
+
+          </div>
+          <div class="body-item tac">
+            <p>
+              <b>
+                {{item.UnitPrice | currency:'R'}}
+              </b>
+            </p>
+          </div>
+          <div class="body-item tar">
+            <p>
+              {{item.subTotal  | currency:'R'}}
+            </p>
+          </div>
+        </div>
+        <div class="total">
+          <h3>Total   {{order.Total  | currency:'R'}}</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="popup" *ngIf="paymentAction">
+  <div class="modal">
+    <div class="modal">
+      <div class="header">
+        <h1>
+          Record a payment for {{prefix}}{{order.OrderId}}
+        </h1>
+
+        <div class="close" (click)="cancelPayAction()">
+          <img src=" assets/images/close-options.svg" alt="">
+        </div>
+      </div>
+
+      <div class="body">
+
+        <div class="amounts">
+          <p>
+            <span class="label"> Amount paid: </span>
+            {{order.Paid | currency:'R'}}
+          </p>
+          <p>
+            <span class="label">Outstanding balance: </span>
+            {{order.Due | currency:'R'}}
+          </p>
+        </div>
+        <div class="">
+          <input type="number" class="roundInput" [(ngModel)]="amountPaid" placeholder="Amount customer paid">
+
+          <div class="error">
+            {{error}}
+          </div>
+        </div>
+
+        <div class="item-options">
+
+          <div class="actions">
+            <div>
+              <button class="btn" [disabled]="!amountPaid" (click)="savePayment(order)">
+                <i class="pi pi-check"></i> Save
+              </button>
+            </div>
+
+            <div>
+              <button class="btn btn-transparent" (click)="cancelPayAction()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-confirmDialog header="Confirmation Payment"></p-confirmDialog>

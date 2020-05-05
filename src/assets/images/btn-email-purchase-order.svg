@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="166" height="34" viewBox="0 0 166 34">
+  <g id="btn-email-purchase-order" transform="translate(14.968 0.15)">
+    <g id="Rectangle_222" data-name="Rectangle 222" transform="translate(-14.968 -0.15)" fill="#f0f1f6" stroke="#333" stroke-width="1">
+      <rect width="166" height="34" rx="17" stroke="none"/>
+      <rect x="0.5" y="0.5" width="165" height="33" rx="16.5" fill="none"/>
+    </g>
+    <g id="Group_311" data-name="Group 311" transform="translate(124.032 7)">
+      <path id="Path_617" data-name="Path 617" d="M10,0A10,10,0,1,1,0,10,10,10,0,0,1,10,0Z" fill="#0337bb"/>
+      <path id="Path_616" data-name="Path 616" d="M13122.314-20254.432c.545.486,5.527,4.131,5.527,4.131l-1.832,1.35-3.7,2.721" transform="translate(-13114.814 20259.934)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+    </g>
+    <text id="Email_Purchase_Order" data-name="Email  Purchase Order" transform="translate(-7.968 20.85)" fill="#333" font-size="11" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0" xml:space="preserve">Email  Purchase Order</tspan></text>
+  </g>
+</svg>

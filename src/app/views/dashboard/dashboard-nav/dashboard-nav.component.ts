@@ -54,28 +54,13 @@ export class DashboardNavComponent implements OnInit {
         showItem: true
       },
       {
-        Name: 'Reports',
-        Link: '/dashboard/reports',
-        Icon: `assets/images/dashboard-nav-icons/reports.svg`,
-        ActiveIcon: `assets/images/dashboard-nav-icons/reports-white.svg`,
-      },
-      {
         Name: 'Products',
         Link: '/dashboard/list-product',
         Icon: `assets/images/dashboard-nav-icons/products.svg`,
         ActiveIcon: `assets/images/dashboard-nav-icons/products-white.svg`,
         showItem: true,
         AddUrl: '/dashboard/add-product',
-        SecondaryName: 'customer'
-      },
-      {
-        Name: 'Customers',
-        Link: '/dashboard/partners/customers',
-        Icon: `assets/images/dashboard-nav-icons/group.svg`,
-        ActiveIcon: `assets/images/dashboard-nav-icons/group-white.svg`,
-        showItem: true,
-        AddUrl: '/dashboard/add-partner/customers',
-        SecondaryName: 'customer'
+        SecondaryName: 'Product'
       },
       {
         Name: 'Sales invoices',
@@ -102,12 +87,37 @@ export class DashboardNavComponent implements OnInit {
         AddUrl: '/dashboard/new-purchase-order'
       },
       {
+        Name: 'Customers',
+        Link: '/dashboard/partners/customers',
+        Icon: `assets/images/dashboard-nav-icons/group.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/group-white.svg`,
+        showItem: true,
+        AddUrl: '/dashboard/add-partner/customers',
+        SecondaryName: 'Customer'
+      },
+      {
+        Name: 'Suppliers',
+        Link: '/dashboard/partners/suppliers',
+        Icon: `assets/images/dashboard-nav-icons/group.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/group-white.svg`,
+        showItem: true,
+        AddUrl: '/dashboard/add-partner/suppliers',
+        SecondaryName: 'Supplier'
+      },
+      {
+        Name: 'Reports',
+        Link: '/dashboard/reports',
+        Icon: `assets/images/dashboard-nav-icons/reports.svg`,
+        ActiveIcon: `assets/images/dashboard-nav-icons/reports-white.svg`,
+      },
+      {
         Name: 'Settings',
         Link: '/dashboard/configurations',
         Icon: `assets/images/dashboard-nav-icons/settings.svg`,
         ActiveIcon: `assets/images/dashboard-nav-icons/settings-white.svg`,
         showItem: true
       },
+
       {
         Name: 'Support',
         Link: '/dashboard/support',

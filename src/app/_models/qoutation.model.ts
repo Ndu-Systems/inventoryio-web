@@ -16,6 +16,7 @@ export interface Qoutation {
     Status: string;
     StatusId: number;
     Customer?: Partner;
+    Products?: any[];
     // local
     Disable?: boolean;
     Touched?: boolean;

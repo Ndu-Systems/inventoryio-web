@@ -1,45 +1,84 @@
-.main {
-  background: #f5f6fa;
-  height: 100%;
-}
+// .main {
+//   background: #f5f6fa;
+//   height: 100%;
+// }
 
 
-.actions {
-  // margin: 4rem 0;
+// .actions {
+//   // margin: 4rem 0;
 
-  .action-title {
-    font-size: 20px;
-    color: #7B8C98;
-    font-weight: 400;
-    text-transform: capitalize;
-  }
+//   .action-title {
+//     font-size: 20px;
+//     color: #7B8C98;
+//     font-weight: 400;
+//     text-transform: capitalize;
+//   }
 
-}
+// }
 
-@media only screen and (max-width: 768px) {
-  .actions {
-    h1 {
-      padding-left: 1rem;
-    }
-  }
-}
+// @media only screen and (max-width: 768px) {
+//   .actions {
+//     h1 {
+//       padding-left: 1rem;
+//     }
+//   }
+// }
 
 
-@media only screen and (max-width: 600px) {
+// @media only screen and (max-width: 600px) {
 
-  .actions {
-    // margin: 2rem 0;
+//   .actions {
+//     // margin: 2rem 0;
 
-    .action-title {
-      font-size: 16px;
-      color: #7B8C98;
-      margin: 2rem;
-      font-weight: 400;
+//     .action-title {
+//       font-size: 16px;
+//       color: #7B8C98;
+//       margin: 2rem;
+//       font-weight: 400;
+//       text-transform: capitalize;
+//     }
+
+//     .heading {
+//       margin: 2rem 2rem;
+//     }
+//   }
+// }
+
+@import '../../../../assets/styles/variables';
+
+.settings {
+  background: $white-color;
+  padding: 1rem;
+  margin: 1rem;
+  width: 60%;
+  border-radius: 6px;
+
+  .item-link {
+    margin-bottom: 2rem;
+
+    b {
       text-transform: capitalize;
     }
 
-    .heading {
-      margin: 2rem 2rem;
+    .contianer-link {
+      display: block;
+
+      .link {
+        display: grid;
+        grid-template-columns: 5% auto;
+        margin: .5rem;
+
+        img {
+          width: 1.5rem;
+        }
+      }
+
+      a {
+        text-transform: capitalize;
+        color: $bg-color;
+        font-weight: 500;
+      }
     }
   }
+
 }

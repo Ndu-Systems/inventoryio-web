@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product, SellModel, User, NotFoundModel, Partner, Orders, Item } from 'src/app/_models';
-import { ProductService, AccountService, BannerService, SaleService, PartnerService, ScannerService } from 'src/app/_services';
+import { ProductService, AccountService, BannerService, SaleService, PartnerService, ScannerService, OrdersService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { NotFoundConstants } from '../../shared';
 import { QoutationService } from 'src/app/_services/dashboard/qoutation.service';
+import { OrderOptions } from 'src/app/_models/order.options.model';
+import { Config } from 'protractor';
 
 @Component({
   selector: 'app-qoute',
@@ -20,10 +22,11 @@ export class QouteComponent implements OnInit {
   products: Product[];
   categories: string[] = [];
   showCart = true;
-  searchByCatergory;
+  searchByCatergory = '';
   width: number;
   notFoundModel: NotFoundModel;
-  searchCustomer: string;
+  searchCustomer;
+  customerSuggestions = [];
   // results = [];
 
   selectedCustomerId = '';
@@ -32,6 +35,18 @@ export class QouteComponent implements OnInit {
   showScan: boolean;
   showChangeCustomer: boolean;
   selectedPartner: Partner;
+
+  // order options
+  productOptions: OrderOptions[] = [];
+  shippingsList = [];
+  selectedShippingMethod: any;
+  deliveryFee = 0;
+  shippings: Config[] = [];
+  currency = 'R';
+  productForAttributes: Product;
+  selectProductQnty = 1;
+
+
 
   constructor(
     private productService: ProductService,
@@ -43,9 +58,6 @@ export class QouteComponent implements OnInit {
     private qoutationService: QoutationService,
     private partnerService: PartnerService,
     private scannerService: ScannerService
-
-
-
   ) { }
 
   ngOnInit() {
@@ -64,11 +76,31 @@ export class QouteComponent implements OnInit {
 
     this.saleService.sell.subscribe(state => {
       this.sale = state;
+      if (this.sale && this.sale.Customer) {
+        this.selectedPartner = this.sale.Customer;
+      } else {
+        this.selectedPartner = {
+          PartnerId: '',
+          CompanyId: '',
+          PartnerType: '',
+          Name: '',
+          Surname: '',
+          CellphoneNumber: '',
+          EmailAddress: '',
+          Password: '',
+          Address: '',
+          CreateDate: '',
+          CreateUserId: '',
+          ModifyDate: '',
+          ModifyUserId: '',
+          StatusId: '1'
+        };
+      }
     });
 
     this.notFoundModel = {
-      Image: NotFoundConstants.NOT_FOUND_PRODUCTS.image,
-      Message: NotFoundConstants.NOT_FOUND_PRODUCTS.message
+      Image: NotFoundConstants.NOT_FOUND_SALES.image,
+      Message: NotFoundConstants.NOT_FOUND_SALES.message
     };
     this.partnerService.getPartners(this.user.CompanyId);
     this.partnerService.partners.subscribe(data => {
@@ -78,7 +110,7 @@ export class QouteComponent implements OnInit {
     this.scannerService.scann.subscribe(scan => {
       if (scan) {
         this.showScan = scan.isOpen;
-        if (scan.code) {
+        if (scan.code && window.location.href.includes('sell')) {
           const product = this.products.find(x => x.Code === scan.code);
           if (product) {
             this.doSell(product);
@@ -87,11 +119,24 @@ export class QouteComponent implements OnInit {
 
       }
     });
+
+    if (this.user.Company.Shipping) {
+      this.shippings = this.user.Company.Shipping;
+      this.groupShipping();
+    }
+
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
   }
   doSell(product: Product) {
+    if (!this.sale) {
+      this.saleService.updateState({
+        items: [],
+        total: 0,
+        companyId: ''
+      });
+    }
     if (this.sale) {
       if ((product.QuantityAvailable <= 0) || (Number(product.Quantity) <= 0)) {
         this.messageService.add({
@@ -101,20 +146,49 @@ export class QouteComponent implements OnInit {
         });
         return false;
       }
-      const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
-      if (item) {
-        item.quantity++;
-        this.saleService.doSellLogic(item);
-        return;
+
+      if (!this.checkIfProductOptionsAreSelected(product)) {
+        return false;
+      }
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Added to cart',
+        detail: `${product.Name} Added`
+      });
+
+      // find out if  I have the item in the cart already 
+
+      const items = this.sale.items.filter(x => x.prodcuId === product.ProductId);
+
+      //  does the product have  select options?
+      const selectedProductOptions = this.productOptions.filter(x => x.ProductId === product.ProductId);
+
+      // Does existing item have exatly match on the options?
+      const checkOptionMatch = items.find(x => JSON.stringify(x.options) === JSON.stringify(selectedProductOptions));
+
+      // if the item is a dublicate just inclease quantity
+      if (checkOptionMatch) {
+        checkOptionMatch.quantity += Number(product.QuantitySelected);
+        this.saleService.doSellLogic(checkOptionMatch);
+
+      } else {
+        // create a new item in to the cart
+        this.saleService.doSellLogic(
+          {
+            prodcuId: product.ProductId,
+            companyId: this.user.CompanyId,
+            name: product.Name,
+            price: Number(product.UnitPrice),
+            quantity: Number(product.QuantitySelected),
+            image: product.images && product.images[0].Url,
+            options: JSON.parse(this.getProductSelectedItemsString(product))
+          });
       }
     }
-
-    this.productService.updateCurrentProduct(product);
-    this.saleService.doSellLogic({
-      prodcuId: product.ProductId, companyId: product.CompanyId,
-      name: product.Name, price: Number(product.UnitPrice), quantity: 1
-    });
+    this.closeOptions();
+    this.productOptions = [];
   }
+
   clear() {
     this.saleService.clearState();
   }
@@ -128,9 +202,21 @@ export class QouteComponent implements OnInit {
       return false;
     }
     this.qoutationService.updateQoutationState(null);
+
+    // if (!this.selectedShippingMethod && this.shippings.length > 0) {
+    //   this.messageService.add({
+    //     severity: 'warn',
+    //     summary: 'Shipping Method not selected',
+    //     detail: 'Please select shipping method before you checkout.'
+    //   });
+    //   return false;
+    // }
+    this.sale.charges = [this.selectedShippingMethod];
+    this.saleService.updateState(this.sale);
     const order: Orders = {
       CompanyId: this.user.CompanyId,
       ParntersId: this.selectedPartner && this.selectedPartner.PartnerId || null,
+      ParntersEmail: this.selectedPartner && this.selectedPartner.EmailAddress || null,
       OrderType: 'Sell',
       Total: this.sale.total,
       Paid: 0,
@@ -140,6 +226,8 @@ export class QouteComponent implements OnInit {
       Status: 'new',
       StatusId: 1
     };
+
+
     console.log(order);
     console.log('items', this.sale.items);
     this.qoutationService.addQoute(order, this.sale.items);
@@ -151,15 +239,7 @@ export class QouteComponent implements OnInit {
     this.router.navigate(['/dashboard/qoutes-list']);
   }
 
-  updateProductsRange(items: Item[]) {
-    const products: Product[] = [];
-    items.forEach(item => {
-      const product = this.products.find(x => x.ProductId === item.prodcuId);
-      product.Quantity = Number(product.Quantity) - Number(item.quantity);
-      products.push(product);
-    });
-    this.productService.updateProductRange(products);
-  }
+
   details(product: Product) {
     this.productService.updateCurrentProduct(product);
     this.bannerService.updateState({
@@ -180,7 +260,7 @@ export class QouteComponent implements OnInit {
   }
   addCustomer() {
     this.bannerService.updateState({
-      backto: `/dashboard/qoute-customer`,
+      backto: `/dashboard/sell`,
     });
     this.router.navigate(['/dashboard/add-partner/customers']);
   }
@@ -191,7 +271,155 @@ export class QouteComponent implements OnInit {
     this.showChangeCustomer = true;
   }
   selectCustomer(customer: Partner) {
+    this.selectedCustomerId = customer.PartnerId;
+    customer.Name = customer.Name + ' ' + customer.Surname;
     this.selectedPartner = customer;
-    this.showChangeCustomer = false;
+    this.customerSuggestions = [];
+    if (this.sale) {
+      this.sale.Customer = customer;
+    }
+  }
+
+
+  optionSelected(valueId, attributeId, product: Product) {
+    const selectValueId = Number(valueId);
+    if (this.productOptions.find(x => x.OptionId === attributeId)) {
+      this.productOptions = this.productOptions.filter(x => x.OptionId !== attributeId);
+    }
+    const attribute = product.Attributes.find(x => x.AttributeId === attributeId);
+    const itemOptionn: OrderOptions = {
+      Id: '1',
+      OrderId: 'na',
+      ProductId: product.ProductId,
+      OrderProductId: 'na',
+      OptionId: attributeId,
+      ValueId: selectValueId,
+      OptionValue: attribute.Values.find(x => Number(x.Id) === selectValueId).AttributeValue,
+      OptionName: attribute.Name,
+      ValuePrice: product.UnitPrice,
+      ValueIdQty: product.Quantity,
+      CompanyId: this.user.CompanyId,
+      CreateUserId: 'customer',
+      ModifyUserId: 'customer',
+      StatusId: 1
+    };
+    this.pushOptions(itemOptionn);
+    console.log(this.productOptions);
+
+  }
+
+  pushOptions(orderOption: OrderOptions) {
+    if (!this.productOptions.find(x => x.OptionId === orderOption.OptionId && x.ValueId === orderOption.ValueId)) {
+      this.productOptions.push(orderOption);
+    }
+  }
+
+  checkIfPrevItemIsAddedToCart(productId) {
+    if (this.productOptions.length > 0 && !this.productOptions.find(x => x.ProductId === productId)) {
+      const unsavedProduct = this.products.find(x => x.ProductId === this.productOptions[0].ProductId);
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Empty cart',
+        life: 10000,
+        detail: `Please ADD TO CART ${unsavedProduct.Name} first, or deselect all options.`
+      });
+
+      return false;
+    }
+    return true;
+  }
+
+
+  checkIfProductOptionsAreSelected(product: Product) {
+    if (product.Attributes.filter(x => x.Values && x.Values.length > 0).length
+      !== this.productOptions.filter(x => x.ProductId === product.ProductId).length) {
+      this.productForAttributes = product;
+      this.productForAttributes.QuantitySelected = product.QuantitySelected || 1;
+      return false;
+    }
+    return true;
+  }
+
+  getProductSelectedItemsString(product: Product) {
+    const optionsForAproduct = this.productOptions.filter(x => x.ProductId === product.ProductId);
+    if (optionsForAproduct.length) {
+      return JSON.stringify(optionsForAproduct);
+    }
+
+    return '[]';
+  }
+  deliveryChanged(data) {
+    if (data === 'delivery') {
+      this.selectedShippingMethod = undefined;
+      return false;
+    }
+    const cost = this.shippingsList.find(x => x.key === data);
+    if (cost && !isNaN(cost.amount)) {
+      this.deliveryFee = Number(cost.amount);
+      this.selectedShippingMethod = cost;
+    } else {
+      this.deliveryFee = 0;
+      this.selectedShippingMethod = cost;
+    }
+    console.log(cost);
+
+
+  }
+  groupShipping() {
+    const groupedItems: { key: string, data: Config[] }[] = [];
+    this.shippings.forEach(item => {
+      if (!groupedItems.find(x => x.key === item.GroupKey)) {
+        groupedItems.push({
+          data: this.shippings.filter(x => x.GroupKey === item.GroupKey),
+          key: item.GroupKey
+        });
+      }
+    });
+    // console.log('nn', groupedItems);
+    groupedItems.forEach(x => {
+      x.data.forEach(vals => { });
+      let item =
+        `${this.findConfigByName('name', x.data)}-  ${this.currency}${this.findConfigByName('amount', x.data)}`;
+      if (isNaN(this.findConfigByName('amount', x.data))) {
+        item = `${this.findConfigByName('name', x.data)}- ${this.findConfigByName('amount', x.data)}`;
+      }
+      this.shippingsList.push({
+        line: item,
+        amount: this.findConfigByName('amount', x.data),
+        key: this.findConfigKeyByName('amount', x.data),
+      });
+
+    });
+  }
+
+  findConfigByName(name: string, items) {
+    return (items.find(x => x.Name === name).Value || '').trim();
+  }
+  findConfigKeyByName(name: string, items) {
+    return items.find(x => x.Name === name).GroupKey;
+  }
+  searchCustomers(key: string) {
+    if (key) {
+      this.customerSuggestions = this.customers.filter(
+        x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()) ||
+          x.Surname.toLocaleLowerCase().includes(key.toLocaleLowerCase())
+      );
+    }
+  }
+
+  closeOptions() {
+    this.productForAttributes = null;
+  }
+  selectProductQntyAdjust(product: Product, key) {
+    if (!product.QuantitySelected) {
+      product.QuantitySelected = 1;
+    }
+    if (Number(key) === 1) {
+      product.QuantitySelected++;
+    } else {
+      if (this.selectProductQnty > 0) {
+        product.QuantitySelected--;
+      }
+    }
   }
 }

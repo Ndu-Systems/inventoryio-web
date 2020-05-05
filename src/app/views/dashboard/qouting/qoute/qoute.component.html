@@ -1,198 +1,302 @@
-<div class="main">
-  <h1 class="heading">
-    Create customer quotation
-  </h1>
-  <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar> -->
+<div class="sell-page">
+  <div class="selling">
 
-</div>
-
-
-<div class="main">
-  <!-- <h4 class="heading">
-    Select sale items
-  </h4> -->
-
-  <div class="cart phone-only">
-    <i (click)="toggleCart()" class="pi pi-shopping-cart"></i>
-    <div class="amount">
-      {{sale?.total | currency:'R'}}
-    </div>
-  </div>
-  <div class="sell-grid">
-
-    <div class="products">
-
-
-
-
-
-      <div class="small-cards small-cards-filter">
-        <div class=" cutomer-details">
-          <div class="img">
-            <img *ngIf="selectedPartner" src="assets/images/order/user.svg" alt="">
-            <img *ngIf="!selectedPartner" src="assets/images/order/user-no-customer.svg" alt="">
-          </div>
-          <div *ngIf="!selectedPartner">
-            <h3>Guest Customer</h3>
-          </div>
-          <div *ngIf="selectedPartner">
-            <h3>{{selectedPartner.Name}} {{selectedPartner.Surname}}</h3>
-            <p>
-              {{selectedPartner.CellphoneNumber || 'No phone number'}} | {{selectedPartner.EmailAddress || 'No email address'}}
-            </p>
-            <p>
-              {{selectedPartner.Address || 'No customer address'}}
-            </p>
-          </div>
-          <div></div>
-          <div>
-            <!-- <button class="btn btn-transparent" (click)="scann()">
-              <span class=""> <i class="pi pi-user-edit"></i>Edit</span>
-            </button> -->
-            <button class="btn btn-transparent" (click)="changeCustomer()">
-              <span class=""> <i class="pi pi-refresh"></i>Change</span>
-            </button>
-          </div>
+    <div class="products-page" *ngIf="products$  | async as products">
+      <div class="list-header">
+        <div class="heading">
+          <h1>
+            Create customer quotation<span class="dot">.</span>
+          </h1>
         </div>
       </div>
 
 
-      <div class="small-cards small-cards-filter">
-        <div class="card filter-card">
-          <div class="list-filters topbar">
-            <div class="search-box">
-              <div class="input-times">
-                <input type="text" class="roundInput" [(ngModel)]="search" placeholder="🔎 search here ...">
-              </div>
-            </div>
+      <div class="list-header-mobile">
+        <h4>
+          Products ({{sum}})
+        </h4>
 
-            <div>
-              <select [(ngModel)]="searchByCatergory" class="roundInput">
-                <option value="" selected>All</option>
-                <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
-              </select>
+        <div class="actions">
+          <div class="search">
+            <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+          </div>
+          <div class="search">
+            <select [(ngModel)]="searchByCatergory" class="roundInput">
+              <option value="" selected>All categories</option>
+              <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+            </select>
+          </div>
+          <div class="search">
+            <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="customer" *ngIf="selectedPartner">
+        <div class="input">
+          <div class="customer-search">
+            <span>Customer Name</span>
+            <input type="search" autocomplete="off" [(ngModel)]="selectedPartner.Name"
+              (keyup)="searchCustomers($event.target.value)" class="roundInput" placeholder="Search customer ...">
+            <div class="dropdown  result" *ngIf="customerSuggestions.length > 0 && selectedPartner.Name">
+              <p *ngFor="let item of customerSuggestions; let i = index">
+                <span (click)="selectCustomer(item)">{{item.Name}} {{item.Surname}}</span>
+              </p>
             </div>
-            <div>
-              <button class="btn btn-transparent" (click)="scann()">
-                <span class=""><i class="pi pi-ticket"></i>Scan</span>
+          </div>
+
+
+          <br>
+          <div *ngIf="shippingsList?.length">
+            <span>Shipping Method</span>
+            <select (change)="deliveryChanged($event.target.value)" class="roundInput">
+              <option value="delivery" selected>Please select</option>
+              <option [value]="ship.key" *ngFor="let ship of shippingsList">{{ship.line}}</option>
+            </select>
+          </div>
+        </div>
+
+
+
+        <div class="input">
+          <span>Customer Address</span>
+          <textarea class="roundInput" [(ngModel)]="selectedPartner.Address" name="" id="" cols="30"
+            rows="10"></textarea>
+        </div>
+      </div>
+
+
+      <div class="search-table">
+        <div class="search">
+          <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+        </div>
+
+        <div class="search">
+          <select [(ngModel)]="searchByCatergory" class="roundInput">
+            <option value="" selected>All categories</option>
+            <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="table" *ngIf="products.length > 0; else notFound">
+        <div class="header">
+          <div class="header-item">
+            Image
+          </div>
+          <div class="header-item">
+            Product name
+          </div>
+
+          <div class="header-item ">
+            Price
+          </div>
+          <div class="header-item tac">
+            Qty
+          </div>
+          <div class="header-item tar">
+            Actions
+          </div>
+        </div>
+        <div class="body-container">
+          <div class="body"
+            *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory; let i = index">
+            <div class="body-item">
+              <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+              <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+
+            </div>
+            <div class="body-item">
+              <p>
+                {{item.Name}}
+              </p>
+            </div>
+            <div class="body-item">
+              <p>
+
+                {{item.UnitPrice | currency:'R'}}
+
+              </p>
+
+            </div>
+            <div class="body-item tac">
+
+
+              <div class="qnty">
+                <div class="min">
+                  <button class="add hover-shadow" (click)="selectProductQntyAdjust(item,-1)">
+                    <i class="pi pi-minus"></i>
+                  </button>
+                </div>
+                <div class="input">
+                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="item.QuantitySelected" (blur)="blur(item)">
+                </div>
+
+                <div class="plus">
+                  <button class="reduce hover-shadow" (click)="selectProductQntyAdjust(item,1)">
+                    <i class="pi pi-plus"></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+            <div class="body-item tar">
+              <button class="btn-primary" (click)="doSell(item)">
+                <i class="pi pi-shopping-cart"></i> Cart
               </button>
             </div>
           </div>
         </div>
       </div>
 
-
-
-
-
-
-
-      <div class="small-cards-body" *ngIf="products$  | async as products">
-
-        <div class="small-cards" *ngIf="products.length > 0; else notFound">
+      <div class="mobile-table">
+        <div class="items">
           <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-            <div class="card">
-              <div class="image">
-                <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-                <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
-              </div>
-              <div class="details">
-                <p class="name">
-                  {{item.Name}}
-                  <span [ngClass]="item.Class">{{item.Quantity}} In Stock</span>
-                </p>
+            <div class="item" (click)="details(item)">
+              <div class="image-name">
+                <div class="image">
+                  <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+                  <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+                </div>
+                <div class="name">
+                  <p>
+                    <span>
+                      {{item.Quantity}}
+                    </span>
+                  </p>
+                </div>
+                <div class="name">
+                  <p>
 
-              </div>
-              <div class="price">
-                <p>
-                  {{item.UnitPrice | currency:'R'}}
-                </p>
-                <button class="action-btn  hover-shadow" (click)="doSell(item)"><i
-                    class="pi pi-shopping-cart"></i></button>
-                <!-- <button class="action-btn hover-shadow" (click)="details(item)">
-                  <i class="pi pi-pencil"></i>
-                </button> -->
+                    {{item.Name}}
+                  </p>
+                </div>
+                <div class="qty">
+
+                </div>
+                <div class="price">
+                  <p>
+                    {{item.UnitPrice | currency:'R'}}
+
+                  </p>
+                </div>
               </div>
             </div>
-
           </span>
-
         </div>
-        <ng-template #notFound>
-          <div class="not-found">
-            <img [src]="notFoundModel.Image" alt="no items found">
-            <h1 class="message">
-              {{notFoundModel.Message}}
-              <span>
-                <a class="link-add" (click)="add()">add new product.</a>
-              </span>
-            </h1>
+      </div>
 
-          </div>
-        </ng-template>
+      <ng-template #notFound>
+        <div class="not-found">
+          <img [src]="notFoundModel.Image" alt="no items found">
+          <h1 class="message">
+            {{notFoundModel.Message}}
+            <span>
+              <a class="link-add" (click)="add()"> add new product.</a>
+            </span>
+          </h1>
+        </div>
+      </ng-template>
+
+    </div>
+
+  </div>
+
+  <div class="cart">
+    <div class="list-header">
+      <div class="heading">
+        <h1>
+          Cart<span class="dot">.</span>
+        </h1>
       </div>
     </div>
-    <div class="summary" *ngIf="showCart">
-      <div class="back" (click)="toggleCart()">
-        <i class="pi pi-chevron-left"></i>
-      </div>
-      <h3>
-        Cart
-      </h3>
-      <div class="sell">
-        <app-sale-sammary></app-sale-sammary>
-      </div>
 
-      <div class="sell total">
+    <div class="cart-items">
+      <app-sale-sammary></app-sale-sammary>
+
+      <div class="total">
         <h4>
-          {{sale?.total | currency:'R'}}
-          <span>Total</span>
+          Total: {{sale?.total + deliveryFee | currency:'R'}}
         </h4>
-
       </div>
-
-      <div class="list-filters">
-        <div class="add">
-          <button class="btn" (click)="onSubmit()">Save qoute</button>
+      <div class="actions">
+        <div>
+          <button class="btn" (click)="onSubmit()">Save order</button>
         </div>
-        <div class="add">
-          <button class="btn btn-warn" (click)="clear()">Clear form</button>
+
+        <div>
+          <button class="btn btn-transparent" (click)="clear()">Crear All</button>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
+<div class="select-attributes-modal" *ngIf="productForAttributes">
+  <div class="modal">
+    <div class="header">
+      <h1>
+        Select Product Options
+      </h1>
 
-<div class="scanner-pluggin" *ngIf="showScan">
-  <app-scanner></app-scanner>
-</div>
+      <div class="close" (click)="closeOptions()">
+        <img src=" assets/images/close-options.svg" alt="">
+      </div>
+    </div>
 
+    <div class="body">
+      <div class="image">
+        <img *ngIf="productForAttributes.images" [src]="productForAttributes.images[0].Url" alt="">
+        <img *ngIf="!productForAttributes.images" src="assets/images/placeholder.png" alt="">
+      </div>
 
-<p-dialog header="Selct a customer" [modal]="true" [(visible)]="showChangeCustomer" [style]="{width: '30%'}">
-  <div class="input-times">
-    <input type="text" class="roundInput" [(ngModel)]="searchCustomer" placeholder="🔎 search customer ...">
+      <div class="item-options">
+        <div class="options-item" *ngFor="let attribute of productForAttributes.Attributes">
+          <div class="input">
+            <span *ngIf="attribute.Values">
+              <span class="label">{{attribute.Name}}</span>
+              <select class="roundInput"
+                (change)="optionSelected($event.target.value, attribute.AttributeId, productForAttributes)">
+                <option value="">Choose one..</option>
+                <option *ngFor="let attrValue of attribute.Values" class="select-option" [value]="attrValue.Id">
+                  {{attrValue.AttributeValue}}</option>
+              </select>
+            </span>
+          </div>
+        </div>
+        <div>
+          <br><br>
+          <span class="label">QTY</span>
+          <div class="qnty">
+            <div class="min">
+              <button class="add hover-shadow" (click)="selectProductQntyAdjust(productForAttributes,-1)">
+                <i class="pi pi-minus"></i>
+              </button>
+            </div>
+            <div class="input">
+              <input type="text" pInputText pKeyFilter="int" [(ngModel)]="productForAttributes.QuantitySelected"
+                (blur)="blur(productForAttributes)">
+            </div>
+
+            <div class="plus">
+              <button class="reduce hover-shadow" (click)="selectProductQntyAdjust(productForAttributes,1)">
+                <i class="pi pi-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <div>
+            <button class="btn" (click)="doSell(productForAttributes)">
+              <i class="pi pi-shopping-cart"></i> Cart
+            </button>
+          </div>
+
+          <div>
+            <button class="btn btn-transparent" (click)="closeOptions()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <table *ngIf="customers$  | async as customers">
-    <tr>
-      <td>
-        Guest Customer
-      </td>
-      <td class="actions">
-        <button class="btn" (click)="selectCustomer(null)">Select</button>
-      </td>
-    </tr>
-    <tr *ngFor="let customer of  customers | searchpartner:searchCustomer ">
-      <td>
-        {{customer.Name}} {{customer.Surname}}
-      </td>
-      <td class="actions">
-        <button class="btn btn-transparent" (click)="selectCustomer(customer)">Select</button>
-      </td>
-    </tr>
-  </table>
-  <br>
-  <br>
-  <a (click)="addCustomer()">Create new customer</a>
-</p-dialog>
+</div>
