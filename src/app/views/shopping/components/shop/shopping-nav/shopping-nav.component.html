@@ -1,6 +1,7 @@
 <div class="top-navigation">
   <div class="logo">
     <img src="assets/images/logo-beta.png" alt="">
+    <!-- <img  src="assets/images/logo-v.svg" alt=""> -->
   </div>
 
   <div class="logo">
@@ -9,7 +10,7 @@
   <div class="search">
     <div class="input-group">
       <div>
-        <input type="text" placeholder="Type your query...">
+        <input type="text" placeholder="Search products and shops...">
       </div>
       <div class="icon">
         <img src="assets/images/search.svg" alt="">
@@ -17,118 +18,51 @@
     </div>
   </div>
 
-  <div class="back">
-    <p>
-      <span> <i class="pi pi-arrow-left"></i> </span> Back to shopping
-    </p>
-  </div>
-  <div class="back">
 
-  </div>
-
-  <div class="profile">
-    <div class="image">
-      <img src="assets/images/customer-icon.svg" alt="">
-    </div>
-    <div class="name">
-      <h3>
-        Hello Ndu
-      </h3>
-    </div>
+  <div class="account">
+    <img src="assets/images/sign-up-home.svg" alt="">
+    <img src="assets/images/sign-in-home.svg" alt="">
   </div>
 
   <div class="cart">
-    <div class="image">
-      <img src="assets/images/smart-cart.svg" alt="">
-      <span>10</span>
-    </div>
-    <div class="name">
-      <h3>Cart</h3>
+    <div class="cart-btn">
+      <div class="image">
+        <img src="assets/images/smart-cart.svg" alt="">
+        <span>10</span>
+      </div>
+      <div class="name">
+        <h3>
+          Cart
+          <span class="total">R 0.00</span>
+        </h3>
+      </div>
     </div>
   </div>
 </div>
 
-
-
-<div class="top-bar" [ngStyle]="{'background-color':shopPrimaryColor || '#104CE5'}">
-  <div class="logo">
-    <a routerLink="/home"><img class="logo" src="assets/images/logo-full-bg.png" alt=""></a>
+<div class="tabs">
+  <div class="tab-item">
+    <p>
+      <a routerLink="/shop"> Other shops</a>
+    </p>
   </div>
-  <div class="logo shop-logo">
-    <a><img class="logo" [src]="logoUrl" alt=""></a>
+  <div class="tab-item">
+    <p class="active">
+     
+      <a routerLink="/shop">  zalou</a>
+    </p>
   </div>
-  <div class="nav">
-    <ul>
-      <li><a [ngStyle]="{'color':shopSecondaryColor}" routerLink="/home">
-        </a></li>
-      <li><a routerLink="/shop">Back to all shops</a></li>
-      <li><a [ngStyle]="{'color':shopSecondaryColor,'border':'2px solid '+shopSecondaryColor, 'padding':'.5rem'}"
-          routerLink="/shop/customer-login/home">Login & Register</a></li>
-      <li class="cart" (mouseover)="showCart=true">
-        <span class="cart-span">
-          {{cartItems}}
-          <i class="pi pi-shopping-cart"></i>
-        </span>
-        <div class="cart-view" *ngIf="sale && sale.items.length >0 && showCart">
-          <h4>Your cart</h4>
-          <div class="cart-items">
-            <div class="close">
-              <i (click)="showCart=false" class="pi pi-times"></i>
-            </div>
-            <div class="col-1-of-4" *ngFor="let item of sale.items">
-              <div class="row image">
-                <img [src]="item.image" alt="" *ngIf="item.image" />
-                <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
-              </div>
-              <h5>
-                <span>{{item.quantity}}</span>
-              </h5>
-              <h5>
-                {{item.name}}
-              </h5>
-
-              <h5 class="price">
-                {{item.subTotal| currency:'R'}}
-              </h5>
-            </div>
-          </div>
-          <h5>
-            {{sale?.total | currency:'R'}}
-          </h5>
-
-          <div class="action">
-            <a (click)="viewCart()"> Go to cart</a>
-          </div>
-        </div>
-      </li>
-
-    </ul>
+  <div class="tab-item">
+    <p>
+     
+      <a routerLink="/shop"> my orders</a>
+    </p>
+  </div>
+  <div class="tab-item">
+    <p>
+    
+      <a routerLink="/shop">   my wishlist</a>
+    </p>
   </div>
 
-  <div class="mobile-nav" *ngIf="showMobileNav" [ngStyle]="{'background-color':shopPrimaryColor}">
-    <div class="close" (click)="toggleNav()">
-      <img src="assets/images/close-mobilemenu.svg" alt="">
-    </div>
-    <ul class="nav-items">
-      <li><a [ngStyle]="{'color':shopSecondaryColor}" (click)="toggleNav()" routerLink="/shop">Back to all shops</a>
-      </li>
-      <li><a [ngStyle]="{'color':shopSecondaryColor,'border':'2px solid '+shopSecondaryColor, 'padding':'.5rem'}"
-          routerLink="/shop">Login & Register</a></li>
-
-    </ul>
-  </div>
-  <div class="ham-icon" (click)="toggleNav()">
-    <div class="harm-cart" (click)="viewCart()">
-      <span class="cart-span">
-        {{cartItems}}
-        <i class="pi pi-shopping-cart"></i>
-      </span>
-
-    </div>
-    <img src="assets/images/ham.svg" alt="">
-  </div>
-</div>
-
-<div *ngIf="showPortal" class="customer-portal">
-  <app-customer-portal></app-customer-portal>
 </div>

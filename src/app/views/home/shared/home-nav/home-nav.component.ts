@@ -11,6 +11,7 @@ import { NavModuleServiceService } from 'src/app/_services';
 export class HomeNavComponent implements OnInit {
   showMobileNav;
   showModules;
+  modulesClass: any;
 
   constructor(
     private routeTo: Router,
@@ -24,6 +25,9 @@ export class HomeNavComponent implements OnInit {
   }
   showModule() {
     this.showModules = !this.showModules;
+    // if (this.showModules) {
+    //   this.modulesClass = 'active-link';
+    // }
     localStorage.setItem('Key', null);
   }
   closeModule() {

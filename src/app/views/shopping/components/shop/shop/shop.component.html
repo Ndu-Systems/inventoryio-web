@@ -2,16 +2,27 @@
   <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
   </app-shopping-nav>
   <div class="container" *ngIf="products">
-    <div class="cover-photo">
-      <img [src]="bannerImage" alt="">
-    </div>
-    <div class="content" [ngStyle]="{'border':'6px solid '+shopPrimaryColor}">
-      <div class="check-out">
-        <button class="action-btn  hover-shadow"
-          [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}" (click)="viewCart()"><i
-            class="pi pi-shopping-cart"></i> cart
-          {{cartItems}} Items</button>
+    <div class="slider">
+      <div class="catergories">
+        <p>All all</p>
+        <p>All all</p>
+        <p>All all</p>
+        <p>All all</p>
+        <p>All all</p>
+        <p>All all</p>
+        <p>All all</p>
+        <p>All all</p>
       </div>
+      <div class="slide">
+        <app-product-slider [products] = "products" [company] ="company"></app-product-slider>
+        <!-- <div class="cover-photo"  *ngIf="bannerImage" >
+          <img [src]="bannerImage" alt="">
+        </div> -->
+      </div>
+    </div>
+
+    <div class="content">
+
       <div class="col-1-of-4">
         <span *ngFor="let item of products ">
           <div class="shop-card" (click)="viewItem(item)">
@@ -39,7 +50,8 @@
 
       </div>
 
-      <div *ngIf="company" class="footer" [ngStyle]="{'background-color':shopPrimaryColor}" class="footer">
+      <div *ngIf="company" class="footer" class="footer">
+        <hr>
         <h1>
           Thanks for visting {{company?.Name}}
         </h1>

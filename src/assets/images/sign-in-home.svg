@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="91" height="27" viewBox="0 0 91 27">
-  <g id="sign-in-home" transform="translate(-951.001 -20)">
-    <g id="Rectangle_222" data-name="Rectangle 222" transform="translate(951.001 20)" fill="none" stroke="#0337bb" stroke-width="1">
-      <rect width="91" height="27" rx="13.5" stroke="none"/>
-      <rect x="0.5" y="0.5" width="90" height="26" rx="13" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="113" height="33" viewBox="0 0 113 33">
+  <g id="sign-in-home" transform="translate(-951 -20.058)">
+    <g id="Rectangle_222" data-name="Rectangle 222" transform="translate(951 20.058)" fill="none" stroke="#0337bb" stroke-width="2">
+      <rect width="113" height="33" rx="16.5" stroke="none"/>
+      <rect x="1" y="1" width="111" height="31" rx="15.5" fill="none"/>
     </g>
-    <g id="Group_323" data-name="Group 323" transform="translate(-5)">
-      <text id="Sign_in" data-name="Sign in" transform="translate(968.001 38)" fill="#0337bb" font-size="11" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">Sign in</tspan></text>
-      <g id="Group_322" data-name="Group 322">
-        <g id="Group_311" data-name="Group 311" transform="translate(1015.001 24)">
-          <path id="Path_617" data-name="Path 617" d="M10,0A10,10,0,1,1,0,10,10,10,0,0,1,10,0Z" fill="#ecf2f4"/>
+    <g id="Group_323" data-name="Group 323" transform="translate(965.529 24.963)">
+      <text id="Sign_in" data-name="Sign in" transform="translate(0.471 16.095)" fill="#0337bb" font-size="12" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">Sign in</tspan></text>
+      <g id="Group_322" data-name="Group 322" transform="translate(58.391)">
+        <g id="Group_311" data-name="Group 311">
+          <path id="Path_617" data-name="Path 617" d="M12.359,0A12.359,12.359,0,1,1,0,12.359,12.359,12.359,0,0,1,12.359,0Z" fill="#ecf2f4"/>
         </g>
-        <g id="lock" transform="translate(957 29)">
-          <g id="Group_317" data-name="Group 317" transform="translate(64)">
-            <path id="Path_625" data-name="Path 625" d="M71.333,3.771H70.7V2.933a2.933,2.933,0,1,0-5.867,0v.838H64.21a.209.209,0,0,0-.21.21V9.219a.839.839,0,0,0,.838.838H70.7a.839.839,0,0,0,.838-.838V3.981A.209.209,0,0,0,71.333,3.771ZM68.4,8.148a.21.21,0,0,1-.208.233h-.838a.21.21,0,0,1-.208-.233l.132-1.189a.829.829,0,0,1-.343-.674.838.838,0,1,1,1.676,0,.829.829,0,0,1-.343.674Zm1.049-4.377H66.1V2.933a1.676,1.676,0,0,1,3.352,0Z" transform="translate(-64)" fill="#0337bb"/>
+        <g id="lock" transform="translate(7.414 6.18)">
+          <g id="Group_317" data-name="Group 317" transform="translate(0)">
+            <path id="Path_625" data-name="Path 625" d="M73.063,4.661h-.777V3.625a3.625,3.625,0,1,0-7.251,0V4.661h-.777A.259.259,0,0,0,64,4.92v6.474a1.037,1.037,0,0,0,1.036,1.036h7.251a1.037,1.037,0,0,0,1.036-1.036V4.92A.259.259,0,0,0,73.063,4.661Zm-3.627,5.41a.259.259,0,0,1-.257.288H68.143a.259.259,0,0,1-.257-.288L68.049,8.6a1.025,1.025,0,0,1-.424-.833,1.036,1.036,0,1,1,2.072,0,1.025,1.025,0,0,1-.424.833Zm1.3-5.41H66.59V3.625a2.072,2.072,0,0,1,4.143,0Z" transform="translate(-64)" fill="#0337bb"/>
           </g>
         </g>
       </g>

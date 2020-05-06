@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="42" viewBox="0 0 42 42">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.093" y1="0.676" x2="0.892" y2="-0.538" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#104ce5"/>
+      <stop offset="1" stop-color="#04216d"/>
+    </linearGradient>
+  </defs>
+  <g id="logo-v" transform="translate(0 -0.192)">
+    <g id="Group_2" data-name="Group 2" transform="translate(7.104 6.673)">
+      <path id="Path_3" data-name="Path 3" d="M5.4,0h16a5.4,5.4,0,0,1,0,10.793H5.4A5.4,5.4,0,0,1,5.4,0Z" transform="matrix(0.454, 0.891, -0.891, 0.454, 9.631, 0.194)" fill="#104ce5"/>
+      <rect id="Rectangle_5" data-name="Rectangle 5" width="14.68" height="10.876" rx="5.438" transform="matrix(0.454, 0.891, -0.891, 0.454, 9.69, 0.187)" fill="url(#linear-gradient)"/>
+      <rect id="Rectangle_4" data-name="Rectangle 4" width="26.424" height="10.586" rx="5.293" transform="translate(27.827 4.136) rotate(113)" fill="#104ce5"/>
+    </g>
+    <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(0 0.192)" fill="none" stroke="#104ce5" stroke-width="3">
+      <circle cx="21" cy="21" r="21" stroke="none"/>
+      <circle cx="21" cy="21" r="19.5" fill="none"/>
+    </g>
+  </g>
+</svg>
