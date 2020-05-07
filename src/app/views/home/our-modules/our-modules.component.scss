@@ -3,6 +3,10 @@
 .main-container {
   padding: 3rem 11.5rem;
 
+  @media only screen and (max-width: 600px) {
+    padding: 2rem 1rem;
+  }
+
 
   .col-1-of-2 {
     grid-template-columns: 40% auto;
@@ -74,6 +78,7 @@
 
     padding: 2rem;
     margin: 10rem 0;
+
     .col-1-of-2 {
       margin: 2rem 0;
     }
@@ -128,9 +133,11 @@
         width: 100%;
       }
     }
+
     .mockup {
       padding: 1rem;
       margin: 5rem 0;
+
       .col-1-of-2 {
         margin: 1rem 0;
       }

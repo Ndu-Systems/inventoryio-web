@@ -18,7 +18,7 @@ export class ViewImagesComponent implements OnInit {
   ngOnInit() {
     this.product$ = this.productService.sellItem;
     this.productService.sellItem.subscribe(data => {
-      this.images = data.images;
+      this.images = data.Images;
       this.selectedImage =  this.images && this.images[0];
     });
 

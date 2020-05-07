@@ -1,105 +1,37 @@
-<div class="main">
-  <div class="banner">
-
-    <div class="welcome">
-      <div class="heading">
-        <h1>
-          Welcomes to inventory io digital mall<span class="dot">.</span>
-        </h1>
-        <p>
-          Find products and shops
-        </p>
-      </div>
-
-      <div class="search-container">
-        <div class="search">
-          <div class="type">
-            <select [(ngModel)]="searchType">
-              <option value="products" selected>Products</option>
-              <option value="shops" selected>Shops</option>
-            </select>
-          </div>
-
-          <div class="input">
-            <input type="text" (keyup)="search($event.target.value)">
-          </div>
-
-          <div class="icon">
-            <img src="assets/images/shop/search.svg" alt="">
-          </div>
+<div class="shops-container">
+  <div class="categorie-slider">
+    <app-categories-slider ></app-categories-slider>
+  </div>
+  <div class="slider">
+    <div class="catergories">
+      <h3>
+        categories
+      </h3>
+      <div class="cat" *ngFor="let c of [1,1,1,1,1,1,1]">
+        <div class="image">
+          <img src="assets/images/laptop.svg" alt="">
         </div>
-        <div class="results">
-
-          <!-- Search shops -->
-          <span *ngIf="searchType == 'shops'">
-            <div class="result-cards">
-              <div class="scroller">
-
-                <div class="result-card" *ngFor="let shop of searchResults; let i = index">
-                  <span (click)="visitShow(shop)">
-                    <div class="image">
-                      <img [src]="shop.Banner[0].Url" alt="" *ngIf="shop.Banner" />
-                      <!-- <img src="assets/images/place-shpper.png" *ngIf="!shop.Banner" alt="" /> -->
-                      <img src="assets/images/store-placeholder.svg" *ngIf="!shop.Banner" alt="" />
-                    </div>
-
-                    <div class="name">
-                      <h1>
-                        {{shop?.Name}}
-                      </h1>
-                    </div>
-                    <div class="details">
-                      <p>
-                        {{shop?.Description}}
-                      </p>
-                    </div>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </span>
-
-          <!-- Search products -->
-          <span *ngIf="searchType == 'products'">
-            <div class="result-cards">
-              <div class="scroller">
-                <div class="result-card" *ngFor="let product of searchResultsProducts; let i = index">
-                  <span (click)="visitProduct(product)">
-                    <div class="image">
-                      <img [src]="product.Images[0].Url" alt="" *ngIf="product.Images" />
-                      <img src="assets/images/store-placeholder.svg" *ngIf="!product.Images" alt="" />
-                    </div>
-
-                    <div class="name">
-                      <h1>
-                        {{product?.Name}}
-                      </h1>
-                    </div>
-                    <div class="details">
-                      <p>
-                        {{product.UnitPrice | currency:'R'}}
-                      </p>
-                    </div>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </span>
+        <div class="name">
+         <p>
+          Electronics
+         </p>
         </div>
       </div>
     </div>
-
-    <div class="image">
-      <img src="assets/images/shopping.svg" alt="">
+    <div class="slide">
+      <pre>
+        <!-- {{sliderProducts | json}} -->
+      </pre>
+      <app-shops-home-slider *ngIf="sliderProducts" [shops]="shops"></app-shops-home-slider>
     </div>
-
   </div>
 
+  <div class="shops">
+    <app-shops-list-slider ></app-shops-list-slider>
+  </div>
+</div>
 
-
-
-
-  <div class="all-shops-container">
+<!-- <div class="all-shops-container">
     <h1>
       All shops
     </h1>
@@ -136,6 +68,4 @@
       <img class="pc"  src="assets/images/shops.svg" alt="">
       <img class="mobile"  src="assets/images/shops-ghost-mobile.svg" alt="">
     </span>
-  </div>
-
-</div>
+  </div> -->

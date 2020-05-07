@@ -183,7 +183,7 @@ export class SellComponent implements OnInit {
             name: product.Name,
             price: Number(product.UnitPrice),
             quantity: Number(product.QuantitySelected),
-            image: product.images && product.images[0].Url,
+            image: product.Images && product.Images[0].Url,
             options: JSON.parse(this.getProductSelectedItemsString(product))
           });
       }

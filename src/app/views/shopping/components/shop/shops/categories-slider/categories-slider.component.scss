@@ -1,0 +1,25 @@
+@import '../../../../../../../assets/styles/variables';
+
+.main {
+  .cats {
+    display: flex;
+
+    .cat {
+      background: $white-color;
+      margin-right: 1rem;
+      padding: 1.2rem 1rem;
+      border-radius: 2rem;
+      display: grid;
+      grid-template-columns: 20% auto;
+
+      img {
+        width: 1.5rem;
+      }
+
+      p {
+        margin: 0;
+        font-weight: 800;
+      }
+    }
+  }
+}

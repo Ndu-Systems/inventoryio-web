@@ -27,7 +27,7 @@ export interface Product {
     Brand?: Brand;
     QuantityAvailable?: number;
     QuantitySelected?: number;
-    images?: Image[];
+    Images?: Image[];
     Attributes?: Attribute[];
 
 }

@@ -33,6 +33,7 @@ export class HomeNavComponent implements OnInit {
   closeModule() {
     if (this.closeModule) {
       this.showModules = false;
+      this.showMobileNav = false;
     }
   }
 

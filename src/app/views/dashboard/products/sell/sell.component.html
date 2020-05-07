@@ -101,8 +101,8 @@
           <div class="body"
             *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory; let i = index">
             <div class="body-item">
-              <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-              <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
+              <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+              <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
 
             </div>
             <div class="body-item">

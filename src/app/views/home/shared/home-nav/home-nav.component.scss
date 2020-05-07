@@ -2,10 +2,15 @@
 
 .top-navigation {
   display: grid;
-  grid-template-columns: 10% 10% 50% 20% auto;
+  grid-template-columns: 15% 68% auto;
   padding: .5rem 12rem;
   border-bottom: 1px solid $border-color;
   background: $white-color;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+
   // border: 1px solid rgb(200, 191, 191);
 
   div {
@@ -58,109 +63,18 @@
     }
   }
 
-  .back {
-    padding: .3rem 1rem;
 
-    p {
-      font-weight: 700;
-      font-size: .8rem;
-      margin: 0;
-      border: 1.5px solid $primary-bg-color;
-      border-radius: 1rem;
-      position: relative;
-      left: 1rem;
-      width: auto;
-      padding: .2rem .5rem;
-      top: .5rem;
-      text-align: center;
-
-      span {
-        position: relative;
-        top: .2rem;
-      }
-    }
-
-  }
 
   .account {
     img {
       margin-right: .5rem;
       margin-top: 0.6rem;
+      cursor: pointer;
+      width: 7rem;
     }
   }
 
-  .profile {
-    display: grid;
-    grid-template-columns: 10% auto;
-    padding-top: .8rem;
 
-    .image {
-      img {
-        width: 1.4rem;
-      }
-    }
-
-    h3 {
-      margin: 0;
-      padding: 0 .5rem;
-      font-size: .8rem;
-      color: $primary-bg-color;
-    }
-  }
-
-  .cart {
-    background: #F7F5F1;
-    position: relative;
-    top: .4rem;
-    padding: .3rem;
-
-    .cart-btn {
-      display: grid;
-      grid-template-columns: 40% auto;
-      width: 8rem;
-      height: 2.6rem;
-      float: right;
-      position: absolute;
-      left: 1.2rem;
-      top: 0.7rem;
-    }
-
-
-    .image {
-      position: relative;
-
-      img {
-        width: 1.8rem;
-      }
-
-      span {
-        display: block;
-        position: absolute;
-        top: -7px;
-        right: 12px;
-        width: 1.4rem;
-        padding: .277rem;
-        font-size: .7rem;
-        font-weight: 700;
-        height: 1.4rem;
-        border-radius: 1.4rem;
-        background: $white-color;
-        border: 1px solid $primary-bg-color;
-        color: $primary-bg-color;
-      }
-    }
-
-    h3 {
-      margin: 0;
-      padding: 0 .5rem;
-      font-size: .8rem;
-
-      span {
-        font-weight: 400;
-        display: block;
-      }
-    }
-  }
 }
 
 .tabs {
@@ -169,6 +83,10 @@
   padding: .4rem 12rem;
   background: $white-color;
   width: 100%;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 
   .tab-item {
     p {
@@ -265,6 +183,11 @@
     width: 100%;
     height: 100%;
 
+    @media only screen and (max-width: 600px) {
+      top: 0;
+
+    }
+
     .module {
       &.col-1-of-2 {
         grid-template-columns: 14% auto;
@@ -273,215 +196,111 @@
   }
 }
 
-
-// @import '../../../../../assets/styles/variables';
-
-// nav {
-
-//   display: flex;
-//   overflow: hidden;
-//   background-color: $white-color;
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   width: 100%;
-//   padding: 0 12rem;
-//   z-index: 1000;
-
-//   ul {
-//     display: inline-block;
-//     text-align: center;
-//     list-style-type: none;
-//     padding: 15px;
-
-//     &.account {
-//       position: absolute;
-//       right: 12rem;
-//     }
-
-//     li {
-//       display: inline;
-//       font-family: "Fira Sans", sans-serif;
-//       font-size: 17px;
-//       margin: 1rem;
-//       &.showModules { cursor: pointer;}
-//       a {
-//         color: $dark-navy;
-//         text-decoration: none;
-//         padding: 14px;
-
-//         &.active-link {
-//           font-weight: 700;
-//           border-bottom: solid 2px $primary-bg-color;
-//         }
-
-//         &:hover {
-//           font-weight: 700;
-//           border-bottom: solid 2px $primary-bg-color;
-//         }
-
-//         &.logo {
-//           &:hover{ border-bottom: none;}
-//           img {
-//             text-align: left;
-//             width: 7rem;
-//           }
-//         }
-
-//         &.login {
-//           border: solid 2px $primary-bg-color;
-//           border-radius: 10px;
-//           font-weight: 700;
-//         }
-
-//         &.register {
-//           background: $primary-bg-color;
-//           border: solid 2px $primary-bg-color;
-//           border-radius: 10px;
-//           color: $white-color;
-//           font-weight: 700;
-//           border-bottom: none;
-//         }
-//       }
-//     }
-//   }
-// }
+.mobile-nav {
+  grid-template-columns: repeat(2, 50%);
+  display: none;
+  padding: .8rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2.4rem;
+  background: $white-color;
+  z-index: 1001;
+  border-bottom: 1px solid $body-background;
 
 
-// //mobile layout
-// @media only screen and (max-width: 600px) {
-//   nav {
-//     display: none;
-//   }
-// }
-
-// //table layout
-// @media only screen and (min-width: 481px) and (max-width:768px) {}
-
-// //ipad pro
-// @media only screen and (min-width: 1024px) and (max-width:1366px) {}
-
-// // Mobile Nav
+  @media only screen and (max-width: 600px) {
+    display: grid;
+  }
 
 
-// .mobile-header {
-//   background: $white-color;
-//   margin: 4rem;
-//   margin-bottom: 0;
+  .logo {
+    text-align: right;
 
-//   .mobile-logo {
-//     display: none;
-//     position: absolute;
-//     top: 1rem;
-//     z-index: 999999;
+    // border: 1px solid black;
+    img {
+      width: 6rem;
+    }
+  }
 
-//     img {
-//       height: 2rem;
-//     }
-//   }
+  .menu {
+    // border: 1px solid black;
 
-//   @media only screen and (max-width: 600px) {
-//     .mobile-logo {
-//       display: block;
-//     }
-//   }
-// }
+    img {
+      width: 1.2rem;
+    }
+  }
+}
 
-// .mobile-nav {
-//   display: none;
-//   //mobile layout
-//   @media only screen and (max-width: 600px) {
-//     display: grid;
-//     top: 0%;
-//     left: 0%;
-//     position: fixed;
-//     background: $white-color;
-//     height: 100vh;
-//     width: 100%;
-//     z-index: 100;
-//     color: $dark-navy;
-
-//     ul {
-//       list-style: none;
-
-//       &.nav-items {
-//         position: absolute;
-//         top: 5em;
-
-//         &.access {
-//           top: 25em;
-//           padding: 1rem 2rem;
-//           width: 25rem;
-
-//           li {
-//             padding: 1rem 0;
-//           }
-//         }
-//       }
-
-//       li {
-//         margin: 2em 0;
-
-//         a {
-//           color: $dark-navy;
-//           font-size: 18px;
-//           font-weight: 700;
-//           cursor: pointer;
-//           &.login {
-//             padding: 1rem 7.5rem;
-//             border-radius: 10px;
-//             border: solid 2px $primary-bg-color;
-//             // text-align: center;
-//             // font-size: 15px;
-//           }
-
-//           &.register {
-//             padding: 1rem 2.8rem;
-//             border-radius: 10px;
-//             background: $primary-bg-color;
-//             color: $white-color;
-//           }
-//         }
+.mobile-nav-bottom {
+  grid-template-columns: repeat(4, 25%);
+  display: none;
+  padding: .8rem;
+  background: $white-color;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 3.4rem;
+  width: 100%;
+  border-top: 1px solid $body-background;
 
 
-//       }
-//     }
 
-//   }
+  @media only screen and (max-width: 600px) {
+    display: grid;
+  }
 
-//   .close {
+  .menu-item {
+    text-align: center;
 
-//     @media only screen and (max-width: 600px) {
-//       display: block;
-//       position: fixed;
+    img {
+      width: 1rem;
+    }
 
-//       img {
-//         width: 1.5rem;
-//         margin-right: 3rem;
-//         float: right;
-//         margin: 1rem;
-//       }
-//     }
-//   }
-// }
+    a {
+      display: block;
+      text-align: center;
+      font-weight: 700;
+      color: $black-color;
+      font-size: .8rem;
+    }
+
+  }
+
+}
+
+.mobile-menu {
+  display: none;
+  padding: .8rem;
+  background: $white-color;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 60%;
+  z-index: 1002;
+
+  animation: moveInLeft 1s ease-out 0s;
+  animation-fill-mode: backwards;
 
 
-// .ham-icon {
-//   display: none;
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
 
-//   @media only screen and (max-width: 600px) {
-//     display: block;
-//     cursor: pointer;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     padding: 0%;
+  .tab-item {
+    padding: .5rem .2rem;
 
-//     img {
-//       width: 2rem;
-//       height: 2rem;
-//       float: right;
-//       margin: 1rem;
-//     }
-//   }
-// }
+    .back {
+      width: 20%;
+    }
+
+    a {
+      text-transform: capitalize;
+      color: $black-color;
+      font-weight: 700;
+    }
+  }
+
+}

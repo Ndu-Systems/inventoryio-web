@@ -1,20 +1,25 @@
 <span *ngIf="!loading">
-  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
+  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [company]="company" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
   </app-shopping-nav>
   <div class="container" *ngIf="products">
     <div class="slider">
       <div class="catergories">
-        <p>All all</p>
-        <p>All all</p>
-        <p>All all</p>
-        <p>All all</p>
-        <p>All all</p>
-        <p>All all</p>
-        <p>All all</p>
-        <p>All all</p>
+        <h3>
+          categories
+        </h3>
+        <div class="cat" *ngFor="let c of [1,1,1]">
+          <div class="image">
+            <img src="assets/images/laptop.svg" alt="">
+          </div>
+          <div class="name">
+            <p>
+              Electronics
+            </p>
+          </div>
+        </div>
       </div>
       <div class="slide">
-        <app-product-slider [products] = "products" [company] ="company"></app-product-slider>
+        <app-product-slider [products]="products" [company]="company"></app-product-slider>
         <!-- <div class="cover-photo"  *ngIf="bannerImage" >
           <img [src]="bannerImage" alt="">
         </div> -->
@@ -28,8 +33,11 @@
           <div class="shop-card" (click)="viewItem(item)">
             <!-- <div class="image" *ngIf="item.images" [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
           </div> -->
-            <div class="image" *ngIf="item.images">
-              <img [src]="item.images[0].Url" alt="">
+            <div class="image" *ngIf="item.Images">
+              <img [src]="item.Images[0].Url" alt="">
+            </div>
+            <div class="image" *ngIf="!item.Images">
+              <img src="assets/images/placeholder2.png" alt="">
             </div>
             <div class="name">
               <p>

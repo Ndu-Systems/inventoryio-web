@@ -1,12 +1,8 @@
 <div class="top-navigation">
   <div class="logo">
     <img src="assets/images/logo-beta.png" alt="">
-    <!-- <img  src="assets/images/logo-v.svg" alt=""> -->
   </div>
 
-  <div class="logo">
-
-  </div>
   <div class="search">
     <div class="input-group">
       <div>
@@ -18,25 +14,15 @@
     </div>
   </div>
 
-
   <div class="account">
-    <img src="assets/images/sign-up-home.svg" alt="">
-    <img src="assets/images/sign-in-home.svg" alt="">
-  </div>
+    <a routerLink="/sign-up">
+      <img src="assets/images/sign-up-home.svg" alt="">
+    </a>
+    <a routerLink="/sign-in">
+      <img src="assets/images/sign-in-home.svg" alt="">
+    </a>
 
-  <div class="cart">
-    <div class="cart-btn">
-      <div class="image">
-        <img src="assets/images/smart-cart.svg" alt="">
-        <span>10</span>
-      </div>
-      <div class="name">
-        <h3>
-          Cart
-          <span class="total">R 0.00</span>
-        </h3>
-      </div>
-    </div>
+
   </div>
 </div>
 
@@ -44,30 +30,73 @@
   <div class="tab-item">
     <p>
       <a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
-      [routerLinkActiveOptions]="{exact: true}">home</a>
+        [routerLinkActiveOptions]="{exact: true}">home</a>
     </p>
   </div>
   <div class="tab-item">
     <p>
-     
+
       <a (click)="showModule()" [ngClass]="modulesClass" routerLinkActive="active-link">our modules</a>
     </p>
   </div>
   <div class="tab-item">
     <p>
-     
-      <a routerLink="/shop" routerLinkActive="active-link">Shops</a>
+
+      <a routerLink="/shop" routerLinkActive="active-link">Shopping</a>
     </p>
   </div>
   <div class="tab-item">
     <p>
-    
+
       <a routerLink="/pricing" (click)="closeModule()" routerLinkActive="active-link">pricing</a>
     </p>
   </div>
 
 </div>
 
+<div class="mobile-menu" *ngIf="showMobileNav">
+  <div class="tab-item">
+    <img class="back" src="assets/images/back-nav.svg" (click)="toggleNav()" alt="">
+  </div>
+  <div class="tab-item">
+    <p>
+      <a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">home</a>
+    </p>
+  </div>
+  <div class="tab-item">
+    <p>
+
+      <a (click)="showModule()" [ngClass]="modulesClass" routerLinkActive="active-link">our modules</a>
+    </p>
+  </div>
+  <div class="tab-item">
+    <p>
+
+      <a routerLink="/shop"   (click)="closeModule()" routerLinkActive="active-link">Shopping</a>
+    </p>
+  </div>
+
+  <div class="tab-item">
+    <p>
+
+      <a routerLink="/pricing" (click)="closeModule()" routerLinkActive="active-link">pricing</a>
+    </p>
+  </div>
+  <div class="tab-item">
+    <a routerLink="/sign-up"  (click)="closeModule()" >
+      <img src="assets/images/sign-up-home.svg" alt="">
+    </a>
+  </div>
+  <div class="tab-item">
+    <a routerLink="/sign-in"  (click)="closeModule()" >
+      <img src="assets/images/sign-in-home.svg" alt="">
+    </a>
+  </div>
+
+
+</div>
+
 
 
 <div class="modules" *ngIf="showModules">
@@ -132,118 +161,31 @@
 </div>
 
 
+<div class="mobile-nav ">
 
-
-
-
-
-
-<!-- <nav>
-
-  <ul>
-    <li>
-      <a routerLink="/home" (click)="closeModule()" class="logo"><img src="assets/images/logo-beta.png"
-          alt="logo main"></a>
-    </li>
-    <li><a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{exact: true}">home</a></li>
-    <li class="showModules"><a (click)="showModule()" routerLinkActive="active-link">our modules</a></li>
-    <li><a routerLink="/shop" routerLinkActive="active-link">Shops</a></li> 
-    <li><a routerLink="/shop" (click)="closeModule()" routerLinkActive="active-link">explore shops</a></li>
-    <li><a routerLink="/pricing" (click)="closeModule()" routerLinkActive="active-link">pricing</a></li>
-  </ul>
-  <ul class="account">
-    <li><a routerLink="/sign-in" (click)="closeModule()" routerLinkActive="active-link" class="login">Log in</a></li>
-    <li><a routerLink="/sign-up" (click)="closeModule()" routerLinkActive="active-link" class="register">Create vendor account</a></li>
-  </ul>
-
-</nav>
-<div class="modules" *ngIf="showModules">
-  <div class="col-1-of-4">
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/box.svg" alt="">
-      <a class="cta" (click)="selectedModule('inventory')">
-        <h1 class="header">
-          inventory management
-          <span class="text">
-            Add product/service items includes sales by default.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/shop.svg" alt="">
-      <a class="cta" (click)="selectedModule('sales')">
-        <h1 class="header">
-          sales management
-          <span class="text">
-            Make sales and generate quotes for your clients.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/crm.svg" alt="">
-      <a class="cta" (click)="selectedModule('crm')">
-        <h1 class="header">
-          crm management
-          <span class="text">
-            Manage your partners on the go with communications.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/graph.svg" alt="">
-      <a class="cta" (click)="selectedModule('reporting')">
-        <h1 class="header">
-          reports management
-          <span class="text">
-            Add product/service items includes sales by default.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/store.svg" alt="">
-      <a class="cta" (click)="selectedModule('shop')">
-        <h1 class="header">
-          shop management
-          <span class="text">
-            Create a shop catalog with customization to stand out.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <a class="collapse" (click)="closeModule()">collapse</a>
+  <div class="menu">
+    <img  (click)="toggleNav()"  src="assets/images/option.svg" alt="">
+  </div>
+  <div class="logo">
+    <img src="assets/images/logo-beta.png" alt="">
   </div>
 </div>
-<div class="mobile-nav" *ngIf="showMobileNav">
-  <div class="close" (click)="toggleNav()">
-    <img src="assets/images/close-mobilemenu.svg" alt="">
+
+<div class="mobile-nav-bottom">
+  <div class="menu-item">
+    <img src="assets/images/home-nav.svg" alt="">
+    <a routerLink="/home">Home</a>
   </div>
-
-  <ul class="nav-items">
-    <li><a (click)="toggleNav()" routerLink="/home" routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{exact: true}">home</a></li>
-    <li class="showModules"><a (click)="showModule();toggleNav()" routerLinkActive="active-link">our modules</a></li>
-    <li><a (click)="toggleNav()" routerLink="/shop" routerLinkActive="active-link">explore shops</a></li>
-    <li><a (click)="toggleNav()" routerLink="/pricing" routerLinkActive="active-link">pricing</a></li>
-
-  </ul>
-  <ul class="nav-items access">
-    <li><a (click)="toggleNav()" class="login" routerLink="/sign-in" routerLinkActive="active-link">Log in</a></li>
-    <li><a (click)="toggleNav()" class="register" routerLink="/sign-up" routerLinkActive="active-link">Create vendor
-        account</a></li>
-  </ul>
+  <div class="menu-item">
+    <img src="assets/images/search-nav.svg" alt="">
+    <a routerLink="/home">Search</a>
+  </div>
+  <div class="menu-item">
+    <img src="assets/images/shopping-nav.svg" alt="">
+    <a routerLink="/shop">Shopping</a>
+  </div>
+  <div class="menu-item">
+    <img src="assets/images/account-nav.svg" style="width: .8rem;" alt="">
+    <a routerLink="/home">Account</a>
+  </div>
 </div>
-<div class="mobile-header">
-  <div class="ham-icon" (click)="toggleNav()">
-    <img src="assets/images/ham.svg" alt="">
-  </div>
-  <div class="mobile-logo">
-    <a routerLink="/home"><img class="logo" src="assets/images/logo-beta.png" alt="logo main"></a>
-  </div>
-</div> -->
-
-

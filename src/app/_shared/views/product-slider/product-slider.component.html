@@ -1,7 +1,7 @@
 <div class="main">
-  <div class="banner">
+  <div class="banner" *ngIf="product">
     <div class="image">
-      <img [src]="product.images[0].Url" alt="">
+      <img [src]="product.Images[0].Url" alt="">
     </div>
 
     <div class="details">
@@ -9,19 +9,19 @@
       <h1 class="product-name">{{product.Name}}</h1>
 
       <div class="price">
-          <div class="amount">
-            <h1 class="product-amont">  {{product.UnitPrice | currency:'R'}}</h1>
-          </div>
+        <div class="amount">
+          <h1 class="product-amont"> {{product.UnitPrice | currency:'R'}}</h1>
+        </div>
       </div>
       <div class="action">
-        <img  (click)="viewItem(product)" src="assets/images/btn-view-item.svg" alt="" />
+        <img (click)="viewItem(product)" src="assets/images/btn-view-item.svg" alt="" />
       </div>
     </div>
   </div>
 
   <div class="slider-btns">
-      <div (click)="slide(0)"></div>
-      <div (click)="slide(1)"></div>
-      <div (click)="slide(2)"></div>
+    <div (click)="slide(0)"></div>
+    <div (click)="slide(1)"></div>
+    <div (click)="slide(2)"></div>
   </div>
 </div>

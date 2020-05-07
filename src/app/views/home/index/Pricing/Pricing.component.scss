@@ -5,6 +5,11 @@ $clouds: #ecf0f1;
 .main-container {
   padding: 3rem 11.5rem;
 
+  @media only screen and (max-width: 600px) {
+    padding: 3rem 1rem;
+
+  }
+
   .header {
     h1 {
       color: $dark-navy;

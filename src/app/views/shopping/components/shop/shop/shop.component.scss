@@ -2,7 +2,7 @@
 
 .container {
   background: $body-background;
-  padding: 1rem 12rem;
+  padding: 1rem 11rem;
 
   .slider {
     display: grid;
@@ -14,6 +14,30 @@
       padding: 1rem;
       border-radius: 6px;
       width: 97%;
+      h3{
+        margin: 0;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .cat {
+        display: grid;
+        grid-template-columns: 10% auto;
+        margin: .5rem 1rem;
+
+        .image {
+          img {
+            width: 1rem;
+          }
+        }
+
+        .name {
+          p {
+            font-weight: 600;
+            margin: 0;
+          }
+        }
+      }
     }
   }
 }

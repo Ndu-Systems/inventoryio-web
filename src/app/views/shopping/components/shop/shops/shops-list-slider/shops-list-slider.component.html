@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="shops">
+    <div class="shop" *ngFor="let shop of filterShops; let i = index">
+      <div class="name">
+        <h1>
+          {{shop?.Name}}
+        </h1>
+      </div>
+      <div class="products">
+        <!-- <pre>
+          {{shop |json}}
+        </pre> -->
+        <div class="product">
+          <img [src]="shop.Products[0].Images[0].Url" alt="">
+        </div>
+        <div class="product">
+          <img [src]="shop.Products[1].Images[0].Url" alt="">
+        </div>
+        <div class="product">
+          <img [src]="shop.Products[2].Images[0].Url" alt="">
+        </div>
+      </div>
+      <div class="action">
+        <img (click)="visitShow(shop)" src="assets/images/visit-shop.svg" alt="">
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,14 +14,18 @@ export class ShoppingNavComponent implements OnInit {
   @Input() shopPrimaryColor = '#104CE5';
   @Input() shopSecondaryColor = '#ffffff';
   @Input() logoUrl;
+  @Input() company;
   sale: SellModel;
   cartItems = 0;
-  company: Company;
   showCart: boolean;
+  companyUrl = '';
   // company: import("c:/NDU/apps/inventoryio-web/src/app/_models/company.model").Company;
   constructor(private shoppingService: ShoppingService, private router: Router) { }
 
   ngOnInit() {
+    if (this.company) {
+      this.companyUrl = `/shop/at/${this.company.Handler || this.company.CompanyId}`;
+    }
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;

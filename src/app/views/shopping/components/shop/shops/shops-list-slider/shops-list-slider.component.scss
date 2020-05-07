@@ -1,0 +1,85 @@
+@import '../../../../../../../assets/styles/variables';
+
+.main {
+  .shops {
+    margin-right: 1rem;
+    padding: 1.2rem 1rem;
+    border-radius: 2rem;
+    display: grid;
+    grid-template-columns: 50% auto;
+    margin-top: 0;
+    padding-top: 0;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+    }
+
+    .shop {
+      background: $white-color;
+      margin: 1rem;
+      margin-left: 0;
+      padding: 1rem;
+      border-radius: 8px;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        margin-left: .6rem;
+      }
+
+      //   border: 1px solid red;
+
+      .name {
+        h1 {
+          font-size: 1.5rem;
+          margin: 0;
+          @media only screen and (max-width: 600px) {
+            font-size: 1rem;
+            margin-bottom: .3rem;
+          }
+        }
+      }
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(3, 33%);
+        border-bottom: 1px solid $body-background;
+
+        .product {
+          //   border: 1px solid red;
+          height: 10rem;
+          text-align: center;
+
+          @media only screen and (max-width: 600px) {
+            height: auto;
+          }
+
+          img {
+            height: 8rem;
+            border-radius: 2rem;
+
+            @media only screen and (max-width: 600px) {
+              width: 90%;
+              border-radius: 1rem;
+              height: auto;
+            }
+          }
+        }
+      }
+
+      .action {
+        text-align: right;
+        padding-top: 1rem;
+
+        img {
+          width: 10rem;
+          cursor: pointer;
+
+          @media only screen and (max-width: 600px) {
+            width: 7rem;
+          }
+        }
+      }
+
+    }
+  }
+}

@@ -2,23 +2,35 @@
 
 .main-container {
   padding: 3rem 11.5rem;
-.banner { margin-bottom: 25rem;}
+
+  @media only screen and (max-width: 600px) {
+    padding: 2.5rem;
+  }
+
+  .banner {
+    margin-bottom: 25rem;
+  }
+
   .col-1-of-2 {
     grid-template-columns: 50% auto;
   }
+
   .home-image {
     img {
       // position: absolute;
       right: 0;
       height: 100%;
+
       &.desktop {
         display: block;
       }
+
       &.mobile {
         display: none;
       }
     }
   }
+
   .home-banner {
     width: 40rem;
 
@@ -162,6 +174,7 @@
     .col-1-of-2 {
       grid-template-columns: 100%;
     }
+
     .banner {
       margin-bottom: 30rem;
     }
@@ -189,9 +202,11 @@
       img {
         width: 100%;
         top: 35rem;
+
         &.desktop {
           display: none;
         }
+
         &.mobile {
           display: block;
         }
@@ -265,6 +280,7 @@
         font-size: 1.563rem;
         width: 100%;
       }
+
       .prices {
         cursor: pointer;
 

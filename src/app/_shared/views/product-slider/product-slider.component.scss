@@ -5,20 +5,50 @@
   padding: 1rem;
   border-radius: 6px;
 
+  // position: relative;
+  // top: -56px;
+
   .banner {
     display: grid;
-    grid-template-columns: 30% auto;
+    grid-template-columns: 40% auto;
+    // border: 2px solid red;
 
     .image {
+      // border: 2px solid rgb(23, 219, 98);
+      height: 18rem;
+      text-align: center;
       img {
-        width: 90%;
+
         border-radius: 3rem;
         margin: 1rem auto;
+        height: 15rem;
       }
     }
 
     .details {
       padding: 1.5rem;
+      // border: 2px solid rgb(182, 25, 25);
+
+
+      .price{
+        h1{
+          font-weight: 900;
+          color: $primary-bg-color;
+          font-size: 2.8rem;
+        }
+      }
+
+      .action {
+        img {
+          cursor: pointer;
+        }
+        span{
+          display: block;
+          font-size: .7rem;
+          font-weight: 800;
+          padding-left: .8rem;
+        }
+      }
     }
   }
 
@@ -34,6 +64,7 @@
       width: 1rem;
       border-radius: 1rem;
       background: $primary-bg-color;
+      cursor: pointer;
     }
   }
 }

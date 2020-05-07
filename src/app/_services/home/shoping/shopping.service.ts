@@ -25,6 +25,9 @@ export class ShoppingService {
   private _company: BehaviorSubject<Company>;
   public company: Observable<Company>;
 
+  private _companies: BehaviorSubject<Company[]>;
+  public companies: Observable<Company[]>;
+
 
 
 
@@ -46,6 +49,9 @@ export class ShoppingService {
 
     this._company = new BehaviorSubject<Company>(JSON.parse(localStorage.getItem('shop_company')));
     this.company = this._company.asObservable();
+
+    this._companies = new BehaviorSubject<Company[]>(JSON.parse(localStorage.getItem('shop_companies')));
+    this.companies = this._companies.asObservable();
 
 
     this.url = environment.API_URL;
@@ -80,6 +86,13 @@ export class ShoppingService {
     if (data) {
       this._company.next(data);
       localStorage.setItem('shop_company', JSON.stringify(data));
+    }
+
+  }
+  updateCompaniesState(data: Company[]) {
+    if (data) {
+      this._companies.next(data);
+      localStorage.setItem('shop_companies', JSON.stringify(data));
     }
 
   }

@@ -1,7 +1,7 @@
 <span *ngIf="!loading" class="ghost" >
-  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
+  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [company]="company" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
   </app-shopping-nav>
-<div class="main" *ngIf="product"  [ngStyle]="{'border':'6px solid '+shopPrimaryColor}">
+<div class="main" *ngIf="product">
 
 
   <h3 class="small-heading">
@@ -109,7 +109,7 @@
   </div>
 
 </div>
-<div *ngIf="company" class="footer" [ngStyle]="{'background-color':shopPrimaryColor}" class="footer">
+<div *ngIf="company" class="footer"  class="footer">
   <h1>
     Thanks for visting {{company?.Name}}
   </h1>

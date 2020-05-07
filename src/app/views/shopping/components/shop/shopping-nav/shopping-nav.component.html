@@ -24,11 +24,11 @@
     <img src="assets/images/sign-in-home.svg" alt="">
   </div>
 
-  <div class="cart">
+  <div class="cart" (click)="viewCart()">
     <div class="cart-btn">
       <div class="image">
         <img src="assets/images/smart-cart.svg" alt="">
-        <span>10</span>
+        <span>{{cartItems}}</span>
       </div>
       <div class="name">
         <h3>
@@ -43,25 +43,25 @@
 <div class="tabs">
   <div class="tab-item">
     <p>
-      <a routerLink="/shop"> Other shops</a>
+      <a routerLink="/shop" routerLinkActive="active-link"> leave this shop</a>
     </p>
   </div>
   <div class="tab-item">
     <p class="active">
-     
-      <a routerLink="/shop">  zalou</a>
+
+      <a [routerLink]="companyUrl" routerLinkActive="active-link"> {{company?.Name}}</a>
     </p>
   </div>
   <div class="tab-item">
     <p>
-     
-      <a routerLink="/shop"> my orders</a>
+
+      <a routerLink="/shop/customer-orders/home" routerLinkActive="active-link"> my orders</a>
     </p>
   </div>
   <div class="tab-item">
     <p>
-    
-      <a routerLink="/shop">   my wishlist</a>
+
+      <a routerLink="/shop" routerLinkActive="active-link"> my wishlist</a>
     </p>
   </div>
 

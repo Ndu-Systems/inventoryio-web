@@ -22,6 +22,9 @@ import { InlineHomeLoaderComponent } from './inline-home-loader/inline-home-load
 import { HomeFooterComponent } from './home-footer';
 import { ShopsComponent } from '../shopping/components/shop/shops/shops.component';
 import { OurModulesComponent } from './our-modules';
+import { ShopsHomeSliderComponent } from '../shopping/components/shop/shops/shops-home-slider/shops-home-slider.component';
+import { CategoriesSliderComponent } from '../shopping/components/shop/shops/categories-slider/categories-slider.component';
+import { ShopsListSliderComponent } from '../shopping/components/shop/shops/shops-list-slider/shops-list-slider.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -57,7 +60,10 @@ export const declarations = [
   HomeFooterComponent,
   FaqsComponent,
   ShopsComponent,
-  OurModulesComponent
+  OurModulesComponent,
+  ShopsHomeSliderComponent,
+  CategoriesSliderComponent,
+  ShopsListSliderComponent
  ];
 
 

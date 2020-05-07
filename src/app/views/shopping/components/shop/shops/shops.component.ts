@@ -16,7 +16,9 @@ export class ShopsComponent implements OnInit {
   searchResults: Company[] = [];
   searchResultsProducts: Product[] = [];
   products: Product[] = [];
+  sliderProducts: Product[];
   loading = true;
+  company: Company;
   constructor(private shoppingService: ShoppingService, private router: Router, private titleService: Title,
 
 
@@ -30,6 +32,7 @@ export class ShopsComponent implements OnInit {
       if (this.shops) {
         this.mapProducts();
         this.loading = false;
+        this.shoppingService.updateCompaniesState(this.shops);
       }
 
     });
@@ -71,6 +74,6 @@ export class ShopsComponent implements OnInit {
         });
       }
     });
-    console.log('   this.products', this.products);
+    this.sliderProducts = this.products;
   }
 }

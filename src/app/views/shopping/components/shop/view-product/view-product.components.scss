@@ -1,10 +1,13 @@
 @import '../../../../../../assets/styles/variables';
 
 .main {
-  // padding: 10rem 2rem;
+  padding: 10rem 2rem;
   box-sizing: border-box;
   background: $cloud-ligher;
   padding: 3rem;
+
+  background: $body-background;
+  padding: 1rem 12rem;
 
 
   @media only screen and (max-width: 600px) {
@@ -17,7 +20,6 @@
   }
 
   .order {
-    width: 80%;
     margin: 0 auto;
     background: $white-color;
     padding: 2rem;
@@ -289,13 +291,13 @@
 }
 
 .footer {
-  padding: 1rem .5rem;
+  padding: 1rem 12rem;
   margin-top: 0;
 
   h1,
   h2,
   address, span {
-    color: $white-color;
+    color: $black-color;
   }
 
   h1 {

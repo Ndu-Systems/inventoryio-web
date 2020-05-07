@@ -4,6 +4,11 @@
   padding: 3rem 15rem;
   background: $primary-bg-color;
   height: 40vh;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+
   img {
     height: 3.938rem;
   }
