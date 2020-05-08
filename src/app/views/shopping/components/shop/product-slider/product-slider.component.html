@@ -1,0 +1,47 @@
+<div class="main">
+  <div class="banner" *ngIf="product">
+    <div class="image">
+      <img [src]="product.Images[0].Url" alt="">
+    </div>
+
+    <div class="details">
+      <h1 class="product-name">{{company.Name}}</h1>
+      <h1 class="product-name">{{product.Name}}</h1>
+
+      <div class="price">
+        <div class="amount">
+          <h1 class="product-amont"> {{product.UnitPrice | currency:'R'}}</h1>
+        </div>
+      </div>
+      <div class="action">
+        <!-- <img (click)="viewItem(product)" src="assets/images/btn-view-item.svg" alt="" /> -->
+
+        <svg class="img" (click)="viewItem(product)" xmlns="http://www.w3.org/2000/svg" width="147" height="36" viewBox="0 0 147 36">
+          <g id="btn-view-item" transform="translate(-685 -400)">
+            <g id="Group_366" data-name="Group 366">
+              <g id="Group_365" data-name="Group 365">
+                <g id="Rectangle_222" data-name="Rectangle 222" transform="translate(685 400)" fill="none" [attr.stroke]="shopPrimaryColor" stroke-width="1">
+                  <rect width="147" height="36" rx="18" stroke="none"/>
+                  <rect x="0.5" y="0.5" width="146" height="35" rx="17.5" fill="none"/>
+                </g>
+                <g id="Group_323" data-name="Group 323" transform="translate(697.911 405.304)">
+                  <text id="view_details" data-name="view details" transform="translate(0.088 17.696)" [attr.fill]="shopPrimaryColor" font-size="14" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">view details</tspan></text>
+                </g>
+              </g>
+              <g id="Group_349" data-name="Group 349" transform="translate(-13 -12)">
+                <path id="Path_617" data-name="Path 617" d="M11.626,0A11.626,11.626,0,1,1,0,11.626,11.626,11.626,0,0,1,11.626,0Z" transform="translate(808.999 418)" [attr.fill]="shopPrimaryColor"/>
+                <path id="Path_616" data-name="Path 616" d="M13122.3-20254.4c.634.566,6.426,4.8,6.426,4.8l-2.13,1.568-4.3,3.164" transform="translate(-12304.795 20678.9)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-btns">
+    <div (click)="slide(0)"></div>
+    <div (click)="slide(1)"></div>
+    <div (click)="slide(2)"></div>
+  </div>
+</div>

@@ -45,102 +45,30 @@
 
 
 
-<!-- <div class="main nav-bar-desktop">
-  <div (click)="toggleNav()" class="back">
-    <img src="assets/images/navigation/back-arrow.svg" alt="">
-  </div>
-  <div class="nav-bar">
-    <ul>
-      <h1 class="header">
-        Main
-      </h1>
-      <li *ngFor="let item of models">
-        <span *ngIf="true">
-          <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-            <i [ngClass]="item.Icon"></i>
-            {{item.Name}}
-          </a>
-        </span>
-      </li>
-    </ul>
-    <ul>
-      <h1 class="header">
-        Orders
-      </h1>
-      <li *ngFor="let item of salesNavModels">
-        <span *ngIf="true">
-          <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-            <i [ngClass]="item.Icon"></i>
-            {{item.Name}}
-          </a>
-        </span>
-      </li>
-    </ul>
-    <ul class="mt-10">
-      <h1 class="header">
-        help
-      </h1>
-      <li *ngFor="let profileItem of profileModels">
-        <span *ngIf="profileItem.showItem">
-          <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
-            [routerLinkActiveOptions]="{exact: true}">
-            <i [ngClass]="profileItem.Icon"></i>
-            {{profileItem.Name}}</a>
-        </span>
-      </li>
-      <li class="signOut">
-        <a routerLink="/" (click)="signOut()"><i class="pi pi-sign-out"></i> sign out</a>
-      </li>
-    </ul>
+<div class="mobile-nav ">
 
+  <div class="menu">
+<img (click)="toggleNav()" src="assets/images/option.svg" alt="">
   </div>
-  <div class="burger-menu" (click)="toggleNav()">
-    <img src="assets/images/ham.svg" alt="burger menu">
+  <div class="logo">
+    <img src="assets/images/logo-beta.png" alt="">
   </div>
 </div>
 
-<div class="main nav-bar-mobile" *ngIf="showNav">
-  <div (click)="toggleNav()" class="back">
-    <img src="assets/images/navigation/back.svg" alt="">
+<div class="mobile-menu" *ngIf="showNav">
+  <div class="tab-item">
+    <img class="back" src="assets/images/back-nav.svg" (click)="toggleNav()" alt="">
   </div>
-  <div class="nav-bar">
-
-    <ul>
-      <h1 class="header">
-        Main
-      </h1>
-      <li *ngFor="let item of models" (click)="toggleNav()">
-        <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> <i
-            [ngClass]="item.Icon"></i>{{item.Name}}</a>
-      </li>
-    </ul>
-    <ul>
-      <h1 class="header">
-        Orders
-      </h1>
-      <li *ngFor="let item of salesNavModels" (click)="toggleNav()">
-        <span *ngIf="true">
-          <a [routerLink]="item.Link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-            <i [ngClass]="item.Icon"></i>
-            {{item.Name}}
-          </a>
-        </span>
-      </li>
-    </ul>
-    <ul class="mt-20">
-      <h1 class="header">
-        Help
-      </h1>
-      <li *ngFor="let profileItem of profileModels" (click)="toggleNav()">
-        <a [routerLink]="profileItem.Link" (click)="linkEvent(profileItem)" routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{exact: true}"> <i [ngClass]="profileItem.Icon"></i>{{profileItem.Name}}</a>
-      </li>
-      <li class="signOut">
-        <a routerLink="/"><i class="pi pi-sign-out"></i>sign out</a>
-      </li>
-    </ul>
+  <div class="tab-item" *ngFor="let item of models; let i = index">
+    <p>
+      <a   (click)="toggleNav()"  [routerLink]="item.Link" routerLinkActive="active-link"> {{item.Name}}</a>
+    </p>
   </div>
+  <!-- <div class="tab-item">
+    <a routerLink="/sign-in" (click)="closeModule()">
+      <img src="assets/images/sign-in-home.svg" alt="">
+    </a>
+  </div> -->
 </div>
-<div class="burger-menu" (click)="toggleNav()">
-  <img src="assets/images/ham.svg" alt="burger menu">
-</div> -->
+
+

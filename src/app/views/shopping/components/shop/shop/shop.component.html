@@ -1,5 +1,6 @@
 <span *ngIf="!loading">
-  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [company]="company" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
+  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [company]="company" [shopSecondaryColor]="shopSecondaryColor"
+    [logoUrl]="logoUrl">
   </app-shopping-nav>
   <div class="container" *ngIf="products">
     <div class="slider">
@@ -20,9 +21,6 @@
       </div>
       <div class="slide">
         <app-product-slider [products]="products" [company]="company"></app-product-slider>
-        <!-- <div class="cover-photo"  *ngIf="bannerImage" >
-          <img [src]="bannerImage" alt="">
-        </div> -->
       </div>
     </div>
 
@@ -31,27 +29,19 @@
       <div class="col-1-of-4">
         <span *ngFor="let item of products ">
           <div class="shop-card" (click)="viewItem(item)">
-            <!-- <div class="image" *ngIf="item.images" [ngStyle]="{ 'background-image': 'url(' + item.images[0].Url + ')'}">
-          </div> -->
             <div class="image" *ngIf="item.Images">
               <img [src]="item.Images[0].Url" alt="">
             </div>
             <div class="image" *ngIf="!item.Images">
               <img src="assets/images/placeholder2.png" alt="">
             </div>
-            <div class="name">
+            <div class="details">
               <p>
                 {{item.Name}}
               </p>
-            </div>
-            <div class="notes">
-              <p>
+              <p class="price" [ngStyle]="{'color':shopPrimaryColor}">
                 {{item.UnitPrice | currency:'R'}}
               </p>
-            </div>
-
-            <div class="actions">
-              <!-- <button class="action-btn hover-shadow" (click)="doSell(item)">Add to cart</button> -->
             </div>
           </div>
         </span>
@@ -93,10 +83,6 @@
       </div>
     </div>
   </div>
-
-  <title>
-    {{welocme}}
-  </title>
 
 </span>
 

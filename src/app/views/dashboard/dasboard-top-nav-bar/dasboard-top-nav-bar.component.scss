@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 20% 10% 20% 10% 20% 5% auto;
   background: $default-bg;
-  ;
+
 
   border-radius: 0;
   padding: .4rem 1rem;
@@ -12,7 +12,11 @@
   z-index: 1000;
   top: -7px;
   border-bottom: 1px solid $border-color;
-  //   left: -16px;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+
 
   div {
     // border: 1px solid black;
@@ -174,3 +178,44 @@
   }
 
 }
+
+
+.mobile-nav-bottom {
+  grid-template-columns: repeat(4, 25%);
+  display: none;
+  padding: .8rem;
+  background: $white-color;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 3.4rem;
+  width: 100%;
+  border-top: 1px solid $body-background;
+
+
+
+  @media only screen and (max-width: 600px) {
+    display: grid;
+  }
+
+  .menu-item {
+    text-align: center;
+
+    img {
+      width: 1rem;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      font-weight: 700;
+      color: $black-color;
+      font-size: .8rem;
+    }
+
+  }
+
+}
+
+
+

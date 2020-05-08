@@ -7,6 +7,10 @@
     background: $default-bg;
     padding: 0;
 
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100% 
+    }
+
     .body {
       background:$default-bg;
       height: 90vh;

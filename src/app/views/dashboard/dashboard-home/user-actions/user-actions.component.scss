@@ -1,7 +1,11 @@
 .main {
   padding: 1rem;
-  width: 82rem;
+  width: 100%;
   // margin-top: -3.2rem;
+  @media only screen and (max-width: 600px) {
+
+
+  }
 
   .cards {
     display: grid;

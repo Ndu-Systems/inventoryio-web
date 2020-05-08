@@ -167,7 +167,7 @@ export class DashboardNavComponent implements OnInit {
   toggleNav() {
     this.showNav = !this.showNav;
   }
-  onToggle(event) {
+  onToggle() {
     this.showNav = !this.showNav;
   }
   getDeviceSize() {
@@ -219,5 +219,6 @@ export class DashboardNavComponent implements OnInit {
     this.accountService.logout();
     this.roleService.getRole(null);
   }
+
 
 }

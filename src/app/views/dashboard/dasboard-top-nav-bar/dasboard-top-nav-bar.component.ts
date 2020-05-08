@@ -16,7 +16,6 @@ export class DasboardTopNavBarComponent implements OnInit {
   searchQueryResults = [];
   searchableItems: SearchQueryGroup[] = [];
   searchQuery = '';
-
   constructor(
     private accountService: AccountService,
     private routeTo: Router,

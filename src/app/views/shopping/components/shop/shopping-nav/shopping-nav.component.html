@@ -66,3 +66,102 @@
   </div>
 
 </div>
+
+
+<div class="mobile-menu" *ngIf="showMobileNav">
+  <div class="tab-item">
+    <img class="back" src="assets/images/back-nav.svg" (click)="toggleNav()" alt="">
+  </div>
+  <div class="tab-item">
+    <p>
+      <a routerLink="/shop" routerLinkActive="active-link"> leave this shop</a>
+    </p>
+  </div>
+  <div class="tab-item">
+    <p>
+
+      <a [routerLink]="companyUrl" routerLinkActive="active-link"> {{company?.Name}}</a>
+    </p>
+  </div>
+  <div class="tab-item">
+    <p>
+
+      <a routerLink="/shop/customer-orders/home" routerLinkActive="active-link"> my orders</a>
+    </p>
+  </div>
+
+  <div class="tab-item">
+    <p>
+
+      <a routerLink="/shop" routerLinkActive="active-link"> my wishlist</a>
+    </p>
+  </div>
+  <div class="tab-item">
+    <a routerLink="/sign-up" (click)="closeModule()">
+      <img src="assets/images/sign-up-home.svg" alt="">
+    </a>
+  </div>
+  <div class="tab-item">
+    <a routerLink="/sign-in" (click)="closeModule()">
+      <img src="assets/images/sign-in-home.svg" alt="">
+    </a>
+  </div>
+
+
+</div>
+
+<div class="mobile-nav ">
+
+  <div class="menu">
+    <svg (click)="toggleNav()" xmlns="http://www.w3.org/2000/svg" width="65" height="25.048" viewBox="0 0 65 25.048">
+      <g id="option" transform="translate(-12 -15.001)">
+        <text id="Menu" transform="translate(47 32)" [attr.fill]="shopPrimaryColor" font-size="10"
+          font-family="Montserrat-SemiBold, Montserrat" font-weight="600">
+          <tspan x="0" y="0">Menu</tspan>
+        </text>
+        <g id="option-2" data-name="option" transform="translate(-360 0.001)">
+          <g id="option-3" data-name="option" transform="translate(375 16.999)">
+            <g id="Group_369" data-name="Group 369">
+              <g id="Group_368" data-name="Group 368">
+                <path id="Path_645" data-name="Path 645"
+                  d="M297.364,0H288.72a.72.72,0,0,0-.72.72V9.364a.72.72,0,0,0,.72.72h8.643a.72.72,0,0,0,.72-.72V.72A.72.72,0,0,0,297.364,0Zm-.72,8.643h-7.2v-7.2h7.2Z"
+                  transform="translate(-275.035)" [attr.fill]="shopPrimaryColor" />
+                <path id="Path_646" data-name="Path 646"
+                  d="M9.364,288H.72a.72.72,0,0,0-.72.72v8.643a.72.72,0,0,0,.72.72H9.364a.72.72,0,0,0,.72-.72V288.72A.72.72,0,0,0,9.364,288Zm-.72,8.643h-7.2v-7.2h7.2Z"
+                  transform="translate(0 -275.035)" [attr.fill]="shopPrimaryColor" />
+                <path id="Path_647" data-name="Path 647"
+                  d="M297.364,288H288.72a.72.72,0,0,0-.72.72v8.643a.72.72,0,0,0,.72.72h8.643a.72.72,0,0,0,.72-.72V288.72A.72.72,0,0,0,297.364,288Zm-.72,8.643h-7.2v-7.2h7.2Z"
+                  transform="translate(-275.035 -275.035)" [attr.fill]="shopPrimaryColor" />
+              </g>
+            </g>
+          </g>
+          <rect id="Rectangle_238" data-name="Rectangle 238" width="14" height="13" rx="1" transform="translate(372 15)"
+            [attr.fill]="shopPrimaryColor" />
+        </g>
+      </g>
+    </svg>
+
+  </div>
+  <div class="logo">
+    <img src="assets/images/logo-beta.png" alt="">
+  </div>
+</div>
+
+<div class="mobile-nav-bottom">
+  <div class="menu-item">
+    <img src="assets/images/home-nav.svg" alt="">
+    <a routerLink="/home">Home</a>
+  </div>
+  <div class="menu-item">
+    <img src="assets/images/search-nav.svg" alt="">
+    <a routerLink="/home">Search</a>
+  </div>
+  <div class="menu-item">
+    <img src="assets/images/shopping-nav.svg" alt="">
+    <a routerLink="/shop">Shopping</a>
+  </div>
+  <div class="menu-item">
+    <img src="assets/images/account-nav.svg" style="width: .8rem;" alt="">
+    <a routerLink="/home">Account</a>
+  </div>
+</div>

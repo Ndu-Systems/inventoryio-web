@@ -4,17 +4,31 @@
   background: $body-background;
   padding: 1rem 11rem;
 
+  @media only screen and (max-width: 600px) {
+    padding: 1rem .1rem;
+  }
+
   .slider {
     display: grid;
     grid-template-columns: 25% auto;
     padding: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%
+    }
+
 
     .catergories {
       background: $white-color;
       padding: 1rem;
       border-radius: 6px;
       width: 97%;
-      h3{
+
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
+
+      h3 {
         margin: 0;
         font-weight: 900;
         text-transform: uppercase;
@@ -39,5 +53,14 @@
         }
       }
     }
+  }
+}
+
+
+.col-1-of-4 {
+  grid-template-columns: repeat(4, 25%);
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: repeat(2, 50%);
   }
 }

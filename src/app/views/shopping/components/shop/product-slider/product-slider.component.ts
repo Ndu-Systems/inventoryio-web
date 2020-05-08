@@ -11,6 +11,7 @@ export class ProductSliderComponent implements OnInit {
   @Input() products: Product[];
   @Input() company: Company;
   product: Product;
+  shopPrimaryColor = '#104CE5';
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -19,6 +20,11 @@ export class ProductSliderComponent implements OnInit {
       console.log(this.products);
       this.product = this.products[0];
     }
+
+    if (this.company.Theme) {
+      this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+    }
+
 
   }
   slide(index: number) {

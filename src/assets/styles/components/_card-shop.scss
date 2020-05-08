@@ -1,22 +1,15 @@
 $image-height :15rem;
+
 .shop-card {
   display: grid;
   grid-auto-columns: 100%;
-  // grid-template-rows: 250px 50px 50px 80px;
-  grid-template-rows: $image-height 50px 50px 1px;
-  grid-template-areas: "image""name""notes""actions";
+  grid-template-rows: $image-height auto;
+  grid-template-areas: "image" "details";
   margin: 1rem;
   border-radius: 12px;
   background: #fff;
   text-align: center;
   cursor: pointer;
-  // -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.048), 0 4px 6px rgba(0, 0, 0, 0.2);
-  // box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.2);
-
-  // &:hover {
-  //   border: 1px solid #95AFC0
-  // }
-
 
   @media only screen and (max-width: 600px) {
     grid-template-rows: 130px 41px 40px 1px;
@@ -41,26 +34,27 @@ $image-height :15rem;
     @media only screen and (max-width: 600px) {
       height: 130px;
 
-  
+
     }
 
     img {
       // height: 320px;
       width: 92%;
       border-radius: 8px;
-      
+
     }
 
   }
 
 
-  .name {
+  .details {
     grid-area: "name";
-    overflow-y: hidden;
     padding: .8rem 2.5rem;
 
     @media only screen and (max-width: 600px) {
       margin: 3px 7px;
+      padding: .5rem;
+
 
       p {
         font-size: .6rem;
@@ -79,37 +73,6 @@ $image-height :15rem;
       font-size: 12px;
       margin: 0;
       margin-top: .3rem;
-    }
-  }
-
-  .notes {
-    grid-area: "notes";
-    padding: .1rem 2.5rem;
-
-    @media only screen and (max-width: 600px) {
-      margin: 3px 7px;
-
-    }
-
-    p {
-      color: #7B8C98;
-      font-weight: 600;
-      text-align: left;
-      font-size: 12px;
-      margin: 0;
-      margin-top: .3rem;
-
-    }
-  }
-
-  .actions {
-    grid-area: "actions";
-    margin: 5px 15px;
-    text-align: left;
-
-    button {
-      text-transform: capitalize;
-      margin: 0;
     }
   }
 }

@@ -20,7 +20,7 @@ import { CustomerOrdersComponent } from './components/customer-orders/customer-o
 import { CustomerNavBarComponent } from './components/customer-nav-bar/customer-nav-bar.component';
 import { CustomerOrderDetailsComponent } from './components/customer-order-details/customer-order-details.component';
 import { FormatDashBoardOptionsPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
-import { ProductSliderComponent } from 'src/app/_shared/views/product-slider/product-slider.component';
+import { ProductSliderComponent } from './components/shop/product-slider/product-slider.component';
 const routes: Routes = [
   {
     path: '', component: ShoppingComponent,
