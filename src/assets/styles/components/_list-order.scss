@@ -3,6 +3,10 @@
   grid-template-columns: 45% auto;
   padding: 1rem;
 
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+
   .heading {
     h1 {
       font-size: 1.6rem;
@@ -20,7 +24,6 @@
     margin-bottom: 1.5rem;
 
     @media only screen and (max-width: 600px) {
-
       display: none;
     }
 
@@ -76,18 +79,81 @@
     }
   }
 
+  .list-header-mobile {
+    display: none;
+    border-bottom: 1px solid $blue-gray;
+    padding: 1rem 0;
+    padding-top: 3rem;
+    margin-bottom: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      display: block;
+    }
+
+    h4 {
+      text-transform: capitalize;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 35% 35% auto;
+
+      div {
+        // border: 1px solid black;
+        padding: 0;
+
+        select,
+        input {
+          background: $white-color;
+          padding: .5rem .8rem;
+          width: 96%;
+          display: inline-block;
+          margin: 0;
+          border-radius: .2rem;
+          padding: .5rem;
+          font-size: .9rem;
+
+          &::placeholder {
+            font-weight: 400;
+          }
+        }
+
+        button {
+          padding: .5rem;
+          background: $primary-bg-color;
+          color: $white-color;
+          font-weight: 700;
+          border: none;
+          margin: 0 .3rem;
+          border-radius: .2rem;
+
+        }
+      }
+    }
+  }
+
+  
+
 
   .list {
 
     //  table
     .header {
-      grid-template-columns: 10% 20% 12% 10% 12% 15% auto;
+      grid-template-columns: 30% 15% 15% auto;
+
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: 30% 20% 15% 15% auto;
+      }
     }
 
     .body-container {
       .body {
-        grid-template-columns: 10% 20% 12% 10% 12% 15% auto;
+        grid-template-columns: 10% 20% 15% 15% auto;
         position: relative;
+
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 10% 20% 15% 15% auto;
+        }
 
         .marker {
           height: 100%;

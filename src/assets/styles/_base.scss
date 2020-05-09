@@ -196,6 +196,11 @@ span.step {
   width: 3rem;
   overflow: hidden;
   border: 1px solid #F2F5F9;
+
+  @media only screen and (max-width: 600px) {
+    height: 2rem;
+    width: 2rem;
+  }
 }
 
 .circular-img img {
@@ -399,6 +404,10 @@ span.step {
   font-size: 5rem;
   line-height: 0;
   letter-spacing: 0;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
 }
 
 .customer-portal {
@@ -450,7 +459,7 @@ span.step {
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 1500;
   background: rgba(0, 0, 0, 0.281);
   top: 0;
   left: 0;
@@ -458,6 +467,11 @@ span.step {
   .modal {
     width: 60%;
     margin: 15% auto;
+
+    @media only screen and (max-width: 600px) {
+      width: 92%;
+      margin: 91% auto;
+    }
 
     .header {
       background: $primary-bg-color;
@@ -506,6 +520,11 @@ span.step {
   background: rgba(0, 0, 0, 0.363);
   top: 0;
   left: 0;
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
 
   .modal {
     width: 100%;

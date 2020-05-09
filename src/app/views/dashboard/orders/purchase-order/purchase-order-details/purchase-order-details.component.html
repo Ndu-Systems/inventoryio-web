@@ -111,7 +111,7 @@
           </div>
         </div>
         <div class="total">
-          <h3>Total   {{order.Total  | currency:'R'}}</h3>
+          <h3>Total {{order.Total  | currency:'R'}}</h3>
         </div>
       </div>
     </div>
@@ -173,3 +173,136 @@
   </div>
 </div>
 <p-confirmDialog header="Confirmation Payment"></p-confirmDialog>
+
+
+
+
+<!-- mobile -->
+
+<div *ngIf="order.Show == true" class="modal-overlay">
+  <div class="modal">
+    <h4>
+      Purchase Order Details
+    </h4>
+    <div class="actions">
+      <div class="action" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid' "
+        (click)="triggerPaymentAction()">
+        <img src="assets/images/btn-payment.svg" alt="">
+      </div>
+      <div class="action" *ngIf="order.Status != 'Cancelled' && order.Status != 'Fully paid'"
+        (click)="createCreditNote(order)">
+        <img src="assets/images/btn-cancel-order.svg" alt="">
+      </div>
+      <div class="action" *ngIf="order.Status == 'Cancelled'" (click)="viewCreditNote(order)">
+        <img src="assets/images/btn-print-credit-note.svg" alt="">
+      </div>
+      <div class="action" (click)="print(order)">
+        <img src="assets/images//btn-print-invoice.svg" alt="">
+      </div>
+      <div class="action" (click)="sendInvoice(order)">
+        <img src="assets/images/btn-email-invoice.svg" alt="">
+      </div>
+
+    </div>
+
+    <div class="details">
+      <div class="date">
+        <p class="date-status">
+          <span class="order-date">{{order.CreateDate | date:'fullDate'}} |
+            {{ order.CreateDate  | date:'shortTime' }}</span>
+          <span class="no"> {{prefix}}{{order.OrderId}}</span>
+          <span class="order-status new" *ngIf="order.Status == 'new'"> Unpaid</span>
+          <span class="order-status partially-paid" *ngIf="order.Status == 'Partially paid'"> {{order.Status}}</span>
+          <span class="order-status fully-paid" *ngIf="order.Status == 'Fully paid'"> {{order.Status}}</span>
+          <span class="order-status cancelled" *ngIf="order.Status == 'Cancelled'"> {{order.Status}} -
+            {{order.Creditnotes?.Reason}}</span>
+        </p>
+
+
+        <div class="amounts">
+          <p>
+            <span class="label"> Amount paid: </span>
+            {{order.Paid | currency:'R'}}
+          </p>
+          <p>
+            <span class="label">Outstanding balance: </span>
+            {{order.Due | currency:'R'}}
+          </p>
+        </div>
+      </div>
+
+      <div class="bill-to" *ngIf="order.Customer">
+        <h4>Billing to</h4>
+        <p>
+          {{order.Customer.Name}} {{order.Customer.Surname}} <br>
+          {{order.Customer.CellphoneNumber}} <br>
+          {{order.Customer.EmailAddress}} <br>
+          {{order.Customer.Address}}
+        </p>
+      </div>
+    </div>
+
+    <div class="order-products">
+      <h4>Products</h4>
+      <div class="table" *ngIf="order.Products">
+        <div class="header">
+          <div></div>
+          <div class="header-item">
+            Product name
+          </div>
+          <div class="header-item">
+            Quantity
+          </div>
+
+          <div class="header-item ">
+            Price
+          </div>
+          <div class="header-item tac">
+            Sub Total
+          </div>
+        </div>
+        <div class="body-container">
+          <div class="body" *ngFor="let item of order.Products | searchproduct: search">
+            <div class="body-item">
+              <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+              <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
+            </div>
+            <div class="body-item">
+              <p>
+                {{item.ProductName}}
+                <span class="row-details"> {{item.Options | formatDashboardOptions}}</span>
+              </p>
+            </div>
+            <div class="body-item">
+              <p>
+                {{item.Quantity}}
+              </p>
+
+            </div>
+            <div class="body-item tac">
+              <p>
+                <b>
+                  {{item.UnitPrice | currency:'R'}}
+                </b>
+              </p>
+            </div>
+            <div class="body-item tar">
+              <p>
+                {{item.subTotal  | currency:'R'}}
+              </p>
+            </div>
+          </div>
+          <div class="total">
+            <h3>Total {{order.Total  | currency:'R'}}</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="close" (click)="closeDetails()">
+
+  </div>
+</div>

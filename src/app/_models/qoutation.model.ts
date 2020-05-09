@@ -23,4 +23,5 @@ export interface Qoutation {
     Paying?: boolean;
     Payment?: number;
     CardClass?: string[];
+    Show?: boolean;
 }

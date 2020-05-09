@@ -171,6 +171,12 @@ export class QoutationService {
     });
   }
 
+  updateQoutesState(state) {
+    if (state) {
+      this._qoutations.next(state);
+    }
+  }
+
   getProductsForAnQoute(QouteId: string) {
     return this.http.get<any>(`${this.url}/api/quotation_products/get-quotation_products.php?QouteId=${QouteId}`).subscribe(resp => {
       const products: QouteProducts[] = resp;

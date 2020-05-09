@@ -29,27 +29,44 @@
       </div>
 
     </div>
+
+    <div class="list-header-mobile">
+      <h4>
+        Purchase orders<span class="dot">.</span>
+      </h4>
+
+      <div class="actions">
+        <div class="search">
+          <input type="search" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+        </div>
+        <div class="search">
+          <select [(ngModel)]="searchByCatergory" class="roundInput">
+            <option value="" selected>All</option>
+            <option value="new" selected>Unpaid</option>
+            <option value="Partially paid" selected>Partially paid</option>
+            <option value="Fully paid" selected>Partially paid</option>
+            <option value="Cancelled" selected>Cancelled</option>
+
+          </select>
+        </div>
+        <div class="search">
+          <button (click)="add()"> <i class="pi pi-plus"></i>Sale</button>
+        </div>
+      </div>
+    </div>
     <div class="table" *ngIf="orders.length > 0; else notFound">
       <div class="header">
-        <div class="header-item"></div>
         <div class="header-item">
           Customer
         </div>
         <div class="header-item">
           Invioce #
         </div>
-        <div class="header-item">
-          Date
-        </div>
 
-        <div class="header-item " (click)="sort(orders, 'price')">
-          <!-- <i *ngIf="priceAsc" class="pi pi-sort-numeric-up-alt"></i>
-            <i *ngIf="!priceAsc" class="pi pi-sort-numeric-down"></i> -->
-          Paid
-        </div>
+
         <div class="header-item tac" (click)="sort(orders, 'quantity')">
           <!-- <i *ngIf="quantityAsc" class="pi pi-sort-numeric-up-alt"></i>
-            <i *ngIf="!quantityAsc" class="pi pi-sort-numeric-down"></i> -->
+          <i *ngIf="!quantityAsc" class="pi pi-sort-numeric-down"></i> -->
           Total
         </div>
         <div class="header-item tar">
@@ -73,6 +90,7 @@
           <div class="body-item">
             <p *ngIf="item.Customer" class="customer-name">{{item.Customer.Name}} {{item.Customer.Surname}}</p>
             <p *ngIf="!item.Customer" class="customer-name">Guest</p>
+            <p>{{item.CreateDate | date:'shortDate'}}</p>
             <span></span>
           </div>
           <div class="body-item">
@@ -80,24 +98,14 @@
               {{prefix}} {{item.OrderId}}
             </p>
           </div>
-          <div class="body-item">
-            <p>
-              {{item.CreateDate | date:'shortDate'}}
-            </p>
-          </div>
-          <div class="body-item">
-            <p *ngIf="item.Status == 'new'" class="order-status new">Unpaid</p>
-            <p *ngIf="item.Status == 'Partially paid'" class="order-status partially-paid">{{item.Status}}</p>
-            <p *ngIf="item.Status == 'Fully paid'" class="order-status fully-paid">{{item.Status}}</p>
-            <p *ngIf="item.Status == 'Cancelled'" class="order-status cancelled">{{item.Status}}</p>
-            <p>
-            </p>
-
-          </div>
           <div class="body-item tac">
             <p>
               {{item.Total  | currency:'R'}}
             </p>
+            <p *ngIf="item.Status == 'new'" class="order-status new">Unpaid</p>
+            <p *ngIf="item.Status == 'Partially paid'" class="order-status partially-paid">{{item.Status}}</p>
+            <p *ngIf="item.Status == 'Fully paid'" class="order-status fully-paid">{{item.Status}}</p>
+            <p *ngIf="item.Status == 'Cancelled'" class="order-status cancelled">{{item.Status}}</p>
           </div>
           <div class="body-item tar">
             <button class="btn-primary" (click)="select(item)">
@@ -109,7 +117,7 @@
     </div>
   </div>
 
-  <div class="order-details">
+  <div class="order-details-section">
     <app-purchase-order-details></app-purchase-order-details>
   </div>
 </div>

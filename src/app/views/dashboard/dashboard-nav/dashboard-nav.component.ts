@@ -39,6 +39,7 @@ export class DashboardNavComponent implements OnInit {
 
   ngOnInit() {
     const user: User = this.accountService.currentUserValue;
+    this.accountService.checkSession();
     this.getUserRole(user);
     this.getDeviceSize();
     this.populateSideNav();

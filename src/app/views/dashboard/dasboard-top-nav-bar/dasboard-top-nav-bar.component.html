@@ -137,6 +137,9 @@
     <img src="assets/images/search-nav.svg" alt="">
     <a routerLink="/home">Search</a>
   </div>
+  <div class="menu-item ">
+    <img  class="add" src="assets/images/add-all.svg" alt="">
+  </div>
   <div class="menu-item" (click)="showCart()">
     <img src="assets/images/shopping-nav.svg" alt="">
     <a routerLink="/dashboard/sell">Cart</a>
@@ -144,8 +147,22 @@
       {{cartItems}}
     </div>
   </div>
-  <div class="menu-item">
-    <img src="assets/images/account-nav.svg" style="width: .8rem;" alt="">
-    <a routerLink="/home">Account</a>
+  <div class="menu-item"  *ngIf="user$ | async as user">
+   
+  <div class="profile" (click)="toProfile(user)">
+    <!-- <div class="name">
+      <h3>
+        Hello, {{user.Name}}
+        <span>
+          {{user.Company?.Name}}
+        </span>
+      </h3>
+    </div> -->
+    <div class="image">
+      <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
+      <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="">
+    </div>
+
+  </div>
   </div>
 </div>

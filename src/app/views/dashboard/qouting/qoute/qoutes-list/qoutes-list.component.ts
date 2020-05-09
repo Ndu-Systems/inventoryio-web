@@ -19,6 +19,7 @@ export class QoutesListComponent implements OnInit {
   orders$: Observable<Orders[]>;
   showSearchOrder: any;
   notFoundModel: NotFoundModel;
+  qoutations: Qoutation[];
 
   constructor(
     private qoutationService: QoutationService,
@@ -44,6 +45,9 @@ export class QoutesListComponent implements OnInit {
       Image: NotFoundConstants.NOT_FOUND_QUOTES.image,
       Message: NotFoundConstants.NOT_FOUND_QUOTES.message
     };
+    this.qoutationService.qoutations.subscribe(data => {
+      this.qoutations = data;
+    });
   }
   add() {
     this.router.navigate(['/dashboard/qoute-customer']);
@@ -96,6 +100,7 @@ export class QoutesListComponent implements OnInit {
     this.searchOrder();
   }
   select(qoute: Qoutation) {
+    qoute.Show = true;
     this.qoutationService.updateQoutationState(qoute);
   }
 

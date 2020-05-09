@@ -139,4 +139,9 @@ export class QouteDetailsComponent implements OnInit {
     return `${date.getDay()}  ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]} `;
   }
 
+  closeDetails(order) {
+    order.Show = false;
+    this.qoutationService.updateQoutationState(order);
+  }
+
 }

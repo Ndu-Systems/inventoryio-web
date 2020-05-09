@@ -4,6 +4,10 @@
   margin: 2.5rem 2rem;
   border-radius: 6px;
 
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+
   h4 {
     margin: 0;
     margin-bottom: 1rem;
@@ -108,5 +112,41 @@
 
   @media only screen and (max-width: 600px) {
     padding: .2rem;
+  }
+}
+
+
+
+// mobile
+.modal {
+
+  .actions {
+    display: flex;
+
+    .action {
+      img {
+        width: 4.9rem;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+
+  h4{
+    margin: .5rem 0;
+  }
+
+  //  table
+  .header {
+    grid-template-columns: 40% 15% 15% auto;
+  }
+
+  .body-container {
+    .body {
+      grid-template-columns: 10% 30% 15% 15% auto;
+
+      .pc-only {
+        display: none;
+      }
+    }
   }
 }
