@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="414" height="94" viewBox="0 0 414 94">
+  <g id="close-modat-mobile" transform="translate(0 -802)">
+    <path id="Rectangle_253" data-name="Rectangle 253" d="M20,0H394a20,20,0,0,1,20,20V75a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V20A20,20,0,0,1,20,0Z" transform="translate(0 821)" fill="#0337bb"/>
+    <g id="add-close">
+      <g id="Group_404" data-name="Group 404" transform="translate(-97 -43)">
+        <g id="Ellipse_115" data-name="Ellipse 115" transform="translate(285 845)" fill="#fff" stroke="#0337bb" stroke-width="3">
+          <circle cx="19.5" cy="19.5" r="19.5" stroke="none"/>
+          <circle cx="19.5" cy="19.5" r="18" fill="none"/>
+        </g>
+      </g>
+      <g id="Group_407" data-name="Group 407" transform="translate(597.616 -17.336) rotate(45)">
+        <rect id="Rectangle_250" data-name="Rectangle 250" width="4" height="22" rx="2" transform="translate(316 858)" fill="#0337bb"/>
+        <rect id="Rectangle_251" data-name="Rectangle 251" width="4" height="22" rx="2" transform="translate(329 867) rotate(90)" fill="#0337bb"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -42,11 +42,11 @@
   
   @keyframes moveInButton {
     0% {
-      opacity: 0;
+      // opacity: 0;
       transform: translateY(90px);
     }
     100% {
-      opacity: 1;
+      // opacity: 1;
       transform: translate(0);
     }
   }
@@ -104,5 +104,20 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+
+@keyframes ghostMove {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: 60%;
+  }
+
+  100% {
+    left: 0%;
   }
 }

@@ -8,10 +8,16 @@ import { Banner } from 'src/app/_models';
 export class BannerService {
   private currentBannersSubject: BehaviorSubject<Banner>;
   public currentsBanner: Observable<Banner>;
+
+  private cartModalSubject: BehaviorSubject<boolean>;
+  public cartModal: Observable<boolean>;
   constructor(
   ) {
     this.currentBannersSubject = new BehaviorSubject<Banner>(JSON.parse(localStorage.getItem('bannerValue')));
     this.currentsBanner = this.currentBannersSubject.asObservable();
+
+    this.cartModalSubject = new BehaviorSubject<boolean>(false);
+    this.cartModal = this.cartModalSubject.asObservable();
   }
 
   public get currentBannerValue(): Banner {
@@ -24,5 +30,9 @@ export class BannerService {
 
   resetBannerState() {
     this.currentBannersSubject.next(null);
+  }
+
+  updateCartModal(val: boolean) {
+    this.cartModalSubject.next(val);
   }
 }

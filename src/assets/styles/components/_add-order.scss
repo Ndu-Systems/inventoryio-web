@@ -2,6 +2,11 @@
   display: grid;
   grid-template-columns: 60% auto;
 
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+
+
   .selling {
 
     .customer {
@@ -12,6 +17,7 @@
       margin-bottom: 2rem;
       margin-top: 1.2rem;
       border-radius: 6px;
+
 
 
       .customer-search {
@@ -27,6 +33,18 @@
       }
 
       .input {
+
+        input,
+        select,
+        textarea {
+          margin: 0 .5rem;
+          margin-bottom: .5rem;
+
+          @media only screen and (max-width: 600px) {
+            width: 96%;
+          }
+        }
+
         span {
           display: block;
           color: $black-color;
@@ -34,11 +52,21 @@
           text-transform: uppercase;
           font-size: .8rem;
           padding-left: .5rem;
+
+          @media only screen and (max-width: 600px) {
+            font-size: .7rem;
+
+          }
         }
 
         textarea {
           height: 7rem;
           width: 96%;
+
+          @media only screen and (max-width: 600px) {
+            height: 4.5rem;
+
+          }
         }
 
         input {
@@ -135,6 +163,7 @@
 
         h4 {
           text-transform: capitalize;
+          margin: .3rem;
         }
 
         .actions {
@@ -242,6 +271,10 @@
     //  table
     .header {
       grid-template-columns: 10% 35% 15% 20% auto;
+
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: 8% 25% 15% 22% auto;
+      }
     }
 
     .body-container {
@@ -249,6 +282,10 @@
 
       .body {
         grid-template-columns: 10% 35% 15% 20% auto;
+
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 8% 25% 15% 22% auto;
+        }
 
         .pc-only {
           display: none;
@@ -267,7 +304,11 @@
 
   .cart {
     padding: 1rem;
-    border-radius: 6px;
+    border-radius: 20px;
+
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
 
     .list-header {
       width: 100%;
@@ -323,6 +364,11 @@
     width: 30%;
     margin: 15% auto;
 
+    @media only screen and (max-width: 600px) {
+      width: 98%;
+      margin: 40% auto;
+    }
+
     .header {
       background: $primary-bg-color;
       padding: .5rem;
@@ -365,11 +411,20 @@
           display: grid;
           grid-template-columns: 30% auto;
           padding: 1rem .5rem;
+
+          @media only screen and (max-width: 600px) {
+            grid-template-columns: 40% auto;
+          }
         }
       }
 
       .qnty {
         margin-left: 0;
+
+        .min,
+        .plus {
+          text-align: center;
+        }
       }
 
 

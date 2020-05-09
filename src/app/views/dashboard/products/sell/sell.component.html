@@ -13,23 +13,8 @@
 
       <div class="list-header-mobile">
         <h4>
-          Products ({{sum}})
+          Create Sales Order<span class="dot">.</span>
         </h4>
-
-        <div class="actions">
-          <div class="search">
-            <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
-          </div>
-          <div class="search">
-            <select [(ngModel)]="searchByCatergory" class="roundInput">
-              <option value="" selected>All categories</option>
-              <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
-            </select>
-          </div>
-          <div class="search">
-            <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
-          </div>
-        </div>
       </div>
 
       <div class="customer" *ngIf="selectedPartner">
@@ -44,9 +29,6 @@
               </p>
             </div>
           </div>
-
-
-          <br>
           <div *ngIf="shippingsList?.length">
             <span>Shipping Method</span>
             <select (change)="deliveryChanged($event.target.value)" class="roundInput">
@@ -81,7 +63,7 @@
       <div class="table" *ngIf="products.length > 0; else notFound">
         <div class="header">
           <div class="header-item">
-            Image
+
           </div>
           <div class="header-item">
             Product name
@@ -130,7 +112,8 @@
                   </button>
                 </div>
                 <div class="input">
-                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="item.QuantitySelected" (blur)="blur(item)">
+                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="item.QuantitySelected"
+                    (blur)="blur(item)">
                 </div>
 
                 <div class="plus">
@@ -150,42 +133,6 @@
         </div>
       </div>
 
-      <div class="mobile-table">
-        <div class="items">
-          <span *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-            <div class="item" (click)="details(item)">
-              <div class="image-name">
-                <div class="image">
-                  <img [src]="item.images[0].Url" alt="" *ngIf="item.images" />
-                  <img src="assets/images/placeholder.png" *ngIf="!item.images" alt="" />
-                </div>
-                <div class="name">
-                  <p>
-                    <span>
-                      {{item.Quantity}}
-                    </span>
-                  </p>
-                </div>
-                <div class="name">
-                  <p>
-
-                    {{item.Name}}
-                  </p>
-                </div>
-                <div class="qty">
-
-                </div>
-                <div class="price">
-                  <p>
-                    {{item.UnitPrice | currency:'R'}}
-
-                  </p>
-                </div>
-              </div>
-            </div>
-          </span>
-        </div>
-      </div>
 
       <ng-template #notFound>
         <div class="not-found">
@@ -231,6 +178,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 <div class="select-attributes-modal" *ngIf="productForAttributes">
@@ -247,8 +195,8 @@
 
     <div class="body">
       <div class="image">
-        <img *ngIf="productForAttributes.images" [src]="productForAttributes.images[0].Url" alt="">
-        <img *ngIf="!productForAttributes.images" src="assets/images/placeholder.png" alt="">
+        <img *ngIf="productForAttributes.Images" [src]="productForAttributes.Images[0].Url" alt="">
+        <img *ngIf="!productForAttributes.Images" src="assets/images/placeholder.png" alt="">
       </div>
 
       <div class="item-options">
@@ -300,5 +248,42 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div *ngIf="showCart" class="modal-overlay">
+  <div class="modal">
+    <div class="cart">
+      <div class="list-header">
+        <div class="heading">
+          <h1>
+            Cart<span class="dot">.</span>
+          </h1>
+        </div>
+      </div>
+
+      <div class="cart-items">
+        <app-sale-sammary></app-sale-sammary>
+
+        <div class="total">
+          <h4>
+            Total: {{sale?.total + deliveryFee | currency:'R'}}
+          </h4>
+        </div>
+        <div class="actions">
+          <div>
+            <button class="btn" (click)="onSubmit()">Save order</button>
+          </div>
+
+          <div>
+            <button class="btn btn-transparent" (click)="clear()">Crear All</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="close" (click)="toggleCart()">
+
   </div>
 </div>

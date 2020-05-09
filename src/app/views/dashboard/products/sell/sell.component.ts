@@ -24,7 +24,7 @@ export class SellComponent implements OnInit {
   user: User;
   products: Product[];
   categories: string[] = [];
-  showCart = true;
+  showCart;
   searchByCatergory = '';
   width: number;
   notFoundModel: NotFoundModel;
@@ -70,7 +70,7 @@ export class SellComponent implements OnInit {
     this.products$ = this.productService.products;
     this.productService.products.subscribe(data => {
       this.products = data;
-      this.getDeviceSize();
+      // this.getDeviceSize();
       const categories = data.map(c => c.Catergory && c.Catergory.Name || '') || [];
       this.categories = categories.filter((item, index) => categories.indexOf(item) === index);
       this.categories = this.categories.filter(c => c !== '' && c !== undefined && c !== null);
@@ -127,6 +127,10 @@ export class SellComponent implements OnInit {
       this.shippings = this.user.Company.Shipping;
       this.groupShipping();
     }
+
+    this.bannerService.cartModal.subscribe(data => {
+      this.showCart = data;
+    });
 
   }
   add() {
@@ -277,13 +281,14 @@ export class SellComponent implements OnInit {
   clearSearch() {
     this.search = '';
   }
-  getDeviceSize() {
-    this.width = screen.width;
-    console.log(this.width);
-    this.showCart = this.width >= 720;
-  }
+  // getDeviceSize() {
+  //   this.width = screen.width;
+  //   console.log(this.width);
+  //   this.showCart = this.width >= 720;
+  // }
   toggleCart() {
     this.showCart = !this.showCart;
+    this.bannerService.updateCartModal(this.showCart);
   }
   addCustomer() {
     this.bannerService.updateState({

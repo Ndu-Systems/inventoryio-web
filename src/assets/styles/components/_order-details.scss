@@ -73,33 +73,40 @@
       }
     }
   }
-.order-products{
-  background: $default-bg;
-  padding: 1rem;
 
-  //  table
-.header {
-  grid-template-columns: 10% 40% 15% 15% auto;
-}
+  .order-products {
+    background: $default-bg;
+    padding: 1rem;
 
-.body-container {
-  .body {
-    grid-template-columns: 10% 40% 15% 15% auto;
-
-    .pc-only {
-      display: none;
+    //  table
+    .header {
+      grid-template-columns: 10% 40% 15% 15% auto;
     }
+
+    .body-container {
+      .body {
+        grid-template-columns: 10% 40% 15% 15% auto;
+
+        .pc-only {
+          display: none;
+        }
+      }
+    }
+
   }
 }
 
-}
-}
-.row-details{
+.row-details {
   display: block;
   font-size: .7rem;
   font-weight: 700;
 }
-.roundInput{
+
+.roundInput {
   width: 80%;
   padding: .8rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: .2rem;
+  }
 }

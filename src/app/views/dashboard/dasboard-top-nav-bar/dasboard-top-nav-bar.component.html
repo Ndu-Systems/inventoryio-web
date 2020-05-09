@@ -137,9 +137,12 @@
     <img src="assets/images/search-nav.svg" alt="">
     <a routerLink="/home">Search</a>
   </div>
-  <div class="menu-item">
+  <div class="menu-item" (click)="showCart()">
     <img src="assets/images/shopping-nav.svg" alt="">
-    <a routerLink="/shop">Shopping</a>
+    <a routerLink="/dashboard/sell">Cart</a>
+    <div class="cart">
+      {{cartItems}}
+    </div>
   </div>
   <div class="menu-item">
     <img src="assets/images/account-nav.svg" style="width: .8rem;" alt="">

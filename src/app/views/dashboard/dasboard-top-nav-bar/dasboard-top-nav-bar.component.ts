@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService, ProductService, OrdersService } from 'src/app/_services';
+import { AccountService, ProductService, OrdersService, BannerService, SaleService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/_models';
+import { User, SellModel } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { SearchQuery, SearchQueryGroup } from 'src/app/_models/serach.query.model';
 import { SearchQueryService } from 'src/app/_services/dashboard/search-query.service';
@@ -16,12 +16,17 @@ export class DasboardTopNavBarComponent implements OnInit {
   searchQueryResults = [];
   searchableItems: SearchQueryGroup[] = [];
   searchQuery = '';
+  sale: SellModel;
+  cartItems = 0;
   constructor(
     private accountService: AccountService,
     private routeTo: Router,
     private searchQueryService: SearchQueryService,
     private productService: ProductService,
     private ordersService: OrdersService,
+    private bannerService: BannerService,
+    private saleService: SaleService,
+
   ) { }
 
   ngOnInit() {
@@ -31,6 +36,15 @@ export class DasboardTopNavBarComponent implements OnInit {
     this.searchQueryService.mapPartners();
     this.searchQueryService.currentsSearchQuery.subscribe(items => {
       this.searchableItems = items;
+    });
+
+    this.saleService.sell.subscribe(data => {
+      if (data) {
+        this.sale = data;
+        this.sale.items.forEach(item => {
+          this.cartItems += Number(item.quantity);
+        });
+      }
     });
   }
   toProfile() {
@@ -64,6 +78,12 @@ export class DasboardTopNavBarComponent implements OnInit {
     this.searchQueryResults[1] = { Type: 'partners', SearchQuery: allResults[1] };
     this.searchQueryResults[2] = { Type: 'link', SearchQuery: allResults[2] };
     this.searchQueryResults[3] = { Type: 'orders', SearchQuery: allResults[3] };
+  }
+
+  showCart() {
+    if (this.cartItems > 0) {
+      this.bannerService.updateCartModal(true);
+    }
   }
 
 
