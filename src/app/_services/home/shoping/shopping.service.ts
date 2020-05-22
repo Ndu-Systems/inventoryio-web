@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Orders, OrderProducts, Item, Product, SellModel, Partner, Company } from 'src/app/_models';
+import { Orders, OrderProducts, Item, Product, SellModel, Partner, Company, User } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
 import { SplashService } from '../../splash.service';
 import { environment } from 'src/environments/environment';
@@ -15,8 +15,8 @@ export class ShoppingService {
   private _sell: BehaviorSubject<SellModel>;
   public sell: Observable<SellModel>;
 
-  private _customer: BehaviorSubject<Partner>;
-  public customer: Observable<Partner>;
+  private _customer: BehaviorSubject<User>;
+  public customer: Observable<User>;
 
   private _order: BehaviorSubject<Orders>;
   public order: Observable<Orders>;
@@ -27,6 +27,12 @@ export class ShoppingService {
 
   private _companies: BehaviorSubject<Company[]>;
   public companies: Observable<Company[]>;
+
+  private _steps: BehaviorSubject<number>;
+  public steps: Observable<number>;
+
+  private _modalDone: BehaviorSubject<boolean>;
+  public modalDone: Observable<boolean>;
 
 
 
@@ -40,7 +46,7 @@ export class ShoppingService {
     this._sell = new BehaviorSubject<SellModel>(JSON.parse(localStorage.getItem('shop_sale')));
     this.sell = this._sell.asObservable();
 
-    this._customer = new BehaviorSubject<Partner>(JSON.parse(localStorage.getItem('shop_customer')));
+    this._customer = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('shop_customer')));
     this.customer = this._customer.asObservable();
 
     this._order = new BehaviorSubject<Orders>(JSON.parse(localStorage.getItem('shop_order')));
@@ -52,6 +58,12 @@ export class ShoppingService {
 
     this._companies = new BehaviorSubject<Company[]>(JSON.parse(localStorage.getItem('shop_companies')));
     this.companies = this._companies.asObservable();
+
+    this._steps = new BehaviorSubject<number>(JSON.parse(localStorage.getItem('step')) || 1);
+    this.steps = this._steps.asObservable();
+
+    this._modalDone = new BehaviorSubject<boolean>(false);
+    this.modalDone = this._modalDone.asObservable();
 
 
     this.url = environment.API_URL;
@@ -66,6 +78,14 @@ export class ShoppingService {
     return this._company.value;
   }
 
+  updateStepState(step: number) {
+    this._steps.next(step);
+    localStorage.setItem('step', JSON.stringify(step));
+  }
+
+  updateModalState(modal: boolean) {
+    this._modalDone.next(modal);
+  }
   updateState(data: SellModel) {
     if (data) {
       this.calculateTotal();
@@ -97,9 +117,8 @@ export class ShoppingService {
 
   }
 
-  updateCustomerState(data: Partner) {
+  updateCustomerState(data: User) {
     if (data) {
-      this.calculateTotal();
       this._customer.next(data);
       localStorage.setItem('shop_customer', JSON.stringify(data));
     }
@@ -211,5 +230,5 @@ export class ShoppingService {
   getAllShops(): Observable<Company[]> {
     return this.http.get<any>(`${this.url}/api/company/shops.php`);
   }
-  
+
 }

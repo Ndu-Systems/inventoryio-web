@@ -19,9 +19,27 @@
   </div>
 
 
-  <div class="account">
+  <div class="account" *ngIf="!customer">
     <img src="assets/images/sign-up-home.svg" alt="">
     <img src="assets/images/sign-in-home.svg" alt="">
+  </div>
+
+  <div class="user-profile" *ngIf="customer">
+    <div>
+      <a routerLink="/shop/my-profile/{{customer.UserId}}">
+        <h4>Hello,<br>{{ customer.Name}}</h4>
+      </a>
+    </div>
+
+    <div class="dp">
+      <div class="image">
+        <a routerLink="/shop/my-profile/{{customer.UserId}}">
+          <img *ngIf="customer.DP" [src]="customer.DP.Url" alt="">
+          <img *ngIf="!customer.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="">
+        </a>
+      </div>
+
+    </div>
   </div>
 
   <div class="cart" (click)="viewCart()">
@@ -149,19 +167,31 @@
 
 <div class="mobile-nav-bottom">
   <div class="menu-item">
-    <img src="assets/images/home-nav.svg" alt="">
-    <a routerLink="/home">Home</a>
+    <img src="assets/images/catalogue-nav.svg" alt="">
+    <a [routerLink]="companyUrl"  routerLinkActive="active-link-mob">Catalogue</a>
   </div>
   <div class="menu-item">
     <img src="assets/images/search-nav.svg" alt="">
-    <a routerLink="/home">Search</a>
+    <a routerLink="/home"  routerLinkActive="active-link-mob">Search</a>
   </div>
   <div class="menu-item">
     <img src="assets/images/shopping-nav.svg" alt="">
-    <a routerLink="/shop">Shopping</a>
+    <a [routerLink]="cartUrl"  routerLinkActive="active-link-mob">Cart</a>
+    <div class="cart">
+      {{cartItems}}
+    </div>
   </div>
-  <div class="menu-item">
-    <img src="assets/images/account-nav.svg" style="width: .8rem;" alt="">
-    <a routerLink="/home">Account</a>
+  <div class="menu-item" *ngIf="!customer">
+    <img src="assets/images/user-nav.svg" style="width: .8rem;" alt="">
+    <a routerLink="/home"  routerLinkActive="active-link-mob">Profile</a>
   </div>
+  <div class="menu-item" *ngIf="customer">
+    <div class="dp-image">
+      <a routerLink="/shop/my-profile/{{customer.UserId}}">
+        <img *ngIf="customer.DP" [src]="customer.DP.Url" alt="">
+        <img *ngIf="!customer.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="">
+      </a>
+    </div>
+  </div>
+
 </div>

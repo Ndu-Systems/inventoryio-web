@@ -34,7 +34,7 @@ export class ForgotPasswordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle(`Reset vendor account  password | Inventory io`);
+    this.titleService.setTitle(`Reset vendor account  password | Tybo | Take your business online`);
 
     this.rForm = this.fb.group({
       Email: new FormControl(

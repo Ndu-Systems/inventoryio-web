@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, Company, SellModel, Partner, Orders, Item, Email } from 'src/app/_models';
+import { Product, Company, SellModel, Partner, Orders, Item, Email, User } from 'src/app/_models';
 import { ProductService, CompanyService, EmailService, InvoiceService } from 'src/app/_services';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,7 +22,7 @@ export class ShopCheckoutComponent implements OnInit {
   company: Company;
   sale$: Observable<SellModel>;
   products: Product[];
-  selectedPartner: Partner;
+  selectedPartner: User;
   sale: SellModel;
   order: Orders;
   bannerImage = 'assets/placeholders/shopheader.jpg';
@@ -43,8 +43,6 @@ export class ShopCheckoutComponent implements OnInit {
   ];
   cartItems: number;
   logoUrl: string;
-
-
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
@@ -74,10 +72,7 @@ export class ShopCheckoutComponent implements OnInit {
           if (this.company.Logo && this.company.Logo.length) {
             this.logoUrl = this.company.Logo[0].Url;
           }
-          // if (this.company.Shipping) {
-          //   this.shippings = this.company.Shipping;
-          //   this.groupShipping();
-          // }
+          this.shoppingService.updateCompanyState(data);
         }
 
       });
@@ -97,58 +92,20 @@ export class ShopCheckoutComponent implements OnInit {
         this.selectedPartner = state;
       }
     });
-    this.productService.products.subscribe(r => {
-      this.products = r;
+
+    this.shoppingService.company.subscribe(data => {
+      this.company = data;
+    });
+
+    this.shoppingService.steps.subscribe(data => {
+      this.step = data;
     });
   }
 
   back() {
-    // this.shoppingService.setState(this.cart);
     this.router.navigate(['shop/shopping-cart', this.company.CompanyId || this.companyId]);
   }
 
-  add(item: Item) {
-    const product = this.products.find(x => x.ProductId === item.prodcuId);
-    if (Number(product.Quantity) - Number(item.quantity) <= 0) {
-      // this.messageService.add({
-      //   severity: 'warn',
-      //   summary: 'Stock Alert.',
-      //   detail: `You run out of ${product.Name}`
-      // });
-      return false;
-    }
-    item.quantity++;
-    this.shoppingService.doSellLogic(item, this.companyId);
-  }
-  reduce(item: Item) {
-    if (item.quantity <= 0) {
-      this.shoppingService.removeItem(item);
-      return;
-    }
-    item.quantity--;
-    this.shoppingService.doSellLogic(item, this.companyId);
-  }
-  removeItem(item: Item) {
-    this.shoppingService.removeItem(item);
-  }
-  blur(item: Item) {
-    if (item.quantity <= 0) {
-      this.shoppingService.removeItem(item);
-      return;
-    }
-
-    const product = this.products.find(x => x.ProductId === item.prodcuId);
-    if (Number(product.Quantity) - Number(item.quantity) <= 0) {
-      // this.messageService.add({
-      //   severity: 'warn',
-      //   summary: 'Stock Alert.',
-      //   detail: `You run out of ${product.Name}`
-      // });
-      item.quantity = product.Quantity;
-      return false;
-    }
-    this.shoppingService.doSellLogic(item, this.companyId);
-  }
 
 
   succesful() {
@@ -198,23 +155,23 @@ export class ShopCheckoutComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.selectedType === 'eft' && !this.checkedEft) {
+    if (!this.checkedCash && !this.checkedEft) {
       this.messageService.add({
         severity: 'warn',
         summary: 'EFT Agree',
-        detail: 'Please agree to pay using EFT to the account below.'
+        detail: 'Please agree to pay using EFT to the account below or cash'
       });
       return false;
     }
 
-    if (this.selectedType === 'cash' && !this.checkedCash) {
-      this.messageService.add({
-        severity: 'warn',
-        summary: 'Cash Agree',
-        detail: 'Please agree to pay cash'
-      });
-      return false;
-    }
+    // if (this.selectedType === 'cash' && !this.checkedCash) {
+    //   this.messageService.add({
+    //     severity: 'warn',
+    //     summary: 'Cash Agree',
+    //     detail: 'Please agree to pay cash'
+    //   });
+    //   return false;
+    // }
     if (!this.sale.total) {
       this.messageService.add({
         severity: 'warn',
@@ -231,7 +188,7 @@ export class ShopCheckoutComponent implements OnInit {
       });
       return false;
     }
-    if (!this.selectedPartner.EmailAddress) {
+    if (!this.selectedPartner.Email) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Email address is needed',
@@ -251,7 +208,7 @@ export class ShopCheckoutComponent implements OnInit {
       CompanyId: this.companyId,
       Customer: this.selectedPartner || null,
       ParntersId: '',
-      ParntersEmail: this.selectedPartner && this.selectedPartner.EmailAddress || null,
+      ParntersEmail: this.selectedPartner && this.selectedPartner.Email || null,
       OrderType: 'Sell',
       Total: this.sale.total,
       Paid: 0,
@@ -299,19 +256,13 @@ export class ShopCheckoutComponent implements OnInit {
 
       this.succesful();
     });
-    this.shoppingService.company.subscribe(data => {
-      if (data) {
-        this.company = data;
-        if (this.company.Theme) {
-          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-        }
-      }
-    });
   }
 
   nextStep(step) {
     this.step = step
+  }
+  backToShipping() {
+    this.shoppingService.updateStepState(1);
   }
 
 }

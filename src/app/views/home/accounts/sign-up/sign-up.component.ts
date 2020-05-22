@@ -36,7 +36,7 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.titleService.setTitle(`Create a new vendor account | Inventory io`);
+    this.titleService.setTitle(`Create a new vendor account | Tybo | Take your business online`);
 
     this.accountService.updateUserState(null);
     this.rForm = this.fb.group({

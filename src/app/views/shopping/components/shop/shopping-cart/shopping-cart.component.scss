@@ -52,6 +52,7 @@
 
   @media only screen and (max-width: 600px) {
     padding: 1%;
+    display: none;
   }
 
 
@@ -101,6 +102,7 @@
 
     .image {
       width: 5rem;
+
       img {
         width: 100%;
         // height: 4rem;
@@ -274,6 +276,163 @@
 
 }
 
+.mobile-content {
+
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    padding: 1%;
+    display: block;
+    padding: 1rem;
+    background: $cloud-ligher;
+    height: 92vh;
+  }
+  .heading{
+    font-size: 1.2rem;
+  }
+
+  .products {
+    overflow-y: scroll;
+    max-height: 42vh;
+  }
+  .sammary{
+    margin: 2.5rem .5rem;
+    select{
+      border: 2px solid $primary-bg-color;
+      border-radius: 30px;
+    }
+    .btn{
+      width: 100%;
+      margin-top: 2rem;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+    h3{
+      font-size: 1rem;
+      font-weight: 500;
+      span{
+        font-weight: 900;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .product {
+    display: grid;
+    grid-template-columns: 20% auto;
+    background: $white-color;
+    padding: .5rem;
+    border-radius: 10px;
+    margin: .5rem 0;
+
+
+    .image {
+      padding: 1rem .4rem;
+      text-align: center;
+
+      img {
+        width: 95%;
+        border-radius: 4px;
+      }
+    }
+
+    .details {
+
+      .product-row {
+        display: grid;
+        grid-template-columns: 90% auto;
+
+        .name {
+
+          p {
+            margin: .2rem;
+            font-size: .9rem;
+
+            span {
+              display: block;
+              font-size: .8rem;
+              font-weight: 700;
+            }
+          }
+        }
+
+        .remove {
+          padding: .2rem;
+          text-align: right;
+
+          img {
+            width: 1.2rem;
+          }
+        }
+      }
+
+      .bottom {
+        grid-template-columns: 50% auto;
+
+        .price {
+          p {
+            margin: 1rem .5rem;
+            font-weight: 800;
+            font-size: 1rem;
+          }
+        }
+
+        .quantity {
+          .qnty {
+            display: grid;
+            grid-template-columns: 25% 50% auto;
+            padding: .2rem;
+            width: 8.5rem;
+            margin: .5rem auto;
+            border: 1px solid gray;
+            border-radius: 37px;
+            padding: 0 .7rem;
+            height: 2.1rem;
+
+            div {
+              text-align: center;
+              padding: 0;
+            }
+
+
+            button,
+            input {
+              height: 2.1rem;
+              margin: 0;
+              width: 100%;
+              text-align: center;
+            }
+
+            button {
+              color: $white-color;
+              background: $primary-bg-color;
+              border: none;
+              width: 1.2rem;
+              border-radius: 1.2rem;
+              height: 1.2rem;
+              padding: 0;
+              padding-top: .12rem;
+              margin: .3555rem auto;
+            }
+
+            .plus {
+              padding-left: .5rem;
+            }
+
+            input {
+              border: none;
+              font-weight: 900;
+              border: 1px solid $gray-color;
+
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
 .check-out {
   text-align: right;
 
@@ -322,7 +481,7 @@
 
 .container {
   @media only screen and (max-width: 600px) {
-    padding-top: 15%;
+    padding-top: 0;
   }
 }
 
@@ -333,6 +492,7 @@
 .input {
 
   padding: .5rem;
+
   select,
   input {
     border: 1px solid $strong-gray;
@@ -341,11 +501,11 @@
 }
 
 
-.main-holder{
+.main-holder {
   background: $white-color;
 }
 
-.back-link{
+.back-link {
   padding: 0 1rem;
   cursor: pointer;
   display: block;

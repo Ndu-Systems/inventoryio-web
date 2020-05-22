@@ -6,6 +6,7 @@ import { SocialUser, AuthService, FacebookLoginProvider, GoogleLoginProvider } f
 import { Router } from '@angular/router';
 import { AccountService, RolesService } from 'src/app/_services';
 import { Title } from '@angular/platform-browser';
+import { ShoppingService } from 'src/app/_services/home/shoping';
 
 @Component({
   selector: 'app-customer-login',
@@ -20,23 +21,23 @@ export class CustomerLoginComponent implements OnInit {
   email = environment.ACCOUNT_TEST_EMAIL;
   password = environment.ACCOUNT_TEST_PASSWORD;
   hidePassword = true;
-
+  shopSecondaryColor;
+  shopPrimaryColor;
+  logoUrl;
   public socialUser: any = SocialUser;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
     private roleService: RolesService,
-    private titleService: Title,
     private authService: AuthService,
+    private shoppingService: ShoppingService,
 
   ) {
   }
 
 
   ngOnInit() {
-    this.titleService.setTitle(`Login to your vendor account | Inventory io`);
-
     this.rForm = this.fb.group({
       Email: new FormControl(
         this.email,
@@ -59,8 +60,19 @@ export class CustomerLoginComponent implements OnInit {
   Login() {
     const email = this.getFormValues.Email.value;
     const password = this.getFormValues.Password.value;
-    this.accountService.login({ email, password });
-
+    this.accountService.customerLogin({ email, password }).subscribe(user => {
+      if (user && user.UserId && Number(user.RoleId) === 3) {
+        this.shoppingService.updateCustomerState(user);
+        this.shoppingService.updateModalState(false);
+        this.error = '';
+        // this.usersService.updateUserAysnc(data).subscribe(user => {
+        //   console.log(user);
+        //   localStorage.setItem('user_customer', JSON.stringify(user));
+        // });
+      } else {
+        this.error = 'Incorrect email or password, try again';
+      }
+    });
   }
 
   toggleNav() {

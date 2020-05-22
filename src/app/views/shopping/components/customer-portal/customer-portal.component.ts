@@ -10,16 +10,22 @@ import { User, Orders } from 'src/app/_models';
 export class CustomerPortalComponent implements OnInit {
   user: User;
   orders: Orders[];
+  shopSecondaryColor;
+  shopPrimaryColor;
+  logoUrl;
   constructor(
     private accountService: AccountService,
     private ordersService: OrdersService,
   ) { }
 
   ngOnInit() {
-    this.user = this.accountService.currentUserValue;
-    this.ordersService.getOrdersByEmail(this.user.Email).subscribe(data => {
-      this.orders = data;
-    });
+    this.user = this.accountService.getCurrentCustomer();
+    if (this.user && this.user.Email) {
+      this.ordersService.getOrdersByEmail(this.user.Email).subscribe(data => {
+        this.orders = data;
+      });
+    }
+
   }
 
 }

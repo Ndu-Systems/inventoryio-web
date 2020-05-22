@@ -246,6 +246,10 @@
   width: 100%;
   border-top: 1px solid $body-background;
 
+  -webkit-box-shadow: 1px -5px 8px 0px rgba(199, 199, 199, 1);
+  -moz-box-shadow: 1px -5px 8px 0px rgba(199, 199, 199, 1);
+  box-shadow: 1px -5px 8px 0px rgba(199, 199, 199, 1);
+
 
 
   @media only screen and (max-width: 600px) {
@@ -255,18 +259,55 @@
   .menu-item {
     text-align: center;
 
+    .cart {
+      position: absolute;
+      top: -2px;
+      right: 124px;
+      z-index: 100;
+      background: $primary-bg-color;
+      color: white;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 1.2rem;
+      font-size: .6rem;
+      font-weight: 400;
+      padding: .2rem;
+
+
+    }
+
     img {
-      width: 1rem;
+      width: .9rem;
     }
 
     a {
       display: block;
       text-align: center;
-      font-weight: 700;
+      font-weight: 600;
       color: $black-color;
-      font-size: .8rem;
+      font-size: .7rem;
+
+
     }
 
+    a.active-link-mob {
+      color: $primary-bg-color;
+      font-weight: 900;
+      text-decoration: underline;
+    }
+
+    .dp-image {
+      display: inline-block;
+      border-radius: 50%;
+      height: 1.999rem;
+      width: 1.999rem;
+      overflow: hidden;
+      border: 1px solid #F2F5F9;
+
+      img {
+        width: 100%;
+      }
+    }
   }
 
 }
@@ -310,3 +351,35 @@
   position: relative;
   top: -2.8px;
 }
+
+
+.user-profile {
+  display: grid;
+  grid-template-columns: 40% auto;
+  // background: red;
+  position: relative;
+  top: .5rem;
+
+  h4 {
+    margin: .7rem 0;
+    font-size: .7rem;
+    text-align: center;
+    position: relative;
+    top: -4px;
+  }
+
+  .image {
+    display: inline-block;
+    border-radius: 50%;
+    height: 2.4rem;
+    width: 2.4rem;
+    overflow: hidden;
+    border: 1px solid #F2F5F9;
+
+    img {
+      width: 100%;
+    }
+  }
+
+}
+

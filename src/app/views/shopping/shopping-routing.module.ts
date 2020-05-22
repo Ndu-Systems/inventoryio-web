@@ -21,6 +21,8 @@ import { CustomerNavBarComponent } from './components/customer-nav-bar/customer-
 import { CustomerOrderDetailsComponent } from './components/customer-order-details/customer-order-details.component';
 import { FormatDashBoardOptionsPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
 import { ProductSliderComponent } from './components/shop/product-slider/product-slider.component';
+import { CustomerUpdateComponent } from './components/customer-update/customer-update.component';
+import { HomeImagesAndUploadComponent } from '../dashboard/products/product-images/home-images-and-upload/home-images-and-upload.component';
 const routes: Routes = [
   {
     path: '', component: ShoppingComponent,
@@ -36,6 +38,7 @@ const routes: Routes = [
       { path: 'customer-portal/:id', component: CustomerPortalComponent },
       { path: 'customer-orders/:id', component: CustomerOrdersComponent },
       { path: 'customer-order-details/:id', component: CustomerOrderDetailsComponent },
+      { path: 'my-profile/:id', component: CustomerUpdateComponent },
     ]
   }
 ];
@@ -60,7 +63,9 @@ export const declarations = [
   CustomerNavBarComponent,
   CustomerOrderDetailsComponent,
   FormatDashBoardOptionsPipeCustomer,
-  ProductSliderComponent
+  ProductSliderComponent,
+  CustomerUpdateComponent,
+  HomeImagesAndUploadComponent
 ];
 
 

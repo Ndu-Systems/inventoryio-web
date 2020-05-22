@@ -25,7 +25,13 @@
     </div>
 
     <div class="content">
-
+     <div class="filters">
+      <h1>All products</h1>
+      <div>
+        <input type="search" placeholder="Search products">
+      </div>
+     </div>
+     
       <div class="col-1-of-4">
         <span *ngFor="let item of products ">
           <div class="shop-card" (click)="viewItem(item)">
@@ -39,8 +45,10 @@
               <p>
                 {{item.Name}}
               </p>
-              <p class="price" [ngStyle]="{'color':shopPrimaryColor}">
-                {{item.UnitPrice | currency:'R'}}
+              <p class="price">
+                <b>
+                  {{item.UnitPrice | currency:'R'}}
+                </b>
               </p>
             </div>
           </div>
@@ -50,21 +58,21 @@
 
       <div *ngIf="company" class="footer" class="footer">
         <hr>
-        <h1>
+        <h4>
           Thanks for visting {{company?.Name}}
-        </h1>
+        </h4>
         <span *ngIf="company.TelephoneNumber && company.TelephoneNumber.length > 6">
-          <h2>
+          <h5>
             Contact details
-          </h2>
+          </h5>
           <address>
             Email:{{company?.TelephoneNumber}} <br>
           </address>
         </span>
         <span *ngIf="company.Shipping">
-          <h2>
+          <h5>
             Shipping method(s)
-          </h2>
+          </h5>
           <span *ngFor="let ship of company.Shipping">
             <span *ngIf="ship.Name === 'name'">{{ship?.Value}}
               {{ship?.TelephoneNumber}}</span>
@@ -73,9 +81,9 @@
           </span>
         </span>
         <span>
-          <h2>
+          <h5>
             Payment methods
-          </h2>
+          </h5>
           <span>
             Cash | EFT
           </span>

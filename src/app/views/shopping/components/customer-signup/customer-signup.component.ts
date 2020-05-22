@@ -25,6 +25,9 @@ export class CustomerSignupComponent implements OnInit {
   password = '';
   hidePassword = true;
   partnerType = 'customer';
+  shopSecondaryColor;
+  shopPrimaryColor;
+  logoUrl;
 
   public socialUser: any = SocialUser;
   constructor(
@@ -42,7 +45,7 @@ export class CustomerSignupComponent implements OnInit {
 
 
   ngOnInit() {
-    this.titleService.setTitle(`Create customer account | Inventory io`);
+    this.titleService.setTitle(`Create customer account | Tybo | Take your business online`);
 
     this.rForm = this.fb.group({
       Email : new FormControl(

@@ -13,6 +13,9 @@ export class CustomerOrderDetailsComponent implements OnInit {
   user: User;
   order: Orders;
   orderId: any;
+  shopSecondaryColor;
+  shopPrimaryColor;
+  logoUrl;
   constructor(
     private accountService: AccountService,
     private ordersService: OrdersService,

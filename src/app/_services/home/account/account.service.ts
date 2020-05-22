@@ -18,7 +18,7 @@ export class AccountService {
 
   private _user: BehaviorSubject<User>;
   public user: Observable<User>;
-
+  private roleService;
   private _loading: BehaviorSubject<boolean>;
   public loading: Observable<boolean>;
   url: string;
@@ -26,7 +26,7 @@ export class AccountService {
     private http: HttpClient,
     private router: Router,
     private splashService: SplashService,
-    private roleService: RolesService
+    roleService: RolesService
   ) {
     this._user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this._loading = new BehaviorSubject<boolean>(false);
@@ -62,6 +62,9 @@ export class AccountService {
         class: `error`,
       });
     });
+  }
+  signUpCustomer(data: User): Observable<User> {
+    return this.http.post<any>(`${this.url}/api/user/customer-sign-up.php`, data);
   }
   socialLogin(data) {
     this._loading.next(true);
@@ -104,11 +107,13 @@ export class AccountService {
       if (resp && resp.UserId) {
         const user: User = resp;
         localStorage.clear();
-        this.updateUserState(user);
         this._loading.next(false);
         if (Number(user.RoleId) === 3) {
+          this._user.next(user);
+          localStorage.setItem('user_customer', JSON.stringify(user));
           this.router.navigate(['shop/customer-portal/home']);
         } else {
+          this.updateUserState(user);
           this.router.navigate(['dashboard']);
 
         }
@@ -130,8 +135,19 @@ export class AccountService {
     });
   }
 
+  customerLogin(credentials: { email: any; password: any; }): Observable<User> {
+    return this.http.post<User>(`${this.url}/api/account/customer-login.php`, credentials);
+  }
   forgotPassword(model: ForgotPasswordModel): Observable<User> {
     return this.http.post<User>(`${this.url}/api/account/forgot-password.php`, model);
+  }
+
+  getCurrentCustomer() {
+    if (localStorage.getItem('user_customer')) {
+      return JSON.parse(localStorage.getItem('user_customer'));
+    } else {
+      return null;
+    }
   }
 
   generateForgotPasswordReturnUrl(token: string): string {

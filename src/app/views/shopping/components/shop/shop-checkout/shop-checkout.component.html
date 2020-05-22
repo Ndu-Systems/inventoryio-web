@@ -1,9 +1,7 @@
-<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl"></app-shopping-nav>
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" *ngIf="company" [company]="company"
+  [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl"></app-shopping-nav>
 
 <div class="container" *ngIf="sale$ | async as sale">
-  <div class="cover-photo">
-    <!-- <img [src]="bannerImage" alt=""> -->
-  </div>
   <div class="content">
     <h3 class="small-heading">
       <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
@@ -29,86 +27,51 @@
         </div>
 
         <div class="payments" *ngIf="step == '2'">
-          <div class="shipping">
-            <h3>
-              Payments method
-            </h3>
-            <hr>
-            <div class="options">
-              <div class="input">
+          <div class="options">
+            <div class="details-container" *ngIf="company">
+              <div class="disclaimer">
 
 
-                <p-selectButton [options]="paymentMethods" [(ngModel)]="selectedType"></p-selectButton>
-
-              </div>
-
-              <div class="details-container" *ngIf="company.Bankings && selectedType == 'eft'">
-                <div class="disclaimer">
+                <span *ngIf="company.Bankings">
                   <p>
-                    Please make eft payment to the seller's account below, you can also contact them to ensure you
-                    sending money to the right person
+                  <b> Please make eft payment to the seller's account below.</b> 
                   </p>
-
-                  <div class="agree">
-                    <p-checkbox [(ngModel)]="checkedEft" binary="true"></p-checkbox> I agree to pay using EFT to the
-                    account below.
-                  </div>
-
-                </div>
-
-                <div class="bank-card" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
-                  <div class="bank-name">
-                    <h1>
-                      <span>Bank name</span>
-                      {{company.Bankings[0].Value}}
-                    </h1>
-                  </div>
-                  <div class="bank-acno">
-                    <h1>
-                      {{company.Bankings[1].Value}}
-                    </h1>
-                  </div>
-                  <div class="bank-holder">
-                    <div class="p1">
-                      <h1>
-                        <span>
-                          Account Holder
-                        </span>
-                        {{company.Bankings[3].Value}}
-                      </h1>
-                    </div>
-                    <div class="p2">
-                      <h1>
-                        <span>
-                          Branch
-                        </span>
-                        {{company.Bankings[2].Value}}
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="details-container" *ngIf="selectedType == 'cash'">
-                <div class="disclimer">
-                  <p>
-                    Please make sure you have cash in hand on delivery
+                  <p class="account">
+                    Bank name:
+                    <span>{{company.Bankings[0].Value}}</span>
                   </p>
+                  <p class="account">
+                    Account # :
+                    <span> {{company.Bankings[1].Value}}</span>
+                  </p>
+                  <p class="account">
 
-                  <div class="agree">
-                    <p-checkbox [(ngModel)]="checkedCash" binary="true"></p-checkbox> I agree to pay cash on delivery
-                  </div>
+                    Account Holder :
 
+                    <span> {{company.Bankings[3].Value}}</span>
+                  </p>
+                  <p class="account">
+
+                    Branch :
+
+                    <span> {{company.Bankings[2].Value}}</span>
+                  </p>
+                </span>
+
+                <div class="agree">
+                  <p-checkbox [(ngModel)]="checkedEft" binary="true"></p-checkbox> I will make a EFT payment.
                 </div>
-              </div>
+                <div class="agree">
+                  <p-checkbox [(ngModel)]="checkedCash" binary="true"></p-checkbox> I will pay cash on delivery.
+                </div>
 
-              <div class="add">
+                <div class="action">
+                  <button class="btn action-btn"
+                    [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                    (click)="onSubmit()">Place Order</button>
+                  <a (click)="backToShipping()">Back to shipping details</a>
+                </div>
 
-                <a class="back-link back-link-btn" (click)="nextStep(1)"><i class="pi pi-arrow-left"></i> Back to
-                  personal details</a>
-                <button class="btn action-btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-                  (click)="onSubmit()">Place Order</button>
               </div>
             </div>
           </div>
@@ -195,3 +158,86 @@
 
     </div>
   </div>
+
+  <div class="mobile-content">
+
+    <div class="back">
+      <p (click)="back()">
+        <i [ngStyle]="{'color':shopPrimaryColor}" class="pi pi-chevron-left"></i> Back
+      </p>
+    </div>
+    <h1 class="heading">
+      Check out
+    </h1>
+
+    <div class="tabs">
+      <div class="tab active">
+        Shipping
+      </div>
+      <div class="tab">
+        Payments
+      </div>
+      <!-- <div class="tab">
+        Confirm
+      </div> -->
+    </div>
+    <div class="tab-item" *ngIf="step == 1">
+      <app-shipping></app-shipping>
+    </div>
+    <div class="tab-item" *ngIf="step == 2">
+      <div class="shipping">
+        <div class="options">
+          <div class="details-container" *ngIf="company">
+            <div class="disclaimer">
+
+
+              <span *ngIf="company.Bankings">
+                <p>
+                  Please make eft payment to the seller's account below.
+                </p>
+                <p class="account">
+                  Bank name:
+                  <span>{{company.Bankings[0].Value}}</span>
+                </p>
+                <p class="account">
+                  Account # :
+                  <span> {{company.Bankings[1].Value}}</span>
+                </p>
+                <p class="account">
+
+                  Account Holder :
+
+                  <span> {{company.Bankings[3].Value}}</span>
+                </p>
+                <p class="account">
+
+                  Branch :
+
+                  <span> {{company.Bankings[2].Value}}</span>
+                </p>
+              </span>
+
+              <div class="agree">
+                <p-checkbox [(ngModel)]="checkedEft" binary="true"></p-checkbox> I will make a EFT payment.
+              </div>
+              <div class="agree">
+                <p-checkbox [(ngModel)]="checkedCash" binary="true"></p-checkbox> I will pay cash on delivery.
+              </div>
+
+              <div class="action">
+                <button class="btn action-btn"
+                  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
+                  (click)="onSubmit()">Place Order</button>
+                <a (click)="backToShipping()">Back to shipping details</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-item" *ngIf="step == 3">
+      <app-shipping></app-shipping>
+    </div>
+  </div>
+</div>

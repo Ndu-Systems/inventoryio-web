@@ -99,6 +99,9 @@ export class UsersService {
         this.updateUserState(data, 'user');
       }, error => console.log('Could not update a user'));
   }
+  updateUserAysnc(user: User) {
+    return this.http.put<User>(`${this.url}/api/user/update-user.php`, JSON.stringify(user));
+  }
 
   getUsersForRole(roleId: number | string) {
     this.http.get<User[]>(`${this.url}/api/user/get-users-roleid.php?RoleId=${roleId}`)

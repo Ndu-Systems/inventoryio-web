@@ -64,3 +64,33 @@
     grid-template-columns: repeat(2, 50%);
   }
 }
+.filters{
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 30% 50%  auto;
+  h1{
+    margin: .5rem 0;
+    @media only screen and (max-width: 600px) {
+      font-size: .8rem;
+      font-weight: 900;
+    }
+
+  }
+  
+  input{
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ecf0f1;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    margin: 0;
+    padding: .4rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 16px;
+  }
+}
+.footer{
+  display: none;
+  padding: 1rem;
+}

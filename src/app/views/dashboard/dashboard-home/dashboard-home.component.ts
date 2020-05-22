@@ -25,7 +25,7 @@ export class DashboardHomeComponent implements OnInit {
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
     this.accountService.checkSession();
-    this.titleService.setTitle(`${this.user.Company.Name} Dashboard : Inventory IO`);
+    this.titleService.setTitle(`${this.user.Company.Name} Dashboard : Tybo | Take your business online`);
     if (this.user.Password === DEFAULT_PASSWORD && this.user.CompanyId) {
       this.router.navigate(['dashboard/reset-password']);
       this.bannerService.updateState({

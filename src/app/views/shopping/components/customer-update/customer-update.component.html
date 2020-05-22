@@ -1,0 +1,89 @@
+<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
+</app-shopping-nav>
+<div class="customer-portal" *ngIf="user">
+  <div class="nav">
+    <app-customer-nav-bar></app-customer-nav-bar>
+  </div>
+
+
+  <div class="body">
+    <form class="user-form" [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="update(rForm.value)">
+      <h4>Profile update</h4>
+      <div class="col-1-of-2">
+        <div class="group">
+          <label class="label">First name*</label>
+          <input type="text" formControlName="Name" required="required" />
+          <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+            Name is required
+          </div>
+        </div>
+
+        <div class="group">
+          <label class="label">Surname*</label>
+          <input type="text" formControlName="Surname" required="required" />
+          <div class="alert" *ngIf="!rForm.controls['Surname'].valid && rForm.controls['Surname'].touched">
+            Surname is required
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <label class="label">Email address*</label>
+        <input type="text" formControlName="Email" disabled required="required" />
+        <div class="alert" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+          Email is required
+        </div>
+
+      </div>
+
+      <div class="group">
+        <label class="label">Contact number*</label>
+        <input type="text" formControlName="CellphoneNumber" required="required" />
+
+        <div class="group">
+          <label class="label">Email address*</label>
+          <input type="text" formControlName="Email" disabled required="required" />
+          <div class="alert" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+            Email is required
+          </div>
+
+        </div>
+        <div class="group">
+          <label class="label">Email address*</label>
+          <input type="text" formControlName="Email" disabled required="required" />
+          <div class="alert" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+            Email is required
+          </div>
+
+        </div>
+        <div class="group">
+          <label class="label">Address*</label>
+          <textarea formControlName="Address"></textarea>
+          <div class="alert" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+            Address required
+          </div>
+
+        </div>
+        <div class="group">
+          <label class="label">Display Image</label>
+          <app-home-images-and-upload [productId]="user.UserId"></app-home-images-and-upload>
+        </div>
+      </div>
+
+
+      <div class="actions">
+        <div>
+          <button type="submit" [disabled]="!rForm.valid" class="btn">Save</button>
+        </div>
+        <div>
+          <a routerLink="/dashboard/users" class="cancel">
+            <button class="btn btn-transparent">cancel</button>
+          </a>
+        </div>
+      </div>
+    </form>
+
+
+
+  </div>
+</div>

@@ -47,11 +47,26 @@
 }
 
 .content {
-  padding: 5rem 10rem;
+  p{
+    span{
+      font-weight: 700;
+    }
+  }
+  a{
+    display: block;
+    padding: 1rem .2rem;
+    text-align: left;
+    color: $black-color;
+    font-weight: 700;
+    font-size: .8rem;
+    text-transform: uppercase;
+  }
+  padding: 1rem 10rem;
   background: $cloud-ligher;
 
   @media only screen and (max-width: 600px) {
     padding: 1%;
+    display: none;
   }
 
   .col-1-2 {
@@ -273,6 +288,79 @@
 
 }
 
+
+.mobile-content {
+
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    padding: 1%;
+    display: block;
+    padding: 1rem;
+    background: $cloud-ligher;
+    height: 92vh;
+  }
+
+  .heading {
+    font-size: 1.2rem;
+  }
+
+  .tabs {
+    display: grid;
+    display: none;
+    // grid-template-columns: repeat(3, 33.33%);
+    grid-template-columns: repeat(5, 50%);
+    background: $white-color;
+    // border-bottom: 1px solid #000;
+
+    .tab {
+      font-weight: 900;
+      font-size: 1rem;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .active {
+      color: $primary-bg-color;
+      text-decoration: underline;
+    }
+  }
+
+  .tab-item {
+    background: $white-color;
+    padding: .5rem;
+
+    .action {
+      text-align: center;
+
+      .btn {
+        width: 98%;
+        border-radius: 30px;
+        font-weight: 800;
+        margin-top: 1.2rem;
+      }
+
+      a {
+        display: block;
+        padding: 1rem .2rem;
+        text-align: left;
+        color: $black-color;
+        font-weight: 700;
+        font-size: .8rem;
+        text-transform: uppercase;
+      }
+    }
+
+    p.account {
+      span {
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+    }
+  }
+}
+
 .check-out {
   text-align: right;
 
@@ -320,7 +408,7 @@
 
 .container {
   @media only screen and (max-width: 600px) {
-    padding-top: 15%;
+    // padding-top: 15%;
   }
 }
 
@@ -337,6 +425,10 @@
   // grid-template-columns: 30% auto;
   grid-template-columns: 100%;
   padding: 2rem .5rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: .5rem
+  }
 
   .data {
 
@@ -408,7 +500,7 @@ hr {
 
 .col-70-30 {
   grid-template-columns: 60% auto;
-  
+
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
   }
@@ -428,7 +520,7 @@ hr {
   width: 60%;
 
   @media only screen and (max-width: 600px) {
-  width: 100%;
+    width: 100%;
   }
 
   span {
@@ -464,17 +556,18 @@ hr {
 }
 
 
-.agree{
+.agree {
   padding: 1rem 0;
 }
 
-.back-link{
+.back-link {
   padding: 1rem;
   cursor: pointer;
   margin: 1rem 0;
   display: block;
 }
-.back-link-btn{
+
+.back-link-btn {
   display: inline;
 }
 

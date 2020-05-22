@@ -4,29 +4,37 @@
     // height: 25rem;
     box-sizing: border-box;
     width: 100%;
+    text-align: center;
+    // height: 20rem;
+    overflow: hidden;
 
     img {
       // height: 25rem;
-      width: 100%;
+      width: 80%;
+      border-radius: 1.2rem;
 
       @media only screen and (max-width: 600px) {
-        height:auto
+        height: auto
       }
     }
   }
-.navigate{
-  display: flex;
-  .navigate-image {
-    width: 3.5rem;
-    overflow: hidden;
-    margin-right: .5rem;
 
-    img {
-      width: 100%;
-      margin: .3rem 0;
-      cursor: pointer;
+  .navigate {
+    display: flex;
+
+    .navigate-image {
+      width: 3.5rem;
+      overflow: hidden;
+      margin-right: .5rem;
+      height: 3.5rem;
+      border: 1px solid rgb(226, 226, 226);
+
+      img {
+        width: 3.5rem;
+        margin: .3rem 0;
+        cursor: pointer;
+      }
     }
   }
-}
 
 }

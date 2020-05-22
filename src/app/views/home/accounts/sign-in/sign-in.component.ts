@@ -36,7 +36,7 @@ export class SignInComponent implements OnInit {
 
 
   ngOnInit() {
-    this.titleService.setTitle(`Login to your vendor account | Inventory io`);
+    this.titleService.setTitle(`Login to your vendor account | Tybo | Take your business online`);
 
     this.rForm = this.fb.group({
       Email: new FormControl(

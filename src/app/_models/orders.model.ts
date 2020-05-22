@@ -17,7 +17,7 @@ export interface Orders {
     ModifyUserId: string;
     Status: string;
     StatusId: number;
-    Customer?: Partner;
+    Customer?: any;
     Charges?: any;
     Products?: Product[];
     // local

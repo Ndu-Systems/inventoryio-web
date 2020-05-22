@@ -34,7 +34,7 @@ export class UserCardListComponent implements OnInit {
   getUser(userId: string) {
     this.userService.getUserDetails(userId)
       .subscribe(response => {
-        if (response) {
+        if (response && response.Role) {
           this.role = response.Role.Name;
         }
       });

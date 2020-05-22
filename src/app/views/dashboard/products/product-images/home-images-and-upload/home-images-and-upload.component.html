@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="images">
+    <div class="image"  *ngFor="let image of images$|async">
+        <img [src]="image?.Url" alt="">
+        <div class="close">
+          <button class="btn" type="button"  (click)="remove(image)" >
+              <i class="pi pi-trash"></i>
+          </button>
+        </div>
+    </div>
+    <div class="image uplaod">
+        <div class="file-drop-area">
+            <span class="fake-btn">
+              <img src="assets/add-image.svg" alt="">
+            </span>
+            <input class="file-input" type="file" (change)="onChange($event.target.files)" multiple>
+          </div>
+    </div>
+  </div>
+</div>
+
+<p-confirmDialog  header="Confirm Delete"></p-confirmDialog>

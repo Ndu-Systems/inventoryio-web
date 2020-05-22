@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
 
   ) {
-    this.titleService.setTitle(`Inventory IO: Selling and buying platform`);
+    this.titleService.setTitle(`Tybo | Take your business online: Selling and buying platform`);
   }
   ngOnInit() {
     if (environment.production) {

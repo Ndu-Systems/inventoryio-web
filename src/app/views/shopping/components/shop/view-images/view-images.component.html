@@ -5,7 +5,7 @@
         <img [src]="selectedImage?.Url" alt="">
       </div>
       <div class="navigate">
-        <div class="navigate-image" *ngFor="let image of product.images">
+        <div class="navigate-image" *ngFor="let image of product.Images">
           <img (click)="selectImage(image)" [src]="image?.Url" alt="">
         </div>
       </div>

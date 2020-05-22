@@ -23,7 +23,7 @@ export class ShopsComponent implements OnInit {
 
 
   ) {
-    this.titleService.setTitle(`Inventory IO: Digital Mall`);
+    this.titleService.setTitle(`Tybo | Take your business online: Digital Mall`);
   }
 
   ngOnInit() {

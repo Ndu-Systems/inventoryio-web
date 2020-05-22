@@ -17,7 +17,7 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle(`Inventory IO: Selling and buying platform`);
+    this.titleService.setTitle(`Tybo | Take your business online: Selling and buying platform`);
 
     this.accountService.logout();
     this.bannerService.resetBannerState();

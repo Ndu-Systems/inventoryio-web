@@ -1,48 +1,52 @@
+@import '../../../../../assets/styles/variables';
 
-  @import '../../../../../assets/styles/variables';
+.nav {
+  background: $white-color;
+  margin: .5rem;
+  border-radius: $box-border-radius;
+  height: 95%;
 
-  .nav {
-    background: $white-color;
-    margin: .5rem;
-    border-radius: $box-border-radius;
-    height: 95%;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 
-    .profile {
-      padding-top: .1rem;
-      .image {
+  .profile {
+    padding-top: .1rem;
+
+    .image {
+      text-align: center;
+
+      img {
+        width: 4rem;
+      }
+
+      h1 {
+        font-size: .75rem;
         text-align: center;
-
-        img {
-          width: 4rem;
-        }
-
-        h1 {
-          font-size: .75rem;
-          text-align: center;
-        }
       }
-    }
-
-    ul {
-      list-style: none;
-      margin: 2rem 0;
-      padding: 0;
-
-      li {
-        margin: 0;
-        padding: 0;
-
-        a {
-          color: $black-color;
-          display: block;
-          text-align: left;
-          padding: .5rem 1rem;
-          font-weight: 400;
-        }
-      }
-    }
-
-    ul.user {
-      border-top: 1px solid $blue-gray;
     }
   }
+
+  ul {
+    list-style: none;
+    margin: 2rem 0;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+
+      a {
+        color: $black-color;
+        display: block;
+        text-align: left;
+        padding: .5rem 1rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  ul.user {
+    border-top: 1px solid $blue-gray;
+  }
+}

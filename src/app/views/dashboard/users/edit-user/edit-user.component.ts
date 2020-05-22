@@ -46,6 +46,7 @@ export class EditUserComponent implements OnInit {
       Surname: [this.staff.Surname, Validators.required],
       Name: [this.staff.Name, Validators.required],
       CellphoneNumber: [this.staff.CellphoneNumber, Validators.required],
+      Address: [this.staff.Address],
       SecondaryContactNumber: [null],
       Password: [this.staff.Password],
       RoleId: [this.staff.RoleId, Validators.required],

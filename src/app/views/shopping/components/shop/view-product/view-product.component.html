@@ -1,150 +1,138 @@
-<span *ngIf="!loading" class="ghost" >
-  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [company]="company" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl">
+<span *ngIf="!loading" class="ghost">
+  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [company]="company" [shopSecondaryColor]="shopSecondaryColor"
+    [logoUrl]="logoUrl">
   </app-shopping-nav>
-<div class="main" *ngIf="product">
+  <div class="main" *ngIf="product">
 
 
-  <h3 class="small-heading">
-    <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
+    <!-- <h3 class="small-heading">
+      <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
 
-    {{product.Name}}
-  </h3>
+      {{product.Name}}
+    </h3> -->
 
-  <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
+    <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
+    <div class="back">
+      <p (click)="back()">
+        <i [ngStyle]="{'color':shopPrimaryColor}" class="pi pi-chevron-left"></i> Back
+      </p>
 
-  <div class="order" >
-
-
-    <div class="product-details">
-      <div class="images">
-        <app-view-images></app-view-images>
-      </div>
-      <div class="detais">
-        <h1 class="name">
-          {{product.Name}}
-        </h1>
-        <hr>
-        <h1 class="price">
-          {{product.UnitPrice | currency:'R'}}
-        </h1>
-        <hr>
-
-        <div class="options" *ngIf="product.Attributes?.length > 0">
-          <h1 class="header">
-            Select Options
-          </h1>
-          <div class="option-items">
-            <div class="options-item" *ngFor="let attribute of product.Attributes | removeNoValueAttributes">
-              <div class="label">
-                {{attribute.Name}}:
-              </div>
-
-              <div class="input">
-                <span *ngIf="attribute.Values">
-                  <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
-                    <option value="" selected></option>
-                    <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
-                      {{item.AttributeValue}}</option>
-                  </select>
-                </span>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-
-        <div class="quantity">
-          <div class="qnty-group-btns">
-            <div class="neg" (click)="changeItemQnty(-1)">
-              <i class="pi pi-minus-circle"></i>
-            </div>
-            <div class="val">
-              <input [(ngModel)]="itemQnty" type="text">
-            </div>
-            <div class="pos" (click)="changeItemQnty(1)">
-              <i class="pi pi-plus-circle"></i>
-            </div>
-          </div>
-
-          <div class="buy-this">
-            <div class="add-to-cart" (click)="doSell(product)"
-              [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
-              <i class="pi pi-check"></i> Buy this item
-            </div>
-          </div>
-        </div>
-
-        <div class="back">
-          <h4 [ngStyle]="{'color':shopPrimaryColor}" (click)="back()">
-            <i class="pi pi-arrow-left"></i> Continue shopping
-          </h4>
-        </div>
-
-        <!-- 
-        <div class="cta">
-          <div class="buy">
-            <button class="action-btn hover-shadow"
-              [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-              (click)="doSell(product)">Buy this item</button>
-          </div>
-          <div class="browse-more">
-            <button class="action-btn hover-shadow"
-              [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"
-              (click)="back()">
-              Continue shopping
-            </button>
-          </div>
-        </div> -->
-
-      </div>
     </div>
+    <div class="order">
 
-    <div class="more-product-details">
-      <hr>
-      <div [innerHTML]="product.Description"></div>
+      <h1 class="name">
+        {{product.Name}}
+      </h1>
+      
+      <h1 class="price">
+        {{product.UnitPrice | currency:'R'}}
+      </h1>
+
+      <div class="product-details">
+        <div class="images">
+          <app-view-images></app-view-images>
+        </div>
+        <div class="detais">
+
+
+          <div class="options" *ngIf="product.Attributes?.length > 0">
+            <h1 class="header">
+              Select Options
+            </h1>
+            <div class="option-items">
+              <div class="options-item" *ngFor="let attribute of product.Attributes | removeNoValueAttributes">
+                <div class="label">
+                  {{attribute.Name}}:
+                </div>
+
+                <div class="input">
+                  <span *ngIf="attribute.Values">
+                    <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
+                      <option value="" selected></option>
+                      <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
+                        {{item.AttributeValue}}</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="quantity">
+            <div class="qnty-group-btns">
+              <div class="neg" (click)="changeItemQnty(-1)">
+                <i class="pi pi-minus-circle"></i>
+              </div>
+              <div class="val">
+                <input [(ngModel)]="itemQnty" type="text">
+              </div>
+              <div class="pos" (click)="changeItemQnty(1)">
+                <i class="pi pi-plus-circle"></i>
+              </div>
+            </div>
+
+            <div class="buy-this">
+              <div class="add-to-cart" (click)="doSell(product)"
+                [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
+                <i class="pi pi-plus-circle"></i> Add to cart
+              </div>
+            </div>
+          
+          </div>
+          <div class="back">
+            <a  (click)="back()">Continue shopping</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="more-product-details">
+        <div [innerHTML]="product.Description"></div>
+
+      </div> -->
 
     </div>
 
   </div>
 
-</div>
-<div *ngIf="company" class="footer"  class="footer">
-  <h1>
-    Thanks for visting {{company?.Name}}
-  </h1>
-  <span *ngIf="company.TelephoneNumber && company.TelephoneNumber.length > 6">
-    <h2>
-      Contact details
-    </h2>
-    <address>
-      Email:{{company?.TelephoneNumber}} <br>
-    </address>
-  </span>
-  <span *ngIf="company.Shipping">
-    <h2>
-      Shipping method(s)
-    </h2>
-    <span *ngFor="let ship of company.Shipping">
-      <span *ngIf="ship.Name === 'name'">{{ship?.Value}}
-        {{ship?.TelephoneNumber}}</span>
-      <span *ngIf="ship.Name === 'amount'"> <b>R {{ship?.Value}}
-         </b> <br></span>
+  <div *ngIf="company" class="footer" class="footer">
+    <hr>
+    <h4>
+      Thanks for visting {{company?.Name}}
+    </h4>
+    <span *ngIf="company.TelephoneNumber && company.TelephoneNumber.length > 6">
+      <h5>
+        Contact details
+      </h5>
+      <address>
+        Email:{{company?.TelephoneNumber}} <br>
+      </address>
     </span>
-  </span>
-  <span>
-    <h2>
-      Payment methods
-    </h2>
+    <span *ngIf="company.Shipping">
+      <h5>
+        Shipping method(s)
+      </h5>
+      <span *ngFor="let ship of company.Shipping">
+        <span *ngIf="ship.Name === 'name'">{{ship?.Value}}
+          {{ship?.TelephoneNumber}}</span>
+        <span *ngIf="ship.Name === 'amount'"> <b>R {{ship?.Value}}
+          </b> <br></span>
+      </span>
+    </span>
     <span>
-      Cash | EFT
+      <h5>
+        Payment methods
+      </h5>
+      <span>
+        Cash | EFT
+      </span>
     </span>
-  </span>
-</div>
+  </div>
 </span>
 
-<span *ngIf="loading" class="ghost" >
+<span *ngIf="loading" class="ghost">
   <div class="overlay"></div>
-  <img class="pc"  src="assets/images/prodghost.svg" alt="">
-  <img  class="mobile" src="assets/images/prductdetails-mobile.svg" alt="">
+  <img class="pc" src="assets/images/prodghost.svg" alt="">
+  <img class="mobile" src="assets/images/prductdetails-mobile.svg" alt="">
 </span>

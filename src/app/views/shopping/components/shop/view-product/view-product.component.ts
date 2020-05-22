@@ -76,7 +76,7 @@ export class ViewProductComponent implements OnInit {
   dataReady() {
     this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
     if (this.company) {
-      this.titleService.setTitle(`${this.product.Name} | ${this.company.Name}  | Inventory IO`);
+      this.titleService.setTitle(`${this.product.Name} | ${this.company.Name}  | Tybo | Take your business online`);
       if (this.company.Theme) {
         this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
         this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;

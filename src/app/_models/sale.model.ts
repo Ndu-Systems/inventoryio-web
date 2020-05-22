@@ -7,6 +7,7 @@ export interface SellModel {
     companyId: string;
     charges?: Charges[];
     Customer?: Partner;
+    Shipping?: any;
 
 }
 

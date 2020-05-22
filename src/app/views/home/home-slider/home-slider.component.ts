@@ -9,14 +9,14 @@ export class HomeSliderComponent implements OnInit {
   slideClass = ['col-1-of-2', 'hidded-slide'];
   slides: Slide[] = [
     {
-      heading: `Welcome to Inventory IO`,
+      heading: `Welcome to Tybo | Take your business online`,
       paragraph: `Say goodbye to the paper process and discover intelligent inventory management and sales.`,
       img: `assets/images/home/silder/one.png`,
       active: true,
       slideClass: [...this.slideClass, 'visibile-slide']
     },
     {
-      heading: `Welcome to Inventory IO`,
+      heading: `Welcome to Tybo | Take your business online`,
       paragraph: `Create product inventory of any type or make it's secured data driven. Which
                   means you can modify the information that matters to you.`,
       img: `assets/images/home/silder/two.png`,
@@ -25,7 +25,7 @@ export class HomeSliderComponent implements OnInit {
 
     },
     {
-      heading: `Welcome to Inventory IO`,
+      heading: `Welcome to Tybo | Take your business online`,
       paragraph: `Manage your sales, product inventory with insights for your business that keeps you up to updated.`,
       img: `assets/images/home/silder/three.png`,
       active: false,

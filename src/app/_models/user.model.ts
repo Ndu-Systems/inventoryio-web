@@ -19,7 +19,7 @@ export interface User {
   ModifyUserId?: string;
   NewPassword?: string;
   ConfirmPassword?: string;
-  StatusId: number;
+  StatusId: any;
   Company?: Company;
   DP?: any;
   Stores?: Store[];

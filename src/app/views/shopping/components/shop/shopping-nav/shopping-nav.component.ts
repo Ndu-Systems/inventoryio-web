@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { Observable } from 'rxjs';
-import { SellModel, Company } from 'src/app/_models';
+import { SellModel, Company, User } from 'src/app/_models';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/_services';
 
 @Component({
   selector: 'app-shopping-nav',
@@ -19,12 +20,22 @@ export class ShoppingNavComponent implements OnInit {
   cartItems = 0;
   showCart: boolean;
   companyUrl = '';
-  constructor(private shoppingService: ShoppingService, private router: Router) { }
+  customer: User;
+  cartUrl: string;
+  constructor(
+    private shoppingService: ShoppingService,
+    private accountService: AccountService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     if (this.company) {
       this.companyUrl = `/shop/at/${this.company.Handler || this.company.CompanyId}`;
+      this.cartUrl = `/shop//shopping-cart/${this.company.Handler || this.company.CompanyId}`;
     }
+
+    this.customer = this.accountService.getCurrentCustomer();
+
     this.shoppingService.sell.subscribe(state => {
       if (state) {
         this.sale = state;

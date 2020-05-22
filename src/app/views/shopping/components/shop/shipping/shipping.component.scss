@@ -1,22 +1,91 @@
 @import '../../../../../../assets/styles/variables';
 
 .group {
-  border: 1px solid $strong-gray;
+
   border-radius: 3px;
   margin: .6rem .5rem;
 
   // background: red;
-
-  input {
-    background: white;
-    padding: 0 .5rem;
+  label {
+    font-weight: 700;
+    font-size: .8rem;
+    text-transform: uppercase;
   }
+
+  input,
+  select,
+  textarea {
+    border: 1px solid $gray-color;
+    border-radius: 4px;
+    // width: 90%;
+    margin-top: .2rem;
+    font-size: .9rem;
+
+  }
+
+  textarea {
+    font-size: 1.2rem;
+    height: 3.5rem;
+
+  }
+
 }
 
 .col-1-of-2 {
   grid-template-columns: 50% auto;
+  margin-bottom: 0;
 
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
   }
+}
+
+.agree {
+  margin: 1rem .2rem;
+  @media only screen and (max-width: 600px) {
+font-size: 1rem;
+  }
+
+  .tip {
+    display: block;
+    font-style: italic;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .3rem 1rem;
+  }
+}
+
+.action{
+  text-align: center;
+  .btn{
+   width: 98%;
+   border-radius: 30px;
+   font-weight: 800;
+   margin-top: 1.2rem;
+   font-size: .9rem;
+   padding: .5rem;
+ }
+ a{
+  display: block;
+  padding: 1rem .2rem;
+  text-align: left;
+  color: $black-color;
+  font-weight: 700;
+  font-size: .8rem;
+  text-transform: uppercase;
+ }
+}
+
+.login-modal{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 2rem;
+  background: $white-color;
+  height: 100%;
+  width: 100%;
+  z-index: 1006;
+  padding-top: 5rem;
+  animation: moveInButton 1s ease-out 0s;
+  animation-fill-mode: backwards;
 }

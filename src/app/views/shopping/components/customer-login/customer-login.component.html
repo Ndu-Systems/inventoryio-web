@@ -1,70 +1,37 @@
-<app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl"></app-shopping-nav>
-
-<div class="main-container">
-  <div class="accounts">
-    <h1 class="header">Login to your customer portal<span class="dot">.</span></h1>
-    <h1 class="text">
-      To <span class="span">access</span> your access your orders, shipping addresses and wish list.
-    </h1>
-
-    <div class="social-login">
-      <p>Social media login</p>
-     <img (click)="googleLogin()" src="assets/images/google-login.svg" alt="">
-      <img (click)="fbLogin()" src="assets/images/facebook-login.svg" alt="">
+<div class="login">
+  <div class="social-login">
+    <p>Social media login</p>
+    <img (click)="googleLogin()" src="assets/images/google-login.svg" alt="">
+    <img (click)="fbLogin()" src="assets/images/facebook-login.svg" alt="">
+  </div>
+  <form class="form" [formGroup]="rForm" (ngSubmit)="Login()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" formControlName="Email" id="exampleInputEmail1"
+        placeholder="Enter email">
+      <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
+        Email is required
+      </div>
     </div>
-    <form class="form" [formGroup]="rForm" (ngSubmit)="Login()">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" formControlName="Email" id="exampleInputEmail1"
-          placeholder="Enter email">
-        <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
-          Email is required
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" [type]="hidePassword? 'password': 'text'" class="form-control" formControlName="Password"
+        id="exampleInputPassword1" placeholder="Password">
+      <div class="showPassword" (click)="hidePassword = !hidePassword">
+        <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+          Password is required
         </div>
+        <!-- <i *ngIf="hidePassword" class="pi pi-eye-slash"></i>
+        <i *ngIf="!hidePassword" class="pi pi-eye"></i> -->
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" [type]="hidePassword? 'password': 'text'" class="form-control" formControlName="Password"
-          id="exampleInputPassword1" placeholder="Password">
-        <div class="showPassword" (click)="hidePassword = !hidePassword">
-          <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
-            Password is required
-          </div>
-          <i *ngIf="hidePassword" class="pi pi-eye-slash"></i>
-          <i *ngIf="!hidePassword" class="pi pi-eye"></i>
-        </div>
-      </div>
-      <div class="col-1-of-2">
-        <div class="form-group">
-          <input type="submit" value="Login" class="btn" [disabled]="!rForm.valid" />
-        </div>
-        <div class="form-group forgot">
-          <a routerLink="/forgot-password">Forgot password</a>
-        </div>
-      </div>
-      <div class="col-1-of-2 cta">
-        <h1>
-          Don't have an account?
-        </h1>
-        <a routerLink="/shop/customer-signup/new" class="btn btn-border">Sign up here</a>
-      </div>
-   
-    </form>
-  </div>
-</div>
+    </div>
 
-<pre>
-  {{socialUser |json}}
-</pre>
+    <div class="action">
+      <button type="submit" class="btn action-btn" (click)="Login()">Login</button>
+      <h5>{{error}}</h5>
 
-
-
-<div class="home-loading" *ngIf="this.loading$| async as loading">
-  <img class="logo" src="assets/images/white-icon.png" alt="">
-  <h1>Signing you in, please wait</h1>
-  <div class="lds-ellipsis">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+      <a routerLink="/forgot-password">Forgot password</a>
+      <a class="secondary" routerLink="/shop/customer-signup/new">Create an account</a>
+    </div>
+  </form>
 </div>

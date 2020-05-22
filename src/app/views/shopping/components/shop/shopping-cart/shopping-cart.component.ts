@@ -52,7 +52,6 @@ export class ShoppingCartComponent implements OnInit {
     this.activatedRoute.params.subscribe(r => {
       this.companyId = r.id;
       this.productService.getProducts(this.companyId);
-      // this.products$ = this.shoppingService.cart;
 
       this.companyService.getCompany(this.companyId).subscribe(data => {
         if (data) {
@@ -84,10 +83,15 @@ export class ShoppingCartComponent implements OnInit {
       }
     });
 
+    this.shoppingService.company.subscribe(data => {
+      this.company = data;
+    });
+
     this.productService.products.subscribe(r => {
       this.products = r;
     });
   }
+
 
   back() {
     // this.shoppingService.setState(this.cart);
@@ -235,7 +239,8 @@ export class ShoppingCartComponent implements OnInit {
       this.selectedShippingMethod = cost;
     }
     console.log(cost);
-
+    this.sale.Shipping = this.selectedShippingMethod;
+    this.shoppingService.updateState(this.sale);
 
   }
   groupShipping() {

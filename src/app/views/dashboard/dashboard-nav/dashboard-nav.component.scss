@@ -21,7 +21,7 @@
 
     a {
       img {
-        width: 9rem;
+        width: 7rem;
       }
     }
   }
@@ -76,6 +76,10 @@
         text-align: left;
         font-weight: 600;
         font-size: .75rem;
+
+        @media only screen and (max-width: 1024px) {
+          font-size: .85rem;
+        }
       }
     }
   }

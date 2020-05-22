@@ -24,7 +24,7 @@
 
           <div class="form-item">
             <label class="label">Cost price</label>
-            <input type="text" formControlName="UnitCost" placeholder="500" required="required" />
+            <input type="number" formControlName="UnitCost" placeholder="500" required="required" />
             <div class="alert" *ngIf="!rForm.controls['UnitCost'].valid && rForm.controls['UnitCost'].touched">
               Unit cost is required
             </div>
@@ -77,7 +77,7 @@
         <div class="form-group-items">
           <div class="form-item">
             <label class="label">Quantity</label>
-            <input type="text" formControlName="Quantity" required="required" />
+            <input type="number" formControlName="Quantity" required="required" />
             <div class="alert" *ngIf="!rForm.controls['UnitPrice'].valid && rForm.controls['UnitPrice'].touched">
               Quantity is required
             </div>
@@ -85,7 +85,7 @@
 
           <div class="form-item">
             <label class="label">Stock alert</label>
-            <input type="text" formControlName="LowStock" required="required" />
+            <input type="number" formControlName="LowStock" required="required" />
             <div class="alert" *ngIf="!rForm.controls['UnitCost'].valid && rForm.controls['UnitCost'].touched">
               Unit cost is required
             </div>
