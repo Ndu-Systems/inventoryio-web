@@ -1,96 +1,147 @@
-<!-- <div class="main">
-  <h1 class="heading">your categories on the system</h1>
-  <div class="list-filters">
-    <div>
-      <input type="text" [(ngModel)]="search" placeholder="search">
-    </div>
-
-    <div class="add">
-      <button class="btn">
-        <span class="phone-only" (click)="add()"><i class="pi pi-plus"></i></span>
-      </button>
-    </div>
-  </div>
-  <div class="list-body">
-    <span>
-      <div class="cards-betta" *ngIf="categories$  | async as categories">
-        <span *ngFor="let item of categories | configurationFilterPipe: search">
-          <div class="card">
-            <div class="image">
-              <img src="assets/images/maintenance.svg" alt="">
-            </div>
-            <div class="name">
-              <h1>
-                {{item.Name}}
-              </h1>
-              <div class="status">
-                <p-toggleButton [(ngModel)]="item.StatusId" onLabel="Active" offLabel="Not Active" onIcon="pi pi-check"
-                  offIcon="pi pi-times" [style]="{'width':'100%'}"></p-toggleButton>
-              </div>
-            </div>
-          </div>
-        </span>
-      </div>
-    </span>
-  </div>
-</div> -->
-
-<div class="main-content">
-  <h1 class="title-header">Your categories in the system</h1>
-  <div class="panel col-1-of-3">
-    <div class="input-card">
-      <div class="search-box">
-        <div class="input-times">
-          <input type="text" [(ngModel)]="search" placeholder="🔎 search here ...">
-          <div class="times" (click)="clearSearch()">
-            <i class="pi pi-times"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="input-card">
-    </div>
-    <div class="cta">
-      <button class="btn" (click)="add()">
-        <span class="">Add a category</span>
-      </button>
-    </div>
-  </div>
-
-  <div class="cards-betta" *ngIf="categories$  | async as categories; else notFound">
-    <span *ngFor="let item of categories | configurationFilterPipe: search">
-      <div class="card">
-        <div class="image">
-          <img src="assets/images/maintenance.svg" alt="">
-        </div>
-        <div class="name">
-          <h1>
-            {{item.Name}}
-          </h1>
-          <!-- <div class="status">
-            <p-toggleButton [(ngModel)]="item.StatusId" onLabel="Active" offLabel="Not Active" onIcon="pi pi-check"
-              offIcon="pi pi-times" [style]="{'width':'100%'}"></p-toggleButton>
-          </div> -->
-          <div class="cta col-1-of-2">
-            <button class="btn" (click)="updateCategory(item)">
-              <img src="assets/images/actions/edit.svg" alt="edit icon">&nbsp;
-              <span class="">Update category</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </span>
-  </div>
-  <ng-template #notFound>
-    <div class="not-found">
-      <img [src]="notFoundModel.Image" alt="no items found">
-      <h1 class="message">
-        {{notFoundModel.Message}}
-        <span>
-          <a class="link-add" (click)="add()"> Add a new brand now.</a>
-        </span>
+<div class="products-page" *ngIf="categories$  | async as categories; else notFound">
+  <div class="list-header">
+    <div class="heading">
+      <h1>
+        Products categories ({{categories.length}})
       </h1>
     </div>
-  </ng-template>
+
+    <div class="search">
+    </div>
+
+    <div class="search">
+      <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+    </div>
+
+    <div class="search">
+    </div>
+    <div class="search tar">
+      <button (click)="add()"> <i class="pi pi-plus"></i> Add category</button>
+    </div>
+
+  </div>
+
+  <div class="list-header-mobile">
+    <h4>
+      Products categories {{categories.length}}
+    </h4>
+
+    <div class="actions">
+      <div class="search">
+        <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
+      </div>
+      <div class="search">
+        <button (click)="add()"> <i class="pi pi-plus"></i> Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="table">
+    <div class="header">
+      <div class="header-item">
+        
+      </div>
+      <div class="header-item">
+        Category
+      </div>
+
+      <div class="header-item tac">
+        Products
+      </div>
+
+      <div class="header-item tar">
+        Actions
+      </div>
+    </div>
+    <div class="body-container">
+
+      <div class="body" *ngFor="let item of categories | configurationFilterPipe: search">
+        <div class="body-item">
+          <div class="circular-img">
+            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+            <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
+          </div>
+
+
+        </div>
+        <div class="body-item">
+          <p>
+            <b> {{item.Name}} {{item.Surname}}</b>
+          </p>
+        </div>
+
+        <div class="body-item tac">
+          <p>
+           <a class="view" (click)="vewProducts()"> <b *ngIf="item.Products"> {{item.Products.length}}</b> </a>
+            <b *ngIf="!item.Products"> 0</b>
+          </p>
+        </div>
+
+
+        <div class="body-item tar">
+          <button class="btn-primary" (click)="updateCategory(item)">
+            <i class="pi pi-pencil"></i> Edit
+          </button>
+          <button class="btn-primary danger" (click)="deleteCategory(item)">
+            <i class="pi pi-times"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mobile-table">
+    <div class="items">
+      <span *ngFor="let item of categories | configurationFilterPipe: search">
+        <div class="item" (click)="details(item)">
+          <div class="image-name">
+            <div class="image">
+              <img class="image-mt" [src]="item.images[0].Url" alt="" *ngIf="item.images" />
+              <img class="image-mt" src="assets/images/user-placeholder.png" *ngIf="!item.images" alt="" />
+            </div>
+            <div class="name">
+              <p>
+                {{item.Name}} {{item.Surname}}
+                <span class="details">
+                  <a href="mailto:{{item.EmailAddress}}">
+                    {{item.EmailAddress}}
+                  </a>
+                </span>
+                <span class="details">
+                  <a href="tel:{{item.CellphoneNumber}}">
+                    {{item.CellphoneNumber}}
+                  </a>
+                </span>
+              </p>
+            </div>
+            <div class="qty">
+
+            </div>
+            <div class="price">
+              <p>
+                {{item.UnitPrice | currency:'R'}}
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+
 
 </div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <img [src]="notFoundModel.Image" alt="no items found">
+    <h1 class="message">
+      You dont have categories
+      <span>
+        <a class="link-add" (click)="add()"> Add a new category now.</a>
+      </span>
+    </h1>
+  </div>
+</ng-template>
+<p-confirmDialog header="Confirmation Payment"></p-confirmDialog>
+

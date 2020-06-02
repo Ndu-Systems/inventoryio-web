@@ -17,13 +17,20 @@ export class ShopsListSliderComponent implements OnInit {
     this.shoppingService.companies.subscribe(data => {
       if (data) {
         this.filterShops = [];
-        this.shops = data;
-        this.shops.forEach(x => {
-          x.Products = x.Products.filter(p => p.Images);
-          this.filterShops.push(x);
-          // if (x.Products.filter(p => p.Images)) {
-          //   this.filterShops.push(x);
-          // }
+        this.shops = data.filter(x => x.Products && x.Products.length > 0);
+        this.shops.forEach(shop => {
+          if (shop.Products && shop.Products.length) {
+            let mightAdd = 0;
+            shop.Products.forEach(product => {
+              if (product.Images && product.Images.length) {
+                mightAdd++;
+              }
+            });
+            if (mightAdd >= 3) {
+              this.filterShops.push(shop);
+            }
+          }
+
         });
 
         console.log('filterShops', this.filterShops);

@@ -10,4 +10,10 @@ export interface NavModel {
   Active?: boolean;
   Style?: any;
   ShowModal?: boolean;
+  More?: More[];
+}
+
+export interface More {
+  Name: string;
+  Link: string;
 }

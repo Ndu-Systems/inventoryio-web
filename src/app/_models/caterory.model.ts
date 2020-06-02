@@ -1,3 +1,6 @@
+import { Image } from './image.model';
+import { Product } from './product.model';
+
 export interface Caterory {
     CatergoryId?: string;
     CompanyId: string;
@@ -7,4 +10,6 @@ export interface Caterory {
     ModifyDate?: string;
     ModifyUserId: string;
     StatusId: number;
+    Images?: Image[];
+    Products?: Product[];
 }

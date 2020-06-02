@@ -85,6 +85,10 @@
             <b>
               {{item.Name}}
             </b>
+            
+          </p>
+          <p class="share" (click)="share(item)">
+            <i class="pi pi-share-alt"></i>Share
           </p>
         </div>
         <div class="body-item">
@@ -103,6 +107,7 @@
           <button class="btn-primary" (click)="details(item)">
             <i class="pi pi-pencil"></i> Edit
           </button>
+
         </div>
       </div>
     </div>

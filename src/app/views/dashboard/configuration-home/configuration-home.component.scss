@@ -53,6 +53,11 @@
   width: 60%;
   border-radius: 6px;
 
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    margin: 3rem .2rem;
+  }
+
   .item-link {
     margin-bottom: 2rem;
 
@@ -67,6 +72,9 @@
         display: grid;
         grid-template-columns: 5% auto;
         margin: .5rem;
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 10% auto;
+        }
 
         img {
           width: 1.5rem;

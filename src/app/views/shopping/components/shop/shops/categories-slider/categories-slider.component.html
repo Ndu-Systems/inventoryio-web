@@ -1,11 +1,11 @@
 <div class="main">
   <div class="cats">
-    <div class="cat" *ngFor="let i of [0,0,0,0,0,0,0,0]">
+    <div class="cat" *ngFor="let category of categories">
       <div class="image">
-        <img src="assets/images/temp-icon.png" alt="">
+        <!-- <img src="assets/images/temp-icon.png" alt=""> -->
       </div>
       <p>
-        supplements
+       {{category.Name}}
       </p>
     </div>
   </div>

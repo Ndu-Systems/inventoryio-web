@@ -74,10 +74,6 @@
                   <div class="name">
                     <p>
                       {{item.Name}}
-                      <!-- <span class="price" *ngIf="item.Item">
-                        <i class="pi pi-map-marker"></i>
-                        {{item.Item}}
-                      </span> -->
                     </p>
                   </div>
                 </div>
@@ -131,14 +127,14 @@
 <div class="mobile-nav-bottom">
   <div class="menu-item">
     <img src="assets/images/home-nav.svg" alt="">
-    <a routerLink="/home">Home</a>
+    <a routerLink="/dashboard">Overview</a>
   </div>
-  <div class="menu-item">
+  <div class="menu-item" (click)="showSearch()">
     <img src="assets/images/search-nav.svg" alt="">
-    <a routerLink="/home">Search</a>
+    <a>Search</a>
   </div>
   <div class="menu-item ">
-    <img  class="add" src="assets/images/add-all.svg" alt="">
+    <img class="add" src="assets/images/add-all.svg" alt="">
   </div>
   <div class="menu-item" (click)="showCart()">
     <img src="assets/images/shopping-nav.svg" alt="">
@@ -147,14 +143,105 @@
       {{cartItems}}
     </div>
   </div>
-  <div class="menu-item"  *ngIf="user$ | async as user">
-   
-  <div class="profile" (click)="toProfile(user)">
-    <div class="image">
-      <img *ngIf="user.DP" [src]="user.DP.Url" alt="">
-      <img *ngIf="!user.DP" class="placeholder" src="assets/user-blue-normal.svg" alt="">
+  <div class="menu-item" *ngIf="user$ | async as user">
+
+    <div class="profile" (click)="toProfile(user)">
+      <div class="dp image">
+        <img *ngIf="user.DP"  [src]="user.DP.Url" alt="">
+        <img *ngIf="!user.DP"  src="assets/user-blue-normal.svg" alt="">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="mobile-search" *ngIf="seachShown">
+  <div class="search">
+
+    <div class="input-group">
+      <div class="icon">
+        <img src="assets/images/search-gray.svg" alt="">
+      </div>
+      <div>
+        <input type="search" [(ngModel)]="searchQuery" (keyup)="doTheSearchResults($event.target.value)"
+          placeholder="Type keyword">
+      </div>
+    </div>
+
+    <div class="dropdown  result" *ngIf="searchQueryResults.length > 0 && searchQuery">
+      <div class="top-layer" *ngFor="let searchItem of searchQueryResults">
+        <h3>{{searchItem.Type}}</h3>
+        <div class="inner-layer" *ngFor="let item of searchItem.SearchQuery; let i = index">
+          <span (click)="selectResults(item)">
+
+            <div class="products result-item" *ngIf="item.Type == 'products'">
+              <div class="image">
+                <img [src]="item.Item.images[0].Url" alt="" *ngIf="item.Item.images" />
+                <img src="assets/images/placeholder.png" *ngIf="!item.Item.images" alt="" />
+              </div>
+
+              <div class="name">
+                <p>
+                  {{item.Name}}
+                  <span class="price">
+                    {{item.Item.UnitPrice | currency:'R'}}
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div class="products result-item" *ngIf="item.Type == 'partners'">
+              <div class="image">
+                <img [src]="item.Item.Images[0].Url" alt="" *ngIf="item.Item.Images" />
+                <img src="assets/images/placeholder.png" *ngIf="!item.Item.Images" alt="" />
+              </div>
+
+              <div class="name">
+                <p>
+                  {{item.Name}}
+                  <span class="price" *ngIf="item.Item.Address">
+                    <i class="pi pi-map-marker"></i>
+                    {{item.Item.Address}}
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div class="products result-item" *ngIf="item.Type == 'link'">
+              <div class="image">
+                <img [src]="item.Item.Images[0].Url" alt="" *ngIf="item.Item.Images" />
+                <img src="assets/images/placeholder.png" *ngIf="!item.Item.Images" alt="" />
+              </div>
+
+              <div class="name">
+                <p>
+                  {{item.Name}}
+                  <!-- <span class="price" *ngIf="item.Item">
+                        {{item.Item}}
+                      </span> -->
+                </p>
+              </div>
+            </div>
+
+
+            <div class="products result-item" *ngIf="item.Type == 'orders'">
+              <div class="image">
+                <img [src]="item.Item.Images[0].Url" alt="" *ngIf="item.Item.Images" />
+                <img src="assets/images/placeholder.png" *ngIf="!item.Item.Images" alt="" />
+              </div>
+
+              <div class="name">
+                <p>
+                  {{item.Name}}
+                </p>
+              </div>
+            </div>
+
+          </span>
+        </div>
+      </div>
     </div>
 
   </div>
-  </div>
+
 </div>

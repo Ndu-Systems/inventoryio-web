@@ -17,6 +17,7 @@
       // border: 2px solid rgb(23, 219, 98);
       height: 18rem;
       text-align: center;
+      overflow: hidden;
 
       @media only screen and (max-width: 600px) {
         height: 10rem;overflow: hidden;

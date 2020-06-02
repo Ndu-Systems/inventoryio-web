@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NotFoundConstants } from '../../shared';
 import { MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-products',
@@ -150,6 +151,21 @@ export class ListProductsComponent implements OnInit {
       }
 
       this.productService.updateStateNoSort(products);
+    }
+  }
+  share(item: Product) {
+    let nav: any;
+    nav = window.navigator;
+    if (nav.share) {
+      nav.share({
+        title: item.Name,
+        text: item.Name,
+        url: `${environment.BASE_URL}/#/shop/view-product/${item.ProductId}`,
+      })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    } else {
+      alert('share not supported');
     }
   }
 }

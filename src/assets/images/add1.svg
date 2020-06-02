@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="549" height="410" viewBox="0 0 549 410">
+  <defs>
+    <filter id="Rectangle_264" x="0" y="0" width="549" height="410" filterUnits="userSpaceOnUse">
+      <feOffset dy="-2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="6.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="add1" transform="translate(-18.5 -167.5)">
+    <g transform="matrix(1, 0, 0, 1, 18.5, 167.5)" filter="url(#Rectangle_264)">
+      <rect id="Rectangle_264-2" data-name="Rectangle 264" width="510" height="371" transform="translate(19.5 21.5)" fill="#fff"/>
+    </g>
+    <g id="Group_451" data-name="Group 451" transform="translate(-19 136)">
+      <rect id="Rectangle_265" data-name="Rectangle 265" width="311" height="55" rx="7" transform="translate(157 323)" fill="#0337bb"/>
+    </g>
+    <g id="Group_450" data-name="Group 450">
+      <text id="Start_selling_today" data-name="Start selling today" transform="translate(118 346)" fill="#0337bb" font-size="35" font-family="Montserrat-Black, Montserrat" font-weight="800"><tspan x="0" y="0">Start selling today</tspan></text>
+      <g id="verified" transform="translate(238 196)">
+        <g id="Group_446" data-name="Group 446">
+          <g id="Group_445" data-name="Group 445">
+            <path id="Path_660" data-name="Path 660" d="M94.487,16.211A55.349,55.349,0,0,0,16.211,94.487,55.349,55.349,0,1,0,94.487,16.211Zm-39.138,88a48.863,48.863,0,1,1,48.863-48.863A48.918,48.918,0,0,1,55.349,104.212Z" fill="#0337bb"/>
+          </g>
+        </g>
+        <g id="Group_448" data-name="Group 448" transform="translate(27.956 36.64)">
+          <g id="Group_447" data-name="Group 447">
+            <path id="Path_661" data-name="Path 661" d="M183.137,170.417a3.243,3.243,0,0,0-4.586,0l-28.639,28.639L134.837,183.98a3.243,3.243,0,1,0-4.586,4.586l17.369,17.369a3.243,3.243,0,0,0,4.586,0L183.137,175A3.243,3.243,0,0,0,183.137,170.417Z" transform="translate(-129.301 -169.467)" fill="#0337bb"/>
+          </g>
+        </g>
+      </g>
+      <text id="Trt_with_20_products_free_no_credit_card_details_needed" data-name="Trt with 20 products free,
+no credit card details needed" transform="translate(293 384)" fill="#333" font-size="25" font-family="Montserrat-Regular, Montserrat"><tspan x="-157.775" y="0">Trt with 20 products free,</tspan><tspan x="-182.913" y="30">no credit card details needed</tspan></text>
+    </g>
+    <text id="List_my_producst" data-name="List my producst" transform="translate(294 496)" fill="#f2f5f9" font-size="25" font-family="Montserrat-BoldItalic, Montserrat" font-weight="700" font-style="italic"><tspan x="-109.688" y="0">List my producst</tspan></text>
+  </g>
+</svg>

@@ -91,8 +91,14 @@
 
         }
 
+       
+
         .btn-primary {
           background: $primary-bg-color
+        }
+        .danger {
+          background: $danger;
+          margin: 0 .4rem;
         }
 
         .qnty {
@@ -104,7 +110,7 @@
           width: 6.5rem;
           margin: .5rem auto;
 
-          div{
+          div {
             text-align: center;
           }
 

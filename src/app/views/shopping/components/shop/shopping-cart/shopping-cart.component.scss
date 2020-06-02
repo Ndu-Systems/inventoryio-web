@@ -521,3 +521,25 @@
     font-weight: 500;
   }
 }
+
+.not-found a{
+  margin-top: 1rem;
+  color: $white-color;
+  font-weight: 700;
+
+}
+.not-found{
+  background: $white-color;
+  margin: 3rem auto;
+  img{
+    width: 12rem;
+  }
+}
+
+.not-found .message{
+  margin-bottom: 1rem;
+  span{
+    display: block;
+    margin-top: 1rem;
+  }
+}

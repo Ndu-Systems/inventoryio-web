@@ -192,4 +192,20 @@ export class OrderDetailsComponent implements OnInit {
     this.order.Show = false;
     this.ordersService.updateOrderState(this.order);
   }
+  share(order: Orders) {
+    const downloadLink = this.invoiceService.getInvoiceURL(order.OrdersId);
+    let nav: any;
+    nav = window.navigator;
+    if (nav.share) {
+      nav.share({
+        title: 'Your invoice',
+        text: 'Your invoice',
+        url: downloadLink,
+      })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    } else {
+      alert('share not supported');
+    }
+  }
 }

@@ -137,6 +137,7 @@ export class ProductService {
       if (product.ProductId) {
         this.appendState(product);
         this.updateCurrentProduct(product);
+        this.getProducts(data.CompanyId);
       }
       this.spinnerService.hide();
     }, error => {

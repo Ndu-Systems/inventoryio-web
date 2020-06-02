@@ -1,3 +1,78 @@
-.cta {
-  width: 70%;
+@import '../../../../../assets/styles/variables';
+
+.add-edit-partner {
+  display: grid;
+  grid-template-columns: 50% auto;
+  padding: 1rem;
+
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    padding: 3rem .5rem;
+  }
+
+  .partner-form {
+    .header {
+      h1 {
+        font-size: 1.6rem;
+        margin: 0;
+        padding: 0;
+        margin: .5rem 0;
+
+        .dot {
+          font-size: 2.6rem;
+        }
+      }
+    }
+
+    form {
+      background: $white-color;
+      padding: 1.3rem;
+      margin: 1.3rem 0;
+      border-radius: 6px;
+
+      .col-1-of-2 {
+        grid-template-columns: 50% auto;
+      }
+
+      .label {
+        display: block;
+        color: $black-color;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: .8rem;
+      }
+
+      input,
+      textarea {
+        border: 1px solid $border-color;
+        margin: 0;
+        margin-bottom: 1.4rem;
+        margin-top: .2rem;
+        border-color: $gray-color;
+        width: 100%;
+        padding: .4rem;
+      }
+
+      .first-name {
+        width: 90%;
+      }
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 25% auto;
+
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: 100%;
+        .btn{
+          width: 100%;
+          margin: .4rem .2rem;
+        }
+
+      }
+
+    }
+  }
+
 }

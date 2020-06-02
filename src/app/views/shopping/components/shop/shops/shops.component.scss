@@ -16,34 +16,33 @@
     &::-webkit-scrollbar {
       display: none;
     }
-
-    // @media only screen and (max-width: 600px) {
-    //   overflow-x: scroll;
-    //   &::-webkit-scrollbar {
-    //     display: none;
-    //   }
-    // }
-
   }
 
   .slider {
     display: grid;
-    grid-template-columns: 25% auto;
+    grid-template-columns: 70% auto;
     padding: 1rem;
     margin: 8;
     padding-bottom: 0;
+    .slide{
+      width: 97%;
+      margin-top: 1rem;
+    }
 
     @media only screen and (max-width: 600px) {
-      grid-template-columns: 100% auto;
+      grid-template-columns: 100%;
 
     }
 
-    .catergories {
+    .adverts {
       background: $white-color;
       padding: 1rem;
       border-radius: 6px;
-      width: 97%;
+      width: 95%;
       height: 21rem;
+      img{
+        width: 100%;
+      }
 
       @media only screen and (max-width: 600px) {
         display: none;
@@ -77,4 +76,8 @@
     }
   }
 
+}
+
+h3{
+  padding-left: 1rem;
 }

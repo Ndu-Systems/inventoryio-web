@@ -20,20 +20,31 @@
     </div>
     <div class="order">
 
-      <h1 class="name">
-        {{product.Name}}
-      </h1>
-      
-      <h1 class="price">
-        {{product.UnitPrice | currency:'R'}}
-      </h1>
+      <span class="phone">
+        <h1 class="name">
+          {{product.Name}}
+        </h1>
+
+        <h1 class="price">
+          {{product.UnitPrice | currency:'R'}}
+        </h1>
+      </span>
 
       <div class="product-details">
         <div class="images">
           <app-view-images></app-view-images>
         </div>
         <div class="detais">
-
+          <span class="pc">
+            <h1 class="name">
+              {{product.Name}}
+            </h1>
+    
+            <h1 class="price">
+              {{product.UnitPrice | currency:'R'}}
+            </h1>
+          </span>
+    
 
           <div class="options" *ngIf="product.Attributes?.length > 0">
             <h1 class="header">
@@ -79,10 +90,10 @@
                 <i class="pi pi-plus-circle"></i> Add to cart
               </div>
             </div>
-          
+
           </div>
           <div class="back">
-            <a  (click)="back()">Continue shopping</a>
+            <a (click)="back()">Continue shopping</a>
           </div>
         </div>
       </div>

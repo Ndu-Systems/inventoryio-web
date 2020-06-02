@@ -572,10 +572,19 @@ span.step {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(0, 0, 0);
+  background: $primary-bg-color;
+  border-radius: 10rem;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: black;
+  background: $primary-bg-color;
+}
+
+.share{
+  font-size: .6rem;
+  .pi{
+    position: relative;
+    top: 2px;
+  }
 }

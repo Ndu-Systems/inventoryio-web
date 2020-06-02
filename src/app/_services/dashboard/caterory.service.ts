@@ -54,6 +54,7 @@ export class CateroryService {
     return this.http.post<any>(`${this.url}/api/catergory/add-catergory.php`, data).subscribe(resp => {
       const caterory: Caterory = resp;
       this.apendState(caterory);
+      this.getCateries(data.CompanyId);
     }, error => {
       this.splashService.update({
         show: true, heading: 'Network Error',
@@ -74,7 +75,8 @@ export class CateroryService {
         this.dataStore.categories.sort((x, y) => {
           return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
         });
-        this._categories.next(Object.assign({}, this.dataStore).categories);
+        this._categories.next(Object.assign({}, this.dataStore).categories.filter(c => Number(c.StatusId) > 0));
+        this.getCateries(data.CompanyId);
       }, error => console.log('Could not update category'));
   }
 

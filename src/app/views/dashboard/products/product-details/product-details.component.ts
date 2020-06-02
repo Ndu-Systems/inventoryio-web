@@ -78,7 +78,7 @@ export class ProductDetailsComponent implements OnInit {
       UnitCost: [this.product.UnitCost],
       Code: [this.product.Code],
       SKU: [this.product.SKU],
-      TrackInventory: [this.product.TrackInventory],
+      TrackInventory: [this.product.TrackInventory || true],
       Quantity: [this.product.Quantity],
       LowStock: [this.product.LowStock],
       CompanyId: [this.user.CompanyId, Validators.required],

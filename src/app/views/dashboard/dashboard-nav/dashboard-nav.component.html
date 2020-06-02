@@ -37,6 +37,11 @@
               View {{item.Name}}
             </a>
           </p>
+          <p *ngFor="let m of item.More">
+            <a (click)="selectLink(item,i,1)" [routerLink]="m.Link">
+              {{m.Name}}
+            </a>
+          </p>
         </div>
       </li>
     </ul>
@@ -48,10 +53,10 @@
 <div class="mobile-nav ">
 
   <div class="menu">
-<img (click)="toggleNav()" src="assets/images/option.svg" alt="">
+    <img (click)="toggleNav()" src="assets/images/option.svg" alt="">
   </div>
   <div class="logo">
-    <img src="assets/images/logo-beta.png" alt="">
+    <img src="assets/images/tybo.png" alt="">
   </div>
 </div>
 
@@ -61,9 +66,7 @@
   </div>
   <div class="tab-item" *ngFor="let item of models; let i = index">
     <p>
-      <a   (click)="toggleNav()"  [routerLink]="item.Link" routerLinkActive="active-link"> {{item.Name}}</a>
+      <a (click)="toggleNav()" [routerLink]="item.Link" routerLinkActive="active-link"> {{item.Name}}</a>
     </p>
   </div>
 </div>
-
-

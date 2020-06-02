@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavModel, User, Role, Permission } from 'src/app/_models';
 import { AccountService, RolesService } from 'src/app/_services';
 import { faCoffee, faThermometer, faCartPlus } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
 import { SharedService } from '../shared/shared.service';
 
 @Component({
@@ -61,7 +60,17 @@ export class DashboardNavComponent implements OnInit {
         ActiveIcon: `assets/images/dashboard-nav-icons/products-white.svg`,
         showItem: true,
         AddUrl: '/dashboard/add-product',
-        SecondaryName: 'Product'
+        SecondaryName: 'Product',
+        More: [
+          {
+            Name: 'Categories',
+            Link: '/dashboard/list-categories'
+          },
+          // {
+          //   Name: 'Attributes',
+          //   Link: '/dashboard/list-categories'
+          // },
+        ]
       },
       {
         Name: 'Sales invoices',
@@ -69,7 +78,14 @@ export class DashboardNavComponent implements OnInit {
         Icon: `assets/images/dashboard-nav-icons/sales.svg`,
         ActiveIcon: `assets/images/dashboard-nav-icons/sale-white.svg`,
         showItem: true,
-        AddUrl: '/dashboard/sell'
+        SecondaryName: 'New Sale',
+        AddUrl: '/dashboard/sell',
+        More: [
+          {
+            Name: 'Invoice Settings',
+            Link: '/dashboard/company-view-configs/bank-details'
+          }
+        ]
       },
       {
         Name: 'Quotes',
@@ -77,6 +93,7 @@ export class DashboardNavComponent implements OnInit {
         Icon: `assets/images/dashboard-nav-icons/qoute.svg`,
         ActiveIcon: `assets/images/dashboard-nav-icons/qoute-white.svg`,
         showItem: true,
+        SecondaryName: 'New Quote',
         AddUrl: '/dashboard/qoute-customer'
       },
       {
@@ -85,6 +102,7 @@ export class DashboardNavComponent implements OnInit {
         Icon: `assets/images/dashboard-nav-icons/purchase-order.svg`,
         ActiveIcon: `assets/images/dashboard-nav-icons/purchase-order-white.svg`,
         showItem: true,
+        SecondaryName: 'New Order',
         AddUrl: '/dashboard/new-purchase-order'
       },
       {
@@ -182,7 +200,7 @@ export class DashboardNavComponent implements OnInit {
   }
 
   getUserRole(user: User) {
-    this.getRolePermissions(user.RoleId);
+    this.getRolePermissions(user && user.RoleId || '');
   }
 
   getRolePermissions(roleId: string | number) {

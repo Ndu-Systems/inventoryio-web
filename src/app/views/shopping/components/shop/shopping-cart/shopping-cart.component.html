@@ -1,7 +1,7 @@
 <app-shopping-nav *ngIf="company" [shopPrimaryColor]="shopPrimaryColor" [company]="company"
   [shopSecondaryColor]="shopSecondaryColor" [logoUrl]="logoUrl"></app-shopping-nav>
 
-<div class="container" *ngIf="sale$ | async as sale">
+<div class="container" *ngIf="sale$ | async as sale; else notFound">
   <!-- <div class="cover-photo">
     <img [src]="bannerImage" alt="">
   </div> -->
@@ -267,6 +267,18 @@
 
   </div>
 </div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <img src="assets/images/empty-cart.svg" alt="no items found">
+    <h1 class="message">
+      Your shopping cart is empty
+      <span>
+        <a class="link-add" (click)="back()"> Start shopping.</a>
+      </span>
+    </h1>
+  </div>
+</ng-template>
 
 <title>
   {{welocme}}

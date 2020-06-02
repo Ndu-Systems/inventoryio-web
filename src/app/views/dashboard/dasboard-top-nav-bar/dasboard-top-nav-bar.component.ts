@@ -18,6 +18,7 @@ export class DasboardTopNavBarComponent implements OnInit {
   searchQuery = '';
   sale: SellModel;
   cartItems = 0;
+  seachShown: boolean;
   constructor(
     private accountService: AccountService,
     private routeTo: Router,
@@ -67,6 +68,7 @@ export class DasboardTopNavBarComponent implements OnInit {
       this.routeTo.navigate([item.Item]);
     }
     this.searchQuery = '';
+    this.seachShown = false;
   }
   doTheSearchResults(key) {
     const allResults = [];
@@ -84,6 +86,10 @@ export class DasboardTopNavBarComponent implements OnInit {
     if (this.cartItems > 0) {
       this.bannerService.updateCartModal(true);
     }
+  }
+
+  showSearch() {
+    this.seachShown = !this.seachShown;
   }
 
 

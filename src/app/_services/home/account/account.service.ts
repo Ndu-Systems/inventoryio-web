@@ -51,7 +51,6 @@ export class AccountService {
       localStorage.clear();
       this.updateUserState(user);
       this._loading.next(false);
-      user.CompanyId = 'n/a';
       this.router.navigate(['dashboard']);
     }, error => {
       this._loading.next(false);
@@ -74,7 +73,6 @@ export class AccountService {
       localStorage.clear();
       this.updateUserState(user);
       this._loading.next(false);
-      user.CompanyId = 'n/a';
       this.router.navigate(['dashboard']);
     }, error => {
       this._loading.next(false);

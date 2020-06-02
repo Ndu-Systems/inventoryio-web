@@ -4,6 +4,7 @@ import { Brand, Caterory, NotFoundModel } from 'src/app/_models';
 import { AccountService, BannerService, CateroryService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { NotFoundConstants } from '../../shared';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-list-categories',
@@ -16,10 +17,13 @@ export class ListCategoriesComponent implements OnInit {
   showForm: boolean;
   notFoundModel: NotFoundModel;
 
-  constructor(private categorieservice: CateroryService,
+  constructor(
+    private categorieservice: CateroryService,
     private accountService: AccountService,
     private router: Router,
-    private bannerService: BannerService
+    private bannerService: BannerService,
+    private confirmationService: ConfirmationService,
+
   ) { }
 
   ngOnInit() {
@@ -45,6 +49,15 @@ export class ListCategoriesComponent implements OnInit {
   updateCategory(category: Caterory) {
     this.categorieservice.updateCurrentCategory(category);
     this.router.navigate(['/dashboard/edit-category']);
+  }
+  deleteCategory(category: Caterory) {
+    this.confirmationService.confirm({
+      message: `This category will be deleted permanently, continue?`,
+      accept: () => {
+        category.StatusId = -1;
+        this.categorieservice.updateCategory(category);
+      }
+    });
   }
   clearSearch() { }
 }

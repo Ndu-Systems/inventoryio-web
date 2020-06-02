@@ -1,27 +1,42 @@
-<div class="main-content">
-  <h1 class="title-header">Add a new category.</h1>
-  <div class="col-1-of-2">
-    <div class="panel">
-      <h1 class="sub-header">Add categories for product brands that are in your inventory</h1>
-      <div class="form">
-        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
-          <div class="form-group">
-            <div class="group">
-              <input type="text" formControlName="Name" required="required" />
-              <label class="label">Name*</label>
-            </div>
-          </div>
-          <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
-            Category name is required
-          </div>
-             <div class="cta col-1-of-2">
-              <div class="group button">
-                <input type="submit" value="Add category" class="btn" [disabled]="!rForm.valid" />
-              </div>
-              <a  (click)="cancel()" class="cancel">cancel</a>
-            </div>
-         </form>
-      </div>
+<div class="add-edit-partner">
+
+
+  <div class="partner-form">
+
+    <div class="header">
+      <h1>
+        Add a new category<span class="dot">.</span>
+      </h1>
     </div>
+
+    <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
+      <div class="form-item">
+        <label class="label">Category</label>
+        <input type="text" class="roundInput" formControlName="Name" required="required" />
+        <div class="alert"
+          *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+          Category is required
+        </div>
+      </div>
+<!-- 
+      <div class="form-item">
+        <label class="label">Category Image</label>
+        <app-product-images [productId]="category.CatergoryId" *ngIf="category.CatergoryId"></app-product-images>
+      </div>
+
+
+
+ -->
+
+      <div class="actions">
+        <div>
+          <button [disabled]="!rForm.valid" type="submit" class="btn"> Add category</button>
+        </div>
+
+        <div>
+          <a routerLink="/dashboard/list-categories"> <button type="button" class="btn btn-transparent">Cancel</button></a>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

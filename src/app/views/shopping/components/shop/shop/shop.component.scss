@@ -10,15 +10,18 @@
 
   .slider {
     display: grid;
-    grid-template-columns: 25% auto;
+    grid-template-columns: 70% auto;
     padding: 1rem;
 
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%
     }
 
+    .slide {
+      width: 98%;
+    }
 
-    .catergories {
+    .adverts {
       background: $white-color;
       padding: 1rem;
       border-radius: 6px;
@@ -64,20 +67,23 @@
     grid-template-columns: repeat(2, 50%);
   }
 }
-.filters{
+
+.filters {
   padding: 1rem 2rem;
   display: grid;
-  grid-template-columns: 30% 50%  auto;
-  h1{
+  grid-template-columns: 30% 50% auto;
+
+  h1 {
     margin: .5rem 0;
+
     @media only screen and (max-width: 600px) {
       font-size: .8rem;
       font-weight: 900;
     }
 
   }
-  
-  input{
+
+  input {
     width: 100%;
     background: #fff;
     border: 1px solid #ecf0f1;
@@ -90,7 +96,8 @@
     border-radius: 16px;
   }
 }
-.footer{
+
+.footer {
   display: none;
   padding: 1rem;
 }

@@ -1,6 +1,6 @@
 <div class="top-navigation">
   <div class="logo">
-    <img src="assets/images/logo-beta.png" alt="">
+    <img src="assets/images/tybo.png" alt="">
     <!-- <img  src="assets/images/logo-v.svg" alt=""> -->
   </div>
 
@@ -59,27 +59,28 @@
 </div>
 
 <div class="tabs">
-  <div class="tab-item">
-    <p>
-      <a routerLink="/shop" routerLinkActive="active-link"> leave this shop</a>
-    </p>
-  </div>
+
   <div class="tab-item">
     <p class="active">
-
-      <a [routerLink]="companyUrl" routerLinkActive="active-link"> {{company?.Name}}</a>
+      <a [routerLink]="companyUrl" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Catalogue</a>
     </p>
   </div>
   <div class="tab-item">
     <p>
 
-      <a routerLink="/shop/customer-orders/home" routerLinkActive="active-link"> my orders</a>
+      <a [routerLink]="cartUrl" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Cart ({{cartItems}})</a>
     </p>
   </div>
   <div class="tab-item">
     <p>
 
-      <a routerLink="/shop" routerLinkActive="active-link"> my wishlist</a>
+      <a routerLink="/shop/my-profile/none" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> My Profile</a>
+    </p>
+  </div>
+
+  <div class="tab-item">
+    <p>
+      <a routerLink="/shop" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> Other Shops</a>
     </p>
   </div>
 
@@ -92,26 +93,7 @@
   </div>
   <div class="tab-item">
     <p>
-      <a routerLink="/shop" routerLinkActive="active-link"> leave this shop</a>
-    </p>
-  </div>
-  <div class="tab-item">
-    <p>
-
-      <a [routerLink]="companyUrl" routerLinkActive="active-link"> {{company?.Name}}</a>
-    </p>
-  </div>
-  <div class="tab-item">
-    <p>
-
-      <a routerLink="/shop/customer-orders/home" routerLinkActive="active-link"> my orders</a>
-    </p>
-  </div>
-
-  <div class="tab-item">
-    <p>
-
-      <a routerLink="/shop" routerLinkActive="active-link"> my wishlist</a>
+      <a routerLink="/shop" routerLinkActive="active-link">Other shops</a>
     </p>
   </div>
   <div class="tab-item">
@@ -161,29 +143,29 @@
 
   </div>
   <div class="logo">
-    <img src="assets/images/logo-beta.png" alt="">
+    <img src="assets/images/tybo.png" alt="">
   </div>
 </div>
 
 <div class="mobile-nav-bottom">
   <div class="menu-item">
     <img src="assets/images/catalogue-nav.svg" alt="">
-    <a [routerLink]="companyUrl"  routerLinkActive="active-link-mob">Catalogue</a>
+    <a [routerLink]="companyUrl" routerLinkActive="active-link-mob">Catalogue</a>
   </div>
   <div class="menu-item">
     <img src="assets/images/search-nav.svg" alt="">
-    <a routerLink="/home"  routerLinkActive="active-link-mob">Search</a>
+    <a routerLink="/home" routerLinkActive="active-link-mob">Search</a>
   </div>
   <div class="menu-item">
     <img src="assets/images/shopping-nav.svg" alt="">
-    <a [routerLink]="cartUrl"  routerLinkActive="active-link-mob">Cart</a>
+    <a [routerLink]="cartUrl" routerLinkActive="active-link-mob">Cart</a>
     <div class="cart">
       {{cartItems}}
     </div>
   </div>
   <div class="menu-item" *ngIf="!customer">
     <img src="assets/images/user-nav.svg" style="width: .8rem;" alt="">
-    <a routerLink="/home"  routerLinkActive="active-link-mob">Profile</a>
+    <a routerLink="/shop/my-profile/none" routerLinkActive="active-link-mob">Profile</a>
   </div>
   <div class="menu-item" *ngIf="customer">
     <div class="dp-image">

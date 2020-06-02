@@ -228,6 +228,9 @@
             <span class="label">Outstanding balance: </span>
             {{order.Due | currency:'R'}}
           </p>
+          <p class="share" (click)="share(order)">
+            <i class="pi pi-share-alt"></i>Share
+          </p>
         </div>
       </div>
 

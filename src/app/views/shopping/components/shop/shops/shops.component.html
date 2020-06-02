@@ -1,71 +1,24 @@
 <div class="shops-container">
   <div class="categorie-slider">
-    <app-categories-slider ></app-categories-slider>
+    <app-categories-slider></app-categories-slider>
   </div>
   <div class="slider">
-    <div class="catergories">
-      <h3>
-        categories
-      </h3>
-      <div class="cat" *ngFor="let c of [1,1,1,1,1,1,1]">
-        <div class="image">
-          <img src="assets/images/laptop.svg" alt="">
-        </div>
-        <div class="name">
-         <p>
-          Electronics
-         </p>
-        </div>
-      </div>
-    </div>
     <div class="slide">
       <pre>
-        <!-- {{sliderProducts | json}} -->
       </pre>
       <app-shops-home-slider *ngIf="sliderProducts" [shops]="shops"></app-shops-home-slider>
     </div>
+    <div class="adverts">
+      <a routerLink="/sign-up">
+        <img src="assets/images/add1.svg" alt="">
+      </a>
+
+    </div>
+
   </div>
 
   <div class="shops">
-    <app-shops-list-slider ></app-shops-list-slider>
+    <h3>All shops</h3>
+    <app-shops-list-slider></app-shops-list-slider>
   </div>
 </div>
-
-<!-- <div class="all-shops-container">
-    <h1>
-      All shops
-    </h1>
-    <span *ngIf="!loading">
-
-    <div class="shops">
-      <div class="shop" *ngFor="let shop of shops; let i = index">
-        <div class="image">
-          <img [src]="shop.Banner[0].Url" alt="" *ngIf="shop.Banner" />
-          <img src="assets/images/store-placeholder.svg" *ngIf="!shop.Banner" alt="" />
-        </div>
-        <div class="name">
-          <h1>
-            {{shop?.Name}}
-          </h1>
-        </div>
-
-        <div class="details">
-          <p>
-            {{shop?.Description}}
-          </p>
-        </div>
-
-        <div class="action">
-          <div class="visit" (click)="visitShow(shop)">
-            Visit this shop
-          </div>
-        </div>
-      </div>
-    </div>
-  </span>
-    <span *ngIf="loading" class="ghost" >
-      <div class="overlay"></div>
-      <img class="pc"  src="assets/images/shops.svg" alt="">
-      <img class="mobile"  src="assets/images/shops-ghost-mobile.svg" alt="">
-    </span>
-  </div> -->
