@@ -73,7 +73,7 @@ export class DashboardNavComponent implements OnInit {
         ]
       },
       {
-        Name: 'Sales invoices',
+        Name: 'Sales orders',
         Link: '/dashboard/list-orders',
         Icon: `assets/images/dashboard-nav-icons/sales.svg`,
         ActiveIcon: `assets/images/dashboard-nav-icons/sale-white.svg`,

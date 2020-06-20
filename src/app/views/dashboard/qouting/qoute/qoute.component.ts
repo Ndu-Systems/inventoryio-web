@@ -93,7 +93,7 @@ export class QouteComponent implements OnInit {
           CreateUserId: '',
           ModifyDate: '',
           ModifyUserId: '',
-          StatusId: '1'
+          StatusId: 1
         };
       }
     });

@@ -57,6 +57,11 @@ export class PartnerService {
 
     });
   }
+  addPartnerSync(data: Partner)  {
+    this.spinnerService.show();
+    return this.http.post<any>(`${this.url}/api/partner/add-partner.php`, data);
+  }
+
   updatePartner(data: Partner) {
     this.spinnerService.show();
     return this.http.post<any>(`${this.url}/api/partner/update-partner.php`, data).subscribe(resp => {

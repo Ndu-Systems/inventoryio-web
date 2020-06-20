@@ -21,13 +21,21 @@
         <div class="input">
           <div class="customer-search">
             <span>Customer Name</span>
-            <input type="search" autocomplete="off" [(ngModel)]="selectedPartner.Name"
+            <input type="search" [(ngModel)]="selectedPartner.Name"
               (keyup)="searchCustomers($event.target.value)" class="roundInput" placeholder="Search customer ...">
             <div class="dropdown  result" *ngIf="customerSuggestions.length > 0 && selectedPartner.Name">
               <p *ngFor="let item of customerSuggestions; let i = index">
                 <span (click)="selectCustomer(item)">{{item.Name}} {{item.Surname}}</span>
               </p>
             </div>
+          </div>
+          <div>
+            <span>Customer Email</span>
+            <input type="email" class="roundInput" [(ngModel)]="selectedPartner.EmailAddress" />
+          </div>
+          <div>
+            <span>Customer Phone No.</span>
+            <input type="search" class="roundInput" [(ngModel)]="selectedPartner.CellphoneNumber" />
           </div>
           <div *ngIf="shippingsList?.length">
             <span>Shipping Method</span>

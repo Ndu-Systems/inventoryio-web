@@ -48,6 +48,7 @@ export class SellComponent implements OnInit {
   currency = 'R';
   productForAttributes: Product;
   selectProductQnty = 1;
+  customerNotFound: boolean;
 
 
 
@@ -96,7 +97,7 @@ export class SellComponent implements OnInit {
           CreateUserId: '',
           ModifyDate: '',
           ModifyUserId: '',
-          StatusId: '1'
+          StatusId: 1
         };
       }
     });
@@ -218,47 +219,109 @@ export class SellComponent implements OnInit {
     //   });
     //   return false;
     // }
-    this.sale.charges = [this.selectedShippingMethod];
-    this.saleService.updateState(this.sale);
-    const order: Orders = {
-      CompanyId: this.user.CompanyId,
-      ParntersId: this.selectedPartner && this.selectedPartner.PartnerId || null,
-      ParntersEmail: this.selectedPartner && this.selectedPartner.EmailAddress || null,
-      OrderType: 'Sell',
-      Total: this.sale.total,
-      Paid: 0,
-      Due: this.sale.total,
-      CreateUserId: this.user.UserId,
-      ModifyUserId: this.user.UserId,
-      Status: 'new',
-      StatusId: 1
-    };
+    if (this.customerNotFound) {
+      console.log(this.selectedPartner);
+      const partnerToAdd: Partner = {
+        EmailAddress: this.selectedPartner.EmailAddress,
+        Name: this.selectedPartner.Name,
+        CellphoneNumber: this.selectedPartner.EmailAddress,
+        Address: this.selectedPartner.Address,
+        Surname: this.selectedPartner.Surname,
+        Password: 'na',
+        PartnerType: 'customer',
+        CompanyId: this.user.CompanyId,
+        CreateUserId: this.user.UserId,
+        ModifyUserId: this.user.UserId,
+        StatusId: 1,
+      };
+      this.partnerService.addPartnerSync(partnerToAdd).subscribe(data => {
+        this.selectedPartner = data;
+        this.sale.charges = [this.selectedShippingMethod];
+        this.saleService.updateState(this.sale);
+        const order: Orders = {
+          CompanyId: this.user.CompanyId,
+          ParntersId: data.PartnerId,
+          ParntersEmail: data.EmailAddress,
+          OrderType: 'Sell',
+          Total: this.sale.total,
+          Paid: 0,
+          Due: this.sale.total,
+          CreateUserId: this.user.UserId,
+          ModifyUserId: this.user.UserId,
+          Status: 'new',
+          StatusId: 1
+        };
 
-    let shipment = {
-      ConfigId: '',
-      CompanyId: this.user.CompanyId,
-      Name: 'shippingFee',
-      Label: this.sale.charges[0] && this.sale.charges[0].line || '',
-      Type: 'shippingFee',
-      GroupKey: '',
-      Value: this.sale.charges[0] && this.sale.charges[0].amount || '',
-      IsRequired: true,
-      FieldType: 'string',
-      CreateUserId: 'system',
-      ModifyUserId: 'system',
-      StatusId: 1
-    };
-    order.Charges = [shipment];
+        const shipment = {
+          ConfigId: '',
+          CompanyId: this.user.CompanyId,
+          Name: 'shippingFee',
+          Label: this.sale.charges[0] && this.sale.charges[0].line || '',
+          Type: 'shippingFee',
+          GroupKey: '',
+          Value: this.sale.charges[0] && this.sale.charges[0].amount || '',
+          IsRequired: true,
+          FieldType: 'string',
+          CreateUserId: 'system',
+          ModifyUserId: 'system',
+          StatusId: 1
+        };
+        order.Charges = [shipment];
 
-    console.log(order);
-    console.log('items', this.sale.items);
-    this.ordersService.addOrder(order, this.sale.items);
-    this.updateProductsRange(this.sale.items);
-    // clear state
-    this.saleService.clearState();
-    this.ordersService.updateOrderState(null);
-    this.ordersService.updateOrderProductsState(null);
-    this.router.navigate(['/dashboard/list-orders']);
+        console.log(order);
+        console.log('items', this.sale.items);
+        this.ordersService.addOrder(order, this.sale.items);
+        this.updateProductsRange(this.sale.items);
+        // clear state
+        this.saleService.clearState();
+        this.ordersService.updateOrderState(null);
+        this.ordersService.updateOrderProductsState(null);
+        this.router.navigate(['/dashboard/list-orders']);
+      });
+    } else {
+      this.sale.charges = [this.selectedShippingMethod];
+      this.saleService.updateState(this.sale);
+      const order: Orders = {
+        CompanyId: this.user.CompanyId,
+        ParntersId: this.selectedPartner && this.selectedPartner.PartnerId || null,
+        ParntersEmail: this.selectedPartner && this.selectedPartner.EmailAddress || null,
+        OrderType: 'Sell',
+        Total: this.sale.total,
+        Paid: 0,
+        Due: this.sale.total,
+        CreateUserId: this.user.UserId,
+        ModifyUserId: this.user.UserId,
+        Status: 'new',
+        StatusId: 1
+      };
+
+      const shipment = {
+        ConfigId: '',
+        CompanyId: this.user.CompanyId,
+        Name: 'shippingFee',
+        Label: this.sale.charges[0] && this.sale.charges[0].line || '',
+        Type: 'shippingFee',
+        GroupKey: '',
+        Value: this.sale.charges[0] && this.sale.charges[0].amount || '',
+        IsRequired: true,
+        FieldType: 'string',
+        CreateUserId: 'system',
+        ModifyUserId: 'system',
+        StatusId: 1
+      };
+      order.Charges = [shipment];
+
+      console.log(order);
+      console.log('items', this.sale.items);
+      this.ordersService.addOrder(order, this.sale.items);
+      this.updateProductsRange(this.sale.items);
+      // clear state
+      this.saleService.clearState();
+      this.ordersService.updateOrderState(null);
+      this.ordersService.updateOrderProductsState(null);
+      this.router.navigate(['/dashboard/list-orders']);
+    }
+
   }
 
   updateProductsRange(items: Item[]) {
@@ -304,12 +367,28 @@ export class SellComponent implements OnInit {
   }
   selectCustomer(customer: Partner) {
     this.selectedCustomerId = customer.PartnerId;
-    customer.Name = customer.Name + ' ' + customer.Surname;
+    if (customer.Surname) {
+      customer.Surname = ' ' + customer.Surname;
+    }
+    customer.Name = customer.Name + customer.Surname;
     this.selectedPartner = customer;
     this.customerSuggestions = [];
     if (this.sale) {
       this.sale.Customer = customer;
+    } else {
+      this.sale = {
+        items: [],
+        total: 0,
+        companyId: this.user.CompanyId,
+        charges: [],
+        Customer: customer,
+        Shipping: null,
+
+      };
+
     }
+
+    this.saleService.updateState(this.sale);
   }
 
 
@@ -436,6 +515,11 @@ export class SellComponent implements OnInit {
         x => x.Name.toLocaleLowerCase().includes(key.toLocaleLowerCase()) ||
           x.Surname.toLocaleLowerCase().includes(key.toLocaleLowerCase())
       );
+    }
+
+    if (this.customerSuggestions.length === 0) {
+      this.customerNotFound = true;
+      this.selectCustomer(this.selectedPartner);
     }
   }
 
