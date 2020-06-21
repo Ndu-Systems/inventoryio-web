@@ -2,7 +2,7 @@
   background: #fff;
   display: grid;
   grid-template-columns: 5% 10% 45% auto;
-  width: 100%;
+  width: 90%;
   position: fixed;
   top: 0;
   z-index: 100;
@@ -50,6 +50,12 @@
 
   .actions {
     display: grid;
-    grid-template-columns: repeat(4, 25%)
+    grid-template-columns: repeat(4, 25%);
+
+    .item {
+      img {
+        width: 95%;
+      }
+    }
   }
 }

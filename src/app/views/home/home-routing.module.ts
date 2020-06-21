@@ -26,6 +26,9 @@ import { ShopsHomeSliderComponent } from '../shopping/components/shop/shops/shop
 import { CategoriesSliderComponent } from '../shopping/components/shop/shops/categories-slider/categories-slider.component';
 import { ShopsListSliderComponent } from '../shopping/components/shop/shops/shops-list-slider/shops-list-slider.component';
 import { ShopComponent } from '../shopping/components/shop/shop/shop.component';
+import { ViewProductComponent } from '../shopping/components/shop/view-product/view-product.component';
+import { ViewImagesComponent } from '../shopping/components/shop/view-images/view-images.component';
+import { RemoveNoValuesAttributesPipe } from 'src/app/_pipes/remove-no-values-attributes.pipe';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -40,6 +43,8 @@ const routes: Routes = [
       { path: 'reset-password', component: ResetPasswordComponent },
       { path: 'shop', component: ShopsComponent },
       { path: 'at/:id', component: ShopComponent },
+      { path: 'view-product/:id', component: ViewProductComponent },
+
     ]
   }
 ];
@@ -66,8 +71,11 @@ export const declarations = [
   ShopsHomeSliderComponent,
   CategoriesSliderComponent,
   ShopsListSliderComponent,
-  ShopComponent
- ];
+  ShopComponent,
+  ViewProductComponent,
+  ViewImagesComponent,
+  RemoveNoValuesAttributesPipe
+];
 
 
 @NgModule({

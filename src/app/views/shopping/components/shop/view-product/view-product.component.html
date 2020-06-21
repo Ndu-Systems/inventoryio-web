@@ -1,144 +1,87 @@
-<span *ngIf="!loading" class="ghost">
-  <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [company]="company" [shopSecondaryColor]="shopSecondaryColor"
-    [logoUrl]="logoUrl">
-  </app-shopping-nav>
+<span *ngIf="!loading">
   <div class="main" *ngIf="product">
-
-
-    <!-- <h3 class="small-heading">
-      <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
-
-      {{product.Name}}
-    </h3> -->
-
-    <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
-    <div class="back">
+    <!-- <div class="back">
       <p (click)="back()">
         <i [ngStyle]="{'color':shopPrimaryColor}" class="pi pi-chevron-left"></i> Back
       </p>
 
-    </div>
-    <div class="order">
+    </div> -->
 
-      <span class="phone">
+    <div class="col-1-of-2">
+      <div class="images">
+        <app-view-images></app-view-images>
+      </div>
+
+      <div class="details">
         <h1 class="name">
           {{product.Name}}
         </h1>
 
-        <h1 class="price">
+        <p>
           {{product.UnitPrice | currency:'R'}}
-        </h1>
-      </span>
+        </p>
 
-      <div class="product-details">
-        <div class="images">
-          <app-view-images></app-view-images>
+        <div class="options" *ngIf="product.Attributes?.length > 0">
+          <div class="option-items">
+            <div class="options-group" *ngFor="let attribute of product.Attributes | removeNoValueAttributes">
+              <div class="label">
+                {{attribute.Name}}:
+              </div>
+
+              <div class="options-list">
+                <!-- <span *ngIf="attribute.Values">
+                  <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
+                    <option value="" selected></option>
+                    <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
+                      {{item.AttributeValue}}</option>
+                  </select>
+                </span> -->
+                <div *ngFor="let item of attribute.Values" class="option">
+                  {{item.AttributeValue}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
-        <div class="detais">
-          <span class="pc">
-            <h1 class="name">
-              {{product.Name}}
-            </h1>
-    
-            <h1 class="price">
-              {{product.UnitPrice | currency:'R'}}
-            </h1>
-          </span>
-    
 
-          <div class="options" *ngIf="product.Attributes?.length > 0">
-            <h1 class="header">
-              Select Options
-            </h1>
-            <div class="option-items">
-              <div class="options-item" *ngFor="let attribute of product.Attributes | removeNoValueAttributes">
-                <div class="label">
-                  {{attribute.Name}}:
-                </div>
 
-                <div class="input">
-                  <span *ngIf="attribute.Values">
-                    <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
-                      <option value="" selected></option>
-                      <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
-                        {{item.AttributeValue}}</option>
-                    </select>
-                  </span>
-                </div>
-              </div>
+
+        <div class="quantity">
+          <div class="">
+            <p>
+              Qty:
+            </p>
+          </div>
+          <div class="qnty-group-btns">
+            <div class="neg" (click)="changeItemQnty(-1)">
+              <img src="assets/images/tybo/btn-qty-min.svg" alt="">
+
             </div>
-
-
+            <div class="val">
+              <input [(ngModel)]="itemQnty" type="text">
+            </div>
+            <div class="pos" (click)="changeItemQnty(1)">
+              <img src="assets/images/tybo/btn-qty-add.svg" alt="">
+            </div>
           </div>
 
-          <div class="quantity">
-            <div class="qnty-group-btns">
-              <div class="neg" (click)="changeItemQnty(-1)">
-                <i class="pi pi-minus-circle"></i>
-              </div>
-              <div class="val">
-                <input [(ngModel)]="itemQnty" type="text">
-              </div>
-              <div class="pos" (click)="changeItemQnty(1)">
-                <i class="pi pi-plus-circle"></i>
-              </div>
-            </div>
+        </div>
 
-            <div class="buy-this">
-              <div class="add-to-cart" (click)="doSell(product)"
-                [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}">
-                <i class="pi pi-plus-circle"></i> Add to cart
-              </div>
-            </div>
-
+        <div class="actions">
+          <div class="action">
+            <img (click)="doSell(product)" src="assets/images/tybo/cta-add-to-cart.svg" alt="">
           </div>
-          <div class="back">
-            <a (click)="back()">Continue shopping</a>
+
+          <div class="action">
+            <img (click)="back()" src="assets/images/tybo/cta-continue-shopping.svg" alt="">
           </div>
         </div>
       </div>
-
-      <!-- <div class="more-product-details">
-        <div [innerHTML]="product.Description"></div>
-
-      </div> -->
-
     </div>
 
-  </div>
 
-  <div *ngIf="company" class="footer" class="footer">
-    <hr>
-    <h4>
-      Thanks for visting {{company?.Name}}
-    </h4>
-    <span *ngIf="company.TelephoneNumber && company.TelephoneNumber.length > 6">
-      <h5>
-        Contact details
-      </h5>
-      <address>
-        Email:{{company?.TelephoneNumber}} <br>
-      </address>
-    </span>
-    <span *ngIf="company.Shipping">
-      <h5>
-        Shipping method(s)
-      </h5>
-      <span *ngFor="let ship of company.Shipping">
-        <span *ngIf="ship.Name === 'name'">{{ship?.Value}}
-          {{ship?.TelephoneNumber}}</span>
-        <span *ngIf="ship.Name === 'amount'"> <b>R {{ship?.Value}}
-          </b> <br></span>
-      </span>
-    </span>
-    <span>
-      <h5>
-        Payment methods
-      </h5>
-      <span>
-        Cash | EFT
-      </span>
-    </span>
   </div>
 </span>
 

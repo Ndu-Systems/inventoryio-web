@@ -8,24 +8,31 @@
       margin: 2.5rem 0;
       position: relative;
 
-      h1{
+      h1 {
         padding: 1rem 4rem;
       }
-      .name{
-        background: rgba(255, 255, 255, 0.603);
+
+      .name {
+        background: rgba(255, 255, 255, 0.6);
+        /* background: red; */
         position: absolute;
-        left: 35%;
-        top: 25%;
-        width: 35%;
+        left: 27%;
+        top: 18%;
+        width: 54%;
         padding: 4rem;
         text-align: center;
-        h1{
+
+        h1 {
           text-align: center;
+          font-weight: 900;
+          font-size: 3rem;
         }
-        .action{
+
+        .action {
           text-align: center;
           padding: 1.2rem 2.5rem;
-          img{
+
+          img {
             cursor: pointer;
           }
         }
@@ -33,13 +40,19 @@
 
       .products {
         display: grid;
-        grid-template-columns: repeat(3, 33.33%);
+        grid-template-columns: repeat(3, 33%);
         grid-gap: 1rem;
-        .product{
+
+        .product {
           text-align: center;
+
+          img {
+            width: 98%;
+            margin: 0;
+          }
         }
       }
-   
+
     }
   }
 }

@@ -1,380 +1,86 @@
 @import '../../../../../../assets/styles/variables';
 
 .main {
-  padding: 10rem 2rem;
+  padding: 7rem 2rem;
   box-sizing: border-box;
-  background: $cloud-ligher;
-  padding: 3rem;
+  background: $white-color;
 
-  background: $body-background;
-  padding: 1rem 12rem;
-
-
-  @media only screen and (max-width: 600px) {
-    padding: 3rem 1rem;
-    // height: 91vh;
-
-  }
-
-  .order {
-    margin: 0 auto;
-    background: $white-color;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-
-    // background: $default-bg;
-
-    @media only screen and (max-width: 600px) {
-      width: 100%;
-      // padding: .5rem;
-    }
-
-    .name {
-      font-size: 1rem;
-      font-weight: 900;
-      margin: .5rem;
-    }
-
-
-    h1.price {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: .5rem;
-
-
-      @media only screen and (max-width: 600px) {
-        text-align: left;
-        color: black;
-        padding: .2rem;
-        border-radius: 5px;
-        font-size: 1.5rem;
-        font-weight: 900;
-      }
-    }
-
-  }
-
-  hr {
-    background-color: $blue-gray;
-  }
-
-  .product-details {
+  .col-1-of-2 {
     display: grid;
-    grid-template-columns: 30% 40% 30%;
+    grid-template-columns: 30% auto;
 
-    @media only screen and (max-width: 600px) {
-      grid-template-columns: 100%;
-
+    .images {
+      // height: 66vh;
+      // overflow-y: scroll;
     }
 
-    .detais {
-      text-align: center;
-
-      h1.name {
-        font-size: 1.25rem;
-        font-weight: 500;
-
-      }
-
+    .details {
+      padding: 2rem 7rem;
 
       .options {
-        margin: .5rem 0;
-        box-sizing: border-box;
 
-        @media only screen and (max-width: 600px) {
-
-          margin: .2rem 0;
-
-        }
-
-        h1.header {
-          text-transform: uppercase;
-          font-weight: 700;
-          font-size: 1rem;
-        }
-
-        .option-items {
+        .options-group {
           display: grid;
-          grid-template-columns: 50% auto;
-          height: 100%;
+          grid-template-columns: 5% auto;
 
-          @media only screen and (max-width: 600px) {
-            grid-template-columns: 100%;
-          }
-
-          .options-item {
-            border: 1px solid $blue-gray;
-            display: grid;
-            grid-template-columns: 40% auto;
-            margin: 1rem 1.5rem;
-            margin-left: 0;
-            border-radius: 32px;
-
-            @media only screen and (max-width: 600px) {
-              margin: .2rem 0;
-            }
-
-            .label {
-              padding: .6rem 1rem;
-              font-weight: 700;
-              text-transform: uppercase;
-
-              @media only screen and (max-width: 600px) {
-                font-size: .8rem;
-              }
-            }
-
-            .input {
-              padding: .6rem 1rem;
-              font-size: .7rem;
-
-
-              select {
-                margin: 0;
-                // width: 40%;
-                border: none;
-                font-size: .8rem;
-
-
-              }
-            }
-
-            .no-border {
-              padding-left: 0;
-            }
-
-            .tar {
-              padding-right: 0;
-            }
-          }
-
-          .full-row {
-            grid-template-columns: 100%;
-            border: none;
-            padding: 0;
-
-            .action-btn {
-              padding: 1rem 1rem;
-
-
-            }
-          }
-
-          .tar {
-            text-align: right;
-            padding-right: 0;
-
-            @media only screen and (max-width: 600px) {
-              text-align: left;
-            }
+          .label {
+            padding: .5rem .2rem;
+            text-transform: capitalize;
           }
         }
 
+        .options-list {
+          display: flex;
 
-
+          .option {
+            border: 1px solid #000;
+            padding: .1rem .5rem;
+            margin: .2rem;
+            cursor: pointer;
+          }
+        }
       }
-
-      select {
-        padding: 0;
-      }
-    }
-
-    .action-btn {
-      padding: 1.5rem .8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .back {
-      background: #fff;
-      border: 2px solid #fff;
-      margin-right: 0;
     }
   }
 }
-
-
-.back-link {
-  padding: 0 1rem;
-  cursor: pointer;
-  display: block;
-  margin: 1rem 0;
-}
-
-
-.cta {
-  display: grid;
-  grid-template-columns: 30% auto;
-  padding: 0 1rem;
-
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 50% auto;
-
-  }
-
-  .action-btn {
-    @media only screen and (max-width: 600px) {
-      font-size: .7222rem;
-      padding: .8rem .6rem !important;
-    }
-
-  }
-
-  .browse-more {
-    @media only screen and (max-width: 600px) {
-      text-align: right;
-    }
-  }
-}
-
 
 .quantity {
+  width: 10rem;
+  margin: 1rem 0;
   display: grid;
-  grid-template-columns: 50% auto;
-  margin: 1.2rem 0;
+  grid-template-columns: 30% auto;
 
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 50% auto;
-
+  p {
+    margin: .2rem 0;
   }
 
   .qnty-group-btns {
     display: grid;
     grid-template-columns: repeat(3, 33%);
-    border: 1px solid $strong-gray;
-    border-radius: 25px;
 
-    .neg,
-    .pos {
-      padding: .6rem .01rem;
-      height: 2.4rem;
-      text-align: center;
-      cursor: pointer;
-
-      @media only screen and (max-width: 600px) {
-        padding: .4rem .01rem;
-      }
-    }
-
-    .val {
-      input {
-        width: 100%;
-        text-align: center;
-        height: 2.4rem;
-        border: 1px solid $strong-gray;
-        margin: 0;
-        border-top: none;
-        border-bottom: none;
-
-      }
-    }
-  }
-
-  .add-to-cart {
-    padding: .4rem .01rem;
-    height: 2.6rem;
-    text-align: center;
-    cursor: pointer;
-    margin: 0 .5rem;
-    width: 12rem;
-
-    padding: .5rem .01rem;
-    height: 2.6rem;
-    text-align: center;
-    cursor: pointer;
-    margin: 0 .5rem;
-    width: 9rem;
-    border-radius: 23px;
-    font-weight: 700;
-  }
-}
-
-.back {
-  h4 {
-    cursor: pointer;
-  }
-}
-
-.more-product-details {
-  ::ng-deep {
-    .ql-size-huge {
-      font-weight: 900;
-      font-size: 2rem;
-
-      @media only screen and (max-width: 600px) {
-        font-weight: 700;
-        font-size: 1.4rem;
-
-      }
-    }
-
-    .ql-size-large {
-      font-weight: 800;
-      font-size: 1.8rem;
-
-      @media only screen and (max-width: 600px) {
-        font-weight: 600;
-        font-size: 1.3rem;
-      }
-    }
-
-    p {
+    input {
       margin: 0;
+      width: 100%;
+      padding: .355rem 0;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      cursor: pointer;
     }
   }
-
 }
 
-.footer {
-  padding: 1rem 12rem;
-  padding: 1rem;
-  padding-bottom: 4rem;
-  display: none;
-  // margin-top: 0;
+.actions {
+  grid-template-columns: 100%;
 
-  // h1,
-  // h2,
-  // address, span {
-  //   color: $black-color;
-  // }
+  .action {
+    padding: .5rem 0;
 
-  // h1 {
-  //   margin: 0;
-  //   font-weight: 500;
-  // }
-  // h2{
-  //   font-weight: 400;
-  //   text-decoration: underline;
-
-  // }
-}
-
-.pi {
-  position: relative;
-  top: 4px;
-}
-
-.back{
-  a{
-    display: block;
-    text-align: left;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: .8rem;
-    color: $black-color;
-    margin-top: 2rem;
-  }
-}
-.phone{
-  display: none;
-  @media only screen and (max-width: 600px) {
-  display: block;
-  }
-}
-.pc{
-  display: block;
-  @media only screen and (max-width: 600px) {
-  display: none;
+    img {
+      height: 2rem;
+      cursor: pointer;
+    }
   }
 }

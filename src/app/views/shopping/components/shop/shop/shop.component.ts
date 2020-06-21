@@ -83,11 +83,11 @@ export class ShopComponent implements OnInit {
   }
 
   viewCart() {
-    this.router.navigate(['shop/shopping-cart', this.companyId]);
+    this.router.navigate(['shopping-cart', this.companyId]);
   }
   viewItem(product: Product) {
     this.productService.updateSellProductState(product);
-    this.router.navigate(['shop/view-product', product.ProductId]);
+    this.router.navigate(['view-product', product.ProductId]);
 
   }
 

@@ -52,7 +52,7 @@ export function newBankArray(companyId: string): Config[] {
             ConfigId: '',
             CompanyId: companyId,
             Name: 'branchname',
-            Label: 'branch name',
+            Label: 'branch code',
             Type: 'bank',
             GroupKey: '',
             Value: ' ',

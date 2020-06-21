@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" viewBox="0 0 35 26">
+  <g id="btn-qty-add" transform="translate(-0.335 -0.303)">
+    <g id="cta-visit-shop" transform="translate(0 0)">
+      <rect id="Rectangle_9" data-name="Rectangle 9" width="35" height="26" transform="translate(0.335 0.303)"/>
+    </g>
+    <g id="Group_48" data-name="Group 48" transform="translate(7.072 2.761)">
+      <line id="Line_5" data-name="Line 5" x2="20.988" transform="translate(0 10.494)" fill="none" stroke="#fff" stroke-width="3"/>
+      <line id="Line_6" data-name="Line 6" x2="20.988" transform="translate(10.494 0) rotate(90)" fill="none" stroke="#fff" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
