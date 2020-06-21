@@ -74,6 +74,7 @@ export class SignUpComponent implements OnInit {
       Password: password,
       CreateUserId: 'web',
       ModifyUserId: 'web',
+      Address: '',
       RoleId: 1,
       StatusId: 1
     };

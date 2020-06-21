@@ -1,31 +1,50 @@
 <div class="top-navigation">
-  <div class="logo">
-    <img src="assets/images/tybo.png" alt="">
+
+  <div class="col menu">
+    <img src="assets/images/tybo/menu.svg" alt="">
   </div>
 
-  <div class="search">
-    <div class="input-group">
-      <div>
-        <input type="text" placeholder="Search products and shops...">
-      </div>
-      <div class="icon">
-        <img src="assets/images/search.svg" alt="">
-      </div>
+  <div class="col logo">
+    <a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{exact: true}">
+      <img src="assets/images/tybo/logo.svg" alt="">
+    </a>
+  </div>
+
+
+  <div class="col search">
+    <img src="assets/images/tybo/search-btn.svg" alt="">
+  </div>
+
+  <div class="col actions">
+    <div class="item">
+      <a routerLink="/shop" (click)="closeModule()">
+        <img src="assets/images/tybo/shops.svg" alt="">
+      </a>
     </div>
+
+    <div class="item">
+      <a routerLink="/sign-up" (click)="closeModule()">
+        <img src="assets/images/tybo/register.svg" alt="">
+      </a>
+    </div>
+
+    <div class="item">
+      <a routerLink="/sign-in" (click)="closeModule()">
+        <img src="assets/images/tybo/login.svg" alt="">
+      </a>
+    </div>
+
+    <div class="item">
+      <img src="assets/images/tybo/bag.svg" alt="">
+    </div>
+
   </div>
 
-  <div class="account">
-    <a routerLink="/sign-up">
-      <img src="assets/images/sign-up-home.svg" alt="">
-    </a>
-    <a routerLink="/sign-in">
-      <img src="assets/images/sign-in-home.svg" alt="">
-    </a>
 
 
-  </div>
 </div>
-
+<!-- 
 <div class="tabs">
   <div class="tab-item">
     <p>
@@ -52,7 +71,7 @@
     </p>
   </div>
 
-</div>
+</div> -->
 
 <div class="mobile-menu" *ngIf="showMobileNav">
   <div class="tab-item">
@@ -73,7 +92,7 @@
   <div class="tab-item">
     <p>
 
-      <a routerLink="/shop"   (click)="closeModule()" routerLinkActive="active-link">Shopping</a>
+      <a routerLink="/shop" (click)="closeModule()" routerLinkActive="active-link">Shopping</a>
     </p>
   </div>
 
@@ -84,12 +103,12 @@
     </p>
   </div>
   <div class="tab-item">
-    <a routerLink="/sign-up"  (click)="closeModule()" >
+    <a routerLink="/sign-up" (click)="closeModule()">
       <img src="assets/images/sign-up-home.svg" alt="">
     </a>
   </div>
   <div class="tab-item">
-    <a routerLink="/sign-in"  (click)="closeModule()" >
+    <a routerLink="/sign-in" (click)="closeModule()">
       <img src="assets/images/sign-in-home.svg" alt="">
     </a>
   </div>
@@ -157,35 +176,5 @@
       </a>
     </div>
     <a class="collapse" (click)="closeModule()">collapse</a>
-  </div>
-</div>
-
-
-<div class="mobile-nav ">
-
-  <div class="menu">
-    <img  (click)="toggleNav()"  src="assets/images/option.svg" alt="">
-  </div>
-  <div class="logo">
-    <img src="assets/images/tybo.png" alt="">
-  </div>
-</div>
-
-<div class="mobile-nav-bottom">
-  <div class="menu-item">
-    <img src="assets/images/home-nav.svg" alt="">
-    <a routerLink="/home">Home</a>
-  </div>
-  <div class="menu-item">
-    <img src="assets/images/search-nav.svg" alt="">
-    <a routerLink="/home">Search</a>
-  </div>
-  <div class="menu-item">
-    <img src="assets/images/shopping-nav.svg" alt="">
-    <a routerLink="/shop">Shopping</a>
-  </div>
-  <div class="menu-item">
-    <img src="assets/images/account-nav.svg" style="width: .8rem;" alt="">
-    <a routerLink="/home">Account</a>
   </div>
 </div>

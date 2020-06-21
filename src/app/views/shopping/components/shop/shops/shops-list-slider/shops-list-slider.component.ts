@@ -39,6 +39,6 @@ export class ShopsListSliderComponent implements OnInit {
     });
   }
   visitShow(shop: Company) {
-    this.router.navigate(['shop/at', shop.Handler || shop.CompanyId]);
+    this.router.navigate(['at', shop.Handler || shop.CompanyId]);
   }
 }

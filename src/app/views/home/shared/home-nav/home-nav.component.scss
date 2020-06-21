@@ -1,357 +1,55 @@
-@import '../../../../../assets/styles/variables';
-
 .top-navigation {
+  background: #fff;
   display: grid;
-  grid-template-columns: 15% 68% auto;
-  padding: .5rem 12rem;
-  border-bottom: 1px solid $border-color;
-  background: $white-color;
-
-  @media only screen and (max-width: 1500px) {
-    padding: 0rem 7rem;
-    grid-template-columns: 15% 55% auto;
-
-
-  }
-
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-
-
-  // border: 1px solid rgb(200, 191, 191);
-
-  div {
-    // border: 1px solid rgb(200, 191, 191);
-  }
-
-  .logo {
-    padding-top: .6rem;
-
-    img {
-      width: 7rem;
-
-
-      @media only screen and (max-width: 1500px) {
-        width: 5rem;
-      }
-
-    }
-  }
-
-  .search {
-    .input-group {
-      width: 20rem;
-      padding: .5rem;
-      height: 3rem;
-      display: grid;
-      grid-template-columns: 85% auto;
-
-      @media only screen and (max-width: 1500px) {
-        width: 15rem;
-        padding: .1rem;
-        height: 1.5rem;
-
-      }
-
-      input {
-        height: 2rem;
-        margin: 0;
-        padding: .2rem 1.5rem;
-        border-top-left-radius: 1rem;
-        border-bottom-left-radius: 1rem;
-        background: $white-color;
-        border: 2px solid $primary-bg-color;
-
-        @media only screen and (max-width: 1500px) {
-
-          height: 1.5rem;
-          padding: .1rem 1rem;
-
-
-        }
-
-        &::placeholder {
-          font-weight: 200;
-          font-size: .7rem;
-        }
-
-      }
-
-      .icon {
-        background: $primary-bg-color;
-        padding: .4rem;
-        height: 2rem;
-        border-top-right-radius: 1rem;
-        border-bottom-right-radius: 1rem;
-
-
-        @media only screen and (max-width: 1500px) {
-          padding: .2rem;
-          height: 1.5rem;
-
-        }
-
-        img {
-          width: 60%;
-
-          @media only screen and (max-width: 1500px) {
-            width: 45%;
-          }
-        }
-      }
-    }
-  }
-
-
-
-  .account {
-    img {
-      margin-right: .5rem;
-      margin-top: 0.6rem;
-      cursor: pointer;
-      width: 7rem;
-      @media only screen and (max-width: 1500px) {
-        width: 5rem;
-
-      }
-    }
-  }
-
-
-}
-
-.tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 10%);
-  padding: .4rem 12rem;
-  background: $white-color;
+  grid-template-columns: 5% 10% 45% auto;
   width: 100%;
-  @media only screen and (max-width: 1500px) {
-    padding: .2rem 7rem;
-
-  }
-
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-
-  .tab-item {
-    p {
-      margin: 0;
-
-      a {
-        color: $black-color;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: .9rem;
-        cursor: pointer;
-        @media only screen and (max-width: 1500px) {
-          font-size: .6rem;
-        }
-
-        &:hover {
-          color: $primary-bg-color;
-          text-decoration-thickness: 3px;
-        }
-      }
-
-      .active-link {
-        // text-decoration: underline;
-        color: $primary-bg-color;
-        border-bottom: 3px solid $primary-bg-color;
-      }
-    }
-
-    .active {
-      text-decoration: underline;
-      color: $primary-bg-color;
-    }
-  }
-}
-
-
-.modules {
-  position: fixed;
-  z-index: 2000;
-  background: $white-color;
-  top: 6rem;
-  width: 78.7vw;
-  height: 30vh;
-  border-bottom: solid 2px $primary-bg-color;
-  padding: 4rem;
-  left: 3rem;
-
-
-  .module {
-    margin: 1rem;
-
-    &.col-1-of-2 {
-      grid-template-columns: 10% auto;
-    }
-
-    img {
-      width: 1.5rem;
-      margin: 0.5rem 0;
-    }
-
-    .cta {
-
-      .header {
-        font-weight: 600;
-        font-size: 15px;
-        color: $black-color;
-        text-transform: lowercase;
-
-        &:hover {
-          color: $primary-bg-color;
-        }
-      }
-
-      .text {
-        display: block;
-        margin-top: 0.5rem;
-        font-size: 13px;
-        color: $gray-color;
-      }
-    }
-  }
-
-  a.collapse {
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 400;
-    color: $black-color;
-    opacity: 0.7;
-    margin: 3rem auto;
-  }
-
-  @media only screen and (max-width: 600px) {
-
-    z-index: 9000;
-    top: 4rem;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    @media only screen and (max-width: 600px) {
-      top: 0;
-
-    }
-
-    .module {
-      &.col-1-of-2 {
-        grid-template-columns: 14% auto;
-      }
-    }
-  }
-}
-
-.mobile-nav {
-  grid-template-columns: repeat(2, 50%);
-  display: none;
-  padding: .8rem;
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 2.4rem;
-  background: $white-color;
-  z-index: 1001;
-  border-bottom: 1px solid $body-background;
+  z-index: 100;
 
-
-  @media only screen and (max-width: 600px) {
-    display: grid;
-  }
-
-
-  .logo {
-    text-align: right;
-
+  .col {
     // border: 1px solid black;
+    text-align: center;
+    box-sizing: border-box;
+
     img {
-      width: 6rem;
+      margin-top: .8rem;
+    }
+
+    p {
+      font-weight: 900;
+      text-transform: uppercase;
     }
   }
 
   .menu {
-    // border: 1px solid black;
-
     img {
-      width: 4.2rem;
+      width: 2.5rem;
+      margin: 1.5rem;
     }
   }
-}
 
-.mobile-nav-bottom {
-  grid-template-columns: repeat(4, 25%);
-  display: none;
-  padding: .8rem;
-  background: $white-color;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 3.4rem;
-  width: 100%;
-  border-top: 1px solid $body-background;
+  .logo {
+    text-align: left;
 
+    img {
+      width: 5rem;
+      margin: 1.5rem;
+    }
+  }
 
+  .search {
+    text-align: left;
 
-  @media only screen and (max-width: 600px) {
+    img {
+      height: 2.5rem;
+      cursor: text;
+      margin-top: 1.5rem;
+    }
+  }
+
+  .actions {
     display: grid;
+    grid-template-columns: repeat(4, 25%)
   }
-
-  .menu-item {
-    text-align: center;
-
-    img {
-      width: 1rem;
-    }
-
-    a {
-      display: block;
-      text-align: center;
-      font-weight: 700;
-      color: $black-color;
-      font-size: .8rem;
-    }
-
-  }
-
-}
-
-.mobile-menu {
-  display: none;
-  padding: .8rem;
-  background: $white-color;
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 60%;
-  z-index: 1002;
-
-  animation: moveInLeft 1s ease-out 0s;
-  animation-fill-mode: backwards;
-
-
-  @media only screen and (max-width: 600px) {
-    display: block;
-  }
-
-  .tab-item {
-    padding: .5rem .2rem;
-
-    .back {
-      width: 20%;
-    }
-
-    a {
-      text-transform: capitalize;
-      color: $black-color;
-      font-weight: 700;
-    }
-  }
-
 }

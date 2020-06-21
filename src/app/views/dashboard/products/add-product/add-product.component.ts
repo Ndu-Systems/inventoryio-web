@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductService, AccountService, CateroryService, BrandService, BannerService, UploadService, ScannerService } from 'src/app/_services';
-import { User, Product, Brand, Caterory } from 'src/app/_models';
+import {
+  ProductService, AccountService, CateroryService,
+  BrandService, BannerService, UploadService, ScannerService
+} from 'src/app/_services';
+import { User, Product, Brand, Caterory, Image } from 'src/app/_models';
 import { Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { state } from '@angular/animations';
@@ -26,6 +29,7 @@ export class AddProductComponent implements OnInit {
   isTrackInventory: boolean;
   id = 'new';
   attributes: Attribute[];
+  images: Image[];
 
   constructor(
     private fb: FormBuilder,
@@ -113,13 +117,19 @@ export class AddProductComponent implements OnInit {
 
     this.brands$ = this.brandService.brands;
     this.catergories$ = this.cateroryService.categories;
-    this.uploadService.clearState();
 
     this.attributeService.attributes.subscribe(data => {
       if (data) {
         this.attributes = data;
       }
     });
+
+    this.uploadService.images.subscribe(images => {
+      this.images = images;
+    });
+
+
+
 
   }
 
@@ -128,7 +138,7 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit(product: Product) {
-    product.Images = this.uploadService.currentImageValue;
+    product.Images = this.images || [];
     product.Attributes = this.attributes;
     this.productService.addProduct(product);
     this.messageService.add({

@@ -1,11 +1,13 @@
 <div class="main">
   <div class="cats">
-    <div class="cat" *ngFor="let category of categories">
-      <div class="image">
-        <!-- <img src="assets/images/temp-icon.png" alt=""> -->
-      </div>
+    <div class="cat active">
       <p>
-       {{category.Name}}
+        All
+      </p>
+    </div>
+    <div class="cat" *ngFor="let category of categories">
+      <p>
+        {{category.Name}}
       </p>
     </div>
   </div>

@@ -25,6 +25,7 @@ import { OurModulesComponent } from './our-modules';
 import { ShopsHomeSliderComponent } from '../shopping/components/shop/shops/shops-home-slider/shops-home-slider.component';
 import { CategoriesSliderComponent } from '../shopping/components/shop/shops/categories-slider/categories-slider.component';
 import { ShopsListSliderComponent } from '../shopping/components/shop/shops/shops-list-slider/shops-list-slider.component';
+import { ShopComponent } from '../shopping/components/shop/shop/shop.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'reset-password', component: ResetPasswordComponent },
       { path: 'shop', component: ShopsComponent },
+      { path: 'at/:id', component: ShopComponent },
     ]
   }
 ];
@@ -63,7 +65,8 @@ export const declarations = [
   OurModulesComponent,
   ShopsHomeSliderComponent,
   CategoriesSliderComponent,
-  ShopsListSliderComponent
+  ShopsListSliderComponent,
+  ShopComponent
  ];
 
 

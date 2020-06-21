@@ -28,7 +28,7 @@ const routes: Routes = [
     path: '', component: ShoppingComponent,
     children: [
       // { path: '', component: ShopsComponent },
-      { path: 'at/:id', component: ShopComponent },
+      // { path: 'at/:id', component: ShopComponent },
       { path: 'shopping-cart/:id', component: ShoppingCartComponent },
       { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
       { path: 'view-product/:id', component: ViewProductComponent },
@@ -46,7 +46,7 @@ const routes: Routes = [
 export const declarations = [
   ShoppingComponent,
   // ShopsComponent,
-  ShopComponent,
+  // ShopComponent,
   ShoppingCartComponent,
   ShopingSuccesfulComponent,
   ViewProductComponent,

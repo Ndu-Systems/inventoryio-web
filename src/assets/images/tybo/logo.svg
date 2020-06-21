@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="107.558" height="59.003" viewBox="0 0 107.558 59.003">
+  <defs>
+    <filter id="Path_20" x="0" y="0" width="61.539" height="23.402" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_23" x="34.015" y="36.105" width="21.122" height="22.898" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_21" x="23.264" y="10.48" width="36.33" height="25.506" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_22" x="28.775" y="22.744" width="28.658" height="25.98" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-4"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="logo" transform="translate(-253 -340.904)">
+    <g id="Group_13" data-name="Group 13" transform="translate(329.632 360.12)">
+      <text id="TYBO" transform="translate(0 9)" font-size="9" font-family="Montserrat-BlackItalic, Montserrat" font-weight="800" font-style="italic"><tspan x="0" y="0">TYBO</tspan></text>
+    </g>
+    <path id="Path_25" data-name="Path 25" d="M0,0H36.788" transform="translate(321.269 373.657)" fill="none" stroke="#3742fa" stroke-linecap="round" stroke-width="5"/>
+    <g id="icon" transform="translate(262 346.904)">
+      <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Path_20)">
+        <path id="Path_20-2" data-name="Path 20" d="M5.44,5.091,0,0H43.539l-1,5.4Z" transform="translate(9 6)" fill="#3742fa"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Path_23)">
+        <path id="Path_23-2" data-name="Path 23" d="M2.018,5.489.13.592H3.252Z" transform="translate(42.88 41.51)" fill="#5352ed"/>
+      </g>
+      <path id="Intersection_1" data-name="Intersection 1" d="M.936,25.009l7.152-.125c3.738-.065,6.022-1.533,5.973-4.347-.039-2.183-1.775-2.993-4.462-2.947l-7.383.129.873-4.972,6.086-.106c3.528-.061,5.645-1.526,5.6-4.256-.034-1.931-1.644-2.744-4.374-2.7L4.311,5.8l.9-5.141L11.906.538c6.341-.111,9.91,2.221,9.985,6.547a7.885,7.885,0,0,1-5.118,7.609,5.956,5.956,0,0,1,4.05,5.81c.111,6.3-5.423,9.378-13.065,9.511L.033,30.15Z" transform="translate(37.34 4.591)" fill="#3742fa"/>
+      <g id="Group_12" data-name="Group 12" transform="translate(53.801 14.808)">
+        <path id="Subtraction_1" data-name="Subtraction 1" d="M5.626,11.675h0A5.835,5.835,0,0,1,0,5.84,5.835,5.835,0,0,1,5.84,0c.179,0,.357.008.529.024L5.626,11.675h0Z" transform="translate(0 0)" fill="#fff"/>
+        <circle id="Ellipse_3" data-name="Ellipse 3" cx="5.309" cy="5.309" r="5.309" transform="translate(0.637 0.531)" fill="#2ed573"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Path_21)">
+        <path id="Path_21-2" data-name="Path 21" d="M3.788,7.266,0,0,18.33.224,17.068,7.506Z" transform="translate(32.26 16.48)" fill="#5352ed"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Path_22)">
+        <path id="Path_22-2" data-name="Path 22" d="M3.2,7.795,0,0,10.658.374,9.3,7.98Z" transform="translate(37.78 28.74)" fill="#5352ed"/>
+      </g>
+    </g>
+  </g>
+</svg>

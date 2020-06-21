@@ -1,25 +1,28 @@
 @import '../../../../../../../assets/styles/variables';
 
 .main {
+  display: none;
   .cats {
     display: flex;
 
     .cat {
       background: $white-color;
       margin-right: 1rem;
-      padding: 1.2rem 1rem;
-      border-radius: 2rem;
+      padding: .5rem;
+      border-radius: 0;
       display: grid;
       grid-template-columns: 4% auto;
-
-      img {
-        width: 1.5rem;
-      }
-
+      cursor: pointer;
       p {
         margin: 0;
         font-weight: 800;
+        font-size: .7rem;
+        display: block;
+        width: 100%;
       }
+    }
+    .active{
+      border: 1px solid $black-color;
     }
   }
 }

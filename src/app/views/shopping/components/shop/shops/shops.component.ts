@@ -38,7 +38,7 @@ export class ShopsComponent implements OnInit {
     });
   }
   visitShow(shop: Company) {
-    this.router.navigate(['shop/at', shop.Handler || shop.CompanyId]);
+    this.router.navigate(['at', shop.Handler || shop.CompanyId]);
   }
   visitProduct(product: Product) {
     this.router.navigate(['shop/view-product', product.ProductId]);

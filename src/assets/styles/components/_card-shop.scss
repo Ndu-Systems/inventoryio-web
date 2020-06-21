@@ -1,105 +1,27 @@
-$image-height :15rem;
-
-.shop-card {
+.shop-cards {
   display: grid;
-  grid-auto-columns: 100%;
-  grid-template-rows: $image-height auto;
-  grid-template-areas: "image" "details";
-  margin: 1rem;
-  border-radius: 12px;
-  background: #fff;
-  text-align: center;
-  cursor: pointer;
+  grid-template-columns: repeat(4, 25%);
+  grid-gap: 1rem;
 
   @media only screen and (max-width: 600px) {
-    grid-template-rows: 130px 41px 40px 1px;
-    margin: .5rem;
-
+    grid-template-columns: repeat(2, 50%);
+    padding: 1rem 2rem;
   }
 
-  .image {
-    grid-area: "image";
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    background-size: cover;
-    background-position: top left;
-    text-align: center;
-    // background: red;
-    // background: rgb(249, 190, 59);
-    border-bottom: 1px solid rgb(224, 224, 224);
-    padding: .5rem;
-    text-align: center;
-    overflow: hidden;
-
-    @media only screen and (max-width: 600px) {
-      height: 130px;
-
-
-    }
-
+  .card {
+    background: #fff;
+    padding-bottom: .5rem;
+    cursor: pointer;
     img {
-      // height: 320px;
-      width: 92%;
-      border-radius: 8px;
-
+      width: 100%;
     }
 
-  }
-
-
-  .details {
-    grid-area: "name";
-    padding: .8rem 2.5rem;
-
-    @media only screen and (max-width: 600px) {
-      margin: 3px 7px;
-      padding: .5rem;
-
-
-      p {
-        font-size: .6rem;
-        margin: 0;
-      }
-
-    }
-
-    // background: rgb(63, 4, 4);
     p {
-      color: #2E344C;
-      font-weight: 500;
-      text-align: left;
-      margin: 0;
-      margin-top: .3rem;
-      font-size: 12px;
-      margin: 0;
-      margin-top: .3rem;
+      padding: .8rem;
+      margin: .1rem 0;
+      @media only screen and (max-width: 600px) {
+        font-size: .7rem;
+      }
     }
   }
-}
-
-
-.cover-photo {
-  width: 100%;
-  padding-top: 4%;
-  margin-bottom: -6px;
-
-  @media only screen and (max-width: 600px) {
-    padding: 1%;
-    padding-top: 16%;
-
-  }
-
-  img {
-    width: 100%;
-  }
-}
-
-
-.small-heading {
-  margin-top: 0;
-  border-bottom: 1px solid $ligher-gray;
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 900;
-  font-size: 1.8rem;
 }

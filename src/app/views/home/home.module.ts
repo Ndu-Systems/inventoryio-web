@@ -8,6 +8,7 @@ import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'ng4-social-login';
+import { CheckboxModule } from 'primeng/checkbox';
 
 const config = new AuthServiceConfig(
   [
@@ -35,7 +36,8 @@ export function provideConfig() {
     CardModule,
     ToastModule,
     CarouselModule,
-    SocialLoginModule
+    SocialLoginModule,
+    CheckboxModule
   ],
   declarations: [
     ...declarations
