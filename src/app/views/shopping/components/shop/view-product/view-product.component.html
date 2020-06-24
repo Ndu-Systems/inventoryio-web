@@ -90,3 +90,56 @@
   <img class="pc" src="assets/images/prodghost.svg" alt="">
   <img class="mobile" src="assets/images/prductdetails-mobile.svg" alt="">
 </span>
+
+
+<div *ngIf="viewCart" class="overlay">
+  <div class="modal">
+    <h1>{{modalHeading}}</h1>
+
+    <div class="products">
+
+      <div class="product" *ngFor="let item of sale.items">
+        <div class="image">
+          <img [src]="item.image" alt="" *ngIf="item.image" />
+          <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
+        </div>
+
+        <div class="item">
+          <p>
+            {{item.name}}
+            <span>
+              {{item?.options | formatOptions}}
+            </span>
+          </p>
+        </div>
+
+        <div class="price">
+          <p>
+            {{item.quantity}} x {{item.price| currency:'R'}}
+          </p>
+        </div>
+        <div class="item edit">
+          <div class="action">
+            <img (click)="reduce(item)" src="assets/images/tybo/cta-cart-minus.svg" alt="">
+          </div>
+          <div class="action">
+            <img (click)="add(item)" src="assets/images/tybo/cta-cart-plus.svg" alt="">
+          </div>
+          <div class="action">
+            <img (click)="removeItem(item)" class="remove" src="assets/images/tybo/cta-cart-remove.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="action">
+        <img (click)="checkout()" src="assets/images/tybo/cta-checkout.svg" alt="">
+      </div>
+
+      <div class="action">
+        <img (click)="back()" src="assets/images/tybo/cta-continue-shopping.svg" alt="">
+      </div>
+    </div>
+  </div>
+</div>

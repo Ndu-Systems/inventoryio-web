@@ -49,29 +49,29 @@ export class ShoppingCartComponent implements OnInit {
   ) {
 
 
-    this.activatedRoute.params.subscribe(r => {
-      this.companyId = r.id;
-      this.productService.getProducts(this.companyId);
+    // this.activatedRoute.params.subscribe(r => {
+    //   this.companyId = r.id;
+    //   this.productService.getProducts(this.companyId);
 
-      this.companyService.getCompany(this.companyId).subscribe(data => {
-        if (data) {
-          this.company = data;
-          this.company = data;
-          if (this.company.Theme) {
-            this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-            this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-          }
-          if (this.company.Logo && this.company.Logo.length) {
-            this.logoUrl = this.company.Logo[0].Url;
-          }
-          if (this.company.Shipping) {
-            this.shippings = this.company.Shipping;
-            this.groupShipping();
-          }
-        }
+    //   this.companyService.getCompany(this.companyId).subscribe(data => {
+    //     if (data) {
+    //       this.company = data;
+    //       this.company = data;
+    //       if (this.company.Theme) {
+    //         this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+    //         this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+    //       }
+    //       if (this.company.Logo && this.company.Logo.length) {
+    //         this.logoUrl = this.company.Logo[0].Url;
+    //       }
+    //       if (this.company.Shipping) {
+    //         this.shippings = this.company.Shipping;
+    //         this.groupShipping();
+    //       }
+    //     }
 
-      });
-    });
+    //   });
+    // });
   }
   ngOnInit() {
     this.sale$ = this.shoppingService.sell;
@@ -205,7 +205,7 @@ export class ShoppingCartComponent implements OnInit {
     // save order shipping details
 
 
-    this.router.navigate(['shop/checkout', this.companyId]);
+    this.router.navigate(['checkout', this.companyId]);
   }
   formatDate(d: string) {
     const months = ['Jan', 'Feb', 'Mar',

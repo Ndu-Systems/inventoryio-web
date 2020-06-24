@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Orders, Company, Product, SellModel } from 'src/app/_models';
+import { Orders, Company, Product, SellModel, Item } from 'src/app/_models';
 import { ProductService, CompanyService, InvoiceService } from 'src/app/_services';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -35,6 +35,8 @@ export class ViewProductComponent implements OnInit {
   products: Product[];
   loading = true;
   logoUrl: string;
+  viewCart: boolean;
+  modalHeading: string;
 
   constructor(
     private productService: ProductService,
@@ -167,11 +169,13 @@ export class ViewProductComponent implements OnInit {
       // this.orderOptions = [];
 
     }
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Added to cart',
-      detail: `${product.Name} Added`
-    });
+    // this.messageService.add({
+    //   severity: 'success',
+    //   summary: 'Added to cart',
+    //   detail: `${product.Name} Added`
+    // });
+    this.viewCart = true;
+    this.modalHeading = `${product.Name} added to cart!`;
 
     this.productService.updateCurrentProduct(product);
 
@@ -179,6 +183,9 @@ export class ViewProductComponent implements OnInit {
 
   back() {
     this.router.navigate(['at', this.company.Handler || this.company.CompanyId]);
+  }
+  checkout() {
+    this.router.navigate(['checkout', this.company.Handler || this.company.CompanyId]);
   }
 
   optionSelected(option, attributeId) {
@@ -216,5 +223,25 @@ export class ViewProductComponent implements OnInit {
       return false;
     }
     this.itemQnty += count;
+  }
+
+  add(item: Item) {
+    // const product = this.products.find(x => x.ProductId === item.prodcuId);
+    // if (Number(product.Quantity) - Number(item.quantity) <= 0) {
+    //   return false;
+    // }
+    item.quantity++;
+    this.shoppingService.doSellLogic(item, this.companyId);
+  }
+  reduce(item: Item) {
+    if (item.quantity <= 0) {
+      this.shoppingService.removeItem(item);
+      return;
+    }
+    item.quantity--;
+    this.shoppingService.doSellLogic(item, this.companyId);
+  }
+  removeItem(item: Item) {
+    this.shoppingService.removeItem(item);
   }
 }

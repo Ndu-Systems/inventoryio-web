@@ -29,6 +29,11 @@ import { ShopComponent } from '../shopping/components/shop/shop/shop.component';
 import { ViewProductComponent } from '../shopping/components/shop/view-product/view-product.component';
 import { ViewImagesComponent } from '../shopping/components/shop/view-images/view-images.component';
 import { RemoveNoValuesAttributesPipe } from 'src/app/_pipes/remove-no-values-attributes.pipe';
+import { ShoppingCartComponent } from '../shopping/components/shop/shopping-cart/shopping-cart.component';
+import { ShopingSuccesfulComponent } from '../shopping/components/shop/shoping-succesful/shoping-succesful.component';
+import { ShopCheckoutComponent } from '../shopping/components/shop/shop-checkout/shop-checkout.component';
+import { FormatOptionsPipe } from 'src/app/_pipes/format-options.pipe';
+import { ShippingComponent } from '../shopping/components/shop/shipping/shipping.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -44,6 +49,9 @@ const routes: Routes = [
       { path: 'shop', component: ShopsComponent },
       { path: 'at/:id', component: ShopComponent },
       { path: 'view-product/:id', component: ViewProductComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
+      { path: 'checkout/:id', component: ShopCheckoutComponent },
 
     ]
   }
@@ -74,7 +82,12 @@ export const declarations = [
   ShopComponent,
   ViewProductComponent,
   ViewImagesComponent,
-  RemoveNoValuesAttributesPipe
+  RemoveNoValuesAttributesPipe,
+  ShoppingCartComponent,
+  ShopingSuccesfulComponent,
+  ShopCheckoutComponent,
+  FormatOptionsPipe,
+  ShippingComponent,
 ];
 
 

@@ -84,3 +84,46 @@
     }
   }
 }
+
+
+.modal {
+  border-top: 4px solid rgb(2, 255, 108);
+
+  .products {
+    .product {
+      display: grid;
+      grid-template-columns: 10% 20% 20% auto;
+      grid-gap: .5rem;
+
+      img {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .edit {
+        display: grid;
+        grid-template-columns: 10% 10% auto;
+
+        img {
+          margin-top: 1rem;
+          width: 1.4rem;
+        }
+
+        .remove {
+          margin-left: 2.5rem;
+        }
+      }
+    }
+  }
+
+  .actions {
+    .action {
+      padding: 2rem 0;
+
+      img {
+        height: 2rem;
+        width: auto;
+      }
+    }
+  }
+}

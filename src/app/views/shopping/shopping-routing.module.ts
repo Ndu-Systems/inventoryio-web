@@ -29,9 +29,7 @@ const routes: Routes = [
     children: [
       // { path: '', component: ShopsComponent },
       // { path: 'at/:id', component: ShopComponent },
-      { path: 'shopping-cart/:id', component: ShoppingCartComponent },
-      { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
-      { path: 'checkout/:id', component: ShopCheckoutComponent },
+   
       { path: 'customer-login/:id', component: CustomerLoginComponent },
       { path: 'customer-signup/:id', component: CustomerSignupComponent },
       { path: 'customer-portal/:id', component: CustomerPortalComponent },
@@ -46,14 +44,10 @@ export const declarations = [
   ShoppingComponent,
   // ShopsComponent,
   // ShopComponent,
-  ShoppingCartComponent,
-  ShopingSuccesfulComponent,
+
   // ViewProductComponent,
-  ShippingComponent,
   // ViewImagesComponent,
   ShoppingNavComponent,
-  ShopCheckoutComponent,
-  FormatOptionsPipe,
   // RemoveNoValuesAttributesPipe,
   CustomerPortalComponent,
   CustomerLoginComponent,

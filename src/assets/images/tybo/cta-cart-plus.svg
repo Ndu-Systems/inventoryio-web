@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="47" height="44" viewBox="0 0 47 44">
+  <g id="cta-cart-plus" transform="translate(-799 -419)">
+    <g id="cta-cart-plus-2" data-name="cta-cart-plus" transform="translate(-773 -535)">
+      <g id="Rectangle_9" data-name="Rectangle 9" transform="translate(1572 954)" stroke="#fff" stroke-width="1">
+        <rect width="47" height="44" stroke="none"/>
+        <rect x="0.5" y="0.5" width="46" height="43" fill="none"/>
+      </g>
+    </g>
+    <g id="Group_57" data-name="Group 57" transform="translate(8 -24.5)">
+      <g id="cta-cart-minus" transform="translate(-769 -491)">
+        <rect id="Rectangle_9-2" data-name="Rectangle 9" width="23" height="6" transform="translate(1572 954)" fill="#fff"/>
+      </g>
+      <g id="cta-cart-minus-2" data-name="cta-cart-minus" transform="translate(1771.5 -1117.5) rotate(90)">
+        <rect id="Rectangle_9-3" data-name="Rectangle 9" width="23" height="6" transform="translate(1572 954)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
