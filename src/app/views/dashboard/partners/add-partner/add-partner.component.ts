@@ -37,15 +37,9 @@ export class AddPartnerComponent implements OnInit {
     const user: User = this.accountService.currentUserValue;
     this.getRoles(user.CompanyId);
     this.rForm = this.fb.group({
-      EmailAddress: new FormControl(
-        null,
-        Validators.compose([
-          Validators.required,
-          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-        ])
-      ),
+      EmailAddress: ['', Validators.required],
       Name: [null, Validators.required],
-      CellphoneNumber: [null, Validators.required],
+      CellphoneNumber: ['', Validators.required],
       Surname: [''],
       Password: [''],
       Address: [''],

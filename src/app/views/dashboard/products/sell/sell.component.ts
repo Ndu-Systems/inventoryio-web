@@ -49,6 +49,7 @@ export class SellComponent implements OnInit {
   productForAttributes: Product;
   selectProductQnty = 1;
   customerNotFound: boolean;
+  Notes: string;
 
 
 
@@ -132,7 +133,7 @@ export class SellComponent implements OnInit {
     this.bannerService.cartModal.subscribe(data => {
       this.showCart = data;
     });
-
+    this.Notes = localStorage.getItem('Notes') || '';
   }
   add() {
     this.router.navigate(['/dashboard/add-product']);
@@ -267,6 +268,8 @@ export class SellComponent implements OnInit {
           StatusId: 1
         };
         order.Charges = [shipment];
+        order.Notes = this.Notes || '';
+        localStorage.setItem('Notes', this.Notes);
 
         console.log(order);
         console.log('items', this.sale.items);
@@ -313,6 +316,8 @@ export class SellComponent implements OnInit {
 
       console.log(order);
       console.log('items', this.sale.items);
+      order.Notes = this.Notes || '';
+      localStorage.setItem('Notes', this.Notes);
       this.ordersService.addOrder(order, this.sale.items);
       this.updateProductsRange(this.sale.items);
       // clear state

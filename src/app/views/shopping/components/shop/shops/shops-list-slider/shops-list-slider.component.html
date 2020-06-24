@@ -1,14 +1,7 @@
 <div class="main">
   <div class="shops">
     <div class="shop" *ngFor="let shop of filterShops; let i = index">
-      <div class="name">
-        <h1>
-          {{shop?.Name}}
-        </h1>
-        <div class="action">
-          <img (click)="visitShow(shop)" src="assets/images/tybo/cta-visit-shop.svg" alt="">
-        </div>
-      </div>
+
       <div class="products">
         <!-- <pre>
           {{shop |json}}
@@ -19,8 +12,17 @@
         <div class="product">
           <img [src]="shop.Products[1].Images[0].Url" alt="">
         </div>
-        <div class="product">
+        <!-- <div class="product">
           <img [src]="shop.Products[2].Images[0].Url" alt="">
+        </div> -->
+      </div>
+
+      <div class="name">
+        <h1>
+          {{shop?.Name}}
+        </h1>
+        <div class="action">
+          <img (click)="visitShow(shop)" src="assets/images/tybo/cta-visit-shop.svg" alt="">
         </div>
       </div>
   

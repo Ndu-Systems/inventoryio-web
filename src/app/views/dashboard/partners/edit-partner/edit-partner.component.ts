@@ -37,15 +37,9 @@ export class EditPartnerComponent implements OnInit {
           const user: User = this.accountService.currentUserValue;
           this.getRoles(user.CompanyId);
           this.rForm = this.fb.group({
-            EmailAddress: new FormControl(
-              partner.EmailAddress,
-              Validators.compose([
-                Validators.required,
-                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-              ])
-            ),
             PartnerId: [partner.PartnerId, Validators.required],
             Name: [partner.Name, Validators.required],
+            EmailAddress: [partner.EmailAddress, Validators.required],
             CellphoneNumber: [partner.CellphoneNumber, Validators.required],
             Surname: [partner.Surname],
             Password: [''],

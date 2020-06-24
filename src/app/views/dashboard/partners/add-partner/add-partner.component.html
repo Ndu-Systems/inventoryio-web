@@ -21,21 +21,21 @@
 
         <div class="surname">
           <label class="label">Surname</label>
-          <input type="text" class="roundInput" formControlName="Surname" required="required" />
+          <input type="text" class="roundInput" formControlName="Surname" />
         </div>
       </div>
 
       <div class="form-item">
-        <label class="label">Email address*</label>
-        <input type="text" class="roundInput" formControlName="EmailAddress" required="required" />
-        <div class="alert" *ngIf="!rForm.controls['EmailAddress'].valid && rForm.controls['EmailAddress'].touched">
+        <label class="label">Email address</label>
+        <input type="text" class="roundInput" formControlName="EmailAddress"/>
+        <!-- <div class="alert" *ngIf="!rForm.controls['EmailAddress'].valid && rForm.controls['EmailAddress'].touched">
           Email is required
-        </div>
+        </div> -->
       </div>
 
       <div class="form-item">
-        <label class="label">Contact number*</label>
-        <input type="text" class="roundInput" formControlName="CellphoneNumber" required="required" />
+        <label class="label">Contact number</label>
+        <input type="text" class="roundInput" formControlName="CellphoneNumber"/>
         <div class="alert"
           *ngIf="!rForm.controls['CellphoneNumber'].valid && rForm.controls['CellphoneNumber'].touched">
           Cellphone number is required

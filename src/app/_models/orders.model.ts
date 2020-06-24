@@ -27,6 +27,7 @@ export interface Orders {
     Payment?: number;
     Show?: boolean;
     CardClass?: string[];
+    Notes?: string;
 
 
 }

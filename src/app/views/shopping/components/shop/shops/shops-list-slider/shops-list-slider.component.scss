@@ -2,53 +2,82 @@
 
 .main {
   .shops {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 1rem;
+    padding: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+      grid-gap: 0;
+    }
+
     .shop {
       background: $white-color;
-      padding: 1rem;
+      padding: 1.5rem;
       margin: 2.5rem 0;
       position: relative;
+      text-align: center;
 
       h1 {
         padding: 1rem 4rem;
       }
 
       .name {
-        background: rgba(255, 255, 255, 0.6);
+        // background: rgba(255, 255, 255, 0.6);
         /* background: red; */
-        position: absolute;
-        left: 27%;
-        top: 18%;
-        width: 54%;
-        padding: 4rem;
-        text-align: center;
+        // position: absolute;
+        // left: 27%;
+        // top: 18%;
+        // width: 54%;
+        // padding: 4rem;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        text-align: left;
+
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 100%;
+        }
 
         h1 {
-          text-align: center;
+          text-align: left;
           font-weight: 900;
-          font-size: 3rem;
+          font-size: 1rem;
+          margin: 0;
+          padding: 1rem;
         }
 
         .action {
-          text-align: center;
-          padding: 1.2rem 2.5rem;
+          text-align: right;
+          padding: 1.2rem 0;
+
+          @media only screen and (max-width: 600px) {
+            text-align: center;
+            padding: 0;
+          }
 
           img {
             cursor: pointer;
+            height: 2rem;
+
+            @media only screen and (max-width: 600px) {
+              right: 0;
+            }
           }
         }
       }
 
       .products {
         display: grid;
-        grid-template-columns: repeat(3, 33%);
+        grid-template-columns: repeat(2, 50%);
         grid-gap: 1rem;
 
         .product {
           text-align: center;
 
           img {
-            width: 98%;
-            margin: 0;
+            width: 96%;
+            margin: 0 auto;
           }
         }
       }

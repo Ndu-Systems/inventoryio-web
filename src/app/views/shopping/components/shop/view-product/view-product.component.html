@@ -115,7 +115,8 @@
 
         <div class="price">
           <p>
-            {{item.quantity}} x {{item.price| currency:'R'}}
+            {{item.quantity}} x {{item.price| currency:'R'}} <br>
+            <b>{{item.quantity*item.price| currency:'R'}}</b>
           </p>
         </div>
         <div class="item edit">

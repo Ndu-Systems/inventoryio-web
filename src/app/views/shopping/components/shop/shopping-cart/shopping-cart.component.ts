@@ -192,16 +192,16 @@ export class ShoppingCartComponent implements OnInit {
 
 
   checkout() {
-    if (!this.selectedShippingMethod && this.shippings.length > 0) {
-      this.messageService.add({
-        severity: 'warn',
-        summary: 'Shipping Method not selected',
-        detail: 'Please select shipping method before you checkout.'
-      });
-      return false;
-    }
-    this.sale.charges = [this.selectedShippingMethod];
-    this.shoppingService.updateState(this.sale);
+    // if (!this.selectedShippingMethod && this.shippings.length > 0) {
+    //   this.messageService.add({
+    //     severity: 'warn',
+    //     summary: 'Shipping Method not selected',
+    //     detail: 'Please select shipping method before you checkout.'
+    //   });
+    //   return false;
+    // }
+    // this.sale.charges = [this.selectedShippingMethod];
+    // this.shoppingService.updateState(this.sale);
     // save order shipping details
 
 

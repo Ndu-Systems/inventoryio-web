@@ -5,4 +5,8 @@
   // padding: 3rem 11.5rem;
   padding: 7rem 2rem;
   background: $body-background;
+
+  @media only screen and (max-width: 600px) {
+    padding: 7rem 0;
+  }
 }
