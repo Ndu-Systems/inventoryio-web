@@ -1,545 +1,96 @@
 @import '../../../../../../assets/styles/variables';
 
-.banner {
-  background-size: cover;
-  height: 38rem;
-  width: 99.9%;
-  background-position: top left;
-  position: relative;
+.container {
 
-  .banner-body {
-    padding: 10rem 0;
+  padding: 5%;
+  padding-bottom: 1rem;
+  min-height: 95vh;
 
-    .heading {
-      text-transform: initial;
-      text-transform: initial;
-      font-size: 2.5em;
-      font-weight: 900;
-      color: #F5F6FA;
-      text-align: center;
-      padding-top: 10%;
+  h1.heading {
+    padding: 1rem 12rem;
+  }
+
+  .products {
+    background: $white-color;
+    margin: 0 auto;
+    width: 70%;
+    padding: 1rem;
+    position: relative;
+    max-height: 30rem;
+    overflow-y: scroll;
+
+    .product {
+      display: grid;
+      grid-template-columns: 10% 20% 20% auto;
+      grid-gap: .5rem;
 
       @media only screen and (max-width: 600px) {
-        margin-top: 5rem !important;
-
+        grid-template-columns: 20% 40% auto;
       }
 
+      img {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .edit {
+        display: grid;
+        grid-template-columns: 10% 10% auto;
+
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 30% 30% auto;
+        }
+
+        img {
+          margin-top: 1rem;
+          width: 1.4rem;
+          cursor: pointer;
+
+
+          @media only screen and (max-width: 600px) {
+            margin: 0 1rem;
+          }
+        }
+
+        .remove {
+          margin-left: 2.5rem;
+        }
+      }
+
+      @media only screen and (max-width: 600px) {}
     }
   }
 
-
-  @media only screen and (max-width: 600px) {
-    height: 20rem;
-
-    .banner-body {
-      padding: 4rem 0;
-      padding-bottom: 1rem;
-
-      .heading {
-        margin: 1rem;
-        padding: 1rem;
-        font-size: 1.8em;
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-    }
-  }
-}
-
-.content {
-  padding: 5rem 10rem;
-  background: $cloud-ligher;
-
-  @media only screen and (max-width: 600px) {
-    padding: 1%;
-    display: none;
-  }
-
-
-  .col-1-2 {
+  .actions {
+    background: $white-color;
+    margin: 0 auto;
+    width: 70%;
     display: grid;
-    grid-template-columns: 70% auto;
+    grid-template-columns: 30% auto;
+    padding: 1rem;
+
 
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%;
     }
 
-  }
-
-  .col-1-5 {
-    display: grid;
-    grid-template-columns: repeat(5, 18%);
-
-    @media only screen and (max-width: 600px) {
-      display: none;
-
-    }
-
-
-    .head {
-      color: $blue-gray;
-      text-transform: uppercase;
-      font-weight: 600;
-      padding: .2rem;
-      padding-left: 2rem;
-      margin: .3rem;
-      font-weight: 800;
-      font-size: .8rem;
-
-    }
-
-    .row {
-      padding: .4rem;
-      border-bottom: 1px solid $blue-gray;
-
-      h3 {
-        font-size: .8rem;
-        margin: 0;
-        color: $dark-navy;
-        margin-bottom: .2rem;
-      }
-    }
-
-    .image {
-      width: 5rem;
+    .action {
+      padding: .1rem 0;
 
       img {
-        width: 100%;
-        // height: 4rem;
-      }
-    }
-
-    .name {
-      h3 {
-        color: $black-color;
-        margin: .5rem 0;
-
-        span {
-          display: block;
-          color: $gray-color;
-          font-weight: 500;
-        }
-      }
-
-      .remove {
-        button {
-          background: $white-color;
-          color: $blue-gray;
-          border: 2px solid $blue-gray;
-          padding: .3rem .8rem;
-          border-radius: 4px;
-          cursor: pointer;
-
-
-        }
-      }
-    }
-
-    .quantity {
-      display: grid;
-      grid-template-columns: repeat(3, 30%);
-
-      input,
-      span {
-        display: block;
-        margin: 0;
-
-      }
-
-      input {
-        width: 3rem;
-        margin: 0;
-        border: 2px solid $blue-gray;
-        height: 1.2rem;
-        padding: .8rem;
-        text-align: center;
-        color: $blue-gray;
-        ;
-        border-radius: 5px;
-
-      }
-
-      .col {
-        // border: 2px solid $blue-gray;
-        height: 3rem;
-
-      }
-
-      .clicks {
-        padding-top: 7%;
-        color: $blue-gray;
+        height: 2.5rem;
+        width: auto;
         cursor: pointer;
       }
     }
   }
 
-  .sale-item {
-    grid-template-columns: 10% 25% 20% 20% auto;
-    background: $white-color;
-    padding-top: 1rem;
-    padding-bottom: .2rem;
-
-    @media only screen and (max-width: 600px) {
-      display: none;
-    }
-
-  }
-
-  .sale-items-mobile {
-    display: none;
-    background: $white-color;
-    margin: .8rem;
-    border: none;
-
-    @media only screen and (max-width: 600px) {
-      display: block;
-    }
-
-    .row {
-      padding: .4rem;
-      border-bottom: none
-    }
-
-    .top {
-      display: grid;
-      grid-template-columns: 30% 40% auto;
-
-      .image {
-        img {
-          height: 3.5555rem;
-        }
-      }
-
-      .name {
-        padding-top: 20%;
-      }
-
-      .price {
-        h3 {
-          text-align: right;
-          margin: .5rem;
-        }
-      }
-    }
-
-    .bot {
-      display: grid;
-      grid-template-columns: 30% auto;
-
-      .quantity {
-        display: grid;
-        grid-template-columns: repeat(3, 33.3333333%);
-
-        input,
-        span {
-          display: inline;
-          margin: 0;
-
-        }
-
-        input {
-          width: 2rem;
-          margin: 0;
-          border: 1px solid $blue-gray;
-          height: 1.2rem;
-          padding: 0rem;
-          text-align: center;
-          color: $blue-gray;
-          border-radius: 5px;
-          font-size: .9rem;
-
-        }
-
-        .col {
-          // border: 2px solid $blue-gray;
-          height: 2rem;
-          // background: red;
-        }
-
-        .clicks {
-          padding-top: 3%;
-          color: $blue-gray;
-          cursor: pointer;
-          text-align: center;
-        }
-      }
-
-      .total {
-        text-align: right;
-
-        h3 {
-          margin-right: .5rem;
-        }
-      }
-    }
-  }
-
 }
 
-.mobile-content {
-
-  display: none;
-
-  @media only screen and (max-width: 600px) {
-    padding: 1%;
-    display: block;
-    padding: 1rem;
-    background: $cloud-ligher;
-    height: 92vh;
-  }
-  .heading{
-    font-size: 1.2rem;
-  }
-
-  .products {
-    overflow-y: scroll;
-    max-height: 42vh;
-  }
-  .sammary{
-    margin: 2.5rem .5rem;
-    select{
-      border: 2px solid $primary-bg-color;
-      border-radius: 30px;
-    }
-    .btn{
-      width: 100%;
-      margin-top: 2rem;
-      border-radius: 30px;
-      font-weight: 700;
-    }
-    h3{
-      font-size: 1rem;
-      font-weight: 500;
-      span{
-        font-weight: 900;
-        font-size: 1.3rem;
-      }
-    }
-  }
-
-  .product {
-    display: grid;
-    grid-template-columns: 20% auto;
-    background: $white-color;
-    padding: .5rem;
-    border-radius: 10px;
-    margin: .5rem 0;
-
-
-    .image {
-      padding: 1rem .4rem;
-      text-align: center;
-
-      img {
-        width: 95%;
-        border-radius: 4px;
-      }
-    }
-
-    .details {
-
-      .product-row {
-        display: grid;
-        grid-template-columns: 90% auto;
-
-        .name {
-
-          p {
-            margin: .2rem;
-            font-size: .9rem;
-
-            span {
-              display: block;
-              font-size: .8rem;
-              font-weight: 700;
-            }
-          }
-        }
-
-        .remove {
-          padding: .2rem;
-          text-align: right;
-
-          img {
-            width: 1.2rem;
-          }
-        }
-      }
-
-      .bottom {
-        grid-template-columns: 50% auto;
-
-        .price {
-          p {
-            margin: 1rem .5rem;
-            font-weight: 800;
-            font-size: 1rem;
-          }
-        }
-
-        .quantity {
-          .qnty {
-            display: grid;
-            grid-template-columns: 25% 50% auto;
-            padding: .2rem;
-            width: 8.5rem;
-            margin: .5rem auto;
-            border: 1px solid gray;
-            border-radius: 37px;
-            padding: 0 .7rem;
-            height: 2.1rem;
-
-            div {
-              text-align: center;
-              padding: 0;
-            }
-
-
-            button,
-            input {
-              height: 2.1rem;
-              margin: 0;
-              width: 100%;
-              text-align: center;
-            }
-
-            button {
-              color: $white-color;
-              background: $primary-bg-color;
-              border: none;
-              width: 1.2rem;
-              border-radius: 1.2rem;
-              height: 1.2rem;
-              padding: 0;
-              padding-top: .12rem;
-              margin: .3555rem auto;
-            }
-
-            .plus {
-              padding-left: .5rem;
-            }
-
-            input {
-              border: none;
-              font-weight: 900;
-              border: 1px solid $gray-color;
-
-            }
-          }
-        }
-
-      }
-    }
-  }
-}
-
-.check-out {
-  text-align: right;
-
-  button {
-    padding: 1rem;
-    margin-right: 2.6666rem;
-    font-size: 1rem;
-
-    @media only screen and (max-width: 600px) {
-      margin-right: .3rem;
-      padding: .5rem;
-      margin-top: .5rem;
-
-    }
-  }
-}
-
-
-.sammary-totals {
+h1.total {
+  font-size: 1.3rem;
   background: $white-color;
-  margin: .5rem;
-  margin-top: 0rem;
+  margin: .2rem auto;
+  width: 70%;
   padding: 1rem;
-
-  @media only screen and (max-width: 600px) {
-    margin-top: 1rem;
-
-  }
-}
-
-
-.topic-heading {
-  @media only screen and (max-width: 600px) {
-    font-size: 1rem;
-    margin-left: 1rem;
-  }
-}
-
-
-.label-span {
-  display: block;
-  color: #95AFC0;
-  text-align: right;
-  text-transform: uppercase;
-}
-
-.container {
-  @media only screen and (max-width: 600px) {
-    padding-top: 0;
-  }
-}
-
-.col-1-of-2 {
-  grid-template-columns: 50% auto;
-}
-
-.input {
-
-  padding: .5rem;
-
-  select,
-  input {
-    border: 1px solid $strong-gray;
-
-  }
-}
-
-
-.main-holder {
-  background: $white-color;
-}
-
-.back-link {
-  padding: 0 1rem;
-  cursor: pointer;
-  display: block;
-  margin: 1rem 0;
-
-}
-
-.action-btn {
-
-  @media only screen and (max-width: 600px) {
-    padding: 10px 8px;
-    font-size: .9rem;
-    font-weight: 500;
-  }
-}
-
-.not-found a{
-  margin-top: 1rem;
-  color: $white-color;
-  font-weight: 700;
-
-}
-.not-found{
-  background: $white-color;
-  margin: 3rem auto;
-  img{
-    width: 12rem;
-  }
-}
-
-.not-found .message{
-  margin-bottom: 1rem;
-  span{
-    display: block;
-    margin-top: 1rem;
-  }
 }

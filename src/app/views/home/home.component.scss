@@ -1,6 +1,8 @@
 @import '../../../assets/styles/variables';
 .main {
   padding: 0 8rem;
+  background: $body-background;
+
   // background: $silver;
   @media only screen and (max-width: 600px) {
     padding: 0;

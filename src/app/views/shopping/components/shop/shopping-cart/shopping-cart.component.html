@@ -1,284 +1,70 @@
-
-
 <div class="container" *ngIf="sale$ | async as sale; else notFound">
-  <!-- <div class="cover-photo">
-    <img [src]="bannerImage" alt="">
-  </div> -->
-  <div class="content">
-    <!-- <div class="check-out">
-      <button class="action-btn   hover-shadow"
-        [ngStyle]="{'border-color':shopPrimaryColor, 'color':shopPrimaryColor,  background: '#fff', border: '1px solid #000','border-color':shopPrimaryColor}"
-        (click)="back(item)"><i class="pi pi-shopping-cart"></i> Back to
-        shoping</button>
-    </div> -->
+  <h1 class="heading">
+    Your cart
+  </h1>
+  <div class="products">
+   
+    <div class="product" *ngFor="let item of sale.items">
+      <div class="image">
+        <img [src]="item.image" alt="" *ngIf="item.image" />
+        <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
+      </div>
 
-    <h3 class="small-heading">
-      <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
-      Shopping cart
-    </h3>
-    <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
-
-
-
-    <div class="col-1-2">
-      <div class="sale-sammary">
-        <div class="main-holder">
-          <div class="col-1-5">
-            <div class="head">Product details</div>
-            <div class="head"></div>
-            <div class="head">Quantity</div>
-            <div class="head">Price</div>
-            <div class="head">Total</div>
-          </div>
-          <span *ngFor="let item of sale.items">
-            <div class="sale-item col-1-5">
-              <div class="row image">
-                <img [src]="item.image" alt="" *ngIf="item.image" />
-                <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
-              </div>
-
-              <div class="row name">
-                <h3>
-                  {{item.name}}
-                  <span>
-                    {{item?.options | formatOptions}}
-                  </span>
-                </h3>
-                <div class="remove">
-                  <button (click)="removeItem(item)">Remove</button>
-                </div>
-              </div>
-
-
-              <div class="row quantity">
-                <div class="col clicks" (click)="reduce(item)">
-                  <i class="pi pi-minus"></i>
-                </div>
-                <div class="col">
-                  <input type="text" [(ngModel)]="item.quantity" (blur)="blur(item)"> </div>
-                <div class="col clicks" (click)="add(item)">
-                  <i class="pi pi-plus"></i>
-                </div>
-              </div>
-
-              <div class="row price">
-                <h3>
-                  {{item.price| currency:'R'}}
-                </h3>
-              </div>
-
-              <div class="row total">
-                <h3>
-                  {{item.subTotal| currency:'R'}}
-                </h3>
-              </div>
-
-
-
-            </div>
-            <div class=" col-1-5 sale-items-mobile">
-              <div class="top">
-                <div class="row image">
-                  <img [src]="item.image" alt="" *ngIf="item.image" />
-                  <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
-                </div>
-
-                <div class="row name">
-                  <h3>
-                    {{item.name}}
-                  </h3>
-                  <div class="remove">
-                    <button (click)="removeItem(item)">Remove</button>
-                  </div>
-                </div>
-                <div class="row price">
-                  <h3>
-                    {{item.price| currency:'R'}}
-                    <span class="label-span">Price</span>
-                  </h3>
-                </div>
-              </div>
-              <div class="bot">
-
-                <div class="row quantity">
-                  <div class="col clicks" (click)="reduce(item)">
-                    <i class="pi pi-minus"></i>
-                  </div>
-                  <div class="col">
-                    <input type="text" [(ngModel)]="item.quantity" (blur)="blur(item)"> </div>
-                  <div class="col clicks" (click)="add(item)">
-                    <i class="pi pi-plus"></i>
-                  </div>
-                </div>
-
-                <div class="row total">
-                  <h3>
-                    {{item.subTotal| currency:'R'}}
-                    <span class="label-span">Total</span>
-
-                  </h3>
-                </div>
-              </div>
-            </div>
+      <div class="item">
+        <p>
+          {{item.name}}
+          <span>
+            {{item?.options | formatOptions}}
           </span>
-        </div>
-
+        </p>
       </div>
 
-      <div class="sammary-totals">
-        <div class="shipping">
-          <h3>
-            Order summary
-          </h3>
-
-          <div class="col-1-of-2">
-            <h4>
-              Items {{cartItems}}
-            </h4>
-
-            <h4>
-              {{sale?.total | currency:'R'}}
-
-            </h4>
-          </div>
-
-          <div class="shipping">
-
-            <div class="input" *ngIf="shippingsList.length">
-              <p>
-                shipping
-              </p>
-              <select class="input" (change)="deliveryChanged($event.target.value)" name="" id="">
-                <option value="delivery" selected>Please select</option>
-                <option [value]="ship.key" *ngFor="let ship of shippingsList">{{ship.line}}</option>
-              </select>
-            </div>
-
-            <div class="checkout">
-              <div class="col-1-of-2">
-                <h4>
-                  total cost
-                </h4>
-
-                <h4>
-                  {{sale?.total + deliveryFee | currency:'R'}}
-
-                </h4>
-              </div>
-
-              <div class="input">
-                <div class="add">
-                  <button class="btn action-btn "
-                    [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-                    (click)="checkout()">proceed to checkout</button>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="price">
+        <p>
+          {{item.quantity}} x {{item.price| currency:'R'}} <br>
+          <b>{{item.quantity*item.price| currency:'R'}}</b>
+        </p>
+      </div>
+      <div class="item edit">
+        <div class="action">
+          <img (click)="reduce(item)" src="assets/images/tybo/cta-cart-minus.svg" alt="">
+        </div>
+        <div class="action">
+          <img (click)="add(item)" src="assets/images/tybo/cta-cart-plus.svg" alt="">
+        </div>
+        <div class="action">
+          <img (click)="removeItem(item)" class="remove" src="assets/images/tybo/cta-cart-remove.svg" alt="">
         </div>
       </div>
     </div>
-
-  </div>
-
-  <div class="mobile-content">
-
-    <div class="back">
-      <p (click)="back()">
-        <i [ngStyle]="{'color':shopPrimaryColor}" class="pi pi-chevron-left"></i> Back
-      </p>
-    </div>
-    <h1 class="heading">
-      Shopping cart
-    </h1>
-    <div class="products">
-
-      <div class="product" *ngFor="let item of sale.items">
-        <div class="image">
-          <img [src]="item.image" alt="" *ngIf="item.image" />
-          <img src="assets/images/placeholder.png" *ngIf="!item.image" alt="" />
-        </div>
-
-        <div class="details">
-          <div class="top product-row">
-            <div class="name">
-              <p>
-                {{item.name}}
-                <span>
-                  {{item?.options | formatOptions}}
-                </span>
-              </p>
-            </div>
-            <div class="remove">
-              <img (click)="removeItem(item)" src="assets/images/remove-from-cart.svg" alt="" />
-            </div>
-          </div>
-          <div class="bottom product-row">
-            <div class="price">
-              <p>
-                {{item.price| currency:'R'}}
-              </p>
-            </div>
-            <div class="quantity">
-              <div class="qnty">
-                <div class="min">
-                  <button class="add hover-shadow" (click)="reduce(item)">
-                    <i class="pi pi-minus"></i>
-                  </button>
-                </div>
-                <div class="input">
-                  <input type="text" pInputText pKeyFilter="int" [(ngModel)]="item.quantity" (blur)="blur(item)">
-                </div>
-
-                <div class="plus">
-                  <button class="reduce hover-shadow" (click)="add(item)">
-                    <i class="pi pi-plus"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sammary">
-      <div class="round-input">
-        <select class="input" (change)="deliveryChanged($event.target.value)" name="" id="">
-          <option value="delivery" selected>Please select shipping method</option>
-          <option [value]="ship.key" *ngFor="let ship of shippingsList">{{ship.line}}</option>
-        </select>
-      </div>
-
-      <h3>
-        Your Order Total:<span> {{sale?.total + deliveryFee | currency:'R'}}</span>
-      </h3>
-
-      <div class="action">
-        <button class="btn action-btn " [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-          (click)="checkout()">proceed to checkout</button>
-      </div>
-
-    </div>
-
-
 
 
   </div>
-</div>
+  <h1 class="total"> Order Total: {{sale.total| currency:'R'}}</h1>
+  <div class="actions">
+    <div class="action">
+      <img (click)="checkout()" src="assets/images/tybo/cta-checkout.svg" alt="">
+    </div>
 
-<ng-template #notFound>
-  <div class="not-found">
-    <img src="assets/images/empty-cart.svg" alt="no items found">
-    <h1 class="message">
-      Your shopping cart is empty
-      <span>
-        <a class="link-add" (click)="back()"> Start shopping.</a>
-      </span>
-    </h1>
+    <div class="action">
+      <img (click)="back()" src="assets/images/tybo/cta-continue-shopping.svg" alt="">
+    </div>
   </div>
-</ng-template>
 
-<title>
-  {{welocme}}
-</title>
+
+
+  <ng-template #notFound>
+    <div class="not-found">
+      <img src="assets/images/empty-cart.svg" alt="no items found">
+      <h1 class="message">
+        Your shopping cart is empty
+        <span>
+          <a class="link-add" (click)="back()"> Start shopping.</a>
+        </span>
+      </h1>
+    </div>
+  </ng-template>
+
+  <title>
+    {{welocme}}
+  </title>

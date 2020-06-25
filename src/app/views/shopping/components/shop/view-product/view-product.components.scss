@@ -9,13 +9,21 @@
     display: grid;
     grid-template-columns: 30% auto;
 
-    .images {
-      // height: 66vh;
-      // overflow-y: scroll;
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
     }
+
 
     .details {
       padding: 2rem 7rem;
+
+      @media only screen and (max-width: 600px) {
+        padding: 0;
+
+        h1 {
+          font-size: 1rem;
+        }
+      }
 
       .options {
 
@@ -79,7 +87,8 @@
     padding: .5rem 0;
 
     img {
-      height: 2rem;
+      height: 2.5rem;
+      width: auto;
       cursor: pointer;
     }
   }
@@ -90,10 +99,16 @@
   border-top: 4px solid rgb(2, 255, 108);
 
   .products {
+    max-height: 45vh;
+    overflow-y: scroll;
     .product {
       display: grid;
       grid-template-columns: 10% 20% 20% auto;
       grid-gap: .5rem;
+
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: 20% 40% auto;
+      }
 
       img {
         width: 100%;
@@ -104,26 +119,51 @@
         display: grid;
         grid-template-columns: 10% 10% auto;
 
+        @media only screen and (max-width: 600px) {
+          grid-template-columns: 30% 30% auto;
+        }
+
         img {
           margin-top: 1rem;
           width: 1.4rem;
+          cursor: pointer;
+
+          @media only screen and (max-width: 600px) {
+            margin: 0 1rem;
+          }
         }
 
         .remove {
           margin-left: 2.5rem;
         }
       }
+
+      @media only screen and (max-width: 600px) {}
     }
   }
 
   .actions {
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+    }
+
     .action {
       padding: 2rem 0;
 
       img {
-        height: 2rem;
+        height: 2.5rem;
         width: auto;
+        cursor: pointer;
       }
     }
   }
+}
+
+
+h1.total {
+  font-size: 1.3rem;
+  background: $white-color;
+  width: 70%;
+  padding: 1rem 0;
+  text-transform: capitalize;
 }

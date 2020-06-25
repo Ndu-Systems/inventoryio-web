@@ -132,7 +132,7 @@
         </div>
       </div>
     </div>
-
+    <h1 class="total"> Order Total: {{sale.total| currency:'R'}}</h1>
     <div class="actions">
       <div class="action">
         <img (click)="checkout()" src="assets/images/tybo/cta-checkout.svg" alt="">
@@ -142,5 +142,6 @@
         <img (click)="back()" src="assets/images/tybo/cta-continue-shopping.svg" alt="">
       </div>
     </div>
+  
   </div>
 </div>

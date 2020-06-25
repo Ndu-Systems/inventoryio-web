@@ -47,31 +47,6 @@ export class ShoppingCartComponent implements OnInit {
     private titleService: Title
 
   ) {
-
-
-    // this.activatedRoute.params.subscribe(r => {
-    //   this.companyId = r.id;
-    //   this.productService.getProducts(this.companyId);
-
-    //   this.companyService.getCompany(this.companyId).subscribe(data => {
-    //     if (data) {
-    //       this.company = data;
-    //       this.company = data;
-    //       if (this.company.Theme) {
-    //         this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
-    //         this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
-    //       }
-    //       if (this.company.Logo && this.company.Logo.length) {
-    //         this.logoUrl = this.company.Logo[0].Url;
-    //       }
-    //       if (this.company.Shipping) {
-    //         this.shippings = this.company.Shipping;
-    //         this.groupShipping();
-    //       }
-    //     }
-
-    //   });
-    // });
   }
   ngOnInit() {
     this.sale$ = this.shoppingService.sell;
@@ -79,7 +54,8 @@ export class ShoppingCartComponent implements OnInit {
       if (state) {
         this.sale = state;
         this.cartItems = this.sale.items.length;
-
+        this.companyId = this.sale.companyId;
+        this.loadCompany();
       }
     });
 
@@ -92,17 +68,33 @@ export class ShoppingCartComponent implements OnInit {
     });
   }
 
+  loadCompany() {
+    this.companyService.getCompany(this.companyId).subscribe(data => {
+      if (data) {
+        this.company = data;
+        this.company = data;
+        if (this.company.Theme) {
+          this.shopPrimaryColor = this.company.Theme.find(x => x.Name === 'shopPrimaryColor').Value;
+          this.shopSecondaryColor = this.company.Theme.find(x => x.Name === 'shopSecondaryColor').Value;
+        }
+        if (this.company.Logo && this.company.Logo.length) {
+          this.logoUrl = this.company.Logo[0].Url;
+        }
+        if (this.company.Shipping) {
+          this.shippings = this.company.Shipping;
+          this.groupShipping();
+        }
+      }
+
+    });
+  }
 
   back() {
     // this.shoppingService.setState(this.cart);
-    this.router.navigate(['shop/at', this.company.Handler || this.company.CompanyId]);
+    this.router.navigate(['at', this.company.Handler || this.company.CompanyId]);
   }
 
   add(item: Item) {
-    const product = this.products.find(x => x.ProductId === item.prodcuId);
-    if (Number(product.Quantity) - Number(item.quantity) <= 0) {
-      return false;
-    }
     item.quantity++;
     this.shoppingService.doSellLogic(item, this.companyId);
   }
@@ -192,19 +184,6 @@ export class ShoppingCartComponent implements OnInit {
 
 
   checkout() {
-    // if (!this.selectedShippingMethod && this.shippings.length > 0) {
-    //   this.messageService.add({
-    //     severity: 'warn',
-    //     summary: 'Shipping Method not selected',
-    //     detail: 'Please select shipping method before you checkout.'
-    //   });
-    //   return false;
-    // }
-    // this.sale.charges = [this.selectedShippingMethod];
-    // this.shoppingService.updateState(this.sale);
-    // save order shipping details
-
-
     this.router.navigate(['checkout', this.companyId]);
   }
   formatDate(d: string) {

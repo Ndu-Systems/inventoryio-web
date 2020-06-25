@@ -162,12 +162,12 @@ span.step {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #104CE5;
+  background: #000000;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #104CE5;
+  background: #000000;
 }
 
 @media only screen and (min-width: 1254px) {
@@ -577,13 +577,13 @@ span.step {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $primary-bg-color;
-  border-radius: 10rem;
+  background: #000;
+  border-radius: 0;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $primary-bg-color;
+  background: #000;
 }
 
 .share {
@@ -612,6 +612,12 @@ span.step {
     background: #ffff;
     padding: 2rem;
     width: 40%;
+
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      padding: .8rem;
+    }
 
     h1 {
       text-transform: uppercase;
