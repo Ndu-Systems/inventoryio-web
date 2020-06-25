@@ -6,6 +6,7 @@ export interface User {
   UserId?: string;
   Email: string;
   Name: string;
+  UserType?: string;
   Surname: string;
   CellphoneNumber: string;
   Address?: string;

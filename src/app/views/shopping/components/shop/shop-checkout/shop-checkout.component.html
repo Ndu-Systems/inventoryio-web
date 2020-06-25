@@ -1,242 +1,65 @@
-<div class="container" *ngIf="sale$ | async as sale">
-  <div class="content">
-    <h3 class="small-heading">
-      <span (click)="back()"><i class="pi pi-arrow-left"></i></span>
-      Checkout and payments
-    </h3>
-    <!-- <a class="back-link" (click)="back()"><i class="pi pi-arrow-left"></i> Back to shopping</a> -->
+<div class="checkout" *ngIf="sale$ | async as sale">
+
+  <h1 class="main">
+    Checking out
+  </h1>
+  <div class="steps">
+    <div class="step active">
+      shipping
+    </div>
+    <div class="step">
+      payment
+    </div>
+    <div class="step">
+      summary
+    </div>
+    <div class="step total">
+      Order Total: {{sale.total| currency:'R'}}
+    </div>
+  </div>
+
+
+  <div class="user" *ngIf="user$ | async as user; else noUser">
     <pre>
-  {{sale | json}}
-</pre>
-    <div class="col-1-of-2 col-70-30">
-
-
-      <div class="shipping">
-        <div class="shipping" *ngIf="step == '1'">
-          <h3>
-            Your personal details
-          </h3>
-          <hr>
-
-          <app-shipping></app-shipping>
-          <div class="add">
-            <button class="btn action-btn" [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-              (click)="nextStep(2)">Proceed to payment details</button>
-          </div>
-        </div>
-
-        <div class="payments" *ngIf="step == '2'">
-          <div class="options">
-            <div class="details-container" *ngIf="company">
-              <div class="disclaimer">
-
-
-                <span *ngIf="company.Bankings">
-                  <p>
-                    <b> Please make eft payment to the seller's account below.</b>
-                  </p>
-                  <p class="account">
-                    Bank name:
-                    <span>{{company.Bankings[0].Value}}</span>
-                  </p>
-                  <p class="account">
-                    Account # :
-                    <span> {{company.Bankings[1].Value}}</span>
-                  </p>
-                  <p class="account">
-
-                    Account Holder :
-
-                    <span> {{company.Bankings[3].Value}}</span>
-                  </p>
-                  <p class="account">
-
-                    Branch :
-
-                    <span> {{company.Bankings[2].Value}}</span>
-                  </p>
-                </span>
-
-                <div class="agree">
-                  <p-checkbox [(ngModel)]="checkedEft" binary="true"></p-checkbox> I will make a EFT payment.
-                </div>
-                <div class="agree">
-                  <p-checkbox [(ngModel)]="checkedCash" binary="true"></p-checkbox> I will pay cash on delivery.
-                </div>
-
-                <div class="action">
-                  <button class="btn action-btn"
-                    [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-                    (click)="onSubmit()">Place Order</button>
-                  <a (click)="backToShipping()">Back to shipping details</a>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-
-
-      <div class="sammary-totals">
-        <div class="shipping">
-          <h3>
-            Order summary
-          </h3>
-          <hr>
-
-          <div class="col-1-of-2">
-            <h4>
-              Items {{cartItems}}
-            </h4>
-
-            <h4>
-              {{sale?.total | currency:'R'}}
-
-            </h4>
-          </div>
-
-          <div class="cart">
-            <div class="col-1-of-3">
-              <h4>
-                Item
-              </h4>
-              <h4>
-                Qty
-              </h4>
-              <h4>
-                Total
-              </h4>
-            </div>
-            <div class="col-1-of-3" *ngFor="let item of sale.items">
-              <h5>
-                {{item.name}}
-              </h5>
-              <h5>
-                {{item.quantity}}
-              </h5>
-              <h5 class="price">
-                {{item.subTotal| currency:'R'}}
-              </h5>
-            </div>
-          </div>
-
-          <!-- <div class="col-1-of-2" *ngIf="sale.charges.length > 0">
-            <h4>
-              Shipping:
-            </h4>
-
-            <h5>
-              {{sale.charges[0]?.line}}
-            </h5>
-          </div> -->
-
-          <div class="col-1-of-2">
-            <h4>
-              Purchase Date:
-            </h4>
-
-            <h5>
-              {{today | date:'fullDate'}}
-            </h5>
-          </div>
-          <div class="col-1-of-2">
-            <h4>
-              TOTAL COST:
-            </h4>
-
-            <h2 class="price">
-              {{sale?.total | currency:'R'}}
-            </h2>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
+    {{user | json}}
+   </pre>
   </div>
 
-  <div class="mobile-content">
-
-    <div class="back">
-      <p (click)="back()">
-        <i [ngStyle]="{'color':shopPrimaryColor}" class="pi pi-chevron-left"></i> Back
-      </p>
-    </div>
-    <h1 class="heading">
-      Check out
-    </h1>
-
-    <div class="tabs">
-      <div class="tab active">
-        Shipping
+  <ng-template #noUser>
+    <div class="options" *ngIf="!user && !isGuest">
+      <div class="option">
+        <h1>
+          Login to your account
+        </h1>
+        <app-customer-login></app-customer-login>
       </div>
-      <div class="tab">
-        Payments
-      </div>
-      <!-- <div class="tab">
-        Confirm
-      </div> -->
-    </div>
-    <div class="tab-item" *ngIf="step == 1">
-      <app-shipping></app-shipping>
-    </div>
-    <div class="tab-item" *ngIf="step == 2">
-      <div class="shipping">
-        <div class="options">
-          <div class="details-container" *ngIf="company">
-            <div class="disclaimer">
+      <div class="option">
+        <h1>
+          Continue as a GUEST
+        </h1>
+        <p>
+          You will just need to indicate
+          contact details and delivery address.
 
+        </p>
+        <p>
+          If you’d like, you can save your details for
+          future purchases.
+        </p>
 
-              <span *ngIf="company.Bankings">
-                <p>
-                  Please make eft payment to the seller's account below.
-                </p>
-                <p class="account">
-                  Bank name:
-                  <span>{{company.Bankings[0].Value}}</span>
-                </p>
-                <p class="account">
-                  Account # :
-                  <span> {{company.Bankings[1].Value}}</span>
-                </p>
-                <p class="account">
+        <div class="action">
+          <img (click)="contineuAsGuest()" src="assets/images/tybo/cta-contineu-as-a-guest.svg" alt="">
 
-                  Account Holder :
-
-                  <span> {{company.Bankings[3].Value}}</span>
-                </p>
-                <p class="account">
-
-                  Branch :
-
-                  <span> {{company.Bankings[2].Value}}</span>
-                </p>
-              </span>
-
-              <div class="agree">
-                <p-checkbox [(ngModel)]="checkedEft" binary="true"></p-checkbox> I will make a EFT payment.
-              </div>
-              <div class="agree">
-                <p-checkbox [(ngModel)]="checkedCash" binary="true"></p-checkbox> I will pay cash on delivery.
-              </div>
-
-              <div class="action">
-                <button class="btn action-btn"
-                  [ngStyle]="{'background-color':shopPrimaryColor, 'color':shopSecondaryColor}"
-                  (click)="onSubmit()">Place Order</button>
-                <a (click)="backToShipping()">Back to shipping details</a>
-              </div>
-
-            </div>
-          </div>
         </div>
       </div>
     </div>
-    <div class="tab-item" *ngIf="step == 3">
-      <app-shipping></app-shipping>
+
+    <div *ngIf="isGuest" class="guest">
+      <h1>
+        Continue as a GUEST
+      </h1>
+      <app-customer-signup></app-customer-signup>
+
     </div>
-  </div>
+  </ng-template>
 </div>

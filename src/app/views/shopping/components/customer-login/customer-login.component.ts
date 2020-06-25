@@ -60,19 +60,20 @@ export class CustomerLoginComponent implements OnInit {
   Login() {
     const email = this.getFormValues.Email.value;
     const password = this.getFormValues.Password.value;
-    this.accountService.customerLogin({ email, password }).subscribe(user => {
-      if (user && user.UserId && Number(user.RoleId) === 3) {
-        this.shoppingService.updateCustomerState(user);
-        this.shoppingService.updateModalState(false);
-        this.error = '';
-        // this.usersService.updateUserAysnc(data).subscribe(user => {
-        //   console.log(user);
-        //   localStorage.setItem('user_customer', JSON.stringify(user));
-        // });
-      } else {
-        this.error = 'Incorrect email or password, try again';
-      }
-    });
+    this.accountService.login({ email, password });
+    // this.accountService.customerLogin({ email, password }).subscribe(user => {
+    //   if (user && user.UserId && Number(user.RoleId) === 3) {
+    //     this.shoppingService.updateCustomerState(user);
+    //     this.shoppingService.updateModalState(false);
+    //     this.error = '';
+    //     // this.usersService.updateUserAysnc(data).subscribe(user => {
+    //     //   console.log(user);
+    //     //   localStorage.setItem('user_customer', JSON.stringify(user));
+    //     // });
+    //   } else {
+    //     this.error = 'Incorrect email or password, try again';
+    //   }
+    // });
   }
 
   toggleNav() {

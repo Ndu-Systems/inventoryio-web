@@ -10,6 +10,10 @@
   left: 0;
   padding: 0 11rem;
 
+  @media only screen and (max-width: 600px) {
+    padding: 0 2rem;
+  }
+
   .col {
     // border: 1px solid black;
     text-align: center;
@@ -31,6 +35,10 @@
       cursor: pointer;
       position: relative;
       top: 1rem;
+
+      @media only screen and (max-width: 600px) {
+        width: 2rem;
+      }
     }
   }
 
@@ -42,6 +50,12 @@
       // margin: 1.5rem;
       position: relative;
       left: 6rem;
+
+      @media only screen and (max-width: 600px) {
+        left: 1.5rem;
+        width: 4rem;
+        top: .5rem
+      }
     }
   }
 
@@ -62,6 +76,11 @@
       height: 2.5rem;
       position: relative;
       top: .5rem;
+
+      @media only screen and (max-width: 600px) {
+        width: 2rem;
+        top: 0;
+      }
     }
   }
 
@@ -75,12 +94,16 @@
   background: #fff;
   width: 30%;
   padding: 2rem;
-  height: 70%;
+  height: 100%;
   animation: moveInLeft .2s ease-in;
   animation-fill-mode: backwards;
   -webkit-box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
   box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
+
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+  }
 
   .seaction {
     margin: 2.5rem 0;
@@ -110,13 +133,14 @@
       img {
         width: 1rem;
         position: relative;
-        top:1rem
+        top: 1rem
       }
 
       h1 {
         font-size: 1rem;
         margin: 0;
-        span{
+
+        span {
           display: block;
           font-size: .7rem;
         }

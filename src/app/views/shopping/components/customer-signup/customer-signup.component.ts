@@ -39,6 +39,7 @@ export class CustomerSignupComponent implements OnInit {
     private authService: AuthService,
     private messageService: MessageService,
     private userService: UsersService,
+    private accountService: AccountService,
 
   ) {
   }
@@ -48,24 +49,19 @@ export class CustomerSignupComponent implements OnInit {
     this.titleService.setTitle(`Create customer account | Tybo | Take your business online`);
 
     this.rForm = this.fb.group({
-      Email : new FormControl(
-        null,
+      email: new FormControl(
+        '',
         Validators.compose([
           Validators.required,
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])
       ),
-      Surname: [''],
-      Name: ['', Validators.required],
-      CellphoneNumber: [''],
-      SecondaryContactNumber: [null],
-      Address: [null],
-      Password: [''],
-      RoleId: ['3', Validators.required],
-      CompanyId: ['customer-page', Validators.required],
-      CreateUserId: ['customer-page', Validators.required],
-      ModifyUserId: ['customer-page', Validators.required],
-      StatusId: [StatusConstant.ACTIVE_STATUS, Validators.required]
+      password: ['00000', Validators.required],
+      fullname: ['', Validators.required],
+      cell: [''],
+      address: [''],
+      siginUp: [null]
+      // passwordConfirm: ['', Validators.required]
     });
 
 
@@ -74,15 +70,31 @@ export class CustomerSignupComponent implements OnInit {
   get getFormValues() {
     return this.rForm.controls;
   }
+  addUser() {
+    const fullname: string = this.getFormValues.fullname.value;
+    const cell = this.getFormValues.cell.value;
+    const email = this.getFormValues.email.value;
+    const password = this.getFormValues.password.value;
+    const address = this.getFormValues.address.value;
+    const siginUp = this.getFormValues.siginUp.value;
+    if (siginUp) {
+      // send account action vation email
+    }
+    const data: User = {
+      Email: email,
+      Name: fullname.split(' ')[0],
+      Surname: fullname.split(' ')[1] || '',
+      CellphoneNumber: cell,
+      CompanyName: '',
+      Password: '00000',
+      CreateUserId: 'web',
+      ModifyUserId: 'web',
+      Address: address,
+      RoleId: 1,
+      StatusId: 1
+    };
+    this.accountService.addUser(data);
 
-  onSubmit(user: User) {
-    this.userService.addSystemUser(user);
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success.',
-      detail: `User ${user.Name} added successfully`
-    });
-    // this.routeTo.navigate([this.bannerService.currentBannerValue.backto]);
   }
   toggleNav() {
     this.showMobileNav = !this.showMobileNav;

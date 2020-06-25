@@ -1,21 +1,20 @@
-.main-container {
-    padding: 3rem 0;
-    margin-top: 5rem;
-  }
-  
-  .social-login{
-    p{
-      display: block;
-    }
-    img{
-      width: 10rem;
-      cursor: pointer;
-      @media only screen and (max-width: 600px) {
-        width: 7.5rem;
-      }
-    }
-  }
+.btn{
+  background: #000;
+  padding: 1.2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  width: 50%;
+  margin: 2rem 0;
+}
 
-  .btn-border-none{
-    border: none;
+
+
+.check{
+  display: grid;
+  grid-template-columns: 60% auto;
+  .checkbox{
+    width: 2rem;
+    height: 2rem;
+    margin: 0 !important;
   }
+}

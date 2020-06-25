@@ -48,10 +48,14 @@ export class AccountService {
 
     return this.http.post<any>(`${this.url}/api/user/add-user.php`, data).subscribe(resp => {
       const user: User = resp;
-      localStorage.clear();
+      if (user.UserType !== 'Customer') {
+        localStorage.clear();
+      }
       this.updateUserState(user);
       this._loading.next(false);
-      this.router.navigate(['dashboard']);
+      if (user.UserType !== 'Customer') {
+        this.router.navigate(['dashboard']);
+      }
     }, error => {
       this._loading.next(false);
       console.log(error);
@@ -106,10 +110,8 @@ export class AccountService {
         const user: User = resp;
         localStorage.clear();
         this._loading.next(false);
-        if (Number(user.RoleId) === 3) {
-          this._user.next(user);
-          localStorage.setItem('user_customer', JSON.stringify(user));
-          this.router.navigate(['shop/customer-portal/home']);
+        if (user.UserType === 'Customer') {
+          this.updateUserState(user);
         } else {
           this.updateUserState(user);
           this.router.navigate(['dashboard']);

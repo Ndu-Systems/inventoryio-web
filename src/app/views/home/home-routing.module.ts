@@ -34,6 +34,8 @@ import { ShopingSuccesfulComponent } from '../shopping/components/shop/shoping-s
 import { ShopCheckoutComponent } from '../shopping/components/shop/shop-checkout/shop-checkout.component';
 import { FormatOptionsPipe } from 'src/app/_pipes/format-options.pipe';
 import { ShippingComponent } from '../shopping/components/shop/shipping/shipping.component';
+import { CustomerSignupComponent } from '../shopping/components/customer-signup/customer-signup.component';
+import { CustomerLoginComponent } from '../shopping/components/customer-login/customer-login.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -88,6 +90,8 @@ export const declarations = [
   ShopCheckoutComponent,
   FormatOptionsPipe,
   ShippingComponent,
+  CustomerSignupComponent,
+  CustomerLoginComponent
 ];
 
 

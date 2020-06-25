@@ -1,8 +1,6 @@
 @import '../../../../../assets/styles/variables';
 
 .login {
-  padding-top: 7rem;
-
   .social-login {
     img {
       width: 9rem;
@@ -35,14 +33,18 @@
     }
 
     .action {
+      text-align-last: left;
 
       .btn {
-        width: 98%;
-        border-radius: 30px;
+        width: 30%;
+        border-radius: 0;
         font-weight: 800;
         margin-top: 1.2rem;
-        font-size: .9rem;
-        padding: .5rem;
+        font-size: 1rem;
+        padding: 1rem 4.5rem;
+        background: #000;
+        text-transform: uppercase;
+        text-align: center;
       }
 
       a {
@@ -57,7 +59,8 @@
         font-weight: 700;
         text-transform: uppercase;
       }
-      h5{
+
+      h5 {
         color: $danger;
         text-align: left;
       }

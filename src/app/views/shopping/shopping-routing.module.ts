@@ -14,8 +14,8 @@ import { ShopCheckoutComponent } from './components/shop/shop-checkout/shop-chec
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
 import { RemoveNoValuesAttributesPipe } from 'src/app/_pipes/remove-no-values-attributes.pipe';
 import { CustomerPortalComponent } from './components/customer-portal/customer-portal.component';
-import { CustomerLoginComponent } from './components/customer-login/customer-login.component';
-import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
+// import { CustomerLoginComponent } from './components/customer-login/customer-login.component';
+// import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
 import { CustomerOrdersComponent } from './components/customer-orders/customer-orders.component';
 import { CustomerNavBarComponent } from './components/customer-nav-bar/customer-nav-bar.component';
 import { CustomerOrderDetailsComponent } from './components/customer-order-details/customer-order-details.component';
@@ -30,8 +30,8 @@ const routes: Routes = [
       // { path: '', component: ShopsComponent },
       // { path: 'at/:id', component: ShopComponent },
    
-      { path: 'customer-login/:id', component: CustomerLoginComponent },
-      { path: 'customer-signup/:id', component: CustomerSignupComponent },
+      // { path: 'customer-login/:id', component: CustomerLoginComponent },
+      // { path: 'customer-signup/:id', component: CustomerSignupComponent },
       { path: 'customer-portal/:id', component: CustomerPortalComponent },
       { path: 'customer-orders/:id', component: CustomerOrdersComponent },
       { path: 'customer-order-details/:id', component: CustomerOrderDetailsComponent },
@@ -50,8 +50,8 @@ export const declarations = [
   ShoppingNavComponent,
   // RemoveNoValuesAttributesPipe,
   CustomerPortalComponent,
-  CustomerLoginComponent,
-  CustomerSignupComponent,
+  // CustomerLoginComponent,
+  // CustomerSignupComponent,
   CustomerOrdersComponent,
   CustomerNavBarComponent,
   CustomerOrderDetailsComponent,

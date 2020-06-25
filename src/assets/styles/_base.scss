@@ -624,3 +624,23 @@ span.step {
     }
   }
 }
+
+
+.pc-only {
+  display: block;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+.phone-only {
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    display: block;
+    position: relative;
+    bottom: .5rem;
+    width: 2.2rem;
+  }
+}
