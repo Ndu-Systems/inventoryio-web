@@ -18,6 +18,8 @@
     position: relative;
     max-height: 30rem;
     overflow-y: scroll;
+    animation: moveInLeft .2s ease-in;
+    animation-fill-mode: backwards;
 
     .product {
       display: grid;
@@ -68,6 +70,8 @@
     display: grid;
     grid-template-columns: 30% auto;
     padding: 1rem;
+    animation: moveInRight .4s ease-in;
+    animation-fill-mode: backwards;
 
 
     @media only screen and (max-width: 600px) {
@@ -93,4 +97,6 @@ h1.total {
   margin: .2rem auto;
   width: 70%;
   padding: 1rem;
+  animation: moveInRight .4s ease-in .4s;
+  animation-fill-mode: backwards;
 }
