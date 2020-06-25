@@ -3,8 +3,8 @@
 .container {
   background: $body-background;
   padding: 7rem 2rem;
-  animation: moveInLeft .2s ease-in;
-    animation-fill-mode: backwards;
+  animation: moveInLeft .4s ease-in .3s;
+  animation-fill-mode: backwards;
 
   @media only screen and (max-width: 600px) {
     padding: 7rem 0;

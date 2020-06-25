@@ -12,6 +12,7 @@ export class HomeNavComponent implements OnInit {
   showMobileNav;
   showModules;
   modulesClass: any;
+  showMenu: boolean;
 
   constructor(
     private routeTo: Router,
@@ -41,5 +42,9 @@ export class HomeNavComponent implements OnInit {
     this.navService.changeNav(key);
     this.routeTo.navigate(['/modules']);
     this.closeModule();
+    this.showMenu = !this.showMenu;
+  }
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
   }
 }

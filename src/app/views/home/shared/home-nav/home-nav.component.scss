@@ -1,11 +1,14 @@
 .top-navigation {
   background: #fff;
+  // background: rgb(189, 99, 99);
   display: grid;
-  grid-template-columns: 5% 10% 45% auto;
-  width: 90%;
+  grid-template-columns: 5% 70% 20% 5%;
+  width: 100%;
   position: fixed;
   top: 0;
   z-index: 100;
+  left: 0;
+  padding: 0 11rem;
 
   .col {
     // border: 1px solid black;
@@ -24,17 +27,21 @@
 
   .menu {
     img {
-      width: 2.5rem;
-      margin: 1.5rem;
+      width: 3.5rem;
+      cursor: pointer;
+      position: relative;
+      top: 1rem;
     }
   }
 
   .logo {
-    text-align: left;
+    text-align: center;
 
     img {
-      width: 5rem;
-      margin: 1.5rem;
+      width: 7.5rem;
+      // margin: 1.5rem;
+      position: relative;
+      left: 6rem;
     }
   }
 
@@ -48,13 +55,71 @@
     }
   }
 
-  .actions {
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
+  .cart {
+    text-align: left;
 
-    .item {
+    img {
+      height: 2.5rem;
+      position: relative;
+      top: .5rem;
+    }
+  }
+
+}
+
+.main-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background: #fff;
+  width: 30%;
+  padding: 2rem;
+  height: 70%;
+  animation: moveInLeft .2s ease-in;
+  animation-fill-mode: backwards;
+  -webkit-box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
+  box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
+
+  .seaction {
+    margin: 2.5rem 0;
+
+    a {
+      display: block;
+      font-weight: 900;
+      font-size: 1.5rem;
+      margin: .5rem;
+      color: #000;
+      text-transform: uppercase;
+    }
+  }
+
+}
+
+.modules {
+  .modules-list {
+    .module {
+      display: grid;
+      grid-template-columns: 5% auto;
+      margin-left: 2rem;
+      animation: moveInLeft .5s ease-in;
+      // animation-fill-mode: backwards;
+      background: #fff;
+
       img {
-        width: 95%;
+        width: 1rem;
+        position: relative;
+        top:1rem
+      }
+
+      h1 {
+        font-size: 1rem;
+        margin: 0;
+        span{
+          display: block;
+          font-size: .7rem;
+        }
       }
     }
   }

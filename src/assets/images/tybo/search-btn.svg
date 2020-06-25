@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="517" height="49" viewBox="0 0 517 49">
-  <g id="search-btn" transform="translate(-490 -22)">
-    <rect id="Rectangle_5" data-name="Rectangle 5" width="517" height="49" transform="translate(490 22)" fill="#ebebeb"/>
-    <g id="search_3_" data-name="search (3)" transform="translate(531 33)">
+<svg xmlns="http://www.w3.org/2000/svg" width="235" height="33" viewBox="0 0 235 33">
+  <g id="search-btn" transform="translate(-490.325 -11)">
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="235" height="33" transform="translate(490.325 11)" fill="#ebebeb"/>
+    <g id="search_3_" data-name="search (3)" transform="translate(497.617 20)">
       <g id="Group_18" data-name="Group 18" transform="translate(0 0)">
-        <path id="Path_32" data-name="Path 32" d="M27.79,26.143,19.668,18.02a11.09,11.09,0,1,0-1.647,1.647l8.122,8.122a.583.583,0,0,0,.824,0l.824-.824A.583.583,0,0,0,27.79,26.143ZM11.068,19.806a8.738,8.738,0,1,1,8.738-8.738A8.747,8.747,0,0,1,11.068,19.806Z" transform="translate(0 0)" fill="#b2b2b2"/>
+        <path id="Path_32" data-name="Path 32" d="M16.4,15.431l-4.794-4.794a6.546,6.546,0,1,0-.972.972L15.431,16.4a.344.344,0,0,0,.486,0l.486-.486A.344.344,0,0,0,16.4,15.431Zm-9.87-3.74A5.157,5.157,0,1,1,11.69,6.533,5.163,5.163,0,0,1,6.533,11.69Z" transform="translate(0 0)" fill="#b2b2b2"/>
       </g>
     </g>
-    <text id="Search_" data-name="Search " transform="translate(591 56)" fill="#707070" font-size="22" font-family="CenturyGothic, Century Gothic" opacity="0.82"><tspan x="0" y="0">Search </tspan></text>
+    <text id="Search_" data-name="Search " transform="translate(521.325 35)" fill="#707070" font-size="18" font-family="CenturyGothic, Century Gothic" opacity="0.82"><tspan x="0" y="0">Search </tspan></text>
   </g>
 </svg>

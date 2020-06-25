@@ -1,7 +1,7 @@
 <div class="top-navigation">
 
   <div class="col menu">
-    <img src="assets/images/tybo/menu.svg" alt="">
+    <img src="assets/images/tybo/menu.svg" (mouseover)="toggleMenu()" alt="">
   </div>
 
   <div class="col logo">
@@ -15,7 +15,12 @@
   <div class="col search">
     <img src="assets/images/tybo/search-btn.svg" alt="">
   </div>
-
+  <div class="col cart">
+    <a routerLink="/shopping-cart" (click)="closeModule()">
+      <img src="assets/images/tybo/bag.svg" alt="">
+    </a>
+  </div>
+  <!-- 
   <div class="col actions">
     <div class="item">
       <a routerLink="/shop" (click)="closeModule()">
@@ -41,7 +46,7 @@
       </a>
     </div>
 
-  </div>
+  </div> -->
 
 
 
@@ -120,63 +125,76 @@
 
 
 
-<div class="modules" *ngIf="showModules">
-  <div class="col-1-of-4">
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/box.svg" alt="">
-      <a class="cta" (click)="selectedModule('inventory')">
-        <h1 class="header">
-          inventory management
-          <span class="text">
-            Add product/service items includes sales by default.
-          </span>
-        </h1>
-      </a>
+
+
+<div class="main-menu" *ngIf="showMenu" (mouseleave)="toggleMenu()">
+  <div class="seaction">
+    <a routerLink="/shop" (click)="toggleMenu()" routerLinkActive="active-link">Shopping</a>
+  </div>
+  <div class="seaction">
+    <a routerLink="/pricing" (click)="showModule()" routerLinkActive="active-link">Modules</a>
+    <div class="modules" *ngIf="showModules">
+      <div class="modules-list">
+        <div class="module col-1-of-2">
+          <img src="assets/images/home/box.svg" alt="">
+          <a class="cta" (click)="selectedModule('inventory')">
+            <h1 class="header">
+              inventory management
+              <span class="text">
+                Add product/service items includes sales by default.
+              </span>
+            </h1>
+          </a>
+        </div>
+        <div class="module col-1-of-2">
+          <img src="assets/images/home/shop.svg" alt="">
+          <a class="cta" (click)="selectedModule('sales')">
+            <h1 class="header">
+              sales management
+              <span class="text">
+                Make sales and generate quotes for your clients.
+              </span>
+            </h1>
+          </a>
+        </div>
+        <div class="module col-1-of-2">
+          <img src="assets/images/home/crm.svg" alt="">
+          <a class="cta" (click)="selectedModule('crm')">
+            <h1 class="header">
+              crm management
+              <span class="text">
+                Manage your partners on the go with communications.
+              </span>
+            </h1>
+          </a>
+        </div>
+        <div class="module col-1-of-2">
+          <img src="assets/images/home/graph.svg" alt="">
+          <a class="cta" (click)="selectedModule('reporting')">
+            <h1 class="header">
+              reports management
+              <span class="text">
+                Add product/service items includes sales by default.
+              </span>
+            </h1>
+          </a>
+        </div>
+        <div class="module col-1-of-2">
+          <img src="assets/images/home/store.svg" alt="">
+          <a class="cta" (click)="selectedModule('shop')">
+            <h1 class="header">
+              shop management
+              <span class="text">
+                Create a shop catalog with customization to stand out.
+              </span>
+            </h1>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/shop.svg" alt="">
-      <a class="cta" (click)="selectedModule('sales')">
-        <h1 class="header">
-          sales management
-          <span class="text">
-            Make sales and generate quotes for your clients.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/crm.svg" alt="">
-      <a class="cta" (click)="selectedModule('crm')">
-        <h1 class="header">
-          crm management
-          <span class="text">
-            Manage your partners on the go with communications.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/graph.svg" alt="">
-      <a class="cta" (click)="selectedModule('reporting')">
-        <h1 class="header">
-          reports management
-          <span class="text">
-            Add product/service items includes sales by default.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <div class="module col-1-of-2">
-      <img src="assets/images/home/store.svg" alt="">
-      <a class="cta" (click)="selectedModule('shop')">
-        <h1 class="header">
-          shop management
-          <span class="text">
-            Create a shop catalog with customization to stand out.
-          </span>
-        </h1>
-      </a>
-    </div>
-    <a class="collapse" (click)="closeModule()">collapse</a>
+    
+    <a routerLink="/pricing" (click)="toggleMenu()" routerLinkActive="active-link">pricing</a>
+    <a routerLink="/sign-up" (click)="toggleMenu()" routerLinkActive="active-link">Register</a>
+    <a routerLink="/sign-in" (click)="toggleMenu()" routerLinkActive="active-link">Login</a>
   </div>
 </div>
