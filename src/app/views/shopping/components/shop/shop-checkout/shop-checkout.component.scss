@@ -67,5 +67,33 @@
     margin: 0 auto;
     width: 40%;
     margin-top: 2.1rem;
+
+    h1 {
+      text-align: left;
+      font-size: 1.4rem;
+    }
+
+    p {
+      margin: 1.2rem 0;
+
+      span {
+        display: block;
+        font-size: .8rem;
+        font-weight: 900;
+        text-transform: capitalize;
+      }
+    }
+
+    .actions{
+      grid-template-columns: repeat(2, 50%);
+      .action{
+        text-align: left;
+        padding: 2rem 0;
+        img{
+          height: 3rem;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }

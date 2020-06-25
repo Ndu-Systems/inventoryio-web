@@ -20,9 +20,49 @@
 
 
   <div class="user" *ngIf="user$ | async as user; else noUser">
-    <pre>
+    <h1>
+      Shipping Details
+    </h1>
+    
+    <p>
+      <span>
+        Full Name
+      </span>
+      {{user.Name}} {{user.Surname}}
+    </p>
+
+    <p>
+      <span>
+        Email
+      </span>
+      {{user.Email}}
+    </p>
+
+    <p>
+      <span>
+        Cell phoneNumber
+      </span>
+      {{user.CellphoneNumber}}
+    </p>
+
+    <p>
+      <span>
+        delivery address
+      </span>
+      {{user.Address}}
+    </p>
+
+    <div class="actions">
+      <div class="action">
+        <img (click)="payments()" src="assets/images/tybo/cta-continue-to-payments.svg" alt="">
+      </div>
+      <div class="action">
+        <img (click)="back()" src="assets/images/tybo/cta-continue-shopping.svg" alt="">
+      </div>
+    </div>
+    <!-- <pre>
     {{user | json}}
-   </pre>
+   </pre> -->
   </div>
 
   <ng-template #noUser>
