@@ -36,6 +36,8 @@ import { FormatOptionsPipe } from 'src/app/_pipes/format-options.pipe';
 import { ShippingComponent } from '../shopping/components/shop/shipping/shipping.component';
 import { CustomerSignupComponent } from '../shopping/components/customer-signup/customer-signup.component';
 import { CustomerLoginComponent } from '../shopping/components/customer-login/customer-login.component';
+import { PaymentCanceledComponent } from '../shopping/components/shop/payment-canceled/payment-canceled.component';
+import { PaymentCallbackComponent } from '../shopping/components/shop/payment-callback/payment-callback.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -54,6 +56,9 @@ const routes: Routes = [
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
       { path: 'checkout/:id', component: ShopCheckoutComponent },
+      { path: 'shoping-succesful/:id', component: ShopingSuccesfulComponent },
+      { path: 'payment-cancelled/:id', component: PaymentCanceledComponent },
+      { path: 'payment-callback', component: PaymentCallbackComponent },
 
     ]
   }
@@ -91,7 +96,9 @@ export const declarations = [
   FormatOptionsPipe,
   ShippingComponent,
   CustomerSignupComponent,
-  CustomerLoginComponent
+  CustomerLoginComponent,
+  PaymentCanceledComponent,
+  PaymentCallbackComponent
 ];
 
 

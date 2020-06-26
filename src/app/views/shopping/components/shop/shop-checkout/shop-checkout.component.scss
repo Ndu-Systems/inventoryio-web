@@ -34,6 +34,10 @@
     margin: 2rem 0;
     grid-template-columns: repeat(2, 50%);
     grid-gap: 1rem;
+    @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+
+    }
 
     .option {
       background: $white-color;
@@ -55,6 +59,12 @@
     margin: 0 auto;
     width: 40%;
     margin-top: 2.1rem;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      padding: .5rem;
+
+    }
 
     h1 {
       text-align: center;

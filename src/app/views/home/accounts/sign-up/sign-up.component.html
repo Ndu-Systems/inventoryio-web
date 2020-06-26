@@ -1,10 +1,6 @@
 <div class="main-container">
   <div class="accounts">
-    <h1 class="header">Create your new free account<span class="dot">.</span></h1>
-    <h1 class="text">
-      Register a <span class="span">new account</span> with us and enjoy the benefits of Tybo | Take your business online.
-    </h1>
-
+    <h1 class="header">Create your new business account<span class="dot">.</span></h1>
     <div class="social-login">
       <p>Social media login</p>
       <img (click)="googleLogin()" src="assets/images/google-login.svg" alt="">
@@ -33,7 +29,11 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+        <label for="exampleInputPassword1">
+          Password
+          <i *ngIf="hidePassword" class="pi pi-eye-slash"></i>
+          <i *ngIf="!hidePassword" class="pi pi-eye"></i>
+        </label>
         <input type="password" [type]="hidePassword? 'password': 'text'" class="form-control" formControlName="password"
           id="exampleInputPassword1" placeholder="password">
         <div class="showPassword" (click)="hidePassword = !hidePassword">
@@ -41,19 +41,14 @@
             Password is required
           </div>
         </div>
-        <i *ngIf="hidePassword" class="pi pi-eye-slash"></i>
-        <i *ngIf="!hidePassword" class="pi pi-eye"></i>
+
       </div>
-      <div class="col-1-of-1">
-        <div class="form-group">
-          <input type="submit" value="Register now" class="btn" [disabled]="!rForm.valid" />
-        </div>
-      </div>
-      <div class="col-1-of-2 cta">
-        <h1>
+      <div class="action">
+        <input type="submit" value="Register now" class="btn" [disabled]="!rForm.valid" />
+        <p>
           Already have an account?
-        </h1>
-        <a routerLink="/sign-in" class="btn btn-border">Login now</a>
+          <a routerLink="/sign-in" >Login now</a>
+        </p>
       </div>
     </form>
 

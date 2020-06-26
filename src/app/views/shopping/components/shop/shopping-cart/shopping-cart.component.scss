@@ -21,6 +21,10 @@
     animation: moveInLeft .2s ease-in;
     animation-fill-mode: backwards;
 
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+
     .product {
       display: grid;
       grid-template-columns: 10% 20% 20% auto;
@@ -76,6 +80,7 @@
 
     @media only screen and (max-width: 600px) {
       grid-template-columns: 100%;
+      width: 100%;
     }
 
     .action {
@@ -99,4 +104,8 @@ h1.total {
   padding: 1rem;
   animation: moveInRight .4s ease-in .4s;
   animation-fill-mode: backwards;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 }

@@ -1,14 +1,30 @@
 .main-container {
-  padding: 3rem 0;
+  padding: 6rem 0;
+  @media only screen and (max-width: 600px) {
+   padding: 1rem 0;
+  }
+
+  .login {
+    background: #fff;
+    padding: 2rem;
+    margin: 1rem auto;
+    width: 40%;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
 }
 
-.social-login{
-  p{
+.social-login {
+  p {
     display: block;
   }
-  img{
+
+  img {
     width: 10rem;
     cursor: pointer;
+
     @media only screen and (max-width: 600px) {
       width: 7.5rem;
     }

@@ -23,7 +23,7 @@
     <h1>
       Shipping Details
     </h1>
-    
+
     <p>
       <span>
         Full Name
@@ -51,6 +51,33 @@
       </span>
       {{user.Address}}
     </p>
+
+    <div class="payfast-form">
+      <form ngNoForm   action="https://www.payfast.co.za/eng/process" method="POST">
+        <input type="hidden" name="merchant_id" [value]="merchantId">
+        <input type="hidden" name="merchant_key" [value]="merchantKey">
+        <input type="hidden" name="return_url" [value]="shopingSuccesfulUrl">
+        <input type="hidden" name="cancel_url" [value]="paymentCancelledUrl">
+        <input type="hidden" name="notify_url" [value]="paymentCallbackUrl">
+
+        <input type="hidden" name="name_first" [value]="user.Name">
+        <input type="hidden" name="name_last" [value]="user.Surname">
+        <input type="hidden" name="email_address" [value]="user.Email">
+        <input type="hidden" name="cell_number" [value]="user.CellphoneNumber">
+
+
+        <input type="hidden" name="amount" [value]="sale.total">
+        <input type="hidden" name="item_name" [value]="productName">
+        <input type="hidden" name="item_description" [value]="productDescription">
+
+
+        <input type="hidden" name="email_confirmation" value="1">
+        <input type="hidden" name="confirmation_address" value="payments@tybo.co.za">
+
+        <button type="submit">Proceed to payments</button>
+        <button type="submit">Proceed to payments</button>
+      </form>
+    </div>
 
     <div class="actions">
       <div class="action">
