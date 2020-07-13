@@ -21,7 +21,7 @@ import { MessageService } from 'primeng/api';
 })
 export class FileUploadComponent implements ControlValueAccessor {
 
-
+  @Input() otherID: string;
 
   private files: FileList | null = null;
   message: string;
@@ -31,6 +31,7 @@ export class FileUploadComponent implements ControlValueAccessor {
   user: User;
   productId;
   fileOfBlob: File;
+  images: Image[];
   // onChange: () => void;
 
   @HostListener('change', ['$event.target.files']) emitFiles(event: FileList) {
@@ -50,6 +51,11 @@ export class FileUploadComponent implements ControlValueAccessor {
     private messageService: MessageService,
     private spinnerService: SpinnerService
   ) {
+    this.user = this.accountService.currentUserValue;
+    // this.uploadService.clearState();
+    this.uploadService.images.subscribe(images => {
+      this.images = images;
+    });
   }
   writeValue(obj: any): void {
     this.files = obj ? obj : undefined;
@@ -64,88 +70,37 @@ export class FileUploadComponent implements ControlValueAccessor {
 
   uplaodFile() {
     if (!this.files.length) {
-      this.message = 'Please select the files!';
       return false;
     }
 
     Array.from(this.files).forEach(file => {
-      this.cropImage(file);
+      let formData = new FormData();
+      formData.append('file', file);
+      formData.append('name', `tybo.${file.name.split('.')[file.name.split('.').length - 1]}`); // file extention
+      this.documentsService.uploadFile(formData).subscribe(response => {
+        this.saveImage(response);
+        console.log(response);
+      });
 
     });
 
   }
 
-  cropImage(file) {
-    if (file.type.match(/image.*/)) {
-      console.log('An image has been loaded');
 
-      const reader = new FileReader();
-      reader.onload = (readerEvent: any) => {
-        const image = new Image();
-        image.onload = (imageEvent) => {
-
-          // Resize the image
-          const canvas = document.createElement('canvas');
-          const maxSize = 544; // TODO : pull max size from a site config
-          let width = image.width;
-          let height = image.height;
-          if (width > height) {
-            if (width > maxSize) {
-              height *= maxSize / width;
-              width = maxSize;
-            }
-          } else {
-            if (height > maxSize) {
-              width *= maxSize / height;
-              height = maxSize;
-            }
-          }
-          canvas.width = width;
-          canvas.height = height;
-          canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-          const dataUrl = canvas.toDataURL('image/jpeg');
-          const resizedImage = this.dataURLToBlob(dataUrl);
-          this.fileOfBlob = new File([resizedImage], 'iio.jpg');
-          // upload
-          const formData = new FormData();
-          formData.append('file', this.fileOfBlob);
-          formData.append('name', 'iio');
-          this.documentsService.uploadFile(formData).subscribe(response => {
-            this.imgURL.push(`${environment.API_URL}/api/upload/${response}`);
-            this.uploadService.updateState(this.imgURL);
-            console.log(response);
-          });
-
-        };
-        image.src = readerEvent.target.result.toString();
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-  dataURLToBlob(dataURL) {
-    const BASE64_MARKER = ';base64,';
-    if (dataURL.indexOf(BASE64_MARKER) === -1) {
-      // tslint:disable-next-line: no-shadowed-variable
-      const parts = dataURL.split(',');
-      // tslint:disable-next-line: no-shadowed-variable
-      const contentType = parts[0].split(':')[1];
-      // tslint:disable-next-line: no-shadowed-variable
-      const raw = parts[1];
-
-      return new Blob([raw], { type: contentType });
-    }
-
-    const parts = dataURL.split(BASE64_MARKER);
-    const contentType = parts[0].split(':')[1];
-    const raw = window.atob(parts[1]);
-    const rawLength = raw.length;
-
-    const uInt8Array = new Uint8Array(rawLength);
-
-    for (let i = 0; i < rawLength; ++i) {
-      uInt8Array[i] = raw.charCodeAt(i);
-    }
-
-    return new Blob([uInt8Array], { type: contentType });
+  saveImage(url) {
+    const data: Image = {
+      CompanyId: this.user.CompanyId,
+      OtherId: this.otherID || this.user.CompanyId + '-product',
+      Url: `${environment.API_URL}/api/upload/${url}`,
+      CreateUserId: this.user.UserId,
+      ModifyUserId: this.user.UserId,
+      StatusId: 1
+    };
+    this.uploadService.addImage(data);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success!',
+      detail: 'Image  uploaded '
+    });
   }
 }

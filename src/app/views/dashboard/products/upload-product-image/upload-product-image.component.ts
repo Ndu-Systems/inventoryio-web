@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
 export class UploadProductImageComponent implements OnInit {
 
   heading = 'Upload';
-  backto = '/dashboard/add-product';
+  backto = '/dashboard/product';
   file: File;
   message: string;
   success: string;

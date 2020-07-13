@@ -12,7 +12,7 @@ import { MessageService } from 'primeng/api';
 })
 export class UploadPreviewComponent implements OnInit {
   heading = 'Upload';
-  backto = '/dashboard/add-product';
+  backto = '/dashboard/product';
   file: File;
   files: File[];
   message: string;

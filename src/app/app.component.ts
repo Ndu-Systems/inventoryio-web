@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PwaService, CompanyService } from './_services';
+import { PwaService, CompanyService, AccountService } from './_services';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { SwPush, SwUpdate } from '@angular/service-worker';
 import { Title } from '@angular/platform-browser';
-import { filter } from 'rxjs/internal/operators/filter';
-import { map } from 'rxjs/internal/operators/map';
-import { ShoppingService } from './_services/home/shoping/shopping.service';
-import { Company } from './_models';
+import { User } from './_models';
 
 
 @Component({
@@ -23,11 +20,8 @@ export class AppComponent implements OnInit {
   constructor(
     public pwaService: PwaService,
     private router: Router,
-    private swPush: SwPush,
-    private update: SwUpdate,
     private titleService: Title,
-    private activatedRoute: ActivatedRoute,
-    private companyService: CompanyService,
+    private accountService: AccountService
 
 
   ) {
@@ -46,6 +40,12 @@ export class AppComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
+
+    const user: User = this.accountService.currentUserValue;
+    if (user && user.UserId && user.CompanyId && environment.production) {
+      this.router.navigate(['dashboard']);
+    }
+
   }
 
   setDocTitle(title: string) {

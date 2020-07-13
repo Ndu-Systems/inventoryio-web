@@ -136,7 +136,7 @@ export class SellComponent implements OnInit {
     this.Notes = localStorage.getItem('Notes') || '';
   }
   add() {
-    this.router.navigate(['/dashboard/add-product']);
+    this.router.navigate(['/dashboard/product']);
   }
   doSell(product: Product) {
     if (!this.sale) {

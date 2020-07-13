@@ -1,0 +1,162 @@
+@import '../../../../../assets/styles/variables';
+$grid-tbl : 20% 20% 18% auto;
+
+.options {
+  .headings {
+    display: grid;
+
+    // grid-template-columns: repeat(4, 25%);
+    grid-template-columns: $grid-tbl;
+
+    .item {
+      font-weight: 900;
+      text-transform: uppercase;
+      border: 1px solid $ligher-gray;
+      padding: .5rem;
+      box-sizing: border-box;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .body {
+
+
+    .lines {
+      display: grid;
+      // grid-template-columns: repeat(4, 25%);
+      grid-template-columns: $grid-tbl;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+
+      .line {
+        font-weight: 900;
+        text-transform: uppercase;
+        border: 1px solid $ligher-gray;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+
+        input {
+          margin: 0;
+          width: 100%;
+          height: 5rem;
+          text-align: center;
+          border: none;
+
+          &::placeholder {
+            font-weight: 300;
+            font-style: italic;
+          }
+        }
+
+        a {
+          display: block;
+          text-align: center;
+          font-style: italic;
+          position: relative;
+          top: 30%;
+          color: $strong-gray;
+        }
+
+        .option-images {
+          display: grid;
+          grid-template-columns: repeat(3, 33.3%);
+          
+
+          .option {
+            position: relative;
+
+            .file-drop-area {
+              position: relative;
+
+              span {
+                position: absolute;
+                background: red;
+                width: 100%;
+                height: 100%;
+                z-index: 99;
+                left: 0;
+                display: block;
+
+                img {
+                  width: 4rem;
+                  margin: .2rem auto;
+                  position: relative;
+                  left: 1.5rem;
+                  top: .2rem;
+                }
+              }
+
+              input {
+                background: yellow;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 5rem;
+                z-index: 105;
+                opacity: 0;
+              }
+
+
+            }
+          }
+
+          .option-image {
+            border: 1px solid $ligher-gray;
+            img {
+              width: 100%;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
+
+    .add-line {
+      text-align: right;
+      padding: 1rem 0;
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.viewImage {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .image {
+    margin: 5rem auto;
+    width: 60%;
+    text-align: center;
+    margin-bottom: 0;
+
+    img {
+      height: 40rem;
+    }
+
+    .delete {
+      height: 2rem;
+    }
+  }
+
+  .btns {
+    margin: 10% auto;
+    margin-top: 0;
+    width: 18%;
+    img{
+      height: 2rem;
+    }
+
+  }
+}

@@ -89,7 +89,7 @@ export class ListProductsComponent implements OnInit {
     this.products = this.productService.currentProducts;
   }
   add() {
-    this.router.navigate(['/dashboard/add-product']);
+    this.router.navigate(['/dashboard/product']);
   }
   import() {
     this.router.navigate(['/dashboard/data-import']);
@@ -99,7 +99,7 @@ export class ListProductsComponent implements OnInit {
       backto: '/dashboard/list-product',
     });
     this.productService.updateCurrentProduct(product);
-    this.router.navigate([`/dashboard/product-details`]);
+    this.router.navigate([`/dashboard/product`]);
   }
   clearSearch() {
     this.search = '';

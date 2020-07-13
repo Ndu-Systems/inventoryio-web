@@ -75,17 +75,20 @@
     <div class="body-container">
       <div class="body"
         *ngFor="let item of products | searchproduct: search | searchproductbycatergory:searchByCatergory">
-        <div class="body-item">
+        <!-- <div class="body-item">
           <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
           <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
-
+        </div> -->
+        <div class="body-item">
+          <img [src]="item.Productoptions[0].ImageUrl1" alt="" *ngIf="item.Productoptions" />
+          <img src="assets/images/placeholder.png" *ngIf="!item.Productoptions" alt="" />
         </div>
         <div class="body-item">
           <p>
             <b>
               {{item.Name}}
             </b>
-            
+
           </p>
           <!-- <p class="share" (click)="share(item)">
             <i class="pi pi-share-alt"></i>Share
@@ -93,14 +96,14 @@
         </div>
         <div class="body-item">
           <p>
-              {{item.UnitPrice | currency:'R'}}
+            {{item.UnitPrice | currency:'R'}}
           </p>
 
         </div>
         <div class="body-item tac">
           <p>
             <span [ngClass]="item.Class">
-                {{item.Quantity}}
+              {{item.Quantity}}
             </span> </p>
         </div>
         <div class="body-item tar">

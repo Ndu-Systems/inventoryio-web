@@ -1,11 +1,12 @@
 <div class="main">
-
-  <div class="images" *ngIf="imgURL">
+  <div class="images">
     <div class="cards">
-      <span *ngFor="let image of imgURL">
+      <span *ngFor="let image of images">
         <div class="card">
           <div class="icon">
-            <img [src]="image" alt="">
+            {{otherID}}
+          <pre>  {{image | json}}</pre>
+            <img *ngIf="image.OtherID == otherID" [src]="image.Url" alt="">
           </div>
         </div>
       </span>

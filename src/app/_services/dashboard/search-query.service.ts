@@ -107,7 +107,7 @@ export class SearchQueryService {
         Name: 'Add product',
         Keyword: 'new product, how to add a new product',
         Type: 'link',
-        Item: 'dashboard/add-product'
+        Item: 'dashboard/product'
       },
       {
         Id: 'sell',

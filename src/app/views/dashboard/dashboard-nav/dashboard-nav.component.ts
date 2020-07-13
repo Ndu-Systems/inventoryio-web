@@ -59,7 +59,7 @@ export class DashboardNavComponent implements OnInit {
         Icon: `assets/images/dashboard-nav-icons/products.svg`,
         ActiveIcon: `assets/images/dashboard-nav-icons/products-white.svg`,
         showItem: true,
-        AddUrl: '/dashboard/add-product',
+        AddUrl: '/dashboard/product',
         SecondaryName: 'Product',
         More: [
           {

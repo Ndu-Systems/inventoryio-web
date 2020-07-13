@@ -162,12 +162,12 @@ span.step {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #000000;
+  background: #bdc3c7;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #000000;
+  background: #bdc3c7;
 }
 
 @media only screen and (min-width: 1254px) {
@@ -577,13 +577,13 @@ span.step {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #000;
-  border-radius: 0;
+  background: #bdc3c7;
+  border-radius: 1rem;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #000;
+  background: #bdc3c7;
 }
 
 .share {

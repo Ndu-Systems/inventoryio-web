@@ -90,6 +90,7 @@ import { DasboardTopNavBarComponent } from './dasboard-top-nav-bar/dasboard-top-
 import { SearchOrderByCustomerPipe } from 'src/app/_pipes/search-order-by-customer.pipe';
 import { EditPartnerComponent } from './partners/edit-partner/edit-partner.component';
 import { FormatSearchListPipe } from 'src/app/_pipes/format-search-result.pipe';
+import { ProductOptionsComponent } from './products/product-options/product-options.component';
 
 const routes: Routes = [
   {
@@ -101,7 +102,7 @@ const routes: Routes = [
       { path: 'add-user', component: AddUserComponent },
       { path: 'edit-user', component: EditUserComponent },
       { path: 'list-user', component: ListUsersComponent },
-      { path: 'add-product', component: AddProductComponent },
+      { path: 'product', component: AddProductComponent },
       { path: 'list-product', component: ListProductsComponent },
       { path: 'product-details', component: ProductDetailsComponent },
       { path: 'upload-product-image/:id', component: UploadProductImageComponent },
@@ -248,7 +249,8 @@ export const declarations = [
   DasboardTopNavBarComponent,
   SearchOrderByCustomerPipe,
   EditPartnerComponent,
-  FormatSearchListPipe
+  FormatSearchListPipe,
+  ProductOptionsComponent
 ];
 
 @NgModule({

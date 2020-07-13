@@ -31,7 +31,7 @@ export class UserActionsComponent implements OnInit {
         {
           name: 'Add Products',
           image: 'assets/images/actions/addproduct.svg',
-          link: 'dashboard/add-product'
+          link: 'dashboard/product'
         },
         {
           name: 'List Products',

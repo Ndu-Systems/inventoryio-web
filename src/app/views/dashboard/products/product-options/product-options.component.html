@@ -1,0 +1,78 @@
+<div class="options">
+  <div class="headings">
+    <div class="item" *ngFor="let item of headings">
+      {{item}}
+    </div>
+  </div>
+  <div class="body">
+    <div class="lines" *ngFor="let item of product.Productoptions; let i = index">
+      <div class="line">
+        <input type="text" [placeholder]="'Enter ' + item.Name1" [(ngModel)]="item.Value1" (change)="saveState()">
+      </div>
+      <div class="line">
+        <input type="text" [placeholder]="'Enter ' + item.Name2" [(ngModel)]="item.Value2" (change)="saveState()">
+      </div>
+      <div class="line">
+        <input type="text" placeholder="Enter Quantity" [(ngModel)]="item.Quantity" (change)="saveState()">
+      </div>
+      <div class="line">
+        <!-- <a>Uplaod Image</a> -->
+        <!-- <input type="file" multiple (change)="imageChanged(item.Id,$event,i,2)">
+        <input type="file" multiple (change)="imageChanged(item.Id,$event,i,3)"> -->
+        <div class="option-images">
+          <div class="option">
+            <div class="file-drop-area" *ngIf="!item.ImageUrl1">
+              <span class="fake-btn">
+                <img src="assets/add-image.svg" alt="">
+              </span>
+              <input type="file" multiple (change)="imageChanged(item.Id,$event,i,1)">
+
+            </div>
+            <div class="option-image" *ngIf="item.ImageUrl1" (click)="showImage(item, item.ImageUrl1,'ImageUrl1',i)" >
+              <img [src]="item.ImageUrl1" alt="">
+            </div>
+          </div>
+          <div class="option">
+            <div class="file-drop-area" *ngIf="!item.ImageUrl2">
+              <span class="fake-btn">
+                <img src="assets/add-image.svg" alt="">
+              </span>
+              <input type="file" multiple (change)="imageChanged(item.Id,$event,i,2)">
+
+            </div>
+            <div class="option-image" *ngIf="item.ImageUrl2"  (click)="showImage(item, item.ImageUrl2,'ImageUrl2',i)">
+              <img [src]="item.ImageUrl2" alt="">
+            </div>
+          </div>
+          <div class="option">
+            <div class="file-drop-area" *ngIf="!item.ImageUrl3">
+              <span class="fake-btn">
+                <img src="assets/add-image.svg" alt="">
+              </span>
+              <input type="file" multiple (change)="imageChanged(item.Id,$event,i,3)">
+
+            </div>
+            <div class="option-image" *ngIf="item.ImageUrl3"  (click)="showImage(item, item.ImageUrl3,'ImageUrl3',i)">
+              <img [src]="item.ImageUrl3" alt="">
+            </div>
+          </div>
+        </div>
+        <!-- <app-file-upload [otherID]="item.Id"></app-file-upload> -->
+      </div>
+    </div>
+    <div class="add-line">
+      <img (click)="addLine()" src="assets/images/tybo/btn-add-line.svg" alt="">
+    </div>
+
+  </div>
+</div>
+
+<div class="viewImage" *ngIf="viewImage">
+  <div class="image">
+    <img [src]="currentImage" alt="currentImage">
+  </div>
+  <div class="btns">
+    <img (click)="deleteImage()" class="delete" src="assets/images/tybo/btn-delete-image.svg" alt="">
+    <img (click)="closeImage()" class="delete" src="assets/images/tybo/btn-close-image.svg" alt="">
+  </div>
+</div>

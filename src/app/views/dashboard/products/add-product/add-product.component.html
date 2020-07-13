@@ -1,8 +1,90 @@
+<div class="conatiner">
+  <h1 class="title">{{heading}}</h1>
+  <div class="form-section" *ngIf="product">
+    <div class="form-items">
+      <div class="form-item">
+        <div class="item">
+          <span class="label">product code</span>
+          <input type="text" [(ngModel)]="product.Code">
+        </div>
+        <div class="status">
+          {{nameError}}
+        </div>
+      </div>
+
+
+      <div class="form-item">
+        <div class="item">
+          <span class="label">product name</span>
+          <input type="text" [(ngModel)]="product.Name" (change)="saveState()">
+        </div>
+        <div class="status">
+          {{priceError}}
+        </div>
+      </div>
+
+
+
+      <div class="form-item">
+        <div class="item">
+          <span class="label">product price</span>
+          <input type="text" [(ngModel)]="product.UnitPrice" (change)="saveState()">
+        </div>
+        <div class="status">
+
+        </div>
+      </div>
+
+
+      <!-- <div class="form-item">
+        <div class="item">
+          <span class="label">quantity in hand</span>
+          <input type="text" [(ngModel)]="quantity">
+        </div>
+        <div class="status">
+
+        </div>
+      </div> -->
+
+      <div class="form-item">
+        <div class="item">
+          <span class="label">description</span>
+          <textarea [(ngModel)]="product.Description" (change)="saveState()"></textarea>
+        </div>
+        <div class="status">
+
+        </div>
+      </div>
+
+      <div class="options">
+        <app-product-options></app-product-options>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-section">
+    <div class="actions">
+      <div class="action">
+        <img src="assets/images/tybo/cta-save-product.svg" (click)="save()" alt="">
+      </div>
+      <div class="action">
+        <img src="assets/images/tybo/cta-cancel.svg" (click)="back()" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <pre>
+  {{product|json}}
+</pre> -->
+
+
+
+<!-- 
 <div class="main-content">
   <h1 class="title-header">Add new product.</h1>
 
   <form [formGroup]="rForm">
-    <!-- <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)"> -->
     <div class="col-1-of-2">
       <div class="section">
         <div class="form-item">
@@ -156,8 +238,6 @@
 
     <div class="actions-footer">
       <div class="actions">
-        <!-- <div class="div">
-        </div> -->
         <div class="div">
           <input type="button" value="Cancel" (click)="back()" class="action-btn cancel" />
         </div>
@@ -175,4 +255,4 @@
 
 <div class="scanner-pluggin" *ngIf="showScan">
   <app-scanner></app-scanner>
-</div>
+</div> -->

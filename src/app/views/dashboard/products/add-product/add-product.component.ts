@@ -24,12 +24,13 @@ export class AddProductComponent implements OnInit {
   error: string;
   brands$: Observable<Brand[]>;
   catergories$: Observable<Caterory[]>;
-  prodcut: Product;
+  product: Product;
   showScan: boolean;
   isTrackInventory: boolean;
-  id = 'new';
   attributes: Attribute[];
   images: Image[];
+  nameError: string;
+  priceError: string;
 
   constructor(
     private fb: FormBuilder,
@@ -60,49 +61,36 @@ export class AddProductComponent implements OnInit {
     this.cateroryService.getCateries(user.CompanyId);
 
     this.productService.product.subscribe(prod => {
-      this.prodcut = prod;
-    });
-    if (!this.prodcut || this.prodcut.ProductId) {
-      this.prodcut = {
-        ProductId: '',
-        BrandId: '',
-        CatergoryId: '',
-        CompanyId: '',
-        SupplierId: '',
-        Name: '',
-        Description: '',
-        UnitPrice: '',
-        UnitCost: 0,
-        Code: '',
-        SKU: '',
-        TrackInventory: true,
-        Quantity: 1,
-        LowStock: 0,
-        CreateDate: '',
-        CreateUserId: '',
-        ModifyDate: '',
-        ModifyUserId: '',
-        StatusId: ''
-      };
-    }
-
-    this.rForm = this.fb.group({
-      Name: [this.prodcut.Name || '', Validators.required],
-      BrandId: [this.prodcut.BrandId || ''],
-      CatergoryId: [this.prodcut.CatergoryId || ''],
-      Description: [this.prodcut.Description || ' '],
-      UnitPrice: [this.prodcut.UnitPrice || ''],
-      UnitCost: [this.prodcut.UnitCost || 0],
-      Code: [this.prodcut.Code || ''],
-      SKU: [this.prodcut.SKU || ''],
-      Quantity: [this.prodcut.Quantity || 1],
-      TrackInventory: [this.prodcut.TrackInventory || true],
-      LowStock: [this.prodcut.LowStock || 0],
-      CompanyId: [user.CompanyId, Validators.required],
-      CreateUserId: [user.UserId, Validators.required],
-      StatusId: [1, Validators.required],
-      ModifyUserId: [user.UserId, Validators.required],
-      image: new FormControl(null)
+      if (prod) {
+        this.product = prod;
+        this.heading = this.product.ProductId.length > 5 ? 'Update product.' : 'Add product';
+        if (!this.product.Productoptions) {
+          this.product.Productoptions = [];
+        }
+      } else {
+        this.product = {
+          ProductId: '',
+          BrandId: '',
+          CatergoryId: '',
+          CompanyId: '',
+          SupplierId: '',
+          Name: '',
+          Description: '',
+          UnitPrice: '',
+          UnitCost: 0,
+          Code: '',
+          SKU: '',
+          TrackInventory: true,
+          Quantity: 1,
+          LowStock: 0,
+          CreateDate: '',
+          CreateUserId: '',
+          ModifyDate: '',
+          ModifyUserId: '',
+          StatusId: '',
+          Productoptions: []
+        };
+      }
     });
 
     this.scannerService.scann.subscribe(scan => {
@@ -153,7 +141,7 @@ export class AddProductComponent implements OnInit {
 
   addBrand(data: Product) {
     this.bannerService.updateState({
-      backto: '/dashboard/add-product'
+      backto: '/dashboard/product'
     });
     this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-brand']);
@@ -161,7 +149,7 @@ export class AddProductComponent implements OnInit {
 
   addCatergory(data: Product) {
     this.bannerService.updateState({
-      backto: '/dashboard/add-product'
+      backto: '/dashboard/product'
     });
     this.productService.updateCurrentProduct(data);
     this.routeTo.navigate(['/dashboard/add-catergory']);
@@ -176,5 +164,39 @@ export class AddProductComponent implements OnInit {
   back() {
     this.routeTo.navigate([`/dashboard/list-product`]);
   }
+  saveState() {
+    this.productService.updateCurrentProduct(this.product);
+  }
 
+  save() {
+    if (this.validateForm()) {
+      let quantity = 0;
+      this.product.Productoptions.forEach(x => {
+        quantity += Number(x.Quantity);
+      });
+      this.product.Quantity = quantity;
+      if (this.product.ProductId.length > 5) {
+        this.product.CompanyId = this.accountService.currentUserValue.CompanyId;
+        this.product.TrackInventory = true;
+        this.productService.updateProduct(this.product);
+      } else {
+        this.product.CompanyId = this.accountService.currentUserValue.CompanyId;
+        this.productService.addProduct(this.product);
+      }
+
+    }
+  }
+  validateForm() {
+    this.nameError = undefined;
+    this.priceError = undefined;
+    if (!this.product.Name) {
+      this.nameError = 'Name is required!';
+      return false;
+    }
+    if (!this.product.UnitPrice) {
+      this.priceError = 'Price is required!';
+      return false;
+    }
+    return true;
+  }
 }
