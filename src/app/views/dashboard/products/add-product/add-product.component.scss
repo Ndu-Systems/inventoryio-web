@@ -49,6 +49,10 @@
 
     .actions {
       grid-template-columns: 50% auto;
+
+      img {
+        cursor: pointer;
+      }
     }
   }
 }

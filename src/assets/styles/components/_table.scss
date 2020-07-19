@@ -91,11 +91,12 @@
 
         }
 
-       
+
 
         .btn-primary {
           background: $primary-bg-color
         }
+
         .danger {
           background: $danger;
           margin: 0 .4rem;
@@ -168,6 +169,19 @@
           font-size: .88rem;
           font-weight: 500;
           margin: .2rem;
+          position: relative;
+          top: 20%;
+          b{
+            font-weight: 700;
+          }
+
+          span.code {
+            display: block;
+            font-size: .7rem;
+            font-weight: 900;
+            color: $blue-gray;
+          }
+
 
           @media only screen and (max-width: 600px) {
             font-size: .7rem;
@@ -279,6 +293,7 @@
               color: $white-color;
             }
 
+         
             .details {
               display: block;
               background: none;

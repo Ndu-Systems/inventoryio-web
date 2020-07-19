@@ -142,7 +142,11 @@ export class AddProductComponent implements OnInit {
     });
   }
   getNewCode(): number {
-    const maxCode = Math.max(...this.products.map(x => Number(x.Code)));
+    let maxCode = 0;
+    if (this.products.length > 0) {
+      maxCode = Math.max(...this.products.map(x => Number(x.Code)));
+    }
+
     this.code = `P${maxCode + 1}`;
     return maxCode + 1;
   }
@@ -197,7 +201,7 @@ export class AddProductComponent implements OnInit {
   save() {
     if (this.validateForm()) {
       let quantity = 0;
-      this.product.Productoptions.forEach(x => {
+      this.product.Productoptions.filter(x => Number(x.StatusId) === 1).forEach(x => {
         quantity += Number(x.Quantity);
       });
       this.product.Quantity = quantity;
