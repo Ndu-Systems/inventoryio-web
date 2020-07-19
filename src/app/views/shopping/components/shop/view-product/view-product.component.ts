@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 import { Attribute } from 'src/app/_models/Attribute.model';
 import { MessageService } from 'primeng/api';
 import { OrderOptions } from 'src/app/_models/order.options.model';
+import { Productoptions } from 'src/app/_models/productoptions.model';
 
 @Component({
   selector: 'app-view-product',
@@ -37,7 +38,9 @@ export class ViewProductComponent implements OnInit {
   logoUrl: string;
   viewCart: boolean;
   modalHeading: string;
-
+  optionClass = ['option', 'sizes'];
+  sizes: Productoptions[] = [];
+  colors: Productoptions[] = [];
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
@@ -71,12 +74,19 @@ export class ViewProductComponent implements OnInit {
         this.productService.updateState(this.products);
         this.productService.updateSellProductState(this.product);
         this.loading = false;
+        if (this.product.Productoptions) {
+          this.sizes = [...this.product.Productoptions];
+          this.colors = [...this.product.Productoptions];
+          this.sizes.map(x => x.ngClass = ['option', 'sizes']);
+          this.colors.map(x => x.ngClass = ['option', 'colors']);
+
+        }
       }
     });
   }
 
   dataReady() {
-    this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
+    // this.allProductAttributes = this.product.Attributes.filter(x => x.Values && x.Values.length > 0);
     if (this.company) {
       this.titleService.setTitle(`${this.product.Name} | ${this.company.Name}  | Tybo | Take your business online`);
       if (this.company.Theme) {
@@ -132,23 +142,6 @@ export class ViewProductComponent implements OnInit {
       return false;
     }
 
-    let isErross = false;
-    this.allProductAttributes.forEach(attribute => {
-      const checkIfExist = this.orderOptions.find(x => x.OptionId === attribute.AttributeId);
-      if (!checkIfExist) {
-        this.messageService.add({
-          severity: 'warn',
-          summary: `${attribute.Name} option needed`,
-          detail: `${attribute.Name} must be selected.`
-        });
-        isErross = true;
-      }
-
-    });
-    if (isErross) {
-      return false;
-    }
-
     const item = this.sale.items.find(x => x.prodcuId === product.ProductId);
     if (item && (JSON.stringify(item.options) === JSON.stringify(this.orderOptions))) {
       // check if options are still the same.
@@ -188,30 +181,7 @@ export class ViewProductComponent implements OnInit {
     this.router.navigate(['checkout', this.company.Handler || this.company.CompanyId]);
   }
 
-  optionSelected(option, attributeId) {
-    const selectValueId = Number(option);
-    if (this.orderOptions.find(x => x.OptionId === attributeId)) {
-      this.orderOptions = this.orderOptions.filter(x => x.OptionId !== attributeId);
-    }
-    const attribute = this.product.Attributes.find(x => x.AttributeId === attributeId);
-    const itemOptionn: OrderOptions = {
-      Id: '1',
-      OrderId: 'na',
-      ProductId: this.product.ProductId,
-      OrderProductId: 'na',
-      OptionId: attributeId,
-      ValueId: selectValueId,
-      OptionValue: attribute.Values.find(x => Number(x.Id) === selectValueId).AttributeValue,
-      OptionName: attribute.Name,
-      ValuePrice: this.product.UnitPrice,
-      ValueIdQty: this.product.Quantity,
-      CompanyId: this.company.CompanyId,
-      CreateUserId: 'customer',
-      ModifyUserId: 'customer',
-      StatusId: 1
-    };
-    this.pushOptions(itemOptionn);
-  }
+
   pushOptions(orderOption: OrderOptions) {
     if (!this.orderOptions.find(x => x.OptionId === orderOption.OptionId && x.ValueId === orderOption.ValueId)) {
       this.orderOptions.push(orderOption);
@@ -243,5 +213,16 @@ export class ViewProductComponent implements OnInit {
   }
   removeItem(item: Item) {
     this.shoppingService.removeItem(item);
+  }
+  selectOption(name, index) {
+    if (name === 'sizes') {
+      this.sizes.map(x => x.ngClass = ['option', 'sizes']);
+      this.sizes[index].ngClass = ['option', 'sizes', 'active'];
+    } else {
+      this.colors.map(x => x.ngClass = ['option', 'colors']);
+      this.colors[index].ngClass = ['option', 'colors', 'active'];
+    }
+
+
   }
 }

@@ -2,6 +2,7 @@ import { Image } from './image.model';
 import { Product } from './product.model';
 
 export interface Productoptions {
+
     Id: string;
     ProductId: string;
     CompanyId: string;
@@ -24,6 +25,7 @@ export interface Productoptions {
     ModifyDate?: string;
     ModifyUserId: string;
     StatusId: number;
+    ngClass?: string[];
 }
 
 

@@ -28,24 +28,26 @@
       .options {
 
         .options-group {
-          display: grid;
-          grid-template-columns: 5% auto;
-
-          .label {
-            padding: .5rem .2rem;
-            text-transform: capitalize;
-          }
-        }
-
-        .options-list {
           display: flex;
 
           .option {
-            border: 1px solid #000;
-            padding: .1rem .5rem;
-            margin: .2rem;
+            margin: .25rem;
+            border: 1px solid $strong-gray;
+            padding: .2rem .6rem;
+            color: $strong-gray;
             cursor: pointer;
           }
+          .label{
+            border: none;
+            width: 5rem;
+            cursor: default;
+          }
+          .active{
+            background: $black-color;
+            color: $white-color;
+            border: 1px solid $black-color;
+          }
+
         }
       }
     }
@@ -101,6 +103,7 @@
   .products {
     max-height: 45vh;
     overflow-y: scroll;
+
     .product {
       display: grid;
       grid-template-columns: 10% 20% 20% auto;

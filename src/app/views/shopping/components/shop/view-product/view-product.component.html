@@ -21,25 +21,23 @@
           {{product.UnitPrice | currency:'R'}}
         </p>
 
-        <div class="options" *ngIf="product.Attributes?.length > 0">
-          <div class="option-items">
-            <div class="options-group" *ngFor="let attribute of product.Attributes | removeNoValueAttributes">
-              <div class="label">
-                {{attribute.Name}}:
-              </div>
+        <div class="options" *ngIf="product.Productoptions?.length > 0">
+          <div class="options-group">
+            <div class="option label">
+              <b>Size:</b>
+            </div>
+            <div *ngFor="let item of sizes; let i = index" (click)="selectOption('sizes', i)" [ngClass]="item.ngClass">
+              {{item.Value1}}
+            </div>
+          </div>
 
-              <div class="options-list">
-                <!-- <span *ngIf="attribute.Values">
-                  <select (change)="optionSelected($event.target.value, attribute.AttributeId)">
-                    <option value="" selected></option>
-                    <option *ngFor="let item of attribute.Values" class="select-option" [value]="item.Id">
-                      {{item.AttributeValue}}</option>
-                  </select>
-                </span> -->
-                <div *ngFor="let item of attribute.Values" class="option">
-                  {{item.AttributeValue}}
-                </div>
-              </div>
+          <div class="options-group">
+            <div class="option label">
+              <b>Color:</b>
+            </div>
+            <div class="option colors" *ngFor="let item of colors; let i = index" (click)="selectOption('', i)"
+              [ngClass]="item.ngClass">
+              {{item.Value2}}
             </div>
           </div>
 
@@ -142,6 +140,6 @@
         <img (click)="back()" src="assets/images/tybo/cta-continue-shopping.svg" alt="">
       </div>
     </div>
-  
+
   </div>
 </div>
