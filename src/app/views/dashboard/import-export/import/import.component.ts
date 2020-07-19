@@ -89,6 +89,9 @@ export class ImportComponent implements OnInit {
       if (fp.CatergoryId && fp.CatergoryId !== '') {
         const cat: Caterory = {
           Name: fp.CatergoryId,
+          Description: '',
+          ImageUrl: '',
+          Parent: '',
           CompanyId: this.user.CompanyId,
           CreateUserId: this.user.UserId,
           StatusId: 1,

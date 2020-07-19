@@ -1,5 +1,5 @@
 @import '../../../../../assets/styles/variables';
-$grid-tbl : 20% 20% 18% auto;
+$grid-tbl : 17%  17% 17% 40% auto;
 
 .options {
   .headings {
@@ -112,6 +112,11 @@ $grid-tbl : 20% 20% 18% auto;
             }
           }
         }
+        .delete-line{
+          width: 5rem;
+          position: relative;
+          top: 30%;
+        }
       }
     }
 
@@ -126,37 +131,3 @@ $grid-tbl : 20% 20% 18% auto;
   }
 }
 
-.viewImage {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-
-  .image {
-    margin: 5rem auto;
-    width: 60%;
-    text-align: center;
-    margin-bottom: 0;
-
-    img {
-      height: 40rem;
-    }
-
-    .delete {
-      height: 2rem;
-    }
-  }
-
-  .btns {
-    margin: 10% auto;
-    margin-top: 0;
-    width: 18%;
-    img{
-      height: 2rem;
-    }
-
-  }
-}

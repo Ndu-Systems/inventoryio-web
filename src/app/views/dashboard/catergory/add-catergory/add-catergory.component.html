@@ -5,38 +5,73 @@
 
     <div class="header">
       <h1>
-        Add a new category<span class="dot">.</span>
+       {{heading}}<span class="dot">.</span>
       </h1>
     </div>
 
     <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="add(rForm.value)">
       <div class="form-item">
-        <label class="label">Category</label>
+        <label class="label">Category Name</label>
         <input type="text" class="roundInput" formControlName="Name" required="required" />
-        <div class="alert"
-          *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
+        <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
           Category is required
         </div>
       </div>
-<!-- 
+
       <div class="form-item">
-        <label class="label">Category Image</label>
-        <app-product-images [productId]="category.CatergoryId" *ngIf="category.CatergoryId"></app-product-images>
+        <label class="label">Category Parent</label>
+        <select formControlName="Parent" class="roundInput">
+          <option value="">None</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="kids">Kids</option>
+        </select>
+      </div>
+
+      <div class="form-item">
+        <label class="label">Category Description</label>
+        <textarea class="roundInput" formControlName="Description"></textarea>
       </div>
 
 
 
- -->
+
+
+      <div class="file-drop-area" *ngIf="!imageUrl">
+        <label class="label">Image</label>
+        <span class="fake-btn">
+          <img src="assets/add-image.svg" alt="">
+        </span>
+        <input type="file" multiple (change)="imageChanged($event)">
+
+      </div>
+
+      <div *ngIf="imageUrl" class="image-uploaded"  (click)="showImage()">
+        <img [src]="imageUrl" alt="">
+      </div>
 
       <div class="actions">
         <div>
-          <button [disabled]="!rForm.valid" type="submit" class="btn"> Add category</button>
+          <button [disabled]="!rForm.valid" type="submit" class="btn"> {{actionLabel}}</button>
         </div>
 
         <div>
-          <a routerLink="/dashboard/list-categories"> <button type="button" class="btn btn-transparent">Cancel</button></a>
+          <a routerLink="/dashboard/list-categories"> <button type="button"
+              class="btn btn-transparent">Cancel</button></a>
         </div>
       </div>
     </form>
+  </div>
+</div>
+
+
+
+<div class="viewImage" *ngIf="viewImage">
+  <div class="image">
+    <img [src]="imageUrl" alt="currentImage">
+  </div>
+  <div class="btns">
+    <img (click)="deleteImage()" class="delete" src="assets/images/tybo/btn-delete-image.svg" alt="">
+    <img (click)="closeImage()" class="delete" src="assets/images/tybo/btn-close-image.svg" alt="">
   </div>
 </div>

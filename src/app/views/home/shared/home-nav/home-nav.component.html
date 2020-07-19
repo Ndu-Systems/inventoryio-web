@@ -4,6 +4,11 @@
     <img src="assets/images/tybo/menu.svg" (mouseover)="toggleMenu()" alt="">
   </div>
 
+  <div class="col search">
+    <img class="pc-only" src="assets/images/tybo/search-btn.svg" alt="">
+    <img class="phone-only" src="assets/images/tybo/btn-search-phone.svg" alt="">
+  </div>
+
   <div class="col logo">
     <a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
       [routerLinkActiveOptions]="{exact: true}">
@@ -11,191 +16,139 @@
     </a>
   </div>
 
+  <div class="col account">
+    <p>
+      <a routerLink="/sign-in"  routerLinkActive="active-link">Login</a>
+    </p>
 
-  <div class="col search">
-    <img class="pc-only" src="assets/images/tybo/search-btn.svg" alt="">
-    <img class="phone-only" src="assets/images/tybo/btn-search-phone.svg" alt="">
+    <p>
+      <a routerLink="/sign-up" routerLinkActive="active-link">Register</a>
+    </p>
   </div>
+
+
+
   <div class="col cart">
     <a routerLink="/shopping-cart" (click)="closeModule()">
       <img src="assets/images/tybo/bag.svg" alt="">
     </a>
   </div>
-  <!-- 
-  <div class="col actions">
-    <div class="item">
-      <a routerLink="/shop" (click)="closeModule()">
-        <img src="assets/images/tybo/shops.svg" alt="">
-      </a>
+
+  <div class="mobile-menu" *ngIf="showMobileNav">
+    <div class="tab-item">
+      <img class="back" src="assets/images/back-nav.svg" (click)="toggleNav()" alt="">
+    </div>
+    <div class="tab-item">
+      <p>
+        <a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">home</a>
+      </p>
+    </div>
+    <div class="tab-item">
+      <p>
+
+        <a (click)="showModule()" [ngClass]="modulesClass" routerLinkActive="active-link">our modules</a>
+      </p>
+    </div>
+    <div class="tab-item">
+      <p>
+
+        <a routerLink="/shop" (click)="closeModule()" routerLinkActive="active-link">Shopping</a>
+      </p>
     </div>
 
-    <div class="item">
+    <div class="tab-item">
+      <p>
+
+        <a routerLink="/pricing" (click)="closeModule()" routerLinkActive="active-link">pricing</a>
+      </p>
+    </div>
+    <div class="tab-item">
       <a routerLink="/sign-up" (click)="closeModule()">
-        <img src="assets/images/tybo/register.svg" alt="">
+        <img src="assets/images/sign-up-home.svg" alt="">
       </a>
     </div>
-
-    <div class="item">
+    <div class="tab-item">
       <a routerLink="/sign-in" (click)="closeModule()">
-        <img src="assets/images/tybo/login.svg" alt="">
+        <img src="assets/images/sign-in-home.svg" alt="">
       </a>
     </div>
 
-    <div class="item">
-      <a routerLink="/shopping-cart" (click)="closeModule()">
-        <img src="assets/images/tybo/bag.svg" alt="">
-      </a>
+
+  </div>
+
+
+
+
+
+  <div class="main-menu" *ngIf="showMenu" (mouseleave)="toggleMenu()">
+    <div class="seaction">
+      <a routerLink="/shop" (click)="toggleMenu()" routerLinkActive="active-link">Shopping</a>
     </div>
-
-  </div> -->
-
-
-
-</div>
-<!-- 
-<div class="tabs">
-  <div class="tab-item">
-    <p>
-      <a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{exact: true}">home</a>
-    </p>
-  </div>
-  <div class="tab-item">
-    <p>
-
-      <a (click)="showModule()" [ngClass]="modulesClass" routerLinkActive="active-link">our modules</a>
-    </p>
-  </div>
-  <div class="tab-item">
-    <p>
-
-      <a routerLink="/shop" routerLinkActive="active-link">Shopping</a>
-    </p>
-  </div>
-  <div class="tab-item">
-    <p>
-
-      <a routerLink="/pricing" (click)="closeModule()" routerLinkActive="active-link">pricing</a>
-    </p>
-  </div>
-
-</div> -->
-
-<div class="mobile-menu" *ngIf="showMobileNav">
-  <div class="tab-item">
-    <img class="back" src="assets/images/back-nav.svg" (click)="toggleNav()" alt="">
-  </div>
-  <div class="tab-item">
-    <p>
-      <a routerLink="/home" (click)="closeModule()" routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{exact: true}">home</a>
-    </p>
-  </div>
-  <div class="tab-item">
-    <p>
-
-      <a (click)="showModule()" [ngClass]="modulesClass" routerLinkActive="active-link">our modules</a>
-    </p>
-  </div>
-  <div class="tab-item">
-    <p>
-
-      <a routerLink="/shop" (click)="closeModule()" routerLinkActive="active-link">Shopping</a>
-    </p>
-  </div>
-
-  <div class="tab-item">
-    <p>
-
-      <a routerLink="/pricing" (click)="closeModule()" routerLinkActive="active-link">pricing</a>
-    </p>
-  </div>
-  <div class="tab-item">
-    <a routerLink="/sign-up" (click)="closeModule()">
-      <img src="assets/images/sign-up-home.svg" alt="">
-    </a>
-  </div>
-  <div class="tab-item">
-    <a routerLink="/sign-in" (click)="closeModule()">
-      <img src="assets/images/sign-in-home.svg" alt="">
-    </a>
-  </div>
-
-
-</div>
-
-
-
-
-
-<div class="main-menu" *ngIf="showMenu" (mouseleave)="toggleMenu()">
-  <div class="seaction">
-    <a routerLink="/shop" (click)="toggleMenu()" routerLinkActive="active-link">Shopping</a>
-  </div>
-  <div class="seaction">
-    <a routerLink="/pricing" (click)="showModule()" routerLinkActive="active-link">Modules</a>
-    <div class="modules" *ngIf="showModules">
-      <div class="modules-list">
-        <div class="module col-1-of-2">
-          <img src="assets/images/home/box.svg" alt="">
-          <a class="cta" (click)="selectedModule('inventory')">
-            <h1 class="header">
-              inventory management
-              <span class="text">
-                Add product/service items includes sales by default.
-              </span>
-            </h1>
-          </a>
-        </div>
-        <div class="module col-1-of-2">
-          <img src="assets/images/home/shop.svg" alt="">
-          <a class="cta" (click)="selectedModule('sales')">
-            <h1 class="header">
-              sales management
-              <span class="text">
-                Make sales and generate quotes for your clients.
-              </span>
-            </h1>
-          </a>
-        </div>
-        <div class="module col-1-of-2">
-          <img src="assets/images/home/crm.svg" alt="">
-          <a class="cta" (click)="selectedModule('crm')">
-            <h1 class="header">
-              crm management
-              <span class="text">
-                Manage your partners on the go with communications.
-              </span>
-            </h1>
-          </a>
-        </div>
-        <div class="module col-1-of-2">
-          <img src="assets/images/home/graph.svg" alt="">
-          <a class="cta" (click)="selectedModule('reporting')">
-            <h1 class="header">
-              reports management
-              <span class="text">
-                Add product/service items includes sales by default.
-              </span>
-            </h1>
-          </a>
-        </div>
-        <div class="module col-1-of-2">
-          <img src="assets/images/home/store.svg" alt="">
-          <a class="cta" (click)="selectedModule('shop')">
-            <h1 class="header">
-              shop management
-              <span class="text">
-                Create a shop catalog with customization to stand out.
-              </span>
-            </h1>
-          </a>
+    <div class="seaction">
+      <a routerLink="/pricing" (click)="showModule()" routerLinkActive="active-link">Modules</a>
+      <div class="modules" *ngIf="showModules">
+        <div class="modules-list">
+          <div class="module col-1-of-2">
+            <img src="assets/images/home/box.svg" alt="">
+            <a class="cta" (click)="selectedModule('inventory')">
+              <h1 class="header">
+                inventory management
+                <span class="text">
+                  Add product/service items includes sales by default.
+                </span>
+              </h1>
+            </a>
+          </div>
+          <div class="module col-1-of-2">
+            <img src="assets/images/home/shop.svg" alt="">
+            <a class="cta" (click)="selectedModule('sales')">
+              <h1 class="header">
+                sales management
+                <span class="text">
+                  Make sales and generate quotes for your clients.
+                </span>
+              </h1>
+            </a>
+          </div>
+          <div class="module col-1-of-2">
+            <img src="assets/images/home/crm.svg" alt="">
+            <a class="cta" (click)="selectedModule('crm')">
+              <h1 class="header">
+                crm management
+                <span class="text">
+                  Manage your partners on the go with communications.
+                </span>
+              </h1>
+            </a>
+          </div>
+          <div class="module col-1-of-2">
+            <img src="assets/images/home/graph.svg" alt="">
+            <a class="cta" (click)="selectedModule('reporting')">
+              <h1 class="header">
+                reports management
+                <span class="text">
+                  Add product/service items includes sales by default.
+                </span>
+              </h1>
+            </a>
+          </div>
+          <div class="module col-1-of-2">
+            <img src="assets/images/home/store.svg" alt="">
+            <a class="cta" (click)="selectedModule('shop')">
+              <h1 class="header">
+                shop management
+                <span class="text">
+                  Create a shop catalog with customization to stand out.
+                </span>
+              </h1>
+            </a>
+          </div>
         </div>
       </div>
+
+      <a routerLink="/pricing" (click)="toggleMenu()" routerLinkActive="active-link">pricing</a>
+      <a routerLink="/sign-up" (click)="toggleMenu()" routerLinkActive="active-link">Register</a>
+      <a routerLink="/sign-in" (click)="toggleMenu()" routerLinkActive="active-link">Login</a>
     </div>
-    
-    <a routerLink="/pricing" (click)="toggleMenu()" routerLinkActive="active-link">pricing</a>
-    <a routerLink="/sign-up" (click)="toggleMenu()" routerLinkActive="active-link">Register</a>
-    <a routerLink="/sign-in" (click)="toggleMenu()" routerLinkActive="active-link">Login</a>
   </div>
-</div>

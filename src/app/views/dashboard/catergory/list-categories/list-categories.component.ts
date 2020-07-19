@@ -41,14 +41,14 @@ export class ListCategoriesComponent implements OnInit {
     this.bannerService.updateState({
       backto: '/dashboard/list-categories',
     });
-    this.router.navigate(['/dashboard/add-catergory']);
+    this.router.navigate(['/dashboard/catergory']);
   }
   showAdd() {
     this.showForm = !this.showForm;
   }
   updateCategory(category: Caterory) {
     this.categorieservice.updateCurrentCategory(category);
-    this.router.navigate(['/dashboard/edit-category']);
+    this.router.navigate(['/dashboard/catergory']);
   }
   deleteCategory(category: Caterory) {
     this.confirmationService.confirm({

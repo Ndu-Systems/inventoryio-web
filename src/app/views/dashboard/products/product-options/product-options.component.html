@@ -1,4 +1,4 @@
-<div class="options">
+<div class="options" *ngIf="product">
   <div class="headings">
     <div class="item" *ngFor="let item of headings">
       {{item}}
@@ -58,6 +58,9 @@
           </div>
         </div>
         <!-- <app-file-upload [otherID]="item.Id"></app-file-upload> -->
+      </div>
+      <div class="line">
+        <img (click)="removeLine(i)" class="delete-line" src="assets/images/tybo/btn-delete-line.svg" alt="">
       </div>
     </div>
     <div class="add-line">

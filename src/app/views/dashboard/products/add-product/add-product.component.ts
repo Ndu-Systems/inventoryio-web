@@ -90,6 +90,7 @@ export class AddProductComponent implements OnInit {
           StatusId: '',
           Productoptions: []
         };
+        this.productService.updateCurrentProduct(this.product);
       }
     });
 
@@ -152,7 +153,7 @@ export class AddProductComponent implements OnInit {
       backto: '/dashboard/product'
     });
     this.productService.updateCurrentProduct(data);
-    this.routeTo.navigate(['/dashboard/add-catergory']);
+    this.routeTo.navigate(['/dashboard/catergory']);
   }
   scan() {
     this.showScan = true;
@@ -176,7 +177,6 @@ export class AddProductComponent implements OnInit {
       });
       this.product.Quantity = quantity;
       if (this.product.ProductId.length > 5) {
-        this.product.CompanyId = this.accountService.currentUserValue.CompanyId;
         this.product.TrackInventory = true;
         this.productService.updateProduct(this.product);
       } else {
@@ -185,6 +185,7 @@ export class AddProductComponent implements OnInit {
       }
 
     }
+    this.back();
   }
   validateForm() {
     this.nameError = undefined;

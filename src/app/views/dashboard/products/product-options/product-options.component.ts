@@ -27,14 +27,16 @@ export class ProductOptionsComponent implements OnInit {
         if (!this.product.Productoptions.length) {
           this.product.Productoptions = defaultOptions;
         }
-        this.headings.push(
-          this.product.Productoptions[0].Name1,
-          this.product.Productoptions[0].Name2,
-          'Quantity',
-          'Image'
-        );
       }
     });
+
+    this.headings.push(
+      'Size',
+      'Colour',
+      'Quantity',
+      'Image',
+      ''
+    );
   }
 
   addLine() {
@@ -154,5 +156,9 @@ export class ProductOptionsComponent implements OnInit {
     this.currentItem = undefined;
     this.currentIndex = undefined;
     this.currentImageName = undefined;
+  }
+  removeLine(index) {
+    alert(index);
+    this.product.Productoptions.splice(index);
   }
 }

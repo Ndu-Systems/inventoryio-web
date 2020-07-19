@@ -2,7 +2,8 @@
   background: #fff;
   // background: rgb(189, 99, 99);
   display: grid;
-  grid-template-columns: 5% 70% 20% 5%;
+  // grid-template-columns: 5% 70% 20% 5%;
+  grid-template-columns: 5% 20% 50% 20% 5%;
   width: 100%;
   position: fixed;
   top: 0;
@@ -47,9 +48,8 @@
 
     img {
       width: 7.5rem;
-      // margin: 1.5rem;
       position: relative;
-      left: 6rem;
+      left: .2rem;
 
       @media only screen and (max-width: 600px) {
         left: 1.5rem;
@@ -66,6 +66,35 @@
       height: 2.5rem;
       cursor: text;
       margin-top: 1.5rem;
+      @media only screen and (max-width: 600px) {
+      position: relative;
+      left: 1.5rem;
+      height: 1.7rem;
+      top: .1rem;
+      }
+    }
+  }
+
+  .account {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 100%;
+    }
+
+    p {
+      margin: 0;
+      position: relative;
+      top: 2rem;
+
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
+       a {
+        color: #000;
+        font-size: .7rem;
+
+      }
     }
   }
 

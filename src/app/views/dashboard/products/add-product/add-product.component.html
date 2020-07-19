@@ -5,7 +5,7 @@
       <div class="form-item">
         <div class="item">
           <span class="label">product code</span>
-          <input type="text" [(ngModel)]="product.Code">
+          <input type="text" disabled [(ngModel)]="product.Code">
         </div>
         <div class="status">
           {{nameError}}
@@ -28,7 +28,7 @@
       <div class="form-item">
         <div class="item">
           <span class="label">product price</span>
-          <input type="text" [(ngModel)]="product.UnitPrice" (change)="saveState()">
+          <input type="number" [(ngModel)]="product.UnitPrice" (change)="saveState()">
         </div>
         <div class="status">
 

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1217" height="571" viewBox="0 0 1217 571">
+  <g id="feestable" transform="translate(-155 -259)">
+    <rect id="Rectangle_180" data-name="Rectangle 180" width="1217" height="571" transform="translate(155 259)" fill="#fff"/>
+    <g id="Group_144" data-name="Group 144">
+      <text id="ORDER_TOTAL" data-name="ORDER TOTAL" transform="translate(270 318)" font-size="17" font-family="CenturyGothic-Bold, Century Gothic" font-weight="700"><tspan x="-54.055" y="0">ORDER TOTAL</tspan></text>
+      <text id="INCLUDING_SHIPPING_FEES_AND_OTHER_FEES" data-name="INCLUDING SHIPPING FEES
+ AND OTHER FEES" transform="translate(216 334)" font-size="12" font-family="CenturyGothic, Century Gothic"><tspan x="0" y="0">INCLUDING SHIPPING FEES</tspan><tspan x="0" y="15" xml:space="preserve"> AND OTHER FEES</tspan></text>
+    </g>
+    <g id="Group_144-2" data-name="Group 144" transform="translate(290 17)">
+      <text id="FIXED_FEE_R4_" data-name="FIXED FEE (R4)" transform="translate(300 315)" font-size="17" font-family="CenturyGothic-Bold, Century Gothic" font-weight="700"><tspan x="-56.437" y="0">FIXED FEE (R4)</tspan></text>
+    </g>
+    <g id="Group_144-3" data-name="Group 144" transform="translate(580 17)">
+      <text id="VARIABLE_FEES_10_" data-name="VARIABLE FEES (10%)" transform="translate(300 315)" font-size="17" font-family="CenturyGothic-Bold, Century Gothic" font-weight="700"><tspan x="-84.311" y="0">VARIABLE FEES (10%)</tspan></text>
+    </g>
+    <g id="Group_144-4" data-name="Group 144" transform="translate(870)">
+      <text id="TOTAL_FEES" data-name="TOTAL FEES" transform="translate(300 332)" font-size="17" font-family="CenturyGothic-Bold, Century Gothic" font-weight="700"><tspan x="-44.023" y="0">TOTAL FEES</tspan></text>
+    </g>
+    <line id="Line_9" data-name="Line 9" x2="1137" transform="translate(192.5 373.5)" fill="none" stroke="#d6d9dc" stroke-width="1"/>
+    <line id="Line_9-2" data-name="Line 9" x2="1137" transform="translate(192.5 487.5)" fill="none" stroke="#d6d9dc" stroke-width="1"/>
+    <line id="Line_9-3" data-name="Line 9" x2="1137" transform="translate(192.5 601.5)" fill="none" stroke="#d6d9dc" stroke-width="1"/>
+    <line id="Line_9-4" data-name="Line 9" x2="1137" transform="translate(192.5 715.5)" fill="none" stroke="#d6d9dc" stroke-width="1"/>
+    <line id="Line_10" data-name="Line 10" x2="1137" transform="translate(195.5 829.5)" fill="none" stroke="#d6d9dc" stroke-width="1"/>
+    <text id="R200" transform="translate(279 439)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-31.05" y="0">R200</tspan></text>
+    <text id="R600" transform="translate(279 555)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-31.05" y="0">R600</tspan></text>
+    <text id="R3000" transform="translate(279 669)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-38.973" y="0">R3000</tspan></text>
+    <text id="R6000" transform="translate(282 783)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-38.973" y="0">R6000</tspan></text>
+    <text id="R4" transform="translate(577 439)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-15.206" y="0">R4</tspan></text>
+    <text id="R4-2" data-name="R4" transform="translate(577 555)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-15.206" y="0">R4</tspan></text>
+    <text id="R4-3" data-name="R4" transform="translate(577 669)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-15.206" y="0">R4</tspan></text>
+    <text id="R4-4" data-name="R4" transform="translate(580 783)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-15.206" y="0">R4</tspan></text>
+    <text id="R20" transform="translate(880 439)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-23.128" y="0">R20</tspan></text>
+    <text id="R60" transform="translate(880 555)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-23.128" y="0">R60</tspan></text>
+    <text id="R300" transform="translate(880 669)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-31.05" y="0">R300</tspan></text>
+    <text id="R600-2" data-name="R600" transform="translate(883 783)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-31.05" y="0">R600</tspan></text>
+    <text id="R24" transform="translate(1178 439)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-23.128" y="0">R24</tspan></text>
+    <text id="R64" transform="translate(1178 555)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-23.128" y="0">R64</tspan></text>
+    <text id="R304" transform="translate(1178 669)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-31.05" y="0">R304</tspan></text>
+    <text id="R604" transform="translate(1181 783)" font-size="24" font-family="CenturyGothic, Century Gothic" letter-spacing="0.106em"><tspan x="-31.05" y="0">R604</tspan></text>
+  </g>
+</svg>

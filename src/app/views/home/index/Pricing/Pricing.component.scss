@@ -1,41 +1,79 @@
 @import '../../../../../assets/styles/variables';
-$midnight: #2c3e50;
-$clouds: #ecf0f1;
+
 
 .main-container {
-  padding: 3rem 11.5rem;
+  padding: 5rem 0;
 
-  @media only screen and (max-width: 600px) {
-    padding: 3rem 1rem;
-
+  .free {
+    color: $primary-bg-color;
   }
 
-  .header {
-    h1 {
-      color: $dark-navy;
+  .fees {
+    .fee {
+      width: 55%;
+      margin: 1rem auto;
+      background: #fff;
+      padding: 1rem;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        padding: .1rem;
+      }
+
+      h1 {
+        text-align: center;
+
+        @media only screen and (max-width: 600px) {
+          padding: 0 2rem;
+          font-size: 1.5rem;
+        }
+      }
+
+      .image {
+        @media only screen and (max-width: 600px) {
+          overflow-x: scroll;
+        }
+
+        img {
+          width: 100%;
+          margin: 0 auto;
+
+          @media only screen and (max-width: 600px) {
+            width: 220%;
+          }
+
+        }
+      }
+
+
+      p {
+        background: $white-color;
+        padding: 3rem;
+      }
+    }
+
+    .action {
       text-align: center;
-      font-size: 1.563rem;
-      font-weight: 900;
+      padding: 1rem;
 
-      &.text {
-        font-size: 0.938rem;
-        color: $strong-gray;
-        font-weight: 600;
+      @media only screen and (max-width: 600px) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        background: #fff;
       }
 
-      .free {
-        color: $primary-bg-color;
+      img {
+        height: 2.5rem;
+        margin: 0 auto;
+        cursor: pointer;
+
+        @media only screen and (max-width: 600px) {
+          height: 3rem;
+        }
       }
     }
   }
-
-  .price-list {
-    margin: 6.25rem 0;
-
-    img {
-      width: 100%;
-    }
-  }
-
-
 }

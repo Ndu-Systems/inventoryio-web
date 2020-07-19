@@ -38,12 +38,15 @@ import { CustomerSignupComponent } from '../shopping/components/customer-signup/
 import { CustomerLoginComponent } from '../shopping/components/customer-login/customer-login.component';
 import { PaymentCanceledComponent } from '../shopping/components/shop/payment-canceled/payment-canceled.component';
 import { PaymentCallbackComponent } from '../shopping/components/shop/payment-callback/payment-callback.component';
+import { HomeShoppingComponent } from '../shopping/components/home-shopping/home-shopping.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
-      { path: 'home', component: IndexComponent },
-      { path: '', component: IndexComponent },
+      // { path: 'home', component: IndexComponent },
+      { path: 'home', component: HomeShoppingComponent },
+      { path: '', component: HomeShoppingComponent },
+      // { path: '', component: IndexComponent },
       { path: 'modules', component: OurModulesComponent },
       { path: 'pricing', component: PricingComponent },
       { path: 'sign-in', component: SignInComponent },
@@ -98,7 +101,8 @@ export const declarations = [
   CustomerSignupComponent,
   CustomerLoginComponent,
   PaymentCanceledComponent,
-  PaymentCallbackComponent
+  PaymentCallbackComponent,
+  HomeShoppingComponent
 ];
 
 

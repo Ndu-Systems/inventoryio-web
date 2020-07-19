@@ -106,7 +106,7 @@ const routes: Routes = [
       { path: 'list-product', component: ListProductsComponent },
       { path: 'product-details', component: ProductDetailsComponent },
       { path: 'upload-product-image/:id', component: UploadProductImageComponent },
-      { path: 'add-catergory', component: AddCatergoryComponent },
+      { path: 'catergory', component: AddCatergoryComponent },
       { path: 'edit-category', component: EditCategoryComponent },
       { path: 'add-brand', component: AddBrandComponent },
       { path: 'edit-brand', component: EditBrandComponent },
