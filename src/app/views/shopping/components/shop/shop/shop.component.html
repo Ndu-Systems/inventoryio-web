@@ -19,17 +19,17 @@
     </div> -->
 
     <div class="content">
-     <div class="filters">
-      <h1>All products</h1>
-     </div>
-     
+      <div class="filters">
+        <h1>All products</h1>
+      </div>
+
       <div class="shop-cards">
         <span *ngFor="let item of products ">
           <div class="card" (click)="viewItem(item)">
-            <div class="image" *ngIf="item.Images">
-              <img [src]="item.Images[0].Url" alt="">
+            <div class="image" *ngIf="item.Productoptions">
+              <img [src]="item.Productoptions[0].ImageUrl1" alt="">
             </div>
-            <div class="image" *ngIf="!item.Images">
+            <div class="image" *ngIf="!item.Productoptions">
               <img src="assets/images/placeholder2.png" alt="">
             </div>
             <div class="details">

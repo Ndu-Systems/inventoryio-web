@@ -113,9 +113,11 @@ $grid-tbl : 17%  17% 17% 40% auto;
           }
         }
         .delete-line{
-          width: 5rem;
+          width: 2rem;
           position: relative;
           top: 30%;
+         left: 1rem;
+         cursor: pointer;
         }
       }
     }

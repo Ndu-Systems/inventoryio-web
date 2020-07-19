@@ -18,6 +18,7 @@ export class ProductOptionsComponent implements OnInit {
   currentItem: Productoptions;
   currentIndex: number;
   currentImageName: string;
+  deletedItems: Productoptions[] = [];
   constructor(private productService: ProductService, private documentsService: DocumentsService) { }
 
   ngOnInit() {
@@ -30,6 +31,8 @@ export class ProductOptionsComponent implements OnInit {
       }
     });
 
+
+
     this.headings.push(
       'Size',
       'Colour',
@@ -41,7 +44,7 @@ export class ProductOptionsComponent implements OnInit {
 
   addLine() {
     const item = {
-      Id: new Date().getTime().toString(),
+      Id: '',
       ProductId: '',
       CompanyId: '',
       Name1: 'Size',
@@ -158,7 +161,14 @@ export class ProductOptionsComponent implements OnInit {
     this.currentImageName = undefined;
   }
   removeLine(index) {
-    alert(index);
-    this.product.Productoptions.splice(index);
+    if (this.product.Productoptions[index].Id && this.product.Productoptions[index].Id.length > 10) {
+      this.product.Productoptions[index].StatusId = 2;
+    } else {
+      this.product.Productoptions.splice(index, 1);
+    }
+    if (!this.product.Productoptions.length) {
+      this.addLine();
+    }
+    return true;
   }
 }

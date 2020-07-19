@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
@@ -31,6 +31,8 @@ export class AddProductComponent implements OnInit {
   images: Image[];
   nameError: string;
   priceError: string;
+  code: string;
+  products: Product[];
 
   constructor(
     private fb: FormBuilder,
@@ -52,6 +54,9 @@ export class AddProductComponent implements OnInit {
       backto: '/dashboard'
     });
   }
+  // ngOnDestroy(): void {
+  //   this.productService.updateCurrentProduct(null);
+  // }
 
   ngOnInit() {
 
@@ -60,38 +65,16 @@ export class AddProductComponent implements OnInit {
     this.brandService.getBrands(user.CompanyId);
     this.cateroryService.getCateries(user.CompanyId);
 
-    this.productService.product.subscribe(prod => {
-      if (prod) {
-        this.product = prod;
-        this.heading = this.product.ProductId.length > 5 ? 'Update product.' : 'Add product';
-        if (!this.product.Productoptions) {
-          this.product.Productoptions = [];
-        }
-      } else {
-        this.product = {
-          ProductId: '',
-          BrandId: '',
-          CatergoryId: '',
-          CompanyId: '',
-          SupplierId: '',
-          Name: '',
-          Description: '',
-          UnitPrice: '',
-          UnitCost: 0,
-          Code: '',
-          SKU: '',
-          TrackInventory: true,
-          Quantity: 1,
-          LowStock: 0,
-          CreateDate: '',
-          CreateUserId: '',
-          ModifyDate: '',
-          ModifyUserId: '',
-          StatusId: '',
-          Productoptions: []
-        };
-        this.productService.updateCurrentProduct(this.product);
+
+
+    this.productService.products.subscribe(data => {
+      if (data) {
+        this.products = data;
       }
+      else {
+        this.products = [];
+      }
+      this.loadProduct();
     });
 
     this.scannerService.scann.subscribe(scan => {
@@ -120,6 +103,48 @@ export class AddProductComponent implements OnInit {
 
 
 
+  }
+
+  loadProduct() {
+    this.productService.product.subscribe(prod => {
+      if (prod) {
+        this.product = prod;
+        this.code = 'P' + this.product.Code;
+        this.heading = this.product.ProductId.length > 5 ? 'Update product.' : 'Add product';
+        if (!this.product.Productoptions) {
+          this.product.Productoptions = [];
+        }
+      } else {
+        this.product = {
+          ProductId: '',
+          BrandId: '',
+          CatergoryId: '',
+          CompanyId: '',
+          SupplierId: '',
+          Name: '',
+          Description: '',
+          UnitPrice: '',
+          UnitCost: 0,
+          Code: this.getNewCode(),
+          SKU: '',
+          TrackInventory: true,
+          Quantity: 1,
+          LowStock: 0,
+          CreateDate: '',
+          CreateUserId: '',
+          ModifyDate: '',
+          ModifyUserId: '',
+          StatusId: '',
+          Productoptions: []
+        };
+        this.productService.updateCurrentProduct(this.product);
+      }
+    });
+  }
+  getNewCode(): number {
+    const maxCode = Math.max(...this.products.map(x => Number(x.Code)));
+    this.code = `P${maxCode + 1}`;
+    return maxCode + 1;
   }
 
   get getFormValues() {

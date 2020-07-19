@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="306" height="89" viewBox="0 0 306 89">
-  <g id="btn-delete-line" transform="translate(-656 -733)">
-    <rect id="Rectangle_33" data-name="Rectangle 33" width="306" height="89" transform="translate(656 733)" fill="rgba(234,32,39,0.78)"/>
-    <text id="delete_Line" data-name="delete Line" transform="translate(809 795)" font-size="43" font-family="CenturyGothic-Bold, Century Gothic" font-weight="700"><tspan x="-115.657" y="0">DELETE LINE</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360">
+  <g id="btn-delete-line" transform="translate(-93 -297)">
+    <rect id="Rectangle_184" data-name="Rectangle 184" width="360" height="360" transform="translate(93 297)" fill="#f1f3f6"/>
+    <g id="remove" transform="translate(152 356)">
+      <path id="Path_606" data-name="Path 606" d="M120.98,0A120.98,120.98,0,1,0,241.96,120.98,121.114,121.114,0,0,0,120.98,0Zm0,0" fill="#f44336"/>
+      <path id="Path_607" data-name="Path 607" d="M247.53,233.274a10.081,10.081,0,1,1-14.257,14.257l-30.295-30.3-30.295,30.3a10.081,10.081,0,1,1-14.257-14.257l30.3-30.295-30.3-30.295a10.081,10.081,0,1,1,14.257-14.257l30.295,30.3,30.295-30.3a10.081,10.081,0,1,1,14.257,14.257l-30.3,30.295Zm0,0" transform="translate(-81.999 -81.999)" fill="#fafafa"/>
+    </g>
   </g>
 </svg>

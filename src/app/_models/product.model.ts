@@ -14,7 +14,7 @@ export interface Product {
     Description: string;
     UnitPrice: any;
     UnitCost: number;
-    Code: string;
+    Code: any;
     SKU: string;
     TrackInventory: boolean;
     Quantity: number;

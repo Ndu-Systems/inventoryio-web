@@ -89,6 +89,7 @@ export class ListProductsComponent implements OnInit {
     this.products = this.productService.currentProducts;
   }
   add() {
+    this.productService.updateCurrentProduct(null);
     this.router.navigate(['/dashboard/product']);
   }
   import() {
