@@ -92,6 +92,7 @@ export class ImportComponent implements OnInit {
           Description: '',
           ImageUrl: '',
           Parent: '',
+          CatergoryType: '',
           CompanyId: this.user.CompanyId,
           CreateUserId: this.user.UserId,
           StatusId: 1,

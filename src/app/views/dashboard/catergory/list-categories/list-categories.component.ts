@@ -16,7 +16,11 @@ export class ListCategoriesComponent implements OnInit {
   categories$: Observable<Caterory[]>;
   showForm: boolean;
   notFoundModel: NotFoundModel;
-
+  filteredCategories: Caterory[] = [];
+  categories: Caterory[];
+  heading: string;
+  addLabel: string;
+  childPage: boolean;
   constructor(
     private categorieservice: CateroryService,
     private accountService: AccountService,
@@ -36,6 +40,15 @@ export class ListCategoriesComponent implements OnInit {
       Image: NotFoundConstants.NOT_FOUND_CATEGORIES.image,
       Message: NotFoundConstants.NOT_FOUND_CATEGORIES.message
     };
+    this.categorieservice.categories.subscribe(data => {
+      if (data && data.length) {
+        this.categories = data;
+        this.filteredCategories = data.filter(x => x.CatergoryType === 'parent');
+        this.filteredCategories.map(x => x.ShowMenu = false);
+        this.heading = `Parent categories(${this.filteredCategories.length})`;
+        this.addLabel = ' Add parent category';
+      }
+    })
   }
   add() {
     this.bannerService.updateState({
@@ -60,4 +73,25 @@ export class ListCategoriesComponent implements OnInit {
     });
   }
   clearSearch() { }
+  showMenu(caterory: Caterory) {
+    this.filteredCategories.map(x => x.ShowMenu = false);
+    caterory.ShowMenu = true;
+  }
+  hideMenu() {
+    this.filteredCategories.map(x => x.ShowMenu = false);
+  }
+  viewChildren(caterory: Caterory) {
+    this.filteredCategories = this.categories.filter(x => x.Parent === caterory.CatergoryId);
+    this.heading = `${caterory.Name} categories (${this.filteredCategories.length})`;
+    this.addLabel = `Add ${caterory.Name} category`;
+    this.childPage = true;
+
+  }
+  parents() {
+    this.filteredCategories = this.categories.filter(x => x.CatergoryType === 'parent');
+    this.filteredCategories.map(x => x.ShowMenu = false);
+    this.childPage = false;
+    this.heading = `Parent categories(${this.filteredCategories.length})`;
+    this.addLabel = ' Add parent category';
+  }
 }

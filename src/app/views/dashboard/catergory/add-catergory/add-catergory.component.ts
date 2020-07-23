@@ -26,6 +26,7 @@ export class AddCatergoryComponent implements OnInit, OnDestroy {
   actionLabel = 'Add category';
   heading = ' Add a new category';
   viewImage: boolean;
+  parentCategories: Caterory[] = [];
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -43,6 +44,12 @@ export class AddCatergoryComponent implements OnInit, OnDestroy {
     const user: User = this.accountService.currentUserValue;
     this.accountService.checkSession();
     this.banner = this.bannerService.currentBannerValue;
+    this.cateroryService.getCateries(user.CompanyId);
+    this.cateroryService.categories.subscribe(data => {
+      if (data && data.length) {
+        this.parentCategories = data.filter(x => x.CatergoryType === 'parent');
+      }
+    });
 
     this.cateroryService.category.subscribe(category => {
       if (category) {
@@ -58,6 +65,7 @@ export class AddCatergoryComponent implements OnInit, OnDestroy {
         Name: [this.category && this.category.Name || '', Validators.required],
         Description: [this.category && this.category.Description || ''],
         Parent: [this.category && this.category.Parent || ''],
+        CatergoryType: [this.category && this.category.CatergoryType || ''],
         CompanyId: [user.CompanyId, Validators.required],
         CreateUserId: [user.UserId, Validators.required],
         StatusId: [this.category && this.category.StatusId || 1, Validators.required],

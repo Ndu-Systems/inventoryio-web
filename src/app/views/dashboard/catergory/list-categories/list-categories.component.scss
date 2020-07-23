@@ -2,7 +2,7 @@
 
 .products-page {
   padding: 4rem;
-  width: 55%;
+  width: 65%;
 
   @media only screen and (max-width: 600px) {
     width: 100%;
@@ -13,7 +13,7 @@
   .list-header {
     width: 100%;
     display: grid;
-    grid-template-columns: 45% 15% 15% 5% auto;
+    grid-template-columns: 30% 30%  auto;
     border-bottom: 1px solid $blue-gray;
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;
@@ -69,6 +69,7 @@
         border: none;
         margin: 0 .3rem;
         border-radius: .2rem;
+        cursor: pointer;
 
       }
     }
@@ -130,14 +131,14 @@
 
 //  table
 .header {
-  grid-template-columns: 5% 30% 10% auto;
+  grid-template-columns: 15% 30% 10% auto;
 
 
 }
 
 .body-container {
   .body {
-    grid-template-columns: 5% 30% 10% auto;
+    grid-template-columns: 15% 30% 10% auto;
 
     .pc-only {
       display: none;
@@ -145,13 +146,75 @@
 
     .body-item {
       p {
-        margin: 1rem .4rem;
+        margin: .1rem .4rem;
       }
     }
   }
 }
 
-.view{
+.view {
   // text-decoration: underline;
   // cursor: pointer;
+}
+
+.categories-list {
+  background: $white-color;
+
+  .children {
+    background: $white-color;
+    padding: .2rem 3rem;
+  }
+}
+
+.type {
+  display: block;
+  background: rgba(65, 155, 47, 0.466);
+  color: $dark-navy;
+  text-align: center;
+  width: 7rem;
+  font-size: .7rem;
+  margin: .5rem 0;
+  padding: .2rem;
+  font-weight: 700;
+}
+
+button.btn-primary {
+  position: relative;
+  top: 1.5rem;
+}
+
+.menu-modal {
+  position: absolute;
+  right: 0;
+  top: 1rem;
+  background: $white-color;
+  padding: 1rem;
+  z-index: 100;
+  animation: animationFadeIn .5s ease-in;
+  animation-fill-mode: backwards;
+  -webkit-box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
+  box-shadow: 17px 1px 29px -21px rgba(0, 0, 0, 0.59);
+
+  .item {
+    cursor: pointer;
+    text-align: left;
+    padding: .5rem;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      font-weight: 900;
+    }
+    .pi{
+      position: relative;
+      top: .3rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+p.products-count{
+  position: relative;
+  top:2rem
 }

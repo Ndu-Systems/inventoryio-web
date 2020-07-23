@@ -2,21 +2,19 @@
   <div class="list-header">
     <div class="heading">
       <h1>
-        Products categories ({{categories.length}})
+        {{heading}}
       </h1>
     </div>
 
-    <div class="search">
-    </div>
+
 
     <div class="search">
       <input type="text" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
     </div>
 
-    <div class="search">
-    </div>
     <div class="search tar">
-      <button (click)="add()"> <i class="pi pi-plus"></i> Add category</button>
+      <button (click)="parents()" *ngIf="childPage">  <i class="pi pi-chevron-left"></i>Back</button>
+      <button (click)="add()"> <i class="pi pi-plus"></i>{{addLabel}}</button>
     </div>
 
   </div>
@@ -38,7 +36,7 @@
   <div class="table">
     <div class="header">
       <div class="header-item">
-        
+
       </div>
       <div class="header-item">
         Category
@@ -54,37 +52,49 @@
     </div>
     <div class="body-container">
 
-      <div class="body" *ngFor="let item of categories | configurationFilterPipe: search">
-        <div class="body-item">
-          <div class="circular-img">
-            <img [src]="item.ImageUrl" alt="" *ngIf="item.ImageUrl" />
-            <img src="assets/images/placeholder.png" *ngIf="!item.ImageUrl" alt="" />
-          </div>
+      <div class="body" *ngFor="let item of filteredCategories | configurationFilterPipe: search">
+            <div class="body-item">
+              <div class="circular-img">
+                <img [src]="item.ImageUrl" alt="" *ngIf="item.ImageUrl" />
+                <img src="assets/images/placeholder.png" *ngIf="!item.ImageUrl" alt="" />
+              </div>
 
 
-        </div>
-        <div class="body-item">
-          <p>
-            <b> {{item.Name}} {{item.Surname}}</b>
-          </p>
-        </div>
+            </div>
+            <div class="body-item">
+              <p>
+                <b> {{item.Name}}</b>
+                <span class="type">
+                  {{item.CatergoryType}} category
+                </span>
+              </p>
 
-        <div class="body-item tac">
-          <p>
-           <a class="view" (click)="vewProducts()"> <b *ngIf="item.Products"> {{item.Products.length}}</b> </a>
-            <b *ngIf="!item.Products"> 0</b>
-          </p>
-        </div>
+            </div>
+
+            <div class="body-item tac">
+              <p class="products-count">
+                <a class="view" (click)="vewProducts()"> <b *ngIf="item.Products"> {{item.Products.length}}</b> </a>
+                <b *ngIf="!item.Products"> 0</b>
+              </p>
+            </div>
 
 
-        <div class="body-item tar">
-          <button class="btn-primary" (click)="updateCategory(item)">
-            <i class="pi pi-pencil"></i> Edit
-          </button>
-          <button class="btn-primary danger" (click)="deleteCategory(item)">
-            <i class="pi pi-times"></i> Delete
-          </button>
-        </div>
+            <div class="body-item tar">
+              <button class="btn-primary" (click)="showMenu(item)">
+                <i class="pi pi-ellipsis-h"></i>
+              </button>
+              <div class="menu-modal" *ngIf="item.ShowMenu" (mouseleave)="hideMenu()">
+                <div class="item add-new" *ngIf="item.CatergoryType == 'parent'" (click)="viewChildren(item)">
+                  <i class="pi pi-list"></i>View children
+                </div>
+                <div class="item add-new" (click)="updateCategory(item)">
+                  <i class="pi pi-pencil"></i>Edit
+                </div>
+                <div class="item add-new" (click)="deleteCategory(item)">
+                  <i class="pi pi-trash"></i>Delete
+                </div>
+              </div>
+            </div>
       </div>
     </div>
   </div>
@@ -144,4 +154,3 @@
   </div>
 </ng-template>
 <p-confirmDialog header="Confirmation Payment"></p-confirmDialog>
-

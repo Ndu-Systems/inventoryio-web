@@ -7,6 +7,7 @@ export interface Caterory {
     Name: string;
     Description: string;
     Parent: string;
+    CatergoryType: string;
     ImageUrl: string;
     CreateDate?: string;
     CreateUserId: string;
@@ -15,4 +16,6 @@ export interface Caterory {
     StatusId: number;
     Images?: Image[];
     Products?: Product[];
+    Children?: Caterory[];
+    ShowMenu?: boolean;
 }
