@@ -18,4 +18,5 @@ export interface Caterory {
     Products?: Product[];
     Children?: Caterory[];
     ShowMenu?: boolean;
+    Label?: string;
 }

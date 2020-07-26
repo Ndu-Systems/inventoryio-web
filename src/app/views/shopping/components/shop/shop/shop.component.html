@@ -1,29 +1,43 @@
 <span *ngIf="!loading">
-  <!-- <app-shopping-nav [shopPrimaryColor]="shopPrimaryColor" [company]="company" [shopSecondaryColor]="shopSecondaryColor"
-    [logoUrl]="logoUrl">
-  </app-shopping-nav> -->
   <div class="container" *ngIf="products">
-    <!-- <div class="slider">
-      <div class="slide">
-        <app-product-slider [products]="products" [company]="company"></app-product-slider>
-      </div>
-      <div class="adverts">
-        <h3>
-          Welcome to {{company.Name}}
-        </h3>
-        <p>
-          {{company.Description}}
-        </p>
-      </div>
-
-    </div> -->
-
     <div class="content">
-      <div class="filters">
+      <!-- <pre>
+        {{filterCatergories | json }}
+      </pre> -->
+      <div class="catergories" *ngIf="filterCatergories">
+        <div class="catergory" *ngFor="let item of filterCatergories ">
+          <div class="image">
+            <img [src]="item.ImageUrl" alt="">
+          </div>
+          <div class="name">
+            <h1>
+              {{item.Name}}
+            </h1>
+          </div>
+
+          <div class="children">
+            <span *ngFor="let child of item.Children">
+             
+              <div class="child" *ngIf="child.Products && child.Products.length" (click)="openCatergory(child)">
+                <div class="child-image">
+                  <img [src]="child.ImageUrl" alt="">
+                </div>
+                <div class="child-name">
+                  <h1>
+                    {{child.Name}}
+                  </h1>
+                </div>
+              </div>
+            </span>
+        
+          </div>
+        </div>
+      </div>
+      <div class="filters" style="display: none;">
         <h1>All products</h1>
       </div>
 
-      <div class="shop-cards">
+      <div class="shop-cards" style="display: none;">
         <span *ngFor="let item of products ">
           <div class="card" (click)="viewItem(item)">
             <div class="image" *ngIf="item.Productoptions">
@@ -45,40 +59,6 @@
           </div>
         </span>
 
-      </div>
-
-      <div *ngIf="company" class="footer" class="footer">
-        <hr>
-        <h4>
-          Thanks for visting {{company?.Name}}
-        </h4>
-        <span *ngIf="company.TelephoneNumber && company.TelephoneNumber.length > 6">
-          <h5>
-            Contact details
-          </h5>
-          <address>
-            Email:{{company?.TelephoneNumber}} <br>
-          </address>
-        </span>
-        <span *ngIf="company.Shipping">
-          <h5>
-            Shipping method(s)
-          </h5>
-          <span *ngFor="let ship of company.Shipping">
-            <span *ngIf="ship.Name === 'name'">{{ship?.Value}}
-              {{ship?.TelephoneNumber}}</span>
-            <span *ngIf="ship.Name === 'amount'"> <b>R {{ship?.Value}}
-              </b> <br></span>
-          </span>
-        </span>
-        <span>
-          <h5>
-            Payment methods
-          </h5>
-          <span>
-            Cash | EFT
-          </span>
-        </span>
       </div>
     </div>
   </div>

@@ -1,0 +1,36 @@
+<div class="main" *ngIf="catergory">
+  <div class="heading">
+    <h1>
+      {{catergory.Name}}
+    </h1>
+    <div class="breadcrump">
+      <div class="bread">
+        Home <i class="pi pi-pi-chevron-right"></i>
+      </div>
+    </div>
+  </div>
+  <div class="shop-cards">
+
+    <span *ngFor="let item of catergory.Products ">
+      <div class="card" (click)="viewItem(item)">
+        <div class="image" *ngIf="item.Productoptions">
+          <img [src]="item.Productoptions[0].ImageUrl1" alt="">
+        </div>
+        <div class="image" *ngIf="!item.Productoptions">
+          <img src="assets/images/placeholder2.png" alt="">
+        </div>
+        <div class="details">
+          <p>
+            {{item.Name}}
+          </p>
+          <p class="price">
+            <b>
+              {{item.UnitPrice | currency:'R'}}
+            </b>
+          </p>
+        </div>
+      </div>
+    </span>
+
+  </div>
+</div>

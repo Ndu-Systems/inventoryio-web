@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, Company, SellModel } from 'src/app/_models';
-import { ProductService, CompanyService } from 'src/app/_services';
+import { Product, Company, SellModel, Caterory } from 'src/app/_models';
+import { ProductService, CompanyService, CateroryService } from 'src/app/_services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
@@ -12,7 +12,6 @@ import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  // welocme = `Welcome to 'ZALOE' shopping page`;
   welocme = ``;
   products: Product[];
   cart$: Observable<Product[]>;
@@ -27,11 +26,14 @@ export class ShopComponent implements OnInit {
   shopSecondaryColor: string;
   logoUrl: string;
   loading = true;
+  catergories: Caterory[];
+  filterCatergories: Caterory[];
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
     private activatedRoute: ActivatedRoute,
     private companyService: CompanyService,
+    private cateroryService: CateroryService,
     private titleService: Title,
     private router: Router
 
@@ -59,6 +61,7 @@ export class ShopComponent implements OnInit {
       if (data) {
         this.products = data.products;
         this.company = data.company;
+        this.catergories = this.company.Catergories;
         this.dataReady();
         this.loading = false;
       }
@@ -80,6 +83,7 @@ export class ShopComponent implements OnInit {
     if (this.company.Logo && this.company.Logo.length) {
       this.logoUrl = this.company.Logo[0].Url;
     }
+    this.filterCatergories = this.catergories.filter(x => x.CatergoryType === 'parent');
   }
 
   viewCart() {
@@ -90,5 +94,7 @@ export class ShopComponent implements OnInit {
     this.router.navigate(['view-product', product.ProductId]);
 
   }
-
+  openCatergory(caterory: Caterory) {
+    this.router.navigate(['shop-by-category', caterory.CatergoryId]);
+  }
 }

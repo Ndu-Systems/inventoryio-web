@@ -19,7 +19,7 @@
       </div>
 
       <div class="form-item">
-        <label class="label">Catergory Type</label>
+        <label class="label">Select Catergory Type</label>
         <select formControlName="CatergoryType" class="roundInput">
           <option value="parent">Parent</option>
           <option value="child">Child</option>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="form-item">
-        <label class="label">Category Parent</label>
+        <label class="label">Category Select Parent</label>
         <select formControlName="Parent" class="roundInput">
           <option value="">None</option>
           <option value="male" *ngFor="let item of parentCategories" [value]="item.CatergoryId">{{item.Name}}</option>

@@ -33,6 +33,7 @@ export class AddProductComponent implements OnInit {
   priceError: string;
   code: string;
   products: Product[];
+  filteredCategories: Caterory[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -64,8 +65,19 @@ export class AddProductComponent implements OnInit {
     this.accountService.checkSession();
     this.brandService.getBrands(user.CompanyId);
     this.cateroryService.getCateries(user.CompanyId);
-
-
+    this.catergories$ = this.cateroryService.categories;
+    this.cateroryService.categories.subscribe(data => {
+      if (data && data.length) {
+        this.filteredCategories = [];
+        const parents = data.filter(x => x.CatergoryType === 'parent');
+        parents.forEach(parent => {
+          parent.Children.filter(x => x.CatergoryType === 'child').forEach(child => {
+            child.Label = `${parent.Name} - ${child.Name}`;
+            this.filteredCategories.push(child);
+          });
+        });
+      }
+    });
 
     this.productService.products.subscribe(data => {
       if (data) {
@@ -88,13 +100,7 @@ export class AddProductComponent implements OnInit {
 
 
     this.brands$ = this.brandService.brands;
-    this.catergories$ = this.cateroryService.categories;
-
-    this.attributeService.attributes.subscribe(data => {
-      if (data) {
-        this.attributes = data;
-      }
-    });
+ 
 
     this.uploadService.images.subscribe(images => {
       this.images = images;

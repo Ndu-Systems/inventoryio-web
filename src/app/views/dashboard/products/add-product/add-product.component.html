@@ -24,6 +24,22 @@
       </div>
 
 
+      <div class="form-item">
+        <div class="item">
+          <span class="label">product catergory</span>
+          <select  [(ngModel)]="product.CatergoryId"  (change)="saveState()">
+            <option value="">Select Category</option>
+            <option *ngFor="let catergory of filteredCategories" [value]="catergory.CatergoryId">
+              {{catergory.Label}}
+            </option>
+          </select>
+        </div>
+        <div class="status">
+          {{priceError}}
+        </div>
+      </div>
+
+
 
       <div class="form-item">
         <div class="item">
