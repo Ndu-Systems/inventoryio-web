@@ -4,7 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Caterory } from 'src/app/_models';
 import { SplashService } from '../splash.service';
-import { COMMON_CONN_ERR_MSG, CATEGORY } from 'src/app/_shared';
+import { COMMON_CONN_ERR_MSG, CATEGORY, CATEGORY_ADD_TYPE } from 'src/app/_shared';
+import { CateroryAddType } from 'src/app/_models/caterory.add.type.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class CateroryService {
   private _category: BehaviorSubject<Caterory>;
   public category: Observable<Caterory>;
 
+
+  private cateroryAddTypeBehaviorSubject: BehaviorSubject<CateroryAddType>;
+  public cateroryAddTypeObservable: Observable<CateroryAddType>;
+
   constructor(
     private http: HttpClient,
     private splashService: SplashService,
@@ -31,15 +36,28 @@ export class CateroryService {
     this.url = environment.API_URL;
     this._category = new BehaviorSubject<Caterory>(JSON.parse(localStorage.getItem(CATEGORY)));
     this.category = this._category.asObservable();
+
+    this.cateroryAddTypeBehaviorSubject = new BehaviorSubject<CateroryAddType>(
+      JSON.parse(localStorage.getItem(CATEGORY_ADD_TYPE)) || { nextParentName: '', nextParentId: '', nextType: 'parent' }
+    );
+    this.cateroryAddTypeObservable = this.cateroryAddTypeBehaviorSubject.asObservable();
   }
 
   public get categoriesValue(): Caterory[] {
     return this._categories.value;
   }
+
+  public get getCateroryAddType(): CateroryAddType {
+    return this.cateroryAddTypeBehaviorSubject.value;
+  }
   apendState(data: Caterory) {
     const state = this.categoriesValue || [];
     state.push(data);
     this._categories.next(state);
+  }
+  updateCateroryAddTypeState(data: CateroryAddType) {
+    this.cateroryAddTypeBehaviorSubject.next(data);
+    localStorage.setItem(CATEGORY_ADD_TYPE, JSON.stringify(data));
   }
 
   updateCurrentCategory(category: Caterory) {

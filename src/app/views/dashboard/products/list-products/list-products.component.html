@@ -80,8 +80,8 @@
           <img src="assets/images/placeholder.png" *ngIf="!item.Images" alt="" />
         </div> -->
         <div class="body-item">
-          <img [src]="item.Productoptions[0].ImageUrl1" alt="" *ngIf="item.Productoptions" />
-          <img src="assets/images/placeholder.png" *ngIf="!item.Productoptions" alt="" />
+          <img [src]="item.Productoptions[0].ImageUrl1" alt="" *ngIf="item.Productoptions && item.Productoptions[0].ImageUrl1" />
+          <img src="assets/images/placeholder.png" *ngIf="!item.Productoptions || !item.Productoptions[0].ImageUrl1" alt="" />
         </div>
         <div class="body-item">
           <p>

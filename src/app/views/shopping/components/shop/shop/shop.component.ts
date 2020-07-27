@@ -83,7 +83,7 @@ export class ShopComponent implements OnInit {
     if (this.company.Logo && this.company.Logo.length) {
       this.logoUrl = this.company.Logo[0].Url;
     }
-    this.filterCatergories = this.catergories.filter(x => x.CatergoryType === 'parent');
+    this.filterCatergories = this.catergories && this.catergories.filter(x => x.CatergoryType === 'parent') || [];
   }
 
   viewCart() {

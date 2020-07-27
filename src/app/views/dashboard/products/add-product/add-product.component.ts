@@ -71,7 +71,7 @@ export class AddProductComponent implements OnInit {
         this.filteredCategories = [];
         const parents = data.filter(x => x.CatergoryType === 'parent');
         parents.forEach(parent => {
-          parent.Children.filter(x => x.CatergoryType === 'child').forEach(child => {
+          (parent && parent.Children || []).filter(x => x.CatergoryType === 'child').forEach(child => {
             child.Label = `${parent.Name} - ${child.Name}`;
             this.filteredCategories.push(child);
           });
@@ -100,7 +100,7 @@ export class AddProductComponent implements OnInit {
 
 
     this.brands$ = this.brandService.brands;
- 
+
 
     this.uploadService.images.subscribe(images => {
       this.images = images;

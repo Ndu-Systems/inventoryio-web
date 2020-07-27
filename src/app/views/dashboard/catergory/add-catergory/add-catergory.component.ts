@@ -27,6 +27,8 @@ export class AddCatergoryComponent implements OnInit, OnDestroy {
   heading = ' Add a new category';
   viewImage: boolean;
   parentCategories: Caterory[] = [];
+  type: string;
+  parent: string;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -42,6 +44,11 @@ export class AddCatergoryComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const user: User = this.accountService.currentUserValue;
+    const addType = this.cateroryService.getCateroryAddType;
+    this.heading = `Add a new ${addType.nextType} category`;
+    if (addType.nextType === 'child') {
+      this.heading = `Add a new  ${addType.nextType} for ${addType.nextParentName}  category`;
+    }
     this.accountService.checkSession();
     this.banner = this.bannerService.currentBannerValue;
     this.cateroryService.getCateries(user.CompanyId);
@@ -58,14 +65,14 @@ export class AddCatergoryComponent implements OnInit, OnDestroy {
         if (this.category.CatergoryId.length > 5) {
           this.isUpdate = true;
           this.actionLabel = 'Update category';
-          this.heading = 'Update category';
+          this.heading = 'Update a category';
         }
       }
       this.rForm = this.fb.group({
         Name: [this.category && this.category.Name || '', Validators.required],
         Description: [this.category && this.category.Description || ''],
-        Parent: [this.category && this.category.Parent || ''],
-        CatergoryType: [this.category && this.category.CatergoryType || ''],
+        Parent: [this.category && this.category.Parent || addType.nextParentId],
+        CatergoryType: [this.category && this.category.CatergoryType || addType.nextType],
         CompanyId: [user.CompanyId, Validators.required],
         CreateUserId: [user.UserId, Validators.required],
         StatusId: [this.category && this.category.StatusId || 1, Validators.required],

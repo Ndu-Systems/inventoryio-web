@@ -48,7 +48,7 @@ export class ListCategoriesComponent implements OnInit {
         this.heading = `Parent categories(${this.filteredCategories.length})`;
         this.addLabel = ' Add parent category';
       }
-    })
+    });
   }
   add() {
     this.bannerService.updateState({
@@ -85,6 +85,13 @@ export class ListCategoriesComponent implements OnInit {
     this.heading = `${caterory.Name} categories (${this.filteredCategories.length})`;
     this.addLabel = `Add ${caterory.Name} category`;
     this.childPage = true;
+    this.categorieservice.updateCateroryAddTypeState(
+      {
+        nextParentId: caterory.CatergoryId,
+        nextParentName: caterory.Name,
+        nextType: 'child'
+      }
+    );
 
   }
   parents() {
@@ -93,5 +100,12 @@ export class ListCategoriesComponent implements OnInit {
     this.childPage = false;
     this.heading = `Parent categories(${this.filteredCategories.length})`;
     this.addLabel = ' Add parent category';
+    this.categorieservice.updateCateroryAddTypeState(
+      {
+        nextParentId: '',
+        nextParentName: '',
+        nextType: 'parent'
+      }
+    );
   }
 }
