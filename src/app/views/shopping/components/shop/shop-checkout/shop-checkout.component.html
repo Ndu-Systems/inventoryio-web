@@ -74,22 +74,10 @@
         <input type="hidden" name="email_confirmation" value="1">
         <input type="hidden" name="confirmation_address" value="payments@tybo.co.za">
 
-        <button type="submit">Proceed to payments</button>
-        <button type="submit">Proceed to payments</button>
+        <button type="submit" class="cta">Proceed to payments</button>
+        <button type="button" (click)="back()" class="cta secondary">continue shopping</button>
       </form>
     </div>
-
-    <div class="actions">
-      <div class="action">
-        <img (click)="payments()" src="assets/images/tybo/cta-continue-to-payments.svg" alt="">
-      </div>
-      <div class="action">
-        <img (click)="back()" src="assets/images/tybo/cta-continue-shopping.svg" alt="">
-      </div>
-    </div>
-    <!-- <pre>
-    {{user | json}}
-   </pre> -->
   </div>
 
   <ng-template #noUser>

@@ -1,45 +1,44 @@
 .main {
+  .images {
+    display: grid;
+    grid-template-columns: 14% auto;
 
-  .slider {
-    // height: 25rem;
-    box-sizing: border-box;
-    width: 100%;
-    text-align: center;
-    // height: 20rem;
-    overflow: hidden;
+    .navigate {
+      .navigate-image {
+        text-align: center;
+        margin: 0 .8rem;
 
-    img {
-      // height: 25rem;
-      width: 100%;
-      // border-radius: 1.2rem;
-      animation: moveInLeft 1s ease-out 0s;
-      animation-fill-mode: backwards;
-
-      @media only screen and (max-width: 600px) {
-        height: auto;
-        height: 45vh;
-        width: auto;
+        img {
+          width: 100%;
+          cursor: pointer;
+        }
+        .active{
+          border: 2px solid #000;
+        }
       }
     }
-  }
 
-  .navigate {
-    display: flex;
-
-    .navigate-image {
-      width: 3.5rem;
-      overflow: hidden;
-      margin-right: .5rem;
-      height: 3.5rem;
-      border: 1px solid rgb(226, 226, 226);
+    .slider {
+      box-sizing: border-box;
+      width: 100%;
       text-align: center;
+      overflow: hidden;
 
       img {
-        width: 3.5rem;
-        margin: .3rem 0;
-        cursor: pointer;
+        width: 100%;
+        animation: moveInLeft 1s ease-out 0s;
+        animation-fill-mode: backwards;
+
+        @media only screen and (max-width: 600px) {
+          height: auto;
+          height: 45vh;
+          width: auto;
+        }
       }
     }
   }
+
+
+
 
 }

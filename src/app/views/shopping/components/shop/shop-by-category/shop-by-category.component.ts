@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CateroryService } from 'src/app/_services/dashboard';
-import { Caterory, Company } from 'src/app/_models';
+import { Caterory, Company, Product } from 'src/app/_models';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from 'src/app/_services';
 
 @Component({
   selector: 'app-shop-by-category',
@@ -15,6 +16,7 @@ export class ShopByCategoryComponent implements OnInit {
   constructor(
     private cateroryService: CateroryService,
     private activatedRoute: ActivatedRoute,
+    private productService: ProductService,
     private router: Router
   ) {
     this.activatedRoute.params.subscribe(r => {
@@ -36,7 +38,12 @@ export class ShopByCategoryComponent implements OnInit {
     this.router.navigate(['at', this.company.Handler || this.company.CompanyId]);
   }
   gotToParent() {
-    this.router.navigate(['at', this.company.Handler || this.company.CompanyId]);
+    this.router.navigate(['main-category', this.catergory.ParentCaterory.Handler || this.catergory.ParentCaterory.CatergoryId]);
+  }
+  viewItem(product: Product) {
+    this.productService.updateSellProductState(product);
+    this.router.navigate(['view-product', product.ProductId]);
+
   }
 
 }

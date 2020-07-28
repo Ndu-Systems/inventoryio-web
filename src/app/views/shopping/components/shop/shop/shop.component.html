@@ -6,10 +6,10 @@
       </pre> -->
       <div class="catergories" *ngIf="filterCatergories">
         <div class="catergory" *ngFor="let item of filterCatergories ">
-          <div class="image">
+          <div class="image"  (click)="openMainCatergory(item)">
             <img [src]="item.ImageUrl" alt="">
           </div>
-          <div class="name">
+          <div class="name"  (click)="openMainCatergory(item)">
             <h1>
               {{item.Name}}
             </h1>

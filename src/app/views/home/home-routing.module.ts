@@ -40,6 +40,7 @@ import { PaymentCanceledComponent } from '../shopping/components/shop/payment-ca
 import { PaymentCallbackComponent } from '../shopping/components/shop/payment-callback/payment-callback.component';
 import { HomeShoppingComponent } from '../shopping/components/home-shopping/home-shopping.component';
 import { ShopByCategoryComponent } from '../shopping/components/shop/shop-by-category/shop-by-category.component';
+import { MainCategoryComponent } from '../shopping/components/shop/main-category/main-category.component';
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
@@ -64,6 +65,7 @@ const routes: Routes = [
       { path: 'payment-cancelled/:id', component: PaymentCanceledComponent },
       { path: 'payment-callback', component: PaymentCallbackComponent },
       { path: 'shop-by-category/:id', component: ShopByCategoryComponent },
+      { path: 'main-category/:id', component: MainCategoryComponent },
 
     ]
   }
@@ -105,7 +107,8 @@ export const declarations = [
   PaymentCanceledComponent,
   PaymentCallbackComponent,
   HomeShoppingComponent,
-  ShopByCategoryComponent
+  ShopByCategoryComponent,
+  MainCategoryComponent
 ];
 
 

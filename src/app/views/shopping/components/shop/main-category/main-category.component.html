@@ -1,0 +1,39 @@
+<div class="main" *ngIf="catergory">
+  <div class="heading">
+    <h1>
+     Explore {{catergory.Name}}
+    </h1>
+    <div class="breadcrump">
+      <div class="bread parent" (click)="back()">
+        {{catergory.Company.Name}} <i class="pi pi-chevron-right"></i>
+      </div>
+      <div class="bread">
+        <b>{{catergory.Name}}</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-catergory">
+    <!-- <div class="image">
+      <img [src]="catergory.ImageUrl" alt="">
+    </div> -->
+
+    <div class="children">
+      <span *ngFor="let child of catergory.Children">
+       
+        <div class="child" *ngIf="child.Products && child.Products.length" (click)="openCatergory(child)">
+          <div class="child-image">
+            <img [src]="child.ImageUrl" alt="">
+          </div>
+          <div class="child-name">
+            <h1>
+              {{child.Name}}
+            </h1>
+          </div>
+        </div>
+      </span>
+  
+    </div>
+  </div>
+
+</div>

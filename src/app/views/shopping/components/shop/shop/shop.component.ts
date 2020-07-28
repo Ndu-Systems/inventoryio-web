@@ -94,6 +94,9 @@ export class ShopComponent implements OnInit {
     this.router.navigate(['view-product', product.ProductId]);
 
   }
+  openMainCatergory(caterory: Caterory) {
+    this.router.navigate(['main-category', caterory.CatergoryId]);
+  }
   openCatergory(caterory: Caterory) {
     this.router.navigate(['shop-by-category', caterory.CatergoryId]);
   }

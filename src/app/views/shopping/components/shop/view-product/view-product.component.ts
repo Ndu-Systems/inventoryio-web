@@ -156,7 +156,7 @@ export class ViewProductComponent implements OnInit {
           name: product.Name,
           price: Number(product.UnitPrice),
           quantity: Number(this.itemQnty),
-          image: product.Images && product.Images[0].Url,
+          image: product.Productoptions && product.Productoptions[0].ImageUrl1,
           options: this.orderOptions
         }, this.companyId);
       // this.orderOptions = [];

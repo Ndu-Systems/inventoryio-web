@@ -22,4 +22,5 @@ export interface Caterory {
     Company?: Company;
     ShowMenu?: boolean;
     Label?: string;
+    Handler?: string;
 }

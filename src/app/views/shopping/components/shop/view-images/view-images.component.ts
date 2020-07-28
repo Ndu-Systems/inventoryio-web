@@ -11,7 +11,7 @@ import { Productoptions } from 'src/app/_models/productoptions.model';
 })
 export class ViewImagesComponent implements OnInit {
   product$: Observable<Product>;
-  selectedImage: string;
+  option: Productoptions;
   constructor(private productService: ProductService
   ) { }
 
@@ -19,13 +19,16 @@ export class ViewImagesComponent implements OnInit {
     this.product$ = this.productService.sellItem;
     this.productService.sellItem.subscribe(data => {
       if (data && data.Productoptions) {
-        this.selectedImage = data.Productoptions[0] && data.Productoptions[0].ImageUrl1 || '';
+        this.option = data.Productoptions[0];
+        this.option.ngClass = ['active'];
       }
     });
 
   }
-  selectImage(image: string) {
-    this.selectedImage = image;
+  selectImage(option: Productoptions, options: Productoptions[]) {
+    options.map(x => x.ngClass = []);
+    this.option = option;
+    this.option.ngClass = ['active'];
   }
 
 }

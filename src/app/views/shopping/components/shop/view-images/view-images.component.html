@@ -1,14 +1,15 @@
 <div class="main">
   <div class="order" *ngIf=" this.product$ | async as  product;">
     <div class="images">
-      <div class="slider">
-        <img [src]="selectedImage" alt="">
-      </div>
       <div class="navigate">
         <div class="navigate-image" *ngFor="let item of product.Productoptions">
-          <img (click)="selectImage(item.ImageUrl1)" [src]="item?.ImageUrl1" alt="">
+          <img (click)="selectImage(item,product.Productoptions)" [ngClass]="item.ngClass" [src]="item?.ImageUrl1" alt="">
         </div>
       </div>
+      <div class="slider">
+        <img [src]="option.ImageUrl1" alt="">
+      </div>
+     
     </div>
 
   </div>
