@@ -5,10 +5,20 @@
     </h1>
     <div class="breadcrump">
       <div class="bread">
-        Home <i class="pi pi-pi-chevron-right"></i>
+        Home <i class="pi pi-chevron-right"></i>
+      </div>
+      <div class="bread">
+        Men <i class="pi pi-chevron-right"></i>
+      </div>
+      <div class="bread">
+        <b>{{catergory.Name}}</b>
       </div>
     </div>
   </div>
+
+  <!-- <pre>
+    {{catergory | json}}
+  </pre> -->
   <div class="shop-cards">
 
     <span *ngFor="let item of catergory.Products ">

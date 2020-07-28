@@ -1,8 +1,29 @@
 .main {
-    padding: 4rem 0;
+  padding: 5rem 2rem;
+
   .heading {
     h1 {
       text-align: center;
+      font-size: 2.5rem;
+    }
+  }
+
+  .breadcrump {
+    position: relative;
+    left: -0.7rem;
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    width: 20%;
+    padding: 2rem 0;
+
+    .bread {
+      font-size: .9rem;
+      font-weight: 400;
+
+      .pi {
+        position: relative;
+        top: .2rem;
+      }
     }
   }
 }
