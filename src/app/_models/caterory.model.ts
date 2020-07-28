@@ -1,5 +1,6 @@
 import { Image } from './image.model';
 import { Product } from './product.model';
+import { Company } from './company.model';
 
 export interface Caterory {
     CatergoryId?: string;
@@ -17,6 +18,8 @@ export interface Caterory {
     Images?: Image[];
     Products?: Product[];
     Children?: Caterory[];
+    ParentCaterory?: Caterory;
+    Company?: Company;
     ShowMenu?: boolean;
     Label?: string;
 }

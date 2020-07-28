@@ -114,6 +114,6 @@ export class CateroryService {
     });
   }
   getCatergoryById(categoryId: string) {
-    return this.http.get<Caterory[]>(`${this.url}/api/catergory/get-catergory-by-id.php?CatergoryId=${categoryId}`);
+    return this.http.get<Caterory>(`${this.url}/api/catergory/get-catergory-by-id.php?CatergoryId=${categoryId}`);
   }
 }

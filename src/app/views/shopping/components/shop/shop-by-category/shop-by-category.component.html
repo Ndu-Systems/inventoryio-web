@@ -4,11 +4,11 @@
       {{catergory.Name}}
     </h1>
     <div class="breadcrump">
-      <div class="bread">
-        Home <i class="pi pi-chevron-right"></i>
+      <div class="bread parent" (click)="back()">
+        {{catergory.Company.Name}} <i class="pi pi-chevron-right"></i>
       </div>
-      <div class="bread">
-        Men <i class="pi pi-chevron-right"></i>
+      <div class="bread parent" (click)="gotToParent()">
+        {{catergory.ParentCaterory.Name}} <i class="pi pi-chevron-right"></i>
       </div>
       <div class="bread">
         <b>{{catergory.Name}}</b>

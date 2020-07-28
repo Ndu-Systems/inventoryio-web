@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CateroryService } from 'src/app/_services/dashboard';
-import { Caterory } from 'src/app/_models';
+import { Caterory, Company } from 'src/app/_models';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,8 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./shop-by-category.component.scss']
 })
 export class ShopByCategoryComponent implements OnInit {
-  catergory: Caterory[];
+  catergory: Caterory;
   catergoryId: string;
+  company: Company;
   constructor(
     private cateroryService: CateroryService,
     private activatedRoute: ActivatedRoute,
@@ -21,6 +22,7 @@ export class ShopByCategoryComponent implements OnInit {
       this.cateroryService.getCatergoryById(this.catergoryId).subscribe(data => {
         if (data) {
           this.catergory = data;
+          this.company = this.catergory.Company;
         }
       });
     });
@@ -28,6 +30,13 @@ export class ShopByCategoryComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  back() {
+    this.router.navigate(['at', this.company.Handler || this.company.CompanyId]);
+  }
+  gotToParent() {
+    this.router.navigate(['at', this.company.Handler || this.company.CompanyId]);
   }
 
 }
