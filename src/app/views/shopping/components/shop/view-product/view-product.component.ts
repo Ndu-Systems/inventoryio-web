@@ -41,6 +41,11 @@ export class ViewProductComponent implements OnInit {
   optionClass = ['option', 'sizes'];
   sizes: Productoptions[] = [];
   colors: Productoptions[] = [];
+  optionsLabel1: string;
+  optionsLabel2: string;
+  selectLabel1 = 'Select';
+  selectLabel2 = 'Select';
+
   constructor(
     private productService: ProductService,
     private shoppingService: ShoppingService,
@@ -71,16 +76,10 @@ export class ViewProductComponent implements OnInit {
         this.companyId = this.company.CompanyId;
         this.dataReady();
         this.getCurrentCart();
+        this.getProductOptions(this.product);
         this.productService.updateState(this.products);
         this.productService.updateSellProductState(this.product);
         this.loading = false;
-        if (this.product.Productoptions) {
-          this.sizes = [...this.product.Productoptions];
-          this.colors = [...this.product.Productoptions];
-          this.sizes.map(x => x.ngClass = ['option', 'sizes']);
-          this.colors.map(x => x.ngClass = ['option', 'colors']);
-
-        }
       }
     });
   }
@@ -122,6 +121,89 @@ export class ViewProductComponent implements OnInit {
         this.cartItems = this.sale.items.length;
       }
     });
+  }
+
+  getProductOptions(product: Product) {
+    console.log('Product', product);
+    const options = this.product.Productoptions;
+    if (!options) {
+      console.log('No Options');
+      return false;
+    }
+
+    options.forEach(option => {
+      if (!this.sizes.find(x => x.Value1 === option.Value1)) {
+        if (option.Value1) {
+          this.sizes.push(
+            {
+              Id: '',
+              ProductId: '',
+              CompanyId: '',
+              Name1: 'Size',
+              Name2: 'Colour',
+              Name3: '',
+              Name4: '',
+              Name5: '',
+              Value1: option.Value1,
+              Value2: '',
+              Value3: '',
+              Value4: '',
+              Value5: '',
+              ImageUrl1: '',
+              ImageUrl2: '',
+              ImageUrl3: '',
+              Quantity: null,
+              CreateUserId: '',
+              ModifyUserId: '',
+              StatusId: 1
+            }
+          );
+        }
+
+      }
+      if (!this.colors.find(x => x.Value2 === option.Value2)) {
+        if (option.Value2) {
+          this.colors.push(
+            {
+              Id: '',
+              ProductId: '',
+              CompanyId: '',
+              Name1: 'Size',
+              Name2: 'Colour',
+              Name3: '',
+              Name4: '',
+              Name5: '',
+              Value1: '',
+              Value2: option.Value2,
+              Value3: '',
+              Value4: '',
+              Value5: '',
+              ImageUrl1: '',
+              ImageUrl2: '',
+              ImageUrl3: '',
+              Quantity: null,
+              CreateUserId: '',
+              ModifyUserId: '',
+              StatusId: 1
+            }
+          );
+        }
+      }
+    });
+
+    this.sizes.map(x => x.ngClass = ['option', 'sizes']);
+    this.colors.map(x => x.ngClass = ['option', 'colors']);
+
+
+    if (this.sizes.length) {
+      this.optionsLabel1 = options.map(x => x.Name1)[0];
+    }
+
+
+    if (this.colors.length) {
+      this.optionsLabel2 = options.map(x => x.Name2)[0];
+    }
+
   }
 
   doSell(product: Product) {
@@ -218,11 +300,23 @@ export class ViewProductComponent implements OnInit {
     if (name === 'sizes') {
       this.sizes.map(x => x.ngClass = ['option', 'sizes']);
       this.sizes[index].ngClass = ['option', 'sizes', 'active'];
+      this.selectLabel1 = 'Selected';
     } else {
       this.colors.map(x => x.ngClass = ['option', 'colors']);
       this.colors[index].ngClass = ['option', 'colors', 'active'];
+      this.selectLabel2 = 'Selected';
     }
 
 
+  }
+  gotToParent() {
+    this.router.navigate(['main-category',
+      this.product.Catergory.ParentCaterory.Handler || this.product.Catergory.ParentCaterory.CatergoryId]
+    );
+  }
+  gotToCatergory() {
+    this.router.navigate(['shop-by-category',
+      this.product.Catergory.Handler || this.product.Catergory.CatergoryId]
+    );
   }
 }

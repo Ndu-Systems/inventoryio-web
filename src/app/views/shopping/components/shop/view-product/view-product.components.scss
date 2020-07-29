@@ -1,7 +1,7 @@
 @import '../../../../../../assets/styles/variables';
 
 .main {
-  padding: 7rem 2rem;
+  padding: 10rem 6rem;
   box-sizing: border-box;
   background: $white-color;
 
@@ -17,6 +17,24 @@
     .details {
       padding: 2rem 7rem;
 
+      h1 {
+        font-size: 1.5rem;
+
+        span {
+          display: block;
+          font-size: .8rem;
+          padding-left: .5rem;
+          font-weight: 900;
+          color: $strong-gray;
+        }
+      }
+
+      h1.price {
+        font-size: 2.2rem;
+        font-weight: 900;
+        margin-bottom: 2rem;
+      }
+
       @media only screen and (max-width: 600px) {
         padding: 0;
 
@@ -26,6 +44,8 @@
       }
 
       .options {
+        // background: red;
+        margin-bottom: 3rem;
 
         .options-group {
           display: flex;
@@ -37,12 +57,14 @@
             color: $strong-gray;
             cursor: pointer;
           }
-          .label{
+
+          .label {
             border: none;
-            width: 5rem;
+            width: 10rem;
             cursor: default;
           }
-          .active{
+
+          .active {
             background: $black-color;
             color: $white-color;
             border: 1px solid $black-color;
@@ -55,18 +77,22 @@
 }
 
 .quantity {
-  width: 10rem;
+  width: 30rem;
   margin: 1rem 0;
   display: grid;
-  grid-template-columns: 30% auto;
+  grid-template-columns: 40% auto;
+  
 
   p {
-    margin: .2rem 0;
+    margin: .2rem .6rem;
+    font-weight: 600;
+    color: $strong-gray;
   }
 
   .qnty-group-btns {
     display: grid;
     grid-template-columns: repeat(3, 33%);
+    width: 7rem;
 
     input {
       margin: 0;
@@ -76,8 +102,12 @@
     }
 
     img {
-      width: 100%;
+      width: 2rem;
       cursor: pointer;
+    }
+    .pos{
+      text-align: right;
+    
     }
   }
 }
@@ -169,4 +199,11 @@ h1.total {
   width: 70%;
   padding: 1rem 0;
   text-transform: capitalize;
+}
+
+.breadcrump {
+  grid-template-columns: repeat(4, 25%);
+  width: 45%;
+  margin-bottom: 2.5rem;
+  left: -3.7rem;
 }
