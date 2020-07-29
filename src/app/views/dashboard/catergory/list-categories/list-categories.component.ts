@@ -35,6 +35,12 @@ export class ListCategoriesComponent implements OnInit {
     const user = this.accountService.currentUserValue;
     this.accountService.checkSession();
 
+    this.categorieservice.updateCateroryAddTypeState({
+      nextParentId: '',
+      nextParentName: '',
+      nextType: 'parent'
+    });
+
     this.categorieservice.getCateries(user.CompanyId);
     this.notFoundModel = {
       Image: NotFoundConstants.NOT_FOUND_CATEGORIES.image,

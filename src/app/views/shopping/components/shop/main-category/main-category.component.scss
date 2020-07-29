@@ -14,12 +14,13 @@
     left: -0.7rem;
     display: grid;
     grid-template-columns: repeat(3, 30%);
-    width: 20%;
+    width: 30%;
     padding: 2rem 0;
 
     .bread {
       font-size: .9rem;
       font-weight: 400;
+      text-align: center;
 
       .pi {
         position: relative;
