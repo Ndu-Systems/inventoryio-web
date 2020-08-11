@@ -5,6 +5,7 @@ import { User, Role, Partner } from 'src/app/_models';
 import { BannerService, UsersService, AccountService, RolesService, PartnerService } from 'src/app/_services';
 import { DEFAULT_PASSWORD, StatusConstant } from '../../shared';
 import { MessageService } from 'primeng/api';
+import { TopHeading } from 'src/app/_models/top-heading.model';
 
 @Component({
   selector: 'app-add-partner',
@@ -17,6 +18,10 @@ export class AddPartnerComponent implements OnInit {
   rForm: FormGroup;
   userAdded: User;
   roles: Role[];
+  topHeading: TopHeading = {
+    backto: '/dashboard/customers',
+    heading: 'Create customer'
+  };
   constructor(
     private fb: FormBuilder,
     private bannerService: BannerService,

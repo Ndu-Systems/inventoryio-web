@@ -1,14 +1,16 @@
+<app-top-heading-back [heading]="topHeading"></app-top-heading-back>
+
 <div class="sell-page">
   <div class="selling">
 
     <div class="products-page" *ngIf="products$  | async as products">
-      <div class="list-header">
+      <!-- <div class="list-header">
         <div class="heading">
           <h1>
             Create Sales Order<span class="dot">.</span>
           </h1>
         </div>
-      </div>
+      </div> -->
 
 
       <div class="list-header-mobile">
@@ -21,8 +23,8 @@
         <div class="input">
           <div class="customer-search">
             <span>Customer Name</span>
-            <input type="search" [(ngModel)]="selectedPartner.Name"
-              (keyup)="searchCustomers($event.target.value)" class="roundInput" placeholder="Search customer ...">
+            <input type="search" [(ngModel)]="selectedPartner.Name" (keyup)="searchCustomers($event.target.value)"
+              class="roundInput" placeholder="Search customer ...">
             <div class="dropdown  result" *ngIf="customerSuggestions.length > 0 && selectedPartner.Name">
               <p *ngFor="let item of customerSuggestions; let i = index">
                 <span (click)="selectCustomer(item)">{{item.Name}} {{item.Surname}}</span>
@@ -52,9 +54,8 @@
           <span>Customer Address</span>
           <textarea class="roundInput" [(ngModel)]="selectedPartner.Address" name="" id="" cols="30"
             rows="10"></textarea>
-            <span>Customer Notes</span>
-            <textarea class="roundInput" [(ngModel)]="Notes" name="" id="" cols="30"
-            rows="10"></textarea>
+          <span>Customer Notes</span>
+          <textarea class="roundInput" [(ngModel)]="Notes" name="" id="" cols="30" rows="10"></textarea>
         </div>
       </div>
 

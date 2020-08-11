@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { NotFoundConstants } from '../../shared';
 import { ORDER_SELL } from 'src/app/_shared';
+import { TopHeading } from 'src/app/_models/top-heading.model';
 
 @Component({
   selector: 'app-list-orders',
@@ -23,6 +24,10 @@ export class ListOrdersComponent implements OnInit {
   statuses: string[];
   prefix = 'INV';
   orders: Orders[];
+  topHeading: TopHeading = {
+    backto: '/dashboard',
+    heading: 'Orders'
+  };
   constructor(
     private ordersService: OrdersService,
     private router: Router,

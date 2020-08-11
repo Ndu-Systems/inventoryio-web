@@ -139,7 +139,7 @@
 
 
   @media only screen and (max-width: 600px) {
-    display: grid;
+    // display: grid;
   }
 
 
@@ -157,6 +157,9 @@
 
     img {
       width: 4.2rem;
+      @media only screen and (max-width: 600px) {
+        width: 2rem;
+      }
     }
   }
 }

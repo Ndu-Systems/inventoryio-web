@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserActions, User } from 'src/app/_models';
-import { AccountService } from 'src/app/_services';
+import { AccountService, ProductService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class UserActionsComponent implements OnInit {
   actions: UserActions[] = [];
   user: User;
-  constructor(private accountService: AccountService, private router: Router) { }
+  constructor(private accountService: AccountService, private router: Router, private productService: ProductService) { }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
@@ -59,6 +59,11 @@ export class UserActionsComponent implements OnInit {
   openAction(link: string) {
     if (link && link.includes('shop')) {
       window.open(`${environment.BASE_URL}/#/${link}`, '_blank');
+      return;
+    }
+    if (link && link.includes('product')) {
+      this.productService.updateCurrentProduct(null);
+      this.router.navigate([link]);
       return;
     }
     if (link) {

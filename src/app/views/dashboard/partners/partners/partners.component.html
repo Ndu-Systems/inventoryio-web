@@ -1,10 +1,12 @@
+<app-top-heading-back [heading]="topHeading"></app-top-heading-back>
+
 <div class="products-page" *ngIf="partners$ | async as partners">
   <div class="list-header">
-    <div class="heading">
+    <!-- <div class="heading">
       <h1>
         {{type}} ({{(partners| searchpartner: searchType).length}})
       </h1>
-    </div>
+    </div> -->
 
     <div class="search">
     </div>
@@ -23,9 +25,9 @@
   </div>
 
   <div class="list-header-mobile">
-    <h4>
+    <!-- <h4>
       {{type}} ({{(partners| searchpartner: searchType).length}})
-    </h4>
+    </h4> -->
 
     <div class="actions">
       <div class="search">

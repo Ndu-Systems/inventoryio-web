@@ -1,11 +1,13 @@
+<app-top-heading-back [heading]="topHeading"></app-top-heading-back>
+
 <div class="order-list" *ngIf="orders$  | async as orders">
   <div class="list">
     <div class="list-header">
-      <div class="heading">
+      <!-- <div class="heading">
         <h1>
           Sales invoices<span class="dot">.</span>
         </h1>
-      </div>
+      </div> -->
 
       <div class="search">
         <input type="search" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
@@ -31,10 +33,10 @@
     </div>
 
     <div class="list-header-mobile">
-      <h4>
+      <!-- <h4>
         Sales invoices<span class="dot">.</span>
-      </h4>
-  
+      </h4> -->
+
       <div class="actions">
         <div class="search">
           <input type="search" [(ngModel)]="search" class="roundInput" placeholder="Search here ...">
@@ -46,7 +48,7 @@
             <option value="Partially paid" selected>Partially paid</option>
             <option value="Fully paid" selected>Partially paid</option>
             <option value="Cancelled" selected>Cancelled</option>
-  
+
           </select>
         </div>
         <div class="search">

@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 import { state } from '@angular/animations';
 import { AttributeService } from 'src/app/_services/dashboard/attribute.service';
 import { Attribute } from 'src/app/_models/Attribute.model';
+import { TopHeading } from 'src/app/_models/top-heading.model';
 
 @Component({
   selector: 'app-add-product',
@@ -33,8 +34,12 @@ export class AddProductComponent implements OnInit {
   priceError: string;
   code: string;
   products: Product[];
-  filteredCategories: Caterory[] = [];
-
+  parentCategories: Caterory[] = [];
+  childrenCategories: Caterory[] = [];
+  topHeading: TopHeading = {
+    backto: '/dashboard/list-product',
+    heading: 'Create product'
+  };
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -52,7 +57,7 @@ export class AddProductComponent implements OnInit {
   ) {
     this.bannerService.updateState({
       heading: 'Add Products',
-      backto: '/dashboard'
+      backto: '/list-product'
     });
   }
   // ngOnDestroy(): void {
@@ -68,14 +73,11 @@ export class AddProductComponent implements OnInit {
     this.catergories$ = this.cateroryService.categories;
     this.cateroryService.categories.subscribe(data => {
       if (data && data.length) {
-        this.filteredCategories = [];
-        const parents = data.filter(x => x.CatergoryType === 'parent');
-        parents.forEach(parent => {
-          (parent && parent.Children || []).filter(x => x.CatergoryType === 'child').forEach(child => {
-            child.Label = `${parent.Name} - ${child.Name}`;
-            this.filteredCategories.push(child);
-          });
-        });
+        this.parentCategories = data.filter(x => x.CatergoryType === 'parent');
+        this.childrenCategories = data.filter(x => x.CatergoryType === 'child');
+      } else {
+        this.parentCategories = [{ Name: 'Ladies' }, { Name: 'Men' }, { Name: 'Unisex' }];
+        this.parentCategories = [{ Name: 'New In' }];
       }
     });
 

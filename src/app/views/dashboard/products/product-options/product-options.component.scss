@@ -2,16 +2,21 @@
 $grid-tbl : 17% 17% 17% 40% auto;
 
 .options {
+  background: $white-color;
+  border-radius: 1.5rem;
+  border: 1px solid $ligher-gray;
+  padding: 1rem;
+
   @media only screen and (max-width: 600px) {
     width: 50rem;
+    padding: .5rem;
+
   }
+
   .headings {
     display: grid;
-
-    // grid-template-columns: repeat(4, 25%);
     grid-template-columns: $grid-tbl;
-
-
+    border-radius: 10rem;
 
     .item {
       font-weight: 900;
@@ -22,6 +27,18 @@ $grid-tbl : 17% 17% 17% 40% auto;
       margin: 0;
       width: 100%;
       text-align: center;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    div:nth-child(1) {
+      border-top-left-radius: 1rem;
+      border: none;
+    }
+
+    div:last-child {
+      border-top-right-radius: 1rem;
+      border: none;
     }
   }
 
@@ -43,6 +60,7 @@ $grid-tbl : 17% 17% 17% 40% auto;
         padding: 0;
         margin: 0;
         width: 100%;
+        border-left: none;
 
         input {
           margin: 0;
@@ -127,14 +145,21 @@ $grid-tbl : 17% 17% 17% 40% auto;
           cursor: pointer;
         }
       }
+
+      div:last-child {
+        border-right: none;
+      }
     }
 
     .add-line {
-      text-align: right;
+      text-align: left;
       padding: 1rem 0;
 
-      img {
-        cursor: pointer;
+      button {
+        background: $info;
+        padding: .4rem 1rem;
+        border: none;
+        border-radius: 5rem;
       }
     }
   }

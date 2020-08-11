@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { NotFoundConstants } from '../../shared';
 import { MessageService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
+import { TopHeading } from 'src/app/_models/top-heading.model';
 
 @Component({
   selector: 'app-list-products',
@@ -28,6 +29,10 @@ export class ListProductsComponent implements OnInit {
   searchByStock: string;
   quantityAsc: any;
   priceAsc: any;
+  topHeading: TopHeading = {
+    backto: '/dashboard/',
+    heading: 'My products'
+  };
 
   constructor(
     private productService: ProductService,

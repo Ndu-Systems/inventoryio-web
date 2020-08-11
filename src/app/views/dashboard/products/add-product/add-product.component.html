@@ -1,10 +1,10 @@
-<div class="conatiner">
-  <h1 class="title">{{heading}}</h1>
+<app-top-heading-back [heading]="topHeading"></app-top-heading-back>
+<div class="container">
   <div class="form-section" *ngIf="product">
     <div class="form-items">
       <div class="form-item">
         <div class="item">
-          <span class="label">product code</span>
+          <span class="label">product code (system generated)</span>
           <input type="text" disabled [(ngModel)]="code">
         </div>
       </div>
@@ -19,20 +19,47 @@
           {{nameError}}
         </div>
       </div>
-
-
-      <div class="form-item">
-        <div class="item">
-          <span class="label">product catergory</span>
-          <select  [(ngModel)]="product.CatergoryId"  (change)="saveState()">
+      <!-- <select [(ngModel)]="product.CatergoryId" (change)="saveState()">
             <option value="">Select Category</option>
             <option *ngFor="let catergory of filteredCategories" [value]="catergory.CatergoryId">
               {{catergory.Label}}
             </option>
-          </select>
+          </select> -->
+
+      <div class="form-item">
+        <div class="item ">
+          <span class="label">select parent catergory</span>
+
+          <div class="categories">
+            <div class="parent-categories">
+              <div class="catergory" *ngFor="let catergory of parentCategories">
+               <p>
+                {{catergory.Name}}
+               </p>
+              </div>
+              <div class="catergory add"><i class="pi pi-plus"></i>
+                Add New</div>
+            </div>
+          </div>
         </div>
-        <div class="status">
-        
+      </div>
+
+
+
+      <div class="form-item">
+        <div class="item categories">
+          <span class="label">select child catergory</span>
+          <div class="categories">
+            <div class="parent-categories">
+              <div class="catergory" *ngFor="let catergory of childrenCategories">
+              <p>
+                {{catergory.Name}}
+              </p>
+              </div>
+              <div class="catergory add"><i class="pi pi-plus"></i>
+                Add New</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -67,194 +94,11 @@
   <div class="actions-section">
     <div class="actions">
       <div class="action">
-        <img src="assets/images/tybo/cta-save-product.svg" (click)="save()" alt="">
+        <button class="btn secondary" (click)="back()">Cancel</button>
       </div>
       <div class="action">
-        <img src="assets/images/tybo/cta-cancel.svg" (click)="back()" alt="">
+        <button class="btn" (click)="save()">Save product</button>
       </div>
     </div>
   </div>
 </div>
-
-<!-- <pre>
-  {{product|json}}
-</pre> -->
-
-
-
-<!-- 
-<div class="main-content">
-  <h1 class="title-header">Add new product.</h1>
-
-  <form [formGroup]="rForm">
-    <div class="col-1-of-2">
-      <div class="section">
-        <div class="form-item">
-          <label class="label">Item name*</label>
-          <input type="text" formControlName="Name" placeholder="Gold gift bag" required="required" autofocus />
-          <div class="alert" *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">
-            Item name is required
-          </div>
-        </div>
-
-        <div class="form-group-items">
-          <div class="form-item">
-            <label class="label">Selling price*</label>
-            <input type="text" placeholder="850.99" formControlName="UnitPrice" required="required" />
-            <div class="alert" *ngIf="!rForm.controls['UnitPrice'].valid && rForm.controls['UnitPrice'].touched">
-              Selling price is required
-            </div>
-          </div>
-
-          <div class="form-item">
-            <label class="label">Cost price</label>
-            <input type="number" formControlName="UnitCost" placeholder="500" required="required" />
-            <div class="alert" *ngIf="!rForm.controls['UnitCost'].valid && rForm.controls['UnitCost'].touched">
-              Unit cost is required
-            </div>
-          </div>
-
-        </div>
-
-
-
-        <div class="form-group-items">
-          <div class="form-item">
-            <div class="group-inputs">
-              <span>
-                <label class="label">Item brand</label>
-                <select formControlName="BrandId">
-                  <option value="">Select brand</option>
-                  <option *ngFor="let brand of brands$ | async" [value]="brand.BrandId">{{brand.Name}}</option>
-                </select>
-              </span>
-              <button (click)="addBrand(rForm.value)">
-                +
-              </button>
-            </div>
-          </div>
-
-
-          <div class="form-item">
-            <div class="group-inputs">
-              <span>
-                <label class="label">Item category</label>
-                <select formControlName="CatergoryId">
-                  <option value="">Select Category</option>
-                  <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CatergoryId">
-                    {{catergory.Name}}
-                  </option>
-                </select>
-              </span>
-              <button (click)="addCatergory(rForm.value)">
-                +
-              </button>
-            </div>
-          </div>
-        </div>
-
-
-
-
-
-
-        <div class="form-group-items">
-          <div class="form-item">
-            <label class="label">Quantity</label>
-            <input type="number" formControlName="Quantity" required="required" />
-            <div class="alert" *ngIf="!rForm.controls['UnitPrice'].valid && rForm.controls['UnitPrice'].touched">
-              Quantity is required
-            </div>
-          </div>
-
-          <div class="form-item">
-            <label class="label">Stock alert</label>
-            <input type="number" formControlName="LowStock" required="required" />
-            <div class="alert" *ngIf="!rForm.controls['UnitCost'].valid && rForm.controls['UnitCost'].touched">
-              Unit cost is required
-            </div>
-          </div>
-
-        </div>
-
-        <div class="form-group-items">
-          <div class="form-item">
-            <div class="group-inputs g8020">
-              <span>
-                <label class="label">Item code</label>
-                <input formControlName="Code" placeholder="scan/write bar-code here" />
-
-              </span>
-              <button (click)="scan()">
-                SCAN
-              </button>
-            </div>
-          </div>
-
-
-        </div>
-
-      </div>
-
-      <div class="section">
-        <div class="form-item">
-          <label class="label">item options.<span class="eg"> e.g Color : red, blue</span></label>
-        </div>
-        <div class="options">
-          <app-attributes [id]="id"></app-attributes>
-        </div>
-        <hr>
-        <div class="images">
-          <span>Images</span>
-          <app-file-upload formControlName="image"></app-file-upload>
-        </div>
-        <br>
-        <hr>
-        <div class="editor">
-          <span>More Description </span>
-          <br>
-
-          <p-editor formControlName="Description" [style]="{'height':'220px'}">
-            <p-header>
-              <span class="ql-formats">
-                <button class="ql-bold" aria-label="Bold"></button>
-                <button class="ql-italic" aria-label="Italic"></button>
-                <button class="ql-underline" aria-label="Underline"></button>
-              </span>
-
-              <span class="ql-toolbar">
-                <select class="ql-size">
-                  <option value="small"></option>
-                  <option selected></option>
-                  <option value="large"></option>
-                  <option value="huge"></option>
-                </select>
-              </span>
-            </p-header>
-          </p-editor>
-
-        </div>
-      </div>
-    </div>
-
-
-    <div class="actions-footer">
-      <div class="actions">
-        <div class="div">
-          <input type="button" value="Cancel" (click)="back()" class="action-btn cancel" />
-        </div>
-        <div class="div">
-          <input type="submit" value="Save item" (click)="onSubmit(rForm.value)" class="action-btn"
-            [disabled]="!rForm.valid" />
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-
-
-<div class="scanner-pluggin" *ngIf="showScan">
-  <app-scanner></app-scanner>
-</div> -->

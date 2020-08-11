@@ -1,13 +1,15 @@
+<app-top-heading-back [heading]="topHeading"></app-top-heading-back>
+
 <div class="add-edit-partner">
 
 
   <div class="partner-form">
 
-    <div class="header">
+    <!-- <div class="header">
       <h1>
         Add a new {{partnerType}} <span class="dot">.</span>
       </h1>
-    </div>
+    </div> -->
 
     <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
       <div class="col-1-of-2">

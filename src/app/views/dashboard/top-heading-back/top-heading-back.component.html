@@ -1,0 +1,8 @@
+<div *ngIf="heading" class="heading">
+  <div class="image">
+    <a [routerLink]="heading.backto"> <img src="assets/images/tybo/btn-top-back.svg" alt=""> </a>
+  </div>
+  <div class="head">
+    {{heading.heading}}
+  </div>
+</div>

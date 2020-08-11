@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User, Partner, NotFoundModel } from 'src/app/_models';
 import { BannerService, PartnerService, AccountService } from 'src/app/_services';
 import { StatusConstant, NotFoundConstants } from '../../shared';
+import { TopHeading } from 'src/app/_models/top-heading.model';
 
 @Component({
   selector: 'app-partners',
@@ -17,7 +18,7 @@ export class PartnersComponent implements OnInit {
 
   showForm: boolean;
   notFoundModel: NotFoundModel;
-
+  topHeading: TopHeading;
   searchType: any;
   constructor(
     private bannerService: BannerService,
@@ -50,6 +51,11 @@ export class PartnersComponent implements OnInit {
       Image: NotFoundConstants.NOT_FOUND_PARTNER.image,
       Message: `There are no ${this.type} yet.`
     };
+    this.topHeading = {
+      backto: '/dashboard',
+      heading: this.type
+    };
+
   }
 
   add() {

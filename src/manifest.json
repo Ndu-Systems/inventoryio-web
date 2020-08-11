@@ -1,7 +1,7 @@
 {
   "name": "Tybo",
   "short_name": "Tybo",
-  "theme_color": "#ffffff",
+  "theme_color": "#EDEFF0",
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",

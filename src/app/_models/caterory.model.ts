@@ -4,17 +4,17 @@ import { Company } from './company.model';
 
 export interface Caterory {
     CatergoryId?: string;
-    CompanyId: string;
+    CompanyId?: string;
     Name: string;
-    Description: string;
-    Parent: string;
-    CatergoryType: string;
-    ImageUrl: string;
+    Description?: string;
+    Parent?: string;
+    CatergoryType?: string;
+    ImageUrl?: string;
     CreateDate?: string;
-    CreateUserId: string;
+    CreateUserId?: string;
     ModifyDate?: string;
-    ModifyUserId: string;
-    StatusId: number;
+    ModifyUserId?: string;
+    StatusId?: number;
     Images?: Image[];
     Products?: Product[];
     Children?: Caterory[];

@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { NotFoundConstants } from '../../shared';
 import { OrderOptions } from 'src/app/_models/order.options.model';
 import { Config } from 'src/app/_models/Config';
+import { TopHeading } from 'src/app/_models/top-heading.model';
 
 @Component({
   selector: 'app-sell',
@@ -51,7 +52,10 @@ export class SellComponent implements OnInit {
   customerNotFound: boolean;
   Notes: string;
 
-
+  topHeading: TopHeading = {
+    backto: '/dashboard/list-orders',
+    heading: 'Create order'
+  };
 
   constructor(
     private productService: ProductService,

@@ -1,12 +1,23 @@
+$primary-bg-color: #198DF3;
+$white-color:#fff;
+$black-color: #000;
+$gray-color: #EDEFF0;
+$border-color: #CCCCCC;
+$strong-gray: #727272;
+$info: #C0E0FC;
+$default-bg: #EDEFF0;
+$disabled: #F7F7F7;
+$success: #22C854;
+
+
+
+
 $bg-color: #424242;
 $hl-color: #2196F3;
-$primary-bg-color: #104CE5;
 $muted-color: mix(white, $bg-color, 70%);
 $trans-time: 300ms;
 $width: 100%;
-$white-color:#fff;
-$black-color: #000;
-$gray-color: #D4D7DC;
+
 $cloud: #ecf0f1;
 $cloud-ligher: #F1F3F6;
 $dark-navy: #2E344C;
@@ -14,9 +25,6 @@ $strong-gray: #7B8C98;
 $blue-gray: #95AFC0;
 $ligher-gray: #D1D8E0;
 $danger: #fb1d1d;
-$default-bg: #DEE3E7;
-$default-bg: #F2F5F9;
-$border-color: #D7DBE4;
 $box-shadow: 0 0 0 1px rgba(12, 2, 2, 0.15),
 0 4px 6px rgba(116, 116, 116, 0.2);
 $box-border-radius: 5px;

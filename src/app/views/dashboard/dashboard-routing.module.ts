@@ -91,6 +91,7 @@ import { SearchOrderByCustomerPipe } from 'src/app/_pipes/search-order-by-custom
 import { EditPartnerComponent } from './partners/edit-partner/edit-partner.component';
 import { FormatSearchListPipe } from 'src/app/_pipes/format-search-result.pipe';
 import { ProductOptionsComponent } from './products/product-options/product-options.component';
+import { TopHeadingBackComponent } from './top-heading-back/top-heading-back.component';
 
 const routes: Routes = [
   {
@@ -250,7 +251,8 @@ export const declarations = [
   SearchOrderByCustomerPipe,
   EditPartnerComponent,
   FormatSearchListPipe,
-  ProductOptionsComponent
+  ProductOptionsComponent,
+  TopHeadingBackComponent
 ];
 
 @NgModule({
