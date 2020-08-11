@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Productoptions, defaultOptions } from 'src/app/_models/productoptions.model';
-import { ProductService, DocumentsService } from 'src/app/_services';
-import { Product } from 'src/app/_models';
+import { ProductService, DocumentsService, AccountService } from 'src/app/_services';
+import { Product, User } from 'src/app/_models';
 import { url } from 'inspector';
 import { environment } from 'src/environments/environment';
 
@@ -19,7 +19,12 @@ export class ProductOptionsComponent implements OnInit {
   currentIndex: number;
   currentImageName: string;
   deletedItems: Productoptions[] = [];
-  constructor(private productService: ProductService, private documentsService: DocumentsService) { }
+  user: User;
+  constructor(
+    private productService: ProductService,
+    private documentsService: DocumentsService,
+    private accountService: AccountService,
+  ) { }
 
   ngOnInit() {
     this.productService.product.subscribe(data => {
@@ -40,6 +45,8 @@ export class ProductOptionsComponent implements OnInit {
       'Image',
       ''
     );
+
+    this.user = this.accountService.currentUserValue;
   }
 
   addLine() {
@@ -61,8 +68,8 @@ export class ProductOptionsComponent implements OnInit {
       ImageUrl2: '',
       ImageUrl3: '',
       Quantity: null,
-      CreateUserId: '',
-      ModifyUserId: '',
+      CreateUserId: this.user.UserId,
+      ModifyUserId: this.user.UserId,
       StatusId: 1
     };
     this.product.Productoptions.push(item);

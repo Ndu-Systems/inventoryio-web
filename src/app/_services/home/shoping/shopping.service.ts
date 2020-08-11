@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Orders, OrderProducts, Item, Product, SellModel, Partner, Company, User } from 'src/app/_models';
+import { Orders, OrderProducts, Item, Product, SellModel, Partner, Company, User, Caterory } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
 import { SplashService } from '../../splash.service';
 import { environment } from 'src/environments/environment';
@@ -227,8 +227,12 @@ export class ShoppingService {
     return this.http.get<any>(`${this.url}/api/orders/get-order-by-id.php?OrderId=${orderId}`);
   }
 
-  getAllShops(): Observable<Company[]> {
-    return this.http.get<any>(`${this.url}/api/company/shops.php`);
+  getAllShops(): Observable<Caterory[]> {
+    return this.http.get<any>(`${this.url}/api/catergory/get-all-catergories.php`);
   }
+
+  // getAllShops(): Observable<Company[]> {
+  //   return this.http.get<any>(`${this.url}/api/catergory/get-all-catergories.php`);
+  // }
 
 }

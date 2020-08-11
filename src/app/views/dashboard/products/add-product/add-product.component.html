@@ -7,19 +7,16 @@
           <span class="label">product code</span>
           <input type="text" disabled [(ngModel)]="code">
         </div>
-        <div class="status">
-          {{nameError}}
-        </div>
       </div>
 
 
       <div class="form-item">
         <div class="item">
-          <span class="label">product name</span>
+          <span class="label">product name**</span>
           <input type="text" [(ngModel)]="product.Name" (change)="saveState()">
         </div>
-        <div class="status">
-          {{priceError}}
+        <div class="status error">
+          {{nameError}}
         </div>
       </div>
 
@@ -35,7 +32,7 @@
           </select>
         </div>
         <div class="status">
-          {{priceError}}
+        
         </div>
       </div>
 
@@ -43,24 +40,13 @@
 
       <div class="form-item">
         <div class="item">
-          <span class="label">product price</span>
+          <span class="label">product price**</span>
           <input type="number" [(ngModel)]="product.UnitPrice" (change)="saveState()">
         </div>
-        <div class="status">
-
+        <div class="status error">
+          {{priceError}}
         </div>
       </div>
-
-
-      <!-- <div class="form-item">
-        <div class="item">
-          <span class="label">quantity in hand</span>
-          <input type="text" [(ngModel)]="quantity">
-        </div>
-        <div class="status">
-
-        </div>
-      </div> -->
 
       <div class="form-item">
         <div class="item">

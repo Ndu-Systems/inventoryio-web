@@ -156,9 +156,7 @@ export class SellComponent implements OnInit {
         return false;
       }
 
-      if (!this.checkIfProductOptionsAreSelected(product)) {
-        return false;
-      }
+   
       this.messageService.add({
         severity: 'success',
         summary: 'Added to cart',
@@ -446,15 +444,6 @@ export class SellComponent implements OnInit {
   }
 
 
-  checkIfProductOptionsAreSelected(product: Product) {
-    if (product.Attributes.filter(x => x.Values && x.Values.length > 0).length
-      !== this.productOptions.filter(x => x.ProductId === product.ProductId).length) {
-      this.productForAttributes = product;
-      this.productForAttributes.QuantitySelected = product.QuantitySelected || 1;
-      return false;
-    }
-    return true;
-  }
 
   getProductSelectedItemsString(product: Product) {
     const optionsForAproduct = this.productOptions.filter(x => x.ProductId === product.ProductId);

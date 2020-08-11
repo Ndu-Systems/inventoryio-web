@@ -23,7 +23,7 @@ export interface Product {
     CreateUserId: string;
     ModifyDate: string;
     ModifyUserId: string;
-    StatusId: string;
+    StatusId: number;
     Catergory?: Caterory;
     Brand?: Brand;
     QuantityAvailable?: number;

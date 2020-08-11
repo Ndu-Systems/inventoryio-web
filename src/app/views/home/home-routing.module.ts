@@ -46,8 +46,10 @@ const routes: Routes = [
     path: '', component: HomeComponent,
     children: [
       // { path: 'home', component: IndexComponent },
-      { path: 'home', component: HomeShoppingComponent },
-      { path: '', component: HomeShoppingComponent },
+      // { path: 'home', component: HomeShoppingComponent },
+      { path: 'home', component: ShopsComponent },
+      // { path: '', component: HomeShoppingComponent },
+      { path: '', component: ShopsComponent },
       // { path: '', component: IndexComponent },
       { path: 'modules', component: OurModulesComponent },
       { path: 'pricing', component: PricingComponent },

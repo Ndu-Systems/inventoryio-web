@@ -140,7 +140,7 @@ export class AddProductComponent implements OnInit {
           CreateUserId: '',
           ModifyDate: '',
           ModifyUserId: '',
-          StatusId: '',
+          StatusId: 1,
           Productoptions: []
         };
         this.productService.updateCurrentProduct(this.product);
@@ -218,21 +218,19 @@ export class AddProductComponent implements OnInit {
         this.product.CompanyId = this.accountService.currentUserValue.CompanyId;
         this.productService.addProduct(this.product);
       }
-
+      this.back();
     }
-    this.back();
+
   }
   validateForm() {
     this.nameError = undefined;
     this.priceError = undefined;
     if (!this.product.Name) {
       this.nameError = 'Name is required!';
-      return false;
     }
     if (!this.product.UnitPrice) {
       this.priceError = 'Price is required!';
-      return false;
     }
-    return true;
+    return !this.nameError && !this.priceError;
   }
 }

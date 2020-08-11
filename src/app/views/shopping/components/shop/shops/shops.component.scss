@@ -1,12 +1,106 @@
 @import '../../../../../../assets/styles/variables';
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-.shops-container {
-  // padding: 3rem 11.5rem;
-  padding: 7rem 2rem;
+.container {
   background: $body-background;
+  padding: 7rem 2rem;
+  animation: sildeDown .4s ease-in .3s;
+  animation-fill-mode: backwards;
 
   @media only screen and (max-width: 600px) {
-    padding: 7rem 0;
+    padding: 4rem 0;
+    animation: sildeDown .4s ease-in .3s;
+
+  }
+
+  h1 {
+    padding-left: 1rem;
+  }
+
+}
+
+.catergories {
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-gap: 2rem;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+
+  .catergory {
+    position: relative;
+
+    .image {
+      overflow: hidden;
+      // margin: 1rem;
+      height: 40rem;
+      cursor: pointer;
+
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .name {
+      position: absolute;
+      left: 36%;
+      top: 30%;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        left: 0;
+      }
+
+      h1 {
+        color: $white-color;
+        text-shadow: 2px 2px #000000;
+        font-size: 5rem;
+        cursor: pointer;
+
+        @media only screen and (max-width: 600px) {
+          font-size: 3rem;
+        }
+
+      }
+    }
+
+    .children {
+      display: grid;
+      grid-template-columns: repeat(5, 20%);
+      position: relative;
+      top: 1rem;
+      grid-gap: 1rem;
+
+      .child {
+
+        .child-image {
+          // overflow: hidden;
+          // height: 8rem;
+          // width: 10rem;
+          cursor: pointer;
+
+
+          img {
+            width: 6rem;
+          }
+        }
+
+        .child-name {
+
+          padding: 0;
+          margin: 0;
+
+          h1 {
+            color: $black-color;
+            font-size: .9rem;
+            padding: 0;
+            margin: 0;
+            text-transform: capitalize;
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 }

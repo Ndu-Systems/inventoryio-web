@@ -28,6 +28,11 @@ body {
 
 h1 {
   text-align: left;
+
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+  }
+
 }
 
 .page-actions {
@@ -108,6 +113,9 @@ h1 {
   span.number {
     font-size: .9rem;
     font-weight: 800;
+    @media only screen and (max-width: 600px) {
+      font-size: .6rem;
+     }
 
   }
 }
@@ -592,7 +600,8 @@ span.step {
     margin: 10% auto;
     margin-top: 0;
     width: 18%;
-    img{
+
+    img {
       height: 2rem;
     }
 
@@ -689,8 +698,15 @@ span.step {
   width: 30%;
   padding: 2rem 0;
 
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+
   .bread {
     font-size: .9rem;
+    @media only screen and (max-width: 600px) {
+      font-size: .6rem;
+     }
     font-weight: 400;
     text-align: center;
 

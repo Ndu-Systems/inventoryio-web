@@ -1,22 +1,43 @@
-<div class="shops-container">
-  <div class="categorie-slider">
-    <app-categories-slider></app-categories-slider>
-  </div>
-  <!-- <div class="slider">
-    <div class="slide">
-      <app-shops-home-slider *ngIf="sliderProducts" [shops]="shops"></app-shops-home-slider>
+<span *ngIf="!loading">
+  <div class="container" *ngIf="products">
+    <div class="content">
+      <div class="catergories" *ngIf="filterCatergories">
+        <div class="catergory" *ngFor="let item of filterCatergories ">
+          <div class="image"  (click)="openMainCatergory(item)">
+            <img [src]="item.ImageUrl" alt="">
+          </div>
+          <div class="name"  (click)="openMainCatergory(item)">
+            <h1>
+              {{item.Name}}
+            </h1>
+          </div>
+
+          <div class="children">
+            <span *ngFor="let child of item.Children">
+             
+              <div class="child" *ngIf="child.Products && child.Products.length" (click)="openCatergory(child)">
+                <div class="child-image">
+                  <img [src]="child.ImageUrl" alt="">
+                </div>
+                <div class="child-name">
+                  <h1>
+                    {{child.Name}}
+                  </h1>
+                </div>
+              </div>
+            </span>
+        
+          </div>
+        </div>
+      </div>
+     
     </div>
-    <div class="adverts">
-      <a routerLink="/sign-up">
-        <img src="assets/images/add1.svg" alt="">
-      </a>
-
-    </div>
-
-  </div> -->
-
-  <div class="shops">
-    <h1>All shops</h1>
-    <app-shops-list-slider></app-shops-list-slider>
   </div>
-</div>
+
+</span>
+
+<span *ngIf="loading" class="ghost">
+  <div class="overlay"></div>
+  <img class="pc" src="assets/images/shopghost.svg" alt="">
+  <img class="mobile" src="assets/images/shop-ghost-mobile.svg" alt="">
+</span>

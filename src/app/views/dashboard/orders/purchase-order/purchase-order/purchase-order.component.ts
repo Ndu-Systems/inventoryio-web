@@ -84,7 +84,7 @@ export class PurchaseOrderComponent implements OnInit {
       CreateUserId: '',
       ModifyDate: '',
       ModifyUserId: '',
-      StatusId: ''
+      StatusId: 1
     };
     this.productRows.push(prod);
   }

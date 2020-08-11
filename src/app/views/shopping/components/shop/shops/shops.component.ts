@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingService } from 'src/app/_services/home/shoping/shopping.service';
-import { Company, Product } from 'src/app/_models';
+import { Company, Product, Caterory } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -19,6 +19,8 @@ export class ShopsComponent implements OnInit {
   sliderProducts: Product[];
   loading = true;
   company: Company;
+  catergories: Caterory[];
+  filterCatergories: Caterory[];
   constructor(private shoppingService: ShoppingService, private router: Router, private titleService: Title,
 
 
@@ -28,12 +30,16 @@ export class ShopsComponent implements OnInit {
 
   ngOnInit() {
     this.shoppingService.getAllShops().subscribe(data => {
-      this.shops = data;
-      if (this.shops) {
-        this.mapProducts();
-        this.loading = false;
-        this.shoppingService.updateCompaniesState(this.shops);
-      }
+      this.catergories = data;
+      this.filterCatergories = this.catergories && this.catergories.filter(x => x.CatergoryType === 'parent') || [];
+      this.loading = false;
+      // this.shops = data;
+      
+      // if (this.shops) {
+      //   this.mapProducts();
+      //   this.loading = false;
+      //   this.shoppingService.updateCompaniesState(this.shops);
+      // }
 
     });
   }
@@ -75,5 +81,12 @@ export class ShopsComponent implements OnInit {
       }
     });
     this.sliderProducts = this.products;
+  }
+
+  openMainCatergory(caterory: Caterory) {
+    this.router.navigate(['main-category', caterory.CatergoryId]);
+  }
+  openCatergory(caterory: Caterory) {
+    this.router.navigate(['shop-by-category', caterory.CatergoryId]);
   }
 }

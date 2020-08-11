@@ -5,6 +5,10 @@
   box-sizing: border-box;
   background: $white-color;
 
+  @media only screen and (max-width: 600px) {
+    padding: 5rem 0;
+  }
+
   .col-1-of-2 {
     display: grid;
     grid-template-columns: 30% auto;
@@ -81,7 +85,7 @@
   margin: 1rem 0;
   display: grid;
   grid-template-columns: 40% auto;
-  
+
 
   p {
     margin: .2rem .6rem;
@@ -105,9 +109,10 @@
       width: 2rem;
       cursor: pointer;
     }
-    .pos{
+
+    .pos {
       text-align: right;
-    
+
     }
   }
 }
@@ -206,4 +211,8 @@ h1.total {
   width: 45%;
   margin-bottom: 2.5rem;
   left: -3.7rem;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 }

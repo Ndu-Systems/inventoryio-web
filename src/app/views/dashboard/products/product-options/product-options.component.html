@@ -25,7 +25,7 @@
                 <span class="fake-btn">
                   <img src="assets/add-image.svg" alt="">
                 </span>
-                <input type="file" multiple (change)="imageChanged(item.Id,$event,i,1)">
+                <input type="file" accept="image/*" (change)="imageChanged(item.Id,$event,i,1)">
 
               </div>
               <div class="option-image" *ngIf="item.ImageUrl1" (click)="showImage(item, item.ImageUrl1,'ImageUrl1',i)">
@@ -37,7 +37,7 @@
                 <span class="fake-btn">
                   <img src="assets/add-image.svg" alt="">
                 </span>
-                <input type="file" multiple (change)="imageChanged(item.Id,$event,i,2)">
+                <input type="file" accept="image/*" (change)="imageChanged(item.Id,$event,i,2)">
 
               </div>
               <div class="option-image" *ngIf="item.ImageUrl2" (click)="showImage(item, item.ImageUrl2,'ImageUrl2',i)">
@@ -49,7 +49,7 @@
                 <span class="fake-btn">
                   <img src="assets/add-image.svg" alt="">
                 </span>
-                <input type="file" multiple (change)="imageChanged(item.Id,$event,i,3)">
+                <input type="file" accept="image/*" (change)="imageChanged(item.Id,$event,i,3)">
 
               </div>
               <div class="option-image" *ngIf="item.ImageUrl3" (click)="showImage(item, item.ImageUrl3,'ImageUrl3',i)">

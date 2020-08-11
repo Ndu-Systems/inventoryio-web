@@ -1,6 +1,10 @@
 .main {
   padding: 5rem 2rem;
 
+  @media only screen and (max-width: 600px) {
+    padding: 5rem 0;
+  }
+
   .heading {
     h1 {
       text-align: center;
