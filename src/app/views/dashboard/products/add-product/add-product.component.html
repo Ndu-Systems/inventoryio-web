@@ -13,31 +13,26 @@
       <div class="form-item">
         <div class="item">
           <span class="label">product name**</span>
-          <input type="text" [(ngModel)]="product.Name" (change)="saveState()">
+          <input type="text" [(ngModel)]="product.Name" (blur)="saveState()">
         </div>
         <div class="status error">
           {{nameError}}
         </div>
       </div>
-      <!-- <select [(ngModel)]="product.CatergoryId" (change)="saveState()">
-            <option value="">Select Category</option>
-            <option *ngFor="let catergory of filteredCategories" [value]="catergory.CatergoryId">
-              {{catergory.Label}}
-            </option>
-          </select> -->
 
       <div class="form-item">
         <div class="item ">
-          <span class="label">select parent catergory</span>
+          <span class="label">choose 1 parent catergory</span>
 
           <div class="categories">
             <div class="parent-categories">
-              <div class="catergory" *ngFor="let catergory of parentCategories">
-               <p>
-                {{catergory.Name}}
-               </p>
+              <div *ngFor="let catergory of parentCategories" [ngClass]="catergory.Class"
+                (click)="selectParent(catergory)">
+                <p>
+                  {{catergory.Name}}
+                </p>
               </div>
-              <div class="catergory add"><i class="pi pi-plus"></i>
+              <div class="catergory add" (click)="addNewCatergory('parent')"><i class="pi pi-plus"></i>
                 Add New</div>
             </div>
           </div>
@@ -48,15 +43,16 @@
 
       <div class="form-item">
         <div class="item categories">
-          <span class="label">select child catergory</span>
+          <span class="label">choose 1 child catergory</span>
           <div class="categories">
             <div class="parent-categories">
-              <div class="catergory" *ngFor="let catergory of childrenCategories">
-              <p>
-                {{catergory.Name}}
-              </p>
+              <div class="catergory" *ngFor="let catergory of childrenCategories" [ngClass]="catergory.Class"
+                (click)="selectChild(catergory)" (dblclick)="editCatergory(catergory)">
+                <p>
+                  {{catergory.Name}}
+                </p>
               </div>
-              <div class="catergory add"><i class="pi pi-plus"></i>
+              <div (click)="addNewCatergory('child')" class="catergory add"><i class="pi pi-plus"></i>
                 Add New</div>
             </div>
           </div>
@@ -68,7 +64,7 @@
       <div class="form-item">
         <div class="item">
           <span class="label">product price**</span>
-          <input type="number" [(ngModel)]="product.UnitPrice" (change)="saveState()">
+          <input type="number" [(ngModel)]="product.UnitPrice" (blur)="saveState()">
         </div>
         <div class="status error">
           {{priceError}}
@@ -78,15 +74,17 @@
       <div class="form-item">
         <div class="item">
           <span class="label">description</span>
-          <textarea [(ngModel)]="product.Description" (change)="saveState()"></textarea>
+          <textarea [(ngModel)]="product.Description" (blur)="saveState()"></textarea>
         </div>
         <div class="status">
 
         </div>
       </div>
-
-      <div class="options">
-        <app-product-options></app-product-options>
+      <div class="form-item">
+        <div class="options item">
+          <span class="label">product options</span>
+          <app-product-options></app-product-options>
+        </div>
       </div>
     </div>
   </div>
@@ -98,6 +96,54 @@
       </div>
       <div class="action">
         <button class="btn" (click)="save()">Save product</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal">
+  <h1>
+    {{modalHeading}}
+  </h1>
+
+  <div class="form">
+
+    <div class="form-item">
+      <div class="item">
+        <span class="label">catergory name**</span>
+        <input type="text" [(ngModel)]="current.Name">
+      </div>
+
+      <div class="item">
+        <div class="image" *ngIf="current.ImageUrl">
+          <img [src]="current.ImageUrl" alt="">
+        </div>
+       <!-- <pre>
+          {{current | json}}
+       </pre> -->
+        
+      <div class="file-drop-area" *ngIf="!current.ImageUrl">
+        <label class="label">Image</label>
+        <span class="fake-btn">
+          <img src="assets/add-image.svg" alt="">
+        </span>
+        <input type="file"  accept="image/*" (change)="imageChanged($event)">
+
+      </div>
+      </div>
+      <div class="modal-actions col-1-of-2">
+        <div class="item action">
+          <button class="btn secondary" (click)="closeModal()">Cancel</button>
+        </div>
+        <div class="item action">
+          <button class="btn" (click)="saveNewCatergory()">Save catergory</button>
+        </div>
+      </div>
+      <div class="status error">
+        {{priceError}}
       </div>
     </div>
   </div>

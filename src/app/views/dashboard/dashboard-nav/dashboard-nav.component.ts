@@ -96,15 +96,15 @@ export class DashboardNavComponent implements OnInit {
         SecondaryName: 'New Quote',
         AddUrl: '/dashboard/qoute-customer'
       },
-      {
-        Name: 'Purchaser Orders',
-        Link: '/dashboard/purchase-orders-list',
-        Icon: `assets/images/dashboard-nav-icons/purchase-order.svg`,
-        ActiveIcon: `assets/images/dashboard-nav-icons/purchase-order-white.svg`,
-        showItem: true,
-        SecondaryName: 'New Order',
-        AddUrl: '/dashboard/new-purchase-order'
-      },
+      // {
+      //   Name: 'Purchaser Orders',
+      //   Link: '/dashboard/purchase-orders-list',
+      //   Icon: `assets/images/dashboard-nav-icons/purchase-order.svg`,
+      //   ActiveIcon: `assets/images/dashboard-nav-icons/purchase-order-white.svg`,
+      //   showItem: true,
+      //   SecondaryName: 'New Order',
+      //   AddUrl: '/dashboard/new-purchase-order'
+      // },
       {
         Name: 'Customers',
         Link: '/dashboard/partners/customers',
@@ -114,15 +114,15 @@ export class DashboardNavComponent implements OnInit {
         AddUrl: '/dashboard/add-partner/customers',
         SecondaryName: 'Customer'
       },
-      {
-        Name: 'Suppliers',
-        Link: '/dashboard/partners/suppliers',
-        Icon: `assets/images/dashboard-nav-icons/group.svg`,
-        ActiveIcon: `assets/images/dashboard-nav-icons/group-white.svg`,
-        showItem: true,
-        AddUrl: '/dashboard/add-partner/suppliers',
-        SecondaryName: 'Supplier'
-      },
+      // {
+      //   Name: 'Suppliers',
+      //   Link: '/dashboard/partners/suppliers',
+      //   Icon: `assets/images/dashboard-nav-icons/group.svg`,
+      //   ActiveIcon: `assets/images/dashboard-nav-icons/group-white.svg`,
+      //   showItem: true,
+      //   AddUrl: '/dashboard/add-partner/suppliers',
+      //   SecondaryName: 'Supplier'
+      // },
       {
         Name: 'Reports',
         Link: '/dashboard/reports',

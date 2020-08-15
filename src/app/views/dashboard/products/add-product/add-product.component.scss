@@ -53,55 +53,6 @@
 
   }
 
-  .actions-section {
-    height: 3vh;
-    padding: .2rem;
-    background: $white-color;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    bottom: 3.5rem;
-    width: 100%;
-
-    @media only screen and (max-width: 600px) {
-      grid-template-columns: 100%;
-      text-align: center;
-
-    }
-
-    .actions {
-      grid-template-columns: 10% auto;
-      grid-gap: 2rem;
-      padding-left: 20rem;
-
-      @media only screen and (max-width: 600px) {
-        grid-template-columns: 50% auto;
-        padding: .5rem;
-        grid-gap: .4rem;
-      }
-
-      .action {
-        .btn {
-          width: 10rem;
-          padding: .7rem;
-        }
-
-        @media only screen and (max-width: 600px) {
-          // grid-template-columns: 100%;
-          // text-align: center;
-        }
-      }
-
-      .cancel {
-        // @media only screen and (max-width: 600px) {
-        //   display: none;
-        // }
-      }
-
-
-
-    }
-  }
 }
 
 .error {
@@ -120,7 +71,7 @@
 }
 
 .categories {
-  overflow-x: scroll;
+  // overflow-x: scroll;
   width: 100%;
 
   .parent-categories {
@@ -142,12 +93,18 @@
         padding: 0;
         display: block;
         width: 100%;
+        cursor: pointer;
       }
 
       .pi {
         position: relative;
         top: .3rem;
       }
+    }
+
+    .active {
+      background: $primary-bg-color;
+      color: $white-color;
     }
 
     .add {

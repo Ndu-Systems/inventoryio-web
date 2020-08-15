@@ -23,4 +23,5 @@ export interface Caterory {
     ShowMenu?: boolean;
     Label?: string;
     Handler?: string;
+    Class?: string[];
 }

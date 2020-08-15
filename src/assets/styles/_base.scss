@@ -477,48 +477,6 @@ span.step {
   }
 }
 
-.popup {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 1500;
-  background: rgba(0, 0, 0, 0.281);
-  top: 0;
-  left: 0;
-
-  .modal {
-    width: 60%;
-    margin: 15% auto;
-
-    @media only screen and (max-width: 600px) {
-      width: 92%;
-      margin: 91% auto;
-    }
-
-    .header {
-      background: $primary-bg-color;
-      padding: .5rem;
-      display: grid;
-      grid-template-columns: 95% auto;
-
-      h1 {
-        color: $white-color;
-        font-size: 1.4rem;
-        margin: 0;
-      }
-
-      .close {
-        cursor: pointer;
-      }
-    }
-
-    .body {
-      background: $white-color;
-      padding: .5rem;
-
-    }
-  }
-}
 
 .actions {
   display: grid;
@@ -534,45 +492,6 @@ span.step {
 
 
 
-.modal-overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 1004;
-  background: rgba(0, 0, 0, 0.363);
-  top: 0;
-  left: 0;
-  display: none;
-
-  @media only screen and (max-width: 600px) {
-    display: block;
-  }
-
-  .modal {
-    width: 100%;
-    background: $white-color;
-    border-radius: 10px;
-    position: absolute;
-    bottom: 3rem;
-    padding: 1rem;
-    padding-bottom: 5rem;
-    animation: moveInButton 1s ease-out 0s;
-    animation-fill-mode: backwards;
-  }
-
-  .close {
-    position: absolute;
-    bottom: 0;
-    background-image: url(assets/images/close-modat-mobile.svg);
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 5.3rem;
-    z-index: 1005;
-
-
-  }
-}
 
 .viewImage {
   position: fixed;
@@ -641,36 +560,6 @@ span.step {
 }
 
 
-.overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(31, 30, 30, 0.85);
-  z-index: 200;
-  animation: animationFadeIn .5s ease-in;
-  animation-fill-mode: backwards;
-
-  .modal {
-    margin: 5% auto;
-    background: #ffff;
-    padding: 2rem;
-    width: 40%;
-
-
-    @media only screen and (max-width: 600px) {
-      width: 100%;
-      padding: .8rem;
-    }
-
-    h1 {
-      text-transform: uppercase;
-      font-size: 1.4rem;
-    }
-  }
-}
-
 
 .pc-only {
   display: block;
@@ -734,4 +623,118 @@ span.step {
     position: relative;
     top: .4rem;
   }
+}
+
+
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.514);
+  width: 100%;
+  height: 100%;
+}
+
+.modal {
+  position: absolute;
+  background: #fff;
+  z-index: 1001;
+  left: 35%;
+  width: 30%;
+  top: 16%;
+
+  @media only screen and (max-width: 600px) {
+
+    width: 100%;
+    top: 40%;
+    left: 0;
+    height: 60%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.6rem;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .image {
+    padding: 1rem 0;
+
+    img {
+      width: 40%;
+    }
+  }
+
+  .form {
+    margin: 0;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  input,
+  textarea,
+  select {
+    background: $gray-color;
+
+  }
+
+  .col-1-of-2 {
+    grid-template-columns: repeat(2, 40%);
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: repeat(2, 50%);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 80%;
+    }
+  }
+
+  select {
+    width: 99%;
+  }
+}
+
+
+.file-drop-area {
+  position: relative;
+  height: 5rem;
+  margin-bottom: 2rem;
+
+  span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    left: 0;
+    display: block;
+
+    img {
+      width: 4rem;
+      margin: .2rem auto;
+      position: relative;
+      left: .1rem;
+      top: .5rem;
+    }
+  }
+
+  input {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    z-index: 105;
+    opacity: 0;
+  }
+
+
 }

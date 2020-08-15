@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import {
   ProductService, AccountService, CateroryService,
-  BrandService, BannerService, UploadService, ScannerService
+  BrandService, BannerService, UploadService, ScannerService, DocumentsService
 } from 'src/app/_services';
 import { User, Product, Brand, Caterory, Image } from 'src/app/_models';
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ import { state } from '@angular/animations';
 import { AttributeService } from 'src/app/_services/dashboard/attribute.service';
 import { Attribute } from 'src/app/_models/Attribute.model';
 import { TopHeading } from 'src/app/_models/top-heading.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-product',
@@ -33,13 +34,21 @@ export class AddProductComponent implements OnInit {
   nameError: string;
   priceError: string;
   code: string;
-  products: Product[];
+  products: Product[] = [];
   parentCategories: Caterory[] = [];
   childrenCategories: Caterory[] = [];
   topHeading: TopHeading = {
     backto: '/dashboard/list-product',
     heading: 'Create product'
   };
+  catergories: Caterory[] = [];
+  catergoryName: string;
+  user: User;
+  catergoryType: string;
+  showModal: boolean;
+  modalHeading: string;
+  parent: Caterory;
+  current: Caterory;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -52,6 +61,7 @@ export class AddProductComponent implements OnInit {
     private messageService: MessageService,
     private scannerService: ScannerService,
     private attributeService: AttributeService,
+    private documentsService: DocumentsService,
 
 
   ) {
@@ -66,19 +76,23 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
 
-    const user: User = this.accountService.currentUserValue;
+    this.user = this.accountService.currentUserValue;
     this.accountService.checkSession();
-    this.brandService.getBrands(user.CompanyId);
-    this.cateroryService.getCateries(user.CompanyId);
+    this.brandService.getBrands(this.user.CompanyId);
+    this.cateroryService.getCateries(this.user.CompanyId);
     this.catergories$ = this.cateroryService.categories;
     this.cateroryService.categories.subscribe(data => {
       if (data && data.length) {
+        this.catergories = data;
         this.parentCategories = data.filter(x => x.CatergoryType === 'parent');
         this.childrenCategories = data.filter(x => x.CatergoryType === 'child');
       } else {
         this.parentCategories = [{ Name: 'Ladies' }, { Name: 'Men' }, { Name: 'Unisex' }];
-        this.parentCategories = [{ Name: 'New In' }];
+        this.childrenCategories = [{ Name: 'New In' }];
       }
+      this.parentCategories.map(x => x.Class = ['catergory']);
+      this.childrenCategories.map(x => x.Class = ['catergory']);
+      this.loadProduct();
     });
 
     this.productService.products.subscribe(data => {
@@ -88,7 +102,6 @@ export class AddProductComponent implements OnInit {
       else {
         this.products = [];
       }
-      this.loadProduct();
     });
 
     this.scannerService.scann.subscribe(scan => {
@@ -117,10 +130,25 @@ export class AddProductComponent implements OnInit {
     this.productService.product.subscribe(prod => {
       if (prod) {
         this.product = prod;
+        this.topHeading.heading = this.product.ProductId.length > 5 ? 'Update product.' : 'Create product';
         this.code = 'P' + this.product.Code;
         this.heading = this.product.ProductId.length > 5 ? 'Update product.' : 'Add product';
         if (!this.product.Productoptions) {
           this.product.Productoptions = [];
+        }
+        if (this.product.ProductId.length < 5) {
+          this.selectParent(this.parent || this.parentCategories[0]);
+          this.selectChild(this.childrenCategories[0]);
+        }
+
+        if (this.product.Catergory) {
+          const parent = this.parentCategories.find(x => x.CatergoryId === this.product.Catergory.Parent);
+          const child = this.childrenCategories.find(x => x.CatergoryId === this.product.CatergoryId);
+          if (parent && child) {
+            parent.Class = ['catergory', 'active'];
+            child.Class = ['catergory', 'active'];
+          }
+
         }
       } else {
         this.product = {
@@ -234,5 +262,80 @@ export class AddProductComponent implements OnInit {
       this.priceError = 'Price is required!';
     }
     return !this.nameError && !this.priceError;
+  }
+  selectParent(caterory: Caterory) {
+    if (caterory && caterory.CatergoryId) {
+      this.parentCategories.map(x => x.Class = ['catergory']);
+      caterory.Class = ['catergory', 'active'];
+      this.childrenCategories = caterory.Children;
+      this.parent = caterory;
+    }
+  }
+  selectChild(caterory: Caterory) {
+    if (caterory && caterory.CatergoryId) {
+      this.childrenCategories.map(x => x.Class = ['catergory']);
+      caterory.Class = ['catergory', 'active'];
+      this.product.CatergoryId = caterory.CatergoryId;
+      this.product.Catergory = caterory;
+    }
+  }
+  closeModal() {
+    this.showModal = false;
+  }
+  addNewCatergory(type: string) {
+    this.catergoryType = type;
+    this.showModal = true;
+    this.modalHeading = `Add ${type} catergory.`;
+    this.current = {
+      Name: '',
+      ImageUrl: '',
+      Description: '',
+      Parent: this.parent && this.parent.CatergoryId || '',
+      CatergoryType: this.catergoryType,
+      CompanyId: this.user.CompanyId,
+      CreateUserId: this.user.UserId,
+      StatusId: 1,
+      ModifyUserId: this.user.UserId
+    };
+  }
+
+  saveNewCatergory() {
+    if (this.catergoryType !== 'child') {
+      this.parent = undefined;
+    }
+
+    this.cateroryService.addCaterory(this.current);
+    this.showModal = false;
+    this.catergoryType = undefined;
+    this.catergoryName = undefined;
+  }
+  editCatergory(caterory: Caterory) {
+    this.showModal = true;
+    this.modalHeading = `Add ${caterory.CatergoryType} catergory.`;
+    this.current = caterory;
+  }
+  imageChanged(event) {
+    const files = event.target.files;
+    console.log(files);
+    this.uplaodFile(files);
+
+  }
+
+
+  uplaodFile(files: FileList) {
+    if (!files.length) {
+      return false;
+    }
+
+    Array.from(files).forEach(file => {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('name', `tybo.${file.name.split('.')[file.name.split('.').length - 1]}`); // file extention
+      this.documentsService.uploadFile(formData).subscribe(url => {
+        this.current.ImageUrl = `${environment.API_URL}/api/upload/${url}`;
+      });
+
+    });
+
   }
 }

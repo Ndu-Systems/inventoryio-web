@@ -43,31 +43,22 @@ textarea {
   background: $white-color;
   color: #000;
   font-size: 18px;
-  padding: 10px 10px 10px 5px;
   display: block;
   width: $width;
-  border:none;
+  border: none;
   border-radius: 2rem;
   margin-top: 1rem;
+  padding: .85rem;
 
-  &:disabled{
+
+  &:disabled {
     background: $disabled;
     color: $strong-gray;
     ;
   }
+
   &:focus {
     outline: none;
-  }
-
-  &:focus~label,
-  &:valid~label {
-    top: -18px;
-    font-size: 12px;
-    color: $hl-color;
-  }
-
-  &:focus~.bar:before {
-    width: $width;
   }
 }
 
@@ -103,15 +94,16 @@ input[type="password"] {
   border: none;
   border-radius: 10rem;
   cursor: pointer;
-  width: 80%;
+  width: $width;
   font-weight: 600;
+  padding: .85rem;
 
 }
 
-.secondary{
+.secondary {
   background: $white-color;
-  color:  $primary-bg-color;
-  border: 2px solid  $primary-bg-color;
+  color: $primary-bg-color;
+  border: 2px solid $primary-bg-color;
 }
 
 .btn-box {
@@ -154,11 +146,11 @@ input[type="password"] {
     padding: 0;
   }
 
-  @media only screen and (max-width: 600px) {
-    width: 90%;
-    margin-top: 2%;
-    margin-bottom: 0%;
-  }
+  // @media only screen and (max-width: 600px) {
+  //   width: 90%;
+  //   margin-top: 2%;
+  //   margin-bottom: 0%;
+  // }
 
   h1 {
     width: 80%;
@@ -188,21 +180,6 @@ input[type="password"] {
     }
   }
 
-  input[type=text],
-  input[type=password],
-  input[type=checkbox] {
-    border: none;
-    width: 80%;
-    margin: 1rem;
-
-    @media only screen and (max-width: 600px) {
-      width: 80%;
-    }
-  }
-
-  input[type=text] {
-    @media only screen and (max-width: 600px) {}
-  }
 
   select {
     margin: 0.5rem;
@@ -219,11 +196,19 @@ input[type="password"] {
       margin: 0;
     }
 
-    label {
-      color: #656D88;
-      font-weight: 600;
-      font-size: 1rem;
-    }
+
+
+  }
+
+  label,
+  .label {
+    font-weight: 600;
+    text-align: left;
+    display: block;
+    padding: .2rem;
+    color: #656D88;
+    font-weight: 600;
+    font-size: 1rem;
   }
 
   .reset-pass {
@@ -321,4 +306,60 @@ input[type="password"] {
   padding: .5rem;
   margin-top: 1rem;
   color: #fff;
+}
+
+
+
+.actions-section {
+  height: 3vh;
+  padding: .2rem;
+  background: $white-color;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  bottom: 3.5rem;
+  width: 100%;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    text-align: center;
+
+  }
+
+  .actions {
+    grid-template-columns: 10% auto;
+    grid-gap: 2rem;
+    padding-left: 20rem;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 50% auto;
+      padding: .5rem;
+      grid-gap: .4rem;
+    }
+  }
+
+
+
+}
+
+.action {
+  padding: 2rem 0;
+
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .btn {
+    width: 10rem;
+    padding: .7rem;
+    @media only screen and (max-width: 600px) {
+      width: 8rem;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    // grid-template-columns: 100%;
+    // text-align: center;
+  }
 }

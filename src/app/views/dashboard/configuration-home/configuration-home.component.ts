@@ -75,11 +75,11 @@ export class ConfigurationHomeComponent implements OnInit {
       image: 'assets/images/actions/cutomer.svg',
       link: '/dashboard/partners/customers'
     },
-      {
-        name: 'manage suppliers',
-        image: 'assets/images/actions/suplier.svg',
-        link: '/dashboard/partners/suppliers'
-      }
+      // {
+      //   name: 'manage suppliers',
+      //   image: 'assets/images/actions/suplier.svg',
+      //   link: '/dashboard/partners/suppliers'
+      // }
     );
 
     this.invoices.push({
