@@ -77,4 +77,29 @@
 .make-product {
   background: $default-bg;
   padding: .8rem;
+  border-radius: 1rem;
+
+  @media only screen and (max-width: 600px) {
+    width: 20rem;
+  }
+}
+
+.sizes {
+
+  .size {
+    width: 2rem;
+    float: left;
+    background: $white-color;
+    margin: .5rem;
+    font-weight: 600;
+    font-size: .7rem;
+    text-align: center;
+    padding: .2rem;
+    cursor: pointer;
+  }
+
+  .active {
+    color: $white-color;
+    background: $black-color;
+  }
 }

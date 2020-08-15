@@ -48,7 +48,7 @@
 
       <div class="form-item">
         <div class="item ">
-          <span class="label">product catergory</span>
+          <span class="label">choose product catergory</span>
 
           <div class="tab">
             <div class="header">
@@ -108,7 +108,7 @@
 
       <div class="form-item">
         <div class="item ">
-          <span class="label">availability & options</span>
+          <span class="label">choose availability & options</span>
 
           <div class="tab">
             <div class="header col-1-of-2">
@@ -125,12 +125,31 @@
 
                 <div class="form-item">
                   <div class="item">
-                    <span class="label">How long to make this product?(days)</span>
+                    <span class="label">estimated production time(in days)</span>
                     <input type="number" [(ngModel)]="product.PreparingDays" (blur)="saveState()">
                   </div>
                   <div class="status error">
                     {{nameError}}
                   </div>
+                </div>
+
+                <div class="form-item">
+                  <div class="item">
+                    <span class="label">product available in sizes</span>
+                    <div class="sizes">
+                      <div *ngFor="let size of allSizes" [ngClass]="size.ngClass"
+                        (click)="selectSize(size)">
+                        {{size.Value1}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="status error">
+                    {{nameError}}
+                  </div>
+                </div>
+                <div class="form-item">
+                  <span class="label">product available in colours</span>
+                  <app-product-option-make></app-product-option-make>
                 </div>
               </div>
             </div>

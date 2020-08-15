@@ -92,6 +92,7 @@ import { EditPartnerComponent } from './partners/edit-partner/edit-partner.compo
 import { FormatSearchListPipe } from 'src/app/_pipes/format-search-result.pipe';
 import { ProductOptionsComponent } from './products/product-options/product-options.component';
 import { TopHeadingBackComponent } from './top-heading-back/top-heading-back.component';
+import { ProductOptionMakeComponent } from './products/product-option-make/product-option-make.component';
 
 const routes: Routes = [
   {
@@ -252,7 +253,8 @@ export const declarations = [
   EditPartnerComponent,
   FormatSearchListPipe,
   ProductOptionsComponent,
-  TopHeadingBackComponent
+  TopHeadingBackComponent,
+  ProductOptionMakeComponent
 ];
 
 @NgModule({

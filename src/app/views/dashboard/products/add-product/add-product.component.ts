@@ -14,6 +14,7 @@ import { Attribute } from 'src/app/_models/Attribute.model';
 import { TopHeading } from 'src/app/_models/top-heading.model';
 import { environment } from 'src/environments/environment';
 import { ProductAvailabilityModel, ProductAvailabilityTypes } from 'src/app/_models/product.availability.model';
+import { Productoptions } from 'src/app/_models/productoptions.model';
 
 @Component({
   selector: 'app-add-product',
@@ -38,6 +39,7 @@ export class AddProductComponent implements OnInit {
   products: Product[] = [];
   parentCategories: Caterory[] = [];
   childrenCategories: Caterory[] = [];
+  sizes: string[] = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '28', '30', '32', '34', '36', '38'];
   productAvailabilityTypes: ProductAvailabilityModel[] = ProductAvailabilityTypes;
   topHeading: TopHeading = {
     backto: '/dashboard/list-product',
@@ -52,6 +54,7 @@ export class AddProductComponent implements OnInit {
   parent: Caterory;
   current: Caterory;
   selectedAvailability: ProductAvailabilityModel;
+  allSizes: Productoptions[] = [];
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -126,7 +129,7 @@ export class AddProductComponent implements OnInit {
 
     this.selectedAvailability = this.productAvailabilityTypes[0];
 
-
+    this.mapSizes();
   }
 
   loadProduct() {
@@ -251,6 +254,8 @@ export class AddProductComponent implements OnInit {
       this.product.Productoptions.filter(x => Number(x.StatusId) === 1).forEach(x => {
         quantity += Number(x.Quantity);
       });
+      const sizes = this.allSizes.filter(x => x.ngClass.length > 1);
+      this.product.Productoptions = this.product.Productoptions.concat(sizes);
       this.product.Quantity = quantity || 0;
       this.product.ProductAvailability = this.selectedAvailability.Code;
       if (this.product.ProductId.length > 5) {
@@ -365,5 +370,42 @@ export class AddProductComponent implements OnInit {
       item.Class = ['head-item', 'active'];
       this.selectedAvailability = item;
     }
+  }
+
+  mapSizes() {
+    this.allSizes = [];
+    this.sizes.forEach(size => {
+      this.allSizes.push({
+        Id: '',
+        ProductId: '',
+        CompanyId: '',
+        Name1: 'Size',
+        Name2: '',
+        Name3: '',
+        Name4: '',
+        Name5: '',
+        Value1: size,
+        Value2: '',
+        Value3: '',
+        Value4: '',
+        Value5: '',
+        ImageUrl1: '',
+        ImageUrl2: '',
+        ImageUrl3: '',
+        Quantity: 0,
+        CreateUserId: '',
+        ModifyUserId: '',
+        StatusId: 1,
+        ngClass: ['size']
+
+      });
+    });
+  }
+  selectSize(po: Productoptions) {
+    if (po.ngClass.find(x => x === 'active')) {
+      po.ngClass = ['size'];
+      return true;
+    }
+    po.ngClass = ['size', 'active'];
   }
 }
