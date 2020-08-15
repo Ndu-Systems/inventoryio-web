@@ -13,6 +13,7 @@ import { AttributeService } from 'src/app/_services/dashboard/attribute.service'
 import { Attribute } from 'src/app/_models/Attribute.model';
 import { TopHeading } from 'src/app/_models/top-heading.model';
 import { environment } from 'src/environments/environment';
+import { ProductAvailabilityModel, ProductAvailabilityTypes } from 'src/app/_models/product.availability.model';
 
 @Component({
   selector: 'app-add-product',
@@ -37,6 +38,7 @@ export class AddProductComponent implements OnInit {
   products: Product[] = [];
   parentCategories: Caterory[] = [];
   childrenCategories: Caterory[] = [];
+  productAvailabilityTypes: ProductAvailabilityModel[] = ProductAvailabilityTypes;
   topHeading: TopHeading = {
     backto: '/dashboard/list-product',
     heading: 'Create product'
@@ -49,6 +51,7 @@ export class AddProductComponent implements OnInit {
   modalHeading: string;
   parent: Caterory;
   current: Caterory;
+  selectedAvailability: ProductAvailabilityModel;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -90,7 +93,7 @@ export class AddProductComponent implements OnInit {
         this.parentCategories = [{ Name: 'Ladies' }, { Name: 'Men' }, { Name: 'Unisex' }];
         this.childrenCategories = [{ Name: 'New In' }];
       }
-      this.parentCategories.map(x => x.Class = ['catergory']);
+      this.parentCategories.map(x => x.Class = ['head-item']);
       this.childrenCategories.map(x => x.Class = ['catergory']);
       this.loadProduct();
     });
@@ -121,7 +124,7 @@ export class AddProductComponent implements OnInit {
       this.images = images;
     });
 
-
+    this.selectedAvailability = this.productAvailabilityTypes[0];
 
 
   }
@@ -144,11 +147,18 @@ export class AddProductComponent implements OnInit {
         if (this.product.Catergory) {
           const parent = this.parentCategories.find(x => x.CatergoryId === this.product.Catergory.Parent);
           const child = this.childrenCategories.find(x => x.CatergoryId === this.product.CatergoryId);
+          this.childrenCategories = this.childrenCategories.filter(x => x.Parent === parent.CatergoryId);
           if (parent && child) {
-            parent.Class = ['catergory', 'active'];
+            parent.Class = ['head-item', 'active'];
             child.Class = ['catergory', 'active'];
           }
 
+        }
+        if (this.product.ProductAvailability) {
+          const availability = this.productAvailabilityTypes.find(x => x.Code === this.product.ProductAvailability);
+          this.selectAvailabilityParent(availability);
+        } else {
+          this.selectAvailabilityParent(this.productAvailabilityTypes[0]);
         }
       } else {
         this.product = {
@@ -164,6 +174,7 @@ export class AddProductComponent implements OnInit {
           Code: this.getNewCode(),
           SKU: '',
           TrackInventory: true,
+          PreparingDays: 3,
           Quantity: 1,
           LowStock: 0,
           CreateDate: '',
@@ -240,7 +251,8 @@ export class AddProductComponent implements OnInit {
       this.product.Productoptions.filter(x => Number(x.StatusId) === 1).forEach(x => {
         quantity += Number(x.Quantity);
       });
-      this.product.Quantity = quantity;
+      this.product.Quantity = quantity || 0;
+      this.product.ProductAvailability = this.selectedAvailability.Code;
       if (this.product.ProductId.length > 5) {
         this.product.TrackInventory = true;
         this.productService.updateProduct(this.product);
@@ -265,8 +277,8 @@ export class AddProductComponent implements OnInit {
   }
   selectParent(caterory: Caterory) {
     if (caterory && caterory.CatergoryId) {
-      this.parentCategories.map(x => x.Class = ['catergory']);
-      caterory.Class = ['catergory', 'active'];
+      this.parentCategories.map(x => x.Class = ['head-item']);
+      caterory.Class = ['head-item', 'active'];
       this.childrenCategories = caterory.Children;
       this.parent = caterory;
     }
@@ -304,7 +316,10 @@ export class AddProductComponent implements OnInit {
       this.parent = undefined;
     }
 
-    this.cateroryService.addCaterory(this.current);
+    this.cateroryService.addCaterorySync(this.current).subscribe(data => {
+      this.childrenCategories.push(data);
+      this.childrenCategories[this.childrenCategories.length - 1].Class = ['catergory', 'just-added'];
+    });
     this.showModal = false;
     this.catergoryType = undefined;
     this.catergoryName = undefined;
@@ -337,5 +352,18 @@ export class AddProductComponent implements OnInit {
 
     });
 
+  }
+
+  selectProductAvailability(value: string) {
+    this.product.ProductAvailability = value;
+    this.productService.updateCurrentProduct(this.product);
+  }
+
+  selectAvailabilityParent(item: ProductAvailabilityModel) {
+    if (item && item.Code) {
+      this.productAvailabilityTypes.map(x => x.Class = ['head-item']);
+      item.Class = ['head-item', 'active'];
+      this.selectedAvailability = item;
+    }
   }
 }

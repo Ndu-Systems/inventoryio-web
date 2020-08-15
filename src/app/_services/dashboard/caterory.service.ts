@@ -81,6 +81,9 @@ export class CateroryService {
       });
     });
   }
+  addCaterorySync(data: Caterory): Observable<Caterory> {
+    return this.http.post<Caterory>(`${this.url}/api/catergory/add-catergory.php`, data);
+  }
 
   updateCategory(category: Caterory) {
     this.http.put<Caterory>(`${this.url}/api/catergory/edit-catergory.php`, JSON.stringify(category))

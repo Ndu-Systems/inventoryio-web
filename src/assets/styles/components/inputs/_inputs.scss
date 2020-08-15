@@ -353,6 +353,7 @@ input[type="password"] {
   .btn {
     width: 10rem;
     padding: .7rem;
+
     @media only screen and (max-width: 600px) {
       width: 8rem;
     }
@@ -361,5 +362,88 @@ input[type="password"] {
   @media only screen and (max-width: 600px) {
     // grid-template-columns: 100%;
     // text-align: center;
+  }
+}
+
+
+
+
+.tab {
+  margin-top: .4rem;
+  background: $white-color;
+  border-radius: .8rem;
+  overflow: hidden;
+
+
+
+  .header {
+    display: grid;
+    grid-template-columns: repeat(3, 33.333%);
+    border-bottom: 2px solid $black-color;
+
+    .head-item {
+      padding: .5rem;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: .87rem;
+    }
+
+    .active {
+      background: $black-color;
+      color: $white-color;
+
+    }
+  }
+
+  .tab-body {
+
+    padding: .4rem;
+
+    .catergory {
+      padding: .7rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: .87rem;
+      cursor: pointer;
+      width: 80%;
+      background: $gray-color;
+      margin: .3rem;
+      border-radius: .4rem;
+
+
+      @media only screen and (max-width: 600px) {
+        padding: .4rem;
+        font-size: .77rem;
+        width: 100%;
+      }
+    }
+
+    .just-added {
+      animation: animationFadeInBorder 3s ease-in-out;
+      animation-fill-mode: backwards;
+    }
+
+    .add {
+      border: 2px solid $black-color;
+    }
+
+    .active {
+      background: $black-color;
+      color: $white-color;
+
+    }
+  }
+
+  .col-1-of-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-gap: .5rem;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: repeat(3, 30%);
+    }
+
+
   }
 }

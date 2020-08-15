@@ -76,6 +76,18 @@
   }
 }
 
+@keyframes animationFadeInBorder {
+  0% {
+    border: 2px solid $success;
+    // opacity: 0;
+  }
+
+  100% {
+    // opacity: 1;
+    border: none;
+  }
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0.9;

@@ -508,8 +508,17 @@ span.step {
     text-align: center;
     margin-bottom: 0;
 
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+
     img {
       height: 40rem;
+
+      @media only screen and (max-width: 600px) {
+        height: auto;
+        width: 100%;
+      }
     }
 
     .delete {
@@ -522,8 +531,17 @@ span.step {
     margin-top: 0;
     width: 18%;
 
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+
     img {
       height: 2rem;
+
+      @media only screen and (max-width: 600px) {
+        height: 1.8rem;
+        margin: .2rem 1.1rem;
+      }
     }
 
   }

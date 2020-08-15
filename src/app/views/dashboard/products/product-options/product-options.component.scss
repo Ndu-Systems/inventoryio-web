@@ -8,8 +8,9 @@ $grid-tbl : 17% 17% 17% 40% auto;
   padding: 1rem;
 
   @media only screen and (max-width: 600px) {
-    width: 50rem;
-    padding: .5rem;
+    overflow-x: scroll;
+    width: 85vw;
+    margin: .4rem auto;
 
   }
 
@@ -17,6 +18,10 @@ $grid-tbl : 17% 17% 17% 40% auto;
     display: grid;
     grid-template-columns: $grid-tbl;
     border-radius: 10rem;
+
+    @media only screen and (max-width: 600px) {
+      width: 50rem;  
+    }
 
     .item {
       font-weight: 900;
@@ -44,7 +49,9 @@ $grid-tbl : 17% 17% 17% 40% auto;
 
   .body {
 
-
+    @media only screen and (max-width: 600px) {
+      width: 50rem;  
+    }
     .lines {
       display: grid;
       // grid-template-columns: repeat(4, 25%);

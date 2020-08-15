@@ -11,6 +11,8 @@ export interface Product {
     BrandId: string;
     CatergoryId: string;
     Name: string;
+    ProductAvailability?: string;
+    PreparingDays?: number;
     Description: string;
     UnitPrice: any;
     UnitCost: number;

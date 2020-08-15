@@ -70,45 +70,11 @@
 
 }
 
-.categories {
-  // overflow-x: scroll;
-  width: 100%;
+.col-1-of-2 {
+  grid-template-columns: repeat(2, 50%);
+}
 
-  .parent-categories {
-    // display: flex;
-
-    .catergory {
-      background: $white-color;
-      color: $strong-gray;
-      padding: .5rem;
-      margin: .5rem;
-      border-radius: .3rem;
-      font-weight: 600;
-      cursor: pointer;
-      width: auto;
-      float: left;
-
-      p {
-        margin: 0;
-        padding: 0;
-        display: block;
-        width: 100%;
-        cursor: pointer;
-      }
-
-      .pi {
-        position: relative;
-        top: .3rem;
-      }
-    }
-
-    .active {
-      background: $primary-bg-color;
-      color: $white-color;
-    }
-
-    .add {
-      color: $success;
-    }
-  }
+.make-product {
+  background: $default-bg;
+  padding: .8rem;
 }

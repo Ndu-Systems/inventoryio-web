@@ -20,26 +20,58 @@
         </div>
       </div>
 
-      <div class="form-item">
-        <div class="item ">
-          <span class="label">choose 1 parent catergory</span>
 
-          <div class="categories">
-            <div class="parent-categories">
-              <div *ngFor="let catergory of parentCategories" [ngClass]="catergory.Class"
-                (click)="selectParent(catergory)">
-                <p>
-                  {{catergory.Name}}
-                </p>
-              </div>
-              <div class="catergory add" (click)="addNewCatergory('parent')"><i class="pi pi-plus"></i>
-                Add New</div>
-            </div>
-          </div>
+      <div class="form-item">
+        <div class="item">
+          <span class="label">product price**</span>
+          <input type="number" [(ngModel)]="product.UnitPrice" (blur)="saveState()">
+        </div>
+        <div class="status error">
+          {{priceError}}
         </div>
       </div>
 
 
+
+      <!-- <div class="form-item">
+        <div class="item">
+          <span class="label">Product availability</span>
+          <div class="radio-buttons">
+            <div class="radio-button active" (click)="selectProductAvailability('In stock')">In stock</div>
+            <div class="radio-button"  (click)="selectProductAvailability('I create/ stock on order')">I create/ stock on order</div>
+          </div>
+        </div>
+        <div class="status error">
+          {{priceError}}
+        </div>
+      </div> -->
+
+      <div class="form-item">
+        <div class="item ">
+          <span class="label">product catergory</span>
+
+          <div class="tab">
+            <div class="header">
+              <div *ngFor="let catergory of parentCategories" [ngClass]="catergory.Class"
+                (click)="selectParent(catergory)">
+                {{catergory.Name}}
+              </div>
+            </div>
+            <div class="col-1-of-4 tab-body">
+              <div class="catergory" *ngFor="let catergory of childrenCategories" [ngClass]="catergory.Class"
+                (click)="selectChild(catergory)" (dblclick)="editCatergory(catergory)">
+                {{catergory.Name}}
+              </div>
+              <div (click)="addNewCatergory('child')" class="catergory add"><i class="pi pi-plus"></i>
+                Add
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 
 
       <div class="form-item">
         <div class="item categories">
@@ -53,24 +85,16 @@
                 </p>
               </div>
               <div (click)="addNewCatergory('child')" class="catergory add"><i class="pi pi-plus"></i>
-                Add New</div>
+                Add New
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
 
-      <div class="form-item">
-        <div class="item">
-          <span class="label">product price**</span>
-          <input type="number" [(ngModel)]="product.UnitPrice" (blur)="saveState()">
-        </div>
-        <div class="status error">
-          {{priceError}}
-        </div>
-      </div>
-
+      <!-- 
       <div class="form-item">
         <div class="item">
           <span class="label">description</span>
@@ -79,13 +103,50 @@
         <div class="status">
 
         </div>
-      </div>
+      </div> -->
+
+
       <div class="form-item">
+        <div class="item ">
+          <span class="label">availability & options</span>
+
+          <div class="tab">
+            <div class="header col-1-of-2">
+              <div *ngFor="let item of productAvailabilityTypes" [ngClass]="item.Class"
+                (click)="selectAvailabilityParent(item)">
+                {{item.Name}}
+              </div>
+            </div>
+            <div class="tab-body">
+              <div class="in-stock" *ngIf="selectedAvailability && selectedAvailability.Code === 'stock'">
+                <app-product-options></app-product-options>
+              </div>
+              <div class="make-product" *ngIf="selectedAvailability && selectedAvailability.Code === 'make'">
+
+                <div class="form-item">
+                  <div class="item">
+                    <span class="label">How long to make this product?(days)</span>
+                    <input type="number" [(ngModel)]="product.PreparingDays" (blur)="saveState()">
+                  </div>
+                  <div class="status error">
+                    {{nameError}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <!-- <div class="form-item">
         <div class="options item">
           <span class="label">product options</span>
           <app-product-options></app-product-options>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -121,18 +182,18 @@
         <div class="image" *ngIf="current.ImageUrl">
           <img [src]="current.ImageUrl" alt="">
         </div>
-       <!-- <pre>
+        <!-- <pre>
           {{current | json}}
        </pre> -->
-        
-      <div class="file-drop-area" *ngIf="!current.ImageUrl">
-        <label class="label">Image</label>
-        <span class="fake-btn">
-          <img src="assets/add-image.svg" alt="">
-        </span>
-        <input type="file"  accept="image/*" (change)="imageChanged($event)">
 
-      </div>
+        <div class="file-drop-area" *ngIf="!current.ImageUrl">
+          <label class="label">Image</label>
+          <span class="fake-btn">
+            <img src="assets/add-image.svg" alt="">
+          </span>
+          <input type="file" accept="image/*" (change)="imageChanged($event)">
+
+        </div>
       </div>
       <div class="modal-actions col-1-of-2">
         <div class="item action">
