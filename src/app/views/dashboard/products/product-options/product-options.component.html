@@ -8,7 +8,7 @@
     <div *ngFor="let item of product.Productoptions; let i = index">
 
 
-      <span class="lines" *ngIf="item.StatusId == '1'">
+      <span class="lines" *ngIf="item.StatusId == '1' && item.Name2 != ''">
         <div class="line">
           <input type="text" [placeholder]="'Enter ' + item.Name1" [(ngModel)]="item.Value1" (change)="saveState()">
         </div>

@@ -32,13 +32,13 @@ export class ProductOptionMakeComponent implements OnInit {
         this.product = data;
         if (!this.product.Productoptions.length || this.product.Productoptions[0].Id.length === 0) {
           this.product.Productoptions = defaultOptions;
-          this.product.Productoptions[0].Name1 = 'Color';
+          this.product.Productoptions[0].Name1 = 'Colour';
           this.product.Productoptions[0].Name2 = '';
           this.product.Productoptions[0].Quantity = 0;
         }
-        // if (this.product.Productoptions[0].Id.length === 0) {
+        if (this.product.Productoptions.length) {
 
-        // }
+        }
       }
     });
 

@@ -129,7 +129,7 @@ export class AddProductComponent implements OnInit {
 
     this.selectedAvailability = this.productAvailabilityTypes[0];
 
-    this.mapSizes();
+
   }
 
   loadProduct() {
@@ -139,7 +139,14 @@ export class AddProductComponent implements OnInit {
         this.topHeading.heading = this.product.ProductId.length > 5 ? 'Update product.' : 'Create product';
         this.code = 'P' + this.product.Code;
         this.heading = this.product.ProductId.length > 5 ? 'Update product.' : 'Add product';
-        if (!this.product.Productoptions) {
+        if (this.product.Productoptions) {
+          console.log('All options', this.product.Productoptions);
+          const sizes = this.product.Productoptions.filter(x => x.Name1 === 'Size' && x.Name2 === '');
+          const colours = this.product.Productoptions.filter(x => x.Name1 === 'Colour' && x.Name2 === '');
+          console.log('All sizes', sizes);
+          console.log('colours', colours);
+          this.mapSizes(sizes);
+        } else {
           this.product.Productoptions = [];
         }
         if (this.product.ProductId.length < 5) {
@@ -372,10 +379,10 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-  mapSizes() {
+  mapSizes(sizes: Productoptions[]) {
     this.allSizes = [];
     this.sizes.forEach(size => {
-      this.allSizes.push({
+      const newSize = {
         Id: '',
         ProductId: '',
         CompanyId: '',
@@ -398,12 +405,27 @@ export class AddProductComponent implements OnInit {
         StatusId: 1,
         ngClass: ['size']
 
-      });
+      };
+      const existingSize = sizes.find(x => x.Value1 === size);
+      if (existingSize) {
+        existingSize.ngClass = ['size', 'active'];
+        this.allSizes.push(existingSize);
+
+        // newSize.ngClass = ['size', 'active'];
+        // newSize.ProductId = existingSize.ProductId;
+        // newSize.ngClass = existingSize.ProductId;
+        // newSize.ngClass = existingSize.ProductId;
+      } else {
+        this.allSizes.push(newSize);
+      }
     });
   }
   selectSize(po: Productoptions) {
     if (po.ngClass.find(x => x === 'active')) {
       po.ngClass = ['size'];
+      if (po.Id.length > 5) {
+        po.StatusId = 2;
+      }
       return true;
     }
     po.ngClass = ['size', 'active'];
