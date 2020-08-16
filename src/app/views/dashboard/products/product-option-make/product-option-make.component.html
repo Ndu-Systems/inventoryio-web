@@ -10,7 +10,8 @@
 
       <span class="lines" *ngIf="item.StatusId == '1' && item.Name1 == 'Colour'">
         <div class="line">
-          <input type="text" [placeholder]="'Enter ' + item.Name1" [(ngModel)]="item.Value1" (change)="saveState()">
+          <!-- <input type="text" [placeholder]="'Enter ' + item.Name1" [(ngModel)]="item.Value1" (change)="saveState()"> -->
+          <p-colorPicker [(ngModel)]="item.Value1"  [ngStyle]="{'border':'2px solid #bdc3c7'}"></p-colorPicker>
         </div>
         <div class="line">
           <div class="option-images">

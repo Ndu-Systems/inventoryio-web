@@ -1,0 +1,46 @@
+<div class="options" *ngIf="product">
+  <div class="headings">
+    <div class="item" *ngFor="let item of headings">
+      {{item}}
+    </div>
+  </div>
+  <div class="body">
+    <div *ngFor="let item of product.Productprocesses; let i = index">
+
+
+      <span class="lines"  *ngIf="item.StatusId == '1'">
+        <div class="line">
+          <input type="text" placeholder="e.g. Buying fabric /Cutting fabric/Sewing" [(ngModel)]="item.ProcessName" (change)="saveState()">
+        </div>
+
+        <div class="line">
+          <input type="checkbox"  [(ngModel)]="item.NotifyCustomer" (change)="saveState()">
+        </div>
+
+        <div class="line">
+          <textarea [(ngModel)]="item.NotifyMessage" (change)="saveState()" >
+
+          </textarea>
+        </div>
+ 
+        <div class="line">
+          <img (click)="removeLine(i)" class="delete-line" src="assets/images/tybo/btn-delete-line.svg" alt="">
+        </div>
+      </span>
+    </div>
+    <div class="add-line">
+      <button (click)="addLine()">Add line</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="viewImage" *ngIf="viewImage">
+  <div class="image">
+    <img [src]="currentImage" alt="currentImage">
+  </div>
+  <div class="btns">
+    <img (click)="deleteImage()" class="delete" src="assets/images/tybo/btn-delete-image.svg" alt="">
+    <img (click)="closeImage()" class="delete" src="assets/images/tybo/btn-close-image.svg" alt="">
+  </div>
+</div>

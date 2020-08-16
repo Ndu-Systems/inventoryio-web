@@ -92,9 +92,6 @@ export class AddProductComponent implements OnInit {
         this.catergories = data;
         this.parentCategories = data.filter(x => x.CatergoryType === 'parent');
         this.childrenCategories = data.filter(x => x.CatergoryType === 'child');
-      } else {
-        this.parentCategories = [{ Name: 'Ladies' }, { Name: 'Men' }, { Name: 'Unisex' }];
-        this.childrenCategories = [{ Name: 'New In' }];
       }
       this.parentCategories.map(x => x.Class = ['head-item']);
       this.childrenCategories.map(x => x.Class = ['catergory']);
@@ -109,27 +106,7 @@ export class AddProductComponent implements OnInit {
         this.products = [];
       }
     });
-
-    this.scannerService.scann.subscribe(scan => {
-      if (scan && window.location.href.includes('add-product')) {
-        this.showScan = scan.isOpen;
-        if (scan.code) {
-          this.rForm.controls.Code.setValue(scan.code);
-        }
-      }
-    });
-
-
-    this.brands$ = this.brandService.brands;
-
-
-    this.uploadService.images.subscribe(images => {
-      this.images = images;
-    });
-
     this.selectedAvailability = this.productAvailabilityTypes[0];
-
-
   }
 
   loadProduct() {
@@ -192,7 +169,8 @@ export class AddProductComponent implements OnInit {
           ModifyDate: '',
           ModifyUserId: '',
           StatusId: 1,
-          Productoptions: []
+          Productoptions: [],
+          Productprocesses: []
         };
         this.productService.updateCurrentProduct(this.product);
       }

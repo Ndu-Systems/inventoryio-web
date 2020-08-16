@@ -134,11 +134,15 @@
                 </div>
 
                 <div class="form-item">
+                  <span class="label">production process and customer notification</span>
+                  <app-product-process></app-product-process>
+                </div>
+
+                <div class="form-item">
                   <div class="item">
                     <span class="label">product available in sizes</span>
                     <div class="sizes">
-                      <div *ngFor="let size of allSizes" [ngClass]="size.ngClass"
-                        (click)="selectSize(size)">
+                      <div *ngFor="let size of allSizes" [ngClass]="size.ngClass" (click)="selectSize(size)">
                         {{size.Value1}}
                       </div>
                     </div>
@@ -151,6 +155,7 @@
                   <span class="label">product available in colours</span>
                   <app-product-option-make></app-product-option-make>
                 </div>
+              
               </div>
             </div>
           </div>

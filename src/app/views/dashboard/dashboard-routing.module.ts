@@ -93,6 +93,7 @@ import { FormatSearchListPipe } from 'src/app/_pipes/format-search-result.pipe';
 import { ProductOptionsComponent } from './products/product-options/product-options.component';
 import { TopHeadingBackComponent } from './top-heading-back/top-heading-back.component';
 import { ProductOptionMakeComponent } from './products/product-option-make/product-option-make.component';
+import { ProductProcessComponent } from './products/product-process/product-process.component';
 
 const routes: Routes = [
   {
@@ -254,7 +255,8 @@ export const declarations = [
   FormatSearchListPipe,
   ProductOptionsComponent,
   TopHeadingBackComponent,
-  ProductOptionMakeComponent
+  ProductOptionMakeComponent,
+  ProductProcessComponent
 ];
 
 @NgModule({

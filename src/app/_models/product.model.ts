@@ -3,6 +3,7 @@ import { Caterory } from './caterory.model';
 import { Image } from './image.model';
 import { Attribute } from './Attribute.model';
 import { Productoptions } from './productoptions.model';
+import { Productprocess } from './productproces.model';
 
 export interface Product {
     CompanyId?: string;
@@ -33,6 +34,7 @@ export interface Product {
     Images?: Image[];
     Attributes?: Attribute[];
     Productoptions?: Productoptions[];
+    Productprocesses?: Productprocess[];
     Error?: string;
 
 }

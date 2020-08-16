@@ -10,13 +10,13 @@
 
       <span class="lines" *ngIf="item.StatusId == '1' && item.Name2 != ''">
         <div class="line">
-          <input type="text" [placeholder]="'Enter ' + item.Name1" [(ngModel)]="item.Value1" (change)="saveState()">
+          <input type="text" [placeholder]="'Enter ' + item.Name1" [(ngModel)]="item.Value1" (blur)="saveState()">
         </div>
         <div class="line">
-          <input type="text" [placeholder]="'Enter ' + item.Name2" [(ngModel)]="item.Value2" (change)="saveState()">
+          <input type="text" [placeholder]="'Enter ' + item.Name2" [(ngModel)]="item.Value2" (blur)="saveState()">
         </div>
         <div class="line">
-          <input type="number" placeholder="Enter Quantity" [(ngModel)]="item.Quantity" (change)="saveState()">
+          <input type="number" placeholder="Enter Quantity" [(ngModel)]="item.Quantity" (blur)="saveState()">
         </div>
         <div class="line">
           <div class="option-images">
